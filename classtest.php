@@ -28,7 +28,32 @@ class automobile{
 	}
 }
 
+/**
+* 
+*/
+class a
+{
+	public $b;
+	public $c;
+
+	function v(){
+		echo "first";
+	}	
+
+	function __construct($b,$c)
+	{
+		$this->b=$b;
+		$this->c=$c;
+	}
+
+	function __destruct(){
+		echo "destruction";
+	}
+}
+
 $car=new automobile;
+$d=new a(1,2);
+
 $car->model="BMW";
 $car->owner="xieyang";
 $car->start();
@@ -40,5 +65,6 @@ for($i=0;$i<10;$i++){
 $car->red();
 echo $car->owner."的".$car->model."行驶了".$car->time."s<br>";
 
+$d->v();
 
 ?>

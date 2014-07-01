@@ -27,7 +27,7 @@ class cls_mysql
 	}
 
 	public function __destruct(){
-
+		mysql_close($this->link_id);
 	}
 
 	public function select_db($dbname){

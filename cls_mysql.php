@@ -54,6 +54,7 @@ class cls_mysql
 		return mysql_insert_id($this->link_id);
 	}
 
+	//从start开始返回num个用户数量
 	public function select_limit($sql,$num,$start=0){
 		if($start==0){
 			$sql.=' LIMIT '.$num;

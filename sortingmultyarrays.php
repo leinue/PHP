@@ -25,6 +25,9 @@ echo 'name_sort'.print_r($stu);
 uasort($stu,'grade_sort');
 echo 'grade_sort'.print_r($stu);
 
+uasort($stu, function($x,$y){
+	return strcasecmp($x['name'], $y['name']);
+});
 ?>
 </body>
 </html>

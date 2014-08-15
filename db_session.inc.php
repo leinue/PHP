@@ -42,7 +42,9 @@ function write_session($sid,$data){
 		mysqli_real_escape_string($sdbc,$sid),mysqli_real_escape_string($sdbc,$data));
 	$result=mysqli_query($sdbc,$sql);
 
-	return true;
+	if(mysqli_affected_rows($sdbc)>0){
+		return true;
+	}else return false;
 }
 
 function destory_session($sid){
@@ -53,7 +55,9 @@ function destory_session($sid){
 	$result=mysqli_query($sdbc,$sql);
 
 	$_SESSION=array();
-	return true;
+	if(mysqli_affected_rows($sdbc)>0){
+		return true;
+	}else return false;
 }
 
 function clean_session($expire){
@@ -63,7 +67,9 @@ function clean_session($expire){
 		(int)$expire);
 	$result=mysqli_query($sdbc,$sql);
 
-	return true;
+	if(mysqli_affected_rows($sdbc)>0){
+		return true;
+	}else return false;
 }
 
 session_set_save_handler('open_session', 'close_session', 'read_session', 'write_session', 'destory_session', 'clean_session');

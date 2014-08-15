@@ -17,14 +17,21 @@ function close_session(){
 function read_session($sid){
 	global $sdbc;
 
-	$sql=sprintf("SELECT `data` FROM `test` WHERE id='%s'",mysqli_real_escape_string($sdbc,$sid));
+	$sql=sprintf("SELECT `data` FROM `sessions` WHERE `id`='%s'",mysqli_real_escape_string($sdbc,$sid));
 	$result=mysqli_query($sdbc,$sql);
 
-	if(mysqli_num_rows($result)==1){
-		list($data)=mysqli_fetch_array($result,MYSQLI_NUM);
-		return $data;
+	echo mysqli_error($sdbc);
+
+	if($result){
+		$cek=mysqli_num_rows($result);
+		if($cek==1){
+			list($data)=mysqli_fetch_array($result,MYSQLI_NUM);
+		    return $data;
+		}else{
+			return '';
+		}
 	}else{
-		return '';
+		echo "the query match zero elements";
 	}
 }
 

@@ -34,10 +34,10 @@ class Employee{
 	function getName(){return $this->name;}
 }
 
+$hr=new department("human");
+
 $e1=new Employee("fu111ck");
 $e2=new Employee("shit");
-
-$hr=new department("human");
 
 $hr->addEmployee($e1);
 $hr->addEmployee($e2);

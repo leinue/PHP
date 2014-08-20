@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE store SYSTEM "collection.dtd">
+
+<store>
+	<product>
+		<name>T-shirt</name>
+		<size>L</size>
+		<size>M</size>
+	</product>
+	<product>
+		<name>Sweater</name>
+		<size>M</size>
+	</product>
+</store>

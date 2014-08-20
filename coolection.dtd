@@ -1,0 +1,14 @@
+<!ELEMENT store (product+)>
+
+<!ELEMENT product(name,L+)>
+
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT size (#PCDATA)>
+
+<!ATTLIST name
+designer NMTOKEN #IMPLIED
+>
+
+<!ATTLIST size
+sex NMTOKEN #IMPLIED
+>

@@ -1,3 +1,4 @@
 <?php
-fpassthru();
+
+print_r(scandir('ACGHub'));
 ?>

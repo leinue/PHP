@@ -3,6 +3,36 @@
  	<head>
  		<title>xieyang's word list</title>
 		<link href="style/load_csv_css.css" rel="stylesheet">
+		
+		<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+ 		
+ 		<script type="text/javascript">
+
+			$(document).ready(function(){
+
+				$(".mainlist").click(function(){
+					var isUp="down";
+
+					var idValue=$(this).attr('id');
+					
+					if(isUp=="down"){
+						$("#"+idValue).slideUp()("slow");
+						alert("#"+idValue);
+						var t=setTimeout("$('"+"#"+idValue+"').stop()",330);
+						isUp="up";
+					}
+					
+					/*if(isUp=="up"){
+						$("#"+idValue).slideDown("slow");
+						var t=setTimeout("$('"+"#"+idValue+"').stop()",330);
+						isUp="down";
+					}*/
+    				
+  				});
+			});
+
+		</script>
+
  	</head>
 	<body>
 <?php
@@ -21,12 +51,13 @@ try {
 $index=1;
 
 while ($data=fgetcsv($fp)) {
-	echo "<div class=\"mainlist\">";
+	//$functionName='getID()'; onclick=\"$functionName\"
+	echo "<div class=\"mainlist\" id=\"$index\">";
 	foreach ($data as $key => $value) {
 		if($key==0){
-			echo "NO.$index<br>$value<br>";
+			echo "<span>NO.$index</span><br><span class=\"content\">$value</span><br>";
 		}else{
-			echo "$value<br>";
+			echo "<span class=\"content\">$value</span><br>";
 		}
 	}
 	echo "</div>";

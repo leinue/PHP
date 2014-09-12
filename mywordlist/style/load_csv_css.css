@@ -1,0 +1,18 @@
+body{background: rgb(238,238,238);}
+
+.mainlist{
+	width: 99%;
+	background: rgb(217,237,247);
+	margin-bottom: 10px;
+	border:1px solid rgb(204,204,204);
+	padding-left: 10px;
+	padding-top: 20px;
+}
+
+h1{
+	background: rgb(217,237,247);
+	border:1px solid rgb(204,204,204);
+	text-align: center;
+}
+
+.mainlist:hover{background: rgb(238,238,238);}

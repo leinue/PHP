@@ -1,0 +1,71 @@
+.main-box{
+	margin: 0 auto;
+	height: 500px;
+	width: 800px;
+	margin-top: 50px;
+}
+
+.img-box{
+	margin-left: 250px;
+}
+
+.menu-box{
+	margin-left: 60px;
+}
+
+.menu-box ul{
+	list-style: none;
+}
+
+.menu-box ul li{
+	float: left;
+	margin-right: 20px;
+	text-decoration: underline;
+}
+
+.menu-box ul a{
+	color: rgb(0,0,204);
+}
+
+.active{
+	font-weight: bold;
+	color: rgb(0,0,0);
+}
+
+.active:hover{
+	cursor: default;
+}
+
+
+.input-box{
+	width: 200px;
+	margin-top: 15px;
+}
+
+.input-box input{
+	width: 540px;
+	height: 34px;
+	margin-top: 15px;
+	margin-left: 80px;
+}
+
+.btn{
+	width: 105px;
+	height: 40px;
+	background: rgb(51,136,255);
+	cursor: pointer;
+	font-size: 16px;
+	color: rgb(255,255,255);
+	border: 0px none;
+	float: right;
+	margin-right: 70px;
+	margin-top: -40px;
+}
+
+.footer-box{
+	width: 800px;
+	text-align: center;
+	margin-top: 80px;
+	color: rgb(170,170,170);
+	font-size: 14px;
+}

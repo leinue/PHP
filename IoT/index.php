@@ -48,7 +48,9 @@
 	//使用XHR获得最新的坐标信息
 	//使用XHR轮询
 	var xhr=new XMLHttpRequest();
-	//getCoordinate();
+
+	//天眼定位XHR
+	var locate=new XMLHttpRequest();
 
 	if(window.sessionStorage){
 	}else{
@@ -78,6 +80,15 @@
 			toTheLocation(longitude,latitude);
 		}
 	};
+
+	document.getElementById('ajaxlocate').onclick=function(){
+		if(typeof locate.withCredentials===undefined){
+		
+		}else{
+			locate.open("get","locate.php?message=hhhhhhh",true);
+			locate.send();
+		}
+	};
 	
 	// 用经纬度设置地图中心点
 	function toTheLocation(long,lat){
@@ -89,6 +100,18 @@
 			map.panTo(new_point);
 		}
 	}
+
+	//locateXHR请求状态
+	locate.onreadystatechange=function(){
+		if(locate.readyState==4 && locate.status==200){
+			var res=locate.responseText;
+			var resJSON=JSON.parse(res);
+
+			displayRequestResult(resJSON.message);
+		}else{
+			displayRequestResult(xhr.statusText);
+		}
+	};
 
 	//XHR请求状态
 	xhr.onreadystatechange=function(){

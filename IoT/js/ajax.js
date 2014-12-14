@@ -20,6 +20,9 @@
 	//天眼定位XHR
 	var locate=new XMLHttpRequest();
 
+	//获得当前定位XHR
+	var gcp=new XMLHttpRequest();
+
 	if(window.sessionStorage){
 	}else{
 		alert("您的浏览器不支持sessionStorage,有些功能无法使用");
@@ -57,6 +60,15 @@
 			locate.send();
 		}
 	};
+
+	document.getElementById('getCurrentPos').onclick=function(){
+		if(typeof gcp.withCredentials===undefined){
+		
+		}else{
+			gcp.open("get","getCurrentPos.php",true);
+			gcp.send();
+		}		
+	}
 	
 	// 用经纬度设置地图中心点
 	function toTheLocation(long,lat){
@@ -69,6 +81,18 @@
 		}
 	}
 
+	//gcpXHR请求状态
+	gcp.onreadystatechange=function(){
+		if(gcp.readyState==4 && gcp.status==200){
+			var pos=gcp.responseText;
+			var pos=JSON.parse(pos);
+
+			toTheLocation(pos.x,pos.y);
+		}else{
+			displayRequestResult(gcp.statusText);
+		}
+	};
+
 	//locateXHR请求状态
 	locate.onreadystatechange=function(){
 		if(locate.readyState==4 && locate.status==200){
@@ -77,7 +101,7 @@
 
 			displayRequestResult(resJSON.message);
 		}else{
-			displayRequestResult(xhr.statusText);
+			displayRequestResult(locate.statusText);
 		}
 	};
 

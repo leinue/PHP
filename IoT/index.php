@@ -23,6 +23,7 @@
 				</div>
 				<div class="tools">
 					<input type="button" class="btn" id="ajaxlocate" value="天眼定位"/>
+					<input type="button" class="btn" id="getCurrentPos" value="获得当前位置"/>
 				</div>
 			</div>
 		</div>

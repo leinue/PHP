@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>hhhhhhhh</title>
+	<meta charset="utf-8">
+</head>
+
+<body>
+	<input type="button" value="submit" id="sub" />
+	<textarea id="content" rows="20"></textarea>
+
+	<div id="result"></div>
+
+	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
+	<script type="text/javascript">
+		var re="";
+		$(document).ready(function(){
+			$('#sub').click(function(){
+				if($('#content').val()!=''){
+					$.get(
+						'gushi.php',
+						{origin:$('#content').val()},
+						function(data){
+							re=$('#result').val();
+							$('#result').html(re+data);
+						});
+				}
+			});
+		});
+	</script>
+</body>
+</html>

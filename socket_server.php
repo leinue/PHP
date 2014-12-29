@@ -22,35 +22,30 @@ $port = 1935;
 
 /*----------------    以下操作都是手册上的    -------------------*/
 if(($sock = socket_create(AF_INET,SOCK_STREAM,SOL_TCP)) < 0) {
-    echo "socket_create() 失败的原因是:".socket_strerror($sock)."\n";
+    echo "socket_create() failed: reason: ".socket_strerror($sock);
 }
 
 if(($ret = socket_bind($sock,$ip,$port)) < 0) {
-    echo "socket_bind() 失败的原因是:".socket_strerror($ret)."\n";
+    echo "socket_bind() failed: reason: ".socket_strerror($ret);
 }
 
 if(($ret = socket_listen($sock,4)) < 0) {
-    echo "socket_listen() 失败的原因是:".socket_strerror($ret)."\n";
+    echo "socket_listen() failed: reason: ".socket_strerror($ret);
 }
 
 $count = 0;
 
 do {
     if (($msgsock = socket_accept($sock)) < 0) {
-        echo "socket_accept() failed: reason: " . socket_strerror($msgsock) . "\n";
+        echo "socket_accept() failed: reason: ".socket_strerror($msgsock);
         break;
     } else {
         
         //发到客户端
-        $msg ="测试成功！\n";
         socket_write($msgsock, $msg, strlen($msg));
-        
-        echo "测试成功了啊\n";
         $buf = socket_read($msgsock,8192);
-        
-        
-        $talkback = "收到的信息:$buf\n";
-        echo $talkback;
+    
+        //$talkback = "收到的信息:$buf\n";
         
         if(++$count >= 5){
             break;
@@ -58,7 +53,6 @@ do {
         
     
     }
-    //echo $buf;
     socket_close($msgsock);
 
 } while (true);

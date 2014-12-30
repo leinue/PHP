@@ -32,8 +32,7 @@ if ($result < 0) {
     echo "连接OK\n";
 }
 
-$in = "Ho\r\n";
-$in .= "first blood\r\n";
+$in = "fuck,shit;bitch,hh;";
 $out = '';
 
 if(!socket_write($socket, $in, strlen($in))) {

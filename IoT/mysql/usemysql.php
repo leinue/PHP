@@ -114,20 +114,4 @@ class locationManager extends pdoOperation{
 	}
 }
 
-/*try {
-	$pdo=new PDO("mysql:host=localhost;dbname=ncu",$user,$password);
-} catch (PDOException $e) {
-	echo $e->getMessage();
-}
-
-$lm=new locationManager($pdo);
-
-//$lm->insertLocation("hhh","2333");
-//$lm->insertLocation("hhh22","2333");
-
-//$lm->deleteLocation(2);
-
-$loca=new location();
-$loca=$lm->getAll();
-print_r($loca);*/
 ?>

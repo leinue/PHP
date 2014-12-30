@@ -1,10 +1,6 @@
 <?php
 error_reporting(E_ALL ^ E_NOTICE);
-//配置数据库信息
-$dbname="ncu";
-$host="localhost";
-$user="root";
-$password="xieyang";
+require('config.php');
 
 function createTable(){
 
@@ -15,7 +11,7 @@ function createTable(){
 			`longitude` char(100) not null, 
 			primary key(`uid`) )default charset=utf8;");
 
-	$pdo=new PDO("mysql:dbname=$dbname;host=$host",$user,$password);
+	$pdo=new PDO("mysql:host=localhost;dbname=ncu",$user,$password);
 
 	foreach ($sql as $key => $sqlStatement) {
 		$res=$pdo->exec($sqlStatement);

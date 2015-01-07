@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title>hhhhhhhh</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <input type="text" class="fuck" />
+    <input type="button" value="submit" id="sub" />
+    <div id="content"></div>
+    <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var str=$('.fuck').val();
+            $('#sub').click(getData);
+
+            function getData(){
+                var url='get.php?q='+str;
+                console.log(url);
+                $.get(
+                    url,
+                    {},
+                    function(data){
+                        $('#content').html(data);
+                    }
+                );
+                return false;
+            }
+        });
+    </script>
+</body>
+</html>

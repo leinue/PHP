@@ -1,5 +1,9 @@
 <?php
 
+error_reporting(E_ALL & ~E_NOTICE);
+
+require('mysql/usemysql.php');
+
 function writeNew($longitude,$latitude){
 	$existed=readNew();
 	$count=$existed['count']+1;
@@ -8,7 +12,7 @@ function writeNew($longitude,$latitude){
 }
 
 function readNew(){
-	$content=file_get_contents("newest.wn");
+	/*$content=file_get_contents("newest.wn");
 	$data=explode(";",$content);
 	//data[0]->longitude
 	//data[1]->latitude
@@ -18,6 +22,27 @@ function readNew(){
 	$res[$data[0][0]]=$data[0][1];
 	$res[$data[1][0]]=$data[1][1];
 	$res[$data[2][0]]=$data[2][1];
+	return $res;*/
+
+	try {
+		$pdo=new PDO("mysql:host=localhost;dbname=ncu",$user,$password);
+	} catch (PDOException $e) {
+		echo $e->getMessage();
+	}
+
+	$lm=new locationManager($pdo);
+	$all=$lm->getAll();
+
+	$newest=0;
+
+	$lat=$all[count($all)-1]->getLat();
+	$long=$all[count($all)-1]->getLong();
+
+	$res=array();
+	$res['longitude']=$long;
+	$res['latitude']=$lat;
+	$res['count']=count($all)-1;
+
 	return $res;
 }
 

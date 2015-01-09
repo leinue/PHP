@@ -86,7 +86,7 @@
 		if(gcp.readyState==4 && gcp.status==200){
 			var pos=gcp.responseText;
 			var pos=JSON.parse(pos);
-
+			console.log(pos);
 			toTheLocation(pos.x,pos.y);
 		}else{
 			displayRequestResult(gcp.statusText);
@@ -111,6 +111,8 @@
 			//成功
 			var coordinate=xhr.responseText;
 			var jsondata=JSON.parse(coordinate);
+
+			console.log(coordinate);
 
 			var nextCount=jsondata.count;
 

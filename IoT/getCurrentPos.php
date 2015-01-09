@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(E_ALL & ~E_NOTICE);
+
 $cls=locateByCURL($message);
 $pos='{"x":"'.$cls->content->point->x.'","y":"'.$cls->content->point->y.'"}';
 echo $pos;

@@ -32,4 +32,6 @@ echo "per2.age=".$per2->age.";<br>";
 echo "per2.name=".$per2->name.";<br>";
 echo "per2.id=".$per2->id.";<br>";
 
+//update
+
 ?>

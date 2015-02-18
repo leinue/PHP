@@ -1,3 +1,7 @@
+html,body{
+	width: 100%;
+	height: 100%;
+}
 .nav-own{
 	border-radius: 0px;
 	background: rgb(0,0,0);
@@ -30,4 +34,38 @@
 
 .main-title h1{
 	font-size: 4em;
+}
+
+.main-title a{
+	text-decoration: none;
+	color: rgb(255,255,255);
+}
+
+.news-display{
+	margin-top: 5px;
+}
+
+.news-block{
+	background: rgb(242,242,242);
+	height: 200px;
+	border-right: 2.5px solid rgb(255,255,255);
+	border-left: 2.5px solid rgb(255,255,255);
+	margin-bottom: 5px;
+}
+
+footer{
+	margin-top: 10px;
+}
+
+.footer-menu{
+	font-size: 12px;
+}
+
+.footer-menu a{
+	color: rgb(119,119,119);
+}
+
+.footer-menu li{
+	float: left;
+	margin-right: 5px;
 }

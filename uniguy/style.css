@@ -51,6 +51,25 @@ html,body{
 	border-right: 2.5px solid rgb(255,255,255);
 	border-left: 2.5px solid rgb(255,255,255);
 	margin-bottom: 5px;
+	cursor: pointer;
+	padding-top: 16px;
+}
+
+.news-block-title{
+	height: 40px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.news-block-img{
+	margin-top: 10px;
+	height: 124px;
+	text-align: center;
+}
+
+.news-block-img img{
+	height: 124px;
+	width: 260px;
 }
 
 footer{

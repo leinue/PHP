@@ -51,7 +51,6 @@
 						<a href="#"><h1>开启一份新意</h1></a>
 					</div>
 				</div>
-				
 			</div>
 		</div>
 
@@ -59,16 +58,40 @@
 			<div class="row">
 				<div class="news-display">
 					<div class="col-md-3 news-block">
-					
+						<div class="news-block-title">
+							<h4 class="text-muted">IPAD Air 2</h4>
+							<strong><h5 class="text-muted">点击查看新闻</h5></strong>
+						</div>
+						<div class="news-block-img">
+							<img src="http://images.apple.com/cn/home/images/promo_iphone6_medium.jpg">
+						</div>
 					</div>
   					<div class="col-md-3 news-block">
-  					
+						<div class="news-block-title">
+							<h4 class="text-muted">IPAD Air 2</h4>
+							<strong><h5 class="text-muted">点击查看新闻</h5></strong>
+						</div>
+						<div class="news-block-img">
+							<img src="http://images.apple.com/cn/home/images/promo_iphone6_medium.jpg">
+						</div>  					
   					</div>
   					<div class="col-md-3 news-block">
-  					
+						<div class="news-block-title">
+							<h4 class="text-muted">IPAD Air 2</h4>
+							<strong><h5 class="text-muted">点击查看新闻</h5></strong>
+						</div>
+						<div class="news-block-img">
+							<img src="http://images.apple.com/cn/home/images/promo_iphone6_medium.jpg">
+						</div>  					
   					</div>
   					<div class="col-md-3 news-block">
-  					
+						<div class="news-block-title">
+							<h4 class="text-muted">IPAD Air 2</h4>
+							<strong><h5 class="text-muted">点击查看新闻</h5></strong>
+						</div>
+						<div class="news-block-img">
+							<img src="http://images.apple.com/cn/home/images/promo_iphone6_medium.jpg">
+						</div>  					
   					</div>
 				</div>
 			</div>

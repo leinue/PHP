@@ -1,6 +1,7 @@
 .nav-own{
 	border-radius: 0px;
-	opacity: 0.9;
+	background: rgb(0,0,0);
+	opacity: 0.8;
 	font-size: 18px;
 }
 
@@ -8,6 +9,25 @@
 	color: rgb(255,255,255);
 }
 
-.active-own{
-	background: rgb(0,0,0);
+.menu-own{color: rgb(255,255,255);}
+
+.carousel{
+	margin-top: -72px;
+	background: url(bg.jpg) no-repeat;
+	background-size:100% 650px;
+	z-index: -1;
+	height: 650px;
+	position: relative;
+}
+
+
+.main-title{
+	margin-top: 18.30161%;
+	text-align: center;
+	color: rgb(255,255,255);
+	letter-spacing: 5px;
+}
+
+.main-title h1{
+	font-size: 4em;
 }

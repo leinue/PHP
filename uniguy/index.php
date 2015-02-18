@@ -11,7 +11,7 @@
 	<div class="container-fluid">
 	<div class="row">
 		<nav class="navbar navbar-inverse nav-own">
-  			<div class="container-fluid">
+  			<div class="container-fluid col-md-offset-1">
     		<!-- Brand and toggle get grouped for better mobile display -->
     			<div class="navbar-header">
       				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -28,17 +28,30 @@
     			<!-- Collect the nav links, forms, and other content for toggling -->
     			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       				<ul class="nav navbar-nav">
-        				<li class="active"><a href="#">首页 <span class="sr-only">(current)</span></a></li>
-        				<li><a href="#">服务</a></li>
-        				<li><a href="#">案例</a></li>
-        				<li><a href="#">新闻</a></li>
-        				<li><a href="#">技术支持</a></li>
-        				<li><a href="#">联系我们</a></li>
-        				<li><a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
+        				<li><a style="color: rgb(255,255,255);" href="#">首页 <span class="sr-only">(current)</span></a></li>
+        				<li><a style="color: rgb(255,255,255);" href="#">服务</a></li>
+        				<li><a style="color: rgb(255,255,255);" href="#">案例</a></li>
+        				<li><a style="color: rgb(255,255,255);" href="#">新闻</a></li>
+        				<li><a style="color: rgb(255,255,255);" href="#">技术支持</a></li>
+        				<li><a style="color: rgb(255,255,255);" href="#">联系我们</a></li>
+      				</ul>
+      				<ul class="nav navbar-nav navbar-right">
+      					<li><a href="#"><span class="glyphicon glyphicon-search menu-own" aria-hidden="true"></span></a></li>
       				</ul>
     			</div><!-- /.navbar-collapse -->
   			</div><!-- /.container-fluid -->
 		</nav>
+		
+		<div class="carousel">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="main-title">
+						<h1>开启一份新意</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+		
 	</div>
 	</div>
 	<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>

@@ -2,7 +2,7 @@
 
 /*
 this is a function about get char by char
-completed in 2014-9-19
+completed in 2015-2-27
 */
 
 function getChar($str){

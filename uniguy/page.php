@@ -23,10 +23,15 @@
 
 
 		<div class="carousel-service">
+		<!--<img class="service-background-img" src="http://localhost/wordpress/wp-content/themes/uniguy/service_bg.jpg">-->
+		
 			<div class="container-fluid">
 				<div class="row">
 					<div class="main-title">
-						<a href="#"><h1>fddfddf</h1></a>
+						<img width="264" height="264" src="http://images.apple.com/v/osx/c/images/overview/hero_icon_large.png">
+						<h1>我们的服务</h1>
+						<h3>每一点凝聚的强大，处处尽现。</h3>
+						<h5><p>优雅的设计带来令人耳目一新的感觉，与此同时，又会让人倍感亲切。</p><p>你日常所用的 app 增加了新的功能，而今愈加强大。</p><p>而你的 Mac 与 iOS 设备之间的关系也焕然一新，更进一步</p>。<p>OS X Yosemite 会让你以崭新的眼光来审视 Mac，以及你能和它携手成就的一切。</p><p>访问 Mac App Store 免费升级。</p></h5>
 					</div>
 				</div>
 			</div>

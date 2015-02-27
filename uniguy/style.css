@@ -31,8 +31,12 @@ html,body{
 .carousel-service{
 	height: auto;
 	padding-bottom: 100px;
-	background: url(http://images.apple.com/v/osx/c/images/overview/hero_large.jpg) no-repeat;
+	background: url(service_bg.jpg) no-repeat;
 }
+
+/*.service-background-img{
+	margin-left: -800px;
+}*/
 
 
 .main-title{

@@ -2,6 +2,12 @@ html,body{
 	width: 100%;
 	height: 100%;
 }
+
+h2{
+	letter-spacing: 1px;
+	line-height: 1.1;
+}
+
 .nav-own{
 	border-radius: 0px;
 	background: rgb(0,0,0);
@@ -152,4 +158,60 @@ footer{
 
 .sm-right ul .sm-right-li-last{
 	margin-right: 0px;
+}
+
+/*服务页面底部*/
+.section-content{
+	width: 100%;
+	height: 900px;
+	background-color: #FFF;
+	background-image: -webkit-linear-gradient(#F4F4F4 0px, #FFF 500px);
+	background-image: -o-linear-gradient(#F4F4F4 0px, #FFF 500px);
+	background-image: linear-gradient(#F4F4F4 0px, #FFF 500px);
+	text-align: center;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+.subheadline{
+	display: block;
+	color: rgb(153,153,153);
+	font-size: 122.2222%;
+}
+
+.section-content h2{
+	margin: 0 auto;
+	line-height: 1.6;
+	font-size: 200%;
+}
+
+.section-content p{
+	font-size: 16px;
+}
+
+.more{
+	display: block;
+}
+
+.design-hero-img{
+	background-size: 83.74231% 83.11111111111%;
+	height: 83.11111111111%;
+	width: 83.74231%;
+	margin-left: 0px;
+	background-image: url("service_img1.png");
+	background-repeat: no-repeat;
+	margin-left: 15.3733528%;
+	margin-top: 18.6%;
+	margin-bottom: 50px;
+}
+
+.continuity-image{
+	background-repeat: no-repeat;
+	background-size: 1300px 458px;
+	height: 458px;
+	width: 1300px;
+	background-image: url("service_img2.png");
+	float: right;
+	display: block;
+	margin-top: 46px;
 }

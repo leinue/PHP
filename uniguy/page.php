@@ -82,16 +82,16 @@
  			</div>
 		</div>
 
-	<?php if(have_posts()) : ?> 
-<?php while(have_posts()) : the_post(); ?>
+	<?php //if(have_posts()) : ?> 
+<?php //while(have_posts()) : the_post(); ?>
 
 
   	</div>
 </div>
 
-<?php the_content(); ?>
+<?php //the_content(); ?>
 
-<?php endwhile; ?>
-<?php endif; ?>
+<?php //endwhile; ?>
+<?php //endif; ?>
 
 <?php get_footer(); ?>

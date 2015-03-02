@@ -221,3 +221,41 @@ footer{
 	height: 300px;
 	margin-top: -100px;
 }
+
+/*案例页面CSS*/
+.case-second-menu{
+	height: 52px;
+	border-bottom: 1px solid rgb(229,229,229);
+	margin-top: -20px;
+	color: rgb(87,84,84);
+	font-size: 32px;
+	font-weight: 100;
+}
+
+.case-title{
+	margin-top: 4px;
+}
+
+.case-title a{
+	color: rgb(84,84,84);
+	text-decoration: none;
+}
+
+.explore-btn{
+	font-size: 15px;
+	margin-top: -32px;
+	cursor: pointer;
+}
+
+.explore-btn a{
+	text-decoration: none;
+	color: rgb(84,84,84);
+}
+
+.explore-btn a:hover{
+	color: rgb(0,0,0);
+}
+
+.explore-menu span:hover{
+	color: rgb(0,0,0);
+}

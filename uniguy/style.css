@@ -225,11 +225,14 @@ footer{
 /*案例页面CSS*/
 .case-second-menu{
 	height: 32px;
-	border-bottom: 1px solid rgb(229,229,229);
 	margin-top: -30px;
 	color: rgb(87,84,84);
 	font-size: 32px;
 	font-weight: 100;
+}
+
+.case-second-menu-border{
+	border-bottom: 1px solid rgb(229,229,229);
 }
 
 .case-title{
@@ -264,6 +267,7 @@ footer{
 }
 
 .case-search-form{
+	display: none;
 	height: 240px;
 	border-bottom: 1px solid rgb(229,229,229);
 }

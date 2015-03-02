@@ -224,7 +224,7 @@ footer{
 
 /*案例页面CSS*/
 .case-second-menu{
-	height: 52px;
+	height: 32px;
 	border-bottom: 1px solid rgb(229,229,229);
 	margin-top: -30px;
 	color: rgb(87,84,84);
@@ -234,7 +234,7 @@ footer{
 
 .case-title{
 	float: left;
-	margin-top: 4px;
+	margin-top: -18px;
 }
 
 .case-title a{
@@ -245,7 +245,7 @@ footer{
 .explore-btn{
 	font-size: 16px;
 	cursor: pointer;
-	margin-top: 10px;
+	margin-top: 30px;
 }
 
 .explore-search{

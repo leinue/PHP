@@ -21,5 +21,18 @@
 	</div>
 	<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
     <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script>
+  	  
+		$(document).ready(function(){
+
+			$('.explore-search').on('click',function(){
+				$('.case-search-form').slideToggle('normal',function(){
+					$('.case-second-menu').toggleClass('case-second-menu-border');
+				});
+				
+			});
+
+		});
+	</script>
 	</body>
 </html>

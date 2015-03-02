@@ -229,6 +229,7 @@ footer{
 	color: rgb(87,84,84);
 	font-size: 32px;
 	font-weight: 100;
+	margin-bottom: 400px;
 }
 
 .case-second-menu-border{
@@ -270,4 +271,12 @@ footer{
 	display: none;
 	height: 240px;
 	border-bottom: 1px solid rgb(229,229,229);
+}
+
+.case-detail{
+	background: rgb(245,245,245);
+	padding-top: 105px;
+	width: 188px;
+	margin-top: 10px;
+	margin-right: 20px;
 }

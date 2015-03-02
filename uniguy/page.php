@@ -27,17 +27,3 @@
 <?php //endif; ?>
 
 <?php get_footer(); ?>
-
-    <script>
-  	  
-		$(document).ready(function(){
-
-			$('.explore-search').on('click',function(){
-				$('.case-search-form').slideToggle('normal',function(){
-					$('.case-second-menu').toggleClass('case-second-menu-border');
-				});
-				
-			});
-			
-		});
-	</script>

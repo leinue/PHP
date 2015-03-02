@@ -11,6 +11,13 @@
 			</div>
 
 			<div class="case-search-form">
-
+				<div class="case-search-detail">
+					<div class="case-detail">
+						
+					</div>
+					<div class="case-detail">
+						
+					</div>
+				</div>
 			</div>
 		</div>

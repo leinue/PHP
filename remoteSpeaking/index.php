@@ -3,6 +3,7 @@
 <head>
 	<title>My remoteSpeaking</title>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width" />
 </head>
 <body>
 	
@@ -20,7 +21,7 @@
      				<a href="#pagetwo" id="submit-remote-text" data-role="button" data-shadow="false" data-inline="true">提交</a>
      			</div>
      			<div class="ui-block-b">
-					<a href="#" data-role="button" id="send-status" data-shadow="false" data-icon="info">等待发送</a>
+     				<p id="send-status">状态:等待发送</p>
      			</div>
   			 </div>
   		</div>
@@ -39,25 +40,29 @@
 		$(document).ready(function(){
 			var remoteText=$('.text-input-field').val();
 
-			function updateStatus(s){
-				$('#send-status').html(s);
-			}
+			function updateStatus(s){$('#send-status').html(s);}
 
-			updateStatus('fuck');
+			var count=0;
 
 			$('#submit-remote-text').on('click',function(){
 				var url='send.php';
-				$.get(
-					url,
-					{c:remoteText},
-					function(data,status){
-						if(data!='-1'){
-							updateStatus('发送成功');
-						}else{
-							updateStatus('发送失败');
+				remoteText=$('.text-input-field').val();
+				if(remoteText!=null){
+					$.get(
+						url,
+						{c:remoteText},
+						function(data,status){
+							if(data!='-1'){
+								updateStatus('状态:第'+count+'条消息发送成功');
+							}else{
+								updateStatus('状态:第'+count+'条消息发送失败');
+							}
 						}
-					}
-				);
+					);
+				}else{
+					updateStatus('状态:远程文本不能为空');
+				}
+				count+=1;
 			});
 		});
 	</script>

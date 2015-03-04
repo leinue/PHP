@@ -82,7 +82,7 @@ if($flag==$oldflag){
 */
 
 function syncFlag(){
-	if(isHasNew()=='0'){
+	if(isHasNew()=='1'){
 		updateOldFlag(getflag());
 	}
 }

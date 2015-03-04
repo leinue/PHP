@@ -44,7 +44,7 @@ function updateNew(){
 
 	$flag=getflag();
 	if(strlen($flag)==null){
-			$flag=0;
+		$flag=0;
 	}
 
 	$flagFile=fopen("flag.txt", "w") or die("Unable to open file!");
@@ -116,6 +116,7 @@ function writeFile($name,$content){
 	}
 	fwrite($flagFile, $content);
 	fclose($flagFile);
+	return '1';
 }
 
 /*
@@ -130,7 +131,12 @@ function updatePCOldFlag($flag){return writeFile('pcoldflag.txt',$flag);}
 
 function sendByPC($content){
 	if(strlen($content)!=null){
-		writeFile('pcontent.txt',$tcontent);
+		$flag=getPCFlag();
+		if(strlen($flag)==null){
+			$flag=0;
+		}
+		$flag=$flag+1;
+		return writeFile('pcontent.txt',$content) && writeFile('pcflag.txt',$flag);
 	}else{
 		return '-1';
 	}
@@ -143,11 +149,10 @@ function sendByPC($content){
 function pcIsHasNew(){
 	$oldflag=getPCOldFlag();
 	$flag=getPCFlag();
+	
+	if(strlen($flag)==null){$flag=0;}
 
-	if(strlen($flag)==null || strlen($oldflag)==null){
-		$flag=0;
-		$oldflag=0;
-	}
+	if(strlen($oldflag)==null){$oldflag=0;}
 
 	if($flag==$oldflag){
 		return '0';//表示没有新消息
@@ -162,7 +167,7 @@ function pcIsHasNew(){
 
 function syncPCFlag(){
 	if(pcIsHasNew()=='1'){
-		updatePCOldFlag(gePCFlag());
+		updatePCOldFlag(getPCFlag());
 	}
 }
 

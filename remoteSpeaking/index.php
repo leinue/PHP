@@ -2,7 +2,7 @@
 <html lang="zh-cn">
 <head>
 	<title>My remoteSpeaking</title>
-	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width" />
 </head>
 <body>
@@ -16,7 +16,7 @@
 
   		<div data-role="content">
   			<textarea data-role class="text-input-field" placeholder="请输入远程语音文本"></textarea>
-  			<div class="ui-grid-a">
+  			<div id="mian-content" class="ui-grid-a">
      			<div class="ui-block-a">
      				<a href="#pagetwo" id="submit-remote-text" data-role="button" data-shadow="false" data-inline="true">提交</a>
      			</div>
@@ -66,6 +66,31 @@
 				}
 				count+=1;
 			});
+
+			function displayNews(c){$('#mian-content').append(c);}
+
+			setInterval(getpc,1000);
+
+			function getpc(){
+				var url='getpc.php';
+				var vurl='pcishasnew.php';
+				$.get(vurl,{},function(data,status){
+					if(data=='1'){
+						$.get(
+							url,
+							{},
+							function(data,status){
+								if(data!=null){
+									displayNews('<p>'+data+'</p>');
+								}else{
+									displayNews('<p>请求失败</p>');
+								}
+							}
+						);
+					}
+				});
+			}
+
 		});
 	</script>
 </body>

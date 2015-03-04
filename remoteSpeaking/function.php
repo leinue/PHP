@@ -1,5 +1,9 @@
 <?php
 
+/*
+* 过滤安全字符
+*/
+
 function test_input($data) {
   $data=trim($data);
   $data=stripslashes($data);
@@ -38,19 +42,19 @@ function updateOldFlag($flag){
 
 function updateNew(){
 
-$flag=getflag();
-if(strlen($flag)==null){
-	$flag=0;
-}
+	$flag=getflag();
+	if(strlen($flag)==null){
+			$flag=0;
+	}
 
-$flagFile=fopen("flag.txt", "w") or die("Unable to open file!");
-if(!$flagFile){
-	return '-1';//更新失败
-}
-$flag=$flag+1;
-fwrite($flagFile, $flag);
-fclose($flagFile);
-return  '1';//更新成功
+	$flagFile=fopen("flag.txt", "w") or die("Unable to open file!");
+	if(!$flagFile){
+		return '-1';//更新失败
+	}
+	$flag=$flag+1;
+	fwrite($flagFile, $flag);
+	fclose($flagFile);
+	return  '1';//更新成功
 
 }
 
@@ -61,19 +65,19 @@ return  '1';//更新成功
 
 function isHasNew(){
 
-$oldflag=getOldFlag();
-$flag=getflag();
+	$oldflag=getOldFlag();
+	$flag=getflag();
 
-if(strlen($flag)==null || strlen($oldflag)==null){
-	$flag=0;
-	$oldflag=0;
-}
+	if(strlen($flag)==null || strlen($oldflag)==null){
+		$flag=0;
+		$oldflag=0;
+	}
 
-if($flag==$oldflag){
-	return '0';//表示没有新消息
-}else{
-	return '1';//表示有新消息
-}
+	if($flag==$oldflag){
+		return '0';//表示没有新消息
+	}else{
+		return '1';//表示有新消息
+	}
 
 }
 
@@ -84,6 +88,81 @@ if($flag==$oldflag){
 function syncFlag(){
 	if(isHasNew()=='1'){
 		updateOldFlag(getflag());
+	}
+}
+
+/*
+* 接收由pc发过来的消息
+*/
+
+function getContentByPC(){return file_get_contents('pcontent.txt');}
+
+/*
+* 接收pc的flag
+*/
+
+function getPCFlag(){return file_get_contents('pcflag.txt');}
+
+/*
+* 接收pc的old flag
+*/
+
+function getPCOldFlag(){return file_get_contents('pcoldflag.txt');}
+
+function writeFile($name,$content){
+	$flagFile=fopen($name, "w") or die("Unable to open file!");
+	if(!$flagFile){
+		return '-1';//更新失败
+	}
+	fwrite($flagFile, $content);
+	fclose($flagFile);
+}
+
+/*
+* 更新pcFlag内容
+*/
+
+function updatePCOldFlag($flag){return writeFile('pcoldflag.txt',$flag);}
+
+/*
+* 由pc发过来消息
+*/
+
+function sendByPC($content){
+	if(strlen($content)!=null){
+		writeFile('pcontent.txt',$tcontent);
+	}else{
+		return '-1';
+	}
+}
+
+/*
+* 检测PC端是否发来了新消息
+*/
+
+function pcIsHasNew(){
+	$oldflag=getPCOldFlag();
+	$flag=getPCFlag();
+
+	if(strlen($flag)==null || strlen($oldflag)==null){
+		$flag=0;
+		$oldflag=0;
+	}
+
+	if($flag==$oldflag){
+		return '0';//表示没有新消息
+	}else{
+		return '1';//表示有新消息
+	}
+}
+
+/*
+* 当用户获取新消息时更新oldflag,使oldflag和flag内容相同
+*/
+
+function syncPCFlag(){
+	if(pcIsHasNew()=='1'){
+		updatePCOldFlag(gePCFlag());
 	}
 }
 

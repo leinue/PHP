@@ -23,6 +23,8 @@
      			<div class="ui-block-b">
      				<p id="send-status">状态:等待发送</p>
      			</div>
+     			<p>收到的内容:</p>
+				<p class="receive-box">NULL</p>
   			 </div>
   		</div>
 

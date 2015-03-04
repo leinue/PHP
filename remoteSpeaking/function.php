@@ -20,6 +20,19 @@ function getflag(){return file_get_contents('flag.txt');}
 function getOldFlag(){return file_get_contents('oldflag.txt');}
 
 /*
+* 更新oldFlag内容
+*/
+
+function updateOldFlag($flag){
+	$flagFile=fopen("oldflag.txt", "w") or die("Unable to open file!");
+	if(!$flagFile){
+		return '-1';//更新失败
+	}
+	fwrite($flagFile, $flag);
+	fclose($flagFile);
+}
+
+/*
 * 在收到新消息时更新flag文件,flag文件数字自动往上加1
 */
 
@@ -70,7 +83,7 @@ if($flag==$oldflag){
 
 function syncFlag(){
 	if(isHasNew()=='0'){
-		
+		updateOldFlag(getflag());
 	}
 }
 

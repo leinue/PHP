@@ -8,12 +8,24 @@ function test_input($data) {
 }
 
 /*
+* 获得falg内容
+*/
+
+function getflag(){return file_get_contents('flag.txt');}
+
+/*
+* 获得oldflag内容
+*/
+
+function getOldFlag(){return file_get_contents('oldflag.txt');}
+
+/*
 * 在收到新消息时更新flag文件,flag文件数字自动往上加1
 */
 
 function updateNew(){
 
-$flag=file_get_contents('flag.txt');
+$flag=getflag();
 if(strlen($flag)==null){
 	$flag=0;
 }
@@ -36,8 +48,8 @@ return  '1';//更新成功
 
 function isHasNew(){
 
-$oldflag=file_get_contents('oldflag.txt');
-$flag=file_get_contents('flag.txt');
+$oldflag=getOldFlag();
+$flag=getflag();
 
 if(strlen($flag)==null || strlen($oldflag)==null){
 	$flag=0;
@@ -55,5 +67,11 @@ if($flag==$oldflag){
 /*
 * 当用户获取新消息时更新oldflag,使oldflag和flag内容相同
 */
+
+function syncFlag(){
+	if(isHasNew()=='0'){
+		
+	}
+}
 
 ?>

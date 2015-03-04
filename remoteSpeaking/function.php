@@ -52,4 +52,8 @@ if($flag==$oldflag){
 
 }
 
+/*
+* 当用户获取新消息时更新oldflag,使oldflag和flag内容相同
+*/
+
 ?>

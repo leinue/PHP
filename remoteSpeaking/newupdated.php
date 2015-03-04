@@ -1,5 +1,9 @@
 <?php
 
+/*
+* 在收到新消息时更新flag文件,flag文件数字自动往上加1
+*/
+
 $flag=file_get_contents('flag.txt');
 if(strlen($flag)==null){
 	$flag=0;

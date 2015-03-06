@@ -26,7 +26,6 @@ class Stack{
 
 	function push($e){
 		$this->elem[$this->top++]=$e;
-		echo $e;
 		return true;
 	}
 
@@ -41,7 +40,6 @@ class Stack{
 	function pop(){
 		if(!($this->isEmpty())){
 			$res=$this->elem[--$this->top];
-			echo 'poptop='.$this->top;
 			return $res;
 		}else{
 			return null;
@@ -60,10 +58,6 @@ $stack=new Stack();
 $stack->push('1');
 $stack->push('2');
 
-$stack->display();
-
-echo 'pop='.$stack->pop();
-echo 'display=';
 $stack->display();
 
 ?>

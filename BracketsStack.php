@@ -47,17 +47,48 @@ class Stack{
 	}
 
 	function display(){
-		//echo 'length='.$this->length();
 		for($i=$this->length();$i>=0;$i--){
 			print($this->elem[$i]."  ");
 		}
 	}
+
+	function getTop(){
+		return $this->top;
+	}
 }
 
 $stack=new Stack();
-$stack->push('1');
-$stack->push('2');
+//$stack->push('1');
+//$stack->push('2');
 
-$stack->display();
+//$stack->display();
+
+
+$brackets='((((1)))';
+
+for($i=0;$i<strlen($brackets);$i++){
+	$key=$i;
+	$value=$brackets[$key];
+	
+	if($value=='('){
+		$stack->push($value);
+	}elseif($value==')'){
+		if(!$stack->isEmpty()){
+			$stack->pop();
+		}else{
+			$stack->push(')');
+		}
+		
+	}
+}
+
+//$stack->display();
+
+if($stack->isEmpty()){
+	echo 'valid';
+}else{
+	echo $stack->peek().' is not valid';
+}
+
 
 ?>

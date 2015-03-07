@@ -9,10 +9,10 @@ class biTreeNode{
 	private $data;
 	private $rchild;
 
-	function __construct(biTreeNode $l,$d,biTreeNode $r){
+	function __construct($d,biTreeNode $l=null,biTreeNode $r=null){
 		$this->lchild=$l;
 		$this->data=$d;
-		$this->rchild=$r;		
+		$this->rchild=$r;
 	}
 
 	function getLChild(){
@@ -24,7 +24,7 @@ class biTreeNode{
 	}
 
 	function getRChild(){
-		retun $this->rchild;
+		return $this->rchild;
 	}
 
 	function setRChild(biTreeNode $r){
@@ -39,5 +39,22 @@ class biTreeNode{
 		$this->data=$d;
 	}
 }
+
+/*
+//测试三叉链表是否可用
+$btn=new biTreeNode(1);
+echo $btn->getData();
+
+$b1=new biTreeNode(2);
+$b2=new biTreeNode(3);
+
+$btn->setLChild($b1);
+$btn->setRChild($b2);
+
+echo $btn->getRChild()->getData();
+echo $btn->getLChild()->getData();
+*/
+
+
 
 ?>

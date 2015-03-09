@@ -8,7 +8,7 @@ class location{
 	private $longitude;
 	
 	function getLat(){
-		return $this->longitude;
+		return $this->latitude;
 	}
 
 	function getLong(){

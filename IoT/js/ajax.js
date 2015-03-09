@@ -59,6 +59,8 @@
 			locate.open("get","locate.php?message=hhhhhhh",true);
 			locate.send();
 		}
+
+		return false;
 	};
 
 	document.getElementById('getCurrentPos').onclick=function(){
@@ -67,7 +69,9 @@
 		}else{
 			gcp.open("get","getCurrentPos.php",true);
 			gcp.send();
-		}		
+		}
+
+		return false;
 	}
 	
 	// 用经纬度设置地图中心点

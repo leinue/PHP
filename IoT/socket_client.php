@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 set_time_limit(0);
 
 $port = 1935;
-$ip = "127.0.0.1";
+$ip = "182.92.5.210";
 
 /*
  +-------------------------------
@@ -32,7 +32,7 @@ if ($result < 0) {
     echo "连接OK\n";
 }
 
-$in = "fuck,shit;bitch,hh;";
+$in = "fffdfduck,sdsdshit;bitfdffch,hhfdfdfd;";
 $out = '';
 
 if(!socket_write($socket, $in, strlen($in))) {

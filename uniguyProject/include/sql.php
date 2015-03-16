@@ -178,6 +178,7 @@ class pdoOperation{
 
 	//基础数据库记录
 	public $userDB="SELECT * FROM `fmdb_user`;";
+	public $singleUserDB="SELECT * FROM `fmdb_user` WHERE `uid`=?";
 	public $fileDB="SELECT * FROM `fmdb_file`;";
 	public $downloadDB="SELECT * FROM `fmdb_download`;";
 	public $starsDB="SELECT * FROM `fmdb_stars`;";
@@ -336,6 +337,20 @@ class userMgr extends pdoOperation{
 }
 
 /**
+* user db
+*/
+class userDB extends userMgr{
+	
+	function getUser($uid=null){
+		if($uid!=null){
+			return $this->fetchClassQuery($this->singleUserDB,array($uid),'user');
+		}else{
+			return $this->fetchClassQuery($this->userDB,array(),'user');
+		}
+	}
+}
+
+/**
 * file manager
 */
 class fileMgr extends pdoOperation{
@@ -429,6 +444,9 @@ if($foo){
 }else{
 	echo 'failed';
 }
+
+$udb=new userDB($pdo);
+print_r($udb->getUser(1));
 
 //echo $foo->getUid();
 //echo $foo->getName();

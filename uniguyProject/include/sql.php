@@ -200,10 +200,17 @@ class pdoOperation{
 	public $updateFileDownloadCount="UPDATE `fmdb_file` SET `downloadCount` = `downloadCount`+1 WHERE `fid`=?;";
 	public $selectFileByFid='SELECT * FROM `fmdb_file` WHERE `fid`=?;';
 
+	public $downloadCount="";
+	public $uploadCount="";
+	public $fileTotalDownloadCount="SELECT `downloadCount` FROM `fmdb_file` WHERE `fid`=?";
+
+	//查看某文件对某用户是否是被删除的上传记录
+	public $isDisplayed="SELECT `isDisplayed` FROM `fmdb_file` WHERE `fid`=? AND `uid`=?";
+
 	//最近N天文献
 	public $latestDoc="";
 
-	//删除留言
+ 	//删除留言
 	public $removeComments="DELETE FROM `fmdb_comments` WHERE `coid`=? and `uid`=?;";
 
 	//取消星标
@@ -415,20 +422,12 @@ class fileMgr extends pdoOperation{
 		return $this->submitQuery($this->removeStars,array($stid,$uid));
 	}
 
-	function getDownloadCount(){
-
+	function getTotalDownloadCount($fid){
+		return $this->submitQuery($this->fileTotalDownloadCount,array($fid));
 	}
 
-	function getTotalDownloadCount(){
-
-	}
-
-	function getUploadCount(){
-
-	}
-
-	function getCommentsCount(){
-
+	function isDisplayed($fid,$uid){
+		return $this->fetchOdd($this->isDisplayed,array($fid,$uid));
 	}
 
 }

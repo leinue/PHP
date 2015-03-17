@@ -194,7 +194,7 @@ class pdoOperation{
 	public $starsRecord="SELECT * FROM `fmdb_stars` WHERE `uid`=?;";
 	public $downloadRecord="SELECT * FROM `fmdb_download` WHERE `uid`=?;";
 	public $uploadRecord='SELECT * FROM `fmdb_file` WHERE `uid`=?;';
-	public $workpointsRecord="SELECT `fid`, `grade` FROM `fmdb_workpoints` WHERE `uid`=?;";
+	public $workpointsRecord="SELECT * FROM `fmdb_workpoints` WHERE `uid`=?;";
 
 	//更新文件下载次数
 	public $updateFileDownloadCount="UPDATE `fmdb_file` SET `downloadCount` = `downloadCount`+1 WHERE `fid`=?;";
@@ -402,7 +402,7 @@ class fileMgr extends pdoOperation{
 		if(!$isRemark){
 			return $this->submitQuery($this->updateWorkpointsDB,array($uid,$fid,$grade));
 		}else{
-			if($this->submitQuery($this->removeRemark,array($isRemarked['wpid']))){
+			if($this->submitQuery($this->removeRemark,array($isRemark['wpid']))){
 				return $this->submitQuery($this->updateWorkpointsDB,array($uid,$fid,$grade));
 			}else{
 				return false;
@@ -508,6 +508,10 @@ if(!$fm->isFileStard(10,1)){
 
 print_r($fm->isDisplayed(10,1));
 
-$fm->remark(10,1,'2');
+//$fm->remark(1,10,'2');
+
+//print_r($fm->getComments(1));
+//print_r($fm->getStars(1));
+//print_r($fm->getRemark(1));
 
 ?>

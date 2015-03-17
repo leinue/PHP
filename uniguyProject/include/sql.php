@@ -218,7 +218,7 @@ class pdoOperation{
 			UPDATE `fmdb_user` SET `starCount` = `starCount`-1 WHERE `uid` = ?;";
 
 	//删除下载记录
-	public $removeDownloadRecord="DELETE FROM `fmdb_download` WHERE `donid`=? and `uid`=?;
+	public $removeDownloadRecord="DELETE FROM `fmdb_download` WHERE `donid`=?;
 			UPDATE `fmdb_user` SET `downloadCount` = `downloadCount`-1 WHERE `uid` = ?;";
 
 	//删除上传记录
@@ -353,13 +353,6 @@ class userMgr extends pdoOperation{
 		return $this->submitQuery($this->alterPrivilege,array($p,$uid));
 	}
 
-}
-
-/**
-* user db
-*/
-class userDB extends userMgr{
-	
 	function getUser($uid=null){
 		if($uid!=null){
 			return $this->fetchClassQuery($this->singleUserDB,array($uid),'user');
@@ -367,6 +360,15 @@ class userDB extends userMgr{
 			return $this->fetchClassQuery($this->userDB,array(),'user');
 		}
 	}
+
+}
+
+/**
+* user db
+*/
+class userDB extends userMgr{
+	
+
 }
 
 /**
@@ -444,11 +446,11 @@ class fileMgr extends pdoOperation{
 	}
 
 	function deleteStars($stid,$uid){
-		return $this->submitQuery($this->removeStars,array($stid,$uid));
+		return $this->submitQuery($this->removeStars,array($stid,$uid,$uid));
 	}
 
 	function getTotalDownloadCount($fid){
-		return $this->submitQuery($this->fileTotalDownloadCount,array($fid));
+		return $this->fetchOdd($this->fileTotalDownloadCount,array($fid));
 	}
 
 	function isDisplayed($fid,$uid){
@@ -457,6 +459,10 @@ class fileMgr extends pdoOperation{
 
 	function isFileStard($fid,$uid){
 		return $this->fetchOdd($this->fileStard,array($fid,$uid));
+	}
+
+	function getDownloadCount(user $u){
+		return $u->getDownloadCount();
 	}
 
 }
@@ -513,5 +519,16 @@ print_r($fm->isDisplayed(10,1));
 //print_r($fm->getComments(1));
 //print_r($fm->getStars(1));
 //print_r($fm->getRemark(1));
+
+//print_r($fm->getDownloadRecords(1));
+//print_r($fm->getTotalDownloadCount(10));
+//print_r($fm->getUploadRecords(1));
+//print_r($fm->getDownloadCount($user->getUser(1)[0]));
+
+//$fm->removeUploadRecord(10,1);
+//$fm->removeDownloadRecord(1,1);
+
+//$fm->deleteComments(1,1);
+$fm->deleteStars(17,1);
 
 ?>

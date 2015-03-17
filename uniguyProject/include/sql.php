@@ -229,11 +229,14 @@ class pdoOperation{
 			VALUES (?,?,?,?,'0','0','0','1');";
 	public $updateDownloadDB="INSERT INTO `fmdb_download` (`fid`,`uid`,`downloadTime`) 
 			VALUES (?,?,CURRENT_TIMESTAMP);
-			UPDATE `fmdb_user` SET `downloadCount` = `downloadCount`+1 WHERE `uid` = ?;";
+			UPDATE `fmdb_user` SET `downloadCount` = `downloadCount`+1 WHERE `uid` = ?;
+			UPDATE `fmdb_file` SET `downloadCount` = `downloadCount`+1 WHERE `uid` = ? AND `fid`=?;";
 	public $updateUploadDB="INSERT INTO `fmdb_file` (`uid`, `path`, `fileExt`, `tags`, `isStard`, `isDeleted`, `downloadCount`, `isDisplayed`, `createTime`) 
 			VALUES (?, ?, ?, ?, '0', '0', '0', '1', CURRENT_TIMESTAMP);";
-	public $updateStarsDB="INSERT INTO `fmdb_stars` (`uid`, `fid`) VALUES (?, ?);
-			UPDATE `fmdb_user` SET `starCount` = `starCount`+1 WHERE `uid` = ?;";
+	public $updateStarsDB="INSERT INTO `fmdb_stars` (`uid`, `fid`) VALUES (?, ?);";
+	public $updateStarsUserDB="UPDATE `fmdb_user` SET `starCount` = `starCount`+1 WHERE `uid` = ?;";
+	public $updateStarsFilesDB="UPDATE `fmdb_file` SET `isStard` = '1' WHERE `fid` = ? AND `uid` = ?;";
+
 	public $updateCommentsDB="INSERT INTO `fmdb_comments` (`fid`, `uid`, `content`) VALUES (?,?,?);";
 	public $updateWorkpointsDB="INSERT INTO `fmdb_workpoints` (`uid`, `fid`, `grade`) VALUES (?,?,?);";
 
@@ -250,6 +253,15 @@ class pdoOperation{
 			VALUES (?,SHA1(?),'0', '0', '0', ?, CURRENT_TIMESTAMP);";
 	//split page
 	//public $pageCG="SELECT * FROM `fmdb_` ORDER BY `id` DESC LIMIT ";
+
+	//检测文件是否已被标星	
+	public $fileStard="SELECT `uid` FROM `fmdb_stars` WHERE `fid`=? AND `uid`=?;";
+
+	//检测某用户是否已对某文件评分,如果已已经评过分则删除当前评分并且新增新纪录
+	public $isRekared="SELECT `wpid` FROM `fmdb_workpoints` WHERE `uid`=? AND `fid`=?;";
+
+	//通过wpid删除评分
+	public $removeRemark="DELETE FROM `fmdb_workpoints` WHERE `wpid`-?";
 
 	protected static $pdo;
 
@@ -363,11 +375,11 @@ class userDB extends userMgr{
 class fileMgr extends pdoOperation{
 	
 	function __construct($pdo){
-		parent:$pdo=$pdo;
+		parent::$pdo=$pdo;
 	}
 
 	function download($fid,$uid){
-		return $this->submitQuery($this->updateDownloadDB,array($fid,$uid));
+		return $this->submitQuery($this->updateDownloadDB,array($fid,$uid,$uid,$uid,$fid));
 	}
 
 	function upload($uid, $path, $fileExt, $tags){
@@ -379,10 +391,14 @@ class fileMgr extends pdoOperation{
 	}
 
 	function star($uid,$fid){
-		return $this->submitQuery($this->updateStarsDB,array($uid,$fid,$uid));
+		$a=$this->submitQuery($this->updateStarsDB,array($uid,$fid));
+		$b=$this->submitQuery($this->updateStarsUserDB,array($uid));
+		$c=$this->submitQuery($this->updateStarsFilesDB,array($fid,$uid));
+		return $a && $b && $c;
 	}
 
 	function remark($uid,$fid,$grade){
+		$isRemark=$this->
 		return $this->submitQuery($this->updateWorkpointsDB,array($uid,$fid,$grade));
 	}
 
@@ -430,12 +446,21 @@ class fileMgr extends pdoOperation{
 		return $this->fetchOdd($this->isDisplayed,array($fid,$uid));
 	}
 
+	function isFileStard($fid,$uid){
+		return $this->fetchOdd($this->fileStard,array($fid,$uid));
+	}
+
 }
+
 
 $pdo=new PDO("mysql:dbname=$dbname;host=$host",$user,$password);
 $user=new userMgr($pdo);
 
-$user->register('ivyd','123456','2');
+/*for ($i=0; $i < 10; $i++) { 
+	$user->register('ivy'.$i,'123456','2');
+}*/
+
+/*$user->register('ivyd','123456','2');
 $foo=$user->login('ivy','234567');
 if($foo){
 	echo 'correct';
@@ -447,8 +472,33 @@ if($foo){
 $udb=new userDB($pdo);
 print_r($udb->getUser(1));
 
+*/
+
 //echo $foo->getUid();
 //echo $foo->getName();
 
 //$user->changePassword('ivy','123456','234567');
+
+$fm=new fileMgr($pdo);
+
+/*for ($i=0; $i < 10; $i++) { 
+	//$uid, $path, $fileExt, $tags
+	$fm->upload($i,'a','v','b');
+}*/
+
+//$fm->download(10,1);
+$fm->comment(10,1,'fucku');
+
+//print_r($fm->isFileStard(10,1));
+
+if(!$fm->isFileStard(10,1)){
+	$fm->star(1,10);
+}else{
+	echo '不能重复标星';
+}
+
+print_r($fm->isDisplayed(10,1));
+
+//$fm->remark(10,1,'2');
+
 ?>

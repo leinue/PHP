@@ -258,7 +258,7 @@ class pdoOperation{
 	public $fileStard="SELECT `uid` FROM `fmdb_stars` WHERE `fid`=? AND `uid`=?;";
 
 	//检测某用户是否已对某文件评分,如果已已经评过分则删除当前评分并且新增新纪录
-	public $isRekared="SELECT `wpid` FROM `fmdb_workpoints` WHERE `uid`=? AND `fid`=?;";
+	public $isRemarked="SELECT `wpid` FROM `fmdb_workpoints` WHERE `uid`=? AND `fid`=?;";
 
 	//通过wpid删除评分
 	public $removeRemark="DELETE FROM `fmdb_workpoints` WHERE `wpid`-?";
@@ -398,8 +398,17 @@ class fileMgr extends pdoOperation{
 	}
 
 	function remark($uid,$fid,$grade){
-		$isRemark=$this->
-		return $this->submitQuery($this->updateWorkpointsDB,array($uid,$fid,$grade));
+		$isRemark=$this->fetchOdd($this->isRemarked,array($uid,$fid));
+		if(!$isRemark){
+			return $this->submitQuery($this->updateWorkpointsDB,array($uid,$fid,$grade));
+		}else{
+			if($this->submitQuery($this->removeRemark,array($isRemarked['wpid']))){
+				return $this->submitQuery($this->updateWorkpointsDB,array($uid,$fid,$grade));
+			}else{
+				return false;
+			}
+		}
+		return false;
 	}
 
 	function getComments($uid){
@@ -499,6 +508,6 @@ if(!$fm->isFileStard(10,1)){
 
 print_r($fm->isDisplayed(10,1));
 
-//$fm->remark(10,1,'2');
+$fm->remark(10,1,'2');
 
 ?>

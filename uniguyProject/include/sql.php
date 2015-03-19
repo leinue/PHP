@@ -7,14 +7,29 @@ require('config.php');
 */
 class user{
 	
+	private $id;
 	private $uid;
+	private $uuid;
 	private $name;
 	private $password;
 	private $lastLoginTime;
 	private $starCount;
 	private $downloadCount;
 	private $privilege;
+	private $group;
 	private $userpath;
+
+	function getId(){
+		return $this->id;
+	}
+
+	function getGroup(){
+		return $this->group;
+	}
+
+	function getUuid(){
+		return $this->uuid;
+	}
 
 	function getDownloadCount(){
 		return $this->downloadCount;
@@ -55,6 +70,7 @@ class user{
 */
 class fmFile{
 	
+	private $id;
 	private $fid;
 	private $uid;
 	private $path;
@@ -65,6 +81,10 @@ class fmFile{
 	private $downloadCount;
 	private $isDisplayed;
 	private $fileTime;
+
+	function getId(){
+		return $this->id;
+	}
 
 	function isDisplayed(){
 		return $this->isDisplayed;
@@ -106,10 +126,15 @@ class fmFile{
 
 class fmDownload{
 
+	private $id;
 	private $donid;
 	private $fid;
 	private $downloadTime;
-	
+		
+	function getId(){
+		return $this->id;
+	}
+
 	function getDonid(){return $this->donid;}
 
 	function getFid(){return $this->fid;}
@@ -120,10 +145,15 @@ class fmDownload{
 
 class fmStars{
 
+	private $id;
 	private $stid;
 	private $uid;
 	private $fid;
-	
+		
+	function getId(){
+		return $this->id;
+	}
+
 	function getStid(){return $this->stid;}
 
 	function getUid(){return $this->uid;}
@@ -135,11 +165,16 @@ class fmStars{
 
 class fmComment{
 
+	private $id;
 	private $coid;
 	private $fid;
 	private $uid;
 	private $content;
-	
+		
+	function getId(){
+		return $this->id;
+	}
+
 	function getCoid(){return $this->coid;}
 
 	function getFid(){return $this->fid;}
@@ -152,11 +187,16 @@ class fmComment{
 
 class fmWorkpoints{
 
+	private $id;
 	private $wpid;
 	private $uid;
 	private $fid;
 	private $grade;
 	
+	function getId(){
+		return $this->id;
+	}	
+
 	function getWpid(){return $this->wpid;}
 
 	function getUid(){return $this->uid;}
@@ -262,6 +302,11 @@ class pdoOperation{
 
 	//通过wpid删除评分
 	public $removeRemark="DELETE FROM `fmdb_workpoints` WHERE `wpid`-?";
+
+	//文件路径/拓展名/标签/相关
+	public $updateFilePath="UPDATE `fmdb_file` SET `path`= WHERE `fid`=?";
+	public $updateFileExt="UPDATE `fmdb_file` SET `fileExt`= WHERE `fid`=?";
+	public $updateFileTags="UPDATE `fmdb_file` SET `tags`= WHERE `fid`=?";
 
 	protected static $pdo;
 
@@ -465,10 +510,22 @@ class fileMgr extends pdoOperation{
 		return $u->getDownloadCount();
 	}
 
+	function changePath($fid){
+		return $this->submitQuery($this->updateFilePath,array($fid));
+	}
+
+	function changeFileExt($fid){
+		return $this->submitQuery($this->updateFileExt,array($fid));
+	}
+
+	function changeFileTags($fid){
+		return $this->submitQuery($this->updateFileTags,array($fid));
+	}
+
 }
 
 
-$pdo=new PDO("mysql:dbname=$dbname;host=$host",$user,$password);
+/*$pdo=new PDO("mysql:dbname=$dbname;host=$host",$user,$password);
 $user=new userMgr($pdo);
 
 /*for ($i=0; $i < 10; $i++) { 
@@ -500,7 +557,7 @@ $fm=new fileMgr($pdo);
 	//$uid, $path, $fileExt, $tags
 	$fm->upload($i,'a','v','b');
 }*/
-
+/*
 //$fm->download(10,1);
 $fm->comment(10,1,'fucku');
 
@@ -530,5 +587,6 @@ print_r($fm->isDisplayed(10,1));
 
 //$fm->deleteComments(1,1);
 $fm->deleteStars(17,1);
+*/
 
 ?>

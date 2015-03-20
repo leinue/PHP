@@ -9,7 +9,6 @@ class user{
 	
 	private $id;
 	private $uid;
-	private $uuid;
 	private $name;
 	private $password;
 	private $lastLoginTime;
@@ -25,10 +24,6 @@ class user{
 
 	function getGroup(){
 		return $this->group;
-	}
-
-	function getUuid(){
-		return $this->uuid;
 	}
 
 	function getDownloadCount(){
@@ -219,10 +214,10 @@ class pdoOperation{
 	//基础数据库记录
 	public $userDB="SELECT * FROM `fmdb_user`;";
 	public $singleUserDB="SELECT * FROM `fmdb_user` WHERE `uid`=?";
-	public $fileDB="SELECT * FROM `fmdb_file`;";
-	public $downloadDB="SELECT * FROM `fmdb_download`;";
-	public $starsDB="SELECT * FROM `fmdb_stars`;";
-	public $commentsDB="SELECT * FROM `fmdb_comment`;";
+	public $fileDB="SELECT * FROM `fmdb_file` WHERE `uid`=?;";
+	public $downloadDB="SELECT * FROM `fmdb_download` WHERE `uid`=?;";
+	public $starsDB="SELECT * FROM `fmdb_stars` WHERE `uid`=?;";
+	public $commentsDB="SELECT * FROM `fmdb_comments` WHERE `uid`=?;";
 	public $workpointsDB="SELECT * FROM `fmdb_workpoints`;";
 
 	//星标文件数目及下载数目
@@ -265,43 +260,43 @@ class pdoOperation{
 	public $removeUploadRecord="UPDATE `fmdb_file` SET `isDisplayed` = '0' WHERE `fid`=? and `uid`=?;";
 
 	//更新一些文件数据
-	public $updateFileDB="INSERT INTO `fmdb_file` (`uid`, `path`, `fileExt`, `tag`, `isStard`, `isDeleted`, `downloadCount`,`isDisplayed`) 
-			VALUES (?,?,?,?,'0','0','0','1');";
-	public $updateDownloadDB="INSERT INTO `fmdb_download` (`fid`,`uid`,`downloadTime`) 
-			VALUES (?,?,CURRENT_TIMESTAMP);
+	public $updateFileDB="INSERT INTO `fmdb_file` (`fid`,`uid`, `path`, `fileExt`, `tag`, `isStard`, `isDeleted`, `downloadCount`,`isDisplayed`) 
+			VALUES (uuid(),?,?,?,?,'0','0','0','1');";
+	public $updateDownloadDB="INSERT INTO `fmdb_download` (`donid`,`fid`,`uid`,`downloadTime`) 
+			VALUES (uuid(),?,?,CURRENT_TIMESTAMP);
 			UPDATE `fmdb_user` SET `downloadCount` = `downloadCount`+1 WHERE `uid` = ?;
 			UPDATE `fmdb_file` SET `downloadCount` = `downloadCount`+1 WHERE `uid` = ? AND `fid`=?;";
-	public $updateUploadDB="INSERT INTO `fmdb_file` (`uid`, `path`, `fileExt`, `tags`, `isStard`, `isDeleted`, `downloadCount`, `isDisplayed`, `createTime`) 
-			VALUES (?, ?, ?, ?, '0', '0', '0', '1', CURRENT_TIMESTAMP);";
-	public $updateStarsDB="INSERT INTO `fmdb_stars` (`uid`, `fid`) VALUES (?, ?);";
+	public $updateUploadDB="INSERT INTO `fmdb_file` (`fid`, `uid`, `path`, `fileExt`, `tags`, `isStard`, `isDeleted`, `downloadCount`, `isDisplayed`, `createTime`) 
+			VALUES (uuid(), ?, ?, ?, ?, '0', '0', '0', '1', CURRENT_TIMESTAMP);";
+	public $updateStarsDB="INSERT INTO `fmdb_stars` (`stid`,`uid`, `fid`) VALUES (uuid(),?, ?);";
 	public $updateStarsUserDB="UPDATE `fmdb_user` SET `starCount` = `starCount`+1 WHERE `uid` = ?;";
 	public $updateStarsFilesDB="UPDATE `fmdb_file` SET `isStard` = '1' WHERE `fid` = ? AND `uid` = ?;";
 
-	public $updateCommentsDB="INSERT INTO `fmdb_comments` (`fid`, `uid`, `content`) VALUES (?,?,?);";
-	public $updateWorkpointsDB="INSERT INTO `fmdb_workpoints` (`uid`, `fid`, `grade`) VALUES (?,?,?);";
+	public $updateCommentsDB="INSERT INTO `fmdb_comments` (`coid`,`fid`, `uid`, `content`) VALUES (uuid(),?,?,?);";
+	public $updateWorkpointsDB="INSERT INTO `fmdb_workpoints` (`wpid`,`uid`, `fid`, `grade`) VALUES (uuid(),?,?,?);";
 
 	//登录/改密
 	public $loginIn="SELECT * FROM `fmdb_user` WHERE `name`=? AND `password`=SHA1(?)";
-	public $alterPW="UPDATE `fmdb_user` SET `password`=SHA1(?) WHERE `name`=? AND `password`=SHA1(?)";
+	public $alterPW="UPDATE `fmdb_user` SET `password`=SHA1(?) WHERE `uid`=? AND `password`=SHA1(?)";
 
 	//更改权限
 	public $alterPrivilege="UPDATE `fmdb_user` SET `privilege` = ? WHERE `uid` = ?;";
 
 	//注册
 	public $selectUser="SELECT `uid` FROM `fmdb_user` WHERE `name`=?";
-	public $registerUser="INSERT INTO `fmdb_user` (`name`, `password`, `starCount`, `downloadCount`, `privilege`, `userpath`, `lastLoginTime`) 
-			VALUES (?,SHA1(?),'0', '0', '0', ?, CURRENT_TIMESTAMP);";
+	public $registerUser="INSERT INTO `fmdb_user` (`uid`,`name`, `password`, `starCount`, `downloadCount`, `privilege`, `group`,`userpath`, `lastLoginTime`) 
+			VALUES (uuid(),?,SHA1(?),'0', '0', '0', '0', ?, CURRENT_TIMESTAMP);";
 	//split page
 	//public $pageCG="SELECT * FROM `fmdb_` ORDER BY `id` DESC LIMIT ";
 
 	//检测文件是否已被标星	
-	public $fileStard="SELECT `uid` FROM `fmdb_stars` WHERE `fid`=? AND `uid`=?;";
+	public $fileStard="SELECT `stid` FROM `fmdb_stars` WHERE `fid`=? AND `uid`=?;";
 
 	//检测某用户是否已对某文件评分,如果已已经评过分则删除当前评分并且新增新纪录
 	public $isRemarked="SELECT `wpid` FROM `fmdb_workpoints` WHERE `uid`=? AND `fid`=?;";
 
 	//通过wpid删除评分
-	public $removeRemark="DELETE FROM `fmdb_workpoints` WHERE `wpid`-?";
+	public $removeRemark="DELETE FROM `fmdb_workpoints` WHERE `wpid`=?";
 
 	//文件路径/拓展名/标签/相关
 	public $updateFilePath="UPDATE `fmdb_file` SET `path`= WHERE `fid`=?";
@@ -381,8 +376,8 @@ class userMgr extends pdoOperation{
 		return $this->fetchClassQuery($this->loginIn,array($name,$pw),'user');
 	}
 
-	function changePassword($name,$old,$new){
-		return $this->submitQuery($this->alterPW,array($new,$name,$old));
+	function changePassword($uid,$old,$new){
+		return $this->submitQuery($this->alterPW,array($new,$uid,$old));
 	}
 
 	function register($name,$pw,$userpath){
@@ -423,6 +418,22 @@ class fileMgr extends pdoOperation{
 	
 	function __construct($pdo){
 		parent::$pdo=$pdo;
+	}
+
+	function getFileByUid(user $uid){
+		return $this->fetchClassQuery($this->fileDB,array($uid->getUid()),'fmFile');
+	}
+
+	function getDownloadByUid(user $uid){
+		return $this->fetchClassQuery($this->downloadDB,array($uid->getUid()),'fmDownload');
+	}
+
+	function getCommentByUid(user $uid){
+		return $this->fetchClassQuery($this->commentsDB,array($uid->getUid()),'fmComment');
+	}
+
+	function getStarsByUid(user $uid){
+		return $this->fetchClassQuery($this->starsDB,array($uid->getUid()),'fmStars');
 	}
 
 	function download($fid,$uid){
@@ -525,15 +536,16 @@ class fileMgr extends pdoOperation{
 }
 
 
-/*$pdo=new PDO("mysql:dbname=$dbname;host=$host",$user,$password);
+/*
+$pdo=new PDO("mysql:dbname=$dbname;host=$host",$user,$password);
 $user=new userMgr($pdo);
 
 /*for ($i=0; $i < 10; $i++) { 
 	$user->register('ivy'.$i,'123456','2');
 }*/
 
-/*$user->register('ivyd','123456','2');
-$foo=$user->login('ivy','234567');
+/*
+$foo=$user->login('ivy0','234567');
 if($foo){
 	echo 'correct';
 	print_r($foo);
@@ -541,52 +553,57 @@ if($foo){
 	echo 'failed';
 }
 
+echo $foo[0]->getUid();
+
 $udb=new userDB($pdo);
-print_r($udb->getUser(1));
+print_r($udb->getUser($foo[0]->getUid()));
 
-*/
-
-//echo $foo->getUid();
-//echo $foo->getName();
-
-//$user->changePassword('ivy','123456','234567');
+//$user->changePassword($foo[0]->getUid(),'123456','234567');
 
 $fm=new fileMgr($pdo);
 
 /*for ($i=0; $i < 10; $i++) { 
 	//$uid, $path, $fileExt, $tags
-	$fm->upload($i,'a','v','b');
+	echo $foo[0]->getUid().'<br>';
+	$fm->upload($foo[0]->getUid(),'a','v','b');
 }*/
 /*
-//$fm->download(10,1);
-$fm->comment(10,1,'fucku');
+$fileobj=$fm->getFileByUid($foo[0]);
+//print_r($fileobj);
 
-//print_r($fm->isFileStard(10,1));
+$fm->download($fileobj[2]->getFid(),$foo[0]->getUid());
+$fm->comment($fileobj[2]->getFid(),$foo[0]->getUid(),'fucku');
 
-if(!$fm->isFileStard(10,1)){
-	$fm->star(1,10);
+if(!$fm->isFileStard($fileobj[2]->getFid(),$foo[0]->getUid())){
+	$fm->star($foo[0]->getUid(),$fileobj[2]->getFid());
 }else{
 	echo '不能重复标星';
 }
 
-print_r($fm->isDisplayed(10,1));
-
-//$fm->remark(1,10,'2');
-
-//print_r($fm->getComments(1));
-//print_r($fm->getStars(1));
-//print_r($fm->getRemark(1));
-
-//print_r($fm->getDownloadRecords(1));
-//print_r($fm->getTotalDownloadCount(10));
-//print_r($fm->getUploadRecords(1));
-//print_r($fm->getDownloadCount($user->getUser(1)[0]));
-
-//$fm->removeUploadRecord(10,1);
-//$fm->removeDownloadRecord(1,1);
-
-//$fm->deleteComments(1,1);
-$fm->deleteStars(17,1);
+print_r($fm->isDisplayed($fileobj[2]->getFid(),$foo[0]->getUid()));
 */
+//$fm->remark($foo[0]->getUid(),$fileobj[2]->getFid(),'2');
+
+//print_r($fm->getComments($foo[0]->getUid()));
+//print_r($fm->getStars($foo[0]->getUid()));
+//print_r($fm->getRemark($foo[0]->getUid()));
+
+//print_r($fm->getDownloadRecords($foo[0]->getUid()));
+//print_r($fm->getTotalDownloadCount($fileobj[2]->getFid()));
+//print_r($fm->getUploadRecords($foo[0]->getUid()));
+//print_r($fm->getDownloadCount($foo[0]));
+
+//$fm->removeUploadRecord($fileobj[2]->getFid(),$foo[0]->getUid());
+//$dnl=$fm->getDownloadByUid($foo[0]);
+//print_r($dnl);
+//$fm->removeDownloadRecord($dnl[0]->getDonid(),$foo[0]->getUid());
+
+//$cmt=$fm->getCommentByUid($foo[0]);
+//print_r($cmt);
+//$fm->deleteComments($cmt[0]->getCoid(),$foo[0]->getUid());
+
+//$st=$fm->getStarsByUid($foo[0]);
+//print_r($st);
+//$fm->deleteStars($st[0]->getStid(),$foo[0]->getUid());
 
 ?>

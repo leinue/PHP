@@ -7,7 +7,7 @@ function createTable($dbname,$host,$name,$pw){
 	$sql=array(
 		"fmdb_user"=>"CREATE TABLE IF NOT EXISTS `fmdb_user`( 
 			`id` int not null auto_increment,
-			`uuid` text not null,
+			`uid` text not null,
 			`name` text not null,
     		`password` text not null,
     		`starCount` int not null,
@@ -20,7 +20,7 @@ function createTable($dbname,$host,$name,$pw){
 		"fmdb_file"=>"CREATE TABLE IF NOT EXISTS `fmdb_file`(
 			`id` int not null auto_increment,
 			`fid` text not null,
-			`uuid` text not null,
+			`uid` text not null,
 			`path` text not null,
 			`fileExt` text not null,
 			`tags` text not null,

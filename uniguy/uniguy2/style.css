@@ -22,9 +22,16 @@ a{
 	width: 100%;
 }
 
+.heading-bottom{
+	margin-top: 46px;
+	display: none;
+	width: auto;
+	/*border-top: 1px solid rgb(133,133,133);*/
+}
+
 .heading-list{
 	width: 71.74231%;
-	margin-left:14.128843%;
+	margin-left:14.928843%;
 	font-size: 1.125em;
 	display: table;
 }
@@ -32,13 +39,12 @@ a{
 .heading-list ul{
 	list-style: none;
 	display: table-row;
-
 }
 
 .heading-list ul li{
 	display: table-cell;
-	margin-right: 10.2040816%;
-	width: 250px;
+	margin-right: 13.9040816%;
+	width: 260px;
 	text-align: center;
 	padding-top: 10px;
 }
@@ -66,9 +72,98 @@ a{
 	border-radius: 4px;
 	border: medium none;
 	box-shadow: none;
+	width: 0px;
+}
+
+.heading-list .heading-big .heading-toggle{
+	display:none;
 }
 
 /*header ends*/
+
+@media screen and (max-width: 900px) {
+	.promos .news-mo li{
+		width: 49.732138%;
+		margin-top: 4px;
+	}
+	
+	.promos .news-mo li:nth-child(2){
+		margin-right: 0px;
+		float: right;
+	}
+
+	.heading-bottom{
+		display: none;
+	}
+}
+
+@media screen and (max-width: 700px) {
+
+	/*header fluid layout starts*/
+
+	.heading-list{
+		margin-left: -0.257234%;
+	}
+
+	.heading-list .heading-big .heading-o{
+		display: none;
+	}
+
+	.heading-list .heading-big .heading-brand{
+		display: block;
+		position: absolute;
+		left: -110px;
+	}
+
+	.heading-list .heading-big .heading-toggle{
+		display: block;
+		position: absolute;
+		right: -110px;
+		top: 4px;
+	}
+	
+	/*header fluid layout ends*/
+
+	.promos .news-mo li{
+		width: 49.732138%;
+		margin-top: 4px;
+	}
+
+}
+
+@media screen and (max-width: 500px) {
+	.promos .news-mo li{
+		width: 100%;
+		margin-top: 4px;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.heading-bottom{
+		height: auto;
+	}
+
+	.heading-bottom .heading-list{
+		margin-left: 0px;
+		width: 100%;
+		z-index: 1000;
+	}
+
+	.heading-bottom .heading-list li{
+		display: table-row;
+		float: left;
+		text-align: left;
+	}
+
+	.heading-bottom .heading-list li:last-child{
+		float: left;
+		text-align: left;
+	}
+}
+
+@media screen and (max-width: 900px) {
+	
+}
 
 /*gallery start*/
 
@@ -152,4 +247,3 @@ footer{
 footer p{margin-bottom: -6px;}
 
 .help{color: #666666;}
-

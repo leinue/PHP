@@ -27,7 +27,7 @@ $per->setID(20);
 $per2=clone $per;
 
 echo "per1.id=".$per->id.";<br>";
-//2.0
+//3.0
 
 echo "per2.age=".$per2->age.";<br>";
 echo "per2.name=".$per2->name.";<br>";

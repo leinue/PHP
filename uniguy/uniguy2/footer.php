@@ -16,7 +16,7 @@
 			$('.input-search').hide();
 
 			//按钮动态效果
-			$('#btn-search,.heading-menu').hover(
+			$('#btn-search,.heading-list ul li').hover(
 				function(){
 					$(this).stop().animate({opacity:0.6},'fast');
 				},
@@ -48,10 +48,10 @@
 			//小屏幕时菜单弹出
 			$('#list-toggle').click(function(){
 				$('.heading-bottom').slideToggle();
-				var elemHeight=$('.heading-bottom .heading-list').height()+34;
+				var elemHeight=$('.heading-bottom .heading-list').height()+46;
 				console.log(elemHeight);
 				if(smallScreenMenuIsDisplayed){
-					if(screen.width<=320){
+					if(screen.width<=350){
 						$('.gallery-content img,.gallery-heading').animate({
 							marginTop:'-='+elemHeight+'px'
 						});
@@ -60,7 +60,7 @@
 					smallScreenMenuIsDisplayed=false;
 				}else{
 					//$('.heading-bottom').css('borderTop','none');
-					if(screen.width<=320){
+					if(screen.width<=350){
 						$('.gallery-content img,.gallery-heading').animate({
 							marginTop:'+='+elemHeight+'px'
 						});

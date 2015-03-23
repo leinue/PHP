@@ -4,7 +4,7 @@
 	<div class="gallery-content">
 		<img src="http://images.apple.com/v/home/bq/images/macbook_large.jpg">
 		<div class="gallery-heading">
-			<h1><a href="">The New Uniguy</a></h1>
+			<h1><a href=""><?php bloginfo('description'); ?></a></h1>
 		</div>
 	</div>
 

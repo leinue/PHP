@@ -16,7 +16,7 @@
 			$('.input-search').hide();
 
 			//按钮动态效果
-			$('#btn-search,.heading-list ul li').hover(
+			$('#btn-search,.heading-list ul li,a').hover(
 				function(){
 					$(this).stop().animate({opacity:0.6},'fast');
 				},
@@ -52,7 +52,7 @@
 				console.log(elemHeight);
 				if(smallScreenMenuIsDisplayed){
 					if(screen.width<=350){
-						$('.gallery-content img,.gallery-heading').animate({
+						$('.gallery-content img,.gallery-heading,.news-block').animate({
 							marginTop:'-='+elemHeight+'px'
 						});
 					}
@@ -61,7 +61,7 @@
 				}else{
 					//$('.heading-bottom').css('borderTop','none');
 					if(screen.width<=350){
-						$('.gallery-content img,.gallery-heading').animate({
+						$('.gallery-content img,.gallery-heading,.news-block').animate({
 							marginTop:'+='+elemHeight+'px'
 						});
 						smallScreenMenuIsDisplayed=true;

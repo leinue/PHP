@@ -1,7 +1,7 @@
 
 <section>
 	<div class="gallery-content">
-		<img src="http://localhost/wordpress/wp-content/themes/uniguy2/imgs/support.jpg">
+		<img src="wp-content/themes/uniguy2/imgs/support.jpg">
 		<div class="gallery-heading page-service">
 			<img src="https://cdn1.iconfinder.com/data/icons/business-and-finance-20/200/vector_65_01-256.png">
 			<div class="page-heading-outline">

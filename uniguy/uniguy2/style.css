@@ -138,7 +138,7 @@ a{
 
 @media screen and (max-width: 500px) {
 	.promos .news-mo li{
-		
+		width: 100%;
 		margin-top: 4px;
 	}
 }
@@ -147,22 +147,18 @@ a{
 	.heading-bottom{
 		height: auto;
 	}
-
+	
 	.heading-bottom .heading-list{
 		margin-left: 0px;
-		width: 100%;
 		z-index: 1000;
 	}
 
 	.heading-bottom .heading-list li{
-		display: table-column;
-		float: left;
-		margin-right: 80%;
+		display: table-row;
 		text-align: left;
 	}
-
+	
 	.heading-bottom .heading-list li:last-child{
-		float: left;
 		text-align: left;
 	}
 }

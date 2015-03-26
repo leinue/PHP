@@ -54,7 +54,6 @@
 			$('#list-toggle').click(function(){
 				$('.heading-bottom').slideToggle();
 				var elemHeight=$('.heading-bottom .heading-list').height()+46;
-				console.log(elemHeight);
 				if(smallScreenMenuIsDisplayed){
 					if(screen.width<=350){
 						$('.gallery-content img,.gallery-heading,.news-block').animate({

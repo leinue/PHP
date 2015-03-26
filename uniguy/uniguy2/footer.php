@@ -27,19 +27,24 @@
 
 			//搜索框动态加载
 			$('#btn-search').click(function(){
+				var docWidth=$(document).width();
+				var inputWidth=0.16401778496362166531932093775263*docWidth;//记录搜索框的宽度,随屏幕大小改变
 				if(inputSearchIsDiaplayed){
 					$(".input-search").animate({
-    					left:'260px',
-    					width:'-=240px'
+    					left:'0px',
+    					width:'-='+inputWidth+'px'
   					},400,function(){
   						$('.input-search').toggle();
   					});
+  					$('.heading-list .heading-big .heading-input').css('width','0px');
   					inputSearchIsDiaplayed=false;
 				}else{
 					$('.input-search').toggle();
 					$(".input-search").animate({
-    					left:'260px',
-    					width:'+=240px'
+    					left:'0px',
+    					width:'+='+inputWidth+'px'
+  					},400,function(){
+  						$('.heading-list .heading-big .heading-input').css('width',inputWidth+'px');
   					});
   					inputSearchIsDiaplayed=true;
 				}

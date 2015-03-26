@@ -66,6 +66,11 @@ a{
 
 .heading-list ul li a:hover{color: rgb(155,155,155);}
 
+.heading-list .heading-big .heading-input{
+	text-align: right;
+	width: 0px;
+}
+
 .input-search{
 	height: 24px;
 	border-radius: 4px;
@@ -133,12 +138,12 @@ a{
 
 @media screen and (max-width: 500px) {
 	.promos .news-mo li{
-		width: 100%;
+		
 		margin-top: 4px;
 	}
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 350px;) {
 	.heading-bottom{
 		height: auto;
 	}
@@ -150,14 +155,21 @@ a{
 	}
 
 	.heading-bottom .heading-list li{
-		display: table-row;
+		display: table-column;
 		float: left;
+		margin-right: 80%;
 		text-align: left;
 	}
 
 	.heading-bottom .heading-list li:last-child{
 		float: left;
 		text-align: left;
+	}
+}
+
+@media screen and (max-width: 200px){
+	.heading-bottom .heading-list li{
+		margin-right: 80%;
 	}
 }
 

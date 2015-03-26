@@ -1,7 +1,7 @@
 
 <section>
 	<div class="gallery-content">
-		<img src="wp-content/themes/uniguy2/imgs/contact.jpg">
+		<img src="../wp-content/themes/uniguy2/imgs/contact.jpg">
 		<div class="gallery-heading page-service">
 			<img src="https://cdn1.iconfinder.com/data/icons/business-and-finance-20/200/vector_65_12-256.png">
 			<div class="page-heading-outline">

@@ -16,7 +16,7 @@
 			$('.input-search').hide();
 
 			//按钮动态效果
-			$('#btn-search,.heading-list ul li,a').hover(
+			$('#btn-search,.heading-list ul li,a,li,h1,h2,h3,h4,h5,h6,p').hover(
 				function(){
 					$(this).stop().animate({opacity:0.6},'fast');
 				},
@@ -29,7 +29,7 @@
 			$('#btn-search').click(function(){
 				if(inputSearchIsDiaplayed){
 					$(".input-search").animate({
-    					left:'160px',
+    					left:'260px',
     					width:'-=240px'
   					},400,function(){
   						$('.input-search').toggle();
@@ -38,7 +38,7 @@
 				}else{
 					$('.input-search').toggle();
 					$(".input-search").animate({
-    					left:'160px',
+    					left:'260px',
     					width:'+=240px'
   					});
   					inputSearchIsDiaplayed=true;

@@ -45,7 +45,6 @@ a{
 .heading-list ul li{
 	display: table-cell;
 	margin-right: 13.9040816%;
-	width: 260px;
 	text-align: center;
 	padding-top: 10px;
 }
@@ -53,12 +52,11 @@ a{
 .heading-list ul li:first-child{
 	margin-top: 3px;
 	margin-left: 0px;
+	text-align: left;
 }
 
 .heading-list ul li:last-child{
-	margin-right: 0px;
-	text-align: center;
-
+	text-align: right;
 }
 
 .heading-list ul li a{
@@ -113,13 +111,14 @@ a{
 	.heading-list .heading-big .heading-brand{
 		display: block;
 		position: absolute;
-		left: -110px;
+		text-align: left;
+		left: 4px;
 	}
 
 	.heading-list .heading-big .heading-toggle{
 		display: block;
 		position: absolute;
-		right: -110px;
+		right: -12%;
 		top: 4px;
 	}
 	
@@ -469,17 +468,11 @@ footer p{margin-bottom: -6px;}
 	color: #666666;
 }
 
-.help-block a:hover{
-	color: #333333;
-}
+.help-block a:hover{color: #333333;}
 
-.help-block-lt{
-	text-align: left;
-}
+.help-block-lt{text-align: left;}
 
-.help-block-rt{
-	text-align: right;
-}
+.help-block-rt{text-align: right;}
 
 
 @media screen and (max-width: 300px){
@@ -521,18 +514,63 @@ footer p{margin-bottom: -6px;}
 }
 
 .post-detail{
+	padding-top: 20px;
 	width: 810px;
-	height: 128px;
-	border:1px solid rgb(0,0,0);
 	margin-right: 14px;
 }
 
-.post-img{
+.pagation{
+	list-style: none;
+	margin-left: -40px;
+}
+
+.pagation li{
+	float: left;
+	cursor: pointer;
+	margin-bottom: 4px;
+	color: #333;
+	font-size: 14px;
+}
+
+.pagation li:last-child{
+	float: right;
+}
+
+/*.post-img{
 	width: 128px;
 	border:1px solid rgb(0,0,0);
-	height: 128px;
+}*/
+
+.post-title{
+	color: #333;
+	font-size: 14px;
+	display: block;
+	margin-bottom: 4px;
+}
+
+.post-content{
+	display: block;
+	font-size: 14px;
+	color: #666;
+	margin-bottom: 4px;
+}
+
+.post-more{
+	display: block;
+	font-size: 14px;
+	color: #8C8C8C;
+}
+
+.post-more ul{display: table-row;}
+
+.post-more ul li{
+	display: table-cell;
+	padding-right: 10px;
 }
 
 @media screen and (max-width: 700px){
-
+	.post-block{
+		width: 100%;
+		margin-left: 0px;
+	}
 }

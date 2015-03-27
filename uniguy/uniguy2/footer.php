@@ -73,6 +73,21 @@
 				}
 			});
 
+			$(window).scroll(floatMenuCase);
+
+			function floatMenuCase(){
+				if($(document).scrollTop()>46){
+					$('.case-block').css('position','fixed')
+								.css('top','0px')
+								.css('width','100%')
+								.css('margin-left','0px');
+				}else{
+					$('.case-block').css('position','relative')
+									.css('width','71.74231%')
+									.css('margin-left','14.928843%')
+				}
+			}
+
 			//点击其它区域时
 			$(document).click(function(event){
 

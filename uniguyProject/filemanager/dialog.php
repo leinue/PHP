@@ -1063,8 +1063,8 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 
         	function starFile(obj){
         		var _this=$(obj);
-        		$.ajax({ url: "execute.php?action=star_file&path_thumb="+_this.attr('data-thumb')+"&path="+_this.attr('data-path'), context: document.body, success: function(){
-        			alert('成功');
+        		$.ajax({ url: "execute.php?action=star_file&path_thumb="+_this.attr('data-thumb')+"&path="+_this.attr('data-path'), context: document.body, success: function(data){
+        			alert(data);
       			}});
         	}
         </script>

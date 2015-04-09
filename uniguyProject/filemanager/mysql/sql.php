@@ -445,8 +445,12 @@ class fileMgr extends pdoOperation{
 		return $this->fetchClassQuery($this->commentsDB,array($uid->getUid()),'fmComment');
 	}
 
-	function getStarsByUid(user $uid){
-		return $this->fetchClassQuery($this->starsDB,array($uid->getUid()),'fmStars');
+	function getStarsByUid($uid){
+		if($uid instanceof user){
+			return $this->fetchClassQuery($this->starsDB,array($uid->getUid()),'fmStars');	
+		}else{
+			return $this->fetchClassQuery($this->starsDB,array($uid),'fmStars');
+		}
 	}
 
 	function download($fid,$uid){

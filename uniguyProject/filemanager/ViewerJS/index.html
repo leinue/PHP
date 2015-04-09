@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en-US">
+<html dir="ltr" lang="zh-cn">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
@@ -68,20 +68,21 @@ limitations under the License.
             <div id = "titlebar">
                 <div id = "documentName"></div>
                 <div id = "toolbarRight">
-                    <button id = "presentation" class = "toolbarButton presentation" title = "Presentation"></button>
-                    <button id = "fullscreen" class = "toolbarButton fullscreen" title = "Fullscreen"></button>
-                    <button id = "download" class = "toolbarButton download" title = "Download"></button>
+                    <button id = "presentation" class = "toolbarButton presentation" title = "呈现"></button>
+                    <button id = "fullscreen" class = "toolbarButton fullscreen" title = "全屏"></button>
+                    <button id = "download" class = "toolbarButton download" title = "下载"></button>
                 </div>
+                sddsds
            </div>
             <div id = "toolbarContainer">
                 <div id = "toolbar">
                     <div id = "toolbarLeft">
                         <div id = "navButtons" class = "splitToolbarButton">
-                            <button id = "previous" class = "toolbarButton pageUp" title = "Previous Page"></button>
+                            <button id = "previous" class = "toolbarButton pageUp" title = "上一页"></button>
                             <div class="splitToolbarButtonSeparator"></div>
-                            <button id = "next" class = "toolbarButton pageDown" title = "Next Page"></button>
+                            <button id = "next" class = "toolbarButton pageDown" title = "下一页"></button>
                         </div>
-                        <label id = "pageNumberLabel" class = "toolbarLabel" for = "pageNumber">Page:</label>
+                        <label id = "pageNumberLabel" class = "toolbarLabel" for = "pageNumber">页码:</label>
                         <input type = "number" id = "pageNumber" class = "toolbarField pageNumber"/>
                         <span id = "numPages" class = "toolbarLabel"></span>
                     </div>
@@ -94,9 +95,9 @@ limitations under the License.
                             </div>
                             <span id="scaleSelectContainer" class="dropdownToolbarButton">
                                 <select id="scaleSelect" title="Zoom" oncontextmenu="return false;">
-                                    <option id="pageAutoOption" value="auto" selected>Automatic</option>
-                                    <option id="pageActualOption" value="page-actual">Actual Size</option>
-                                    <option id="pageWidthOption" value="page-width">Full Width</option>
+                                    <option id="pageAutoOption" value="auto" selected>自动</option>
+                                    <option id="pageActualOption" value="page-actual">原始大小</option>
+                                    <option id="pageWidthOption" value="page-width">充满屏幕</option>
                                     <option id="customScaleOption" value="custom"> </option>
                                     <option value="0.5">50%</option>
                                     <option value="0.75">75%</option>
@@ -126,5 +127,9 @@ limitations under the License.
             <div id = "dialogOverlay"></div>
             <div id = "blanked"></div>
         </div>
+        <script type="text/javascript">
+          var doc=document.getElementById('about');
+          doc.style.display="none";
+        </script>
     </body>
 </html>

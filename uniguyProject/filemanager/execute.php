@@ -4,6 +4,30 @@ include 'config/config.php';
 if ($_SESSION['RF']["verify"] != "RESPONSIVEfilemanager") die('forbiden');
 include 'include/utils.php';
 
+function my_scandir($dir,$fm,$o)  
+{  
+    $files = array(); 
+    if ( $handle = opendir($dir) ) {  
+        while ( ($file = readdir($handle)) !== false )   
+        {  
+            if ( $file != ".." && $file != "." )   
+            {  
+                if ( is_dir($dir . "/" . $file) )   
+                {  
+                    my_scandir($dir . "/" . $file,$fm,$o.'/'.$file);
+                }  
+                else
+                {  
+                    //$files[] = $file;
+                    $fm->changePath($dir.'/'.$file,$o.'/'.$file);  
+                }  
+            }  
+        }  
+        closedir($handle);  
+        return $files;  
+    }  
+}
+
 if(isset($_POST['path_thumb'])){
     $thumb_pos  = strpos($_POST['path_thumb'], $thumbs_base_path);
     if ($thumb_pos !=0
@@ -141,6 +165,8 @@ if (isset($_GET['action']))
                     $new_path = fix_dirname($path) . "/" . $name;
                     $fm->changePath($new_path,$path);
 
+                    my_scandir($new_path,$fm,$path);
+
                     rename_folder($path_thumb,$name,$transliteration,$convert_spaces);
                     if ($fixed_image_creation){
                         foreach($fixed_path_from_filemanager as $k=>$paths){
@@ -275,22 +301,38 @@ if (isset($_GET['action']))
             break;
         case 'star_file':
 
-            $path_thumb=$_GET['path_thumb'];
-
+            $path_thumb=$_POST['path_thumb'];
             $pdo=new PDO("mysql:dbname=$dbname;host=$host",$user,$password);
             $user=new userMgr($pdo);
             $fm=new fileMgr($pdo);
 
-            $fid=$fm->getFidByPath($path.$_GET['path']);
+            $fid=$fm->getFidByPath($path);
+            //'
+            //echo $_POST['path'].'---------';
+            //print_r($path);
+
+            //print_r($fid);
 
             if(!$fm->isFileStard($fid['fid'],$_SESSION['RF']['subfolder'])){
                 if($a=$fm->star($_SESSION['RF']['subfolder'],$fid['fid'])){
-                    echo 'success';
+                    echo 'star success';
                 }else{
-                    echo 'failed';
+                    echo 'star failed';
                 }
             }else{
-                echo 'repeat';
+                $st=$fm->getStarsByUid($_SESSION['RF']['subfolder']);
+                $realkey=0;
+                foreach ($st as $key => $value) {
+                    if($value->getFid()==$fid['fid']){
+                        $realkey=$key;
+                        break;
+                    }
+                }
+                if($fm->deleteStars($st[$realkey]->getStid(),$_SESSION['RF']['subfolder'])){
+                    echo 'removing star success';
+                }else{
+                    echo 'removing star failed,please try again.';
+                }
             }
             break;
         case 'paste_clipboard':

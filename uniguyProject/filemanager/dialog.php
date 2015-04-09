@@ -44,7 +44,7 @@ if($subdir == "")
 
 //remember last position
 setcookie('last_position',$subdir,time() + (86400 * 7));
-$responsec = file_get_contents("http://121.40.200.70:9000/api/putcookies?last_position=".$_COOKIE['last_position']."&PHPSESSID=".$_COOKIE['PHPSESSID']."&akey=".$uuid);
+$responsec = file_get_contents("http://121.40.200.70:9000/api/putcookies?last_position=".$_COOKIE['last_position']."&PHPSESSID=".$_COOKIE['PHPSESSID']."&akey=".$_SESSION['RF']['subfolder']);
 if ($subdir == "/") { $subdir = ""; }
 
 // If hidden folders are specified
@@ -268,6 +268,12 @@ $get_params = http_build_query(array(
     'akey' 		=> (isset($_GET['akey']) && $_GET['akey'] != '' ? $_GET['akey'] : 'key'),
     'fldr'      => ''
 ));
+
+//connect to mysql
+$pdo=new PDO("mysql:dbname=$dbname;host=$host",'doc','doc');
+$user=new userMgr($pdo);
+$fm=new fileMgr($pdo);
+
 ?>
 
 <!DOCTYPE html>
@@ -989,8 +995,14 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 				    <?php }else{ ?>
 				    <a style="display:none;" class="preview disabled"><i class="icon-eye-open icon-white"></i></a>
 				    <?php } ?>
-				    <a href="javascript:void('')" onclick="starFile(this)" class="tip-left star-button star-file" title="标星" data-path="<?php echo $rfm_subfolder.$subdir .$file; ?>" data-thumb="<?php echo $thumbs_path.$subdir .$file; ?>">
- 				    <i class="icon-star"></i></a>
+				    <?php
+
+           	 			$fid=$fm->getFidByPath($current_path.$rfm_subfolder.$subdir.$file);
+           	 			$starFlag=$fm->isFileStard($fid['fid'],$_SESSION['RF']['subfolder']);
+
+				    ?>
+				    <a href="javascript:void('')" id="star-btn" onclick="starFile(this,'<?php if($starFlag){echo '取消标星';}else{echo '标星';} ?>')" class="tip-left star-button star-file" title="<?php if($starFlag){echo '取消标星';}else{echo '标星';} ?>" data-path="<?php echo $rfm_subfolder.$subdir .$file; ?>" data-thumb="<?php echo $thumbs_path.$subdir .$file; ?>">
+ 				    <i class="icon-star icon-blue"></i></a>
 
 				    <a href="javascript:void('')" class="tip-left edit-button rename-file-paths <?php if($rename_files && !$file_prevent_rename) echo "rename-file"; ?>" title="<?php echo lang_Rename?>" data-path="<?php echo $rfm_subfolder.$subdir .$file; ?>" data-thumb="<?php echo $thumbs_path.$subdir .$file; ?>">
  				    <i class="icon-pencil <?php if(!$rename_files || $file_prevent_rename) echo 'icon-white'; ?>"></i></a>
@@ -1061,10 +1073,23 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 				});
         	});
 
-        	function starFile(obj){
+        	function starFile(obj,current){
         		var _this=$(obj);
-        		$.ajax({ url: "execute.php?action=star_file&path_thumb="+_this.attr('data-thumb')+"&path="+_this.attr('data-path'), context: document.body, success: function(data){
-        			alert(data);
+
+        		$.ajax({
+        			type: "POST",
+        			url: "execute.php?action=star_file", 
+        			data:{
+        				path_thumb:_this.attr('data-thumb'),
+        				path:_this.attr('data-path')
+        			},
+        			context: document.body, 
+        			success: function(data){
+        			if(data.indexOf('success')!=-1){
+        				alert('成功');
+        			}else{
+        				alert('失败');
+        			}
       			}});
         	}
         </script>

@@ -610,7 +610,7 @@ footer p{margin-bottom: -6px;}
 	padding: 0px;
 	height: 50px;
 	background: rgb(255,255,255);
-	opacity: 0.7;
+	opacity: 0.6;
 }
 
 .case-block ul li:first-child{
@@ -629,6 +629,84 @@ footer p{margin-bottom: -6px;}
 	cursor: pointer;
 }
 
+.case-menu-display{
+	display: none;
+	width: 100%;
+}
+
+.case-menu{
+	display: table;
+	width: 110.8%;
+	margin-top: 10px;
+	background: rgb(255,255,255);
+	opacity: 0.6;
+	border-bottom: 1px solid rgb(226,226,226);
+}
+
+.case-menu ul{
+	display: table-row;
+	width: 100%;
+}
+
+.case-menu ul li{
+	height: 152px;
+	display: table-cell;
+	text-align: center;
+	font-size: 14px;
+	padding-right: 6px;
+}
+
+.case-menu ul li a span{
+	display: block;
+}
+
+.case-menu ul li:first-child{
+	font-size: 14px;
+	color: rgb(76,76,76);
+}
+
+.case-menu ul li .case-menu-img{
+	background: rgb(247,247,247);
+	width: 100%;
+	height: 110px;
+	text-align: center;
+}
+
+.case-menu ul li .case-menu-img img{
+	height: 110px;/*110*/
+}
+
+.section-img-hero img{
+	width: 100%;
+	height: 220px;
+}
+
+.section-case-link{
+	text-align: center;
+	display: table;
+	width: 50%;
+	margin: 0 auto;
+	margin-top: 14px;
+}
+
+.section-case-link ul{
+	display: table-row;
+}
+
+.section-case-link ul li{
+	display: table-cell;
+	text-align: center;
+}
+
+.section-case-link ul li a{
+	color: rgb(28,149,210);
+	font-size: 18px;
+}
+
+.section-copy .into{
+	
+}
+
 .search-btn-img{
 	width: 28px;
 	height: 28px;
@@ -644,9 +722,14 @@ footer p{margin-bottom: -6px;}
 	color: #333;
 	font-style: normal;
 	font-weight: 100;
-	font-size: 1em;
+	font-size: 2em;
 	border: 0px;
 	text-align: center;
+}
+
+.section-copy .case-main-title{
+	font-size: 2em;
+	margin-bottom: -6px;
 }
 
 .section-copy h1{

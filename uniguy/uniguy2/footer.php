@@ -101,6 +101,13 @@
 				//}
       		});
 
+			//案例页面弹出小框
+			$('.case-block ul #display-search').click(function(){
+				var div=$('.case-menu-display');
+				div.slideToggle(200,function(){
+					$('.case-menu ul').fadeToggle(600);
+				});
+			});
 		});
 	</script>
 

@@ -1,0 +1,30 @@
+[ 2015-05-04T08:19:57+08:00 ] ::1 /Examination/admin.php/hello
+ERR: 无法加载控制器:Hello
+
+[ 2015-05-04T08:55:17+08:00 ] ::1 /Examination/admin.php
+ERR: Think\Controller:fuck方法不存在！
+
+[ 2015-05-04T08:57:21+08:00 ] ::1 /Examination/admin.php/Admin/instanceIndex
+ERR: 无法加载控制器:Admin
+
+[ 2015-05-04T08:57:43+08:00 ] ::1 /Examination/admin.php/Admin/Index/instanceIndex
+ERR: 无法加载控制器:Admin
+
+[ 2015-05-04T08:58:19+08:00 ] ::1 /Examination/admin.php/Admin/
+ERR: 无法加载控制器:Admin
+
+[ 2015-05-04T08:58:52+08:00 ] ::1 /Examination/admin.php/Home/Index/hello
+ERR: 无法加载控制器:Home
+
+[ 2015-05-04T08:59:01+08:00 ] ::1 /Examination/admin.php/Admin/Index/instace
+ERR: 无法加载控制器:Admin
+
+[ 2015-05-04T08:59:07+08:00 ] ::1 /Examination/admin.php/Admin/Index/instance
+ERR: 无法加载控制器:Admin
+
+[ 2015-05-04T08:59:34+08:00 ] ::1 /Examination/admin.php/Admin/Index/instance
+ERR: 无法加载控制器:Admin
+
+[ 2015-05-04T08:59:36+08:00 ] ::1 /Examination/admin.php/Admin/Index/instance
+ERR: 无法加载控制器:Admin
+

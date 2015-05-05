@@ -1,0 +1,1080 @@
+[ 2015-05-05T10:30:45+08:00 ] ::1 /Examination/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000089s ]
+INFO: [ app_init ] --END-- [ RunTime:0.046057s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.023848s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.024327s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.029925s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.030415s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.043264s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.043698s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.012469s ]
+INFO: [ app_end ] --END-- [ RunTime:0.012886s ]
+
+[ 2015-05-05T12:31:45+08:00 ] ::1 /Examination/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000077s ]
+INFO: [ app_init ] --END-- [ RunTime:0.046199s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.022672s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.023133s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014130s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014637s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.035435s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.035736s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004425s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004561s ]
+
+[ 2015-05-05T12:35:16+08:00 ] ::1 /Examination/Home/Index/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000037s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000524s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000700s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000921s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.000380s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000502s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000272s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000385s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000469s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000584s ]
+
+[ 2015-05-05T12:35:21+08:00 ] ::1 /Examination/Home/Index/read/id/5
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000524s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000523s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000661s ]
+
+[ 2015-05-05T12:35:21+08:00 ] ::1 /Examination/index.php/Home/Index/fuck.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000040s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000571s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000408s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000529s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000596s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000793s ]
+
+[ 2015-05-05T12:46:15+08:00 ] ::1 /Examination/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000392s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000524s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000647s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.000372s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000491s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000277s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000391s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000478s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000594s ]
+
+[ 2015-05-05T12:46:38+08:00 ] ::1 /Examination/index.php/Home/Index/db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000385s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000473s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000594s ]
+ERR: 无法加载数据库驱动: Think\Db\Driver\Pdo
+
+[ 2015-05-05T12:48:01+08:00 ] ::1 /Examination/index.php/Home/Index/db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000048s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000852s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001410s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001821s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'test.exa_user' doesn't exist
+
+[ 2015-05-05T12:51:57+08:00 ] ::1 /Examination/index.php/Home/Index/db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000453s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000589s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000738s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'test.exa_user' doesn't exist
+
+[ 2015-05-05T13:16:14+08:00 ] ::1 /Examination/index.php/Home/index/db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000464s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000561s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000685s ]
+SQL: SELECT * FROM `exa_user`  [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000664s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000789s ]
+
+[ 2015-05-05T13:16:32+08:00 ] ::1 /Examination/index.php/Home/index/db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000070s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001064s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001042s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001398s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000396s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000522s ]
+
+[ 2015-05-05T13:20:47+08:00 ] ::1 /Examination/index.php/Home/user
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000368s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000412s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000514s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000396s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000495s ]
+
+[ 2015-05-05T13:21:06+08:00 ] ::1 /Examination/Home/user
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000313s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000461s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000566s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000343s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000441s ]
+
+[ 2015-05-05T13:22:40+08:00 ] ::1 /Examination/Home/user/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000404s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000423s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000549s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000664s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000889s ]
+
+[ 2015-05-05T13:22:58+08:00 ] ::1 /Examination/Home/user/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000056s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001362s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000748s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000910s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000179s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000580s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.085058s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.085406s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001570s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002243s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001992s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002539s ]
+
+[ 2015-05-05T13:23:14+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000382s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000431s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000554s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.000300s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000422s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000241s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000353s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000499s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000615s ]
+
+[ 2015-05-05T13:23:17+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000395s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000401s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000516s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.000300s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000405s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000183s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000273s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000338s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000431s ]
+
+[ 2015-05-05T13:23:42+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000065s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000883s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000845s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001103s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000106s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000346s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.053501s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.054001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000770s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001140s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000207s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.053734s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018035s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.001829s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000112s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.019387s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.000946s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.021676s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000104s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.021816s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001412s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001786s ]
+
+[ 2015-05-05T13:24:19+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000041s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000608s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000602s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000779s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.000529s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000728s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000312s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000473s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.000496s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.000767s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000046s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.000946s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.000388s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.001905s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000046s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.001973s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000593s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000782s ]
+
+[ 2015-05-05T13:24:26+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000513s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000608s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000781s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.000989s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.001339s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000372s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000520s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000683s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000859s ]
+
+[ 2015-05-05T13:41:56+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000428s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000497s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000622s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000490s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000611s ]
+
+[ 2015-05-05T13:43:20+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000035s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000589s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000604s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000782s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000615s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000772s ]
+
+[ 2015-05-05T13:43:33+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000713s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000852s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001079s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000917s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001168s ]
+
+[ 2015-05-05T13:43:46+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000081s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001232s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000875s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001103s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001010s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001302s ]
+
+[ 2015-05-05T13:43:53+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000078s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001160s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000743s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000970s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000743s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000935s ]
+
+[ 2015-05-05T13:44:03+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000039s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000629s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000741s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000928s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000742s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000925s ]
+
+[ 2015-05-05T13:44:10+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000034s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000635s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000689s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000886s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000652s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000824s ]
+
+[ 2015-05-05T13:44:20+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000034s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000554s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000566s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000723s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000594s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000767s ]
+
+[ 2015-05-05T13:44:29+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000876s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000985s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001230s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000903s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001124s ]
+
+[ 2015-05-05T13:44:40+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000386s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000408s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000530s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000422s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000540s ]
+
+[ 2015-05-05T13:44:47+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000391s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000416s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000545s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000418s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000536s ]
+
+[ 2015-05-05T13:44:57+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000081s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001291s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001358s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001752s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001474s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001904s ]
+
+[ 2015-05-05T13:46:18+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000687s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000800s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000900s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001123s ]
+
+[ 2015-05-05T13:46:37+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000677s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000713s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000899s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000699s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000881s ]
+
+[ 2015-05-05T13:46:54+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000641s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000674s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000873s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000925s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001153s ]
+
+[ 2015-05-05T13:47:06+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000039s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000608s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000698s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000926s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000706s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000890s ]
+
+[ 2015-05-05T13:47:11+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000057s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000799s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000821s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001047s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000620s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000776s ]
+
+[ 2015-05-05T13:49:12+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000034s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000565s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000690s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000862s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001027s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001320s ]
+
+[ 2015-05-05T13:49:32+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000606s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000618s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000804s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000605s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000764s ]
+
+[ 2015-05-05T13:49:41+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000051s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000766s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000829s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001071s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+
+[ 2015-05-05T13:49:41+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000349s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000370s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000492s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+
+[ 2015-05-05T13:50:59+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000471s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000666s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000825s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+
+[ 2015-05-05T13:50:59+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000344s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000365s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000468s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+
+[ 2015-05-05T13:51:01+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000433s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000465s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000602s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+
+[ 2015-05-05T13:51:01+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000321s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000332s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000432s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+
+[ 2015-05-05T13:54:17+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000432s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000512s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000638s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0084s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000597s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000737s ]
+
+[ 2015-05-05T13:55:11+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000402s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000420s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000546s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0585s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000546s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000687s ]
+
+[ 2015-05-05T13:55:19+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000046s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000953s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000580s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000728s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0071s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000526s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000657s ]
+
+[ 2015-05-05T13:55:34+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000394s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000414s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000538s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0082s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000498s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000629s ]
+
+[ 2015-05-05T13:55:36+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000457s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000468s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000609s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0083s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000577s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000724s ]
+
+[ 2015-05-05T13:55:36+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000464s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000417s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000540s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0036s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000499s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000665s ]
+
+[ 2015-05-05T13:55:42+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000390s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000409s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000532s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0087s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000512s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000644s ]
+
+[ 2015-05-05T13:55:43+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000623s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000443s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000572s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0107s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000815s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001053s ]
+
+[ 2015-05-05T13:55:43+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000450s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000469s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000607s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0038s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000581s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000729s ]
+
+[ 2015-05-05T13:55:43+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000392s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000409s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000531s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0041s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001020s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001298s ]
+
+[ 2015-05-05T13:55:44+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000398s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000407s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000530s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0046s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000519s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000652s ]
+
+[ 2015-05-05T13:55:44+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000390s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000410s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000533s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0084s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000506s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000647s ]
+
+[ 2015-05-05T13:55:44+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000644s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000641s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000856s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0051s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000579s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000726s ]
+
+[ 2015-05-05T13:56:04+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000434s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000463s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000594s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0085s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000598s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000772s ]
+
+[ 2015-05-05T13:56:22+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000699s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000571s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000718s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0383s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000602s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000734s ]
+
+[ 2015-05-05T14:13:37+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000439s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000624s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000751s ]
+NOTIC: [8] Undefined variable: nickname F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+NOTIC: [8] Undefined variable: verifycode F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0567s ]
+
+[ 2015-05-05T14:13:56+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000403s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000414s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000537s ]
+NOTIC: [8] Undefined variable: verifycode F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0503s ]
+
+[ 2015-05-05T14:14:10+08:00 ] ::1 /Examination/Home/user/register/email/5702591@qq.com/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000048s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000684s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000751s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000998s ]
+NOTIC: [8] Undefined variable: verifycode F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0072s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000632s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000779s ]
+
+[ 2015-05-05T14:14:25+08:00 ] ::1 /Examination/Home/user/register/email/5702591@qq.com/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000404s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000411s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000535s ]
+NOTIC: [8] Undefined variable: verifycode F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0252s ]
+
+[ 2015-05-05T14:17:51+08:00 ] ::1 /Examination/Home/user/register/email/5702591@qq.com/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000494s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000516s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000650s ]
+NOTIC: [8] Undefined variable: verifycode F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0293s ]
+SQL: INSERT INTO `exa_user` (`email`,`password`) VALUES ('5702591@qq.com','123456') [ RunTime:0.0644s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000923s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001158s ]
+
+[ 2015-05-05T14:18:02+08:00 ] ::1 /Examination/Home/user/register/email/5702591@qq.com/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000544s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000475s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000620s ]
+NOTIC: [8] Undefined variable: verifycode F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0077s ]
+SQL: INSERT INTO `exa_user` (`email`,`password`) VALUES ('5702591@qq.com','123456') [ RunTime:0.0572s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000513s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000646s ]
+
+[ 2015-05-05T14:20:28+08:00 ] ::1 /Examination/Home/user/register/email/5702591@qq.com/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000102s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001598s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001492s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001974s ]
+NOTIC: [8] Undefined variable: verifycode F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0353s ]
+
+[ 2015-05-05T14:21:18+08:00 ] ::1 /Examination/Home/user/register/email/5702591@qq.com/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000427s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000417s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000541s ]
+
+[ 2015-05-05T14:24:02+08:00 ] ::1 /Examination/Home/user/register/email/5702591@qq.com/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000509s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000531s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000674s ]
+NOTIC: [2] require(../../common/functions.php): failed to open stream: No such file or directory F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 4 行.
+
+[ 2015-05-05T14:24:02+08:00 ] ::1 /Examination/Home/user/register/email/5702591@qq.com/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000457s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000417s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000541s ]
+NOTIC: [2] require(../../common/functions.php): failed to open stream: No such file or directory F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 4 行.
+
+[ 2015-05-05T21:44:28+08:00 ] ::1 /Examination/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000035s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005571s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.029476s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.029608s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016966s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017419s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.019259s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.019528s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.008330s ]
+INFO: [ app_end ] --END-- [ RunTime:0.008602s ]
+
+[ 2015-05-05T21:55:08+08:00 ] ::1 /Examination/Home/index/register/email/597055914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000410s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000467s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000589s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000529s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000650s ]
+
+[ 2015-05-05T21:55:47+08:00 ] ::1 /Examination/Home/index/register/email/597055914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000400s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000401s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000521s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000412s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000531s ]
+
+[ 2015-05-05T21:56:19+08:00 ] ::1 /Examination/Home/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000346s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000349s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000451s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.000309s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000415s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000252s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000345s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000352s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000447s ]
+
+[ 2015-05-05T21:56:25+08:00 ] ::1 /Examination/Home/index/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000355s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000363s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000471s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.000230s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000330s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000253s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000352s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000374s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000476s ]
+
+[ 2015-05-05T21:56:34+08:00 ] ::1 /Examination/Home/index/register/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000401s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000409s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000529s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000414s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000534s ]
+
+[ 2015-05-05T21:56:39+08:00 ] ::1 /Examination/Home/index/registdfd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000037s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000533s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000609s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000800s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000599s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000790s ]
+
+[ 2015-05-05T21:57:12+08:00 ] ::1 /Examination/Home/User/registdfd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000355s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000398s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000500s ]
+NOTIC: [2] require(../../common/functions.php): failed to open stream: No such file or directory F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 4 行.
+
+[ 2015-05-05T21:57:12+08:00 ] ::1 /Examination/Home/User/registdfd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000348s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000349s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000455s ]
+NOTIC: [2] require(../../common/functions.php): failed to open stream: No such file or directory F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 4 行.
+
+[ 2015-05-05T23:02:55+08:00 ] ::1 /Examination/Home/User/registdfd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000140s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002109s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001861s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002324s ]
+NOTIC: [2] require(../../common/functions.php): failed to open stream: No such file or directory F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 4 行.
+
+[ 2015-05-05T23:02:56+08:00 ] ::1 /Examination/Home/User/registdfd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000726s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000750s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000988s ]
+NOTIC: [2] require(../../common/functions.php): failed to open stream: No such file or directory F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 4 行.
+
+[ 2015-05-05T23:03:04+08:00 ] ::1 /Examination/Home/User/registdfd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000090s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002421s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001508s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002062s ]
+ERR: 非法操作:registdfd
+
+[ 2015-05-05T23:03:18+08:00 ] ::1 /Examination/Home/user/register/email/5702591@qq.com/password/123456/verifycode=fuck
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000382s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000442s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000561s ]
+NOTIC: [8] Undefined variable: verifycode F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 30 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.2844s ]
+SQL: INSERT INTO `exa_user` (`email`,`password`,`guid`) VALUES ('5702591@qq.com','123456','{B8DFC928-E895-A6DB-8255-06A3BF552851}') [ RunTime:0.1146s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002269s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002828s ]
+
+[ 2015-05-05T23:03:23+08:00 ] ::1 /Examination/Home/user/register/email/5702591@qq.com/password/123456/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000427s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000538s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000710s ]
+NOTIC: [8] Undefined variable: verifycode F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 30 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0119s ]
+SQL: INSERT INTO `exa_user` (`email`,`password`,`guid`) VALUES ('5702591@qq.com','123456','{A55EB334-5F60-2B62-1093-761C1635D7E9}') [ RunTime:0.0664s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001167s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001378s ]
+
+[ 2015-05-05T23:04:53+08:00 ] ::1 /Examination/Home/user/register/email/5702591@qq.com/password/123456/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000046s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000860s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001339s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001562s ]
+
+[ 2015-05-05T23:05:10+08:00 ] ::1 /Examination/Home/user/register/email/5702591@qq.com/password/123456/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000082s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001834s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002457s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002888s ]
+NOTIC: [8] Undefined variable: verifycode F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 28 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0643s ]
+SQL: INSERT INTO `exa_user` (`email`,`password`,`guid`) VALUES ('5702591@qq.com','123456','D62002CA-8895-0DEF-39CB-1AD076F883A5') [ RunTime:0.0461s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002631s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003007s ]
+

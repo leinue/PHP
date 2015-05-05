@@ -40,11 +40,9 @@ class IndexController extends Controller {
     	echo 'current city:'.$name;
     }
 
-    public function getUser(){
-    	//$User=M('User');
-    	//print_r($user);
-    	$model=M();
-    	print_r($model);
+    public function db(){
+    	$User = D('User');
+    	print_r($User);
     }
 
 }

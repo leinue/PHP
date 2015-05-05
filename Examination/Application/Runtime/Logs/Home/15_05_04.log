@@ -719,3 +719,395 @@ INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002040s ]
 INFO: [ app_end ] --END-- [ RunTime:0.002491s ]
 
+[ 2015-05-04T10:57:25+08:00 ] ::1 /Examination/index.php/Home/Index/getUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000157s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002547s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.011405s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.012203s ]
+ERR: SQLSTATE[HY000] [2002] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+
+
+[ 2015-05-04T10:58:01+08:00 ] ::1 /Examination/index.php/Home/Index/getUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000084s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001400s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001878s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002328s ]
+ERR: SQLSTATE[HY000] [2002] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+
+
+[ 2015-05-04T10:58:12+08:00 ] ::1 /Examination/index.php/Home/Index/getUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000184s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004079s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002671s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003397s ]
+ERR: SQLSTATE[HY000] [2002] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+
+
+[ 2015-05-04T10:59:01+08:00 ] ::1 /Examination/index.php/Home/Index/getUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000084s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001510s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003083s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003679s ]
+ERR: SQLSTATE[HY000] [2002] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+
+
+[ 2015-05-04T10:59:12+08:00 ] ::1 /Examination/index.php/Home/Index/getUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000146s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002324s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002870s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003495s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.042203s ]
+INFO: [ app_end ] --END-- [ RunTime:0.042855s ]
+
+[ 2015-05-04T10:59:17+08:00 ] ::1 /Examination/index.php/Home/Index/getUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000143s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002300s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002652s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003267s ]
+ERR: SQLSTATE[HY000] [2002] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+
+
+[ 2015-05-04T11:03:17+08:00 ] ::1 /Examination/index.php/Home/Index/getUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000088s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002052s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001788s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002202s ]
+ERR: SQLSTATE[HY000] [2002] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+
+
+[ 2015-05-04T11:05:04+08:00 ] ::1 /Examination/index.php/Home/Index/getUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000141s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002537s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002557s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003234s ]
+ERR: SQLSTATE[HY000] [2002] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+
+
+[ 2015-05-04T11:05:16+08:00 ] ::1 /Examination/index.php/Home/Index/getUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000105s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001409s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002617s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003303s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002021s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002459s ]
+
+[ 2015-05-04T11:07:06+08:00 ] ::1 /Examination/index.php/Home/Index/getUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000086s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001647s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001786s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002192s ]
+ERR: SQLSTATE[HY000] [2002] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at F:\wamp\www\Examination\Application\Home\Controller\IndexController.class.php:47) F:\wamp\www\Examination\ThinkPHP\Library\Think\Think.class.php ç¬¬ 229 è¡Œ.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at F:\wamp\www\Examination\Application\Home\Controller\IndexController.class.php:47) F:\wamp\www\Examination\ThinkPHP\Library\Think\Think.class.php ç¬¬ 230 è¡Œ.
+
+[ 2015-05-04T11:07:08+08:00 ] ::1 /Examination/index.php/Home/Index/getUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000084s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001488s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001985s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002549s ]
+ERR: SQLSTATE[HY000] [2002] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at F:\wamp\www\Examination\Application\Home\Controller\IndexController.class.php:47) F:\wamp\www\Examination\ThinkPHP\Library\Think\Think.class.php ç¬¬ 229 è¡Œ.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at F:\wamp\www\Examination\Application\Home\Controller\IndexController.class.php:47) F:\wamp\www\Examination\ThinkPHP\Library\Think\Think.class.php ç¬¬ 230 è¡Œ.
+
+[ 2015-05-04T11:07:30+08:00 ] ::1 /Examination/index.php/Home/Index/getUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000145s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002555s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002296s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002802s ]
+ERR: SQLSTATE[HY000] [2002] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+
+
+[ 2015-05-04T11:09:50+08:00 ] ::1 /Examination/index.php/Home/Index/getUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000142s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002584s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001852s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002279s ]
+ERR: SQLSTATE[HY000] [2002] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+
+
+[ 2015-05-04T11:10:35+08:00 ] ::1 /Examination/index.php/Home/Index/getUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000085s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001606s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002772s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003484s ]
+
+[ 2015-05-04T11:11:01+08:00 ] ::1 /Examination/index.php/Home/Index/getUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000151s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003111s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003040s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003811s ]
+
+[ 2015-05-04T12:30:36+08:00 ] ::1 /Examination/index.php/Home/Index/getUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000350s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002227s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002419s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003017s ]
+ERR: SQLSTATE[HY000] [2002] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+
+
+[ 2015-05-04T12:30:50+08:00 ] ::1 /Examination/index.php/Home/Index/getUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000134s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002026s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002635s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003547s ]
+
+[ 2015-05-04T12:31:05+08:00 ] ::1 /Examination/index.php/Home/Index/getUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000084s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001440s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002573s ]
+
+[ 2015-05-04T12:31:21+08:00 ] ::1 /Examination/index.php/Home/Index/getUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000084s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001435s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002956s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003656s ]
+
+[ 2015-05-04T12:31:29+08:00 ] ::1 /Examination/index.php/Home/Index/getUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000171s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002232s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002863s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003594s ]
+ERR: SQLSTATE[HY000] [2002] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+
+
+[ 2015-05-04T12:31:57+08:00 ] ::1 /Examination/index.php/Home/Model
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000141s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003205s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002553s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003193s ]
+ERR: æ— æ³•åŠ è½½æŽ§åˆ¶å™¨:Model
+
+[ 2015-05-04T12:32:01+08:00 ] ::1 /Examination/index.php/Home/Model/User
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000142s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002219s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002956s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003776s ]
+ERR: æ— æ³•åŠ è½½æŽ§åˆ¶å™¨:Model
+
+[ 2015-05-04T12:32:05+08:00 ] ::1 /Examination/index.php/Home
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000133s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001793s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001945s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002387s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.002340s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002947s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002274s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003021s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002568s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003094s ]
+
+[ 2015-05-04T12:33:24+08:00 ] ::1 /Examination/index.php/Home
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000311s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001971s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001906s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002387s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.001540s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.001972s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002074s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002773s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001960s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002353s ]
+
+[ 2015-05-04T12:33:30+08:00 ] ::1 /Examination/index.php/Home/getUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000131s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001999s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002490s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003114s ]
+ERR: æ— æ³•åŠ è½½æŽ§åˆ¶å™¨:GetUser
+
+[ 2015-05-04T12:33:40+08:00 ] ::1 /Examination/index.php/Home/index/getUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000118s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001986s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002462s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003115s ]
+ERR: SQLSTATE[HY000] [2002] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+
+
+[ 2015-05-04T12:41:19+08:00 ] ::1 /Examination/index.php/Home/index/getUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000116s ]
+INFO: [ app_init ] --END-- [ RunTime:0.019473s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.021446s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.022548s ]
+ERR: SQLSTATE[HY000] [2002] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at F:\wamp\www\Examination\Application\Home\Controller\IndexController.class.php:47) F:\wamp\www\Examination\ThinkPHP\Library\Think\Think.class.php ç¬¬ 229 è¡Œ.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at F:\wamp\www\Examination\Application\Home\Controller\IndexController.class.php:47) F:\wamp\www\Examination\ThinkPHP\Library\Think\Think.class.php ç¬¬ 230 è¡Œ.
+
+[ 2015-05-04T12:41:20+08:00 ] ::1 /Examination/index.php/Home/index/getUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000140s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002038s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002227s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002910s ]
+ERR: SQLSTATE[HY000] [2002] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at F:\wamp\www\Examination\Application\Home\Controller\IndexController.class.php:47) F:\wamp\www\Examination\ThinkPHP\Library\Think\Think.class.php ç¬¬ 229 è¡Œ.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at F:\wamp\www\Examination\Application\Home\Controller\IndexController.class.php:47) F:\wamp\www\Examination\ThinkPHP\Library\Think\Think.class.php ç¬¬ 230 è¡Œ.
+
+[ 2015-05-04T12:46:11+08:00 ] ::1 /Examination/index.php/Home/index/db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000139s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002748s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002709s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003436s ]
+ERR: SQLSTATE[HY000] [2002] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+
+
+[ 2015-05-04T12:46:37+08:00 ] ::1 /Examination/index.php/Home/index/db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000085s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001645s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002843s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003538s ]
+ERR: SQLSTATE[HY000] [2002] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+
+
+[ 2015-05-04T12:47:25+08:00 ] ::1 /Examination/index.php/Home/index/db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000138s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002498s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002659s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003276s ]
+ERR: SQLSTATE[HY000] [2002] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+
+
+[ 2015-05-04T12:48:51+08:00 ] ::1 /Examination/index.php/Home/index/db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000084s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001490s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002961s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003738s ]
+ERR: SQLSTATE[HY000] [2002] ÓÉÓÚÄ¿±ê¼ÆËã»ú»ý¼«¾Ü¾ø£¬ÎÞ·¨Á¬½Ó¡£
+
+
+[ 2015-05-04T12:52:46+08:00 ] ::1 /Examination/index.php/Home/index/db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000378s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002880s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004402s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005385s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0310s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.019481s ]
+INFO: [ app_end ] --END-- [ RunTime:0.020210s ]
+
+[ 2015-05-04T12:52:59+08:00 ] ::1 /Examination/index.php/Home/index/db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000131s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002154s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003016s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003779s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0258s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002792s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003386s ]
+
+[ 2015-05-04T12:53:22+08:00 ] ::1 /Examination/index.php/Home/index/db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000084s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001478s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003263s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003912s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0244s ]
+SQL: SELECT * FROM `exa_user`  [ RunTime:0.0007s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002630s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003056s ]
+
+[ 2015-05-04T12:53:36+08:00 ] ::1 /Examination/index.php/Home/index/db
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000136s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002135s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003906s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004729s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0291s ]
+SQL: SELECT * FROM `exa_user`  [ RunTime:0.0008s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003118s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003945s ]
+
+[ 2015-05-04T13:22:45+08:00 ] ::1 /Examination/index.php/Home/index/getUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000083s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001425s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001787s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002222s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002352s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002948s ]
+

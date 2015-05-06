@@ -30,7 +30,7 @@ class UserController extends Controller {
 		}else{
 			$registerUser=D('User');
 			$registerData['email']=$email;
-			$registerData['password']=$password;
+			$registerData['password']=sha1($password);
 			$registerData['guid']=$this->guid();
 			$data=$registerUser->create($registerData);
 			if(!$data){
@@ -39,14 +39,25 @@ class UserController extends Controller {
 				$result=$registerUser->add();
 				if($result){
 					$insertId=$result;
-					print_r($insertId);
+					$this->ajaxReturn($insertId);
 				}
 			}
 		}
 	}
 
-	public function login($nickname,$password,$verifycode){
+	public function login($email='',$password=''){
+		if($this->isInfoNull(array($email,$password))){
+			return 201;
+		}else{
+			$loginUser=D('User');
+			$password=sha1($password);
+			$data=$loginUser->where("`email`='$email' AND `password`='$password'")->find();
+			$this->ajaxReturn($data);
+		}
+	}
 
+	public function getuserbyguid($id){
+		print_r(M('User')->where("guid='$id'")->getField('email'));
 	}
 }
 

@@ -1078,3 +1078,27 @@ INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002631s ]
 INFO: [ app_end ] --END-- [ RunTime:0.003007s ]
 
+[ 2015-05-05T23:14:23+08:00 ] ::1 /Examination/Home/user/register/email/5702591@qq.com/password/123456/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000145s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002466s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002878s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003435s ]
+NOTIC: [8] Undefined variable: verifycode F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 28 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0366s ]
+SQL: INSERT INTO `exa_user` (`email`,`password`,`guid`) VALUES ('5702591@qq.com','7c4a8d09ca3762af61e59520943dc26494f8941b','454473CA-E24A-B036-0F2A-73B1E1480317') [ RunTime:0.0396s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002376s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002780s ]
+
+[ 2015-05-05T23:59:04+08:00 ] ::1 /Examination/Home/user/register/email/5702591qq.com/password/123456/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000098s ]
+INFO: [ app_init ] --END-- [ RunTime:0.032413s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.059373s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.059826s ]
+NOTIC: [8] Undefined variable: verifycode F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 28 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0236s ]
+

@@ -459,3 +459,469 @@ INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.014220s ]
 INFO: [ app_end ] --END-- [ RunTime:0.014768s ]
 
+[ 2015-05-06T23:36:57+08:00 ] ::1 /Examination/home/options/getrAll
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000441s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000556s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000696s ]
+
+[ 2015-05-06T23:37:29+08:00 ] ::1 /Examination/home/options/getrAll
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000085s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001579s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001825s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002335s ]
+ERR: 无法加载控制器:Options
+
+[ 2015-05-06T23:39:34+08:00 ] ::1 /Examination/home/options/getrAll
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000050s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000853s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001071s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001327s ]
+ERR: 无法加载控制器:Options
+
+[ 2015-05-06T23:39:35+08:00 ] ::1 /Examination/home/options/getrAll
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000081s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001543s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001831s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002285s ]
+ERR: 无法加载控制器:Options
+
+[ 2015-05-06T23:39:35+08:00 ] ::1 /Examination/home/options/getrAll
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000058s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000947s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001205s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001520s ]
+ERR: 无法加载控制器:Options
+
+[ 2015-05-06T23:39:35+08:00 ] ::1 /Examination/home/options/getrAll
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000515s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000596s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000739s ]
+ERR: 无法加载控制器:Options
+
+[ 2015-05-06T23:39:36+08:00 ] ::1 /Examination/home/options/getrAll
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000132s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002008s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002512s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003159s ]
+ERR: 无法加载控制器:Options
+
+[ 2015-05-06T23:39:36+08:00 ] ::1 /Examination/home/options/getrAll
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000097s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001729s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001654s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002097s ]
+ERR: 无法加载控制器:Options
+
+[ 2015-05-06T23:39:36+08:00 ] ::1 /Examination/home/options/getrAll
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000529s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000596s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000744s ]
+ERR: 无法加载控制器:Options
+
+[ 2015-05-06T23:39:36+08:00 ] ::1 /Examination/home/options/getrAll
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000046s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000577s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000660s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000889s ]
+ERR: 无法加载控制器:Options
+
+[ 2015-05-06T23:39:36+08:00 ] ::1 /Examination/home/options/getrAll
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000052s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000933s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001309s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001633s ]
+ERR: 无法加载控制器:Options
+
+[ 2015-05-06T23:39:36+08:00 ] ::1 /Examination/home/options/getrAll
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000035s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000679s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001051s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001366s ]
+ERR: 无法加载控制器:Options
+
+[ 2015-05-06T23:39:45+08:00 ] ::1 /Examination/home/options/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000462s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000521s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000654s ]
+ERR: 无法加载控制器:Options
+
+[ 2015-05-06T23:40:08+08:00 ] ::1 /Examination/home/options/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000714s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000827s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001153s ]
+ERR: 无法加载控制器:Options
+
+[ 2015-05-06T23:40:13+08:00 ] ::1 /Examination/Home/options/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000871s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000498s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000631s ]
+ERR: 无法加载控制器:Options
+
+[ 2015-05-06T23:40:17+08:00 ] ::1 /Examination/Home/Options
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000437s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000473s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000594s ]
+ERR: 无法加载控制器:Options
+
+[ 2015-05-06T23:40:25+08:00 ] ::1 /Examination/Home/user/register/nickname/fuck/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000459s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000504s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000629s ]
+NOTIC: [8] Undefined variable: verifycode F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php 第 28 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0258s ]
+
+[ 2015-05-06T23:40:29+08:00 ] ::1 /Examination/Home/user/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000465s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000521s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000644s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000644s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000765s ]
+
+[ 2015-05-06T23:40:35+08:00 ] ::1 /Examination/Home/options
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000462s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000490s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000612s ]
+ERR: 无法加载控制器:Options
+
+[ 2015-05-06T23:42:25+08:00 ] ::1 /Examination/Home/options
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000448s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000639s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000782s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000174s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000576s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.147231s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.147547s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001467s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001839s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001823s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002199s ]
+
+[ 2015-05-06T23:42:29+08:00 ] ::1 /Examination/home/options/getrAll
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000435s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000473s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000597s ]
+ERR: 非法操作:getrAll
+
+[ 2015-05-06T23:42:33+08:00 ] ::1 /Examination/home/options/getAll
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000471s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000521s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000657s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0283s ]
+SQL: SELECT `options_name`,`options_value` FROM `exa_options`  [ RunTime:0.0003s ]
+
+[ 2015-05-06T23:51:03+08:00 ] ::1 /Examination/home/options/writeRule/rulename/fuck/rulevalue/shit
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000503s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000527s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000648s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0573s ]
+SQL: INSERT INTO `exa_options` (`options_name`,`options_value`) VALUES ('fuck','shit') [ RunTime:0.1041s ]
+
+[ 2015-05-06T23:52:10+08:00 ] ::1 /Examination/home/options/writeRule/rulename/fuck/rulevalue/shit
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000145s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002189s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001159s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001624s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0648s ]
+SQL: INSERT INTO `exa_options` (`options_name`,`options_value`) VALUES ('fuck','shit') [ RunTime:0.0567s ]
+
+[ 2015-05-06T23:52:39+08:00 ] ::1 /Examination/home/options/writeRule/rulename/fuck/rulevale/shit
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000456s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000505s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000625s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0407s ]
+SQL: INSERT INTO `exa_options` (`options_name`,`options_value`) VALUES ('fuck','') [ RunTime:0.0717s ]
+
+[ 2015-05-06T23:54:34+08:00 ] ::1 /Examination/home/options/writeRule/rulename/fuck/rulevale/shit
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000099s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001405s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000941s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001167s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.1200s ]
+SQL: INSERT INTO `exa_options` (`options_name`,`options_value`) VALUES ('fuck','') [ RunTime:0.0459s ]
+
+[ 2015-05-06T23:55:15+08:00 ] ::1 /Examination/home/options/writeRule/rulename/fuck/rulevale/shit
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000097s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001417s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001673s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002139s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0690s ]
+SQL: INSERT INTO `exa_options` (`options_name`,`options_value`) VALUES ('fuck','') [ RunTime:0.0447s ]
+
+[ 2015-05-06T23:55:20+08:00 ] ::1 /Examination/home/options/writeRule/rulename/fuk/rulevale/shit
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000436s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000470s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000594s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0567s ]
+SQL: INSERT INTO `exa_options` (`options_name`,`options_value`) VALUES ('fuk','') [ RunTime:0.0395s ]
+
+[ 2015-05-06T23:55:23+08:00 ] ::1 /Examination/home/options/writeRule/rulename/fuk/rulevale/shit
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000048s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000857s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001005s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001273s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0122s ]
+SQL: INSERT INTO `exa_options` (`options_name`,`options_value`) VALUES ('fuk','') [ RunTime:0.0854s ]
+
+[ 2015-05-06T23:55:34+08:00 ] ::1 /Examination/home/options/writeRule/rulename/fuk/rulevale/shit
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000155s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002075s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001556s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001958s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002031s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002614s ]
+
+[ 2015-05-06T23:57:25+08:00 ] ::1 /Examination/home/options/writeRule/rulename/fuk/rulevale/shit
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000052s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000887s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001116s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001380s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0135s ]
+SQL: INSERT INTO `exa_options` (`options_name`,`options_value`) VALUES ('fuk','') [ RunTime:0.0692s ]
+
+[ 2015-05-06T23:57:27+08:00 ] ::1 /Examination/home/options/writeRule/rulename/fuk/rulevale/shit
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000085s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001529s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002370s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003393s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0516s ]
+SQL: INSERT INTO `exa_options` (`options_name`,`options_value`) VALUES ('fuk','') [ RunTime:0.0458s ]
+
+[ 2015-05-06T23:57:28+08:00 ] ::1 /Examination/home/options/writeRule/rulename/fuk/rulevale/shit
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000049s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000813s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001249s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001501s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0397s ]
+SQL: INSERT INTO `exa_options` (`options_name`,`options_value`) VALUES ('fuk','') [ RunTime:0.1138s ]
+
+[ 2015-05-06T23:57:29+08:00 ] ::1 /Examination/home/options/writeRule/rulename/fuk/rulevale/shit
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000051s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000901s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000974s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001245s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0752s ]
+SQL: INSERT INTO `exa_options` (`options_name`,`options_value`) VALUES ('fuk','') [ RunTime:0.0558s ]
+
+[ 2015-05-06T23:57:39+08:00 ] ::1 /Examination/home/options/writRule/rulename/fuk/rulevale/shit
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000444s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000502s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000634s ]
+ERR: 非法操作:writRule
+
+[ 2015-05-06T23:57:42+08:00 ] ::1 /Examination/home/options/writeRule/rulename/fuk/rulevale/shit
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000528s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000513s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000637s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0217s ]
+SQL: INSERT INTO `exa_options` (`options_name`,`options_value`) VALUES ('fuk','') [ RunTime:0.0451s ]
+
+[ 2015-05-06T23:57:55+08:00 ] ::1 /Examination/home/options/writeRule/rulename//rulevale/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000052s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000956s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000540s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000666s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0740s ]
+SQL: INSERT INTO `exa_options` (`options_name`,`options_value`) VALUES ('rulevale','') [ RunTime:0.0494s ]
+
+[ 2015-05-06T23:57:58+08:00 ] ::1 /Examination/home/options/writeRule/rulename//rulevale/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000452s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000487s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000611s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0603s ]
+SQL: INSERT INTO `exa_options` (`options_name`,`options_value`) VALUES ('rulevale','') [ RunTime:0.0391s ]
+
+[ 2015-05-06T23:58:56+08:00 ] ::1 /Examination/home/options/writeRule/rulename//rulevale/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000054s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001040s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001146s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001402s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0304s ]
+SQL: INSERT INTO `exa_options` (`options_name`,`options_value`) VALUES ('rulevale','') [ RunTime:0.0466s ]
+
+[ 2015-05-06T23:58:57+08:00 ] ::1 /Examination/home/options/writeRule/rulename//rulevale/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000827s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000896s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001122s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0140s ]
+SQL: INSERT INTO `exa_options` (`options_name`,`options_value`) VALUES ('rulevale','') [ RunTime:0.0773s ]
+
+[ 2015-05-06T23:58:58+08:00 ] ::1 /Examination/home/options/writeRule/rulename//rulevale/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000056s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000951s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001754s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002164s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0081s ]
+SQL: INSERT INTO `exa_options` (`options_name`,`options_value`) VALUES ('rulevale','') [ RunTime:0.0535s ]
+
+[ 2015-05-06T23:59:10+08:00 ] ::1 /Examination/home/options/writeRule/rulename//rulevale/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000084s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001516s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001687s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002175s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0159s ]
+SQL: INSERT INTO `exa_options` (`options_name`,`options_value`) VALUES ('rulevale','') [ RunTime:0.0963s ]
+
+[ 2015-05-06T23:59:12+08:00 ] ::1 /Examination/home/options/writeRule/rulename//rulevale/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000134s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002600s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001754s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002203s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0471s ]
+SQL: INSERT INTO `exa_options` (`options_name`,`options_value`) VALUES ('rulevale','') [ RunTime:0.0771s ]
+
+[ 2015-05-06T23:59:26+08:00 ] ::1 /Examination/home/options/writeRule/rulename//rulevale/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000083s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001508s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002278s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002902s ]
+
+[ 2015-05-06T23:59:33+08:00 ] ::1 /Examination/home/options/writeRule/rulename/fdfdf/rulevale/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000465s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000502s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000623s ]
+
+[ 2015-05-06T23:59:38+08:00 ] ::1 /Examination/home/options/writeRule/rulename/fdfdf/rulevalue/ffdfd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000692s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000818s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001066s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0265s ]
+SQL: INSERT INTO `exa_options` (`options_name`,`options_value`) VALUES ('fdfdf','ffdfd') [ RunTime:0.0450s ]
+
+[ 2015-05-06T23:59:47+08:00 ] ::1 /Examination/home/options/writeRule/rulename/fdfdf/rulevalue/ffdfd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000054s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000902s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000999s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001260s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.2545s ]
+SQL: INSERT INTO `exa_options` (`options_name`,`options_value`) VALUES ('fdfdf','ffdfd') [ RunTime:0.3338s ]
+
+[ 2015-05-06T23:59:51+08:00 ] ::1 /Examination/home/options/writeRule/rulename/fdfdf/rulevalue
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000466s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000527s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000650s ]
+

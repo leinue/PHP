@@ -4,12 +4,12 @@ use Think\Controller;
 class UserController extends Controller {
 
 	public function index(){
-		echo 'user Controller';
+		
 	}
 
 	protected function isInfoNull($info){
 		if(is_array($info)){
-			foreach($info as $key => $value){if($value==null){return false;}}
+			foreach($info as $key => $value){if($value==null){return true;}}
 		}else{return $info==null;}
 	}
 
@@ -40,6 +40,8 @@ class UserController extends Controller {
 				if($result){
 					$insertId=$result;
 					$this->ajaxReturn($insertId);
+				}else{
+					$this->ajaxReturn($registerUser->getError());
 				}
 			}
 		}

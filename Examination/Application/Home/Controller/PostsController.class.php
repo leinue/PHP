@@ -71,6 +71,7 @@ class PostsController extends Controller {
 		}else{
 			$rPost=M('Posts');
 			$postData=$rPost->where("`post_guid` = '$guid'")->find();
+			$rPost->where('`guid`='+$guid)->setInc('post_view',1,30);
 			if($postData){
 				$ajaxData['status']='1';
 				$ajaxData['msg']='读取成功';
@@ -81,6 +82,20 @@ class PostsController extends Controller {
 				$ajaxData['msg']='读取失败';
 				$this->ajaxReturn($ajaxData);
 			}
+		}
+	}
+
+	public function updatePost($guid='',$title='',$content=''){
+		$ajaxData=array();
+		if(!$this->isInfoNull($guid,$title,$content)){
+			$ajaxData['status']='0';
+			$ajaxData['msg']='数据不能为空';
+			$this->ajaxReturn($ajaxData);
+		}else{
+			$uPost=M('Posts');
+			$data['title'] = $title;
+			$data['content'] = $content;
+			$User->where('`guid`='+$guid)->data($data)->save();
 		}
 	}
 

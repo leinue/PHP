@@ -1,0 +1,594 @@
+[ 2015-05-07T15:25:46+08:00 ] ::1 /Examination/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000060s ]
+INFO: [ app_init ] --END-- [ RunTime:0.047511s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.015863s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.016165s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.053496s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.053745s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.022518s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.022857s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.014294s ]
+INFO: [ app_end ] --END-- [ RunTime:0.014690s ]
+
+[ 2015-05-07T15:26:11+08:00 ] ::1 /Examination/home/options/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000384s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000471s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000608s ]
+ERR: 非法操作:index
+
+[ 2015-05-07T15:26:54+08:00 ] ::1 /Examination/home/options/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000565s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000477s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000605s ]
+
+[ 2015-05-07T15:26:54+08:00 ] ::1 /Examination/index.php/Home.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000050s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000850s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002935s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003203s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.000540s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000738s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000406s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000661s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000641s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000818s ]
+
+[ 2015-05-07T15:27:05+08:00 ] ::1 /Examination/index.php/Home.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000482s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000546s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000713s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.000309s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000450s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000257s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000391s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000525s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000663s ]
+
+[ 2015-05-07T15:27:22+08:00 ] ::1 /Examination/Home/options
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000446s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000476s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000618s ]
+
+[ 2015-05-07T15:27:22+08:00 ] ::1 /Examination/index.php/Home.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000342s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000494s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000626s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.000393s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000574s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000316s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000524s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000553s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000722s ]
+
+[ 2015-05-07T16:11:06+08:00 ] ::1 /Examination//home/Posts/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000501s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000611s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000737s ]
+NOTIC: [2] require(../common/functions.php): failed to open stream: No such file or directory F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 4 行.
+
+[ 2015-05-07T16:11:06+08:00 ] ::1 /Examination//home/Posts/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000415s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000718s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000888s ]
+NOTIC: [2] require(../common/functions.php): failed to open stream: No such file or directory F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 4 行.
+
+[ 2015-05-07T16:12:07+08:00 ] ::1 /Examination//home/Posts/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000035s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000560s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001036s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001209s ]
+NOTIC: [2] require(/Home/Common/functions.php): failed to open stream: No such file or directory F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 4 行.
+
+[ 2015-05-07T16:12:07+08:00 ] ::1 /Examination//home/Posts/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000409s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001659s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001838s ]
+NOTIC: [2] require(/Home/Common/functions.php): failed to open stream: No such file or directory F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 4 行.
+
+[ 2015-05-07T16:12:39+08:00 ] ::1 /Examination//home/Posts/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000037s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000605s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001015s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001262s ]
+NOTIC: [2] require(../../Common/functions.php): failed to open stream: No such file or directory F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 4 行.
+
+[ 2015-05-07T16:12:40+08:00 ] ::1 /Examination//home/Posts/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000366s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000501s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000605s ]
+NOTIC: [2] require(../../Common/functions.php): failed to open stream: No such file or directory F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 4 行.
+
+[ 2015-05-07T16:12:46+08:00 ] ::1 /Examination//home/Posts/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000039s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000630s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000919s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001105s ]
+NOTIC: [2] require(../../../Common/functions.php): failed to open stream: No such file or directory F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 4 行.
+
+[ 2015-05-07T16:12:46+08:00 ] ::1 /Examination//home/Posts/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000438s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000733s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000875s ]
+NOTIC: [2] require(../../../Common/functions.php): failed to open stream: No such file or directory F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 4 行.
+
+[ 2015-05-07T16:12:49+08:00 ] ::1 /Examination//home/Posts/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000033s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000410s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000551s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000696s ]
+NOTIC: [2] require(../../Common/functions.php): failed to open stream: No such file or directory F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 4 行.
+
+[ 2015-05-07T16:12:49+08:00 ] ::1 /Examination//home/Posts/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000509s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000745s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000855s ]
+NOTIC: [2] require(../../Common/functions.php): failed to open stream: No such file or directory F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 4 行.
+
+[ 2015-05-07T16:12:52+08:00 ] ::1 /Examination//home/Posts/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000416s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000569s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000714s ]
+NOTIC: [2] require(../Common/functions.php): failed to open stream: No such file or directory F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 4 行.
+
+[ 2015-05-07T16:12:52+08:00 ] ::1 /Examination//home/Posts/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000412s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000563s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000680s ]
+NOTIC: [2] require(../Common/functions.php): failed to open stream: No such file or directory F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 4 行.
+
+[ 2015-05-07T16:12:54+08:00 ] ::1 /Examination//home/Posts/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000033s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000616s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000799s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000968s ]
+NOTIC: [2] require(Common/functions.php): failed to open stream: No such file or directory F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 4 行.
+
+[ 2015-05-07T16:12:54+08:00 ] ::1 /Examination//home/Posts/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000406s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000533s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000647s ]
+NOTIC: [2] require(Common/functions.php): failed to open stream: No such file or directory F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 4 行.
+
+[ 2015-05-07T16:12:57+08:00 ] ::1 /Examination//home/Posts/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000447s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000687s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000816s ]
+NOTIC: [2] require(/Common/functions.php): failed to open stream: No such file or directory F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 4 行.
+
+[ 2015-05-07T16:12:57+08:00 ] ::1 /Examination//home/Posts/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000407s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000547s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000656s ]
+NOTIC: [2] require(/Common/functions.php): failed to open stream: No such file or directory F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 4 行.
+
+[ 2015-05-07T16:13:21+08:00 ] ::1 /Examination//home/Posts/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000039s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000644s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001013s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001232s ]
+NOTIC: [2] require(../Common/functions.php): failed to open stream: No such file or directory F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 4 行.
+
+[ 2015-05-07T16:13:22+08:00 ] ::1 /Examination//home/Posts/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000393s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000546s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000661s ]
+NOTIC: [2] require(../Common/functions.php): failed to open stream: No such file or directory F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 4 行.
+
+[ 2015-05-07T16:58:41+08:00 ] ::1 /Examination//home/Posts/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000855s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001304s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001648s ]
+
+[ 2015-05-07T16:58:58+08:00 ] ::1 /Examination//home/Posts/newpost/author/fuck/title/shit/content/sanasjknj/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000380s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000782s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000922s ]
+
+[ 2015-05-07T16:59:07+08:00 ] ::1 /Examination//home/Posts/newpost/author/fuck/title/shit/content/sanasjknj/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000039s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000635s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000926s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001166s ]
+ERR: 无法加载控制器:Posts
+
+[ 2015-05-07T16:59:20+08:00 ] ::1 /Examination//home/Posts/newpost/author/fuck/title/shit/content/sanasjknj/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000061s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001034s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001156s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001406s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\PostsController::isInfoNull(), called in F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php on line 31 and defined F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 11 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 12 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 14 行.
+
+[ 2015-05-07T16:59:30+08:00 ] ::1 /Examination//home/Posts/newpost/author/fuck/title/shit/content/sanasjknj/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000046s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000686s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000696s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000837s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\PostsController::isInfoNull(), called in F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php on line 31 and defined F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 11 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 12 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 14 行.
+
+[ 2015-05-07T17:00:02+08:00 ] ::1 /Examination//home/Posts/newpost/author/fuck/title/shit/content/sanasjknj/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000055s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000906s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001287s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001667s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\PostsController::isInfoNull(), called in F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php on line 31 and defined F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 11 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 12 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 14 行.
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.1101s ]
+NOTIC: [8] Undefined variable: wOptionData F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 43 行.
+
+[ 2015-05-07T17:00:52+08:00 ] ::1 /Examination//home/Posts/newpost/author/fuck/title/shit/content/sanasjknj/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000514s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000744s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000843s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\PostsController::isInfoNull(), called in F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php on line 31 and defined F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 11 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 12 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 14 行.
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0368s ]
+NOTIC: [8] Undefined variable: wOptionData F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 43 行.
+
+[ 2015-05-07T17:01:21+08:00 ] ::1 /Examination//home/Posts/newpost/author/fuck/title/shit/content/sanasjknj/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000453s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000757s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000902s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\PostsController::isInfoNull(), called in F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php on line 31 and defined F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 11 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 12 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 14 行.
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0719s ]
+NOTIC: [8] Undefined variable: wOptionData F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 43 行.
+
+[ 2015-05-07T17:01:52+08:00 ] ::1 /Examination//home/Posts/newpost/author/fuck/title/shit/content/sanasjknj/posttype/article
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000559s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000598s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000721s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\PostsController::isInfoNull(), called in F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php on line 31 and defined F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 11 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 12 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 14 行.
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0666s ]
+NOTIC: [8] Undefined variable: wOptionData F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 43 行.
+
+[ 2015-05-07T17:02:44+08:00 ] ::1 /Examination//home/Posts/newpost/author/fuck/title/shit/content/sanasjknj/posttype/article
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000099s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001124s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001968s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002388s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\PostsController::isInfoNull(), called in F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php on line 31 and defined F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 11 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 12 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 14 行.
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0835s ]
+
+[ 2015-05-07T17:03:11+08:00 ] ::1 /Examination//home/Posts/newpost/author/fuck/title/shit/content/sanasjknj
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000498s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000754s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000915s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\PostsController::isInfoNull(), called in F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php on line 31 and defined F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 11 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 12 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 14 行.
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0071s ]
+
+[ 2015-05-07T17:03:32+08:00 ] ::1 /Examination//home/Posts/newpost/author/fuck/title/shit/content/sanasjknj
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000059s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000958s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000908s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001124s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\PostsController::isInfoNull(), called in F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php on line 31 and defined F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 11 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 12 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 14 行.
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0071s ]
+
+[ 2015-05-07T17:04:11+08:00 ] ::1 /Examination//home/Posts/newpost/author/fuck/title/shit/content/sanasjknj
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000068s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001139s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003212s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003616s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\PostsController::isInfoNull(), called in F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php on line 31 and defined F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 11 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 12 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 14 行.
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0075s ]
+NOTIC: [8] Array to string conversion F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 44 行.
+
+[ 2015-05-07T17:04:26+08:00 ] ::1 /Examination//home/Posts/newpost/author/fuck/title/shit/content/sanasjknj
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000064s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000941s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000899s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001097s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\PostsController::isInfoNull(), called in F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php on line 31 and defined F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 11 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 12 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 14 行.
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0073s ]
+
+[ 2015-05-07T17:04:54+08:00 ] ::1 /Examination//home/Posts/newpost/author/fuck/title/shit/content/sanasjknj
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000714s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001341s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001698s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\PostsController::isInfoNull(), called in F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php on line 31 and defined F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 11 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 12 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 14 行.
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0075s ]
+
+[ 2015-05-07T17:05:25+08:00 ] ::1 /Examination//home/Posts/newpost/author/fuck/title/shit/content/sanasjknj
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000389s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000483s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000596s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\PostsController::isInfoNull(), called in F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php on line 31 and defined F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 11 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 12 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 14 行.
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0150s ]
+
+[ 2015-05-07T17:06:09+08:00 ] ::1 /Examination//home/Posts/newpost/author/fuck/title/shit/content/sanasjknj
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000066s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001083s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002061s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002409s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\PostsController::isInfoNull(), called in F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php on line 31 and defined F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 11 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 12 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 14 行.
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0292s ]
+
+[ 2015-05-07T17:09:25+08:00 ] ::1 /Examination//home/Posts/newpost/author/fuck/title/shit/content/sanasjknj
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000607s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003523s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003785s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\PostsController::isInfoNull(), called in F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php on line 31 and defined F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 11 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 12 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 14 行.
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0061s ]
+NOTIC: [8] Undefined variable: wOption F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 46 行.
+
+[ 2015-05-07T17:09:34+08:00 ] ::1 /Examination//home/Posts/newpost/author/fuck/title/shit/content/sanasjknj
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000034s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001189s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000628s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000775s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\PostsController::isInfoNull(), called in F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php on line 31 and defined F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 11 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 12 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 14 行.
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0090s ]
+SQL: INSERT INTO `exa_posts` (`post_author`,`post_title`,`post_content`,`post_type`,`post_modified`,`post_guid`) VALUES ('fuck','shit','sanasjknj','article','15-05-07 05:09:34','BD3B9847-5ABF-8BBC-86C1-F1BAB6F82C07') [ RunTime:0.0674s ]
+
+[ 2015-05-07T17:15:05+08:00 ] ::1 /Examination//home/Posts/getPostByGuid/BD3B9847-5ABF-8BBC-86C1-F1BAB6F82C07
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000480s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000581s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000717s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\PostsController::isInfoNull(), called in F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php on line 66 and defined F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 11 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 12 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 14 行.
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0308s ]
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+
+[ 2015-05-07T17:15:25+08:00 ] ::1 /Examination//home/Posts/getPostByGuid/BD3B9847-5ABF-8BBC-86C1-F1BAB6F82C07
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000039s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000574s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000896s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001050s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\PostsController::isInfoNull(), called in F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php on line 66 and defined F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 11 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 12 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 14 行.
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0560s ]
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+
+[ 2015-05-07T17:15:26+08:00 ] ::1 /Examination//home/Posts/getPostByGuid/BD3B9847-5ABF-8BBC-86C1-F1BAB6F82C07
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000689s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000521s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000633s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\PostsController::isInfoNull(), called in F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php on line 66 and defined F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 11 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 12 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 14 行.
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0316s ]
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+
+[ 2015-05-07T17:16:47+08:00 ] ::1 /Examination//home/Posts/getPostByGuid/BD3B9847-5ABF-8BBC-86C1-F1BAB6F82C07
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000066s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001104s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000874s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001091s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\PostsController::isInfoNull(), called in F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php on line 66 and defined F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 11 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 12 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 14 行.
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0067s ]
+SQL: SELECT * FROM `exa_posts` WHERE ( `post_guid` = '' ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-07T17:23:49+08:00 ] ::1 /Examination//home/Posts/getPostByGuid/BD3B9847-5ABF-8BBC-86C1-F1BAB6F82C07
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000059s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000816s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000841s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001034s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\PostsController::isInfoNull(), called in F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php on line 66 and defined F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 11 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 12 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 14 行.
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0186s ]
+SQL: SELECT * FROM `exa_posts` WHERE ( `post_guid` = '' ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-07T17:24:20+08:00 ] ::1 /Examination//home/Posts/getPostByGuid/BD3B9847-5ABF-8BBC-86C1-F1BAB6F82C07
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000050s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001795s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000735s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000892s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\PostsController::isInfoNull(), called in F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php on line 66 and defined F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 11 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 12 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 14 行.
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0650s ]
+SQL: SELECT * FROM `exa_posts` WHERE `post_guid`='' [ RunTime:0.0003s ]
+
+[ 2015-05-07T17:24:22+08:00 ] ::1 /Examination//home/Posts/getPostByGuid/BD3B9847-5ABF-8BBC-86C1-F1BAB6F82C07
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000381s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001360s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001640s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\PostsController::isInfoNull(), called in F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php on line 66 and defined F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 11 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 12 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 14 行.
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0067s ]
+SQL: SELECT * FROM `exa_posts` WHERE `post_guid`='' [ RunTime:0.0003s ]
+
+[ 2015-05-07T17:24:44+08:00 ] ::1 /Examination//home/Posts/getPostByGuid/BD3B9847-5ABF-8BBC-86C1-F1BAB6F82C07
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000038s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000588s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000978s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001140s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\PostsController::isInfoNull(), called in F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php on line 66 and defined F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 11 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 12 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 14 行.
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0210s ]
+SQL: SELECT * FROM `exa_posts` WHERE ( `post_guid` = '' ) LIMIT 1   [ RunTime:0.0004s ]
+
+[ 2015-05-07T17:25:43+08:00 ] ::1 /Examination//home/Posts/getPostByGuid/guid/BD3B9847-5ABF-8BBC-86C1-F1BAB6F82C07
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000040s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000639s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001147s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001343s ]
+NOTIC: [2] Missing argument 1 for Home\Controller\PostsController::isInfoNull(), called in F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php on line 66 and defined F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 11 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 12 行.
+NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 14 行.
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0250s ]
+SQL: SELECT * FROM `exa_posts` WHERE ( `post_guid` = 'BD3B9847-5ABF-8BBC-86C1-F1BAB6F82C07' ) LIMIT 1   [ RunTime:0.0003s ]
+

@@ -42,7 +42,7 @@ class IndexController extends Controller {
 			"exa_posts"=>"CREATE TABLE IF NOT EXISTS `exa_posts`(
 						`id` int not null auto_increment,
 						`post_author` VARCHAR(255) not null,
-						`guid` varchar(255) not null,
+						`post_guid` varchar(255) not null,
 						`post_title` varchar(255) not null,
 						`post_content` text not null,
 						`post_modified`	TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

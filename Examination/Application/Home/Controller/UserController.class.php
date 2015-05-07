@@ -25,8 +25,11 @@ class UserController extends Controller {
 	}
 
 	public function register($email='',$password=''){
+		$ajaxData=array();
 		if($this->isInfoNull(array($email,$password,$verifycode))){
-			return 101;//one or muliti args are null
+			$ajaxData['status']='0';
+			$ajaxData['msg']='数据不能为空';
+			$this->ajaxReturn($ajaxData);
 		}else{
 			$registerUser=D('User');
 			$registerData['email']=$email;
@@ -34,33 +37,71 @@ class UserController extends Controller {
 			$registerData['guid']=$this->guid();
 			$data=$registerUser->create($registerData);
 			if(!$data){
-				$this->ajaxReturn($registerUser->getError());
+				$ajaxData['status']='0';
+				$ajaxData['msg']='注册失败';
+				$ajaxData['data']=$registerUser->getError();
+				$this->ajaxReturn($ajaxData);
 			}else{
 				$result=$registerUser->add();
 				if($result){
-					$insertId=$result;
-					$this->ajaxReturn($insertId);
+					$ajaxData['status']='1';
+					$ajaxData['msg']='注册成功';
+					$ajaxData['data']=$result;
+					$this->ajaxReturn($ajaxData);
 				}else{
-					$this->ajaxReturn($registerUser->getError());
+					$ajaxData['status']='0';
+					$ajaxData['msg']='注册失败';
+					$ajaxData['data']=$registerUser->getError();
+					$this->ajaxReturn($ajaxData);
 				}
 			}
 		}
 	}
 
 	public function login($email='',$password=''){
+		$ajaxData=array();
 		if($this->isInfoNull(array($email,$password))){
-			return 201;
+			$ajaxData['status']='0';
+			$ajaxData['msg']='数据不能为空';
+			$this->ajaxReturn($ajaxData);
 		}else{
 			$loginUser=D('User');
 			$password=sha1($password);
 			$data=$loginUser->where("`email`='$email' AND `password`='$password'")->find();
-			$this->ajaxReturn($data);
+			if($dataata){
+				$ajaxData['status']='1';
+				$ajaxData['msg']='验证成功';
+				$ajaxData['data']=$data;
+				$this->ajaxReturn($ajaxData);
+			}else{
+				$ajaxData['status']='0';
+				$ajaxData['msg']='验证失败';
+				$this->ajaxReturn($ajaxData);
+			}
 		}
 	}
 
-	public function getuserbyguid($id){
-		print_r(M('User')->where("guid='$id'")->getField('email'));
+	public function getUserByGuid($id){
+		$ajaxData=array();
+		if(!$this->isInfoNull()){
+			$ajaxData['status']='0';
+			$ajaxData['msg']='数据不能为空';
+			$this->ajaxReturn($ajaxData);
+		}else{
+			$postData=M('User')->where("guid='$id'")->find();
+			if($postData){
+				$ajaxData['status']='1';
+				$ajaxData['msg']='读取成功';
+				$ajaxData['data']=$postData;
+				$this->ajaxReturn($ajaxData);
+			}else{
+				$ajaxData['status']='2';//用户不存在
+				$ajaxData['msg']='用户不存在';
+				$this->ajaxReturn($ajaxData);
+			}
+		}
 	}
+
 }
 
 ?>

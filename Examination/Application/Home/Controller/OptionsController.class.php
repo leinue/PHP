@@ -3,6 +3,10 @@ namespace Home\Controller;
 use Think\Controller;
 class OptionsController extends Controller {
 
+	public function index(){
+		$this->redirect('/Home/',5,'页面跳转中....');
+	}
+
 	protected function isInfoNull($info){
 		if(is_array($info)){
 			foreach($info as $key => $value){if($value==null){return true;}}

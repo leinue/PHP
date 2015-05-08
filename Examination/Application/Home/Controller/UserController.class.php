@@ -200,15 +200,9 @@ class UserController extends Controller {
 		}else{
 			$postData=M('User')->where("`private_guid`='$pguid'")->getField('privilege');
 			if($postData!==null){
-				$ajaxData['status']='1';
-				$ajaxData['msg']='读取成功';
-				$ajaxData['data']=$postData;
-				$this->ajaxReturn($ajaxData);
+				return $postData;
 			}else{
-				$ajaxData['status']='2';//用户不存在
-				$ajaxData['msg']='用户不存在';
-				$ajaxData['data']='';
-				$this->ajaxReturn($ajaxData);
+				return null;
 			}
 		}
 	}
@@ -236,8 +230,8 @@ class UserController extends Controller {
 		}
 	}
 
-	public function removeUser($guid='',$pguid=''){
-		if($this->isInfoNull(array($guid,$pguid))){
+	public function removeUser($guid='',$oguid=''){
+		if($this->isInfoNull(array($guid,$oguid))){
 			$ajaxData['status']='0';
 			$ajaxData['msg']='数据不能为空';
 			$ajaxData['data']='';
@@ -265,8 +259,8 @@ class UserController extends Controller {
 		}
 	}
 
-	public function lockUser($guid='',$operatorId=''){
-		if(!$this->isInfoNull($guid)){
+	public function lockUser($guid='',$oid=''){
+		if(!$this->isInfoNull(array($guid,$oid))){
 			if(!$this->getPrivilegeByGuid($oid)==='0'){
 				$ajaxData['status']='0';
 				$ajaxData['msg']='没有权限';
@@ -296,8 +290,8 @@ class UserController extends Controller {
 		}
 	}
 
-	public function deblockUser($guid='',$operatorId=''){
-		if(!$this->isInfoNull($guid)){
+	public function deblockUser($guid='',$oid=''){
+		if(!$this->isInfoNull(array($guid,$oid))){
 			if(!$this->getPrivilegeByGuid($oid)==='0'){
 				$ajaxData['status']='0';
 				$ajaxData['msg']='没有权限';

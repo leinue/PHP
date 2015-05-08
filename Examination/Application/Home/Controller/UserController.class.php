@@ -236,20 +236,6 @@ class UserController extends Controller {
 		}
 	}
 
-	public function isUserCanDo($privilege=''){
-		if($this->isInfoNull(array($operateName,$operatorId))){
-			$ajaxData['status']='0';
-			$ajaxData['msg']='数据不能为空';
-			$ajaxData['data']='';
-			$this->ajaxReturn($ajaxData);
-		}else{
-			$privilegeList={
-				"0"=>"all",
-				"1"=>"posts"
-			};
-		}
-	}
-
 	public function removeUser($guid='',$pguid=''){
 		if($this->isInfoNull(array($guid,$pguid))){
 			$ajaxData['status']='0';
@@ -281,19 +267,26 @@ class UserController extends Controller {
 
 	public function lockUser($guid='',$operatorId=''){
 		if(!$this->isInfoNull($guid)){
-			$lUser = M('User');
-			$dataAvailable['available']='0';
-			$result=$lUser->where("`guid`='$guid'")->data($dataAvailable)->save();
-			if($result!==null){
-				$ajaxData['status']='1';
-				$ajaxData['msg']='封禁成功';
+			if(!$this->getPrivilegeByGuid($oid)==='0'){
+				$ajaxData['status']='0';
+				$ajaxData['msg']='没有权限';
 				$ajaxData['data']='';
 				$this->ajaxReturn($ajaxData);
 			}else{
-				$ajaxData['status']='0';
-				$ajaxData['msg']='封禁失败';
-				$ajaxData['data']='';
-				$this->ajaxReturn($ajaxData);
+				$lUser = M('User');
+				$dataAvailable['available']='0';
+				$result=$lUser->where("`guid`='$guid'")->data($dataAvailable)->save();
+				if($result!==null){
+					$ajaxData['status']='1';
+					$ajaxData['msg']='封禁成功';
+					$ajaxData['data']='';
+					$this->ajaxReturn($ajaxData);
+				}else{
+					$ajaxData['status']='0';
+					$ajaxData['msg']='封禁失败';
+					$ajaxData['data']='';
+					$this->ajaxReturn($ajaxData);
+				}
 			}
 		}else{
 			$ajaxData['status']='0';
@@ -305,19 +298,26 @@ class UserController extends Controller {
 
 	public function deblockUser($guid='',$operatorId=''){
 		if(!$this->isInfoNull($guid)){
-			$lUser = M('User');
-			$dataAvailable['available']='1';
-			$result=$lUser->where("`guid`='$guid'")->data($dataAvailable)->save();
-			if($result!==null){
-				$ajaxData['status']='1';
-				$ajaxData['msg']='封禁成功';
+			if(!$this->getPrivilegeByGuid($oid)==='0'){
+				$ajaxData['status']='0';
+				$ajaxData['msg']='没有权限';
 				$ajaxData['data']='';
 				$this->ajaxReturn($ajaxData);
 			}else{
-				$ajaxData['status']='0';
-				$ajaxData['msg']='封禁失败';
-				$ajaxData['data']='';
-				$this->ajaxReturn($ajaxData);
+				$lUser = M('User');
+				$dataAvailable['available']='1';
+				$result=$lUser->where("`guid`='$guid'")->data($dataAvailable)->save();
+				if($result!==null){
+					$ajaxData['status']='1';
+					$ajaxData['msg']='封禁成功';
+					$ajaxData['data']='';
+					$this->ajaxReturn($ajaxData);
+				}else{
+					$ajaxData['status']='0';
+					$ajaxData['msg']='封禁失败';
+					$ajaxData['data']='';
+					$this->ajaxReturn($ajaxData);
+				}
 			}
 		}else{
 			$ajaxData['status']='0';

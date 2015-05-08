@@ -11,10 +11,12 @@ class IndexController extends Controller {
     		"exa_user"=>"CREATE TABLE IF NOT EXISTS `exa_user`( 
 						`id` int not null auto_increment,
 						`guid` VARCHAR(255) not null,
+						`private_guid` varchar(255) not null,
 						`email` VARCHAR(255) not null,
 						`nickname` VARCHAR(255) not null,
 			    		`password` VARCHAR(255) not null,
 			    		`privilege` int(1) not null,
+			    		`available` int(1) not null,
 			     		`last_Login_Time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 			     		`created_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 						primary key(`id`))default charset=utf8;",
@@ -47,6 +49,7 @@ class IndexController extends Controller {
 						`post_content` text not null,
 						`post_modified`	TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 						`post_type` varchar(20) not null,
+						`post_view` int not null,
     					primary key(`id`))default charset=utf8;",
 			"exa_options"=>"CREATE TABLE IF NOT EXISTS `exa_options`(
 						`id` int not null auto_increment,

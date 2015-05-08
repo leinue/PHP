@@ -592,3 +592,132 @@ NOTIC: [8] Undefined variable: info F:\wamp\www\Examination\Application\Home\Con
 SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0250s ]
 SQL: SELECT * FROM `exa_posts` WHERE ( `post_guid` = 'BD3B9847-5ABF-8BBC-86C1-F1BAB6F82C07' ) LIMIT 1   [ RunTime:0.0003s ]
 
+[ 2015-05-07T21:49:43+08:00 ] ::1 /Examination//home/Posts/updatePost/guid/BD3B9847-5ABF-8BBC-86C1-F1BAB6F82C07/title=fasnjsajknaskjsa/content/kjdsnjnsak1456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000733s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.007923s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.008067s ]
+
+[ 2015-05-07T21:50:03+08:00 ] ::1 /Examination//home/Posts/updatePost/guid/BD3B9847-5ABF-8BBC-86C1-F1BAB6F82C07/title/fasnjsajknaskjsa/content/kjdsnjnsak1456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000046s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000699s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000565s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000696s ]
+
+[ 2015-05-07T21:50:13+08:00 ] ::1 /Examination/home/Posts/updatePost/guid/BD3B9847-5ABF-8BBC-86C1-F1BAB6F82C07/title/fasnjsajknaskjsa/content/kjdsnjnsak1456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000694s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000905s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001101s ]
+
+[ 2015-05-07T21:54:59+08:00 ] ::1 /Examination/home/Posts/updatePost/guid/BD3B9847-5ABF-8BBC-86C1-F1BAB6F82C07/title/fasnjsajknaskjsa/content/kjdsnjnsak1456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000051s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000844s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001764s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002148s ]
+
+[ 2015-05-07T21:55:16+08:00 ] ::1 /Examination/home/Posts/updatePost/guid/BD3B9847-5ABF-8BBC-86C1-F1BAB6F82C07/title/fasnjsajknaskjsa/content/kjdsnjnsak1456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000426s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000539s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000663s ]
+
+[ 2015-05-07T21:55:50+08:00 ] ::1 /Examination/home/Posts/updatePost/guid/BD3B9847-5ABF-8BBC-86C1-F1BAB6F82C07/title/fasnjsajknaskjsa/content/kjdsnjnsak1456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000119s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001782s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000903s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001123s ]
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0536s ]
+NOTIC: [8] Undefined variable: User F:\wamp\www\Examination\Application\Home\Controller\PostsController.class.php 第 99 行.
+
+[ 2015-05-07T21:56:22+08:00 ] ::1 /Examination/home/Posts/updatePost/guid/BD3B9847-5ABF-8BBC-86C1-F1BAB6F82C07/title/fasnjsajknaskjsa/content/kjdsnjnsak1456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000418s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000650s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000817s ]
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0080s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004363s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004636s ]
+
+[ 2015-05-07T21:56:47+08:00 ] ::1 /Examination/home/Posts/updatePost/guid/BD3B9847-5ABF-8BBC-86C1-F1BAB6F82C07/title/fasnjsajknaskjsa/content/kjdsnjnsak1456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000696s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000818s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001049s ]
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0220s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000721s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000863s ]
+
+[ 2015-05-07T21:57:12+08:00 ] ::1 /Examination/home/Posts/updatePost/guid/BD3B9847-5ABF-8BBC-86C1-F1BAB6F82C07/title/fasnjsajknaskjsa/content/kjdsnjnsak1456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000780s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002825s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003122s ]
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0516s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000646s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000777s ]
+
+[ 2015-05-07T21:58:43+08:00 ] ::1 /Examination/home/Posts/updatePost/guid/BD3B9847-5ABF-8BBC-86C1-F1BAB6F82C07/title/fasnjsajknaskjsa/content/kjdsnjnsak1456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000037s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000637s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000873s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001104s ]
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0072s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'guid' in 'where clause'
+
+[ 2015-05-07T21:58:56+08:00 ] ::1 /Examination/home/Posts/updatePost/guid/BD3B9847-5ABF-8BBC-86C1-F1BAB6F82C07/title/fasnjsajknaskjsa/content/kjdsnjnsak1456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000055s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000890s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003557s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003897s ]
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0096s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'BD3B9847' in 'where clause'
+
+[ 2015-05-07T22:00:16+08:00 ] ::1 /Examination/home/Posts/updatePost/guid/BD3B9847-5ABF-8BBC-86C1-F1BAB6F82C07/title/fasnjsajknaskjsa/content/kjdsnjnsak1456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000717s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000752s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000908s ]
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0291s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'BD3B9847' in 'where clause'
+
+[ 2015-05-07T22:00:40+08:00 ] ::1 /Examination/home/Posts/updatePost/guid/BD3B9847-5ABF-8BBC-86C1-F1BAB6F82C07/title/fasnjsajknaskjsa/content/kjdsnjnsak1456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000479s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000590s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000734s ]
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0075s ]
+SQL: UPDATE `exa_posts` SET `post_title`='fasnjsajknaskjsa',`post_content`='kjdsnjnsak1456' WHERE ( `post_guid`='BD3B9847-5ABF-8BBC-86C1-F1BAB6F82C07' ) [ RunTime:0.0776s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000658s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000776s ]
+

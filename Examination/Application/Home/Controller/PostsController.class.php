@@ -28,7 +28,7 @@ class PostsController extends Controller {
 	//返回文章guid
 	public function newpost($author='',$title='',$content='',$posttype='article'){
 		$ajaxData=array();
-		if(!$this->isInfoNull()){
+		if($this->isInfoNull(array($author,$title,$content,$posttype))){
 			$ajaxData['status']='0';
 			$ajaxData['msg']='数据不能为空';
 			$this->ajaxReturn($ajaxData);
@@ -64,7 +64,7 @@ class PostsController extends Controller {
 	//通过id获取文章
 	public function getPostByGuid($guid=''){
 		$ajaxData=array();
-		if(!$this->isInfoNull()){
+		if($this->isInfoNull($guid)){
 			$ajaxData['status']='0';
 			$ajaxData['msg']='数据不能为空';
 			$this->ajaxReturn($ajaxData);
@@ -87,16 +87,46 @@ class PostsController extends Controller {
 
 	public function updatePost($guid='',$title='',$content=''){
 		$ajaxData=array();
-		if(!$this->isInfoNull($guid,$title,$content)){
+		if($this->isInfoNull(array($guid,$title,$content))){
 			$ajaxData['status']='0';
 			$ajaxData['msg']='数据不能为空';
 			$this->ajaxReturn($ajaxData);
 		}else{
 			$uPost=M('Posts');
-			$data['title'] = $title;
-			$data['content'] = $content;
-			$User->where('`guid`='+$guid)->data($data)->save();
+			$data['post_title'] = $title;
+			$data['post_content'] = $content;
+			$result=$uPost->where("`post_guid`='$guid'")->data($data)->save();
+			if($result){
+				$ajaxData['status']='1';
+				$ajaxData['msg']='更新成功';
+				$this->ajaxReturn($ajaxData);
+			}else{
+				$ajaxData['status']='0';
+				$ajaxData['msg']='内容未变或更新失败';
+				$this->ajaxReturn($ajaxData);
+			}
 		}
 	}
 
+	public function deletePost($guid=''){
+		$ajaxData=array();
+		if($this->isInfoNull($guid)){
+			$ajaxData['status']='0';
+			$ajaxData['msg']='数据不能为空';
+			$this->ajaxReturn($ajaxData);
+		}else{
+			$dPost=M('Posts');
+			$data['post_guid'] = $guid;
+			$result=$dPost->where("`post_guid`='$guid'")->delete();
+			if($result){
+				$ajaxData['status']='1';
+				$ajaxData['msg']='删除成功';
+				$this->ajaxReturn($ajaxData);
+			}else{
+				$ajaxData['status']='0';
+				$ajaxData['msg']='删除失败';
+				$this->ajaxReturn($ajaxData);
+			}
+		}
+	}
 }

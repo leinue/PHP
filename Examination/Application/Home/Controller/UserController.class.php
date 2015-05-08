@@ -7,6 +7,12 @@ class UserController extends Controller {
 		
 	}
 
+	/*
+	* 权限
+	* 0 无限制
+	* 1 普通用户
+	*/
+
 	protected function isInfoNull($info){
 		if(is_array($info)){
 			foreach($info as $key => $value){if($value==null){return true;}}
@@ -29,6 +35,7 @@ class UserController extends Controller {
 		if($this->isInfoNull(array($email,$password))){
 			$ajaxData['status']='0';
 			$ajaxData['msg']='数据不能为空';
+			$ajaxData['data']='';
 			$this->ajaxReturn($ajaxData);
 		}else{
 			$registerUser=D('User');
@@ -64,6 +71,7 @@ class UserController extends Controller {
 		if($this->isInfoNull(array($email,$password))){
 			$ajaxData['status']='0';
 			$ajaxData['msg']='数据不能为空';
+			$ajaxData['data']='';
 			$this->ajaxReturn($ajaxData);
 		}else{
 			$loginUser=D('User');
@@ -79,6 +87,7 @@ class UserController extends Controller {
 			}else{
 				$ajaxData['status']='0';
 				$ajaxData['msg']='验证失败';
+				$ajaxData['data']='';
 				$this->ajaxReturn($ajaxData);
 			}
 		}
@@ -88,6 +97,7 @@ class UserController extends Controller {
 		if($this->isInfoNull($limit)){
 			$ajaxData['status']='0';
 			$ajaxData['msg']='数据不能为空';
+			$ajaxData['data']='';
 			$this->ajaxReturn($ajaxData);
 		}else{
 			$allUser=D('User');
@@ -112,6 +122,7 @@ class UserController extends Controller {
 		if($this->isInfoNull(array($page,$limit))){
 			$ajaxData['status']='0';
 			$ajaxData['msg']='数据不能为空';
+			$ajaxData['data']='';
 			$this->ajaxReturn($ajaxData);
 		}else{
 			$allUser=D('User');
@@ -136,6 +147,7 @@ class UserController extends Controller {
 		if($this->isInfoNull(array($page,$limit))){
 			$ajaxData['status']='0';
 			$ajaxData['msg']='数据不能为空';
+			$ajaxData['data']='';
 			$this->ajaxReturn($ajaxData);
 		}else{
 			$allUser=D('User');
@@ -161,6 +173,7 @@ class UserController extends Controller {
 		if($this->isInfoNull($id)){
 			$ajaxData['status']='0';
 			$ajaxData['msg']='数据不能为空';
+			$ajaxData['data']='';
 			$this->ajaxReturn($ajaxData);
 		}else{
 			$postData=M('User')->where("guid='$id'")->find();
@@ -172,27 +185,97 @@ class UserController extends Controller {
 			}else{
 				$ajaxData['status']='2';//用户不存在
 				$ajaxData['msg']='用户不存在';
+				$ajaxData['data']='';
 				$this->ajaxReturn($ajaxData);
 			}
 		}
 	}
 
-	protected function getPrivilegeByGuid($pguid=''){
-
-	}
-
-	protected function isUserCanDo($operateName=''){
-
-	}
-
-	public function removeUser($guid='',$operatorId=''){
-
-		if($this->isInfoNull($id)){
+	public function getPrivilegeByGuid($pguid=''){
+		if($this->isInfoNull($pguid)){
 			$ajaxData['status']='0';
 			$ajaxData['msg']='数据不能为空';
+			$ajaxData['data']='';
 			$this->ajaxReturn($ajaxData);
 		}else{
+			$postData=M('User')->where("`private_guid`='$pguid'")->getField('privilege');
+			if($postData!==null){
+				$ajaxData['status']='1';
+				$ajaxData['msg']='读取成功';
+				$ajaxData['data']=$postData;
+				$this->ajaxReturn($ajaxData);
+			}else{
+				$ajaxData['status']='2';//用户不存在
+				$ajaxData['msg']='用户不存在';
+				$ajaxData['data']='';
+				$this->ajaxReturn($ajaxData);
+			}
+		}
+	}
 
+	public function changeprivilegeByGuid($pguid='',$p=1){
+		if($this->isInfoNull($pguid)){
+			$ajaxData['status']='0';
+			$ajaxData['msg']='数据不能为空';
+			$ajaxData['data']='';
+			$this->ajaxReturn($ajaxData);
+		}else{
+			$dataPrivilege['privilege']=$p;
+			$postData=M('User')->where("`private_guid`='$pguid'")->data($dataPrivilege)->save();
+			if($postData!==null){
+				$ajaxData['status']='1';
+				$ajaxData['msg']='读取成功';
+				$ajaxData['data']=$postData;
+				$this->ajaxReturn($ajaxData);
+			}else{
+				$ajaxData['status']='2';//用户不存在
+				$ajaxData['msg']='用户不存在';
+				$ajaxData['data']='';
+				$this->ajaxReturn($ajaxData);
+			}
+		}
+	}
+
+	public function isUserCanDo($privilege=''){
+		if($this->isInfoNull(array($operateName,$operatorId))){
+			$ajaxData['status']='0';
+			$ajaxData['msg']='数据不能为空';
+			$ajaxData['data']='';
+			$this->ajaxReturn($ajaxData);
+		}else{
+			$privilegeList={
+				"0"=>"all",
+				"1"=>"posts"
+			};
+		}
+	}
+
+	public function removeUser($guid='',$pguid=''){
+		if($this->isInfoNull(array($guid,$pguid))){
+			$ajaxData['status']='0';
+			$ajaxData['msg']='数据不能为空';
+			$ajaxData['data']='';
+			$this->ajaxReturn($ajaxData);
+		}else{
+			if($this->getPrivilegeByGuid($oid)==='0'){
+				$dResult=M('User')->where("`guid`='$guid'")->delete();
+				if($dResult){
+					$ajaxData['status']='1';
+					$ajaxData['msg']='删除成功';
+					$ajaxData['data']='';
+					$this->ajaxReturn($ajaxData);
+				}else{
+					$ajaxData['status']='0';
+					$ajaxData['msg']='删除失败';
+					$ajaxData['data']='';
+					$this->ajaxReturn($ajaxData);
+				}
+			}else{
+				$ajaxData['status']='0';
+				$ajaxData['msg']='没有权限';
+				$ajaxData['data']='';
+				$this->ajaxReturn($ajaxData);
+			}
 		}
 	}
 
@@ -204,15 +287,18 @@ class UserController extends Controller {
 			if($result!==null){
 				$ajaxData['status']='1';
 				$ajaxData['msg']='封禁成功';
+				$ajaxData['data']='';
 				$this->ajaxReturn($ajaxData);
 			}else{
 				$ajaxData['status']='0';
 				$ajaxData['msg']='封禁失败';
+				$ajaxData['data']='';
 				$this->ajaxReturn($ajaxData);
 			}
 		}else{
 			$ajaxData['status']='0';
 			$ajaxData['msg']='数据不能为空';
+			$ajaxData['data']='';
 			$this->ajaxReturn($ajaxData);
 		}
 	}
@@ -225,15 +311,18 @@ class UserController extends Controller {
 			if($result!==null){
 				$ajaxData['status']='1';
 				$ajaxData['msg']='封禁成功';
+				$ajaxData['data']='';
 				$this->ajaxReturn($ajaxData);
 			}else{
 				$ajaxData['status']='0';
 				$ajaxData['msg']='封禁失败';
+				$ajaxData['data']='';
 				$this->ajaxReturn($ajaxData);
 			}
 		}else{
 			$ajaxData['status']='0';
 			$ajaxData['msg']='数据不能为空';
+			$ajaxData['data']='';
 			$this->ajaxReturn($ajaxData);
 		}
 	}

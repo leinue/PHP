@@ -1222,3 +1222,201 @@ INFO: [ app_begin ] --END-- [ RunTime:0.001324s ]
 SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0075s ]
 SQL: SELECT * FROM `exa_user` WHERE ( `available`=1 AND `id` BETWEEN 1 AND 11 ) ORDER BY created_time LIMIT 10   [ RunTime:0.0005s ]
 
+[ 2015-05-08T13:18:08+08:00 ] ::1 /Examination/Home/user/getPrivilegeByGuid/21191E04-BAC3-A746-7FF1-4774CFA49C76
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000038s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000616s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001236s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001464s ]
+ERR: 非法操作:getPrivilegeByGuid
+
+[ 2015-05-08T13:18:13+08:00 ] ::1 /Examination/Home/user/getPrivilegeByGuid/pguid/21191E04-BAC3-A746-7FF1-4774CFA49C76
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000471s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000701s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000865s ]
+ERR: 非法操作:getPrivilegeByGuid
+
+[ 2015-05-08T13:18:25+08:00 ] ::1 /Examination/Home/user/getPrivilegeByGuid/pguid/21191E04-BAC3-A746-7FF1-4774CFA49C76
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000457s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001785s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002151s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0075s ]
+SQL: SELECT `privilege` FROM `exa_user` WHERE ( private_guid='21191E04-BAC3-A746-7FF1-4774CFA49C76' ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-08T13:19:40+08:00 ] ::1 /Examination/Home/user/getPrivilegeByGuid/pguid/21191E04-BAC3-A746-7FF1-4774CFA49C76
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000061s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001111s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001474s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001876s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0083s ]
+SQL: SELECT `privilege` FROM `exa_user` WHERE ( private_guid='21191E04-BAC3-A746-7FF1-4774CFA49C76' ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-08T13:19:54+08:00 ] ::1 /Examination/Home/user/getPrivilegeByGuid/pguid/21191E04-BAC3-A746-7FF1-4774CFA49C76
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000699s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000707s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000883s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0076s ]
+SQL: SELECT `privilege` FROM `exa_user` WHERE ( `private_guid`='21191E04-BAC3-A746-7FF1-4774CFA49C76' ) LIMIT 1   [ RunTime:0.0002s ]
+
+[ 2015-05-08T13:19:57+08:00 ] ::1 /Examination/Home/user/getPrivilegeByGuid/pguid/21191E04-BAC3-A746-7FF1-4774CFA49C76
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000033s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000529s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000637s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000787s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0080s ]
+SQL: SELECT `privilege` FROM `exa_user` WHERE ( `private_guid`='21191E04-BAC3-A746-7FF1-4774CFA49C76' ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-08T13:19:58+08:00 ] ::1 /Examination/Home/user/getPrivilegeByGuid/pguid/21191E04-BAC3-A746-7FF1-4774CFA49C76
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001215s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001165s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001514s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0064s ]
+SQL: SELECT `privilege` FROM `exa_user` WHERE ( `private_guid`='21191E04-BAC3-A746-7FF1-4774CFA49C76' ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-08T13:19:58+08:00 ] ::1 /Examination/Home/user/getPrivilegeByGuid/pguid/21191E04-BAC3-A746-7FF1-4774CFA49C76
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000053s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001265s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001631s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002113s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0036s ]
+SQL: SELECT `privilege` FROM `exa_user` WHERE ( `private_guid`='21191E04-BAC3-A746-7FF1-4774CFA49C76' ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-08T13:19:58+08:00 ] ::1 /Examination/Home/user/getPrivilegeByGuid/pguid/21191E04-BAC3-A746-7FF1-4774CFA49C76
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000439s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000893s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001082s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0039s ]
+SQL: SELECT `privilege` FROM `exa_user` WHERE ( `private_guid`='21191E04-BAC3-A746-7FF1-4774CFA49C76' ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-08T13:20:12+08:00 ] ::1 /Examination/Home/user/getPrivilegeByGuid/pguid/A58A2D18-EF0E-1CD3-7744-13F1B48D4F5F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000120s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003175s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000776s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000976s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0098s ]
+SQL: SELECT `privilege` FROM `exa_user` WHERE ( `private_guid`='A58A2D18-EF0E-1CD3-7744-13F1B48D4F5F' ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-08T13:20:28+08:00 ] ::1 /Examination/Home/user/getPrivilegeByGuid/pguid/9F338109-2B03-1201-782C-7F8EB0F7C55F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000038s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000567s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001477s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001832s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0294s ]
+SQL: SELECT `privilege` FROM `exa_user` WHERE ( `private_guid`='9F338109-2B03-1201-782C-7F8EB0F7C55F' ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-08T13:20:35+08:00 ] ::1 /Examination/Home/user/getPrivilegeByGuid/pguid/A58A2D18-EF0E-1CD3-7744-13F1B48D4F5F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000681s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000815s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001032s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0097s ]
+SQL: SELECT `privilege` FROM `exa_user` WHERE ( `private_guid`='A58A2D18-EF0E-1CD3-7744-13F1B48D4F5F' ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-08T13:20:37+08:00 ] ::1 /Examination/Home/user/getPrivilegeByGuid/pguid/A58A2D18-EF0E-1CD3-7744-13F1B48D4F5F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000414s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000752s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000911s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0072s ]
+SQL: SELECT `privilege` FROM `exa_user` WHERE ( `private_guid`='A58A2D18-EF0E-1CD3-7744-13F1B48D4F5F' ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-08T13:20:38+08:00 ] ::1 /Examination/Home/user/getPrivilegeByGuid/pguid/A58A2D18-EF0E-1CD3-7744-13F1B48D4F5F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000092s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001391s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002004s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002563s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0068s ]
+SQL: SELECT `privilege` FROM `exa_user` WHERE ( `private_guid`='A58A2D18-EF0E-1CD3-7744-13F1B48D4F5F' ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-08T13:20:58+08:00 ] ::1 /Examination/Home/user/getPrivilegeByGuid/pguid/A58A2D18-EF0E-1CD3-7744-13F1B48D4F5F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000080s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001169s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003973s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004316s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0070s ]
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at F:\wamp\www\Examination\Application\Home\Controller\UserController.class.php:187) F:\wamp\www\Examination\ThinkPHP\Library\Think\Controller.class.php 第 215 行.
+
+[ 2015-05-08T13:22:07+08:00 ] ::1 /Examination/Home/user/getPrivilegeByGuid/pguid/A58A2D18-EF0E-1CD3-7744-13F1B48D4F5F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000093s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001279s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001556s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001864s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0077s ]
+SQL: SELECT `privilege` FROM `exa_user` WHERE ( `private_guid`='A58A2D18-EF0E-1CD3-7744-13F1B48D4F5F' ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-08T13:24:20+08:00 ] ::1 /Examination/Home/user/getPrivilegeByGuid/pguid/A58A2D18-EF0E-1CD3-7744-13F1B48D4F5F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000081s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002559s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000981s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001206s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0064s ]
+SQL: SELECT * FROM `exa_user` WHERE ( `private_guid`='A58A2D18-EF0E-1CD3-7744-13F1B48D4F5F' ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-08T13:24:37+08:00 ] ::1 /Examination/Home/user/getPrivilegeByGuid/pguid/A58A2D18-EF0E-1CD3-7744-13F1B48D4F5F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000466s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000774s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000943s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0087s ]
+SQL: SELECT `privilege` FROM `exa_user` WHERE ( `private_guid`='A58A2D18-EF0E-1CD3-7744-13F1B48D4F5F' ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-08T13:24:45+08:00 ] ::1 /Examination/Home/user/getPrivilegeByGuid/pguid/A58A2D18-EF0E-1CD3-7744-13F1B48D4F5F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000775s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000655s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000811s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0080s ]
+SQL: SELECT `privilege` FROM `exa_user` WHERE ( `private_guid`='A58A2D18-EF0E-1CD3-7744-13F1B48D4F5F' ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-08T13:50:13+08:00 ] ::1 /Examination/Home/user/changePrivilegeByGuid/pguid/A58A2D18-EF0E-1CD3-7744-13F1B48D4F5F/p/1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000529s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000610s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000832s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0091s ]
+SQL: UPDATE `exa_user` SET `privilege`='1' WHERE ( `private_guid`='A58A2D18-EF0E-1CD3-7744-13F1B48D4F5F' ) [ RunTime:0.0810s ]
+

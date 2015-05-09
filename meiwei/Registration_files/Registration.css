@@ -1,0 +1,102 @@
+body{
+    text-align: center;
+    background-color: #373737;
+    padding: 0px;
+    margin: 0px;
+    font-family: '黑体';
+}
+
+.css_main{
+    width: 100%;
+    text-align: center;
+}
+
+.css_header{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    color: #ffffff;
+    background-color: #D72120;
+}
+
+.css_picture{
+    margin-top: 10px;
+}
+
+.css_content{
+    background-color: #464646;
+    width:80%;
+    margin: auto;
+    border-radius: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+}
+
+.css_content_item{
+    margin-top: 10px;
+    border-radius: 15px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+}
+
+.css_content_item input{
+    text-align: center;
+    height: 30px;
+    padding-left: 3px;
+}
+
+.css_content_item button{
+    color: #ffffff;
+    text-align: center;
+    background-color:#3C3C3C ;
+    width: 100%;
+    margin: auto;
+    border: none;
+    height: 30px;
+    border-radius: 15px;
+}
+
+.css_phone{
+    color: #FFFFFF;
+    width: 100%;
+    border-radius: 15px;
+    border: none;
+    background-image: url("../Img/Img_Phone.png");
+    background-repeat: no-repeat;
+    background-color: #3C3C3C;
+}
+
+.css_password{
+    color: #FFFFFF;
+    width: 100%;
+    border-radius: 15px;
+    border: none;
+    background-image: url("../Img/Img_Reg_Password.png");
+    background-repeat: no-repeat;
+    background-color: #3C3C3C;
+}
+
+.css_realName{
+    color: #FFFFFF;
+    width: 100%;
+    border-radius: 15px;
+    border: none;
+    background-image: url("../Img/Img_Reg_UserName.png");
+    background-repeat: no-repeat;
+    background-color: #3C3C3C;
+}
+
+.css_scurityCode{
+    width: 80%;
+    border-radius: 15px;
+    border: none;
+    background-color: #FFFFFF;
+    float: left;
+}
+
+.css_content_item Img{
+
+}

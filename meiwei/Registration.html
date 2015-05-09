@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html><head lang="en">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <link rel="stylesheet" href="Registration_files/Registration.css" type="text/css">
+    <style type="text/css">
+        .alert-form{
+            display: none;
+            position: absolute;
+            background: rgb(0,0,0);
+            opacity: 0.6;
+            width: 78.125%;
+            padding: 6px;
+            bottom: 40px;
+            left: 10.9375%;
+            z-index: 65535;
+            border-radius: 4px;
+            color: rgb(255,255,255);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="css_main">
+    <div class="css_header">
+        <img style="float: left;margin-top: 10px" src="Registration_files/Img_LeftArrow.png">
+        <span>会 员 登 录 &amp; 注 册</span>
+    </div>
+    <div class="css_picture">
+        <img width="90px" height="146px" src="Registration_files/Img_Logo.png">
+        <p style="color:rgb(255,255,255)">美位生活APP即将登陆！</p>
+        <p style="color:rgb(255,255,255);font-size:14px;">现注册，即可获得399元VIP会员，立享一年！</p>
+    </div>
+    <div class="css_content">
+        <div class="css_content_item">
+            <input id="phoneNumber" class="css_phone" placeholder="手机" type="tel">
+        </div>
+        <div class="css_content_item">
+            <input id="password" class="css_password" placeholder="密码" type="password">
+        </div>
+        <div class="css_content_item" style="background-color: #3C3C3C">
+            <input id="securityCode" class="css_scurityCode" type="tel" placeholder="短信验证码" />
+            <img src="Img_Message.png" />
+        </div>
+        <div class="css_content_item">
+            <input id="userName" class="css_realName" placeholder="真实姓名" type="text">
+        </div>
+        <div class="css_content_item">
+            <button id="Js_Registration" type="button">提交注册</button>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="Registration_files/jquery-1.js"></script>
+<script>
+    $(function(){
+
+        function displayALertForm(text,timeInterval){
+            timeInterval=timeInterval==null ? 1000:timeInterval;
+            $('.alert-form').remove();
+            var alertForm="<div class=\"alert-form\"></div>";
+            $('body').append(alertForm);
+            $('.alert-form').html(text);
+            $('.alert-form').fadeIn();
+            setTimeout(function(){
+                $('.alert-form').fadeOut();
+            },timeInterval);
+        }
+
+        var randomNum=0;
+
+        function msg(){
+            ran="";
+            var charactors="1234657890";
+            var i="";
+            for(j=1;j<=4;j++){
+                i = parseInt(4*Math.random()); 　
+                ran = ran + charactors.charAt(i);
+            } 
+            return ran;
+        }
+
+        randomNum=msg();
+
+        $("#Js_Registration").click(function () {
+            var a_phoneNumber = $("#phoneNumber").val();
+            var a_password = $("#password").val();
+            var a_userName = $("#userName").val();
+            var a_securityNumber = $('#securityCode').val();
+
+            if(a_phoneNumber=='' || a_password=='' || a_userName==''){
+                displayALertForm('数据不能为空,请重写');
+            }else{
+                displayALertForm('正在为您提交请求...',4000);
+                if(a_securityNumber==randomNum){
+                    $.ajax({
+                        type: "POST", //访问WebService使用Post方式请求
+                        url: "meiweireg.php?userName="+a_userName+"&phoneNumber="+a_phoneNumber+"&securityNumber="+msg()+"&password="+a_password, //调用WebService
+                        error: function (x, e) {
+                            alert("error");
+                        },
+                        success: function (response) { //回调函数，result，返回值
+                            if(response.indexOf('SUCCESS')!=-1){
+                                displayALertForm('您已成功注册VIP会员，请耐心等待服务开通！');
+                            }else{
+                                if(response.indexOf('DUPLICATE')!=-1){
+                                    displayALertForm('您已经注册过了,请不要重复注册',2000);
+                                }else{
+                                    displayALertForm('注册失败');
+                                }
+                            }
+                        }
+                    });
+                    randomNum=0;
+                }else{
+                    displayALertForm('验证码错误');
+                }
+            }
+        });
+
+        $('.css_content_item img').click(function(){
+            var a_phoneNumber = $("#phoneNumber").val();
+            displayALertForm('正在为您发送短信...');
+            if(a_phoneNumber==''){
+                displayALertForm('手机号码不能为空,请重写');
+            }else{
+                $.ajax({
+                    url:'base.php?mobile='+a_phoneNumber+'&ran='+randomNum,
+                    error:function(x,e){
+                    },
+                    success:function(response){
+                        var jsonData=JSON.parse(response);
+                        if(jsonData.returnstatus=='Success'){
+                            displayALertForm('发送成功');
+                        }else{
+                        }
+                    }   
+                });
+            }
+            
+        });
+    })
+
+</script>
+
+
+</body></html>

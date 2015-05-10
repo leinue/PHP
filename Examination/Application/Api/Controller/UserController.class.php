@@ -31,6 +31,7 @@ function getServerResponse($status,$msg,$data){
 class UserController extends Controller {
 
 	protected $requestMethod='get.';
+	protected $groupList=["root"=>'0',"admin"=>'1',"user"=>'2',"visitor"=>'3'];
 
 	public function index(){
 		$this->show('非法操作');
@@ -61,9 +62,29 @@ class UserController extends Controller {
 		return D('userGroup')->where("`user_id`=%s",array($user_id))->getField('`ug_type`');
 	}
 
+	protected function getGroupUser($page,$limit,$groupName){
+		if(isInfoNull(array($page,$limit))){
+			$this->ajaxReturn(getServerResponse('0','数据不能为空',''));
+		}else{
+			$allUser=D('UserGroup');
+			$start=10*$page-9;
+			$end=10*$page+1;
+			$userlist=$allUser->where("`ug_type`='$groupName'")->page($start,$end)->field('`user_id`')->select();
+			if($userlist){
+				$userCount=count($userlist);
+				foreach ($userlist as $key => $user) {
+					$userData[$key]=$this->getUserByUserId($user['user_id']);
+				}
+				$this->ajaxReturn(getServerResponse('0','读取成功',$userData));
+			}else{
+				$this->ajaxReturn(getServerResponse('0','读取失败或该组用户为空',$userlist));
+			}
+		}
+	}
+
 	public function changeUserGroup($user_id,$ug_type){
 		$upToUser['ug_type']=$ug_type;
-		D('UserGroup')->where("`user_id`=%s",array($ug_type))->data($upToUser)->save();
+		D('UserGroup')->where("`user_id`=%s",array($user_id))->data($upToUser)->save();
 	}
 
 	public function register(){
@@ -87,7 +108,7 @@ class UserController extends Controller {
 				$result=$registerUser->add();
 				if($result){
 					$userGroupData['user_id']=$this->getUserId('user_email',$email);
-					$userGroupData['ug_type']='visitor';
+					$userGroupData['ug_type']=$this->groupList['visitor'];
 					$handGroup=D('UserGroup');
 					if($handGroup->create($userGroupData)){
 						if($handGroup->add()){
@@ -132,12 +153,12 @@ class UserController extends Controller {
 		$user_id=I($this->requestMethod."user_id");
 		$token_id=I($this->requestMethod."token_id");
 		$ug_type=$this->getUserGroup($user_id);
-		if($ug_type!='visitor'){
+		if($ug_type!='3'){
 			$this->ajaxReturn(getServerResponse('1','您已经验证过了,请不要重复验证',''));
 		}else{
 			$activate_result=D('User')->where("`user_id`=$user_id AND `user_activate_key`='$activate_key' AND `token_id`='$token_id'")->select();
 			if($activate_result){
-				$this->changeUserGroup($user_id,'user');
+				$this->changeUserGroup($user_id,$this->groupList['user']);
 				$this->ajaxReturn(getServerResponse('1','帐户验证成功',$activate_result));
 			}else{
 				$this->ajaxReturn(getServerResponse('0','帐户验证失败',$activate_result));
@@ -163,100 +184,66 @@ class UserController extends Controller {
 		}
 	}
 
-	protected function getGroupUser($page,$limit,$groupName){
-		if(isInfoNull(array($page,$limit))){
-			$this->ajaxReturn(getServerResponse('0','数据不能为空',''));
-		}else{
-			$allUser=D('UserGroup');
-			$start=10*$page-9;
-			$end=10*$page+1;
-			$userlist=$allUser->where("`ug_type`='$groupName'")->page($start,$end)->field('`user_id`')->select();
-			if($userlist){
-				$userCount=count($userlist);
-				foreach ($userlist as $key => $user) {
-					$userData[$key]=$this->getUserByUserId($user['user_id']);
-				}
-				$this->ajaxReturn(getServerResponse('0','读取成功',$userData));
-			}else{
-				$this->ajaxReturn(getServerResponse('0','读取失败或该组用户为空',$userlist));
-			}
-		}
-	}
-
 	public function getAllVisitor(){
 		$page=I($this->requestMethod."page");
 		$limit=I($this->requestMethod."limit");
-		$this->getGroupUser($page,$limit,'visitor');
+		$this->getGroupUser($page,$limit,$this->groupList['visitor']);
 	}
 
 	public function getAllCommonUser(){
 		$page=I($this->requestMethod."page");
 		$limit=I($this->requestMethod."limit");
-		$this->getGroupUser($page,$limit,'user');
+		$this->getGroupUser($page,$limit,$this->groupList['user']);
 	}
 
 	public function getAllAdmin(){
 		$page=I($this->requestMethod."page");
 		$limit=I($this->requestMethod."limit");
-		$this->getGroupUser($page,$limit,'admin');	
+		$this->getGroupUser($page,$limit,$this->groupList['admin']);	
 	}
 
 	public function getAllRoot(){
 		$page=I($this->requestMethod."page");
 		$limit=I($this->requestMethod."limit");
-		$this->getGroupUser($page,$limit,'root');
+		$this->getGroupUser($page,$limit,$this->groupList['root']);
 	}
 
-	public function getAllUnlockedUser($page=1,$limit=10){
-		if($this->isInfoNull(array($page,$limit))){
-			$ajaxData['status']='0';
-			$ajaxData['msg']='数据不能为空';
-			$ajaxData['data']='';
-			$this->ajaxReturn($ajaxData);
+	public function addPrivilege(){
+
+	}
+
+	public function removePrivilege(){
+
+	}
+
+	public function getAllPrivilege(){
+
+	}
+
+	public function getPrivilege($token_id=''){
+		if(isInfoNull($token_id)){
+			return null;
 		}else{
-			$allUser=D('User');
-			$start=10*$page-9;
-			$end=10*$page+1;
-			$userlist=$allUser->where("`available`=1 AND `id` BETWEEN $start AND $end")->order('created_time')->limit($limit)->select();
-			if($userlist){
-				$ajaxData['status']='1';
-				$ajaxData['msg']='读取成功';
-				$ajaxData['data']=$userlist;
-				$this->ajaxReturn($ajaxData);
-			}else{
-				$ajaxData['status']='1';
-				$ajaxData['msg']=$allUser->getError();
-				$ajaxData['data']='';
-				$this->ajaxReturn($ajaxData);
-			}
+			$user_id=M('User')->where("`token_id`='$token_id'")->getField('user_id');
+			$user_group_id=M('UserGroup')->where("`user_id`=$user_id")->getField('ug_id');
+			$user_privilege=M('UserGroupPrivileges')->where("`ug_id`=$user_group_id")->field("`ugp_name`")->select();
+			print_r($user_privilege);
+			return $user_privilege;
 		}
 	}
 
-	public function getPrivilegeByGuid($pguid=''){
-		if($this->isInfoNull($pguid)){
-			$ajaxData['status']='0';
-			$ajaxData['msg']='数据不能为空';
-			$ajaxData['data']='';
-			$this->ajaxReturn($ajaxData);
-		}else{
-			$postData=M('User')->where("`private_guid`='$pguid'")->getField('privilege');
-			if($postData!==null){
-				return $postData;
-			}else{
-				return null;
-			}
-		}
+	public function changePrivilege(){
+
 	}
 
-	public function removeUser($guid='',$oguid=''){
-		if($this->isInfoNull(array($guid,$oguid))){
-			$ajaxData['status']='0';
-			$ajaxData['msg']='数据不能为空';
-			$ajaxData['data']='';
-			$this->ajaxReturn($ajaxData);
+	public function removeUser(){
+		$user_id=I($this->requestMethod.".user_id");
+		$token_id=I($this->requestMethod.".token_id");
+		if($this->isInfoNull(array($user_id,$token_id))){
+			$this->ajaxReturn(getServerResponse('0','数据不能为空',''));
 		}else{
 			if($this->getPrivilegeByGuid($oid)==='0'){
-				$dResult=M('User')->where("`guid`='$guid'")->delete();
+				$dResult=M('User')->where("`user_id`='$token_id'")->delete();
 				if($dResult){
 					$ajaxData['status']='1';
 					$ajaxData['msg']='删除成功';
@@ -275,6 +262,10 @@ class UserController extends Controller {
 				$this->ajaxReturn($ajaxData);
 			}
 		}
+	}
+
+	public function updateUserFile(){
+
 	}
 
 }

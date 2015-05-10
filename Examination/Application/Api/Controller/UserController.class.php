@@ -116,7 +116,7 @@ class UserController extends Controller {
 		}else{
 			$loginUser=D('User');
 			$password=sha1($password);
-			$data=$loginUser->where("`user_email`='$email' AND `user_password`='$password'")->filed(array('user_password'),true)->find();
+			$data=$loginUser->where("`user_email`='$email' AND `user_password`='$password'")->field(array('user_password'),true)->find();
 			$modifiedLoginTime['token_id']=guid();
 			$loginUser->where("`user_email`='$email'")->data($modifiedLoginTime)->save();
 			if($data){
@@ -152,7 +152,9 @@ class UserController extends Controller {
 			$this->ajaxReturn(getServerResponse('0','数据不能为空',''));
 		}else{
 			$allUser=D('User');
-			$userlist=$allUser->where('1=1')->order('`user_register_time`')->limit($limit)->getField('`user_id`,`token_id`');
+			$start=10*$page-9;
+			$end=10*$page+1;
+			$userlist=$allUser->order('`user_register_time`')->page($start,$end)->field(array('user_password','user_sex'),true)->select();
 			if($userlist){
 				$this->ajaxReturn(getServerResponse('0','数据不能为空',$userlist));
 			}else{
@@ -163,20 +165,20 @@ class UserController extends Controller {
 
 	protected function getGroupUser($page,$limit,$groupName){
 		if(isInfoNull(array($page,$limit))){
-			return getServerResponse('0','数据不能为空','');
+			$this->ajaxReturn(getServerResponse('0','数据不能为空',''));
 		}else{
 			$allUser=D('UserGroup');
 			$start=10*$page-9;
 			$end=10*$page+1;
-			$userlist=$allUser->where("`ug_type`='$groupName'")->limit($limit)->field('`user_id`')->select();
+			$userlist=$allUser->where("`ug_type`='$groupName'")->page($start,$end)->field('`user_id`')->select();
 			if($userlist){
 				$userCount=count($userlist);
 				foreach ($userlist as $key => $user) {
 					$userData[$key]=$this->getUserByUserId($user['user_id']);
 				}
-				return getServerResponse('0','读取成功',$userData);
+				$this->ajaxReturn(getServerResponse('0','读取成功',$userData));
 			}else{
-				return getServerResponse('0','读取失败或该组用户为空',$userlist);
+				$this->ajaxReturn(getServerResponse('0','读取失败或该组用户为空',$userlist));
 			}
 		}
 	}
@@ -184,25 +186,25 @@ class UserController extends Controller {
 	public function getAllVisitor(){
 		$page=I($this->requestMethod."page");
 		$limit=I($this->requestMethod."limit");
-		$this->ajaxReturn($this->getGroupUser($page,$limit,'visitor'));
+		$this->getGroupUser($page,$limit,'visitor');
 	}
 
 	public function getAllCommonUser(){
 		$page=I($this->requestMethod."page");
 		$limit=I($this->requestMethod."limit");
-		$this->ajaxReturn($this->getGroupUser($page,$limit,'user'));
+		$this->getGroupUser($page,$limit,'user');
 	}
 
 	public function getAllAdmin(){
 		$page=I($this->requestMethod."page");
 		$limit=I($this->requestMethod."limit");
-		$this->ajaxReturn($this->getGroupUser($page,$limit,'admin'));	
+		$this->getGroupUser($page,$limit,'admin');	
 	}
 
 	public function getAllRoot(){
 		$page=I($this->requestMethod."page");
 		$limit=I($this->requestMethod."limit");
-		$this->ajaxReturn($this->getGroupUser($page,$limit,'root'));
+		$this->getGroupUser($page,$limit,'root');
 	}
 
 	public function getAllUnlockedUser($page=1,$limit=10){

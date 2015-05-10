@@ -2010,3 +2010,167 @@ SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0058s ]
 SQL: SELECT `user_id`,`token_id`,`user_nickname`,`user_email`,`user_description`,`user_photo`,`user_sex`,`user_activate_key`,`user_register_time`,`user_last_login_time` FROM `exa_user` WHERE ( user_id=14 ) LIMIT 1   [ RunTime:0.0003s ]
 SQL: SELECT `user_id`,`token_id`,`user_nickname`,`user_email`,`user_description`,`user_photo`,`user_sex`,`user_activate_key`,`user_register_time`,`user_last_login_time` FROM `exa_user` WHERE ( user_id=20 ) LIMIT 1   [ RunTime:0.0002s ]
 
+[ 2015-05-10T16:51:55+08:00 ] ::1 /Examination/Api/User/getAllCommonUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000048s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000818s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000894s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001193s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0087s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( `ug_type`='user' ) LIMIT 1,11   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0052s ]
+SQL: SELECT `user_id`,`token_id`,`user_nickname`,`user_email`,`user_description`,`user_photo`,`user_sex`,`user_activate_key`,`user_register_time`,`user_last_login_time` FROM `exa_user` WHERE ( user_id=20 ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-10T16:52:08+08:00 ] ::1 /Examination/Api/User/getAllCommonUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000088s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001302s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000909s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001152s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0160s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( `ug_type`='user' ) LIMIT 1,100   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0119s ]
+SQL: SELECT `user_id`,`token_id`,`user_nickname`,`user_email`,`user_description`,`user_photo`,`user_sex`,`user_activate_key`,`user_register_time`,`user_last_login_time` FROM `exa_user` WHERE ( user_id=20 ) LIMIT 1   [ RunTime:0.0007s ]
+
+[ 2015-05-10T16:52:18+08:00 ] ::1 /Examination/Api/User/getAllCommonUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000090s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001334s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000972s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001247s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0134s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( `ug_type`='user' ) LIMIT 11,1   [ RunTime:0.0005s ]
+
+[ 2015-05-10T16:52:34+08:00 ] ::1 /Examination/Api/User/getAllCommonUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000166s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001992s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002133s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002672s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0128s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( `ug_type`='user' ) LIMIT 1,11   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0064s ]
+SQL: SELECT `user_id`,`token_id`,`user_nickname`,`user_email`,`user_description`,`user_photo`,`user_sex`,`user_activate_key`,`user_register_time`,`user_last_login_time` FROM `exa_user` WHERE ( user_id=20 ) LIMIT 1   [ RunTime:0.0004s ]
+
+[ 2015-05-10T16:54:37+08:00 ] ::1 /Examination/Api/User/getAllCommonUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000417s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002161s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001736s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002254s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0091s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( `ug_type`='user' ) LIMIT 0,11   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0066s ]
+SQL: SELECT `user_id`,`token_id`,`user_nickname`,`user_email`,`user_description`,`user_photo`,`user_sex`,`user_activate_key`,`user_register_time`,`user_last_login_time` FROM `exa_user` WHERE ( user_id=14 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `user_id`,`token_id`,`user_nickname`,`user_email`,`user_description`,`user_photo`,`user_sex`,`user_activate_key`,`user_register_time`,`user_last_login_time` FROM `exa_user` WHERE ( user_id=20 ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-10T16:54:40+08:00 ] ::1 /Examination/Api/User/getAllCommonUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000142s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002021s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002239s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002946s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0200s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( `ug_type`='user' ) LIMIT 0,11   [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0156s ]
+SQL: SELECT `user_id`,`token_id`,`user_nickname`,`user_email`,`user_description`,`user_photo`,`user_sex`,`user_activate_key`,`user_register_time`,`user_last_login_time` FROM `exa_user` WHERE ( user_id=14 ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT `user_id`,`token_id`,`user_nickname`,`user_email`,`user_description`,`user_photo`,`user_sex`,`user_activate_key`,`user_register_time`,`user_last_login_time` FROM `exa_user` WHERE ( user_id=20 ) LIMIT 1   [ RunTime:0.0007s ]
+
+[ 2015-05-10T16:54:49+08:00 ] ::1 /Examination/Api/User/getAllUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000094s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001619s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000938s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001202s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0077s ]
+NOTIC: [8] Undefined variable: start F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 155 行.
+NOTIC: [8] Undefined variable: end F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 155 行.
+SQL: SELECT `user_id`,`token_id` FROM `exa_user` ORDER BY `user_register_time` LIMIT 0,20   [ RunTime:0.0003s ]
+
+[ 2015-05-10T16:55:07+08:00 ] ::1 /Examination/Api/User/getAllUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000145s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002070s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001505s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002093s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0176s ]
+SQL: SELECT `user_id`,`token_id` FROM `exa_user` ORDER BY `user_register_time` LIMIT 0,11   [ RunTime:0.0005s ]
+
+[ 2015-05-10T16:55:44+08:00 ] ::1 /Examination/Api/User/getAllUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000093s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001317s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001356s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001792s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0133s ]
+SQL: SELECT `user_id`,`token_id`,`user_nickname`,`user_email`,`user_password`,`user_description`,`user_photo`,`user_sex`,`user_activate_key`,`user_register_time`,`user_last_login_time` FROM `exa_user` ORDER BY `user_register_time` LIMIT 0,11   [ RunTime:0.0004s ]
+
+[ 2015-05-10T16:55:52+08:00 ] ::1 /Examination/Api/User/getAllUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000093s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001206s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001168s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001576s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0088s ]
+SQL: SELECT `user_id`,`token_id`,`user_nickname`,`user_email`,`user_password`,`user_description`,`user_photo`,`user_sex`,`user_activate_key`,`user_register_time`,`user_last_login_time` FROM `exa_user` ORDER BY `user_register_time` LIMIT 0,11   [ RunTime:0.0004s ]
+
+[ 2015-05-10T16:55:52+08:00 ] ::1 /Examination/Api/User/getAllUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000097s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001431s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000868s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001155s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0062s ]
+SQL: SELECT `user_id`,`token_id`,`user_nickname`,`user_email`,`user_password`,`user_description`,`user_photo`,`user_sex`,`user_activate_key`,`user_register_time`,`user_last_login_time` FROM `exa_user` ORDER BY `user_register_time` LIMIT 0,11   [ RunTime:0.0005s ]
+
+[ 2015-05-10T16:55:53+08:00 ] ::1 /Examination/Api/User/getAllUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000052s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000858s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000718s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000932s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0075s ]
+SQL: SELECT `user_id`,`token_id`,`user_nickname`,`user_email`,`user_password`,`user_description`,`user_photo`,`user_sex`,`user_activate_key`,`user_register_time`,`user_last_login_time` FROM `exa_user` ORDER BY `user_register_time` LIMIT 0,11   [ RunTime:0.0003s ]
+
+[ 2015-05-10T16:56:04+08:00 ] ::1 /Examination/Api/User/getAllUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000064s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000763s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000804s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001028s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0104s ]
+SQL: SELECT `user_id`,`token_id`,`user_nickname`,`user_email`,`user_password`,`user_description`,`user_photo`,`user_sex`,`user_activate_key`,`user_register_time`,`user_last_login_time` FROM `exa_user` ORDER BY `user_register_time` LIMIT 0,11   [ RunTime:0.0004s ]
+
+[ 2015-05-10T16:56:48+08:00 ] ::1 /Examination/Api/User/getAllUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000055s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000924s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001673s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002045s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0094s ]
+SQL: SELECT `user_id`,`token_id`,`user_nickname`,`user_email`,`user_password`,`user_description`,`user_photo`,`user_activate_key`,`user_register_time`,`user_last_login_time` FROM `exa_user` ORDER BY `user_register_time` LIMIT 0,11   [ RunTime:0.0004s ]
+
+[ 2015-05-10T16:58:20+08:00 ] ::1 /Examination/Api/User/getAllUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000309s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002267s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001325s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001764s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0538s ]
+SQL: SELECT `user_id`,`token_id`,`user_nickname`,`user_email`,`user_description`,`user_photo`,`user_activate_key`,`user_register_time`,`user_last_login_time` FROM `exa_user` ORDER BY `user_register_time` LIMIT 0,11   [ RunTime:0.0006s ]
+

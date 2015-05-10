@@ -32,6 +32,7 @@ class UserController extends Controller {
 
 	protected $requestMethod='get.';
 	protected $groupList=["root"=>'0',"admin"=>'1',"user"=>'2',"visitor"=>'3'];
+	protected $groupListReversion=['0'=>'root','1'=>'admin','2'=>'user','3'=>'visitor'];
 
 	public function index(){
 		$this->show('非法操作');
@@ -59,7 +60,7 @@ class UserController extends Controller {
 	}
 
 	protected function getUserGroup($user_id){
-		return D('userGroup')->where("`user_id`=%s",array($user_id))->getField('`ug_type`');
+		return D('UserGroup')->where("`user_id`=$user_id")->getField('`ug_type`');
 	}
 
 	protected function getGroupUser($page,$limit,$groupName){
@@ -208,12 +209,51 @@ class UserController extends Controller {
 		$this->getGroupUser($page,$limit,$this->groupList['root']);
 	}
 
-	public function addPrivilege(){
+	protected function isUserRoot($type){return $this->groupListReversion[$type]==='root';}
 
+	protected function isUserAdmin($type){return $this->groupListReversion[$type]==='admin';}
+
+	protected function isUserCommon($type){return $this->groupListReversion[$type]==='user';}
+
+	protected function isUserVisitor($type){return $this->groupListReversion[$type]==='visitor';}
+
+	public function addPrivilege(){
+		$ug_type=I($this->requestMethod."ug_type");
+		$ugp_name=I($this->requestMethod."ugp_name");
+		$user_id=I($this->requestMethod."user_id");
+		if(isInfoNull(array($ug_type,$ugp_name,$user_id)) || !is_numeric($user_id)){
+			$this->ajaxReturn(getServerResponse('0','数据不能为空或有误',''));
+		}else{
+			$user_group_type=$this->getUserGroup($user_id);
+			if($this->isUserRoot() || $this->isUserAdmin()){
+				$privilegeData['ug_type']=$ug_type;
+				$privilegeData['ugp_name']=$ugp_name;
+				$addRights=M('UserGroupPrivileges');
+				$createResult=$addRights->create($privilegeData);
+				if(!$createResult){
+					$this->ajaxReturn(getServerResponse('0',$addRights->getError(),''));
+				}else{
+					$addResult=$addRights->add();
+					if(!$addResult){
+						$this->ajaxReturn(getServerResponse('0','添加权限失败',''));
+					}else{
+						$this->ajaxReturn(getServerResponse('1','添加权限成功',''));
+					}
+				}
+			}else{
+				$this->ajaxReturn(getServerResponse('0','没有权限',''));
+			}
+		}
 	}
 
 	public function removePrivilege(){
-
+		$ugp_name=I($this->requestMethod.".ugp_name");
+		$user_id=I($this->requestMethod.".user_id");
+		if(isInfoNull($ugp_name)){
+			$this->ajaxReturn(getServerResponse('0','数据不能为空或有误',''));
+		}else{
+			$user_group_type=$this->getUserGroup($user_id);
+		}
 	}
 
 	public function getAllPrivilege(){
@@ -242,24 +282,15 @@ class UserController extends Controller {
 		if($this->isInfoNull(array($user_id,$token_id))){
 			$this->ajaxReturn(getServerResponse('0','数据不能为空',''));
 		}else{
-			if($this->getPrivilegeByGuid($oid)==='0'){
-				$dResult=M('User')->where("`user_id`='$token_id'")->delete();
+			if($this->getPrivilegeByGuid($user_id)==='0'){
+				$dResult=M('User')->where("`user_id`='$user_id' AND `token_id`=$token_id")->delete();
 				if($dResult){
-					$ajaxData['status']='1';
-					$ajaxData['msg']='删除成功';
-					$ajaxData['data']='';
-					$this->ajaxReturn($ajaxData);
+					$this->ajaxReturn(getServerResponse('1','删除成功',''));
 				}else{
-					$ajaxData['status']='0';
-					$ajaxData['msg']='删除失败';
-					$ajaxData['data']='';
-					$this->ajaxReturn($ajaxData);
+					$this->ajaxReturn(getServerResponse('0','删除失败',''));
 				}
 			}else{
-				$ajaxData['status']='0';
-				$ajaxData['msg']='没有权限';
-				$ajaxData['data']='';
-				$this->ajaxReturn($ajaxData);
+				$this->ajaxReturn(getServerResponse('0','没有权限',''));
 			}
 		}
 	}

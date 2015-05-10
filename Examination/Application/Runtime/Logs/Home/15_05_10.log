@@ -126,3 +126,20 @@ INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000395s ]
 INFO: [ app_end ] --END-- [ RunTime:0.000486s ]
 
+[ 2015-05-10T18:52:57+08:00 ] ::1 /Examination/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004214s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004173s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004303s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.002552s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002674s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.004162s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004274s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003559s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003678s ]
+

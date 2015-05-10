@@ -17,4 +17,11 @@
 	    return $uuid;
 	}
 
+	function getServerResponse($status,$msg,$data){
+		$ajaxData['status']=$status;
+		$ajaxData['msg']=$msg;
+		$ajaxData['data']=$data;
+		return $ajaxData;
+	}
+
 ?>

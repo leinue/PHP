@@ -81,3 +81,1202 @@ ERR: 无法加载控制器:Home
 [ 2015-05-10T08:46:39+08:00 ] ::1 /Examination/api.php/Home.html
 ERR: 无法加载控制器:Home
 
+[ 2015-05-10T13:10:25+08:00 ] ::1 /Examination/Api/user/register/email/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000662s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000369s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000475s ]
+
+[ 2015-05-10T13:10:32+08:00 ] ::1 /Examination/Api/user/register/email/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000041s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000735s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000686s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000881s ]
+
+[ 2015-05-10T13:10:53+08:00 ] ::1 /Examination/Api/user/register/email/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000041s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000626s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000642s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000836s ]
+ERR: 无法加载控制器:User
+
+[ 2015-05-10T13:11:00+08:00 ] ::1 /Examination/Api/User/register/email/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000552s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000476s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000632s ]
+ERR: 无法加载控制器:User
+
+[ 2015-05-10T13:11:09+08:00 ] ::1 /Examination/api.php/Api/User/register/email/
+ERR: 无法加载控制器:Api
+
+[ 2015-05-10T13:11:24+08:00 ] ::1 /Examination/api.php/Api/User/register/email/
+ERR: 无法加载控制器:User
+
+[ 2015-05-10T13:11:28+08:00 ] ::1 /Examination/Api/User/register/email/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000386s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000419s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000516s ]
+ERR: 无法加载控制器:User
+
+[ 2015-05-10T13:19:18+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000574s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000575s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000704s ]
+ERR: 无法加载控制器:User
+
+[ 2015-05-10T13:19:25+08:00 ] ::1 /Examination/Api/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000360s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000439s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000549s ]
+
+[ 2015-05-10T13:19:39+08:00 ] ::1 /Examination/Api/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000051s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000956s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001094s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001430s ]
+
+[ 2015-05-10T13:19:49+08:00 ] ::1 /Examination/Api/User
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000040s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000424s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000368s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000470s ]
+ERR: 无法加载控制器:User
+
+[ 2015-05-10T13:19:53+08:00 ] ::1 /Examination/Api/user/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000353s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000344s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000450s ]
+ERR: 无法加载控制器:User
+
+[ 2015-05-10T13:24:04+08:00 ] ::1 /Examination/api
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000427s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000486s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000606s ]
+
+[ 2015-05-10T13:24:13+08:00 ] ::1 /Examination/api/user
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000347s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000380s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000489s ]
+ERR: 非法操作:index
+
+[ 2015-05-10T13:24:29+08:00 ] ::1 /Examination/api/user
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000058s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000646s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000589s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000771s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000562s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000719s ]
+
+[ 2015-05-10T13:25:13+08:00 ] ::1 /Examination/api/user
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000037s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000628s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000682s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000885s ]
+ERR: Think\Controller:diplay方法不存在！
+
+[ 2015-05-10T13:25:24+08:00 ] ::1 /Examination/api/user
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000041s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000725s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000788s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001072s ]
+ERR: 模板不存在:./Application/Api/View/User/非法操作.html
+
+[ 2015-05-10T13:25:58+08:00 ] ::1 /Examination/api/user
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000066s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000996s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000766s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000990s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000086s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000308s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.074563s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.074744s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000220s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000316s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000407s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000504s ]
+
+[ 2015-05-10T13:26:14+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000438s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000502s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000636s ]
+ERR: Think\Controller:isInfoNull方法不存在！
+
+[ 2015-05-10T13:26:39+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000658s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000696s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000912s ]
+
+[ 2015-05-10T13:27:44+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000037s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000748s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000586s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000782s ]
+
+[ 2015-05-10T13:27:44+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001008s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001286s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001551s ]
+
+[ 2015-05-10T13:27:44+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000054s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000755s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000665s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000863s ]
+
+[ 2015-05-10T13:27:44+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000039s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000606s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000629s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000810s ]
+
+[ 2015-05-10T13:27:45+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000342s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000345s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000447s ]
+
+[ 2015-05-10T13:27:45+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000337s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000324s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000420s ]
+
+[ 2015-05-10T13:27:45+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000081s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001246s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001353s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001652s ]
+
+[ 2015-05-10T13:27:45+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000337s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000341s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000442s ]
+
+[ 2015-05-10T13:27:45+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000329s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000339s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000440s ]
+
+[ 2015-05-10T13:27:45+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000473s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000484s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000627s ]
+
+[ 2015-05-10T13:27:46+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000057s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001112s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000751s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000972s ]
+
+[ 2015-05-10T13:27:46+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000053s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000995s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001373s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001844s ]
+
+[ 2015-05-10T13:27:46+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000113s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001656s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000422s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000544s ]
+
+[ 2015-05-10T13:27:46+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000754s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000704s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000896s ]
+
+[ 2015-05-10T13:27:46+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000053s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000830s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000879s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001147s ]
+
+[ 2015-05-10T13:27:47+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000080s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001368s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001418s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001854s ]
+
+[ 2015-05-10T13:27:47+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000051s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000769s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000828s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001073s ]
+
+[ 2015-05-10T13:27:47+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000085s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002134s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001452s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001930s ]
+
+[ 2015-05-10T13:27:47+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000379s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000509s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000645s ]
+
+[ 2015-05-10T13:27:47+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000037s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000569s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000544s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000702s ]
+
+[ 2015-05-10T13:27:48+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000050s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000752s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000755s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000977s ]
+
+[ 2015-05-10T13:27:48+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000457s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000448s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000584s ]
+
+[ 2015-05-10T13:27:48+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000037s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000533s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000330s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000426s ]
+
+[ 2015-05-10T13:28:00+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000369s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000365s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000475s ]
+
+[ 2015-05-10T13:28:05+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000059s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001348s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000878s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001141s ]
+
+[ 2015-05-10T13:30:15+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000067s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001011s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000912s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001186s ]
+
+[ 2015-05-10T13:30:22+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000725s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000753s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000973s ]
+
+[ 2015-05-10T13:31:11+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000034s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000524s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000660s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000891s ]
+
+[ 2015-05-10T13:32:07+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000055s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000982s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000598s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000778s ]
+
+[ 2015-05-10T13:32:11+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000643s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000798s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001038s ]
+
+[ 2015-05-10T13:32:15+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000776s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000474s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000615s ]
+
+[ 2015-05-10T13:32:53+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000049s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000760s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000678s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000929s ]
+
+[ 2015-05-10T13:33:02+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000072s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001134s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000752s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000974s ]
+
+[ 2015-05-10T13:34:06+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000074s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001807s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000724s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000933s ]
+
+[ 2015-05-10T13:42:34+08:00 ] ::1 /Examination/Api/User/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000503s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000578s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000717s ]
+
+[ 2015-05-10T13:42:55+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000038s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000574s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000587s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000765s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0222s ]
+ERR: Think\Controller:guid方法不存在！
+
+[ 2015-05-10T13:43:12+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000037s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000760s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000786s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000954s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0445s ]
+SQL: INSERT INTO `exa_user` (`user_email`,`user_password`,`token_id`) VALUES ('59705914@qq.com','7c4a8d09ca3762af61e59520943dc26494f8941b','D4B28495-8AEC-79DD-51D6-63C5963D759A') [ RunTime:0.0328s ]
+
+[ 2015-05-10T13:44:37+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000445s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000443s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000557s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0071s ]
+SQL: INSERT INTO `exa_user` (`user_email`,`user_password`,`token_id`) VALUES ('59705914@qq.com','7c4a8d09ca3762af61e59520943dc26494f8941b','AE22E7C1-6454-F7CC-E3F1-D583AFD0FBD3') [ RunTime:0.0236s ]
+
+[ 2015-05-10T13:45:48+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000079s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000708s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000582s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000771s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0074s ]
+SQL: INSERT INTO `exa_user` (`user_email`,`user_password`,`token_id`) VALUES ('59705914@qq.com','7c4a8d09ca3762af61e59520943dc26494f8941b','56FE58EC-D16D-07F7-E206-FF42CABFE524') [ RunTime:0.0539s ]
+
+[ 2015-05-10T13:46:23+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000068s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000990s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000615s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000805s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0076s ]
+SQL: INSERT INTO `exa_user` (`user_email`,`user_password`,`token_id`) VALUES ('59705914@qq.com','7c4a8d09ca3762af61e59520943dc26494f8941b','0950507A-C408-C91F-F3F2-D2E53E8199E4') [ RunTime:0.0692s ]
+
+[ 2015-05-10T13:47:59+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000407s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000503s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000620s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0429s ]
+SQL: INSERT INTO `exa_user` (`user_email`,`user_password`,`token_id`) VALUES ('59705914@qq.com','7c4a8d09ca3762af61e59520943dc26494f8941b','A5137246-FE07-AB6B-1DA1-3DB45B76C187') [ RunTime:0.0377s ]
+
+[ 2015-05-10T13:47:59+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000068s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000931s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001062s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001404s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0041s ]
+SQL: INSERT INTO `exa_user` (`user_email`,`user_password`,`token_id`) VALUES ('59705914@qq.com','7c4a8d09ca3762af61e59520943dc26494f8941b','D049F1D9-4ADD-32B6-890F-801BC6896588') [ RunTime:0.0572s ]
+
+[ 2015-05-10T13:48:00+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000041s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000630s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000656s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000840s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0065s ]
+SQL: INSERT INTO `exa_user` (`user_email`,`user_password`,`token_id`) VALUES ('59705914@qq.com','7c4a8d09ca3762af61e59520943dc26494f8941b','5DA26D22-5B19-335B-8B07-8A92065AB441') [ RunTime:0.0554s ]
+
+[ 2015-05-10T13:48:43+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000048s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000733s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000719s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000904s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0073s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '59705914@qq.com' LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-10T13:49:03+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000388s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000639s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000843s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0087s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '59705914@qq.com' LIMIT 1   [ RunTime:0.0003s ]
+SQL: INSERT INTO `exa_user` (`user_email`,`user_password`,`token_id`,`user_nickname`,`user_photo`,`user_sex`) VALUES ('59705914@qq.com','7c4a8d09ca3762af61e59520943dc26494f8941b','A31EAF7A-636A-422F-EFAB-B24CA7CE31A5','蛤蛤','./Public/images/user_default_photo.jpg','0') [ RunTime:0.0231s ]
+
+[ 2015-05-10T13:50:57+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000405s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000491s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000605s ]
+
+[ 2015-05-10T13:52:12+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000038s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000554s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000372s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000488s ]
+
+[ 2015-05-10T13:52:52+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000041s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000619s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000617s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000805s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0093s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '59705914@qq.com' LIMIT 1   [ RunTime:0.0003s ]
+SQL: INSERT INTO `exa_user` (`user_email`,`user_password`,`token_id`,`user_nickname`,`user_description`,`user_photo`,`user_sex`) VALUES ('59705914@qq.com','7c4a8d09ca3762af61e59520943dc26494f8941b','3B0A1C18-40D1-79D4-48A7-225F218EA707','蛤蛤','要提高姿势水平','./Public/images/user_default_photo.jpg','0') [ RunTime:0.0569s ]
+
+[ 2015-05-10T13:52:54+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000378s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000373s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000479s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0078s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '59705914@qq.com' LIMIT 1   [ RunTime:0.0005s ]
+
+[ 2015-05-10T13:52:55+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000041s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000658s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001068s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001414s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0062s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '59705914@qq.com' LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-10T13:52:55+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000066s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000972s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000672s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000855s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0032s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '59705914@qq.com' LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-10T13:52:56+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000597s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000580s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000741s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0071s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '59705914@qq.com' LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-10T13:52:57+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000688s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000625s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000807s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0063s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '59705914@qq.com' LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-10T13:54:02+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000082s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001202s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001879s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002220s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0073s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '59705914@qq.com' LIMIT 1   [ RunTime:0.0004s ]
+
+[ 2015-05-10T13:54:10+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000643s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000594s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000784s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0073s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '59705914@qq.com' LIMIT 1   [ RunTime:0.0003s ]
+SQL: INSERT INTO `exa_user` (`user_email`,`user_password`,`token_id`,`user_activate_key`,`user_nickname`,`user_description`,`user_photo`,`user_sex`) VALUES ('59705914@qq.com','7c4a8d09ca3762af61e59520943dc26494f8941b','F64BB690-5A24-58B8-024D-413891292399','9690B8C7-7B46-E1DA-88E7-C3A885446A33','蛤蛤','要提高姿势水平','./Public/images/user_default_photo.jpg','0') [ RunTime:0.0544s ]
+
+[ 2015-05-10T13:56:07+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000061s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000916s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001190s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001494s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0081s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '59705914@qq.com' LIMIT 1   [ RunTime:0.0003s ]
+SQL: INSERT INTO `exa_user` (`user_email`,`user_password`,`token_id`,`user_activate_key`,`user_nickname`,`user_description`,`user_photo`,`user_sex`) VALUES ('59705914@qq.com','7c4a8d09ca3762af61e59520943dc26494f8941b','B5CFB3C2-FF31-A89C-6AD4-69932388E69A','2B83BD2A-06B7-2FE5-8C18-F0998ED4CA45','蛤蛤','要提高姿势水平','./Public/images/user_default_photo.jpg','0') [ RunTime:0.0585s ]
+
+[ 2015-05-10T13:57:47+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000123s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001994s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000849s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001142s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0092s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '59705914@qq.com' LIMIT 1   [ RunTime:0.0004s ]
+
+[ 2015-05-10T13:57:49+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000054s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000909s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000766s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000979s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0086s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '59705914@qq.com' LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-10T14:21:35+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000055s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000922s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001070s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001314s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0115s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '59705914@qq.com' LIMIT 1   [ RunTime:0.0004s ]
+SQL: INSERT INTO `exa_user` (`user_email`,`user_password`,`token_id`,`user_activate_key`,`user_nickname`,`user_description`,`user_photo`,`user_sex`) VALUES ('59705914@qq.com','7c4a8d09ca3762af61e59520943dc26494f8941b','C04B920D-0B11-3D9B-7820-D5BC2A5857F2','CF3FF140-A485-52A3-4B64-D53C2AF187B6','蛤蛤','要提高姿势水平','./Public/images/user_default_photo.jpg','0') [ RunTime:0.0557s ]
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '@qq.com ) LIMIT 1' at line 1
+
+[ 2015-05-10T14:23:42+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000053s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000942s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001187s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001468s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0195s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '59705914@qq.com' LIMIT 1   [ RunTime:0.0003s ]
+SQL: INSERT INTO `exa_user` (`user_email`,`user_password`,`token_id`,`user_activate_key`,`user_register_time`,`user_last_login_time`,`user_nickname`,`user_description`,`user_photo`,`user_sex`) VALUES ('59705914@qq.com','7c4a8d09ca3762af61e59520943dc26494f8941b','F7CFC764-E121-E38B-8C2C-10CF50E65FD8','49056C63-94A0-59AA-868E-344A60252499','15-05-10 02:23:42','15-05-10 02:23:42','蛤蛤','要提高姿势水平','./Public/images/user_default_photo.jpg','0') [ RunTime:0.0386s ]
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '@qq.com ) LIMIT 1' at line 1
+
+[ 2015-05-10T14:24:37+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000093s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001275s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000539s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000691s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0433s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '59705914@qq.com' LIMIT 1   [ RunTime:0.0004s ]
+
+[ 2015-05-10T14:24:52+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000080s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000895s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000841s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001081s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0153s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '59705914@qq.com' LIMIT 1   [ RunTime:0.0005s ]
+SQL: INSERT INTO `exa_user` (`user_email`,`user_password`,`token_id`,`user_activate_key`,`user_register_time`,`user_last_login_time`,`user_nickname`,`user_description`,`user_photo`,`user_sex`) VALUES ('59705914@qq.com','7c4a8d09ca3762af61e59520943dc26494f8941b','2EF1F6FE-546F-B152-6447-E4C3F20FAF69','360780BA-C2CF-F42C-93AD-33B606112A79','15-05-10 02:24:52','15-05-10 02:24:52','蛤蛤','要提高姿势水平','./Public/images/user_default_photo.jpg','0') [ RunTime:0.0288s ]
+SQL: SELECT `user_id` FROM `exa_user` WHERE ( `user_email`='59705914@qq.com' ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0170s ]
+SQL: INSERT INTO `exa_user_group` (`user_id`,`ug_type`) VALUES ('14','visitor') [ RunTime:0.0271s ]
+
+[ 2015-05-10T14:40:19+08:00 ] ::1 /Examination/Api/User/activate/activate_key/360780BA-C2CF-F42C-93AD-33B606112A79/user_id/14/token_id/2EF1F6FE-546F-B152-6447-E4C3F20FAF69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000049s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000796s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000914s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001158s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.3091s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column '360780BA' in 'where clause'
+
+[ 2015-05-10T14:42:38+08:00 ] ::1 /Examination/Api/User/activate/activate_key/360780BA-C2CF-F42C-93AD-33B606112A79/user_id/14/token_id/2EF1F6FE-546F-B152-6447-E4C3F20FAF69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000143s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001864s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001825s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002232s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0234s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column '360780BA' in 'where clause'
+
+[ 2015-05-10T14:43:58+08:00 ] ::1 /Examination/Api/User/activate/activate_key/360780BA-C2CF-F42C-93AD-33B606112A79/user_id/14/token_id/2EF1F6FE-546F-B152-6447-E4C3F20FAF69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000057s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000998s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001884s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002417s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0110s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column '360780BA' in 'where clause'
+
+[ 2015-05-10T14:44:16+08:00 ] ::1 /Examination/Api/User/activate/activate_key/360780BA-C2CF-F42C-93AD-33B606112A79/user_id/14/token_id/2EF1F6FE-546F-B152-6447-E4C3F20FAF69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000052s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000859s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000981s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001230s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0492s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column '360780BA' in 'where clause'
+
+[ 2015-05-10T14:44:33+08:00 ] ::1 /Examination/Api/User/activate/activate_key/360780BA-C2CF-F42C-93AD-33B606112A79/user_id/14/token_id/2EF1F6FE-546F-B152-6447-E4C3F20FAF69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000542s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000594s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000766s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0339s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column '360780BA' in 'where clause'
+
+[ 2015-05-10T14:45:01+08:00 ] ::1 /Examination/Api/User/activate/activate_key/360780BA-C2CF-F42C-93AD-33B606112A79/user_id/14/token_id/2EF1F6FE-546F-B152-6447-E4C3F20FAF69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000111s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001591s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001857s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002281s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0238s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column '360780BA' in 'where clause'
+
+[ 2015-05-10T14:45:12+08:00 ] ::1 /Examination/Api/User/activate/activate_key/360780BA-C2CF-F42C-93AD-33B606112A79/user_id/14/token_id/2EF1F6FE-546F-B152-6447-E4C3F20FAF69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000053s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000849s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000989s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001341s ]
+NOTIC: [8] Undefined variable: activate_result F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 113 行.
+NOTIC: [8] Undefined variable: activate_result F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 114 行.
+NOTIC: [8] Undefined variable: activate_result F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 119 行.
+
+[ 2015-05-10T14:45:33+08:00 ] ::1 /Examination/Api/User/activate/activate_key/360780BA-C2CF-F42C-93AD-33B606112A79/user_id/14/token_id/2EF1F6FE-546F-B152-6447-E4C3F20FAF69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000049s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000815s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001057s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001328s ]
+NOTIC: [8] Undefined variable: activate_result F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 114 行.
+NOTIC: [8] Undefined variable: activate_result F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 119 行.
+
+[ 2015-05-10T14:46:19+08:00 ] ::1 /Examination/Api/User/activate/activate_key/360780BA-C2CF-F42C-93AD-33B606112A79/user_id/14/token_id/2EF1F6FE-546F-B152-6447-E4C3F20FAF69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000050s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001199s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001686s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002184s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0144s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column '360780BA' in 'where clause'
+
+[ 2015-05-10T14:46:40+08:00 ] ::1 /Examination/Api/User/activate/activate_key/360780BA-C2CF-F42C-93AD-33B606112A79/user_id/14/token_id/2EF1F6FE-546F-B152-6447-E4C3F20FAF69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000037s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000608s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000634s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000807s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `exa_user` WHERE ( `user_id`=14 AND `user_activate_key`='360780BA-C2CF-F42C-93AD-33B606112A79' AND `token_id`='2EF1F6FE-546F-B152-6447-E4C3F20FAF69' )  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0073s ]
+SQL: UPDATE `exa_user_group` SET `ug_type`='user' WHERE ( `user_id`=14 ) [ RunTime:0.0401s ]
+
+[ 2015-05-10T14:47:28+08:00 ] ::1 /Examination/Api/User/activate/activate_key/360780BA-C2CF-F42C-93AD-33B606112A79/user_id/14/token_id/2EF1F6FE-546F-B152-6447-E4C3F20FAF69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000059s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000973s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000724s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000888s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0655s ]
+SQL: SELECT * FROM `exa_user` WHERE ( `user_id`=14 AND `user_activate_key`='360780BA-C2CF-F42C-93AD-33B606112A79' AND `token_id`='2EF1F6FE-546F-B152-6447-E4C3F20FAF69' )  [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0178s ]
+SQL: UPDATE `exa_user_group` SET `ug_type`='user' WHERE ( `user_id`=14 ) [ RunTime:0.0468s ]
+
+[ 2015-05-10T14:52:45+08:00 ] ::1 /Examination/Api/User/activate/activate_key/360780BA-C2CF-F42C-93AD-33B606112A79/user_id/14/token_id/2EF1F6FE-546F-B152-6447-E4C3F20FAF69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000081s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001157s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001687s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002145s ]
+
+[ 2015-05-10T14:52:52+08:00 ] ::1 /Examination/Api/User/activate/activate_key/360780BA-C2CF-F42C-93AD-33B606112A79/user_id/14/token_id/2EF1F6FE-546F-B152-6447-E4C3F20FAF69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000100s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001292s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001113s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001435s ]
+
+[ 2015-05-10T14:56:13+08:00 ] ::1 /Examination/Api/User/activate/activate_key/360780BA-C2CF-F42C-93AD-33B606112A79/user_id/14/token_id/2EF1F6FE-546F-B152-6447-E4C3F20FAF69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000061s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000968s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001191s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001475s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0082s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0005s ]
+
+[ 2015-05-10T14:56:20+08:00 ] ::1 /Examination/Api/User/activate/activate_key/360780BA-C2CF-F42C-93AD-33B606112A79/user_id/14/token_id/2EF1F6FE-546F-B152-6447-E4C3F20FAF69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000122s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002741s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000808s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001058s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0083s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-10T15:10:41+08:00 ] ::1 /Examination/Api/User/activate/activate_key/360780BA-C2CF-F42C-93AD-33B606112A79/user_id/14/token_id/2EF1F6FE-546F-B152-6447-E4C3F20FAF69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000058s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001043s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001193s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001463s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0144s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0007s ]
+
+[ 2015-05-10T15:11:05+08:00 ] ::1 /Examination/Api/User/activate/activate_key/360780BA-C2CF-F42C-93AD-33B606112A79/user_id/14/token_id/2EF1F6FE-546F-B152-6447-E4C3F20FAF69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000056s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001332s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001424s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001880s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0152s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0103s ]
+SQL: SELECT * FROM `exa_user` WHERE ( `user_id`=14 AND `user_activate_key`='360780BA-C2CF-F42C-93AD-33B606112A79' AND `token_id`='2EF1F6FE-546F-B152-6447-E4C3F20FAF69' )  [ RunTime:0.0006s ]
+
+[ 2015-05-10T15:11:42+08:00 ] ::1 /Examination/Api/User/activate/activate_key/360780BA-C2CF-F42C-93AD-33B606112A79/user_id/14/token_id/2EF1F6FE-546F-B152-6447-E4C3F20FAF69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000051s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000788s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001185s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001477s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0134s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0094s ]
+SQL: SELECT * FROM `exa_user` WHERE ( `user_id`=14 AND `user_activate_key`='360780BA-C2CF-F42C-93AD-33B606112A79' AND `token_id`='2EF1F6FE-546F-B152-6447-E4C3F20FAF69' )  [ RunTime:0.0006s ]
+
+[ 2015-05-10T15:11:54+08:00 ] ::1 /Examination/Api/User/activate/activate_key/360780BA-C2CF-F42C-93AD-33B606112A79/user_id/14/token_id/2EF1F6FE-546F-B152-6447-E4C3F20FAF69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000087s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001557s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001146s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001565s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0089s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0068s ]
+SQL: SELECT * FROM `exa_user` WHERE ( `user_id`=14 AND `user_activate_key`='360780BA-C2CF-F42C-93AD-33B606112A79' AND `token_id`='2EF1F6FE-546F-B152-6447-E4C3F20FAF69' )  [ RunTime:0.0004s ]
+
+[ 2015-05-10T15:12:25+08:00 ] ::1 /Examination/Api/User/activate/activate_key/360780BA-C2CF-F42C-93AD-33B606112A79/user_id/14/token_id/2EF1F6FE-546F-B152-6447-E4C3F20FAF69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000054s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000770s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000843s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001108s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0084s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0063s ]
+SQL: SELECT * FROM `exa_user` WHERE ( `user_id`=14 AND `user_activate_key`='360780BA-C2CF-F42C-93AD-33B606112A79' AND `token_id`='2EF1F6FE-546F-B152-6447-E4C3F20FAF69' )  [ RunTime:0.0004s ]
+
+[ 2015-05-10T15:12:32+08:00 ] ::1 /Examination/Api/User/activate/activate_key/360780BA-C2CF-F42C-93AD-33B606112A79/user_id/14/token_id/2EF1F6FE-546F-B152-6447-E4C3F20FAF69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000084s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001286s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000954s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001315s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0093s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0068s ]
+SQL: SELECT * FROM `exa_user` WHERE ( `user_id`=14 AND `user_activate_key`='360780BA-C2CF-F42C-93AD-33B606112A79' AND `token_id`='2EF1F6FE-546F-B152-6447-E4C3F20FAF69' )  [ RunTime:0.0004s ]
+
+[ 2015-05-10T15:14:08+08:00 ] ::1 /Examination/Api/User
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000473s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000543s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000678s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.001621s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002756s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000375s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000488s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000549s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000674s ]
+
+[ 2015-05-10T15:14:11+08:00 ] ::1 /Examination/Api/User/activate/activate_key/360780BA-C2CF-F42C-93AD-33B606112A79/user_id/14/token_id/2EF1F6FE-546F-B152-6447-E4C3F20FAF69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000434s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000476s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000609s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0093s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `exa_user` WHERE ( `user_id`=14 AND `user_activate_key`='360780BA-C2CF-F42C-93AD-33B606112A79' AND `token_id`='2EF1F6FE-546F-B152-6447-E4C3F20FAF69' )  [ RunTime:0.0004s ]
+
+[ 2015-05-10T15:15:44+08:00 ] ::1 /Examination/Api/User/activate/activate_key/360780BA-C2CF-F42C-93AD-33B606112A79/user_id/14/token_id/2EF1F6FE-546F-B152-6447-E4C3F20FAF69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000053s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000836s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000891s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001156s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0629s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0156s ]
+SQL: SELECT * FROM `exa_user` WHERE ( `user_id`=14 AND `user_activate_key`='360780BA-C2CF-F42C-93AD-33B606112A79' AND `token_id`='2EF1F6FE-546F-B152-6447-E4C3F20FAF69' )  [ RunTime:0.0009s ]
+
+[ 2015-05-10T15:15:46+08:00 ] ::1 /Examination/Api/User/activate/activate_key/360780BA-C2CF-F42C-93AD-33B606112A79/user_id/14/token_id/2EF1F6FE-546F-B152-6447-E4C3F20FAF69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000062s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000882s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001489s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001810s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0088s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0069s ]
+SQL: SELECT * FROM `exa_user` WHERE ( `user_id`=14 AND `user_activate_key`='360780BA-C2CF-F42C-93AD-33B606112A79' AND `token_id`='2EF1F6FE-546F-B152-6447-E4C3F20FAF69' )  [ RunTime:0.0004s ]
+
+[ 2015-05-10T15:15:47+08:00 ] ::1 /Examination/Api/User/activate/activate_key/360780BA-C2CF-F42C-93AD-33B606112A79/user_id/14/token_id/2EF1F6FE-546F-B152-6447-E4C3F20FAF69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000084s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001313s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001337s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001722s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0127s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0095s ]
+SQL: SELECT * FROM `exa_user` WHERE ( `user_id`=14 AND `user_activate_key`='360780BA-C2CF-F42C-93AD-33B606112A79' AND `token_id`='2EF1F6FE-546F-B152-6447-E4C3F20FAF69' )  [ RunTime:0.0006s ]
+
+[ 2015-05-10T15:16:59+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000797s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000881s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001108s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0078s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '59705914@qq.com' LIMIT 1   [ RunTime:0.0004s ]
+
+[ 2015-05-10T15:17:11+08:00 ] ::1 /Examination/Api/User/register/email/86705096@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000420s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000508s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000647s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0076s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '86705096@qq.com' LIMIT 1   [ RunTime:0.0003s ]
+SQL: INSERT INTO `exa_user` (`user_email`,`user_password`,`token_id`,`user_activate_key`,`user_register_time`,`user_last_login_time`,`user_nickname`,`user_description`,`user_photo`,`user_sex`) VALUES ('86705096@qq.com','7c4a8d09ca3762af61e59520943dc26494f8941b','2E2448BA-5588-07AC-30A7-4D62B8AC8659','0AA7C170-9CDF-4FCB-B61D-D99DBDB4E15C','15-05-10 03:17:11','15-05-10 03:17:11','蛤蛤','要提高姿势水平','./Public/images/user_default_photo.jpg','0') [ RunTime:0.0644s ]
+NOTIC: [8] Undefined variable: fieldName F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 44 行.
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column '' in 'where clause'
+
+[ 2015-05-10T15:18:07+08:00 ] ::1 /Examination/Api/User/register/email/86705096@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000141s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002028s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001451s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001799s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0637s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '86705096@qq.com' LIMIT 1   [ RunTime:0.0009s ]
+
+[ 2015-05-10T15:18:44+08:00 ] ::1 /Examination/Api/User/register/email/86705096@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000085s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001353s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002224s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002974s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0141s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '86705096@qq.com' LIMIT 1   [ RunTime:0.0003s ]
+SQL: INSERT INTO `exa_user` (`user_email`,`user_password`,`token_id`,`user_activate_key`,`user_register_time`,`user_last_login_time`,`user_nickname`,`user_description`,`user_photo`,`user_sex`) VALUES ('86705096@qq.com','7c4a8d09ca3762af61e59520943dc26494f8941b','6645AE3D-254A-0C07-1112-0A8B7C5C2AFC','18C90387-A82E-8DD1-24E2-A9D6E4AD75C5','15-05-10 03:18:44','15-05-10 03:18:44','蛤蛤','要提高姿势水平','./Public/images/user_default_photo.jpg','0') [ RunTime:0.0542s ]
+NOTIC: [8] Undefined variable: fieldName F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 44 行.
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column '' in 'where clause'
+
+[ 2015-05-10T15:21:05+08:00 ] ::1 /Examination/Api/User/register/email/86705096@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000078s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001282s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001491s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001945s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0124s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '86705096@qq.com' LIMIT 1   [ RunTime:0.0006s ]
+
+[ 2015-05-10T15:21:21+08:00 ] ::1 /Examination/Api/User/register/email/86705096@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000149s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002413s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001811s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002286s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0232s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '86705096@qq.com' LIMIT 1   [ RunTime:0.0009s ]
+SQL: INSERT INTO `exa_user` (`user_email`,`user_password`,`token_id`,`user_activate_key`,`user_register_time`,`user_last_login_time`,`user_nickname`,`user_description`,`user_photo`,`user_sex`) VALUES ('86705096@qq.com','7c4a8d09ca3762af61e59520943dc26494f8941b','77CC4AAB-C6A2-86CC-20A0-65C4DE07579E','2BB2C6F4-7A45-0D01-9F76-CE68C781EE86','15-05-10 03:21:21','15-05-10 03:21:21','蛤蛤','要提高姿势水平','./Public/images/user_default_photo.jpg','0') [ RunTime:0.0655s ]
+NOTIC: [8] Undefined variable: fieldName F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 44 行.
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column '' in 'where clause'
+
+[ 2015-05-10T15:22:03+08:00 ] ::1 /Examination/Api/User/register/email/86705096@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000084s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001335s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001449s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001744s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0141s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '86705096@qq.com' LIMIT 1   [ RunTime:0.0006s ]
+
+[ 2015-05-10T15:22:22+08:00 ] ::1 /Examination/Api/User/register/email/86705096@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000048s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000748s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001263s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001705s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0636s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '86705096@qq.com' LIMIT 1   [ RunTime:0.0005s ]
+SQL: INSERT INTO `exa_user` (`user_email`,`user_password`,`token_id`,`user_activate_key`,`user_register_time`,`user_last_login_time`,`user_nickname`,`user_description`,`user_photo`,`user_sex`) VALUES ('86705096@qq.com','7c4a8d09ca3762af61e59520943dc26494f8941b','E49DAC1A-48FE-1E4F-CDE9-FF059023D509','EBA7B192-0867-F6F4-94E2-F02502DD88B2','15-05-10 03:22:22','15-05-10 03:22:22','蛤蛤','要提高姿势水平','./Public/images/user_default_photo.jpg','0') [ RunTime:0.0413s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0231s ]
+ERR: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'user_id' cannot be null
+
+[ 2015-05-10T15:24:35+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000034s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000530s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000562s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000694s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0108s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '59705914@qq.com' LIMIT 1   [ RunTime:0.0004s ]
+
+[ 2015-05-10T15:24:48+08:00 ] ::1 /Examination/Api/User/register/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000056s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000935s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000997s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001359s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0108s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '59705914@qq.com' LIMIT 1   [ RunTime:0.0005s ]
+
+[ 2015-05-10T15:25:07+08:00 ] ::1 /Examination/Api/User/register/email/86705096@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000053s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001177s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000872s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001139s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0081s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '86705096@qq.com' LIMIT 1   [ RunTime:0.0004s ]
+SQL: INSERT INTO `exa_user` (`user_email`,`user_password`,`token_id`,`user_activate_key`,`user_register_time`,`user_last_login_time`,`user_nickname`,`user_description`,`user_photo`,`user_sex`) VALUES ('86705096@qq.com','7c4a8d09ca3762af61e59520943dc26494f8941b','824F4DD0-3A96-A096-3B91-5071FDD2D709','CE213991-029D-285B-D43C-8B7AF99D27CB','15-05-10 03:25:07','15-05-10 03:25:07','蛤蛤','要提高姿势水平','./Public/images/user_default_photo.jpg','0') [ RunTime:0.0579s ]
+NOTIC: [8] Undefined variable: filedValue F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 44 行.
+SQL: SELECT `user_id` FROM `exa_user` WHERE ( `user_email`='' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0059s ]
+ERR: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'user_id' cannot be null
+
+[ 2015-05-10T15:25:44+08:00 ] ::1 /Examination/Api/User/register/email/86705096@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000054s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000804s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001210s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001526s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0521s ]
+SQL: SELECT * FROM `exa_user` WHERE `user_email` = '86705096@qq.com' LIMIT 1   [ RunTime:0.0006s ]
+SQL: INSERT INTO `exa_user` (`user_email`,`user_password`,`token_id`,`user_activate_key`,`user_register_time`,`user_last_login_time`,`user_nickname`,`user_description`,`user_photo`,`user_sex`) VALUES ('86705096@qq.com','7c4a8d09ca3762af61e59520943dc26494f8941b','0D5E0CDC-B051-7B4D-BCE2-2B366C5BAC0F','010975B7-8563-396A-AD63-E89C4DA6B87E','15-05-10 03:25:44','15-05-10 03:25:44','蛤蛤','要提高姿势水平','./Public/images/user_default_photo.jpg','0') [ RunTime:0.0427s ]
+SQL: SELECT `user_id` FROM `exa_user` WHERE ( `user_email`='86705096@qq.com' ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0145s ]
+SQL: INSERT INTO `exa_user_group` (`user_id`,`ug_type`) VALUES ('20','visitor') [ RunTime:0.1449s ]
+
+[ 2015-05-10T15:27:30+08:00 ] ::1 /Examination/Api/User/changeUserGroup/user_id/20/ug_type/user
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000722s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001577s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002027s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0209s ]
+SQL: UPDATE `exa_user_group` SET `ug_type`='user' WHERE ( `user_id`=20 ) [ RunTime:0.0382s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001871s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002263s ]
+
+[ 2015-05-10T15:30:03+08:00 ] ::1 /Examination/Api/User/activate/activate_key/010975B7-8563-396A-AD63-E89C4DA6B87E/user_id/20/token_id/0D5E0CDC-B051-7B4D-BCE2-2B366C5BAC0F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000572s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000579s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000721s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0612s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=20 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0064s ]
+SQL: SELECT * FROM `exa_user` WHERE ( `user_id`=20 AND `user_activate_key`='010975B7-8563-396A-AD63-E89C4DA6B87E' AND `token_id`='0D5E0CDC-B051-7B4D-BCE2-2B366C5BAC0F' )  [ RunTime:0.0004s ]
+
+[ 2015-05-10T15:31:00+08:00 ] ::1 /Examination/Api/User/activate/activate_key/010975B7-8563-396A-AD63-E89C4DA6B87E/user_id/20/token_id/0D5E0CDC-B051-7B4D-BCE2-2B366C5BAC0F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000037s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000745s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000580s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000740s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0483s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=20 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0088s ]
+SQL: SELECT * FROM `exa_user` WHERE ( `user_id`=20 AND `user_activate_key`='010975B7-8563-396A-AD63-E89C4DA6B87E' AND `token_id`='0D5E0CDC-B051-7B4D-BCE2-2B366C5BAC0F' )  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0042s ]
+SQL: UPDATE `exa_user_group` SET `ug_type`='user' WHERE ( `user_id`=20 ) [ RunTime:0.0458s ]
+

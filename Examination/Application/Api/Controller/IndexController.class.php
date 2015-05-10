@@ -6,7 +6,5 @@ use Applicatio\Commmon\common;
 class IndexController extends Controller {
     public function index(){
     	$this->redirect('/Home/',5,'页面跳转中....');
-    }
-
-    public function 
+    }  
 }

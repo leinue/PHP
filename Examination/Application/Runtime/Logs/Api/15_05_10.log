@@ -2672,3 +2672,184 @@ SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ R
 SQL: SHOW COLUMNS FROM `exa_user_group_privileges` [ RunTime:0.0052s ]
 SQL: INSERT INTO `exa_user_group_privileges` (`ug_type`,`ugp_name`) VALUES ('1','ADD_USER') [ RunTime:0.0575s ]
 
+[ 2015-05-10T19:45:49+08:00 ] ::1 /Examination/Api/User/getPrivilege/user_id/14/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000039s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000636s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000708s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000906s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0864s ]
+SQL: SELECT `user_id` FROM `exa_user` WHERE ( `token_id`='5EA6B332-CAC6-49C7-BDD1-79CE92E707EA' ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0317s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `exa_user_group_privileges` [ RunTime:0.0133s ]
+SQL: SELECT `ugp_name` FROM `exa_user_group_privileges` WHERE ( `ug_type`=0 )  [ RunTime:0.0007s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001667s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002005s ]
+
+[ 2015-05-10T19:46:05+08:00 ] ::1 /Examination/Api/User/getPrivilege/user_id/14/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000643s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001102s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001481s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0070s ]
+SQL: SELECT `user_id` FROM `exa_user` WHERE ( `token_id`='5EA6B332-CAC6-49C7-BDD1-79CE92E707EA' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0052s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `exa_user_group_privileges` [ RunTime:0.0054s ]
+SQL: SELECT `ugp_name` FROM `exa_user_group_privileges` WHERE ( `ug_type`=0 )  [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000634s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000767s ]
+
+[ 2015-05-10T19:46:38+08:00 ] ::1 /Examination/Api/User/getPrivilege/user_id/14/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000117s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001488s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000561s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000729s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0090s ]
+SQL: SELECT `user_id` FROM `exa_user` WHERE ( `token_id`='5EA6B332-CAC6-49C7-BDD1-79CE92E707EA' ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0052s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `exa_user_group_privileges` [ RunTime:0.0049s ]
+SQL: SELECT `ugp_name` FROM `exa_user_group_privileges` WHERE ( `ug_type`=0 )  [ RunTime:0.0004s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000444s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000556s ]
+
+[ 2015-05-10T19:48:13+08:00 ] ::1 /Examination/Api/User/getPrivilege/user_id/14/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000442s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000900s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001090s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0075s ]
+SQL: SELECT `user_id` FROM `exa_user` WHERE ( `token_id`='5EA6B332-CAC6-49C7-BDD1-79CE92E707EA' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0045s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `exa_user_group_privileges` [ RunTime:0.0047s ]
+SQL: SELECT `ugp_name` FROM `exa_user_group_privileges` WHERE ( `ug_type`=1 )  [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000531s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000656s ]
+
+[ 2015-05-10T19:48:25+08:00 ] ::1 /Examination/Api/User/getPrivilege/user_id/14/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000065s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000891s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000859s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001163s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0061s ]
+SQL: SELECT `user_id` FROM `exa_user` WHERE ( `token_id`='5EA6B332-CAC6-49C7-BDD1-79CE92E707EA' ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0050s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `exa_user_group_privileges` [ RunTime:0.0051s ]
+SQL: SELECT `ugp_name` FROM `exa_user_group_privileges` WHERE ( `ug_type`=1 )  [ RunTime:0.0002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000473s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000586s ]
+
+[ 2015-05-10T19:49:08+08:00 ] ::1 /Examination/Api/User/addPrivilege/ug_type/1/ugp_name/REMOVE_USER/user_id/14
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000415s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000484s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000652s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0066s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `exa_user_group_privileges` [ RunTime:0.0047s ]
+SQL: INSERT INTO `exa_user_group_privileges` (`ug_type`,`ugp_name`) VALUES ('1','REMOVE_USER') [ RunTime:0.0462s ]
+
+[ 2015-05-10T19:55:04+08:00 ] ::1 /Examination/Api/User/removePrivilege/ugp_name/REMOVE_USER/user_id/14
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000063s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000863s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002722s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003324s ]
+
+[ 2015-05-10T19:55:38+08:00 ] ::1 /Examination/Api/User/removePrivilege/ugp_name/REMOVE_USER/user_id/14
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000072s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000999s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000986s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001274s ]
+
+[ 2015-05-10T19:56:19+08:00 ] ::1 /Examination/Api/User/removePrivilege/ugp_name/REMOVE_USER/user_id/14
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000037s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000586s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000884s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001232s ]
+
+[ 2015-05-10T19:56:20+08:00 ] ::1 /Examination/Api/User/removePrivilege/ugp_name/REMOVE_USER/user_id/14
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000058s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000761s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000831s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001120s ]
+
+[ 2015-05-10T19:56:40+08:00 ] ::1 /Examination/Api/User/removePrivilege/ugp_name/REMOVE_USER/user_id/14
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000427s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000428s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000552s ]
+
+[ 2015-05-10T19:56:48+08:00 ] ::1 /Examination/Api/User/removePrivilege/ugp_name/REMOVE_USER/user_id/14
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000110s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002481s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001186s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001588s ]
+
+[ 2015-05-10T19:56:50+08:00 ] ::1 /Examination/Api/User/removePrivilege/ugp_name/REMOVE_USER/user_id/14
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000628s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000608s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000764s ]
+
+[ 2015-05-10T19:56:50+08:00 ] ::1 /Examination/Api/User/removePrivilege/ugp_name/REMOVE_USER/user_id/14
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000048s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000748s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001243s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001547s ]
+
+[ 2015-05-10T19:58:24+08:00 ] ::1 /Examination/Api/User/removePrivilege/ugp_name/REMOVE_USER/user_id/14
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000373s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000534s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000693s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0162s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-10T20:09:58+08:00 ] ::1 /Examination/Api/User/getAllPrivileges
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000507s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000724s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000878s ]
+SQL: SHOW COLUMNS FROM `exa_user_group_privileges` [ RunTime:0.0662s ]
+SQL: SELECT DISTINCT  `ugp_name` FROM `exa_user_group_privileges`  [ RunTime:0.0534s ]
+

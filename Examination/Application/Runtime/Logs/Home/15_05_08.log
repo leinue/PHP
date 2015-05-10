@@ -1873,3 +1873,14 @@ SQL: SELECT `privilege` FROM `exa_user` WHERE ( `private_guid`='A58A2D18-EF0E-1C
 SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0068s ]
 SQL: SELECT `options_value` FROM `exa_options` WHERE ( `options_name`='site_name' ) LIMIT 1   [ RunTime:0.0003s ]
 
+[ 2015-05-08T21:02:19+08:00 ] ::1 /Examination/home/publication
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000053s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001314s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000926s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001154s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001120s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001369s ]
+

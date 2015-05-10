@@ -8,13 +8,17 @@ class UserModel extends Model{
 	protected $patchValidate = true;
 
 	protected $_validate = array(
-    	array('email','email','邮箱格式不正确',0,1),
-    	array('email','','邮箱已经存在！',0,'unique',1)
+    	array('user_email','email','邮箱格式不正确',0,1),
+    	array('user_email','','邮箱已经存在！',0,'unique',1),
    	);
 
    	protected $_auto = array ( 
-         array('nickname','蛤蛤'),  // 新增的时候把status字段设置为1
-     );
+         array('user_nickname','蛤蛤'),
+         array('user_content','要提高姿势水平'),
+         array('user_photo','./Public/images/user_default_photo.jpg'),
+         array('user_sex','0')
+    );
+
 }
 
 ?>

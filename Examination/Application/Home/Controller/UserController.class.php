@@ -207,6 +207,22 @@ class UserController extends Controller {
 		}
 	}
 
+	public function getAvailableByGuid($pguid=''){
+		if($this->isInfoNull($pguid)){
+			$ajaxData['status']='0';
+			$ajaxData['msg']='数据不能为空';
+			$ajaxData['data']='';
+			$this->ajaxReturn($ajaxData);
+		}else{
+			$postData=M('User')->where("`private_guid`='$pguid'")->getField('available');
+			if($postData!==null){
+				return $postData;
+			}else{
+				return null;
+			}
+		}
+	}
+
 	public function changeprivilegeByGuid($pguid='',$p=1){
 		if($this->isInfoNull($pguid)){
 			$ajaxData['status']='0';

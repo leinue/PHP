@@ -31,6 +31,7 @@ class IndexController extends Controller {
 						`p_liked_num` int not null,
 						`p_tags` int not null,
 						`p_type` int not null,
+						`p_view` int not null,
 						`epcid` int not null,
 						`p_created_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     					primary key(`id`))default charset=utf8;",

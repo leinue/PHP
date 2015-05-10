@@ -11,7 +11,7 @@ class OptionsController extends UserController {
 	}
 
 	public function getAll(){
-		$optionsList=M('options');
+		$optionsList=M('Options');
 		if($result=$optionsList->getField('options_name,options_value')){
 			$ajaxData['status']='1';
 			$ajaxData['msg']='读取成功';
@@ -34,7 +34,7 @@ class OptionsController extends UserController {
 			$this->ajaxReturn($ajaxData);
 		}else{
 			if($this->getPrivilegeByGuid($pguid)==='0'){
-				$wOption=M('options');
+				$wOption=M('Options');
 				$wOptionData['options_name']=$rulename;
 				$wOptionData['options_value']=$rulevalue;
 				$data=$wOption->create($wOptionData);
@@ -80,7 +80,7 @@ class OptionsController extends UserController {
 				$ajaxData['data']='';
 				$this->ajaxReturn($ajaxData);
 			}else{
-				$rOption=M('options');
+				$rOption=M('Options');
 				$result=$rOption->where("`options_name`='$rulename'")->getField('`options_value`');
 				if($result){
 					$ajaxData['status']='1';

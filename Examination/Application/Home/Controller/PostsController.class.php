@@ -1,6 +1,7 @@
 <?php
 namespace Home\Controller;
 use Think\Controller;
+use Home\Controller\UserController;
 
 class PostsController extends Controller {
 
@@ -8,24 +9,7 @@ class PostsController extends Controller {
 		$this->redirect('/Home/',5,'页面跳转中....');
 	}
 
-	protected function isInfoNull($info){
-		if(is_array($info)){
-			foreach($info as $key => $value){if($value==null){return true;}}
-		}else{return $info==null;}
-	}
-
-	protected function guid() {
-	    $charid = strtoupper(md5(uniqid(mt_rand(), true)));
-	    $hyphen = chr(45);// "-"
-	    $uuid = substr($charid, 0, 8).$hyphen
-	    .substr($charid, 8, 4).$hyphen
-	    .substr($charid,12, 4).$hyphen
-	    .substr($charid,16, 4).$hyphen
-	    .substr($charid,20,12);
-	    return $uuid;
-	}
-
-	//返回文章guid
+	//返回文章guid,author为私有guid
 	public function newpost($author='',$title='',$content='',$posttype='article'){
 		$ajaxData=array();
 		if($this->isInfoNull(array($author,$title,$content,$posttype))){
@@ -33,37 +17,40 @@ class PostsController extends Controller {
 			$ajaxData['msg']='数据不能为空';
 			$this->ajaxReturn($ajaxData);
 		}else{
-			$postData['post_author']=$author;
-			$postData['post_title']=$title;
-			$postData['post_content']=$content;
-			$postData['post_type']=$posttype;
-			$postData['post_modified']=date('y-m-d h:i:s',time());
-			$postData['post_guid']=$this->guid();
-			$wPost=M('Posts');
-			$data=$wPost->create($postData);
-			if($data){
-				$result=$wPost->add();
-				if($result){
-					$ajaxData['status']='1';
-					$ajaxData['msg']='发表成功';
-					$ajaxData['data']['post_guid']=$postData['post_guid'];
-					$this->ajaxReturn($ajaxData);
+			if($this->getAvailableByGuid($author)==='1'){
+				$postData['post_author']=$author;
+				$postData['post_title']=$title;
+				$postData['post_content']=$content;
+				$postData['post_type']=$posttype;
+				$postData['post_modified']=date('y-m-d h:i:s',time());
+				$postData['post_guid']=$this->guid();
+				$wPost=M('Posts');
+				$data=$wPost->create($postData);
+				if($data){
+					$result=$wPost->add();
+					if($result){
+						$ajaxData['status']='1';
+						$ajaxData['msg']='发表成功';
+						$ajaxData['data']['post_guid']=$postData['post_guid'];
+						$this->ajaxReturn($ajaxData);
+					}else{
+						$ajaxData['status']='0';
+						$ajaxData['msg']='发表失败';
+						$this->ajaxReturn($ajaxData);
+					}
 				}else{
 					$ajaxData['status']='0';
 					$ajaxData['msg']='发表失败';
 					$this->ajaxReturn($ajaxData);
 				}
 			}else{
-				$ajaxData['status']='0';
-				$ajaxData['msg']='发表失败';
-				$this->ajaxReturn($ajaxData);
+				
 			}
 		}
 	}
 
 	//通过id获取文章
 	public function getPostByGuid($guid=''){
-		$ajaxData=array();
 		if($this->isInfoNull($guid)){
 			$ajaxData['status']='0';
 			$ajaxData['msg']='数据不能为空';
@@ -85,9 +72,10 @@ class PostsController extends Controller {
 		}
 	}
 
-	public function updatePost($guid='',$title='',$content=''){
+	//oid为私有guid
+	public function updatePost($guid='',$title='',$content='',$oid=''){
 		$ajaxData=array();
-		if($this->isInfoNull(array($guid,$title,$content))){
+		if($this->isInfoNull(array($guid,$title,$content,$oid))){
 			$ajaxData['status']='0';
 			$ajaxData['msg']='数据不能为空';
 			$this->ajaxReturn($ajaxData);
@@ -95,38 +83,44 @@ class PostsController extends Controller {
 			$uPost=M('Posts');
 			$data['post_title'] = $title;
 			$data['post_content'] = $content;
-			$result=$uPost->where("`post_guid`='$guid'")->data($data)->save();
+			$result=$uPost->where("`post_guid`='$guid' AND `post_author`='$oid'")->data($data)->save();
 			if($result){
 				$ajaxData['status']='1';
 				$ajaxData['msg']='更新成功';
 				$this->ajaxReturn($ajaxData);
 			}else{
 				$ajaxData['status']='0';
-				$ajaxData['msg']='内容未变或更新失败';
+				$ajaxData['msg']='内容未变或更新失败或无权限';
 				$this->ajaxReturn($ajaxData);
 			}
 		}
 	}
 
-	public function deletePost($guid=''){
+	public function deletePost($guid='',$oid=''){
 		$ajaxData=array();
-		if($this->isInfoNull($guid)){
+		if($this->isInfoNull(array($guid,$oid))){
 			$ajaxData['status']='0';
 			$ajaxData['msg']='数据不能为空';
+			$ajaxData['data']='';
 			$this->ajaxReturn($ajaxData);
 		}else{
 			$dPost=M('Posts');
-			$data['post_guid'] = $guid;
-			$result=$dPost->where("`post_guid`='$guid'")->delete();
+			$result=$dPost->where("`post_guid`='$guid' AND `post_author`='$oid'")->delete();
 			if($result){
 				$ajaxData['status']='1';
 				$ajaxData['msg']='删除成功';
+				$ajaxData['data']='';
 				$this->ajaxReturn($ajaxData);
 			}else{
 				$ajaxData['status']='0';
-				$ajaxData['msg']='删除失败';
+				$ajaxData['msg']='删除失败或无权限';
+				$ajaxData['data']='';
 				$this->ajaxReturn($ajaxData);
 			}
 		}
+	}
+
+	public function getAll($page,$limit){
+
 	}
 }

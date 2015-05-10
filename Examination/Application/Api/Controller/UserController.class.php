@@ -46,6 +46,10 @@ class UserController extends Controller {
 		return D('User')->where("`%s`='%s'",array($fieldName,$fieldName))->getField('`user_id`');
 	}
 
+	protected function isEmailExists($email){
+		return !D('User')->where("`user_email`='$email'")->getField('`user_id`')==null;
+	}
+
 	protected function getUserByUserId($id){
 		if(isInfoNull($id)){
 			return 0;//数据不能为空
@@ -346,7 +350,16 @@ class UserController extends Controller {
 	}
 
 	public function forgotPassword(){
-
+		$user_email=I($this->requestMethod."user_email");
+		if(isInfoNull($user_email)){
+			$this->ajaxReturn(getServerResponse('0','数据不能为空或有误',''));
+		}else{
+			if($this->isEmailExists($user_email)){
+				//发送邮件
+			}else{
+				$this->ajaxReturn(getServerResponse('0','用户不存在',''));
+			}
+		}
 	}
 
 }

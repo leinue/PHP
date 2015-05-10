@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?>597055914@qq.com

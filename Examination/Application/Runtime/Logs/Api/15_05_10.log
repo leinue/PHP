@@ -1280,3 +1280,733 @@ SQL: SELECT * FROM `exa_user` WHERE ( `user_id`=20 AND `user_activate_key`='0109
 SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0042s ]
 SQL: UPDATE `exa_user_group` SET `ug_type`='user' WHERE ( `user_id`=20 ) [ RunTime:0.0458s ]
 
+[ 2015-05-10T15:36:39+08:00 ] ::1 /Examination/Api/User/activate/activate_key/010975B7-8563-396A-AD63-E89C4DA6B87E/user_id/20/token_id/0D5E0CDC-B051-7B4D-BCE2-2B366C5BAC0F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000138s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002183s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002681s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003480s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0233s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=20 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0216s ]
+SQL: SELECT * FROM `exa_user` WHERE ( `user_id`=20 AND `user_activate_key`='010975B7-8563-396A-AD63-E89C4DA6B87E' AND `token_id`='0D5E0CDC-B051-7B4D-BCE2-2B366C5BAC0F' )  [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0084s ]
+SQL: UPDATE `exa_user_group` SET `ug_type`='user' WHERE ( `user_id`=20 ) [ RunTime:0.0739s ]
+
+[ 2015-05-10T15:36:47+08:00 ] ::1 /Examination/Api/User/activate/activate_key/010975B7-8563-396A-AD63-E89C4DA6B87E/user_id/20/token_id/0D5E0CDC-B051-7B4D-BCE2-2B366C5BAC0F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000088s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001042s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000985s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001280s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0144s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=20 ) LIMIT 1   [ RunTime:0.0005s ]
+
+[ 2015-05-10T15:39:36+08:00 ] ::1 /Examination/Api/User/login/email/597055914@qq.com/password/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000060s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000849s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001101s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001420s ]
+ERR: Think\Controller:isInfoNull方法不存在！
+
+[ 2015-05-10T15:39:51+08:00 ] ::1 /Examination/Api/User/login/email/597055914@qq.com/password/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000769s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000749s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000988s ]
+
+[ 2015-05-10T15:39:59+08:00 ] ::1 /Examination/Api/User/login/email/597055914@qq.com/password/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000061s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001212s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000479s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000612s ]
+
+[ 2015-05-10T15:40:03+08:00 ] ::1 /Examination/Api/User/login/email/597055914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000510s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000471s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000608s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0795s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'email' in 'where clause'
+
+[ 2015-05-10T15:40:17+08:00 ] ::1 /Examination/Api/User/login/email/597055914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000048s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000726s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000840s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001152s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0547s ]
+SQL: SELECT * FROM `exa_user` WHERE ( `user_email`='597055914@qq.com' AND `user_password`='7c4a8d09ca3762af61e59520943dc26494f8941b' ) LIMIT 1   [ RunTime:0.0004s ]
+
+[ 2015-05-10T15:42:25+08:00 ] ::1 /Examination/Api/User/login/email/597055914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000095s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001862s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001304s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001641s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0461s ]
+SQL: SELECT * FROM `exa_user` WHERE ( `user_email`='597055914@qq.com' AND `user_password`='7c4a8d09ca3762af61e59520943dc26494f8941b' ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: UPDATE `exa_user` SET `token_id`='D893D793-A753-72DE-EFFB-BCD75FB2D584' WHERE ( `user_email`='597055914@qq.com' ) [ RunTime:0.0003s ]
+
+[ 2015-05-10T15:42:56+08:00 ] ::1 /Examination/Api/User/login/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000049s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000714s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000713s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000951s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0205s ]
+SQL: SELECT * FROM `exa_user` WHERE ( `user_email`='59705914@qq.com' AND `user_password`='7c4a8d09ca3762af61e59520943dc26494f8941b' ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: UPDATE `exa_user` SET `token_id`='707F5374-0FE2-EFF5-6711-422E2EAFA6FD' WHERE ( `user_email`='59705914@qq.com' ) [ RunTime:0.0715s ]
+
+[ 2015-05-10T15:47:35+08:00 ] ::1 /Examination/Api/User/login/email/59705914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000456s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000633s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000782s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0258s ]
+SQL: SELECT * FROM `exa_user` WHERE ( `user_email`='59705914@qq.com' AND `user_password`='7c4a8d09ca3762af61e59520943dc26494f8941b' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: UPDATE `exa_user` SET `user_last_login_time`='15-05-10 03:47:35',`token_id`='C883FBED-5893-49C6-FCFA-3235C1E2E206' WHERE ( `user_email`='59705914@qq.com' ) [ RunTime:0.0002s ]
+
+[ 2015-05-10T15:47:39+08:00 ] ::1 /Examination/Api/User/login/email/597055914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000441s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000510s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000640s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0538s ]
+SQL: SELECT * FROM `exa_user` WHERE ( `user_email`='597055914@qq.com' AND `user_password`='7c4a8d09ca3762af61e59520943dc26494f8941b' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: UPDATE `exa_user` SET `user_last_login_time`='15-05-10 03:47:39',`token_id`='FCC272EC-B72E-7620-0538-1D0ADC2FB469' WHERE ( `user_email`='597055914@qq.com' ) [ RunTime:0.0497s ]
+
+[ 2015-05-10T15:48:21+08:00 ] ::1 /Examination/Api/User/login/email/597055914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000061s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000862s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000867s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001134s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0158s ]
+SQL: SELECT * FROM `exa_user` WHERE ( `user_email`='597055914@qq.com' AND `user_password`='7c4a8d09ca3762af61e59520943dc26494f8941b' ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: UPDATE `exa_user` SET `user_last_login_time`='15-05-10 03:48:21',`token_id`='263B5EF7-6958-FCD7-A617-2CD0C816B607' WHERE ( `user_email`='597055914@qq.com' ) [ RunTime:0.0599s ]
+
+[ 2015-05-10T15:48:30+08:00 ] ::1 /Examination/Api/User/login/email/597055914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000087s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001203s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001012s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001404s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0736s ]
+SQL: SELECT * FROM `exa_user` WHERE ( `user_email`='597055914@qq.com' AND `user_password`='7c4a8d09ca3762af61e59520943dc26494f8941b' ) LIMIT 1   [ RunTime:0.0009s ]
+SQL: UPDATE `exa_user` SET `user_last_login_time`='15-05-10 03:48:30',`token_id`='BBF96099-CBF4-C028-9A7A-78CD1E4F6D97' WHERE ( `user_email`='597055914@qq.com' ) [ RunTime:0.0491s ]
+
+[ 2015-05-10T15:48:46+08:00 ] ::1 /Examination/Api/User/login/email/597055914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000086s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001259s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001191s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001634s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0092s ]
+SQL: SELECT * FROM `exa_user` WHERE ( `user_email`='597055914@qq.com' AND `user_password`='7c4a8d09ca3762af61e59520943dc26494f8941b' ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: UPDATE `exa_user` SET `token_id`='760343F3-90F7-1A09-557B-332375FB7180' WHERE ( `user_email`='597055914@qq.com' ) [ RunTime:0.0664s ]
+
+[ 2015-05-10T15:48:56+08:00 ] ::1 /Examination/Api/User/login/email/597055914@qq.com/password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000090s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001235s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001051s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001861s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0136s ]
+SQL: SELECT * FROM `exa_user` WHERE ( `user_email`='597055914@qq.com' AND `user_password`='7c4a8d09ca3762af61e59520943dc26494f8941b' ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: UPDATE `exa_user` SET `token_id`='5EA6B332-CAC6-49C7-BDD1-79CE92E707EA' WHERE ( `user_email`='597055914@qq.com' ) [ RunTime:0.2067s ]
+
+[ 2015-05-10T15:51:52+08:00 ] ::1 /Examination/Api/User/getAllUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000474s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000575s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000713s ]
+ERR: Think\Controller:isInfoNull方法不存在！
+
+[ 2015-05-10T15:51:58+08:00 ] ::1 /Examination/Api/User/getAllUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000085s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001100s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001552s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002031s ]
+
+[ 2015-05-10T15:52:18+08:00 ] ::1 /Examination/Api/User/getAllUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000055s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000908s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000780s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001014s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0089s ]
+SQL: SELECT * FROM `exa_user` WHERE ( `user_id` BETWEEN 1 AND 11 ) ORDER BY `user_register_time` LIMIT 10   [ RunTime:0.0004s ]
+
+[ 2015-05-10T15:54:05+08:00 ] ::1 /Examination/Api/User/getAllUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000053s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000874s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000700s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000855s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0542s ]
+SQL: SELECT * FROM `exa_user` WHERE ( `user_id` BETWEEN 1 AND 11 ) ORDER BY `user_register_time` LIMIT 10   [ RunTime:0.0013s ]
+
+[ 2015-05-10T15:54:18+08:00 ] ::1 /Examination/Api/User/getAllUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000084s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001673s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000904s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001165s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0150s ]
+SQL: SELECT * FROM `exa_user` WHERE ( `user_id` BETWEEN 1 AND 11 ) ORDER BY `user_register_time` LIMIT 10   [ RunTime:0.0006s ]
+
+[ 2015-05-10T15:54:34+08:00 ] ::1 /Examination/Api/User/getAllUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000056s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000933s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001153s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001435s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `exa_user` WHERE ( `user_id` BETWEEN 1 AND 11 ) ORDER BY `user_register_time` LIMIT 10   [ RunTime:0.0005s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000897s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001073s ]
+
+[ 2015-05-10T15:55:56+08:00 ] ::1 /Examination/Api/User/getAllUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000093s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001387s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001719s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002436s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0132s ]
+SQL: SELECT * FROM `exa_user` ORDER BY `user_register_time` LIMIT 1,11   [ RunTime:0.0006s ]
+
+[ 2015-05-10T15:56:11+08:00 ] ::1 /Examination/Api/User/getAllUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000085s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001442s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001167s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001445s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `exa_user` ORDER BY `user_register_time` LIMIT 1,10   [ RunTime:0.0004s ]
+
+[ 2015-05-10T15:56:13+08:00 ] ::1 /Examination/Api/User/getAllUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000049s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000755s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000873s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001137s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0095s ]
+SQL: SELECT * FROM `exa_user` ORDER BY `user_register_time` LIMIT 1,12   [ RunTime:0.0003s ]
+
+[ 2015-05-10T15:56:18+08:00 ] ::1 /Examination/Api/User/getAllUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000054s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001074s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000659s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000840s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0522s ]
+SQL: SELECT * FROM `exa_user` ORDER BY `user_register_time` LIMIT 1,9   [ RunTime:0.0004s ]
+
+[ 2015-05-10T15:56:21+08:00 ] ::1 /Examination/Api/User/getAllUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000089s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001245s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001034s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001416s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0107s ]
+SQL: SELECT * FROM `exa_user` ORDER BY `user_register_time` LIMIT 1,11   [ RunTime:0.0004s ]
+
+[ 2015-05-10T15:56:32+08:00 ] ::1 /Examination/Api/User/getAllUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000144s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001143s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001367s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001815s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0549s ]
+SQL: SELECT * FROM `exa_user` ORDER BY `user_register_time` LIMIT 1,11   [ RunTime:0.0006s ]
+
+[ 2015-05-10T15:58:11+08:00 ] ::1 /Examination/Api/User/getAllUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000052s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000842s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000929s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001174s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0147s ]
+SQL: SELECT * FROM `exa_user` WHERE ( 1=1 ) ORDER BY `user_register_time` LIMIT 10   [ RunTime:0.0007s ]
+
+[ 2015-05-10T15:58:32+08:00 ] ::1 /Examination/Api/User/getAllUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000114s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001904s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002964s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003550s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0219s ]
+SQL: SELECT * FROM `exa_user` WHERE ( 1=1 ) ORDER BY `user_register_time` LIMIT 10   [ RunTime:0.0009s ]
+
+[ 2015-05-10T16:00:26+08:00 ] ::1 /Examination/Api/User/getAllUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000129s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002713s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001159s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001401s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0095s ]
+SQL: SELECT * FROM `exa_user` WHERE ( 1=1 ) ORDER BY `user_register_time` LIMIT 10   [ RunTime:0.0004s ]
+
+[ 2015-05-10T16:05:37+08:00 ] ::1 /Examination/Api/User/activate/activate_key/010975B7-8563-396A-AD63-E89C4DA6B87E/user_id/20/token_id/0D5E0CDC-B051-7B4D-BCE2-2B366C5BAC0F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000509s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000600s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000742s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0073s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=20 ) LIMIT 1   [ RunTime:0.0012s ]
+
+[ 2015-05-10T16:05:50+08:00 ] ::1 /Examination/Api/User/activate/activate_key/010975B7-8563-396A-AD63-E89C4DA6B87E/user_id/20/token_id/0D5E0CDC-B051-7B4D-BCE2-2B366C5BAC0F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000113s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001418s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001367s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001780s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0099s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=20 ) LIMIT 1   [ RunTime:0.0004s ]
+
+[ 2015-05-10T16:05:51+08:00 ] ::1 /Examination/Api/User/activate/activate_key/010975B7-8563-396A-AD63-E89C4DA6B87E/user_id/20/token_id/0D5E0CDC-B051-7B4D-BCE2-2B366C5BAC0F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000152s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002015s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001555s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001983s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0172s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=20 ) LIMIT 1   [ RunTime:0.0006s ]
+
+[ 2015-05-10T16:14:52+08:00 ] ::1 /Examination/Api/User/getAllVisitor/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000682s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000752s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000936s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.3806s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'token_id' in 'field list'
+
+[ 2015-05-10T16:15:16+08:00 ] ::1 /Examination/Api/User/getAllVisitor/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000057s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000874s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000932s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001195s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0142s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'user_register_time' in 'order clause'
+
+[ 2015-05-10T16:15:31+08:00 ] ::1 /Examination/Api/User/getAllVisitor/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000146s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002105s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002322s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003031s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0704s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( 1=1 AND `ug_type`='visitor' ) LIMIT 1   [ RunTime:0.0007s ]
+
+[ 2015-05-10T16:17:42+08:00 ] ::1 /Examination/Api/User/getAllVisitor/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000057s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001015s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001231s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001549s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0144s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( 1=1 AND `ug_type`='visitor' ) LIMIT 1   [ RunTime:0.0005s ]
+
+[ 2015-05-10T16:18:02+08:00 ] ::1 /Examination/Api/User/getAllVisitor/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000099s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001405s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001391s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001837s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0231s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( `ug_type`='visitor' ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-10T16:18:33+08:00 ] ::1 /Examination/Api/User/getAllVisitor/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000088s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000989s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000886s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001154s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0426s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( 1=1 AND `ug_type`='visitor' ) LIMIT 1   [ RunTime:0.0004s ]
+
+[ 2015-05-10T16:18:50+08:00 ] ::1 /Examination/Api/User/getAllVisitor/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000137s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002034s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001708s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002174s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0168s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( 1=1 AND `ug_type`='user' ) LIMIT 1   [ RunTime:0.0006s ]
+NOTIC: [8] Undefined variable: 14 F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 182 行.
+NOTIC: [2] Invalid argument supplied for foreach() F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 182 行.
+
+[ 2015-05-10T16:19:50+08:00 ] ::1 /Examination/Api/User/getAllVisitor/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000053s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000941s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001201s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001480s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0096s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE (  `ug_type`='user' ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: 14 F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 182 行.
+NOTIC: [2] Invalid argument supplied for foreach() F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 182 行.
+
+[ 2015-05-10T16:21:28+08:00 ] ::1 /Examination/Api/User/getAllVisitor/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000087s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001222s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001397s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001684s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0533s ]
+NOTIC: [4096] Object of class Api\Model\UserGroupModel could not be converted to string F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 182 行.
+NOTIC: [8] Object of class Api\Model\UserGroupModel to string conversion F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 182 行.
+NOTIC: [8] Undefined variable: Object F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 182 行.
+NOTIC: [2] Invalid argument supplied for foreach() F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 182 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php:180) F:\wamp\www\Examination\ThinkPHP\Library\Think\Controller.class.php 第 215 行.
+
+[ 2015-05-10T16:22:17+08:00 ] ::1 /Examination/Api/User/getAllVisitor/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000055s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000910s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000822s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001059s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0102s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( `ug_type`='user' ) LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined variable: 14 F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 183 行.
+NOTIC: [2] Invalid argument supplied for foreach() F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 183 行.
+
+[ 2015-05-10T16:22:23+08:00 ] ::1 /Examination/Api/User/getAllVisitor/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000054s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000774s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000793s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001054s ]
+
+[ 2015-05-10T16:22:26+08:00 ] ::1 /Examination/Api/User/getAllVisitor/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000054s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000925s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000880s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001155s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0083s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( `ug_type`='user' ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: 14 F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 183 行.
+NOTIC: [2] Invalid argument supplied for foreach() F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 183 行.
+
+[ 2015-05-10T16:24:49+08:00 ] ::1 /Examination/Api/User/getAllVisitor/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000091s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001444s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001764s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003276s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0402s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( `ug_type`='user' ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: 14 F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 182 行.
+NOTIC: [2] Invalid argument supplied for foreach() F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 182 行.
+
+[ 2015-05-10T16:28:25+08:00 ] ::1 /Examination/Api/User/getAllVisitor/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000049s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000882s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001620s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002018s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0141s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( `ug_type`='user' ) LIMIT 10   [ RunTime:0.0005s ]
+NOTIC: [8] Array to string conversion F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 184 行.
+NOTIC: [8] Undefined variable: Array F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 184 行.
+NOTIC: [2] Invalid argument supplied for foreach() F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 184 行.
+
+[ 2015-05-10T16:28:49+08:00 ] ::1 /Examination/Api/User/getAllVisitor/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000064s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000942s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001580s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002091s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0599s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( `ug_type`='user' ) LIMIT 10   [ RunTime:0.0007s ]
+NOTIC: [8] Array to string conversion F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 184 行.
+NOTIC: [8] Undefined variable: Array F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 184 行.
+NOTIC: [2] Invalid argument supplied for foreach() F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 184 行.
+
+[ 2015-05-10T16:33:21+08:00 ] ::1 /Examination/Api/User/getAllVisitor/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000089s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001956s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001820s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002456s ]
+
+[ 2015-05-10T16:33:47+08:00 ] ::1 /Examination/Api/User/getAllVisitor/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000051s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000845s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001441s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001896s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0561s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( `ug_type`='visitor' ) LIMIT 10   [ RunTime:0.0007s ]
+
+[ 2015-05-10T16:34:04+08:00 ] ::1 /Examination/Api/User/getAllCommonUser
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000441s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000441s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000582s ]
+
+[ 2015-05-10T16:34:16+08:00 ] ::1 /Examination/Api/User/getAllCommonUser/page=1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001030s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000703s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000913s ]
+
+[ 2015-05-10T16:34:22+08:00 ] ::1 /Examination/Api/User/getAllCommonUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000520s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000731s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000960s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0073s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( `ug_type`='user' ) LIMIT 10   [ RunTime:0.0005s ]
+NOTIC: [8] Array to string conversion F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 184 行.
+NOTIC: [8] Undefined variable: Array F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 184 行.
+NOTIC: [2] Invalid argument supplied for foreach() F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 184 行.
+
+[ 2015-05-10T16:38:33+08:00 ] ::1 /Examination/Api/User/getAllCommonUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000174s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002599s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001695s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002117s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0979s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( `ug_type`='user' ) LIMIT 10   [ RunTime:0.0008s ]
+NOTIC: [8] Array to string conversion F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 174 行.
+NOTIC: [8] Undefined variable: Array F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 174 行.
+NOTIC: [2] Invalid argument supplied for foreach() F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 174 行.
+
+[ 2015-05-10T16:38:58+08:00 ] ::1 /Examination/Api/User/getAllCommonUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000052s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000814s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000627s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000899s ]
+
+[ 2015-05-10T16:39:26+08:00 ] ::1 /Examination/Api/User/getAllCommonUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000054s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000825s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001328s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001763s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0160s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( `ug_type`='user' ) LIMIT 10   [ RunTime:0.0005s ]
+NOTIC: [8] Array to string conversion F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 175 行.
+NOTIC: [8] Undefined variable: Array F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 175 行.
+NOTIC: [2] Invalid argument supplied for foreach() F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 175 行.
+
+[ 2015-05-10T16:39:37+08:00 ] ::1 /Examination/Api/User/getAllCommonUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000082s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001270s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003657s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004549s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0195s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( `ug_type`='user' ) LIMIT 10   [ RunTime:0.0007s ]
+NOTIC: [8] Array to string conversion F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 175 行.
+NOTIC: [8] Undefined variable: Array F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 175 行.
+NOTIC: [2] Invalid argument supplied for foreach() F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 175 行.
+
+[ 2015-05-10T16:39:50+08:00 ] ::1 /Examination/Api/User/getAllCommonUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000940s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000507s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000644s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0075s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( `ug_type`='user' ) LIMIT 10   [ RunTime:0.0003s ]
+NOTIC: [8] Array to string conversion F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 174 行.
+NOTIC: [8] Undefined variable: Array F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 174 行.
+NOTIC: [2] Invalid argument supplied for foreach() F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 174 行.
+
+[ 2015-05-10T16:39:56+08:00 ] ::1 /Examination/Api/User/getAllCommonUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000088s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001372s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000987s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001239s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0131s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( `ug_type`='user' ) LIMIT 10   [ RunTime:0.0003s ]
+NOTIC: [8] Array to string conversion F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 174 行.
+NOTIC: [8] Undefined variable: Array F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 174 行.
+NOTIC: [2] Invalid argument supplied for foreach() F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 174 行.
+
+[ 2015-05-10T16:40:13+08:00 ] ::1 /Examination/Api/User/getAllCommonUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000050s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000779s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001538s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001891s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0094s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( `ug_type`='user' ) LIMIT 10   [ RunTime:0.0003s ]
+NOTIC: [8] Array to string conversion F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 174 行.
+NOTIC: [8] Undefined variable: Array F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 174 行.
+NOTIC: [2] Invalid argument supplied for foreach() F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 174 行.
+
+[ 2015-05-10T16:40:17+08:00 ] ::1 /Examination/Api/User/getAllCommonUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000085s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001314s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001134s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001463s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0427s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( `ug_type`='user' ) LIMIT 10   [ RunTime:0.0006s ]
+NOTIC: [8] Array to string conversion F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 174 行.
+NOTIC: [8] Undefined variable: Array F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 174 行.
+NOTIC: [2] Invalid argument supplied for foreach() F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 174 行.
+
+[ 2015-05-10T16:40:22+08:00 ] ::1 /Examination/Api/User/getAllCommonUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000053s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000913s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001505s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001961s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0311s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( `ug_type`='user' ) LIMIT 10   [ RunTime:0.0003s ]
+
+[ 2015-05-10T16:40:30+08:00 ] ::1 /Examination/Api/User/getAllCommonUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000051s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000806s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000959s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001214s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0119s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( `ug_type`='user' ) LIMIT 10   [ RunTime:0.0003s ]
+
+[ 2015-05-10T16:40:51+08:00 ] ::1 /Examination/Api/User/getAllCommonUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000051s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000872s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001014s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001271s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0128s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( `ug_type`='user' ) LIMIT 10   [ RunTime:0.0005s ]
+
+[ 2015-05-10T16:40:56+08:00 ] ::1 /Examination/Api/User/getAllCommonUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000114s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001719s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001386s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001778s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0223s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( `ug_type`='user' ) LIMIT 10   [ RunTime:0.0007s ]
+
+[ 2015-05-10T16:43:25+08:00 ] ::1 /Examination/Api/User/getAllCommonUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000462s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000917s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001146s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0661s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( `ug_type`='user' ) LIMIT 10   [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0318s ]
+SQL: SELECT * FROM `exa_user` WHERE ( user_id=14 ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `exa_user` WHERE ( user_id=20 ) LIMIT 1   [ RunTime:0.0007s ]
+
+[ 2015-05-10T16:46:19+08:00 ] ::1 /Examination/Api/User/getAllCommonUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000147s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002364s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002157s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003204s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0136s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( `ug_type`='user' ) LIMIT 10   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0500s ]
+SQL: SELECT `user_id`,`token_id`,`user_nickname`,`user_email`,`user_password`,`user_description`,`user_photo`,`user_sex`,`user_activate_key`,`user_register_time`,`user_last_login_time` FROM `exa_user` WHERE ( user_id=14 ) LIMIT 1   [ RunTime:0.0009s ]
+SQL: SELECT `user_id`,`token_id`,`user_nickname`,`user_email`,`user_password`,`user_description`,`user_photo`,`user_sex`,`user_activate_key`,`user_register_time`,`user_last_login_time` FROM `exa_user` WHERE ( user_id=20 ) LIMIT 1   [ RunTime:0.0007s ]
+
+[ 2015-05-10T16:47:50+08:00 ] ::1 /Examination/Api/User/getAllCommonUser/page/1/limit/10
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000103s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001674s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001037s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001301s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0102s ]
+SQL: SELECT `user_id` FROM `exa_user_group` WHERE ( `ug_type`='user' ) LIMIT 10   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0058s ]
+SQL: SELECT `user_id`,`token_id`,`user_nickname`,`user_email`,`user_description`,`user_photo`,`user_sex`,`user_activate_key`,`user_register_time`,`user_last_login_time` FROM `exa_user` WHERE ( user_id=14 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `user_id`,`token_id`,`user_nickname`,`user_email`,`user_description`,`user_photo`,`user_sex`,`user_activate_key`,`user_register_time`,`user_last_login_time` FROM `exa_user` WHERE ( user_id=20 ) LIMIT 1   [ RunTime:0.0002s ]
+

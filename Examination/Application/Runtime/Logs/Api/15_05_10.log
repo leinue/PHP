@@ -2853,3 +2853,301 @@ INFO: [ app_begin ] --END-- [ RunTime:0.000878s ]
 SQL: SHOW COLUMNS FROM `exa_user_group_privileges` [ RunTime:0.0662s ]
 SQL: SELECT DISTINCT  `ugp_name` FROM `exa_user_group_privileges`  [ RunTime:0.0534s ]
 
+[ 2015-05-10T20:52:00+08:00 ] ::1 /Examination/Api/User/getAllPrivileges
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000489s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000547s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000676s ]
+SQL: SHOW COLUMNS FROM `exa_user_group_privileges` [ RunTime:0.0299s ]
+SQL: SELECT DISTINCT  `ugp_name` FROM `exa_user_group_privileges`  [ RunTime:0.0005s ]
+
+[ 2015-05-10T20:52:19+08:00 ] ::1 /Examination/Api/User/getAllPrivileges
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000512s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000519s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000667s ]
+SQL: SHOW COLUMNS FROM `exa_user_group_privileges` [ RunTime:0.0083s ]
+SQL: SELECT DISTINCT  `ugp_name` FROM `exa_user_group_privileges`  [ RunTime:0.0004s ]
+
+[ 2015-05-10T20:53:04+08:00 ] ::1 /Examination/Api/User/updatePassword/user_id/14/old_password/123456/new_password/0123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000418s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000557s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000727s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0082s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column '7c4a8d09ca3762af61e59520943dc26494f8941b' in 'where clause'
+
+[ 2015-05-10T20:53:21+08:00 ] ::1 /Examination/Api/User/updatePassword/user_id/14/old_password/123456/new_password/0123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000082s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000801s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000412s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000542s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0074s ]
+SQL: UPDATE `exa_user` SET `user_password`='b7ed088190c204b31cd71484e6a1c538986b5f77' WHERE ( `user_password`='7c4a8d09ca3762af61e59520943dc26494f8941b' AND `user_id`=14 ) [ RunTime:0.0593s ]
+
+[ 2015-05-10T20:54:36+08:00 ] ::1 /Examination/Api/User/updateUserFile/user_id/14/user_sex/1/user_photo/fucku/user_description/233333/user_nickname/%E8%B0%88%E7%AC%91%E9%A3%8E%E7%94%9F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000695s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000747s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000965s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.1007s ]
+
+[ 2015-05-10T20:55:06+08:00 ] ::1 /Examination/Api/User/updateUserFile/user_id/14/user_sex/1/user_photo/fucku/user_description/233333/user_nickname/%E8%B0%88%E7%AC%91%E9%A3%8E%E7%94%9F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000765s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001081s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001495s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0714s ]
+
+[ 2015-05-10T20:55:52+08:00 ] ::1 /Examination/Api/User/updateUserFile/user_id/14/user_sex/1/user_photo/fucku/user_description/233333/user_nickname/%E8%B0%88%E7%AC%91%E9%A3%8E%E7%94%9F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000078s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001401s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001033s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001316s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0075s ]
+SQL: UPDATE `exa_user` SET `user_nickname`='谈笑风生',`user_description`='233333',`user_photo`='fucku',`user_sex`='1' WHERE ( `user_id`=14 ) [ RunTime:0.0510s ]
+
+[ 2015-05-10T20:56:01+08:00 ] ::1 /Examination/Api/User/updateUserFile/user_id/14/user_sex/1/user_photo/fucku/user_description/233333/user_nickname/%E8%B0%88%E7%AC%91%E9%A3%8E%E7%94%9F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000038s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000540s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000851s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001144s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0085s ]
+SQL: UPDATE `exa_user` SET `user_nickname`='谈笑风生',`user_description`='233333',`user_photo`='fucku',`user_sex`='1' WHERE ( `user_id`=14 ) [ RunTime:0.0003s ]
+
+[ 2015-05-10T20:56:40+08:00 ] ::1 /Examination/Api/User/updateUserFile/user_id/14/user_sex/1/user_photo/fucku/user_description/233333/user_nickname/%E8%B0%88%E7%AC%91%E9%A3%8E%E7%94%9F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000070s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000948s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001219s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001538s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0083s ]
+SQL: UPDATE `exa_user` SET `user_nickname`='谈笑风生',`user_description`='233333',`user_photo`='fucku',`user_sex`='1' WHERE ( `user_id`=14 ) [ RunTime:0.0003s ]
+
+[ 2015-05-10T20:56:46+08:00 ] ::1 /Examination/Api/User/updateUserFile/user_id/14/user_sex/1/user_photo/fucku/user_description/233333/user_nickname/%E8%B0%88%E7%AC%91%E9%A3%8E%E7%94%9F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000051s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000824s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000847s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001103s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0064s ]
+SQL: UPDATE `exa_user` SET `user_nickname`='谈笑风生',`user_description`='233333',`user_photo`='fucku',`user_sex`='1' WHERE ( `user_id`=14 ) [ RunTime:0.0003s ]
+
+[ 2015-05-10T20:56:50+08:00 ] ::1 /Examination/Api/User/updateUserFile/user_id/14/user_sex/1/user_photo/fucku/user_description/233fff333/user_nickname/%E8%B0%88%E7%AC%91%E9%A3%8E%E7%94%9F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000040s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000605s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000942s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001270s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0072s ]
+SQL: UPDATE `exa_user` SET `user_nickname`='谈笑风生',`user_description`='233fff333',`user_photo`='fucku',`user_sex`='1' WHERE ( `user_id`=14 ) [ RunTime:0.0545s ]
+
+[ 2015-05-10T20:57:06+08:00 ] ::1 /Examination/Api/User/updateUserFile/user_id/14/user_sex/1/user_photo/fucku/user_description/233fff333/user_nickname/%E8%B0%88%E7%AC%91%E9%A3%8E%E7%94%9F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000152s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000823s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000557s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000724s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0091s ]
+SQL: UPDATE `exa_user` SET `user_nickname`='谈笑风生',`user_description`='233fff333',`user_photo`='fucku',`user_sex`='1' WHERE ( `user_id`=14 ) [ RunTime:0.0004s ]
+
+[ 2015-05-10T20:57:17+08:00 ] ::1 /Examination/Api/User/updateUserFile/user_id/14/user_sex/1/user_photo/fucku/user_description/233fff333/user_nickname/%E8%B0%88%E7%AC%91%E9%A3%8E%E7%94%9F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000077s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001080s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000701s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000909s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0072s ]
+SQL: UPDATE `exa_user` SET `user_nickname`='谈笑风生',`user_description`='233fff333',`user_photo`='fucku',`user_sex`='1' WHERE ( `user_id`=14 ) [ RunTime:0.0003s ]
+
+[ 2015-05-10T20:57:19+08:00 ] ::1 /Examination/Api/User/updateUserFile/user_id/14/user_sex/1/user_photo/fucku/user_description/233fff333/user_nickname/%E8%B0%88%E7%AC%91%E9%A3%8E%E7%94%9F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000060s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000798s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000622s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000809s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0092s ]
+SQL: UPDATE `exa_user` SET `user_nickname`='谈笑风生',`user_description`='233fff333',`user_photo`='fucku',`user_sex`='1' WHERE ( `user_id`=14 ) [ RunTime:0.0002s ]
+
+[ 2015-05-10T20:57:22+08:00 ] ::1 /Examination/Api/User/updateUserFile/user_id/14/user_sex/1/user_photo/fucku/user_description/233fff333/user_nickname/%E8%B0%88%E7%AC%91%E9%A3%8E%E7%94%9F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000089s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001975s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000850s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001111s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0071s ]
+SQL: UPDATE `exa_user` SET `user_nickname`='谈笑风生',`user_description`='233fff333',`user_photo`='fucku',`user_sex`='1' WHERE ( `user_id`=14 ) [ RunTime:0.0003s ]
+
+[ 2015-05-10T20:57:25+08:00 ] ::1 /Examination/Api/User/updateUserFile/user_id/14/user_sex/1/user_photo/fucku/user_description/233fff333/user_nickname/%E8%B0%88%E7%AC%91%E9%A3%8E%E7%94%9F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000731s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000732s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000953s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0729s ]
+SQL: UPDATE `exa_user` SET `user_nickname`='谈笑风生',`user_description`='233fff333',`user_photo`='fucku',`user_sex`='1' WHERE ( `user_id`=14 ) [ RunTime:0.0005s ]
+
+[ 2015-05-10T20:57:26+08:00 ] ::1 /Examination/Api/User/updateUserFile/user_id/14/user_sex/1/user_photo/fucku/user_description/233fff333/user_nickname/%E8%B0%88%E7%AC%91%E9%A3%8E%E7%94%9F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000679s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000652s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000850s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0086s ]
+SQL: UPDATE `exa_user` SET `user_nickname`='谈笑风生',`user_description`='233fff333',`user_photo`='fucku',`user_sex`='1' WHERE ( `user_id`=14 ) [ RunTime:0.0003s ]
+
+[ 2015-05-10T20:57:26+08:00 ] ::1 /Examination/Api/User/updateUserFile/user_id/14/user_sex/1/user_photo/fucku/user_description/233fff333/user_nickname/%E8%B0%88%E7%AC%91%E9%A3%8E%E7%94%9F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000376s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000359s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000469s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0035s ]
+SQL: UPDATE `exa_user` SET `user_nickname`='谈笑风生',`user_description`='233fff333',`user_photo`='fucku',`user_sex`='1' WHERE ( `user_id`=14 ) [ RunTime:0.0003s ]
+
+[ 2015-05-10T20:57:26+08:00 ] ::1 /Examination/Api/User/updateUserFile/user_id/14/user_sex/1/user_photo/fucku/user_description/233fff333/user_nickname/%E8%B0%88%E7%AC%91%E9%A3%8E%E7%94%9F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000792s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000779s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001025s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0033s ]
+SQL: UPDATE `exa_user` SET `user_nickname`='谈笑风生',`user_description`='233fff333',`user_photo`='fucku',`user_sex`='1' WHERE ( `user_id`=14 ) [ RunTime:0.0003s ]
+
+[ 2015-05-10T20:57:38+08:00 ] ::1 /Examination/Api/User/updateUserFile/user_id/14/user_sex/1/user_photo/fucku/user_description/233fff333/user_nickname/%E8%B0%88%E7%AC%91%E9%A3%8E%E7%94%9F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000104s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001410s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000788s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001013s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0631s ]
+SQL: UPDATE `exa_user` SET `user_nickname`='谈笑风生',`user_description`='233fff333',`user_photo`='fucku',`user_sex`='1' WHERE ( `user_id`=14 ) [ RunTime:0.0008s ]
+
+[ 2015-05-10T20:57:55+08:00 ] ::1 /Examination/Api/User/updateUserFile/user_id/14/user_sex/1/user_photo/fucku/user_description/233fff333/user_nickname/%E8%B0%88%E7%AC%91%E9%A3%8E%E7%94%9F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000062s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000866s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001757s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002158s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0065s ]
+SQL: UPDATE `exa_user` SET `user_nickname`='谈笑风生',`user_description`='233fff333',`user_photo`='fucku',`user_sex`='1' WHERE ( `user_id`=14 ) [ RunTime:0.0003s ]
+
+[ 2015-05-10T20:57:59+08:00 ] ::1 /Examination/Api/User/updateUserFile/user_id/14/user_sex/1/user_photo/fucku/user_description/233fff333/user_nickname/%E8%B0%88%E7%AC%91%E9%A3%8E%E7%94%9F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000296s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002780s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000903s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001156s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0072s ]
+SQL: UPDATE `exa_user` SET `user_nickname`='谈笑风生',`user_description`='233fff333',`user_photo`='fucku',`user_sex`='1' WHERE ( `user_id`=14 ) [ RunTime:0.0003s ]
+
+[ 2015-05-10T20:58:01+08:00 ] ::1 /Examination/Api/User/updateUserFile/user_id/14/user_sex/1/user_photo/fucku/user_description/233fff333/user_nickname/%E8%B0%88%E7%AC%91%E9%A3%8E%E7%94%9F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000367s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000377s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000489s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0222s ]
+SQL: UPDATE `exa_user` SET `user_nickname`='谈笑风生',`user_description`='233fff333',`user_photo`='fucku',`user_sex`='1' WHERE ( `user_id`=14 ) [ RunTime:0.0003s ]
+
+[ 2015-05-10T20:58:01+08:00 ] ::1 /Examination/Api/User/updateUserFile/user_id/14/user_sex/1/user_photo/fucku/user_description/233fff333/user_nickname/%E8%B0%88%E7%AC%91%E9%A3%8E%E7%94%9F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000055s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000619s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000585s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000757s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0044s ]
+SQL: UPDATE `exa_user` SET `user_nickname`='谈笑风生',`user_description`='233fff333',`user_photo`='fucku',`user_sex`='1' WHERE ( `user_id`=14 ) [ RunTime:0.0003s ]
+
+[ 2015-05-10T20:58:01+08:00 ] ::1 /Examination/Api/User/updateUserFile/user_id/14/user_sex/1/user_photo/fucku/user_description/233fff333/user_nickname/%E8%B0%88%E7%AC%91%E9%A3%8E%E7%94%9F
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000359s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000377s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000486s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0063s ]
+SQL: UPDATE `exa_user` SET `user_nickname`='谈笑风生',`user_description`='233fff333',`user_photo`='fucku',`user_sex`='1' WHERE ( `user_id`=14 ) [ RunTime:0.0003s ]
+
+[ 2015-05-10T20:58:44+08:00 ] ::1 /Examination/Api/User/updatePassword/user_id/14/old_password/0123456/new_password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000366s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000426s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000531s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0067s ]
+SQL: UPDATE `exa_user` SET `user_password`='7c4a8d09ca3762af61e59520943dc26494f8941b' WHERE ( `user_password`='b7ed088190c204b31cd71484e6a1c538986b5f77' AND `user_id`=14 ) [ RunTime:0.0419s ]
+
+[ 2015-05-10T20:58:56+08:00 ] ::1 /Examination/Api/User/updatePassword/user_id/14/old_password/0123456/new_password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000059s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000716s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002798s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003154s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0328s ]
+SQL: UPDATE `exa_user` SET `user_password`='7c4a8d09ca3762af61e59520943dc26494f8941b' WHERE ( `user_password`='b7ed088190c204b31cd71484e6a1c538986b5f77' AND `user_id`=14 ) [ RunTime:0.0003s ]
+
+[ 2015-05-10T20:58:58+08:00 ] ::1 /Examination/Api/User/updatePassword/user_id/14/old_password/0123456/new_password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000048s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000684s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000777s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001052s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0101s ]
+SQL: UPDATE `exa_user` SET `user_password`='7c4a8d09ca3762af61e59520943dc26494f8941b' WHERE ( `user_password`='b7ed088190c204b31cd71484e6a1c538986b5f77' AND `user_id`=14 ) [ RunTime:0.0004s ]
+
+[ 2015-05-10T20:58:58+08:00 ] ::1 /Examination/Api/User/updatePassword/user_id/14/old_password/0123456/new_password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000040s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000561s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000624s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000840s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0030s ]
+SQL: UPDATE `exa_user` SET `user_password`='7c4a8d09ca3762af61e59520943dc26494f8941b' WHERE ( `user_password`='b7ed088190c204b31cd71484e6a1c538986b5f77' AND `user_id`=14 ) [ RunTime:0.0003s ]
+
+[ 2015-05-10T20:58:58+08:00 ] ::1 /Examination/Api/User/updatePassword/user_id/14/old_password/0123456/new_password/123456
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000424s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000421s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000518s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0059s ]
+SQL: UPDATE `exa_user` SET `user_password`='7c4a8d09ca3762af61e59520943dc26494f8941b' WHERE ( `user_password`='b7ed088190c204b31cd71484e6a1c538986b5f77' AND `user_id`=14 ) [ RunTime:0.0003s ]
+

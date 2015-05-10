@@ -286,10 +286,6 @@ class UserController extends Controller {
 		}
 	}
 
-	public function changePrivilege(){
-
-	}
-
 	public function removeUser(){
 		$user_id=I($this->requestMethod."user_id");
 		$token_id=I($this->requestMethod."token_id");
@@ -311,6 +307,45 @@ class UserController extends Controller {
 	}
 
 	public function updateUserFile(){
+		$user_nickname=I($this->requestMethod."user_nickname");
+		$user_description=I($this->requestMethod."user_description");
+		$user_photo=I($this->requestMethod."user_photo");
+		$user_sex=I($this->requestMethod."user_sex");
+		$user_id=I($this->requestMethod."user_id");
+		if(isInfoNull(array($user_nickname,$user_description,$user_photo,$user_sex,$user_id)) || !is_numeric($user_id)){
+			$this->ajaxReturn(getServerResponse('0','数据不能为空或有误',''));
+		}else{
+			$updateFile['user_nickname']=$user_nickname;
+			$updateFile['user_description']=$user_description;
+			$updateFile['user_photo']=$user_photo;
+			$updateFile['user_sex']=$user_sex;
+			$result=D('User')->where("`user_id`=%s",array($user_id))->data($updateFile)->save();	
+			if($result!==null){
+				$this->ajaxReturn(getServerResponse('1','更新成功',''));
+			}else{
+				$this->ajaxReturn(getServerResponse('0','更新失败',''));
+			}
+		}
+	}
+
+	public function updatePassword(){
+		$user_id=I($this->requestMethod."user_id");
+		$old_password=sha1(I($this->requestMethod."old_password"));
+		$new_password=sha1(I($this->requestMethod."new_password"));
+		if(isInfoNull($user_id,$old_password,$new_password)){
+			$this->ajaxReturn(getServerResponse('0','数据不能为空或有误',''));
+		}else{
+			$newPassword['user_password']=$new_password;
+			$updateResult=D('User')->where("`user_password`='$old_password' AND `user_id`=$user_id")->data($newPassword)->save();
+			if($updateResult){
+				$this->ajaxReturn(getServerResponse('1','更新成功',''));
+			}else{
+				$this->ajaxReturn(getServerResponse('0','更新失败',''));
+			}
+		}
+	}
+
+	public function forgotPassword(){
 
 	}
 

@@ -40,6 +40,7 @@ class TagsController extends UserController {
 		$start=10*$page-9;
 		$end=10*$page+1;
 		$userlist=$allUser->page($start,$end)->select();
+		print_r($userlist);
 		if($userlist){
 			$this->ajaxReturn(getServerResponse('0','读取成功',$userlist));
 		}else{
@@ -51,7 +52,7 @@ class TagsController extends UserController {
 		$tag_id=I($this->requestMethod."tag_id");
 		$tag_content=I($this->requestMethod."tag_content");
 		//$user_id=I($this->requestMethod."user_id");
-		if(isInfoNull(array($tag_id,$tag_content,$user_id))){
+		if(isInfoNull(array($tag_id,$tag_content))){
 			$this->ajaxReturn(getServerResponse('0','数据不能为空',''));
 		}else{
 			/*$user_group_type=$this->getUserGroup($user_id);
@@ -91,7 +92,7 @@ class TagsController extends UserController {
 			if(!$this->isUserRootOrAdmin($user_group_type)){
 				$this->ajaxReturn(getServerResponse('0','没有权限',''));
 			}else{
-				$rOption=M('Catalogue');
+				$rOption=M('Tags');
 				$result=$rOption->where("`tag_id`=$tag_id")->delete();
 				if($result){
 					$this->ajaxReturn(getServerResponse('1','删除成功',$result));
@@ -108,7 +109,7 @@ class TagsController extends UserController {
 			$this->ajaxReturn(getServerResponse('0','数据不能为空',''));
 		}else{
 			$user_group_type=$this->getUserGroup($user_id);
-			;if(!$this->isUserRootOrAdmin($user_group_type)){
+			if(!$this->isUserRootOrAdmin($user_group_type)){
 				$this->ajaxReturn(getServerResponse('0','没有权限',''));
 			}else{
 				$rOption=M('Tags');

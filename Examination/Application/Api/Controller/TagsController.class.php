@@ -37,9 +37,7 @@ class TagsController extends UserController {
 		$page=I($this->requestMethod."page",1);
 		$limit=I($this->requestMethod."limit",10);
 		$allUser=D('Tags');
-		$start=10*$page-9;
-		$end=10*$page+1;
-		$userlist=$allUser->page($start,$end)->select();
+		$userlist=$allUser->page($page,$limit)->select();
 		print_r($userlist);
 		if($userlist){
 			$this->ajaxReturn(getServerResponse('0','读取成功',$userlist));

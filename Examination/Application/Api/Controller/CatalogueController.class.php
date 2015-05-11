@@ -104,7 +104,7 @@ class CatalogueController extends UserController {
 			$this->ajaxReturn(getServerResponse('0','数据不能为空',''));
 		}else{
 			$user_group_type=$this->getUserGroup($user_id);
-			if(!$this->isUserRootOrAdmin($user_group_type)){
+			;if(!$this->isUserRootOrAdmin($user_group_type)){
 				$this->ajaxReturn(getServerResponse('0','没有权限',''));
 			}else{
 				$rOption=M('Catalogue');
@@ -130,9 +130,7 @@ class CatalogueController extends UserController {
 				$this->ajaxReturn(getServerResponse('0','没有权限',''));
 			}else{
 				$rOption=M('Catalogue');
-				$start=10*$page-9;
-				$end=10*$page+1;
-				$result=$rOption->page($start,$end)->select();
+				$result=$rOption->page($page,$limit)->select();
 				if($result){
 					$this->ajaxReturn(getServerResponse('1','读取成功',$result));
 				}else{

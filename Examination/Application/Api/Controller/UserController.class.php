@@ -81,9 +81,7 @@ class UserController extends Controller {
 			$this->ajaxReturn(getServerResponse('0','数据不能为空',''));
 		}else{
 			$allUser=D('UserGroup');
-			$start=10*$page-9;
-			$end=10*$page+1;
-			$userlist=$allUser->where("`ug_type`='$groupName'")->page($start,$end)->field('`user_id`')->select();
+			$userlist=$allUser->where("`ug_type`='$groupName'")->page($page,$limit)->field('`user_id`')->select();
 			if($userlist){
 				$userCount=count($userlist);
 				foreach ($userlist as $key => $user) {
@@ -187,9 +185,7 @@ class UserController extends Controller {
 			$this->ajaxReturn(getServerResponse('0','数据不能为空',''));
 		}else{
 			$allUser=D('User');
-			$start=10*$page-9;
-			$end=10*$page+1;
-			$userlist=$allUser->order('`user_register_time`')->page($start,$end)->field(array('user_password','user_sex'),true)->select();
+			$userlist=$allUser->order('`user_register_time`')->page($page,$limit)->field(array('user_password','user_sex'),true)->select();
 			if($userlist){
 				$this->ajaxReturn(getServerResponse('0','数据不能为空',$userlist));
 			}else{

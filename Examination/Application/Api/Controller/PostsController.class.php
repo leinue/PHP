@@ -43,6 +43,49 @@ class PostsController extends UserController {
 		}
 	}
 
+	public function getByUserId(){
+		$user_id=I($this->requestMethod."user_id");
+		$page=I($this->requestMethod."page");
+		$limit=I($this->requestMethod."limit");
+		if(isInfoNull($user_id)){
+			$this->ajaxReturn(getServerResponse('0','数据不能为空',''));
+		}else{
+			$rPost=M('Posts');
+			$postData=$rPost->page($page,$limit)->where("`user_id`=$user_id")->select();
+		}
+	}
+
+	public function getByPostId(){
+		$post_id=I($this->requestMethod."post_id");
+		if(isInfoNull($post_id)){
+			$this->ajaxReturn(getServerResponse('0','数据不能为空',''));
+		}else{
+			$rPost=M('Posts');
+			$postData=$rPost->where("`post_id`=$post_id")->find();
+			if($post_date){
+				$this->ajaxReturn(getServerResponse('1','读取成功',$postData));
+			}else{
+				$this->ajaxReturn(getServerResponse('0','读取失败',''));
+			}
+		}
+	}
+
+	public function getAll(){
+
+	}
+
+	public function remove(){
+
+	}
+
+	public function removeAll(){
+
+	}
+
+	public function update(){
+
+	}
+
 	//通过id获取文章
 	public function getPostByGuid($guid=''){
 		if($this->isInfoNull($guid)){
@@ -114,7 +157,4 @@ class PostsController extends UserController {
 		}
 	}
 
-	public function getAll($page,$limit){
-
-	}
 }

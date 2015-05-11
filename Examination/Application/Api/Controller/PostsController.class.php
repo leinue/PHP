@@ -19,12 +19,12 @@ class PostsController extends UserController {
 			$this->ajaxReturn(getServerResponse('0','数据不能为空',''));
 		}else{
 			if(($post_type=='img' || $post_type=='media') && isInfoNull($post_src)){
-				$this->ajaxReturn(getServerResponse('0','POST_SRC不能为空'));
+				$this->ajaxReturn(getServerResponse('0','POST_SRC不能为空',''));
 			}
 			$currentTime=date('y-m-d h:i:s',time());
 			$postData['user_id']=$user_id;
-			$postData['post_title']=$title;
-			$postData['post_content']=$content;
+			$postData['post_title']=$post_title;
+			$postData['post_content']=$post_content;
 			$postData['post_type']=$post_type;
 			$postData['post_modified']=$currentTime;
 			$postData['post_date']=$currentTime;
@@ -48,13 +48,13 @@ class PostsController extends UserController {
 
 	public function getByUserId(){
 		$user_id=I($this->requestMethod."user_id");
-		$page=I($this->requestMethod."page");
-		$limit=I($this->requestMethod."limit");
+		$page=I($this->requestMethod."page",1);
+		$limit=I($this->requestMethod."limit",10);
 		if(isInfoNull($user_id)){
 			$this->ajaxReturn(getServerResponse('0','数据不能为空',''));
 		}else{
 			$rPost=M('Posts');
-			$postData=$rPost->page($page,$limit)->where("`user_id`=$user_id")->select();
+			$postData=$rPost->where("`user_id`=$user_id")->page($page,$limit)->select();
 		}
 	}
 
@@ -64,7 +64,7 @@ class PostsController extends UserController {
 			$this->ajaxReturn(getServerResponse('0','数据不能为空',''));
 		}else{
 			$rPost=M('Posts');
-			$postData=$rPost->where("`post_id`=$post_id")->find();
+			$postData=$rPost->where("`post_id`=$post_id")->select();
 			$rPost->where("`post_id`=$post_id")->setInc("`post_view`",1,30);
 			if($post_date){
 				$this->ajaxReturn(getServerResponse('1','读取成功',$postData));
@@ -138,15 +138,15 @@ class PostsController extends UserController {
 				$this->ajaxReturn(getServerResponse('0','POST_SRC不能为空'));
 			}
 			$currentTime=date('y-m-d h:i:s',time());
-			$postData['post_title']=$title;
-			$postData['post_content']=$content;
+			$postData['post_title']=$post_title;
+			$postData['post_content']=$post_content;
 			$postData['post_type']=$post_type;
-			$postData['post_modified']=$currentTime;
+			$postData['post_modified']=date('y-m-d h:i:s',time());
 			$postData['post_tags_count']=$post_tags_count;
 			$postData['post_catalogue']=$post_catalogue;
 			$postData['post_src']=$post_src;
 			$wPost=M('Posts');
-			$result=$uPost->where("`post_id`=$post_id AND `user_id`=$user_id")->data($postData)->save();
+			$result=$wPost->where("`post_id`=$post_id AND `user_id`=$user_id")->data($postData)->save();
 			if($result){
 				$this->ajaxReturn(getServerResponse('1','修改成功',$result));
 			}else{+

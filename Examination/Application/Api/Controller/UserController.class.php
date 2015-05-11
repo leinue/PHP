@@ -221,6 +221,8 @@ class UserController extends Controller {
 
 	protected function isUserVisitor($type){return $this->groupListReversion[$type]==='visitor';}
 
+	protected function isUserRootOrAdmin($type){return $this->isUserRoot($type) || $this->isUserAdmin($type);}
+
 	public function addPrivilege(){
 		$ug_type=I($this->requestMethod."ug_type");
 		$ugp_name=I($this->requestMethod."ugp_name");
@@ -281,7 +283,6 @@ class UserController extends Controller {
 			$user_id=M('User')->where("`token_id`='$token_id'")->getField('user_id');
 			$user_group_type=$this->getUserGroup($user_id);
 			$user_privilege=M('UserGroupPrivileges')->where("`ug_type`=$user_group_type")->field("`ugp_name`")->select();
-			print_r($user_privilege);
 			if($user_privilege=='0'){
 				return 'all';
 			}else{
@@ -310,7 +311,7 @@ class UserController extends Controller {
 		}
 	}
 
-	public function updateUserFile(){
+	protected function updateUserFile(){
 		$user_nickname=I($this->requestMethod."user_nickname");
 		$user_description=I($this->requestMethod."user_description");
 		$user_photo=I($this->requestMethod."user_photo");
@@ -332,7 +333,7 @@ class UserController extends Controller {
 		}
 	}
 
-	public function updatePassword(){
+	protected function updatePassword(){
 		$user_id=I($this->requestMethod."user_id");
 		$old_password=sha1(I($this->requestMethod."old_password"));
 		$new_password=sha1(I($this->requestMethod."new_password"));
@@ -349,7 +350,7 @@ class UserController extends Controller {
 		}
 	}
 
-	public function forgotPassword(){
+	protected function forgotPassword(){
 		$user_email=I($this->requestMethod."user_email");
 		if(isInfoNull($user_email)){
 			$this->ajaxReturn(getServerResponse('0','数据不能为空或有误',''));

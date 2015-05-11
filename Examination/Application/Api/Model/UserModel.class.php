@@ -12,12 +12,12 @@ class UserModel extends Model{
     	array('user_email','','邮箱已经存在！',0,'unique',1),
    	);
 
-   	protected $_auto = array ( 
-         array('user_nickname','蛤蛤'),
-         array('user_description','要提高姿势水平'),
-         array('user_photo','./Public/images/user_default_photo.jpg'),
-         array('user_sex','0')
-    );
+  protected $_auto = array ( 
+      array('user_nickname','蛤蛤'),
+      array('user_description','要提高姿势水平'),
+      array('user_photo','./Public/images/user_default_photo.jpg'),
+      array('user_sex','0')
+  );
 
 }
 

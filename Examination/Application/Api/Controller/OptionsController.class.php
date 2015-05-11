@@ -11,87 +11,69 @@ class OptionsController extends UserController {
 	}
 
 	public function getAll(){
-		$optionsList=M('Options');
-		if($result=$optionsList->getField('options_name,options_value')){
-			$ajaxData['status']='1';
-			$ajaxData['msg']='读取成功';
-			$ajaxData['data']=$result;
-			$this->ajaxReturn($ajaxData);
+		$user_id=I($this->requestMethod."user_id");
+		if(!isInfoNull($user_id)){
+			$user_group_type=$this->getUserGroup($user_id);
+			if($this->isUserAdmin($user_group_type) || $this->isUserRoot($user_group_type)){
+				$optionsList=M('Options');
+				if($result=$optionsList->getField('`option_name`,`option_value`')){
+					$this->ajaxReturn(getServerResponse('1','读取成功',$result));
+				}else{
+					$this->ajaxReturn(getServerResponse('0','读取失败或数据为空',$result));
+				}	
+			}else{
+				$this->ajaxReturn(getServerResponse('0','没有权限',''));
+			}
 		}else{
-			$ajaxData['status']='0';
-			$ajaxData['msg']='读取失败';
-			$ajaxData['data']=$result;
-			$this->ajaxReturn($ajaxData);
+			$this->ajaxReturn(getServerResponse('0','数据不能为空',''));
 		}
 	}
 
-	public function writeRule($rulename='',$rulevalue='',$pguid=''){
-		$ajaxData=array();
-		if($this->isInfoNull(array($rulename,$rulevalue,$pguid))){
-			$ajaxData['status']='0';
-			$ajaxData['msg']='数据不能为空';
-			$ajaxData['data']='';
-			$this->ajaxReturn($ajaxData);
+	public function writeOption($oname='',$oalue='',$user_id=''){
+		$oname=I($this->requestMethod."oname");
+		$ovalue=I($this->requestMethod."ovalue");
+		$user_id=I($This->requestMethod."user_id");
+		if(isInfoNull(array($oname,$ovalue,$user_id))){
+			$this->ajaxReturn(getServerResponse('0','数据不能为空',''));
 		}else{
-			if($this->getPrivilegeByGuid($pguid)==='0'){
+			$user_group_type=$this->getUserGroup($user_id);
+			if($this->isUserAdmin($user_group_type) || $this->isUserRoot($user_group_type)){
 				$wOption=M('Options');
-				$wOptionData['options_name']=$rulename;
-				$wOptionData['options_value']=$rulevalue;
+				$wOptionData['option_name']=$oname;
+				$wOptionData['option_value']=$ovalue;
 				$data=$wOption->create($wOptionData);
 				if(!$data){
-					$ajaxData['status']='0';
-					$ajaxData['msg']=$wOption->getError();
-					$ajaxData['data']='';
-					$this->ajaxReturn($ajaxData);
+					$this->ajaxReturn(getServerResponse('0',$wOption->getError(),''));
 				}else{
 					$result=$wOption->add();
-					$ajaxData['data']=$result;
 					if($result){
-						$ajaxData['status']='1';
-						$ajaxData['msg']='加入成功';
-						$ajaxData['data']='';
-						$this->ajaxReturn($ajaxData);
+						$this->ajaxReturn(getServerResponse('1','添加成功',''));
 					}else{
-						$ajaxData['status']='0';
-						$ajaxData['msg']='加入失败';
-						$ajaxData['data']='';
-						$this->ajaxReturn($ajaxData);
+						$this->ajaxReturn(getServerResponse('0','添加失败',''));
 					}
 				}
 			}else{
-				$ajaxData['status']='0';
-				$ajaxData['msg']='没有权限';
-				$ajaxData['data']='';
-				$this->ajaxReturn($ajaxData);
+				$this->ajaxReturn(getServerResponse('0','没有权限',''));
 			}
 		}
 	}
 
-	public function getRule($rulename='',$oid=''){
-		if($this->isInfoNull(array($rulename,$oid))){
-			$ajaxData['status']='0';
-			$ajaxData['msg']='数据不能为空';
-			$ajaxData['data']='';
-			$this->ajaxReturn($ajaxData);
+	public function getOption(){
+		$oname=I($this->requestMethod."oname");
+		$user_id=I($This->requestMethod."user_id");
+		if(isInfoNull(array($oname,$user_id))){
+			$this->ajaxReturn(getServerResponse('0','数据不能为空',''));
 		}else{
-			if(!$this->getPrivilegeByGuid($oid)==='0'){
-				$ajaxData['status']='0';
-				$ajaxData['msg']='没有权限';
-				$ajaxData['data']='';
-				$this->ajaxReturn($ajaxData);
+			$user_group_type=$this->getUserGroup($user_id);
+			if(!$this->isUserRootOrAdmin($user_group_type)){
+				$this->ajaxReturn(getServerResponse('0','没有权限',''));
 			}else{
 				$rOption=M('Options');
-				$result=$rOption->where("`options_name`='$rulename'")->getField('`options_value`');
+				$result=$rOption->where("`option_name`='$oname'")->getField('`option_value`');
 				if($result){
-					$ajaxData['status']='1';
-					$ajaxData['msg']='读取成功';
-					$ajaxData['data']=$result;
-					$this->ajaxReturn($ajaxData);
+					$this->ajaxReturn(getServerResponse('1','读取成功',$result));
 				}else{
-					$ajaxData['status']='0';
-					$ajaxData['msg']='读取失败';
-					$ajaxData['data']='';
-					$this->ajaxReturn($ajaxData);
+					$this->ajaxReturn(getServerResponse('0','读取失败',''));
 				}
 			}
 		}

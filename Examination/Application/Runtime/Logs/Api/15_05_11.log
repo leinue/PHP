@@ -1,0 +1,230 @@
+[ 2015-05-11T08:36:41+08:00 ] ::1 /Examination/Api/getUserId
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000421s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000514s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000636s ]
+ERR: 无法加载控制器:GetUserId
+
+[ 2015-05-11T08:41:02+08:00 ] ::1 /Examination/Api/Options
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000433s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000509s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000639s ]
+
+[ 2015-05-11T08:42:15+08:00 ] ::1 /Examination/Api/Options/getAll
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000364s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000353s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000458s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.1270s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'options_name' in 'field list'
+
+[ 2015-05-11T08:42:55+08:00 ] ::1 /Examination/Api/Options/getAll
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000436s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000394s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000514s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0072s ]
+SQL: SELECT `option_name`,`option_value` FROM `exa_options`  [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: ajaxData F:\wamp\www\Examination\Application\Api\Controller\OptionsController.class.php 第 19 行.
+
+[ 2015-05-11T08:44:03+08:00 ] ::1 /Examination/Api/Options/getAll
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000081s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001271s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001544s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001946s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0128s ]
+SQL: SELECT `option_name`,`option_value` FROM `exa_options`  [ RunTime:0.0004s ]
+
+[ 2015-05-11T08:44:12+08:00 ] ::1 /Examination/Api/Options/getAll
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000049s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001043s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000800s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001078s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0107s ]
+SQL: SELECT `option_name`,`option_value` FROM `exa_options`  [ RunTime:0.0004s ]
+
+[ 2015-05-11T08:44:22+08:00 ] ::1 /Examination/Api/Options/getAll
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000058s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000937s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001013s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001295s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0113s ]
+SQL: SELECT `option_name`,`option_value` FROM `exa_options`  [ RunTime:0.0003s ]
+
+[ 2015-05-11T08:44:23+08:00 ] ::1 /Examination/Api/Options/getAll
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000084s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001854s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001337s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001764s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0198s ]
+SQL: SELECT `option_name`,`option_value` FROM `exa_options`  [ RunTime:0.0006s ]
+
+[ 2015-05-11T08:48:53+08:00 ] ::1 /Examination/Api/Options/getAll
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000046s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000745s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000608s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000753s ]
+ERR: 参数错误或者未定义:user_id
+
+[ 2015-05-11T08:49:16+08:00 ] ::1 /Examination/Api/Options/getAll
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000063s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000810s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001244s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001585s ]
+
+[ 2015-05-11T08:49:25+08:00 ] ::1 /Examination/Api/Options/getAll/user_id/14
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000392s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000413s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000557s ]
+
+[ 2015-05-11T08:51:35+08:00 ] ::1 /Examination/Api/Options/getAll/user_id/14
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000058s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000880s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001325s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001585s ]
+
+[ 2015-05-11T08:51:36+08:00 ] ::1 /Examination/Api/Options/getAll/user_id/14
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000055s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000893s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000874s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001161s ]
+
+[ 2015-05-11T08:51:36+08:00 ] ::1 /Examination/Api/Options/getAll/user_id/14
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000088s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001940s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001224s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001623s ]
+
+[ 2015-05-11T08:51:56+08:00 ] ::1 /Examination/Api/Options/getAll/user_id/14
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000080s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001111s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001759s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002263s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0567s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0016s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0145s ]
+SQL: SELECT `option_name`,`option_value` FROM `exa_options`  [ RunTime:0.0006s ]
+
+[ 2015-05-11T08:52:06+08:00 ] ::1 /Examination/Api/Options/getAll/user_id/14
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000074s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001051s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001165s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001598s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0112s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0098s ]
+SQL: SELECT `option_name`,`option_value` FROM `exa_options`  [ RunTime:0.0004s ]
+
+[ 2015-05-11T08:52:13+08:00 ] ::1 /Examination/Api/Options/getAll/user_id/20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000442s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000439s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000570s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0102s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=20 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0049s ]
+SQL: SELECT `option_name`,`option_value` FROM `exa_options`  [ RunTime:0.0003s ]
+
+[ 2015-05-11T08:52:26+08:00 ] ::1 /Examination/Api/Options/getAll/user_id/22
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000365s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000381s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000490s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0071s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=22 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index:  F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 218 行.
+NOTIC: [8] Undefined index:  F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 216 行.
+
+[ 2015-05-11T08:59:48+08:00 ] ::1 /Examination/Api/Options/writeOption/oname/site_name/ovalue/Examination/user_id/14
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000048s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000716s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000785s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001034s ]
+NOTIC: [8] Undefined variable: This F:\wamp\www\Examination\Application\Api\Controller\OptionsController.class.php 第 35 行.
+NOTIC: [8] Trying to get property of non-object F:\wamp\www\Examination\Application\Api\Controller\OptionsController.class.php 第 35 行.
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0083s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0057s ]
+SQL: INSERT INTO `exa_options` (`option_name`,`option_value`) VALUES ('site_name','Examination') [ RunTime:0.0431s ]
+
+[ 2015-05-11T09:03:20+08:00 ] ::1 /Examination/Api/Options/getOption/oname/site_name/user_id/14
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000444s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000440s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000550s ]
+NOTIC: [8] Undefined variable: This F:\wamp\www\Examination\Application\Api\Controller\OptionsController.class.php 第 63 行.
+NOTIC: [8] Trying to get property of non-object F:\wamp\www\Examination\Application\Api\Controller\OptionsController.class.php 第 63 行.
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0072s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0047s ]
+SQL: SELECT `option_value` FROM `exa_options` WHERE ( `option_name`='site_name' ) LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined variable: data F:\wamp\www\Examination\Application\Api\Controller\OptionsController.class.php 第 74 行.
+
+[ 2015-05-11T09:03:36+08:00 ] ::1 /Examination/Api/Options/getOption/oname/site_name/user_id/14
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000142s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001911s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001667s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002146s ]
+NOTIC: [8] Undefined variable: This F:\wamp\www\Examination\Application\Api\Controller\OptionsController.class.php 第 63 行.
+NOTIC: [8] Trying to get property of non-object F:\wamp\www\Examination\Application\Api\Controller\OptionsController.class.php 第 63 行.
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0115s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0060s ]
+SQL: SELECT `option_value` FROM `exa_options` WHERE ( `option_name`='site_name' ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2015-05-11T09:04:00+08:00 ] ::1 /Examination/Api/Options/getAll/user_id/14
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000495s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000489s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000619s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0096s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `exa_options` [ RunTime:0.0054s ]
+SQL: SELECT `option_name`,`option_value` FROM `exa_options`  [ RunTime:0.0003s ]
+

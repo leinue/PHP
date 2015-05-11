@@ -1940,3 +1940,46 @@ INFO: [ app_begin ] --END-- [ RunTime:0.000779s ]
 SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0074s ]
 SQL: UPDATE `exa_posts` SET `post_title`='xieyang',`post_content`='liuyarunvshen',`post_type`='post',`post_modified`='15-05-11 08:13:28',`post_tags_count`='10',`post_catalogue`='8',`post_src`='' WHERE ( `post_id`=2 AND `user_id`=14 ) [ RunTime:0.0582s ]
 
+[ 2015-05-11T20:15:44+08:00 ] ::1 /Examination/Api/Posts/getByUserId/user_id/14
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000075s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001451s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000755s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000918s ]
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0811s ]
+SQL: SELECT * FROM `exa_posts` WHERE ( `user_id`=14 ) LIMIT 0,10   [ RunTime:0.0005s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000508s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000680s ]
+
+[ 2015-05-11T20:16:59+08:00 ] ::1 /Examination/Api/Posts/getByUserId/user_id/14
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000425s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000446s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000572s ]
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0599s ]
+SQL: SELECT * FROM `exa_posts` WHERE ( `user_id`=14 ) LIMIT 0,10   [ RunTime:0.0004s ]
+
+[ 2015-05-11T20:17:31+08:00 ] ::1 /Examination/Api/Posts/getByPostId/post_id/2
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000476s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000451s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000583s ]
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0568s ]
+SQL: SELECT * FROM `exa_posts` WHERE ( `post_id`=2 )  [ RunTime:0.0003s ]
+
+[ 2015-05-11T20:17:53+08:00 ] ::1 /Examination/Api/Posts/getAll/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000462s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000545s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000675s ]
+SQL: SHOW COLUMNS FROM `exa_posts` [ RunTime:0.0078s ]
+SQL: SELECT * FROM `exa_posts` LIMIT 0,10   [ RunTime:0.0004s ]
+

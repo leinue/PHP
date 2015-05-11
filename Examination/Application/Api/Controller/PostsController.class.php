@@ -55,6 +55,11 @@ class PostsController extends UserController {
 		}else{
 			$rPost=M('Posts');
 			$postData=$rPost->where("`user_id`=$user_id")->page($page,$limit)->select();
+			if($postData){
+				$this->ajaxReturn(getServerResponse('1','读取成功',$postData));
+			}else{
+				$this->ajaxReturn(getServerResponse('0','读取失败',''));
+			}
 		}
 	}
 
@@ -66,7 +71,7 @@ class PostsController extends UserController {
 			$rPost=M('Posts');
 			$postData=$rPost->where("`post_id`=$post_id")->select();
 			$rPost->where("`post_id`=$post_id")->setInc("`post_view`",1,30);
-			if($post_date){
+			if($postData){
 				$this->ajaxReturn(getServerResponse('1','读取成功',$postData));
 			}else{
 				$this->ajaxReturn(getServerResponse('0','读取失败',''));

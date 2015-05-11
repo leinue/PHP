@@ -64,11 +64,12 @@ class UserController extends Controller {
 	}
 
 	protected function getUserIdByTokenId($token_id){
-		return D('User')->where("`token_id`=$token_id")->field('`user_id`')->find();
+		print_r(D('User')->where("`token_id`='$token_id'")->getField('`user_id`'));
+		return D('User')->where("`token_id`='$token_id'")->getField('`user_id`');
 	}
 
 	protected function isUserSelf($user_id,$token_id){
-		return ($this->getUserIdByTokenId($token_id)==$user_id)
+		return $this->getUserIdByTokenId($token_id)==$user_id;
 	}
 
 	protected function getUserGroup($user_id){

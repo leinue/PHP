@@ -693,3 +693,607 @@ SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ R
 SQL: SHOW COLUMNS FROM `exa_catalogue` [ RunTime:0.0479s ]
 SQL: DELETE FROM `exa_catalogue` WHERE ( 1 ) [ RunTime:0.0433s ]
 
+[ 2015-05-11T10:38:07+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/14/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000428s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000764s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000941s ]
+
+[ 2015-05-11T10:38:23+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/14/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000055s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000865s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000882s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001149s ]
+
+[ 2015-05-11T10:38:44+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/14/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000048s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000716s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001514s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001876s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0430s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0092s ]
+ERR: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`test`.`exa_tags`, CONSTRAINT `post_author` FOREIGN KEY (`post_id`) REFERENCES `exa_posts` (`post_id`) ON DELETE CASCADE ON UPDATE NO ACTION)
+
+[ 2015-05-11T10:39:23+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/14/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000050s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001071s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000999s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001365s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0134s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0090s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0434s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001892s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002277s ]
+
+[ 2015-05-11T10:39:39+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/14/token_id/5EB332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000482s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001408s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001642s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0077s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0053s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0910s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001565s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001966s ]
+
+[ 2015-05-11T10:39:50+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/22/token_id/5EB332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000035s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000447s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000505s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000647s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0074s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=22 ) LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index:  F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 224 行.
+NOTIC: [8] Undefined index:  F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 226 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0056s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column '5EB332' in 'where clause'
+
+[ 2015-05-11T10:40:45+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/22/token_id/5EB332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000084s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001393s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001573s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001984s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0275s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=22 ) LIMIT 1   [ RunTime:0.0005s ]
+NOTIC: [8] Undefined index:  F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 224 行.
+NOTIC: [8] Undefined index:  F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 226 行.
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0096s ]
+SQL: SELECT `user_id` FROM `exa_user` WHERE ( `token_id`='5EB332-CAC6-49C7-BDD1-79CE92E707EA' ) LIMIT 1   [ RunTime:0.0005s ]
+
+[ 2015-05-11T10:40:55+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/14/token_id/5EB332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000039s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000864s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000857s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001155s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0651s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0114s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0476s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001763s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002142s ]
+
+[ 2015-05-11T10:41:19+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/14/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000466s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001009s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001256s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0244s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0054s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0469s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001816s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002239s ]
+
+[ 2015-05-11T10:41:26+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/20/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000046s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000676s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001025s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001217s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0073s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=20 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0619s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0389s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001357s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001641s ]
+
+[ 2015-05-11T10:42:29+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/20/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000507s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000421s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000546s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0087s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=20 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0149s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0428s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000810s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000945s ]
+
+[ 2015-05-11T10:43:06+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/20/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000126s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001532s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000917s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001153s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0082s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=20 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0066s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0697s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001821s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002209s ]
+
+[ 2015-05-11T10:43:07+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/20/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000050s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000955s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000967s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001230s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0664s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=20 ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0154s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0411s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001771s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002160s ]
+
+[ 2015-05-11T10:43:57+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/20/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000080s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001126s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001334s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001753s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0096s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=20 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0067s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0577s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000676s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000813s ]
+
+[ 2015-05-11T10:44:00+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/20/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000225s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002145s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000959s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001272s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0133s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=20 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0067s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0505s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001775s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002169s ]
+
+[ 2015-05-11T10:44:07+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/20/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000051s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000769s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001400s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001930s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0082s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=20 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0062s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0600s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002612s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003306s ]
+
+[ 2015-05-11T10:44:08+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/20/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000050s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000917s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001237s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001842s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0121s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=20 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0096s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0518s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001926s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002339s ]
+
+[ 2015-05-11T10:44:23+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/20/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000056s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001154s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000831s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001082s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0267s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=20 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0063s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0559s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000731s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000891s ]
+
+[ 2015-05-11T10:44:23+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/20/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000088s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001083s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000963s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001245s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0055s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=20 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0050s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0621s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001786s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002173s ]
+
+[ 2015-05-11T10:44:28+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/14/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000409s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000406s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000525s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0654s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0155s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0462s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001772s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002154s ]
+
+[ 2015-05-11T10:44:54+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/14/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000096s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001448s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001631s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002074s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0237s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0152s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0906s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001838s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002221s ]
+
+[ 2015-05-11T10:44:55+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/14/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000090s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001259s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002525s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003076s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0103s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0061s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0766s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001760s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002139s ]
+
+[ 2015-05-11T10:55:41+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/14/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000145s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002276s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002616s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004145s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.1212s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0161s ]
+SQL: SELECT `user_id` FROM `exa_user` WHERE ( `token_id`='5EA6B332-CAC6-49C7-BDD1-79CE92E707EA' )  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0164s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0504s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001969s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002400s ]
+
+[ 2015-05-11T10:55:42+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/14/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000068s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001099s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001075s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001450s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0138s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `exa_user` [ RunTime:0.0099s ]
+SQL: SELECT `user_id` FROM `exa_user` WHERE ( `token_id`='5EA6B332-CAC6-49C7-BDD1-79CE92E707EA' )  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0095s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0411s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001662s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001977s ]
+
+[ 2015-05-11T10:56:02+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/14/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000204s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003219s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001347s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001766s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0259s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: 14 F:\wamp\www\Examination\Application\Api\Controller\TagsController.class.php 第 19 行.
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0428s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0498s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001819s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002203s ]
+
+[ 2015-05-11T10:56:06+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/14/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000145s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002020s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001288s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001676s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0170s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0100s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0492s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001790s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002278s ]
+
+[ 2015-05-11T10:56:11+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/14/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000082s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001312s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001284s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001687s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0125s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0097s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0480s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001091s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001325s ]
+
+[ 2015-05-11T10:56:52+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/14/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000092s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002114s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001337s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001756s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0127s ]
+NOTIC: [8] Undefined variable: user_id F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 75 行.
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+
+[ 2015-05-11T10:57:19+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/14/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000059s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000824s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000823s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001093s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0079s ]
+NOTIC: [8] Undefined variable: user_id F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 75 行.
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+
+[ 2015-05-11T10:57:46+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/14/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000147s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002488s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002651s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003392s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0207s ]
+NOTIC: [8] Undefined variable: user_id F:\wamp\www\Examination\Application\Api\Controller\UserController.class.php 第 75 行.
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+
+[ 2015-05-11T10:58:14+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/14/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000085s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001221s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000519s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000718s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0098s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0072s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0450s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000689s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000825s ]
+
+[ 2015-05-11T10:58:16+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/14/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000058s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001041s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001050s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001426s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0140s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0099s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0485s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001841s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002242s ]
+
+[ 2015-05-11T10:58:25+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/20/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000046s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000655s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000833s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000999s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0070s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=20 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0055s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0557s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000601s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000728s ]
+
+[ 2015-05-11T10:58:29+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/14/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000413s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000884s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001101s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0092s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0061s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0640s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001778s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002163s ]
+
+[ 2015-05-11T10:58:48+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/14/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000143s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002734s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000891s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001159s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0591s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=14 ) LIMIT 1   [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0219s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0472s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001802s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002194s ]
+
+[ 2015-05-11T10:58:55+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/20/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000453s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000784s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001103s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0080s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=20 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0062s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0540s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001645s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002028s ]
+
+[ 2015-05-11T10:59:03+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/20/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000120s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000921s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001165s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001550s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0135s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=20 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0097s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0686s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002461s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003051s ]
+
+[ 2015-05-11T10:59:18+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/20/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000052s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000778s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000810s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001053s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0139s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=20 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0091s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0624s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001779s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002166s ]
+
+[ 2015-05-11T10:59:33+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/20/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000094s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001466s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000781s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001016s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0124s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=20 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0086s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0584s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001859s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002240s ]
+
+[ 2015-05-11T11:15:13+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/20/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000652s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000642s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000827s ]
+NOTIC: [8] Undefined variable: user_id F:\wamp\www\Examination\Application\Api\Controller\TagsController.class.php 第 15 行.
+
+[ 2015-05-11T11:15:32+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/20/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000058s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001011s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000821s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001052s ]
+NOTIC: [8] Undefined variable: user_id F:\wamp\www\Examination\Application\Api\Controller\TagsController.class.php 第 18 行.
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0673s ]
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') LIMIT 1' at line 1
+
+[ 2015-05-11T11:15:45+08:00 ] ::1 /Examination/Api/Tags/create/post_id/1/tag_content/fuckubitch/user_id/20/token_id/5EA6B332-CAC6-49C7-BDD1-79CE92E707EA
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000065s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000966s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000765s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000989s ]
+SQL: SHOW COLUMNS FROM `exa_user_group` [ RunTime:0.0079s ]
+SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=20 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0057s ]
+SQL: INSERT INTO `exa_tags` (`post_id`,`tag_content`) VALUES ('1','fuckubitch') [ RunTime:0.0561s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001808s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002182s ]
+
+[ 2015-05-11T11:18:07+08:00 ] ::1 /Examination/Api/Tags/getAll
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000534s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000583s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000728s ]
+SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0869s ]
+SQL: SELECT * FROM `exa_tags` LIMIT 0,11   [ RunTime:0.0010s ]
+

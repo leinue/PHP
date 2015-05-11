@@ -29,7 +29,7 @@ class OptionsController extends UserController {
 		}
 	}
 
-	public function writeOption($oname='',$oalue='',$user_id=''){
+	public function writeOption(){
 		$oname=I($this->requestMethod."oname");
 		$ovalue=I($this->requestMethod."ovalue");
 		$user_id=I($This->requestMethod."user_id");
@@ -75,6 +75,24 @@ class OptionsController extends UserController {
 				}else{
 					$this->ajaxReturn(getServerResponse('0','读取失败',''));
 				}
+			}
+		}
+	}
+
+	public function update(){
+		$oname=I($this->requestMethod."oname");
+		$ovalue=I($this->requestMethod."ovalue");
+		$user_id=I($This->requestMethod."user_id");
+		if(isInfoNull(array($oname,$ovalue,$user_id))){
+			$this->ajaxReturn(getServerResponse('0','数据不能为空',''));
+		}else{
+			$user_group_type=$this->getUserGroup($user_id);
+			if(!$this->isUserRootOrAdmin($user_group_type)){
+				$this->ajaxReturn(getServerResponse('0','没有权限',''));
+			}else{
+				$upToUser['option_value']=$ovalue;
+				D('Options')->where("`option_name`='%s'",array($oname))->data($upToUser)->save();
+				$this->ajaxReturn(getServerResponse('1','更新成功',''));
 			}
 		}
 	}

@@ -172,8 +172,8 @@ class UserController extends Controller {
 	}
 
 	public function getAllUser(){
-		$page=I($this->requestMethod."page");
-		$limit=I($this->requestMethod."limit");
+		$page=I($this->requestMethod."page",1);
+		$limit=I($this->requestMethod."limit",10);
 		if(isInfoNull(array($page,$limit))){
 			$this->ajaxReturn(getServerResponse('0','数据不能为空',''));
 		}else{

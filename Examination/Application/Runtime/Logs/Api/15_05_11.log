@@ -1467,3 +1467,65 @@ SQL: SELECT `ug_type` FROM `exa_user_group` WHERE ( `user_id`=20 ) LIMIT 1   [ R
 SQL: SHOW COLUMNS FROM `exa_tags` [ RunTime:0.0048s ]
 SQL: DELETE FROM `exa_tags` WHERE ( 1 ) [ RunTime:0.0911s ]
 
+[ 2015-05-11T12:34:10+08:00 ] ::1 /Examination/Api/Posts
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000384s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000690s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000834s ]
+
+[ 2015-05-11T19:02:09+08:00 ] ::1 /Examination/Api/Posts
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000423s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000482s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000584s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.000729s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000873s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000328s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000424s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000518s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000624s ]
+
+[ 2015-05-11T19:02:16+08:00 ] ::1 /Examination/Api/Posts/create
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000466s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000853s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000990s ]
+NOTIC: [8] Undefined variable: author F:\wamp\www\Examination\Application\Api\Controller\PostsController.class.php 第 19 行.
+NOTIC: [8] Undefined variable: title F:\wamp\www\Examination\Application\Api\Controller\PostsController.class.php 第 19 行.
+NOTIC: [8] Undefined variable: content F:\wamp\www\Examination\Application\Api\Controller\PostsController.class.php 第 19 行.
+NOTIC: [8] Undefined variable: posttype F:\wamp\www\Examination\Application\Api\Controller\PostsController.class.php 第 19 行.
+ERR: Think\Controller:isInfoNull方法不存在！
+
+[ 2015-05-11T19:02:25+08:00 ] ::1 /Examination/Api/Posts/create
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000039s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001101s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000699s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000864s ]
+NOTIC: [8] Undefined variable: author F:\wamp\www\Examination\Application\Api\Controller\PostsController.class.php 第 19 行.
+NOTIC: [8] Undefined variable: title F:\wamp\www\Examination\Application\Api\Controller\PostsController.class.php 第 19 行.
+NOTIC: [8] Undefined variable: content F:\wamp\www\Examination\Application\Api\Controller\PostsController.class.php 第 19 行.
+NOTIC: [8] Undefined variable: posttype F:\wamp\www\Examination\Application\Api\Controller\PostsController.class.php 第 19 行.
+
+[ 2015-05-11T19:02:32+08:00 ] ::1 /Examination/Api/Posts/create
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000076s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001294s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001779s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002068s ]
+NOTIC: [8] Undefined variable: author F:\wamp\www\Examination\Application\Api\Controller\PostsController.class.php 第 19 行.
+NOTIC: [8] Undefined variable: title F:\wamp\www\Examination\Application\Api\Controller\PostsController.class.php 第 19 行.
+NOTIC: [8] Undefined variable: content F:\wamp\www\Examination\Application\Api\Controller\PostsController.class.php 第 19 行.
+NOTIC: [8] Undefined variable: posttype F:\wamp\www\Examination\Application\Api\Controller\PostsController.class.php 第 19 行.
+

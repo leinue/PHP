@@ -3,49 +3,42 @@
 namespace Api\Controller;
 use Think\Controller;
 use Api\Controller\UserController;
+use Api\Controller\TagsController;
 
-class PostsController extends Controller {
+class PostsController extends UserController {
 
-	public function index(){
-		$this->redirect('/Home/',5,'页面跳转中....');
-	}
-
-	//返回文章guid,author为私有guid
-	public function newpost($author='',$title='',$content='',$posttype='article'){
-		$ajaxData=array();
-		if($this->isInfoNull(array($author,$title,$content,$posttype))){
-			$ajaxData['status']='0';
-			$ajaxData['msg']='数据不能为空';
-			$this->ajaxReturn($ajaxData);
+	public function create(){
+		$user_id=I($this->requestMethod."user_id");
+		$post_title=I($this->requestMethod."post_title");
+		$post_content=I($this->requestMethod."post_content");
+		$post_catalogue=I($this->requestMethod."post_catalogue");
+		$post_type=I($this->requestMethod."post_type");
+		$post_src=I($this->requestMethod."post_src");
+		$post_tags_count=I($this->requestMethod."tags_count");
+		if(isInfoNull(array($user_id,$post_type,$post_title,$post_catalogue,$post_tags_count,$post_src))){
+			$this->ajaxReturn(getServerResponse('0','数据不能为空',''));
 		}else{
-			if($this->getAvailableByGuid($author)==='1'){
-				$postData['post_author']=$author;
-				$postData['post_title']=$title;
-				$postData['post_content']=$content;
-				$postData['post_type']=$posttype;
-				$postData['post_modified']=date('y-m-d h:i:s',time());
-				$postData['post_guid']=$this->guid();
-				$wPost=M('Posts');
-				$data=$wPost->create($postData);
-				if($data){
-					$result=$wPost->add();
-					if($result){
-						$ajaxData['status']='1';
-						$ajaxData['msg']='发表成功';
-						$ajaxData['data']['post_guid']=$postData['post_guid'];
-						$this->ajaxReturn($ajaxData);
-					}else{
-						$ajaxData['status']='0';
-						$ajaxData['msg']='发表失败';
-						$this->ajaxReturn($ajaxData);
-					}
-				}else{
-					$ajaxData['status']='0';
-					$ajaxData['msg']='发表失败';
-					$this->ajaxReturn($ajaxData);
+			$currentTime=date('y-m-d h:i:s',time());
+			$postData['user_id']=$user_id;
+			$postData['post_title']=$title;
+			$postData['post_content']=$content;
+			$postData['post_type']=$post_type;
+			$postData['post_modified']=$currentTime;
+			$postData['post_date']=$currentTime;
+			$postData['post_tags_count']=$post_tags_count;
+			$postData['post_catalogue']=$post_catalogue;
+			$postData['post_src']=$post_src;
+			$wPost=M('Posts');
+			$data=$wPost->create($postData);
+			if($data){
+				$result=$wPost->add();
+				if($result){
+					$this->ajaxReturn(getServerResponse('1','发表成功',$result));
+				}else{+
+					$this->ajaxReturn(getServerResponse('0','发表失败',''));
 				}
 			}else{
-				
+				$this->ajaxReturn(getServerResponse('0','发表失败',''));
 			}
 		}
 	}
@@ -74,7 +67,7 @@ class PostsController extends Controller {
 	}
 
 	//oid为私有guid
-	public function updatePost($guid='',$title='',$content='',$oid=''){
+	public function update($guid='',$title='',$content='',$oid=''){
 		$ajaxData=array();
 		if($this->isInfoNull(array($guid,$title,$content,$oid))){
 			$ajaxData['status']='0';
@@ -97,7 +90,7 @@ class PostsController extends Controller {
 		}
 	}
 
-	public function deletePost($guid='',$oid=''){
+	public function remove($guid='',$oid=''){
 		$ajaxData=array();
 		if($this->isInfoNull(array($guid,$oid))){
 			$ajaxData['status']='0';

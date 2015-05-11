@@ -63,6 +63,10 @@ class UserController extends Controller {
 		}
 	}
 
+	protected function getUserIdByTokenId($token_id){
+		return D('User')->where("`token_id`=$token_id")->field('`user_id`')->find();
+	}
+
 	protected function getUserGroup($user_id){
 		return D('UserGroup')->where("`user_id`=$user_id")->getField('`ug_type`');
 	}
@@ -333,7 +337,7 @@ class UserController extends Controller {
 		}
 	}
 
-	protected function updatePassword(){
+	public function updatePassword(){
 		$user_id=I($this->requestMethod."user_id");
 		$old_password=sha1(I($this->requestMethod."old_password"));
 		$new_password=sha1(I($this->requestMethod."new_password"));

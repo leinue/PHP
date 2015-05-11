@@ -11,10 +11,16 @@ class TagsController extends UserController {
 		$post_id=I($this->requestMethod."post_id");
 		$tag_content=I($this->requestMethod."tag_content");
 		$user_id=I($this->requestMethod."user_id");
-		if(isInfoNull(array($post_id,$tag_content))){
+		$token_id=I($this->requestMethod."token_id");
+		if(isInfoNull(array($post_id,$tag_content,$user_id,$token_id))){
 			$this->ajaxReturn(getServerResponse('0','数据不能为空',''));
 		}else{
-			
+			$user_group_type=$this->getUserGroup($user_id);
+			if($this->isUserRootOrAdmin($user_group_type) || ){
+
+			}else{
+				$this->ajaxReturn(getServerResponse('0','没有权限',''));
+			}
 		}
 	}
 

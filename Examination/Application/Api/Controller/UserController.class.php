@@ -67,6 +67,10 @@ class UserController extends Controller {
 		return D('User')->where("`token_id`=$token_id")->field('`user_id`')->find();
 	}
 
+	protected function isUserSelf($user_id,$token_id){
+		return ($this->getUserIdByTokenId($token_id)==$user_id)
+	}
+
 	protected function getUserGroup($user_id){
 		return D('UserGroup')->where("`user_id`=$user_id")->getField('`ug_type`');
 	}

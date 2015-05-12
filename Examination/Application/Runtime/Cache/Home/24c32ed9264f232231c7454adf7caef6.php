@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?>已经登录过了不要重复登录

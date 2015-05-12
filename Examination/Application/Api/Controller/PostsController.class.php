@@ -70,7 +70,7 @@ class PostsController extends UserController {
 		}else{
 			$rPost=M('Posts');
 			$postData=$rPost->where("`post_id`=$post_id")->select();
-			$rPost->where("`post_id`=$post_id")->setInc("`post_view`",1,30);
+			$rPost->where("`post_id`=$post_id")->setInc("post_view",1);
 			if($postData){
 				$this->ajaxReturn(getServerResponse('1','读取成功',$postData));
 			}else{

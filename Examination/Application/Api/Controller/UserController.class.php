@@ -64,7 +64,6 @@ class UserController extends Controller {
 	}
 
 	protected function getUserIdByTokenId($token_id){
-		print_r(D('User')->where("`token_id`='$token_id'")->getField('`user_id`'));
 		return D('User')->where("`token_id`='$token_id'")->getField('`user_id`');
 	}
 
@@ -141,22 +140,16 @@ class UserController extends Controller {
 		}
 	}
 
-	public function login(){
-		$email=I($this->requestMethod."email");
-		$password=I($this->requestMethod."password");
+	public function loginVerify($email='',$password=''){
 		if(isInfoNull(array($email,$password))){
-			$this->ajaxReturn(getServerResponse('0','数据不能为空',''));
+			return -1;//帐号或密码不能为空
 		}else{
 			$loginUser=D('User');
 			$password=sha1($password);
 			$data=$loginUser->where("`user_email`='$email' AND `user_password`='$password'")->field(array('user_password'),true)->find();
 			$modifiedLoginTime['token_id']=guid();
 			$loginUser->where("`user_email`='$email'")->data($modifiedLoginTime)->save();
-			if($data){
-				$this->ajaxReturn(getServerResponse('0','验证成功',$data));
-			}else{
-				$this->ajaxReturn(getServerResponse('0','验证失败,帐号或密码有误',''));
-			}
+			return $data;
 		}
 	}
 

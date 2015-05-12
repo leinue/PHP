@@ -1,11 +1,48 @@
 <?php
 namespace Home\Controller;
 use Think\Controller;
-class IndexController extends Controller {
+use Api\Controller\UserController;
+use Api\Controller\PostsController;
+
+class IndexController extends UserController {
+
+	protected $userLoginFlag;
+
     public function index(){
-    	$test=new \My\Test();
-    	$test->sayHello();
-    	$this->show('this is index');
+    	if($this->isUserLogin()){
+    		$this->login();
+    	}else{
+    		$this->loadMainPage();
+    	}
+
+    	$post=new PostsController();
+    }
+
+    public function login(){
+   		$this->show('请登录');
+    	if($this->loginVerify('597055914@qq.com','123456')){
+    		session('isUserLogin','true');
+    		$this->userLoginFlag=true;
+    		echo '登录成功';
+    	}
+    }
+
+    public function loadMainPage(){
+   		$this->show('已登录');
+    }
+
+    public function logout(){
+    	$this->show('已退出');
+    	session('isUserLogin',null);
+    	
+    }
+
+    public function registerIn(){
+
+    }
+
+    public function isUserLogin(){
+    	return $this->userLoginFlag==null;
     }
 
     public function fuck(){
@@ -15,15 +52,15 @@ class IndexController extends Controller {
     }
 
     public function hello(){
-    	echo 'hello,fuck';
+    	//echo 'hello,fuck';
     }
 
     public function _before_index(){
-    	echo 'before';
+    	$this->userLoginFlag=session('?isUserLogin');
     }
 
     public function _after_index(){
-    	echo 'after';
+    	//echo 'after';
     }
 
     public function read($id=0){
@@ -33,11 +70,11 @@ class IndexController extends Controller {
     }
 
     public function _empty($name){
-    	$this->city($name);
+    	//$this->city($name);
     }
 
     protected function city($name){
-    	echo 'current city:'.$name;
+    	//echo 'current city:'.$name;
     }
 
     public function db(){

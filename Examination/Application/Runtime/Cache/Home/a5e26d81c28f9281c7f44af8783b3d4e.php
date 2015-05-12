@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?>登录成功,请刷新

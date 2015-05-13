@@ -61,23 +61,19 @@
 			<div class="introduction-second event-form">
 				<div class="span3" style="text-align:center">
 					<h5>04,December,2014</h5>
-					<h2>CONTENT CONTENT LETS START</h2>
-					<a class="the_btn btn-large dark">Details</a>
+					<h2>企划孕育</h2>
 				</div>
 				<div class="span3" style="text-align:center;background:#08AC67;">
-					<h5>04,December,2014</h5>
-					<h2>CONTENT</h2>
-					<a class="the_btn btn-large dark">Details</a>
+					<h5>04,April,2015</h5>
+					<h2>企划<p>二次商讨</p></h2>
 				</div>
 				<div class="span3" style="text-align:center;background:#1D7C80;">
-					<h5>04,December,2014</h5>
-					<h2>AN EVENT ON 2015</h2>
-					<a class="the_btn btn-large dark">Details</a>
+					<h5>04,June,2015</h5>
+					<h2>企划</h2>
 				</div>
 				<div class="span3" style="text-align:center;background:#2B4664;">
-					<h5>04,December,2014</h5>
-					<h2>A BEAUTIFUL DREAM ON 2015</h2>
-					<a class="the_btn btn-large dark">Details</a>
+					<h5>04,June,2015</h5>
+					<h2>LET'S DREAM IN 2015</h2>
 				</div>
 			</div>
 		</div>
@@ -147,6 +143,11 @@
 				</a>
 			</div>
 		</div>
+		<div class="ask-ready-form">
+			<h2>你准备好了吗，JUST DO IT</h2>
+			<a class="the_btn btn-large">注册</a>
+			<a class="the_btn btn-large dark">登录</a>
+		</div>
 		<div class="introduction-home introduction-second introfuction-cg introduction-slogan">
 			<div class="introduction-font-big">
 				<h1>让我们一起，创造好多莫名其妙的想法</h1>
@@ -167,6 +168,14 @@
 		$(document).ready(function(){
 			var documentHeight=$(document).height();
 
+			function displayElement(elem,mode){
+				if(mode=='display'){
+					$(elem).css('opacity','1');
+				}else{
+					$(elem).css('opacity','0');
+				}
+			}
+
 			$(window).scroll(function(){
 				if($(document).scrollTop()>$('.introduction-home .cg').height()){
 					$('header').css('opacity','1')
@@ -175,11 +184,44 @@
 					$('header').css('opacity','0.6')
 							   .css('background','rgba(0,0,0,0.7)');
 				}
+
+				if($(document).scrollTop()>$('.introduction-home').height()-600){
+					displayElement('.introduction-second','display');
+				}else{
+					displayElement('.introduction-second','hide');
+				}
+
+				if($(document).scrollTop()>$('.introfuction-cg').height()+$('.introduction-home').height()+$('.introduction-second').height()-200){
+					displayElement('.pixiv-form','display');
+				}else{
+					displayElement('.pixiv-form','hide');
+				}
+
+				if($(document).scrollTop()>$('.introfuction-cg').height()+$('.introduction-home').height()+$('.introduction-second').height()){
+					displayElement('.intro-cg-small','display');
+				}else{
+					displayElement('.intro-cg-small','hide');
+				}
+
+				if($(window).scrollTop()>=$(document).height()-$(window).height()-105){
+					$('.introduction-slogan .introduction-font-big h1').attr('style','transform:scale(1.2);');
+				}else{
+					$('.introduction-slogan .introduction-font-big h1').attr('style','transform:scale(1);');
+				}
+
+				if($(document).scrollTop()>$('.introfuction-cg').height()+$('.introduction-home').height()+$('.introduction-second').height()+$('.pixiv-form').height()+$('#separator').height()+100){
+					displayElement('.ask-ready-form','display');
+				}else{
+					displayElement('.ask-ready-form','hide');
+				}
+
+
 			});
 
 			$('.introduction-home .cg').css('padding-top',documentHeight-1000);
 
-			$('.introduction-slogan').css('margin-top',$('.web-design').height());
+			$('.ask-ready-form').css('margin-top',$('.web-design').height());
+
 		});
 	</script>
 

@@ -64,7 +64,9 @@ ul li a{
 }
 
 .the_btn:hover{
-    outline: medium none;
+	background: rgba(255,255,255,0.1);
+	border-color: rgb(255,255,255);
+
 }
 
 header{
@@ -138,11 +140,12 @@ section{
 	margin-left: 7.5%;
 	width: 80%;
 	margin: 0 auto;
+	opacity: 0;
 }
 
 .introduction-slogan{
-	padding-top: 100px!important;
-	padding-bottom: 100px!important;
+	padding-top: 80px!important;
+	padding-bottom: 80px!important;
 	height: auto;
 	background:url("../images/slogan.jpg") repeat fixed center center / cover transparent!important;
 }
@@ -194,6 +197,7 @@ section{
 
 .introduction-font-big{
 	font-size: 26px;
+	opacity: 1;
 }
 
 .intro-small{
@@ -203,6 +207,7 @@ section{
 
 .intro-cg-small{
 	color: rgb(255,255,255);
+	opacity: 0;
 }
 
 .intro-small p:hover{
@@ -243,6 +248,7 @@ section{
 	background: none repeat scroll 0% 0% rgb(220,220,220);
 	border: none;
 	height: 100%;
+	opacity: 0;
 }
 
 .span3{
@@ -271,6 +277,7 @@ section{
 	border: 0px none;
 	font: inherit;
 	vertical-align: baseline;
+	opacity: 0;
 }
 
 .box{
@@ -330,14 +337,14 @@ section{
 #copy{
     position: relative;
     width: 100%;
-    background: none repeat scroll 0% 0% #2B2D3A;
+    background: none repeat scroll 0% 0% rgb(220,220,220);
     padding-top: 30px;
     padding-bottom: 30px;
     text-align: center;
 }
 
 #copy a{
-	color: rgb(255,255,255);
+	color: rgb(30,30,30);
 }
 
 #copy a:hover{
@@ -348,5 +355,15 @@ section{
     position: relative;
     margin: 0px auto;
     padding: 0px;
-    color: rgb(255,255,255);
+    color: rgb(30,30,30);
+}
+
+.ask-ready-form{
+	width: 100%;
+	background: #41C9A5;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	text-align: center;
+	color: rgb(255,255,255);
+	opacity: 0;
 }

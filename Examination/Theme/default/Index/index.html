@@ -39,6 +39,8 @@
 		<div class="introduction-home introduction-second">
 			<div class="introduction-font-big">
 				<h1>Examination企划想法蜕变</h1>
+				<div class="team-wrap">
+				</div>
 				<div class="intro-small">
 					<p>次元纪行，是个打算把大家机器上活跃的各种软件拟人化然后战斗的想法
 也仅仅是个想法，想把类似于“3Q大战”萌化演绎出来的想法
@@ -79,16 +81,91 @@
 				</div>
 			</div>
 		</div>
+		<div class="introduction-home introduction-second introfuction-cg">
+			<div class="introduction-font-big">
+				<h1>Examination CG投稿</h1>
+				<div class="intro-small intro-cg-small">
+					<h2>强大的第三方资源库,可供二次开发</h2>
+				</div>
+			</div>
+		</div>
+		<div class="pixiv-form">
+			<div class="box photograph web-design">
+				<a class="iframe group1 cboxElement" href="" title="">
+					<img src="Theme/default/Index/images/2.jpg" alt="">
+					<div class="mask"></div>
+					<h4>Project Title</h4>
+					<p>Some Text Here</p>
+				</a>
+			</div>
+			<div class="box motion-graphics">
+				<a class="iframe group1 cboxElement" href="project.html" title="">
+					<img src="Theme/default/Index/images/1.jpg" alt="">	
+					<div class="mask"></div>
+					<h4>Project Title</h4>
+					<p>Some Text Here</p>
+				</a>
+			</div>
+			<div class="box motion-graphics">
+				<a class="iframe group1 cboxElement" href="project.html" title="">
+					<img src="Theme/default/Index/images/2.jpg" alt="">	
+					<div class="mask"></div>
+					<h4>Project Title</h4>
+					<p>Some Text Here</p>
+				</a>
+			</div>
+			<div class="box motion-graphics">
+				<a class="iframe group1 cboxElement" href="project.html" title="">
+					<img src="Theme/default/Index/images/home2.jpg" alt="">	
+					<div class="mask"></div>
+					<h4>Project Title</h4>
+					<p>Some Text Here</p>
+				</a>
+			</div>
+			<div class="box motion-graphics">
+				<a class="iframe group1 cboxElement" href="project.html" title="">
+					<img src="Theme/default/Index/images/2.jpg" alt="">	
+					<div class="mask"></div>
+					<h4>Project Title</h4>
+					<p>Some Text Here</p>
+				</a>
+			</div>
+			<div class="box motion-graphics">
+				<a class="iframe group1 cboxElement" href="project.html" title="">
+					<img src="Theme/default/Index/images/home.jpg" alt="">	
+					<div class="mask"></div>
+					<h4>Project Title</h4>
+					<p>Some Text Here</p>
+				</a>
+			</div>
+			<div class="box motion-graphics">
+				<a class="iframe group1 cboxElement" href="project.html" title="">
+					<img src="Theme/default/Index/images/hello.jpg" alt="">	
+					<div class="mask"></div>
+					<h4>Project Title</h4>
+					<p>Some Text Here</p>
+				</a>
+			</div>
+		</div>
+		<div class="introduction-home introduction-second introfuction-cg introduction-slogan">
+			<div class="introduction-font-big">
+				<h1>让我们一起，创造好多莫名其妙的想法</h1>
+			</div>
+		</div>
 	</section>
 	
 	<footer>
-		
+		<div id="copy">
+			<div class="container">
+				<p>© 2015 Examination. All rights reserved.Developed by <a href="http://ivydom.com">ivydom</a> </p>
+			</div>	
+		</div>
 	</footer>
 
 	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			var documentHeight=$(document).height()+100;
+			var documentHeight=$(document).height();
 
 			$(window).scroll(function(){
 				if($(document).scrollTop()>$('.introduction-home .cg').height()){
@@ -100,7 +177,9 @@
 				}
 			});
 
-			$('.introduction-home .cg').css('padding-top',documentHeight);
+			$('.introduction-home .cg').css('padding-top',documentHeight-1000);
+
+			$('.introduction-slogan').css('margin-top',$('.web-design').height());
 		});
 	</script>
 

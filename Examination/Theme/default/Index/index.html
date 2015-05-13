@@ -12,7 +12,7 @@
 	<header>
 		<nav>
 			<div id="brand">
-				<img src="">
+				<span><strong>Exam</strong>ination</span>
 			</div>
 			<div class="menu menu-right">
 				<ul>
@@ -29,21 +29,80 @@
 	</header>
 	
 	<section>
-		<div class="introduction">
-			<div class="cg blur"></div>
+		<div class="introduction-home">
+			<div class="cg"></div>
 			<div class="illustration">
 				<span>Examination</span>
 				<span>每一天，乐在挑战</span>
 			</div>
 		</div>
-		<div class="introduction introduction-second">
-			Examination是什么鬼
+		<div class="introduction-home introduction-second">
+			<div class="introduction-font-big">
+				<h1>Examination企划想法蜕变</h1>
+				<div class="intro-small">
+					<p>次元纪行，是个打算把大家机器上活跃的各种软件拟人化然后战斗的想法
+也仅仅是个想法，想把类似于“3Q大战”萌化演绎出来的想法
+直到IE下葬的现在，依然无法付诸实现
+要扯到各大互联网产品公司并用他们的形象盈利，形象利用费用根本无力支付
+而且很难通过审查
+要是剧情创作有什么描写失实，被起诉也在所难免
+况且这个前辈太像它自己的前辈了，恐怕要在其阴影下失色</p>
+				</div>
+			</div>
+			<div class="introduction-font-big">
+				<h1>Examination企划背后的人</h1>
+				<div class="team-wrap">
+				</div>
+			</div>
+		</div>
+		<div id="separator">
+			<div class="introduction-second event-form">
+				<div class="span3" style="text-align:center">
+					<h5>04,December,2014</h5>
+					<h2>CONTENT CONTENT LETS START</h2>
+					<a class="the_btn btn-large dark">Details</a>
+				</div>
+				<div class="span3" style="text-align:center;background:#08AC67;">
+					<h5>04,December,2014</h5>
+					<h2>CONTENT</h2>
+					<a class="the_btn btn-large dark">Details</a>
+				</div>
+				<div class="span3" style="text-align:center;background:#1D7C80;">
+					<h5>04,December,2014</h5>
+					<h2>AN EVENT ON 2015</h2>
+					<a class="the_btn btn-large dark">Details</a>
+				</div>
+				<div class="span3" style="text-align:center;background:#2B4664;">
+					<h5>04,December,2014</h5>
+					<h2>A BEAUTIFUL DREAM ON 2015</h2>
+					<a class="the_btn btn-large dark">Details</a>
+				</div>
+			</div>
 		</div>
 	</section>
 	
 	<footer>
 		
 	</footer>
+
+	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var documentHeight=$(document).height()+100;
+
+			$(window).scroll(function(){
+				if($(document).scrollTop()>$('.introduction-home .cg').height()){
+					$('header').css('opacity','1')
+							   .css('background','#5B6073');
+				}else{
+					$('header').css('opacity','0.6')
+							   .css('background','rgba(0,0,0,0.7)');
+				}
+			});
+
+			$('.introduction-home .cg').css('padding-top',documentHeight);
+		});
+	</script>
 
 </body>
 

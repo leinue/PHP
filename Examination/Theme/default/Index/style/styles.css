@@ -8,14 +8,68 @@ body{
 	transition:all 1s ease 0s;
 }
 
+p{
+	letter-spacing: 2px;
+}
+
+h1,h2,h3,h4,h5,h6{
+	font-weight: normal;
+	letter-spacing: 3px;
+	font-size: 1.6em;
+}
+
+span:hover{
+	color:rgb(130,130,130);
+	transition:all 1s ease 0s;
+}
+
+a{
+	text-decoration: none;
+}
+
 ul li a{
 	text-decoration: none;
 	color: rgb(255,255,255);
 }
 
+.the_btn{
+	z-index: 2;
+	cursor: pointer;
+	background-color: #DF4931;
+	border: 1px solid #DF4931;
+	border-radius: 4px;
+	text-align: center;
+	color: #FFF;
+	font-size: 14px;
+	line-height: 20px;
+	padding: 4px 12px;
+	font-family: "Montserrat",Arial,sans-serif;
+	display: inline-block;
+	transition: background-color 0.4s linear 0s, color 0.4s linear 0s;
+}
+
+.the_btn:hover{
+	
+}
+
+.the_btn.btn-large {
+    border-radius: 6px;
+    font-size: 17.5px;
+    padding: 11px 19px;
+}
+
+.the_btn.dark {
+    background-color: #33353E;
+    border-color: #33353E;
+}
+
+.the_btn:hover{
+    outline: medium none;
+}
+
 header{
 	padding-top: 30px;
-	background: rgb(40,162,222);
+	background: rgba(0, 0, 0, 0.7);
 	color: rgb(255,255,255);
 	opacity: 0.6;
 	position: fixed;
@@ -28,6 +82,14 @@ header{
 	width: 100px;
 	cursor: pointer;
 	margin-left: 20px;
+	position: absolute;
+	top: 16px;
+	font-size: 24px;
+	letter-spacing: 3px;
+}
+
+#brand strong{
+	font-weight: 800;
 }
 
 #brand img{
@@ -37,6 +99,7 @@ header{
 
 .menu{
 	display: table;
+	padding-top: 22px;
 }
 
 .menu ul{
@@ -48,8 +111,8 @@ header{
 	display: table-cell;
 	cursor: pointer;
 	text-align: center;
-	padding:18px;
-	padding-bottom: 19px;
+	padding:25px;
+	padding-bottom: 24px;
 }
 
 .menu ul li:hover{
@@ -71,7 +134,6 @@ section{
 	background: rgb(255,255,255);
 	border-top: 1px solid rgb(241,241,241);
 	border-bottom: 1px solid rgb(241,241,241);
-	padding-top: 100px;
 	padding-bottom: 100px;
 	margin-left: 7.5%;
 	width: 80%;
@@ -80,9 +142,8 @@ section{
 
 .cg{
 	margin-top: -52px;
-	padding-top: 700px;
-	background-image: url('../images/home.jpg');
-	background-position: center center;
+	padding-top: 550px;
+	background:url("../images/1.jpg") repeat fixed center center / cover transparent;
 }
 
 .cg-second{
@@ -104,7 +165,7 @@ section{
 	font-size: 4em;
 	position: absolute;
 	top: 40%;
-	color: rgb(52,52,52);
+	color: rgb(241,241,241);
 }
 
 .illustration span{
@@ -113,4 +174,71 @@ section{
 
 .illustration span:last-child{
 	font-size: .74em;
+}
+
+.introduction-font-big{
+	font-size: 26px;
+}
+
+.intro-small{
+	font-size: 16px;
+	color: rgb(120,120,120);
+}
+
+.intro-small p:hover{
+	color:rgb(30,30,30);
+	transition:all 1s ease 0s;
+}
+
+.team-wrap{
+	background: none repeat scroll 0% 0% rgba(0,102,178, 0.7);
+	width: 100%;
+	display: block;
+	overflow: hidden;
+	padding-top: 20px;
+}
+
+#separator{
+	position: relative;
+	width: 100%;
+	padding-top: 100px;
+	overflow: hidden;
+	background: none repeat scroll 0% 0% #142736;
+}
+
+.film-reel{
+	position: absolute;
+	transform: rotate(-26deg);
+	top: 0px;
+	left: 0px;
+	z-index: 1;
+	display: block;
+	width: 100%;
+	height: 244px;
+	background-image: url("../images/film-reel.png");
+}
+
+.event-form{
+	background: none repeat scroll 0% 0% #142736;
+	border: none;
+	height: 100%;
+}
+
+.span3{
+	float: left;
+	margin-left: 2.12766%;
+	width: 20.4043%;
+	min-height: 30px;
+	background: #3BD072;
+	color: #FFF;
+	padding: 15px 10px 60px;
+}
+
+.span3 h5{
+	font-size: 14px;
+}
+
+.span3 .the_btn:hover{
+	background: rgba(255,255,255,0.1);
+	border-color: rgb(255,255,255);
 }

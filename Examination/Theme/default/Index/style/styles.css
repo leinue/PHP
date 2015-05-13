@@ -40,7 +40,7 @@ ul li a{
 	border-radius: 4px;
 	text-align: center;
 	color: #FFF;
-	font-size: 14px;
+	font-size: .875em;
 	line-height: 20px;
 	padding: 4px 12px;
 	font-family: "Montserrat",Arial,sans-serif;
@@ -54,7 +54,7 @@ ul li a{
 
 .the_btn.btn-large {
     border-radius: 6px;
-    font-size: 17.5px;
+    font-size: 1.09375em;
     padding: 11px 19px;
 }
 
@@ -86,7 +86,7 @@ header{
 	margin-left: 20px;
 	position: absolute;
 	top: 16px;
-	font-size: 24px;
+	font-size: 1.5em;
 	letter-spacing: 3px;
 }
 
@@ -117,10 +117,14 @@ header{
 	padding-bottom: 24px;
 }
 
+.menu-active{
+	background: rgb(0,102,178);
+	color: rgb(170,170,170);
+}
+
 .menu ul li:hover{
 	background: rgb(0,102,178);
 	color: rgb(170,170,170);
-	transform: scale(1);
 }
 
 .menu-right{
@@ -196,12 +200,12 @@ section{
 }
 
 .introduction-font-big{
-	font-size: 26px;
+	font-size: 1.625em;
 	opacity: 1;
 }
 
 .intro-small{
-	font-size: 16px;
+	font-size: 1em;
 	color: rgb(120,120,120);
 }
 

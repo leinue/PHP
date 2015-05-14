@@ -1,32 +1,4 @@
-<!DOCTYPE html>
-<html lang="zh-cn">
-
-<head>
-	<title>Examination</title>
-	<meta charset="utf8">
-	<link rel="stylesheet" type="text/css" href="Theme/default/Index/style/styles.css">
-</head>
-
-<body>
-
-	<header>
-		<nav>
-			<div id="brand">
-				<span><strong>Exam</strong>ination</span>
-			</div>
-			<div class="menu menu-right">
-				<ul>
-					<li class="menu-active"><a href="">首页</a></li>
-					<li><a href="Theme/default/Index/feature.html">特色</a></li>
-					<li><a href="">CG</a></li>
-					<li><a href="">Media</a></li>
-					<li><a href="">关于我们</a></li>
-					<li><a href="">注册</a></li>
-					<li><a href="">登录</a></li>
-				</ul>
-			</div>
-		</nav>
-	</header>
+<?php  require('header.php'); ?>
 	
 	<section>
 		<div class="introduction-home">
@@ -88,7 +60,7 @@
 		<div class="pixiv-form">
 			<div class="box photograph web-design">
 				<a class="iframe group1 cboxElement" href="" title="">
-					<img src="Theme/default/Index/images/2.jpg" alt="">
+					<img src="images/2.jpg" alt="">
 					<div class="mask"></div>
 					<h4>Project Title</h4>
 					<p>Some Text Here</p>
@@ -96,7 +68,7 @@
 			</div>
 			<div class="box motion-graphics">
 				<a class="iframe group1 cboxElement" href="project.html" title="">
-					<img src="Theme/default/Index/images/1.jpg" alt="">	
+					<img src="images/1.jpg" alt="">	
 					<div class="mask"></div>
 					<h4>Project Title</h4>
 					<p>Some Text Here</p>
@@ -104,7 +76,7 @@
 			</div>
 			<div class="box motion-graphics">
 				<a class="iframe group1 cboxElement" href="project.html" title="">
-					<img src="Theme/default/Index/images/2.jpg" alt="">	
+					<img src="images/2.jpg" alt="">	
 					<div class="mask"></div>
 					<h4>Project Title</h4>
 					<p>Some Text Here</p>
@@ -112,7 +84,7 @@
 			</div>
 			<div class="box motion-graphics">
 				<a class="iframe group1 cboxElement" href="project.html" title="">
-					<img src="Theme/default/Index/images/home2.jpg" alt="">	
+					<img src="images/home2.jpg" alt="">	
 					<div class="mask"></div>
 					<h4>Project Title</h4>
 					<p>Some Text Here</p>
@@ -120,7 +92,7 @@
 			</div>
 			<div class="box motion-graphics">
 				<a class="iframe group1 cboxElement" href="project.html" title="">
-					<img src="Theme/default/Index/images/2.jpg" alt="">	
+					<img src="images/2.jpg" alt="">	
 					<div class="mask"></div>
 					<h4>Project Title</h4>
 					<p>Some Text Here</p>
@@ -128,7 +100,7 @@
 			</div>
 			<div class="box motion-graphics">
 				<a class="iframe group1 cboxElement" href="project.html" title="">
-					<img src="Theme/default/Index/images/home.jpg" alt="">	
+					<img src="images/home.jpg" alt="">	
 					<div class="mask"></div>
 					<h4>Project Title</h4>
 					<p>Some Text Here</p>
@@ -136,7 +108,7 @@
 			</div>
 			<div class="box motion-graphics">
 				<a class="iframe group1 cboxElement" href="project.html" title="">
-					<img src="Theme/default/Index/images/hello.jpg" alt="">	
+					<img src="images/hello.jpg" alt="">	
 					<div class="mask"></div>
 					<h4>Project Title</h4>
 					<p>Some Text Here</p>
@@ -155,76 +127,4 @@
 		</div>
 	</section>
 	
-	<footer>
-		<div id="copy">
-			<div class="container">
-				<p>© 2015 Examination. All rights reserved.Developed by <a href="http://ivydom.com">ivydom</a> </p>
-			</div>	
-		</div>
-	</footer>
-
-	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			var documentHeight=$(document).height();
-
-			function displayElement(elem,mode){
-				if(mode=='display'){
-					$(elem).css('opacity','1');
-				}else{
-					$(elem).css('opacity','0');
-				}
-			}
-
-			$(window).scroll(function(){
-				if($(document).scrollTop()>$('.introduction-home .cg').height()){
-					$('header').css('opacity','1')
-							   .css('background','#5B6073');
-				}else{
-					$('header').css('opacity','0.6')
-							   .css('background','rgba(0,0,0,0.7)');
-				}
-
-				if($(document).scrollTop()>$('.introduction-home').height()-600){
-					displayElement('.introduction-second','display');
-				}else{
-					displayElement('.introduction-second','hide');
-				}
-
-				if($(document).scrollTop()>$('.introfuction-cg').height()+$('.introduction-home').height()+$('.introduction-second').height()-200){
-					displayElement('.pixiv-form','display');
-				}else{
-					displayElement('.pixiv-form','hide');
-				}
-
-				if($(document).scrollTop()>$('.introfuction-cg').height()+$('.introduction-home').height()+$('.introduction-second').height()+50){
-					displayElement('.intro-cg-small','display');
-				}else{
-					displayElement('.intro-cg-small','hide');
-				}
-
-				if($(window).scrollTop()>=$(document).height()-$(window).height()-105){
-					$('.introduction-slogan .introduction-font-big h1').attr('style','transform:scale(1.2);');
-				}else{
-					$('.introduction-slogan .introduction-font-big h1').attr('style','transform:scale(1);');
-				}
-
-				if($(document).scrollTop()>$('.introfuction-cg').height()+$('.introduction-home').height()+$('.introduction-second').height()+$('.pixiv-form').height()+$('#separator').height()+100){
-					displayElement('.ask-ready-form','display');
-				}else{
-					displayElement('.ask-ready-form','hide');
-				}
-
-
-			});
-
-			$('.introduction-home .cg').css('padding-top',documentHeight-1800);
-
-			$('.ask-ready-form').css('margin-top',$('.web-design').height());
-
-		});
-	</script>
-
-</body>
-
-</html>
+<?php require('footer.php'); ?>

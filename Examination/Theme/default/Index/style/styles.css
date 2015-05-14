@@ -166,7 +166,7 @@ section{
 .cg{
 	margin-top: -52px;
 	padding-top: 550px;
-	background:url("../images/1.jpg") repeat fixed center center / cover transparent;
+	background:url("../images/index2.jpg") repeat fixed center center / cover transparent;
 }
 
 .cg-second{
@@ -193,10 +193,15 @@ section{
 
 .illustration span{
 	display: block;
+	letter-spacing: 3px;
 }
 
 .illustration span:last-child{
 	font-size: .74em;
+}
+
+.features{
+	color: rgb(30,30,30);
 }
 
 .introduction-font-big{
@@ -371,3 +376,121 @@ section{
 	color: rgb(255,255,255);
 	opacity: 0;
 }
+
+.product-info{
+	margin-top: -20px;
+	height: 900px;
+	width: 100%;
+	background-color: #FFF;
+	background-image: -webkit-linear-gradient(#F4F4F4 0px, #FFF 500px);
+	background-image: -o-linear-gradient(#F4F4F4 0px, #FFF 500px);
+	background-image: linear-gradient(#F4F4F4 0px, #FFF 500px);
+	opacity: 0;
+}
+
+.heading-product{
+	width: 72.6464647%;
+	height: 12.22222222%;
+	margin: 0 auto;
+	text-align: center;
+	padding-top: 70px;
+	color: #333333;
+	font-size: 24px;
+}
+
+.product-subheading{
+	color: #999999;
+}
+
+.product-detail{
+	font-size: 18px;
+}
+
+.product-detail a{
+	color: #08c;
+}
+
+.product-detail a:hover{
+	text-decoration: underline;
+}
+
+.design-hero-img{
+	margin-top: 12%;
+	margin-left: 22.721275%;
+}
+
+.design-hero-img img{
+	width: 72.6464647%;
+	height: 500px;
+}
+
+.design-hero-img-big{
+	margin-left: -320px;
+	margin-top: 242px;
+}
+
+.design-hero-img-big img{
+	height: 458px;
+	width: 86.3990413%;
+}
+
+@media screen and (max-width: 1200px){
+	.design-hero-img{
+		margin-top: 20%;
+	}
+}
+
+@media screen and (max-width: 1000px){
+	.design-hero-img{
+		margin-top: 30%;
+	}
+}
+
+@media screen and (max-width: 900px){
+	.design-hero-img{
+		margin-top: 40%;
+	}
+}
+
+@media screen and (max-width: 700px){
+	.design-hero-img-big img{
+		height: 400px;
+		margin-top: 58px;
+	}
+}
+
+@media screen and (max-width: 600px){
+	.design-hero-img{
+		margin-top: 70%;
+	}
+}
+
+@media screen and (max-width: 400px){
+	.design-hero-img{
+		margin-top: 100%;
+	}
+}
+
+@media screen and (max-width: 300px){
+	.design-hero-img{
+		margin: 100%;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.gallery-content .page-service img{
+		height: 84px;
+		width: 84px;
+	}
+
+	.page-heading-outline{font-size: 18px;}
+
+	.page-heading-detail p{font-size: 12px;}
+
+	.heading-product{font-size: 18px;}
+	
+	.product-detail{
+		font-size: 16px;
+	}
+}
+

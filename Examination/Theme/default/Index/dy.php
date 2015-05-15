@@ -7,6 +7,10 @@
 				<li>
 					<div class="floating_box">
 						<div style="background:url(images/hello.jpg) repeat center center / cover transparent;" class="profile_photo"></div>
+						<div class="profile_username"><a class="normal_a" href="">蛤蛤</a></div>
+						<div class="dy_description">
+							西方的哪个国家我没去过?我跟华莱士谈笑风生.媒体还是要多提升姿势水平.毕竟还图样
+						</div>
 					</div>
 				</li>
 				<li>
@@ -17,9 +21,6 @@
 								<div class="dy_date">
 									<span>2015年5月8日 00:00</span>
 								</div>
-							</div>
-							<div class="dy_description">
-								
 							</div>
 							<div style="width:100%;" class="dy_tags">
 								<ul>

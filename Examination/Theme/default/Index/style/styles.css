@@ -648,8 +648,7 @@ section{
 }
 
 .profile_photo{
-	height: 200px;
-	width: 200px;
+	width: 37.037037%;
 	border-radius: 8px;
 	margin: 0 auto;
 }
@@ -668,4 +667,8 @@ section{
 	border-bottom: 1px solid rgb(4,251,251);
 	font-size: 1.35em;
 	text-align: center;
+}
+
+#newest_cg,.cg_top10{
+	opacity: 0;
 }

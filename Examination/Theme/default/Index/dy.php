@@ -57,6 +57,14 @@
 			$('.floating_box').css('height',$(document).height()-$(document).scrollTop()-$('footer').height()-90);
 		}
 
+		window.onresize=function(){  
+            ChangeProfilePhotoHeight();  
+        }
+
+        ChangeProfilePhotoHeight=function(){
+        	$('.profile_photo').css('height',$('.profile_photo').width());
+        }();
+        
 		$('body').css('background','rgb(251,251,251)');
 		$('.floating_box').css('height',$('.dy_content').height());
 	});

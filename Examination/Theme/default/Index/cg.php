@@ -2,7 +2,7 @@
 
 	<section>
 		<div class="top_content">
-			<div class="pixiv-form">
+			<div style="opacity:0;" id="top_pixiv_img" class="pixiv-form">
 				<div class="box photograph web-design">
 					<a class="iframe group1 cboxElement" href="" title="">
 						<div class="box_img_div" style="background:url(images/slogan.jpg) repeat center center / cover transparent!important;"></div>
@@ -95,7 +95,8 @@
 		</div>
 
 		<div class="d_body">
-			<div class="cg_display">
+
+			<div id="newest_cg" class="cg_display">
 				<div class="cg_title">
 					<ul>
 						<li style="text-align:left!important;"><h3>最新投稿</h3></li>
@@ -246,6 +247,7 @@
 					</div>
 				</div>
 			</div>
+
 			<div class="cg_display cg_single_theme">
 				<div class="cg_title">
 					<ul>
@@ -382,7 +384,14 @@
 			$('.cg_top10').css('top',$('.motion-graphics').height()-150);
 
 			$('.menu-active').removeClass('menu-active');
-			$('')
+			
+			$(window).scroll(function(){
+				if($(document).scrollTop()>$('#top_pixiv_img').height()-500){
+					$('#newest_cg,.cg_top10').css('opacity','1');
+				}else{
+					$('#newest_cg,.cg_top10').css('opacity','0');
+				}
+			});
 		});
 	</script>
 <?php  require('footer.php'); ?>

@@ -17,10 +17,10 @@
 			</div>
 			<div class="menu menu-right">
 				<ul>
-					<li class="menu-active"><a href="">首页</a></li>
+					<li class="menu-active"><a href="index.php">首页</a></li>
 					<li><a href="features.php">特色</a></li>
-					<li><a href="">CG</a></li>
-					<li><a href="">Media</a></li>
+					<li><a href="cg.php">CG</a></li>
+					<li><a href="media.php">Media</a></li>
 					<li><a href="">关于我们</a></li>
 					<li><a href="">注册</a></li>
 					<li><a href="">登录</a></li>

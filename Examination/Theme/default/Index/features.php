@@ -54,6 +54,8 @@
 	</section>
 
 <script type="text/javascript">
+	$('.introduction-home .cg').css('padding-top',$(document).height()-2200);
+	
 	$(window).scroll(function(){
 
 		if($(document).scrollTop()>$('.introduction-home').height()-600){

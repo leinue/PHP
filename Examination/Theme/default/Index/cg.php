@@ -378,10 +378,15 @@
 		$(document).ready(function(){
 			$('footer').css({'margin-top':'460px'});
 
-			$('.cg_display').css('padding-top',$('.web-design').height()+$('.motion-graphics').height()-10);
+			var paddingTop=$('.web-design').height()+$('.motion-graphics').height()-10;
+
+			$('.cg_display').css('padding-top',paddingTop);
 			$('.cg_single_theme').css('padding-top',$('.web-design').height()-200);
 			$('body').css('background','rgb(230,230,230)');
-			$('.cg_top10').css('top',$('.motion-graphics').height()-150);
+			$('.cg_top10').css('top',$('.motion-graphics').height()-150).css({
+				'margin-top':paddingTop,
+				'padding-top':'0px'
+			});
 
 			$('.menu-active').removeClass('menu-active');
 			

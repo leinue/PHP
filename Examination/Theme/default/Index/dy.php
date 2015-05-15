@@ -6,7 +6,7 @@
 			<ul>
 				<li>
 					<div class="floating_box">
-						sdsds
+						<div style="background:url(images/hello.jpg) repeat center center / cover transparent;" class="profile_photo"></div>
 					</div>
 				</li>
 				<li>
@@ -21,7 +21,7 @@
 							<div class="dy_description">
 								
 							</div>
-							<div style="width:100%" class="dy_tags">
+							<div style="width:100%;" class="dy_tags">
 								<ul>
 									<li><a class="normal_a" href="">tag1</a></li>
 									<li><a class="normal_a" href="">tag2</a></li>
@@ -53,9 +53,11 @@
 				},{
 					duration:50,queue:false
 			});
+			$('.floating_box').css('height',$(document).height()-$(document).scrollTop()-$('footer').height()-90);
 		}
 
-		$('body').css('background','rgb(245,245,245)');
+		$('body').css('background','rgb(251,251,251)');
+		$('.floating_box').css('height',$('.dy_content').height());
 	});
 </script>
 

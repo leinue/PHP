@@ -592,12 +592,12 @@ section{
 	position: absolute;
 	left: 0;
 	width: 38.7%;
-	background: rgb(251,251,251);
+	background: rgb(245,245,245);
 	z-index: 10;
 }
 
 .dy_content{
-	background: rgb(251,251,251);
+	background: rgb(245,245,245);
 }
 
 .dy_title{
@@ -612,12 +612,12 @@ section{
 }
 
 .dy_display ul li .dy_content .dy-tags{
-	background: rgb(242,244,246);
-	width: 100%;
+	background: rgb(220,220,220);
+	border-radius: 4px;
 }
 
 .dy_tags ul{
-	background: rgb(242,244,246);
+	background: rgb(235,235,235);
 	width: 100%;
 }
 
@@ -646,4 +646,10 @@ section{
 
 .dy_img-padding{
 	padding-left: 10px;
+}
+
+.profile_photo{
+	height: 200px;
+	width: 200px;
+	border-radius: 4px;
 }

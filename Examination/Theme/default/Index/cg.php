@@ -12,7 +12,7 @@
 					</a>
 				</div>
 				<div class="box motion-graphics">
-					<a class="iframe group1 cboxElement" href="project.html" title="">
+					<a class="iframe group1 cboxElement" href="dy.php" title="">
 						<div class="box_img_div" style="background:url(images/features.jpg) repeat center center / cover transparent!important;"></div>
 						<div class="mask"></div>
 						<h4>Project Title</h4>
@@ -20,7 +20,7 @@
 					</a>
 				</div>
 				<div class="box motion-graphics">
-					<a class="iframe group1 cboxElement" href="project.html" title="">
+					<a class="iframe group1 cboxElement" href="dy.php" title="">
 						<div class="box_img_div" style="background:url(images/index.jpg) repeat center center / cover transparent!important;"></div>
 						<div class="mask"></div>
 						<h4>Project Title</h4>
@@ -28,7 +28,7 @@
 					</a>
 				</div>
 				<div class="box motion-graphics">
-					<a class="iframe group1 cboxElement" href="project.html" title="">
+					<a class="iframe group1 cboxElement" href="dy.php" title="">
 						<div class="box_img_div" style="background:url(images/2.jpg) repeat center center / cover transparent!important;"></div>
 						<div class="mask"></div>
 						<h4>Project Title</h4>
@@ -36,7 +36,7 @@
 					</a>
 				</div>
 				<div class="box motion-graphics">
-					<a class="iframe group1 cboxElement" href="project.html" title="">
+					<a class="iframe group1 cboxElement" href="dy.php" title="">
 						<div class="box_img_div" style="background:url(images/1.jpg) repeat center center / cover transparent!important;"></div>
 						<div class="mask"></div>
 						<h4>Project Title</h4>
@@ -44,7 +44,7 @@
 					</a>
 				</div>
 				<div class="box motion-graphics">
-					<a class="iframe group1 cboxElement" href="project.html" title="">
+					<a class="iframe group1 cboxElement" href="dy.php" title="">
 						<div class="box_img_div" style="background:url(images/cg-post.jpg) repeat center center / cover transparent!important;"></div>
 						<div class="mask"></div>
 						<h4>Project Title</h4>
@@ -52,7 +52,7 @@
 					</a>
 				</div>
 				<div class="box motion-graphics">
-					<a class="iframe group1 cboxElement" href="project.html" title="">
+					<a class="iframe group1 cboxElement" href="dy.php" title="">
 						<div class="box_img_div" style="background:url(images/home2.jpg) repeat center center / cover transparent!important;"></div>
 						<div class="mask"></div>
 						<h4>Project Title</h4>
@@ -60,7 +60,7 @@
 					</a>
 				</div>
 				<div class="box motion-graphics">
-					<a class="iframe group1 cboxElement" href="project.html" title="">
+					<a class="iframe group1 cboxElement" href="dy.php" title="">
 						<div class="box_img_div" style="background:url(images/hello.jpg) repeat center center / cover transparent!important;"></div>
 						<div class="mask"></div>
 						<h4>Project Title</h4>
@@ -68,7 +68,7 @@
 					</a>
 				</div>
 				<div class="box motion-graphics">
-					<a class="iframe group1 cboxElement" href="project.html" title="">
+					<a class="iframe group1 cboxElement" href="dy.php" title="">
 						<div class="box_img_div" style="background:url(images/home.jpg) repeat center center / cover transparent!important;"></div>
 						<div class="mask"></div>
 						<h4>Project Title</h4>
@@ -76,7 +76,7 @@
 					</a>
 				</div>
 				<div class="box motion-graphics">
-					<a class="iframe group1 cboxElement" href="project.html" title="">
+					<a class="iframe group1 cboxElement" href="dy.php" title="">
 						<div class="box_img_div" style="background:url(images/index2.jpg) repeat center center / cover transparent!important;"></div>
 						<div class="mask"></div>
 						<h4>Project Title</h4>
@@ -84,7 +84,7 @@
 					</a>
 				</div>
 				<div class="box motion-graphics">
-					<a class="iframe group1 cboxElement" href="project.html" title="">
+					<a class="iframe group1 cboxElement" href="dy.php" title="">
 						<div class="box_img_div" style="background:url(images/hello.jpg) repeat center center / cover transparent!important;"></div>
 						<div class="mask"></div>
 						<h4>Project Title</h4>
@@ -380,6 +380,9 @@
 			$('.cg_single_theme').css('padding-top',$('.web-design').height()-200);
 			$('body').css('background','rgb(230,230,230)');
 			$('.cg_top10').css('top',$('.motion-graphics').height()-150);
+
+			$('.menu-active').removeClass('menu-active');
+			$('')
 		});
 	</script>
 <?php  require('footer.php'); ?>

@@ -9,6 +9,13 @@
 
 	<script type="text/javascript">
 		$(document).ready(function(){
+			
+			$('.menu ul li').click(function(){
+				var ref=$(this).find('a').attr('ref');
+				localStorage.currentIndex=ref;
+				window.location.href=ref;
+				return false;
+			});
 
 			$('.pixiv-form,.box_img_div').css('opacity','1');
 			$('.pixiv-form .box a').hover(function(){

@@ -311,6 +311,10 @@ section{
 	overflow: hidden;
 }
 
+.cg_top{
+	width: 100%;
+}
+
 .box h4 {
     position: absolute;
     color: #FFF;
@@ -526,6 +530,41 @@ section{
 }
 
 .d_body{
-	width: 100%;
-	background: rgb(240,240,240);
+	color: rgb(30,30,30);
+	width: 100%; 
+	background: rgb(230,230,230);
+}
+
+.cg_display{
+	width: 70.074074%;
+}
+
+.cg_title{
+	padding: 10px;
+	width: 99%;
+	display: table;
+}
+
+.cg_title ul{
+	display: table-row;
+}
+
+.cg_title ul li{
+	display: table-cell;
+	width: 50%;
+	text-align: right;
+}
+
+.cg_title ul li a{
+	color: rgb(0,161,214);
+}
+
+.cg_title ul li a:hover{
+	text-decoration: underline;
+}
+
+.cg_top10{
+	position: absolute;
+	right: 20px;
+	width: 26%;
 }

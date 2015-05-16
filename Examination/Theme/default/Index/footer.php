@@ -17,11 +17,21 @@
 				return false;
 			});
 
+			function getMaskSelector(obj){
+				var selector;
+				if($(obj).find('.link_home').length==0){
+					selector='.mask,h4,p';
+				}else{
+					selector='.mask';
+				}
+				return selector;
+			}
+
 			$('.pixiv-form,.box_img_div').css('opacity','1');
-			$('.pixiv-form .box a').hover(function(){
-				$(this).find('.mask,h4,p').css('opacity','1');
+			$('.pixiv-form .box a,.cont_box').hover(function(){
+				$(this).find(getMaskSelector(this)).css('opacity','1');
 			},function(){
-				$(this).find('.mask,h4,p').css('opacity','0');
+				$(this).find(getMaskSelector(this)).css('opacity','0');
 			});
 
 			$('.top_content').css('margin-top',$('header').height()+30);

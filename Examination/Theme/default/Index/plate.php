@@ -324,7 +324,7 @@
 						<li><a class="the_btn white" id="page_7" href="javascript:void(0)">7</a></li>
 						<li><a class="the_btn white" id="page_next" href="javascript:void(0)">下页</a></li>
 						<li><a class="the_btn white" id="page_last" href="javascript:void(0)">末页</a></li>
-						<li><input class="the_input small" id="page_page" type="tel"></li>
+						<li><input class="the_input small" id="page_page" type="number"></li>
 						<li><a class="the_btn white" id="page_submit" href="javascript:void(0)">确定</a></li>
 					</ul>
 				</div>
@@ -439,7 +439,7 @@
 				if(!l){
 					var start=s;
 				}else{
-					var start=parseInt(s)-parseInt(getLastPage(obj))+2;
+					var start=parseInt(s)-parseInt(getLastPage(obj))+1;
 				}
 				$(obj).parent().find('li a').each(function(){
 					if(!isNaN($(this).html())){
@@ -454,7 +454,7 @@
 				isLast=(isLast==null)?false:isLast;
 				var _thisParent=$(obj).parent();
 				if(!isLast){
-					var mid=Math.ceil(lastPage/2);
+					var mid=Math.ceil(Math.ceil(getLastPage(obj))/2);
 					var midPos=mid+2;
 					removeActive(obj);
 					var index=nextPage-mid+1;
@@ -469,6 +469,7 @@
 			}
 
 			$('.pagination ul li').click(function(){
+				if($(this).find('input').length!=0){return;}
 				var tagAInThis=$(this).find('a');
 				var htmlInA=tagAInThis.attr('id').split('_')[1];
 				if(!isNaN(htmlInA)){
@@ -492,7 +493,7 @@
 							var lastPage=getLastPage(this);
 							var currentPage=getCurrentPage(this);
 							var nextPage=getNextPage(currentPage);
-							if(nextPage>=lastPage){
+							if(nextPage>=lastPage && nextPage<=getTotalPages(this)){
 								towhichPage(this,lastPage,nextPage);
 							}else{
 								setThisPageActive(this,nextPage);
@@ -502,13 +503,19 @@
 							var total=getTotalPages(this);
 							var lastPage=getLastPage(this);
 							var nextPage=getNextPage(total);
-							if(total>=lastPage){
+							if(total>=lastPage && total<=getTotalPages(this)){
 								towhichPage(this,total,nextPage,true);
 							}else{
 								setThisPageActive(this,total);
 							}
 							break;
 						case 'submit':
+							var pageObtained=$(this).parent().find('input').val();
+							if(pageObtained==''){
+								alert('请输入页数');
+							}else{
+								towhichPage(this,pageObtained,getNextPage(pageObtained)-1);
+							}
 							break;
 					}
 				}

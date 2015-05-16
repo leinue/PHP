@@ -21,7 +21,7 @@
 					<li><a ref="features.php" href="">特色</a></li>
 					<li><a ref="cg.php" href="">CG</a></li>
 					<li><a ref="media.php" href="">Media</a></li>
-					<li><a href="">关于我们</a></li>
+					<li><a ref="about.php" href="">关于我们</a></li>
 					<li><a href="">注册</a></li>
 					<li><a href="">登录</a></li>
 				</ul>

@@ -1,6 +1,5 @@
 <?php  require('header.php'); ?>
 
-
 	<section>
 		<div class="introduction-home">
 			<div style="background:url(images/1.jpg) repeat fixed center center / cover transparent;" class="cg"></div>

@@ -2,7 +2,7 @@
 
 	<section>
 		<div class="introduction-home">
-			<div style="background:url(images/1.jpg) repeat fixed center center / cover transparent;" class="cg"></div>
+			<div id="features_gallery" style="background:url(images/1.jpg) repeat fixed center center / cover transparent;" class="cg"></div>
 			<div class="illustration">
 				<span>Features</span>
 				<span>与众不同最时尚</span>
@@ -53,28 +53,31 @@
 	</section>
 
 <script type="text/javascript">
-	$('.introduction-home .cg').css('padding-top',$(document).height()-2200);
-	
-	$(window).scroll(function(){
+	$(document).ready(function(){
+		$('.introduction-home .cg').css('padding-top',$(document).height()-2200);
+		
+		$(window).scroll(function(){
 
-		if($(document).scrollTop()>$('.introduction-home').height()-600){
-			$('#product-1').css('opacity','1');
-		}else{
-			$('#product-1').css('opacity','0');
-		}
+			if($(document).scrollTop()>$('.introduction-home').height()-600){
+				$('#product-1').css('opacity','1');
+			}else{
+				$('#product-1').css('opacity','0');
+			}
 
-		if($(document).scrollTop()>$('#product-1').height()+$('.introduction-home').height()-400){
-			$('#product-2').css('opacity','1');
-		}else{
-			$('#product-2').css('opacity','0');
-		}
+			if($(document).scrollTop()>$('#product-1').height()+$('.introduction-home').height()-400){
+				$('#product-2').css('opacity','1');
+			}else{
+				$('#product-2').css('opacity','0');
+			}
 
-		if($(document).scrollTop()>$('#product-1').height()+$('.introduction-home').height()+$('#product-2').height()-400){
-			$('#product-3').css('opacity','1');
-		}else{
-			$('#product-3').css('opacity','0');
-		}
+			if($(document).scrollTop()>$('#product-1').height()+$('.introduction-home').height()+$('#product-2').height()-400){
+				$('#product-3').css('opacity','1');
+			}else{
+				$('#product-3').css('opacity','0');
+			}
+		});
 
+		//$('#features_gallery').css('opacity','1');
 	});
 </script>
 

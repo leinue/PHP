@@ -25,6 +25,7 @@
 			});
 
 			$('.top_content').css('margin-top',$('header').height()+30);
+			$('.cg').css('opacity','1');
 
 		});
 	</script>

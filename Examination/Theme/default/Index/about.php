@@ -3,26 +3,66 @@
 	<section>
 		<div class="introduction-home">
 			<div style="background:url(images/support.jpg) repeat center center / cover transparent!important;" class="cg"></div>
+			<div class="illustration">
+				<span>我们的征途是星辰大海</span>
+			</div>
 		</div>
 			<div class="cont">
-				
-				<div style="background-color: #F17B73;height:270px;" class="cont_box">
+				<div style="height:270px;" class="cont_box cont_box_color red_box" id="works_c">
 					<a class="link_home" href=""></a>
-					<h1 class="title_home">Works</h1>
+					<img class="img_home" src="images/staff_home.png" height="100" width="100">  
+					<h2 class="descr_home2"><span>团队</span><br>Phylosophy &amp; Structure<br><br>View more information</h2>
+				</div>
+				
+				<div style="height:270px;" class="cont_box">
+					<a class="link_home" href=""></a>
+					<h1 class="title_home">分工</h1>
 					<p class="descr_home">Works Medical Sport Center è il nuovo centro polivalente specializzato in diagnostica, fisioterapia,</p>
 			    </div>
-			   
-			   	<div style="background-color: #77BCAF;height:270px;" class="cont_box cont_box_color" id="works_c">
+						   
+			   	<div style="height:270px;" class="cont_box cont_box_color green_box" id="works_c">
 					<a class="link_home" href=""></a>
 					<img class="img_home" src="images/azienda_home.png" height="100" width="100">  
 					<h2 class="descr_home2"><span>Works</span><br>Phylosophy &amp; Structure<br><br>View more information</h2>
 				</div>
+
+				<div style="height:270px;" class="cont_box">
+					<a class="link_home" href=""></a>
+					<h1 class="title_home">目标</h1>
+					<p class="descr_home">Works Medical Sport Center è il nuovo centro polivalente specializzato in diagnostica, fisioterapia,</p>
+			    </div>
 				
-				<div style="height: 270px;background-color:#445E9F" class="cont_box cont_box_color" id="facebook_c">
+				<div style="height: 270px;" class="cont_box cont_box_color dark_blue_box" id="facebook_c">
 					<a class="link_home" href="" target="_blank"></a>
 					<img class="img_home" src="images/facebook_home.png" height="100" width="100">
-					<h2 class="descr_home2"><span>Facebook</span><br>Like Us<br><br>Visit us on Facebook</h2>
-			   </div>
+					<h2 class="descr_home2"><span>新浪微博</span><br>Like Us<br><br>Visit us on Facebook</h2>
+			   	</div>
+
+				<div style="height: 270px;" class="cont_box cont_box_color light_blue_box" id="facebook_c">
+					<a class="link_home" href="" target="_blank"></a>
+					<img class="img_home" src="images/facebook_home.png" height="100" width="100">
+					<h2 class="descr_home2"><span>腾讯微博</span><br>Like Us<br><br>Visit us on Facebook</h2>
+			   	</div>
+
+			   	<div style="height: 270px;" class="cont_box cont_box_color dark_dark_blue_box" id="facebook_c">
+					<a class="link_home" href="" target="_blank"></a>
+					<img class="img_home" src="images/facebook_home.png" height="100" width="100">
+					<h2 class="descr_home2"><span>腾讯微博</span><br>Like Us<br><br>Visit us on Facebook</h2>
+			   	</div>
+				
+				<div style="height:270px;" class="cont_box">
+					<a class="link_home" href=""></a>
+					<h1 class="title_home">目标</h1>
+					<p class="descr_home">Works Medical Sport Center è il nuovo centro polivalente specializzato in diagnostica, fisioterapia,</p>
+			    </div>
+
+			   	<div style="height: 270px;" class="cont_box cont_box_color green_box" id="facebook_c">
+					<a class="link_home" href="" target="_blank"></a>
+					<img class="img_home" src="images/mail_home.png" height="100" width="100">
+					<h2 class="descr_home2"><span>Mail</span><br>Like Us<br><br>Visit us on Facebook</h2>
+			   	</div>
+	
+				<div style="height: 270px;" class="cont_box apri_photogallery" id="photogallery_s"></div>
 
 			</div>
 		</div>
@@ -30,8 +70,8 @@
 	
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$('footer').css('margin-top',$('.cont_box').height());
-			console.log($('.cont_box').height());
+			$('footer').css('margin-top',$('.cont_box:last-child').height()*2);
+			$('.cont_box').css('opacity','1');
 		});
 	</script>
 

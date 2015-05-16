@@ -409,6 +409,31 @@
 				$(obj).parent().find('.pagination_active').removeClass('pagination_active');
 			}
 
+			function getTotalPages(obj){
+				return $(obj).parent().attr('whole-page');
+			}
+
+			function getCurrentPage(obj){
+				return $(obj).parent().find('.pagination_active').attr('id').split('_')[1];
+			}
+
+			function getFirstpage(obj){
+				return $(obj).parent().find('li:nth-child(3)').html();
+			}
+
+			function getLastPage(obj){
+				return parseInt($(obj).parent().find('li').length)-6;
+			}
+
+			function getNextPage(cp){
+				return parseInt(cp)+1;
+			}
+
+			function setThisPageActive(obj,page){
+				removeActive(obj);
+				$(obj).parent().find('#page_'+page).addClass('pagination_active');
+			}
+
 			$('.pagination ul li').click(function(){
 				var tagAInThis=$(this).find('a');
 				var htmlInA=tagAInThis.attr('id').split('_')[1];
@@ -418,17 +443,27 @@
 				}else{
 					switch(htmlInA){
 						case 'home':
-							removeActive(this);
-							$(this).parent().find('#page_1').addClass('pagination_active');
+							if($(this).parent().find('#page_1').length==0){
+								var start=1;
+								$(this).parent().find('li a').each(function(){
+									if(!isNaN($(this).html())){
+										$(this).html(start);
+										$(this).attr('id','page_'+start);
+										start+=1;
+									}
+								});
+								setThisPageActive(this,1);
+							}else{
+								setThisPageActive(this,1);
+							}
 							break;
 						case 'next':
 							var _this=$(this);
 							var _thisParent=_this.parent();
-							var totalLi=_thisParent.find('li').length;
-							var firstPage=_thisParent.find('li:nth-child(3)').html();
-							var lastPage=parseInt(totalLi)-6;
-							var currentPage=_thisParent.find('.pagination_active').attr('id').split('_')[1];
-							var nextPage=parseInt(currentPage)+1;
+							var firstPage=getFirstpage(this);
+							var lastPage=getLastPage(this);
+							var currentPage=getCurrentPage(this);
+							var nextPage=getNextPage(currentPage);
 							if(nextPage>=lastPage){
 								var mid=Math.ceil(lastPage/2);
 								var midPos=mid+2;
@@ -436,7 +471,6 @@
 								var index=nextPage-mid+1;
 								_thisParent.find('li a').each(function(){
 									if(!isNaN($(this).html())){
-										console.log(index);
 										$(this).html(index);
 										$(this).attr('id','page_'+index);
 										index+=1;
@@ -444,6 +478,7 @@
 								});
 								_thisParent.find('li:nth-child('+midPos+')').html('<a class="the_btn white pagination_active" id="page_'+nextPage+'" href="javascript:void(0)">'+nextPage+'</a>');
 							}else{
+								// setThisPageActive(this,nextPage);
 								removeActive(this);
 								_thisParent.find('#page_'+nextPage).addClass('pagination_active');
 							}

@@ -2,14 +2,14 @@
 
 	<section>
 		<div class="introduction-home">
-			<div style="background:url(images/support.jpg) repeat center center / cover transparent!important;" class="cg"></div>
+			<div style="background:url(images/support.jpg) repeat fixed center center / cover transparent!important;" class="cg"></div>
 			<div class="illustration about_slogan">
 				<span>我们的征途是星辰大海</span>
 			</div>
 		</div>
 			<div class="cont">
 				<div style="height:270px;" class="cont_box cont_box_color red_box" id="works_c">
-					<a class="link_home" href=""></a>
+					<a class="link_home" href="post.php"></a>
 					<div class="mask"></div>
 					<img class="img_home" src="images/staff_home.png" height="100" width="100">  
 					<h2 class="descr_home2"><span>团队</span><br>Phylosophy &amp; Structure<br><br>View more information</h2>

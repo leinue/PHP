@@ -782,3 +782,115 @@ section{
     background-position: center center;
     cursor: pointer;
 }
+
+.content-panel{
+	width: 1200px;
+	height: 150px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+/*右边主页头部*/
+.content-heading{
+	border-bottom: 1px solid rgb(230,230,230);
+	padding-bottom: 14px;
+	text-align: left;
+	padding-top: 20px;
+}
+
+.content-heading h1{
+	font-size: 200%;
+	font-weight: lighter;
+	color: rgb(75,75,75);
+}
+
+.content-heading h3{
+	font-size: 110%;
+	color: rgb(60,60,60);
+	letter-spacing: -0.02em;
+	font-weight: lighter;
+}
+
+.heading-title{
+	font-size: 26px;
+	color: rgb(75,75,75);
+}
+
+.img-desc{
+	margin-top: 6px;
+	font-size: 16px;
+	color: rgb(119,119,119);
+}
+
+.img-desc span a{
+	color: rgb(119,119,119);
+	font-weight: 800;
+}
+
+
+/*图片详细描述区域*/
+
+.content-detail{
+	text-align: left;
+	width: 1200px;
+	margin: 0 auto;
+	margin-top: 20px;
+	color: rgb(119,119,119);
+}
+
+.de-title{
+	font-size: 20px;
+	text-align: center;
+}
+
+.de-desc{
+	font-size: 14px;
+	text-indent: 2em;
+	font-size: 1.2em;
+}
+
+/*右边显示图片区域*/
+.content-body-img{
+	margin-top: 10px;
+	text-align: center;
+	color: rgb(119,119,119);
+	margin: 0 auto;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin-bottom: 10px;
+}
+
+.content-body-img img{
+	width: 500px;
+	height:500px; 
+}
+
+.content-body-img a,.content-body-img a{
+	color: rgb(119,119,119);
+}
+
+.content-body-img img:hover{cursor: pointer;}
+
+/*标签区域*/
+
+.content-tags{
+	margin-top: 60px;
+	border: 1px solid rgb(230,230,230);
+	background: rgb(255,255,255);
+	margin-bottom: 20px;
+	width: 1200px;
+	overflow-y: auto;
+}
+
+.tags{
+	list-style: none;
+	float: left;
+	margin-left: -20px;
+}
+
+.tags li{
+	float: left;
+	margin-right: 20px;
+	color: rgb(37,143,184);
+	font-size: 14px;
+}

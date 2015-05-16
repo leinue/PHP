@@ -22,6 +22,7 @@
 					<li><a ref="cg.php" href="">原画稿件</a></li>
 					<li><a ref="media.php" href="">多媒体辅助</a></li>
 					<li><a ref="extension.php" href="">测评与推广</a></li>
+					<li><a ref="search.php">搜索</a></li>
 					<li><a href="">注册</a></li>
 					<li><a href="">登录</a></li>
 				</ul>

@@ -63,14 +63,52 @@ ul li a{
     border-color: #33353E;
 }
 
+.the_btn.light_blue{
+	background-color: #55B1E1;
+	border-color: #55B1E1;
+}
+
+.the_btn.no_radius{
+	border-radius: 0px;
+}
+
 .the_btn:hover{
 	background: rgba(255,255,255,0.1);
 	border-color: rgb(255,255,255);
+}
 
+.the_btn.black_color:hover{
+	color: rgb(30,30,30);
+	border-color: rgb(30,30,30);
+}
+
+#search_btn{
+	margin-left: -5px;
+	padding: 7px 14px 9px;
+}
+
+#search_btn:hover{
+	border-color: rgb(120,120,120);
+	opacity: 0.5;
+}
+
+.the_input{
+	border: 1px solid #CCC;
+	background: #FFF none repeat scroll 0% 0%;
+	margin: 0px 0px 5px;
+	padding: 10px;
+}
+
+.the_input:active{
+	border: 1px solid rgb(120,120,120);
+}
+
+.the_input:hover{
+	border: 1px solid rgb(120,120,120);
 }
 
 header{
-	padding-top: 30px;
+	padding-top: 24px;
 	background: rgba(0, 0, 0, 0.7);
 	color: rgb(255,255,255);
 	opacity: 0.6;
@@ -893,4 +931,20 @@ section{
 	margin-right: 20px;
 	color: rgb(37,143,184);
 	font-size: 14px;
+}
+
+/*搜索页面*/
+
+.search_top{
+	padding: 20px;
+}
+
+.search_title{
+	text-align: center;
+}
+
+.search_input{
+	text-align: center;
+	width: 73.15289%;
+	margin: 0 auto;
 }

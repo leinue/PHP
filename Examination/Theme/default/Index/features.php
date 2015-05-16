@@ -2,7 +2,7 @@
 
 	<section>
 		<div class="introduction-home">
-			<div id="features_gallery" style="background:url(images/1.jpg) repeat fixed center center / cover transparent;" class="cg"></div>
+			<div id="features_gallery" style="background:url(images/features3.jpg) repeat fixed center center / cover transparent;" class="cg"></div>
 			<div class="illustration">
 				<span>Features</span>
 				<span>与众不同最时尚</span>

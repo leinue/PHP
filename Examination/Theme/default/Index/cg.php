@@ -1,7 +1,13 @@
 <?php  require('header.php'); ?>
 
 	<section>
-		<div class="top_content">
+	<div class="introduction-home">
+			<div style="background:url(images/cg5.jpg) repeat fixed center center / cover transparent!important;" class="cg"></div>
+			<div class="illustration about_slogan">
+				<span>插画投稿/展示</span>
+			</div>
+		</div>
+		<div class="top_content_">
 			<div style="opacity:0;" id="top_pixiv_img" class="pixiv-form">
 				<div class="box photograph web-design">
 					<a class="iframe group1 cboxElement" href="" title="">
@@ -383,7 +389,7 @@
 			$('.cg_display').css('padding-top',paddingTop);
 			$('.cg_single_theme').css('padding-top',$('.web-design').height()-200);
 			$('body').css('background','rgb(230,230,230)');
-			$('.cg_top10').css('top',$('.motion-graphics').height()-150).css({
+			$('.cg_top10').css('top',$('.motion-graphics').height()+$('introduction-home').height()+270).css({
 				'margin-top':paddingTop,
 				'padding-top':'0px'
 			});

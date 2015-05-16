@@ -21,7 +21,7 @@
 					<li><a ref="features.php" href="">游戏特色</a></li>
 					<li><a ref="cg.php" href="">原画稿件</a></li>
 					<li><a ref="media.php" href="">多媒体辅助</a></li>
-					<li><a ref="about.php" href="">测评与推广</a></li>
+					<li><a ref="extension.php" href="">测评与推广</a></li>
 					<li><a href="">注册</a></li>
 					<li><a href="">登录</a></li>
 				</ul>

@@ -2,7 +2,7 @@
 
 	<section>
 		<div class="introduction-home">
-			<div style="background:url(images/trim.jpg) repeat fixed center center / cover transparent!important;" class="cg"></div>
+			<div style="background:url(images/about5.jpg) repeat fixed center center / cover transparent!important;" class="cg"></div>
 			<div class="illustration about_slogan">
 				<span>吸血鬼阿卡多</span>
 			</div>

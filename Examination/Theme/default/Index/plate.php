@@ -312,20 +312,20 @@
 				</div>
 
 				<div class="pagination">
-					<ul>
+					<ul whole-page="233">
 						<li>共 233 页</li>
-						<li><a class="the_btn white" href="javascript:void(0)">首页</a></li>
-						<li><a class="the_btn white pagination_active" href="javascript:void(0)">1</a></li>
-						<li><a class="the_btn white" href="javascript:void(0)">2</a></li>
-						<li><a class="the_btn white" href="javascript:void(0)">3</a></li>
-						<li><a class="the_btn white" href="javascript:void(0)">4</a></li>
-						<li><a class="the_btn white" href="javascript:void(0)">5</a></li>
-						<li><a class="the_btn white" href="javascript:void(0)">6</a></li>
-						<li><a class="the_btn white" href="javascript:void(0)">7</a></li>
-						<li><a class="the_btn white" href="javascript:void(0)">下页</a></li>
-						<li><a class="the_btn white" href="javascript:void(0)">末页</a></li>
-						<li><input class="the_input small" type="tel"></li>
-						<li><a class="the_btn white" href="javascript:void(0)">确定</a></li>
+						<li><a class="the_btn white" id="page_home" href="javascript:void(0)">首页</a></li>
+						<li><a class="the_btn white pagination_active" id="page_1" href="javascript:void(0)">1</a></li>
+						<li><a class="the_btn white" id="page_2" href="javascript:void(0)">2</a></li>
+						<li><a class="the_btn white" id="page_3" href="javascript:void(0)">3</a></li>
+						<li><a class="the_btn white" id="page_4" href="javascript:void(0)">4</a></li>
+						<li><a class="the_btn white" id="page_5" href="javascript:void(0)">5</a></li>
+						<li><a class="the_btn white" id="page_6" href="javascript:void(0)">6</a></li>
+						<li><a class="the_btn white" id="page_7" href="javascript:void(0)">7</a></li>
+						<li><a class="the_btn white" id="page_next" href="javascript:void(0)">下页</a></li>
+						<li><a class="the_btn white" id="page_last" href="javascript:void(0)">末页</a></li>
+						<li><input class="the_input small" id="page_page" type="tel"></li>
+						<li><a class="the_btn white" id="page_submit" href="javascript:void(0)">确定</a></li>
 					</ul>
 				</div>
 			</div>
@@ -404,6 +404,58 @@
 			});
 
 			$('footer').css({'margin-top':paddingTop+296});
+
+			function removeActive(obj){
+				$(obj).parent().find('.pagination_active').removeClass('pagination_active');
+			}
+
+			$('.pagination ul li').click(function(){
+				var tagAInThis=$(this).find('a');
+				var htmlInA=tagAInThis.attr('id').split('_')[1];
+				if(!isNaN(htmlInA)){
+					removeActive(this);
+					tagAInThis.addClass('pagination_active');
+				}else{
+					switch(htmlInA){
+						case 'home':
+							removeActive(this);
+							$(this).parent().find('#page_1').addClass('pagination_active');
+							break;
+						case 'next':
+							var _this=$(this);
+							var _thisParent=_this.parent();
+							var totalLi=_thisParent.find('li').length;
+							var firstPage=_thisParent.find('li:nth-child(3)').html();
+							var lastPage=parseInt(totalLi)-6;
+							var currentPage=_thisParent.find('.pagination_active').attr('id').split('_')[1];
+							var nextPage=parseInt(currentPage)+1;
+							if(nextPage>=lastPage){
+								var mid=Math.ceil(lastPage/2);
+								var midPos=mid+2;
+								removeActive(this);
+								var index=nextPage-mid+1;
+								_thisParent.find('li a').each(function(){
+									if(!isNaN($(this).html())){
+										console.log(index);
+										$(this).html(index);
+										$(this).attr('id','page_'+index);
+										index+=1;
+									}
+								});
+								_thisParent.find('li:nth-child('+midPos+')').html('<a class="the_btn white pagination_active" id="page_'+nextPage+'" href="javascript:void(0)">'+nextPage+'</a>');
+							}else{
+								removeActive(this);
+								_thisParent.find('#page_'+nextPage).addClass('pagination_active');
+							}
+							break;
+						case 'last':
+
+							break;
+						case 'submit':
+							break;
+					}
+				}
+			});
 		});
 	</script>
 <?php  require('footer.php'); ?>

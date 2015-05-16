@@ -2,7 +2,7 @@
 	<footer style="">
 		<div id="copy">
 			<div class="container">
-				<p>© 2015 Examination. All rights reserved.Developed by <a href="http://ivydom.com">ivydom</a> </p>
+				<p>© 2015 Examination. All rights reserved.Developed by <a href="http://ivydom.com">ivydom.com / xieyang</a> </p>
 			</div>	
 		</div>
 	</footer>

@@ -434,6 +434,40 @@
 				$(obj).parent().find('#page_'+page).addClass('pagination_active');
 			}
 
+			function reDrawPage(obj,s,l){
+				l=(l==null)?false:l;
+				if(!l){
+					var start=s;
+				}else{
+					var start=parseInt(s)-parseInt(getLastPage(obj))+2;
+				}
+				$(obj).parent().find('li a').each(function(){
+					if(!isNaN($(this).html())){
+						$(this).html(start);
+						$(this).attr('id','page_'+start);
+						start=parseInt(start)+1;
+					}
+				});
+			}
+
+			function towhichPage(obj,lastPage,nextPage,isLast){
+				isLast=(isLast==null)?false:isLast;
+				var _thisParent=$(obj).parent();
+				if(!isLast){
+					var mid=Math.ceil(lastPage/2);
+					var midPos=mid+2;
+					removeActive(obj);
+					var index=nextPage-mid+1;
+				}else{
+					midPos=getLastPage(obj)+2;
+					var index=lastPage;
+					nextPage=index;
+					removeActive(obj);
+				}
+				reDrawPage(obj,index,isLast);
+				_thisParent.find('li:nth-child('+midPos+')').html('<a class="the_btn white pagination_active" id="page_'+nextPage+'" href="javascript:void(0)">'+nextPage+'</a>');
+			}
+
 			$('.pagination ul li').click(function(){
 				var tagAInThis=$(this).find('a');
 				var htmlInA=tagAInThis.attr('id').split('_')[1];
@@ -445,13 +479,7 @@
 						case 'home':
 							if($(this).parent().find('#page_1').length==0){
 								var start=1;
-								$(this).parent().find('li a').each(function(){
-									if(!isNaN($(this).html())){
-										$(this).html(start);
-										$(this).attr('id','page_'+start);
-										start+=1;
-									}
-								});
+								reDrawPage(this,start);
 								setThisPageActive(this,1);
 							}else{
 								setThisPageActive(this,1);
@@ -465,26 +493,20 @@
 							var currentPage=getCurrentPage(this);
 							var nextPage=getNextPage(currentPage);
 							if(nextPage>=lastPage){
-								var mid=Math.ceil(lastPage/2);
-								var midPos=mid+2;
-								removeActive(this);
-								var index=nextPage-mid+1;
-								_thisParent.find('li a').each(function(){
-									if(!isNaN($(this).html())){
-										$(this).html(index);
-										$(this).attr('id','page_'+index);
-										index+=1;
-									}
-								});
-								_thisParent.find('li:nth-child('+midPos+')').html('<a class="the_btn white pagination_active" id="page_'+nextPage+'" href="javascript:void(0)">'+nextPage+'</a>');
+								towhichPage(this,lastPage,nextPage);
 							}else{
-								// setThisPageActive(this,nextPage);
-								removeActive(this);
-								_thisParent.find('#page_'+nextPage).addClass('pagination_active');
+								setThisPageActive(this,nextPage);
 							}
 							break;
 						case 'last':
-
+							var total=getTotalPages(this);
+							var lastPage=getLastPage(this);
+							var nextPage=getNextPage(total);
+							if(total>=lastPage){
+								towhichPage(this,total,nextPage,true);
+							}else{
+								setThisPageActive(this,total);
+							}
 							break;
 						case 'submit':
 							break;

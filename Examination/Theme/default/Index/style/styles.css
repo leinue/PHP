@@ -173,7 +173,6 @@ header{
 .menu ul li .menu-second-level{
 	position: absolute;
 	display: none;
-	opacity: 0;
 	background: rgba(0, 0, 0, 0.7);
 	margin-left: -25px;
 	width: 100%;
@@ -186,7 +185,6 @@ header{
 	padding-right: 7px;
 	margin-left: -40px;
 	color: rgb(255,255,255);
-	border-top: 1px solid rgb(0,102,178);
 }
 
 .menu ul li .menu-second-level li:hover{

@@ -39,12 +39,14 @@
 
 			$('.menu ul li').hover(function(){
 				var this_=$(this);
-				if(this_.find('.menu-second-level').length!=0){
-					var _thisSecondLevel=$('.menu ul li .menu-second-level');
-					
+				var thisNext=this_.find('.menu-second-level');
+				if(thisNext.length!=0){
+					var thisID=thisNext.attr('id');
+					var thisType=thisID.split('-')[1];
+					var which2Display='page-'+thisType;
+					var _thisSecondLevel=$('.menu ul li #'+which2Display);
+					_thisSecondLevel.fadeIn(100);
 					_thisSecondLevel.css({
-						'display':'block',
-						'opacity':'1',
 						'top':$('header').height()+23,
 						'width':this_.width()+9
 					});
@@ -55,7 +57,8 @@
 				}
 			},function(){
 				if($(this).find('.menu-second-level').length!=0){
-					$('.menu ul li .menu-second-level').css('display','none').css('opacity','0');
+					var thisS=$(this).find('.menu-second-level');
+					thisS.fadeOut(50);
 				}
 			});
 

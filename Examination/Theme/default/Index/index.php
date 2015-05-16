@@ -132,7 +132,7 @@
 	<script type="text/javascript">
 			var documentHeight=$(document).height();
 
-			$('.introduction-home .cg').css('padding-top',$(document).height()-1800);
+			$('.introduction-home .cg').css('padding-top',$(document).height()-1600);
 
 			function displayElement(elem,mode){
 				if(mode=='display'){

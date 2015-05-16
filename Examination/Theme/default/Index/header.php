@@ -19,7 +19,13 @@
 				<ul>
 					<li class="menu-active"><a ref="index.php" href="">首页</a></li>
 					<li><a ref="features.php" href="">游戏特色</a></li>
-					<li><a ref="cg.php" href="">原画稿件</a></li>
+					<li>
+						<a ref="cg.php" href="">原画稿件</a>
+						<ul class="menu-second-level">
+							<li>555</li>
+							<li>sss</li>
+						</ul>
+					</li>
 					<li><a ref="media.php" href="">多媒体辅助</a></li>
 					<li><a ref="extension.php" href="">测评与推广</a></li>
 					<li><a ref="search.php">搜索</a></li>

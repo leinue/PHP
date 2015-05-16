@@ -310,6 +310,24 @@
 						</a>
 					</div>
 				</div>
+
+				<div class="pagination">
+					<ul>
+						<li>共 233 页</li>
+						<li><a class="the_btn white" href="javascript:void(0)">首页</a></li>
+						<li><a class="the_btn white pagination_active" href="javascript:void(0)">1</a></li>
+						<li><a class="the_btn white" href="javascript:void(0)">2</a></li>
+						<li><a class="the_btn white" href="javascript:void(0)">3</a></li>
+						<li><a class="the_btn white" href="javascript:void(0)">4</a></li>
+						<li><a class="the_btn white" href="javascript:void(0)">5</a></li>
+						<li><a class="the_btn white" href="javascript:void(0)">6</a></li>
+						<li><a class="the_btn white" href="javascript:void(0)">7</a></li>
+						<li><a class="the_btn white" href="javascript:void(0)">下页</a></li>
+						<li><a class="the_btn white" href="javascript:void(0)">末页</a></li>
+						<li><input class="the_input small" type="tel"></li>
+						<li><a class="the_btn white" href="javascript:void(0)">确定</a></li>
+					</ul>
+				</div>
 			</div>
 
 			<div class="cg_display cg_top10">
@@ -385,7 +403,7 @@
 				}
 			});
 
-			$('footer').css({'margin-top':paddingTop+270});
+			$('footer').css({'margin-top':paddingTop+296});
 		});
 	</script>
 <?php  require('footer.php'); ?>

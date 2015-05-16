@@ -63,6 +63,17 @@ ul li a{
     border-color: #33353E;
 }
 
+.the_btn.white{
+	background-color: #FFFFFF;
+	border-color: #DDD;
+	color: rgb(30,30,30);
+}
+
+.the_btn.white:hvoer{
+	background: #DDD;
+	border-color: #DDD;
+}
+
 .the_btn.light_blue{
 	background-color: #55B1E1;
 	border-color: #55B1E1;
@@ -70,6 +81,12 @@ ul li a{
 
 .the_btn.no_radius{
 	border-radius: 0px;
+}
+
+.the_btn.pagination_active{
+	cursor: default;
+	border:none;
+	background: rgba(255,255,255,0);
 }
 
 .the_btn:hover{
@@ -97,6 +114,11 @@ ul li a{
 	background: #FFF none repeat scroll 0% 0%;
 	margin: 0px 0px 5px;
 	padding: 10.3px;
+}
+
+.the_input.small{
+	width: 28px;
+	padding: 4.8px;
 }
 
 .the_input:active{
@@ -1043,4 +1065,24 @@ section{
 	text-align: center;
 	color: rgb(85,167,199);
 	display: none;
+}
+
+.pagination{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	display: table;
+	float: right;
+}
+
+.pagination ul{
+	display: table-row;
+}
+
+.pagination ul li{
+	display: table-cell;
+	padding-right: 4px;
+}
+
+.pagination ul li:last-child{
+	padding-right: 0px;
 }

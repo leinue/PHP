@@ -48,17 +48,17 @@
 					_thisSecondLevel.fadeIn(100);
 					_thisSecondLevel.css({
 						'top':$('header').height()+23,
-						'width':this_.width()+9
+						'width':this_.width()+12
 					});
 					
 					this_.find('li').css({
-						'width':this_.width+9+'px;'
+						'width':this_.width+12+'px;'
 					});
 				}
 			},function(){
 				if($(this).find('.menu-second-level').length!=0){
 					var thisS=$(this).find('.menu-second-level');
-					thisS.fadeOut(50);
+					thisS.fadeOut(50);	
 				}
 			});
 

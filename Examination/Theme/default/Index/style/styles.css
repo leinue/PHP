@@ -74,6 +74,15 @@ ul li a{
 	border-color: #DDD;
 }
 
+.the_btn.blue_border{
+	color: rgb(255,255,255);
+}
+
+.the_btn.blue_border:hover{
+	border-color: #55B1E1;
+	color:rgb(30,30,30);
+}
+
 .the_btn.light_blue{
 	background-color: #55B1E1;
 	border-color: #55B1E1;
@@ -114,6 +123,14 @@ ul li a{
 	background: #FFF none repeat scroll 0% 0%;
 	margin: 0px 0px 5px;
 	padding: 10.3px;
+}
+
+.the_input.light_blue{
+	background: #EEE;
+}
+
+.the_blue.whole_pos{
+	width: 100%;
 }
 
 .the_input.small{
@@ -1085,4 +1102,63 @@ section{
 
 .pagination ul li:last-child{
 	padding-right: 0px;
+}
+
+.login-panel{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+	top: 0;
+	left: 0;
+	z-index: 65535;
+}
+
+.login-box{
+	position: absolute;
+	z-index: 65535;
+	width: 650px;
+	background: rgb(250,250,250);
+	border-radius: 4px;
+	padding: 10px;
+}
+
+.login_box_title{
+	width: 100%;
+	text-align: center;
+	color: #333;
+}
+
+.login_box_content{
+	display: table;
+	width: 100%;
+}
+
+.login_box_content ul{
+	display: table-row;
+}
+
+.login_box_content ul li{
+	display: table-cell;
+	width: 50%;
+	padding: 20px;
+}
+
+.login_box_content ul li:first-child{
+	border-right: 1px solid rgb(226,226,226);
+}
+
+.login_box_register{
+	color: #666;
+	margin-bottom: 10px;
+}
+
+.login_box_input input{
+	margin-bottom: 14px;
+}
+
+.login_box_close{
+	float: right;
+	margin-top: -60px;
+	cursor: pointer;
 }

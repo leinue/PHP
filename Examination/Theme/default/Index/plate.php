@@ -519,6 +519,7 @@
 							break;
 					}
 				}
+				$('html,body').animate({scrollTop:$('#top_pixiv_img').height()-$('.cg_title').height()}, 'slow');
 			});
 		});
 	</script>

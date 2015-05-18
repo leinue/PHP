@@ -44,14 +44,15 @@
 						</ul>
 					</li>
 					<li><a ref="search.php">搜索</a></li>
-					<li><a href="">注册</a></li>
-					<li><a href="">登录</a></li>
+					<li action="register"><a href="javascript:void(0)">注册</a></li>
+					<li action="login"><a href="javascript:void(0)">登录</a></li>
 					<li>
-						<a href="">用户中心</a>
+						<a ref="user.php">用户中心</a>
 						<ul id="page-user" class="menu-second-level">
 							<li><a ref="user.php"><img width="30" height="30" src="images/hello.jpg"></a></li>
 							<li><a ref="setting.php">系统设置</li>
 							<li><a ref="logout">退出系统</a></li>
+							<li><a ref="admin">进入后台</a></li>
 						</ul>
 					</li>
 				</ul>

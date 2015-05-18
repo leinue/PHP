@@ -1,56 +1,61 @@
 <?php require('header.php'); ?>
 
 	<section>
-		
-	</section>
-	
-	<div class="login-panel">
-	</div>
-		<div class="login-box">
-			<div class="login_box_title">
-				<h1><strong>Exam</strong>iantion</h1>
-				<div class="login_box_close">
-					<img width="24" height="24" src="images/close.svg">
-				</div>
-			</div>
-			<div class="login_box_content">
-				<ul>
-					<li>
-						<div class="login_box_register">登录</div>
-						<div class="login_box_input">
-							<input class="the_input light_blue" placeholder="请输入邮箱" style="width:92%" type="text">
-							<input type="checkBox">记住我
-							<input class="the_input light_blue" placeholder="请输入密码" style="width:92%" type="password">
-							<input type="button" class="the_btn light_blue white blue_border" value="登录">
+	<div class="top_content">
+		<div class="col-left">
+			<ul>
+				<li>
+					<div class="user_menu_panel">
+						<div class="user_menu_title">
+							<span>用户中心</span>
 						</div>
-					</li>
-					<li>
-						<div class="login_box_register">注册</div>
-						<div class="login_box_input">
-							<input class="the_input light_blue" placeholder="请输入邮箱" style="width:92%" type="text">
-							<input class="the_input light_blue" placeholder="请输入密码" style="width:92%" type="password">
-							<input class="the_input light_blue" placeholder="请重复密码" style="width:92%" type="password">
-							<input type="button" class="the_btn light_blue white blue_border" style="float:right" value="登录">
-						</div>					
-					</li>
-				</ul>
-			</div>
-		</div>
+						<ul>
+							<li class="user_menu_active">用户首页</li>
+							<li>修改密码</li>
+							<li>投稿管理</li>
+							<li>系统设置</li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<div class="user_menu_title">
+						<span>我的信息</span>
+					</div>
+					<div class="user_menu_content">
+						<div class="user_menu_profile">
+							<div class="user_profile_photo">
+								<img src="images/hello.jpg">
+							</div>
+							
+							<div class="user_profile_detail">
+								<div class="user_profile_name">
+									<span>我的昵称：蛤蛤蛤蛤</span>
+									<span>我的投稿：<span style="color：#1D7FB0!important;cursor:pointer;">233</span></span>
+									<span><span>验证会员</span></span>
+								</div>
+								<div class="user_profile_name">
+									<span>我的邮箱：597055914@qq.com></span>
+								</div>
+								<div class="user_profile_name">
+									<span>最近登录：2015-05-13</span>
+									<span>注册时间：<span>2015-05-12</span></span>
+								</div>
+							</div>
 
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+		
+	</section>	
 
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$('body').css('background','rgb(241,241,241)');
-
-			$('.login-panel,.login_box_close').click(function(){
-				$('.login-panel').css('opacity','0');
-				$('.login-box').css('opacity','0');
-				$('.login-panel').fadeOut();
-				$('.login-box').fadeOut(180);
-			});
-
-			$('.login-box').css('margin-top',($(document).height()-$('.login-box').height())/2-30)
-						   .css('left',($(document).width()-$('.login-box').width())/2);
+			$('.user_profile_photo img').css('height',$('.user_profile_photo img').width());
+			$('.user_profile_detail').css('margin-top',-$('.user_profile_photo img').height()-4);
 		});
 	</script>
 

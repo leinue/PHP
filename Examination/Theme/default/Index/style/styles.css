@@ -52,6 +52,11 @@ ul li a{
 	
 }
 
+.the_btn.hover_black:hover{
+	color: rgb(30,30,30);
+	border-color: #DF4931;
+}
+
 .the_btn.btn-large {
     border-radius: 6px;
     font-size: 1.09375em;
@@ -1274,4 +1279,41 @@ section{
 	padding: 0px;
 	padding-left: 6px;
 	border: none;
+}
+
+table.altrowstable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #a9c6c9;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+table.altrowstable tr:nth-child(even){
+	background-color:rgb(240,240,240);
+}
+
+table.altrowstable tr:nth-child(odd){
+	background-color:#FFFFFF;
+}
+
+table.altrowstable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+
+table.altrowstable td {
+	text-align: center;
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+
+.user_menu_post_content{
+	padding: 10px;
 }

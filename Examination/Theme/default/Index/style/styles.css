@@ -1102,6 +1102,7 @@ section{
 .pagination ul li{
 	display: table-cell;
 	padding-right: 4px;
+	border:none!important;
 }
 
 .pagination ul li:last-child{
@@ -1279,6 +1280,10 @@ section{
 	padding: 0px;
 	padding-left: 6px;
 	border: none;
+}
+
+.user_profile_operation{
+	color: rgb(30,30,30);
 }
 
 table.altrowstable {

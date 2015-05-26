@@ -10,15 +10,15 @@
 							<span>用户中心</span>
 						</div>
 						<ul>
-							<li class="user_menu_active">用户首页</li>
-							<li>修改密码</li>
-							<li>投稿管理</li>
-							<li>系统设置</li>
+							<li index="home" class="user_menu_active">用户首页</li>
+							<li index="password">修改密码</li>
+							<li index="contribution">投稿管理</li>
+							<!-- <li index="setting">系统设置</li> -->
 						</ul>
 					</div>
 				</li>
 				<li>
-					<div class="user_profile_operation">
+					<a id="home" class="user_profile_operation">
 						<div class="user_menu_title">
 							<span>我的信息</span>
 						</div>
@@ -44,8 +44,8 @@
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="user_profile_operation">
+					</a>
+					<a id="password" class="user_profile_operation">
 						<div class="user_menu_title">
 							<span>修改密码</span>
 						</div>
@@ -55,8 +55,8 @@
 							<input class="the_input" placeholder="确认新密码" type="password">
 							<a class="the_btn hover_black" style="padding:7.6px;" href="javascript:void(0)">确认修改</a>
 						</div>
-					</div>
-					<div class="user_profile_operation">
+					</a>
+					<a id="contribution" class="user_profile_operation">
 						<div class="user_menu_title">
 							<span>投稿管理</span>
 						</div>
@@ -111,30 +111,30 @@
 							</table>
 
 							<div class="pagination">
-					<ul whole-page="233">
-						<li>共 233 页</li>
-						<li><a class="the_btn white" id="page_home" href="javascript:void(0)">首页</a></li>
-						<li><a class="the_btn white pagination_active" id="page_1" href="javascript:void(0)">1</a></li>
-						<li><a class="the_btn white" id="page_2" href="javascript:void(0)">2</a></li>
-						<li><a class="the_btn white" id="page_3" href="javascript:void(0)">3</a></li>
-						<li><a class="the_btn white" id="page_4" href="javascript:void(0)">4</a></li>
-						<li><a class="the_btn white" id="page_5" href="javascript:void(0)">5</a></li>
-						<li><a class="the_btn white" id="page_6" href="javascript:void(0)">6</a></li>
-						<li><a class="the_btn white" id="page_7" href="javascript:void(0)">7</a></li>
-						<li><a class="the_btn white" id="page_next" href="javascript:void(0)">下页</a></li>
-						<li><a class="the_btn white" id="page_last" href="javascript:void(0)">末页</a></li>
-						<li><input class="the_input small" id="page_page" type="number"></li>
-						<li><a class="the_btn white" id="page_submit" href="javascript:void(0)">确定</a></li>
-					</ul>
-				</div>
+								<ul whole-page="233">
+									<li></li>
+									<li><a class="the_btn white" id="page_home" href="javascript:void(0)">首</a></li>
+									<li><a class="the_btn white pagination_active" id="page_1" href="javascript:void(0)">1</a></li>
+									<li><a class="the_btn white" id="page_2" href="javascript:void(0)">2</a></li>
+									<li><a class="the_btn white" id="page_3" href="javascript:void(0)">3</a></li>
+									<li><a class="the_btn white" id="page_4" href="javascript:void(0)">4</a></li>
+									<li><a class="the_btn white" id="page_5" href="javascript:void(0)">5</a></li>
+									<li><a class="the_btn white" id="page_6" href="javascript:void(0)">6</a></li>
+									<li><a class="the_btn white" id="page_7" href="javascript:void(0)">7</a></li>
+									<li><a class="the_btn white" id="page_next" href="javascript:void(0)">下</a></li>
+									<li><a class="the_btn white" id="page_last" href="javascript:void(0)">末</a></li>
+									<li><input class="the_input small" id="page_page" type="number"></li>
+									<li><a class="the_btn white" id="page_submit" href="javascript:void(0)">确定</a></li>
+								</ul>
+							</div>
 							
 						</div>
-					</div>
-					<div class="us	er_profile_operation">
+					</a>
+					<!-- <a id="setting" class="user_profile_operation">
 						<div class="user_menu_title">
 							<span>系统设置</span>
 						</div>
-					</div>
+					</a> -->
 				</li>
 			</ul>
 		</div>
@@ -147,6 +147,14 @@
 			$('body').css('background','rgb(241,241,241)');
 			$('.user_profile_photo img').css('height',$('.user_profile_photo img').width());
 			$('.user_profile_detail').css('margin-top',-$('.user_profile_photo img').height()-4);
+
+			$('.user_menu_panel ul li').click(function(){
+				$('.user_menu_active').removeClass('user_menu_active');
+				$(this).addClass('user_menu_active');
+				var anchorUrl=$(this).attr('index');
+				document.getElementById(anchorUrl).scrollIntoView();
+			});
+
 		});
 		function altRows(id){
 			if(document.getElementsByTagName){  

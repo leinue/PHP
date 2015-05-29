@@ -66,11 +66,12 @@ section{
 }
 
 .welcome{
+	width: auto;
 	position: relative;
-	margin-top: -176px;
-	margin-left: 58.819225%;
+	margin-top: -175px;
 	font-size: 12px;
     color: #333;
+    text-align: right;
     font-family: Tahoma,"宋体";
 }
 
@@ -117,6 +118,10 @@ section{
 .btn_list{
 	margin-top: 152px;
 	margin-left: 168px;
+}
+
+.btn_list a:hover{
+	color: rgb(73,191,254);
 }
 
 .tools .button1{
@@ -190,4 +195,173 @@ footer{
 	width: 100%;
 	margin: 0 auto;
 	text-align: center;
+}
+
+.login-panel{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+	top: 0;
+	left: 0;
+	z-index: 65535;
+}
+
+.login-box{
+	position: relative;
+	z-index: 65535;
+	margin: 0 auto;
+	width: 650px;
+	margin-top: 100px;
+	background: rgb(250,250,250);
+	border-radius: 4px;
+	padding: 10px;
+}
+
+.login_box_title{
+	width: 100%;
+	text-align: center;
+	color: #333;
+}
+
+.login_box_content{
+	display: table;
+	width: 100%;
+}
+
+.login_box_content ul{
+	display: table-row;
+}
+
+.login_box_content ul li{
+	display: table-cell;
+	width: 50%;
+	padding: 20px;
+}
+
+.login_box_register{
+	color: #666;
+	margin-bottom: 10px;
+}
+
+.login_box_input input{
+	margin-bottom: 14px;
+}
+
+.login_box_close{
+	float: right;
+	margin-top: -60px;
+	cursor: pointer;
+}
+
+table.altrowstable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #a9c6c9;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+table.altrowstable tr:nth-child(even){
+	background-color:rgb(240,240,240);
+}
+
+table.altrowstable tr:nth-child(odd){
+	background-color:#FFFFFF;
+}
+
+table.altrowstable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+
+table.altrowstable td {
+	text-align: center;
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+
+.round {
+    width: 413px;
+    overflow: hidden;
+    position: absolute;
+    z-index: 99999;
+}
+
+.round .round_container {
+    float: left;
+    width: 403px;
+    padding: 0px 5px;
+    margin: 0px;
+    overflow: hidden;
+    background: transparent url("../images/r_center.png") repeat-y scroll left top;
+}
+
+.round .r_top {
+    background-position: 0px -510px;
+}
+
+.round .r_top, .round .r_bottom {
+    float: left;
+    width: 413px;
+    height: 5px;
+    overflow: hidden;
+}
+
+.round .round_container .r_title {
+    width: 403px;
+    height: 30px;
+    line-height: 30px;
+    background: #F1F7FC none repeat scroll 0% 0%;
+    text-indent: 9px;
+    font-size: 14px;
+    position: relative;
+    text-align: left;
+}
+
+.round .round_container .r_title a.close, a.close:hover {
+    right: 7px;
+    top: 6px;
+}
+
+a.close,.a.close:hover {
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    background-position: -675px -130px;
+    background-image: url("../images/bg2.png");
+	background-repeat: no-repeat;
+}
+
+.round .r_bottom {
+    background-position: 0px -517px;
+}
+
+.round .r_top, .round .r_bottom {
+    float: left;
+    width: 413px;
+    height: 5px;
+    overflow: hidden;
+}
+
+.r_bottom,.r_top{
+    background-image: url("../images/shadow_bg.png");
+}
+
+.btn_em, .btn_dft {
+    width: 69px;
+    height: 32px;
+    margin-right: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    border: medium none;
+    color: #464646;
+    background: transparent url("../images/verification_button.png") no-repeat scroll left top;
 }

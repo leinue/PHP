@@ -76,7 +76,7 @@ function getQQNick($qq){
 	$str = file_get_contents('http://users.qzone.qq.com/fcg-bin/cgi_get_portrait.fcg?uins='.$qq);
 	$str=iconv("GB2312","UTF-8//IGNORE", $str);
 	$pattern = '/portraitCallBack\((.*)\)/is';
-	preg_match ( $pattern,$str, $result );
+	preg_match ($pattern,$str, $result );
 	$nickname=json_decode($result[1],true);
 	return $nickname[$qq][6];
 }

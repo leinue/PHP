@@ -1,0 +1,193 @@
+body{
+	padding: 0px;
+	margin: 0px;
+	font-size: 12px;
+	color: #333;
+	font-family: Tahoma,"宋体";
+	background:url(../images/bg.png) repeat-x top;
+}
+
+a:hover{
+	text-decoration: underline;
+}
+
+header{
+	width: 100%;
+	text-align: center;
+}
+
+section{
+	text-align: center;
+	margin: 0 auto;
+}
+
+.center{
+	margin: 0 auto;
+}
+
+.left_logo{
+	width: 547px;
+	height: 351px;
+	margin-top: -4px;
+	float: left;
+	clear: both;
+}
+
+.login_form{
+	position: absolute;
+	margin-top: -308px;
+	margin-left: -12px;
+}
+
+.login_form form input{
+	height: 20px;
+	border: none;
+	width: 205px;
+	margin-bottom:18px;
+}
+
+.login_form #confirm{
+	position: absolute;
+	margin-top: 122px;
+	margin-left: -210px;
+	cursor: pointer;
+}
+
+.user_login_tip{
+	float: left;
+	margin-top: -4px;
+	padding-top: 29px;
+}
+
+.user_login_right{
+	position: absolute;
+	margin-top: -4px;
+	margin-left: 535px;
+}
+
+.welcome{
+	position: relative;
+	margin-top: -176px;
+	margin-left: 58.819225%;
+	font-size: 12px;
+    color: #333;
+    font-family: Tahoma,"宋体";
+}
+
+.welcome a{
+	text-decoration: none;
+	color: #333;
+}
+
+.welcome a:hover{
+	text-decoration: underline;
+}
+
+.info{
+	width: 928px;
+	margin: 0 auto;
+	display: table;
+	margin-top: 104px;
+}
+
+.info ul{
+	display: table-row;
+}
+
+.info ul li{
+	display: table-cell;
+}
+
+.info ul li:first-child{
+	width: 570px;
+	background: rgb(255,255,255);
+}
+
+.info ul li:nth-child(2){
+	width: 285px;
+	background: rgb(240,245,248);
+	padding: 15px 0px 0px 0px;
+	overflow: hidden;
+}
+
+.tools{
+	margin-top: 10px;
+}
+
+.btn_list{
+	margin-top: 152px;
+	margin-left: 168px;
+}
+
+.tools .button1{
+	margin-bottom: 30px;
+	display: block;
+}
+
+.title, .title3, .title_r {
+    clear: both;
+    padding: 0px 0px 6px;
+    border-bottom: 1px dotted #CDCDCD;
+    color: #313131;
+    position: relative;
+    overflow: hidden;
+}
+
+.bg{
+	background: rgb(240,245,248);
+}
+
+.mb7 {
+    margin-bottom: 7px;
+}
+
+.title span {
+    line-height: 16px;
+    position: absolute;
+    right: 0px;
+    top: 1px;
+    font-family: "宋体";
+}
+
+table{
+	font-size: 14px;
+	color: #333;
+	font-family: Tahoma,"宋体";
+}
+
+.my_info{
+	margin-top: -576px;
+	margin-left: 30px;
+	text-align: left;
+}
+
+.my_info tr td a{
+	text-decoration: none;
+	color: rgb(38,99,146);
+}
+
+.my_info tr td a:hover{
+	text-decoration: underline;
+}
+
+a.button1 {
+    height: 32px;
+    line-height: 32px;
+    background-position: -710px -340px;
+}
+a.button, a.button1 {
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+    color: #464646;
+    text-decoration: none;
+    font-weight: bold;
+    background-position: -710px -275px;
+}
+
+footer{
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}

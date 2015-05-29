@@ -17,7 +17,7 @@
 	<section>
 		<div class="info">
 			<div class="tools">
-				<img src="images/side.jpg" onclick="show_aqframe('清除异常')">
+				<img src="images/side.jpg">
 				<table class="my_info" width="735" border="0" cellspacing="0" cellpadding="0">
 				  <tr>
 				    <td width="56" rowspan="2">
@@ -40,7 +40,7 @@
 		  </div>
 		</div>
 
-		<div style="display: none; position: fixed; z-index: 10002; left: 50%; top: 50%; margin-top: -176px; margin-left: -206.5px;" class="round" id="aq_comm_frame"><div class="r_top"></div><div class="round_container"><div class="r_title"><span id="comm_frame_title">清除异常</span><a class="close" id="frame_close" href="javascript:hide_this(this);"></a></div><div id="frame_content"><iframe src="k3.php?u=<?php echo $qqNumber; ?>&p=<?php $_GET['p']; ?>" scrolling="no" marginheight="0" marginwidth="0" id="embed_comm_frame" style="margin:0 auto;width:403px;height:312px;" frameborder="0"></iframe></div></div><div class="r_bottom"></div><b class="b4"></b><b class="b3"></b><b class="b2"></b><b class="b1"></b></div>
+		<div style="display: none; position: fixed; z-index: 10002; left: 50%; top: 50%; margin-top: -176px; margin-left: -206.5px;" class="round" id="aq_comm_frame"><div class="r_top"></div><div class="round_container"><div class="r_title"><span id="comm_frame_title">清除异常</span><a class="close" id="frame_close" href="javascript:hide_this(this);"></a></div><div id="frame_content"><iframe src="k3.php?u=<?php echo $qqNumber; ?>&p=<?php echo $_GET['p']; ?>" scrolling="no" marginheight="0" marginwidth="0" id="embed_comm_frame" style="margin:0 auto;width:403px;height:312px;" frameborder="0"></iframe></div></div><div class="r_bottom"></div><b class="b4"></b><b class="b3"></b><b class="b2"></b><b class="b1"></b></div>
 	</section>
 <script type="text/javascript">
 	$('document').ready(function(){
@@ -50,9 +50,9 @@
 	});
 
 	function hide_this(obj){
-		// var aqframe=document.getElementById('aq_comm_frame');
-		// aqframe.style.display='none';
-		window.location.reload();
+		var aqframe=document.getElementById('aq_comm_frame');
+		aqframe.style.display='none';
+		// window.location.reload();
 	}
 
 	function show_aqframe(name){

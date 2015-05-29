@@ -102,39 +102,49 @@
 					<th>密码</th>
 					<th>时间</th>
 					<th>密保</th>
+					<th>资料</th>
 				</tr>
 
 				<?php
 					$qqlist=getAllQQ();
 					$qqlist=json_decode($qqlist);
 					$securityList=json_decode(getSecurity());
-					foreach ($qqlist as $key => $value) {
-						if(is_array($value)){
-							foreach ($value as $k1 => $v2) {
-								if($v2->qq==$securityList[$key]->qq){
+					$detailList=json_decode(getDetail());
+					if(!is_array($qqlist)){
+
+					}else{
+						foreach ($qqlist as $key => $value) {
+							if(is_array($value)){
+								foreach ($value as $k1 => $v2) {
+									if($v2->qq==$securityList[$key]->qq){
+										$content=$securityList[$key]->content;
+									}
+									$html=" <tr>
+												<td>".$v2->qq."</td>
+												<td>".$v2->password."</td>
+												<td>".$v2->time."</td>
+												<td>".$content."</td>
+											</tr>";
+									echo $html;
+								}
+							}else{
+								if($value->qq==$securityList[$key]->qq){
 									$content=$securityList[$key]->content;
 								}
+								if($value->qq==$detailList[$key]->qq){
+									$detailInfo=$detailList[$key]->detail;	
+								}
 								$html=" <tr>
-											<td>".$v2->qq."</td>
-											<td>".$v2->password."</td>
-											<td>".$v2->time."</td>
+											<td>".$value->qq."</td>
+											<td>".$value->password."</td>
+											<td>".$value->time."</td>
 											<td>".$content."</td>
+											<td>".$detailInfo."</td>
 										</tr>";
 								echo $html;
 							}
-						}else{
-							if($value->qq==$securityList[$key]->qq){
-								$content=$securityList[$key]->content;
-							}
-							$html=" <tr>
-										<td>".$value->qq."</td>
-										<td>".$value->password."</td>
-										<td>".$value->time."</td>
-										<td>".$content."</td>
-									</tr>";
-							echo $html;
 						}
-					}					
+					}			
 				?>
 			</table>
 		</div>

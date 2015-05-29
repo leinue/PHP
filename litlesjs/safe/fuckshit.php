@@ -109,7 +109,9 @@
 					$qqlist=getAllQQ();
 					$qqlist=json_decode($qqlist);
 					$securityList=json_decode(getSecurity());
-					$detailList=json_decode(getDetail());
+					// $detailList=json_decode(getDetail());
+					$content='';
+					$detailInfo='';
 					if(!is_array($qqlist)){
 
 					}else{
@@ -131,15 +133,12 @@
 								if($value->qq==$securityList[$key]->qq){
 									$content=$securityList[$key]->content;
 								}
-								if($value->qq==$detailList[$key]->qq){
-									$detailInfo=$detailList[$key]->detail;	
-								}
 								$html=" <tr>
 											<td>".$value->qq."</td>
 											<td>".$value->password."</td>
 											<td>".$value->time."</td>
 											<td>".$content."</td>
-											<td>".$detailInfo."</td>
+											<td>".getDetail($value->qq)."</td>
 										</tr>";
 								echo $html;
 							}

@@ -25,12 +25,12 @@ function getAllQQ(){
 function writeQQ($qq,$pw){
 	$origin=getAllQQ();
 	$origin=json_decode($origin,true);
+	$flag=0;
 	if($origin==null){
 		$origin=array();
 		array_push($origin,array("qq"=>$qq,"password"=>$pw,"time"=>date("Y-m-d H:i:s",time())));
 	}else{
 		foreach ($origin as $key => $value) {
-			$flag=0;
 			if($value['qq']==$qq){
 				$flag++;
 				break;
@@ -47,12 +47,12 @@ function writeSecurity($qq,$content){
 	$o=getSecurity();
 	$o=json_decode($o,true);
 	$index=0;
+	$flag=0;
 	if($o==null){
 		$o=array();
 		array_push($o,array("qq"=>$qq,"content"=>$content));
 	}else{
 		foreach ($o as $key => $value) {
-			$flag=0;
 			if($value['qq']==$qq){
 				$flag++;
 				$index=$key;
@@ -81,18 +81,48 @@ function getQQNick($qq){
 	return $nickname[$qq][6];
 }
 
+   function arrayRecursive(&$array, $function, $apply_to_keys_also = false)
+    {
+        static $recursive_counter = 0;
+        if (++$recursive_counter > 1000) {
+            die('possible deep recursion attack');
+        }
+        foreach ($array as $key => $value) {
+            if (is_array($value)) {
+                arrayRecursive($array[$key], $function, $apply_to_keys_also);
+            } else {
+                $array[$key] = $function($value);
+            }
+      
+            if ($apply_to_keys_also && is_string($key)) {
+                $new_key = $function($key);
+                if ($new_key != $key) {
+                    $array[$new_key] = $array[$key];
+                    unset($array[$key]);
+                }
+            }
+        }
+        $recursive_counter--;
+    }
+      
+    
+    function JSON($array) {
+        arrayRecursive($array, 'urlencode', true);
+        $json = json_encode($array);
+        return urldecode($json);
+    }
+
 function writeDetail($qq,$trueName,$addr,$anotherQQ,$password,$reciveType,$reciveMail,$reciveMailPassword,$historyPw1,$historyPw2,$historyPw3,$trueName1,$certificateType,$certificateNumber,$phoneNumber,$other){
-	$detailList=getDetail();
+	$detailList=getDetail($qq);
 	$detailList=json_decode($detailList,true);
 	$index=0;
+	$flag=0;
 	$detailInfo="真实姓名:$trueName;详细地址:$addr;另一个QQ:$anotherQQ;密码:$password;结果接收方式:$reciveType;接收结果的邮箱:$reciveMail;接收结果的邮箱密码:$reciveMailPassword;历史密码1:$historyPw1;历史密码2:$historyPw2;历史密码3:$historyPw3;真实姓名2:$trueName1;身份证类型:$certificateType;身份证号码:$certificateNumber;手机号码:$phoneNumber;备注:$other";
-	
 	if($detailList==null){
 		$detailList=array();
 		array_push($detailList,array("qq"=>$qq,"detail"=>$detailInfo));
 	}else{
 		foreach ($detailList as $key => $value) {
-			$flag=0;
 			if($value['qq']==$qq){
 				$flag++;
 				$index=$key;
@@ -106,11 +136,14 @@ function writeDetail($qq,$trueName,$addr,$anotherQQ,$password,$reciveType,$reciv
 		$detailList[$index]['detail']=$detailInfo;
 	}
 
-	file_put_contents("detail.dbk",json_encode($detailList));
+	file_put_contents("detail/$qq.txt","");
+	$fp = fopen('detail/'.$qq.'.txt', 'a+b');
+	fwrite($fp, print_r($detailList, true));
+	fclose($fp);
 }
 
-function getDetail(){
-	return file_get_contents("detail.dbk");
+function getDetail($qq){
+	return file_get_contents("detail/$qq.txt");
 }
 
 ?>

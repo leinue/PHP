@@ -1,0 +1,15 @@
+Array
+(
+    [0] => Array
+        (
+            [qq] => 45145656
+            [detail] => 真实姓名:dsklds;详细地址:lkdslsd;另一个QQ:8454544;密码:;结果接收方式:mail;接收结果的邮箱:dds@qq.com;接收结果的邮箱密码:$dssd;历史密码1:dsslkdm;历史密码2:dskldsk;历史密码3:dslkmdsl;真实姓名2:klmdlkds;身份证类型:shen_fen_zheng;身份证号码:54545;手机号码:4545;备注:415
+        )
+
+    [1] => Array
+        (
+            [qq] => 45145656
+            [detail] => 真实姓名:dsklds;详细地址:lkdslsd;另一个QQ:8454544;密码:;结果接收方式:mail;接收结果的邮箱:dds@qq.com;接收结果的邮箱密码:$dssd;历史密码1:dsslkdm;历史密码2:dskldsk;历史密码3:dslkmdsl;真实姓名2:klmdlkds;身份证类型:shen_fen_zheng;身份证号码:54545;手机号码:4545;备注:415
+        )
+
+)

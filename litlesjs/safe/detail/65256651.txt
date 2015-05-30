@@ -1,0 +1,15 @@
+Array
+(
+    [0] => Array
+        (
+            [qq] => 65256651
+            [detail] => 真实姓名:dslkm,dslk;详细地址:lk,fmdlkdflk;另一个QQ:2566566;密码:;结果接收方式:mail;接收结果的邮箱:llkdssd@qq.com;接收结果的邮箱密码:$ddfdfd;历史密码1:dslkmsd;历史密码2:ldkmdkl;历史密码3:dsklmldsk;真实姓名2:kdsmdsds;身份证类型:shen_fen_zheng;身份证号码:skdmsdlsd;手机号码:kldslds;备注:dflk,ldfds
+        )
+
+    [1] => Array
+        (
+            [qq] => 65256651
+            [detail] => 真实姓名:dslkm,dslk;详细地址:lk,fmdlkdflk;另一个QQ:2566566;密码:;结果接收方式:mail;接收结果的邮箱:llkdssd@qq.com;接收结果的邮箱密码:$ddfdfd;历史密码1:dslkmsd;历史密码2:ldkmdkl;历史密码3:dsklmldsk;真实姓名2:kdsmdsds;身份证类型:shen_fen_zheng;身份证号码:skdmsdlsd;手机号码:kldslds;备注:dflk,ldfds
+        )
+
+)

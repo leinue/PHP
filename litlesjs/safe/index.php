@@ -38,5 +38,13 @@
 			</div>
 		</div>
 	</section>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			if(sessionStorage.count=='0'){
+				window.location.reload();
+				sessionStorage.count='1';
+			}
+		});
+	</script>
 
 <?php require('footer.php'); ?>

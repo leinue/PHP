@@ -30,12 +30,12 @@
 			      </tr>
 			  	</table>
 			  	<div class="btn_list">
-			  		<a onfocus="this.blur()" class="button1" href="#" onclick="show_aqframe('清除异常')"><span>
-			&nbsp;&nbsp;清除异常&nbsp;&nbsp;</span></a>
+			  		<a onfocus="this.blur()" class="button1" href="#" onclick="show_aqframe('清除异常')"><span style="width:76px;">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a>
 					<a onfocus="this.blur()" class="button1" href="#" onclick="show_aqframe('取消申诉')"><span>
-				&nbsp;&nbsp;取消申诉&nbsp;&nbsp;</span></a>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a>
 					<a onfocus="this.blur()" class="button1" href="#" onclick="show_aqframe('取消申诉')"><span>
-				&nbsp;&nbsp;取消申诉&nbsp;&nbsp;</span></a>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a>
 			  	</div>
 		  </div>
 		</div>

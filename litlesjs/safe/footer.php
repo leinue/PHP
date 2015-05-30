@@ -5,7 +5,7 @@
 
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$('.center').css('width',$('header img').width());
+			// $('.center').css('width',$('header img').width());
 		});
 	</script>
 </body>

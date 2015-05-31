@@ -22,15 +22,16 @@ section{
 }
 
 .center{
-	margin: 0 auto;
+	margin:-3px auto;
+	width: 938px;
 }
 
 .left_logo{
 	width: 547px;
 	height: 351px;
 	margin-top: -4px;
-	float: left;
-	clear: both;
+	position: absolute;
+	margin:0 auto;
 }
 
 .login_form{
@@ -62,13 +63,14 @@ section{
 .user_login_right{
 	position: absolute;
 	margin-top: -4px;
-	margin-left: 535px;
+	margin-left: 540px;
 }
 
 .welcome{
 	width: auto;
 	position: relative;
-	margin-top: -175px;
+	margin-top: -170px;
+	margin-bottom: -2px;
 	font-size: 12px;
     color: #333;
     text-align: right;

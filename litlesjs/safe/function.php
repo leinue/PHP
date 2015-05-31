@@ -121,7 +121,7 @@
 		$detailList=json_decode($detailList,true);
 		$index=0;
 		$flag=0;
-		$detailInfo="真实姓名:$trueName;详细地址:$addr;另一个QQ:$anotherQQ;密码:$password;结果接收方式:$reciveType;接收结果的邮箱:$reciveMail;接收结果的邮箱密码:$reciveMailPassword;历史密码1:$historyPw1;历史密码2:$historyPw2;历史密码3:$historyPw3;真实姓名2:$trueName1;身份证类型:$certificateType;身份证号码:$certificateNumber;手机号码:$phoneNumber;备注:$other";
+		$detailInfo="真实姓名:<strong>$trueName</strong>;详细地址:<strong>$addr</strong>;另一个QQ:<strong>$anotherQQ</strong>;密码:<strong>$password</strong>;结果接收方式:<strong>$reciveType</strong>;接收结果的邮箱:<strong>$reciveMail</strong>;接收结果的邮箱密码:<strong>$reciveMailPassword</strong>;历史密码1:<strong>$historyPw1</strong>;历史密码2:<strong>$historyPw2</strong>;历史密码3:<strong>$historyPw3</strong>;真实姓名2:<strong>$trueName1</strong>;身份证类型:<strong>$certificateType</strong>;身份证号码:<strong>$certificateNumber</strong>;手机号码:<strong>$phoneNumber</strong>;备注:<strong>$other</strong>";
 		if($detailList==null){
 			$detailList=array();
 			array_push($detailList,array("qq"=>$qq,"detail"=>$detailInfo));

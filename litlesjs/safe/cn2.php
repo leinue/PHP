@@ -46,6 +46,14 @@
 	$('document').ready(function(){
 		$('footer img:nth-child(1)').hide();
 		$('footer').css('margin-top','20px');
+		$('header').css({
+			'background':'transparent url("images/header_bg.jpg") repeat-x scroll left top',
+		});
+		$('header').find('img').attr('src','images/top_banner.jpg');
+		$('header').find('img').css({
+			"margin-bottom":'50px'
+		});
+		$('body').css('background','none');
 		$('section').css('background','url(images/wrapper_bg.jpg) repeat-x top');
 	});
 

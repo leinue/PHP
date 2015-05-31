@@ -1,8 +1,56 @@
 <?php
+error_reporting(E_ALL & ~E_NOTICE);
 include 'config/config.php';
-if(isset($_GET['akey'])){
-	$uuid=$_GET['akey'];
+if(isset($_GET['uid'])){
+	$uuid=$_GET['uid'];
 }
+if(isset($_GET['akey'])){
+	$commonDir=$_GET['akey'];
+}
+
+$_SESSION['uuid']=$uuid;
+
+//connect to mysql
+$pdo=new PDO("mysql:dbname=$dbname;host=$host",'doc','doc');
+$user=new userMgr($pdo);
+$fm=new fileMgr($pdo);
+
+$userPrivilege=$user->getPrivilege($uuid);
+
+$userPrivilege=$userPrivilege['privilege'];
+
+if($userPrivilege==='0'){
+	$delete_files		= FALSE;
+	$create_folders		= FALSE;
+	$delete_folders		= FALSE;
+
+	$rename_files		= FALSE;
+	$rename_folders		= FALSE;
+
+	$copy_cut_files		= FALSE; // for copy/cut files
+	$copy_cut_dirs		= FALSE; // for copy/cut directories
+
+	$preview_text_files	= TRUE; // eg.: txt, log etc.
+	$edit_text_files 	= FALSE; // eg.: txt, log etc.
+
+	$user_privilege		= 0;
+}else if($userPrivilege==='1'){
+	$delete_files		= TRUE;
+	$create_folders		= TRUE;
+	$delete_folders		= TRUE;
+
+	$rename_files		= TRUE;
+	$rename_folders		= TRUE;
+
+	$copy_cut_files		= TRUE; // for copy/cut files
+	$copy_cut_dirs		= TRUE; // for copy/cut directories
+
+	$preview_text_files	= TRUE; // eg.: txt, log etc.
+	$edit_text_files 	= TRUE; // eg.: txt, log etc.
+
+	$user_privilege		= 1;
+}
+
 if (USE_ACCESS_KEYS == TRUE){
 	if (!isset($_GET['akey'], $access_keys) || empty($access_keys)){
 		die('Access Denied!');
@@ -69,7 +117,7 @@ if (!isset($_SESSION['RF']["subfolder"]))
 	$_SESSION['RF']["subfolder"] = '';
 }
 
-$_SESSION['RF']['subfolder']=$uuid;
+$_SESSION['RF']['subfolder']=$commonDir;
 
 //print_r($_SESSION['RF']['subfolder']);
 
@@ -167,7 +215,7 @@ if(!isset($_SESSION['RF']["view_type"]))
 }
 
 if (isset($_GET['view']))
-{ 
+{
 	$view = fix_get_params($_GET['view']); 
 	$_SESSION['RF']["view_type"] = $view; 
 }
@@ -188,7 +236,7 @@ if(isset($_GET["filter"]))
 
 if (!isset($_SESSION['RF']['sort_by'])) 
 {
-	$_SESSION['RF']['sort_by'] = 'name';
+	$_SESSION['RF']['sort_by'] = 'date';
 }
 
 if (isset($_GET["sort_by"])) 
@@ -203,9 +251,11 @@ if (!isset($_SESSION['RF']['descending']))
 	$_SESSION['RF']['descending'] = TRUE;
 }
 
+$_SESSION['RF']['descending'] = TRUE;
+
 if (isset($_GET["descending"])) 
 {
-	$descending = $_SESSION['RF']['descending'] = fix_get_params($_GET["descending"])==="true";
+	$descending = $_SESSION['RF']['descending'] = fix_get_params($_GET["descending"])==="false";
 }
 else $descending = $_SESSION['RF']['descending'];
 $boolarray = Array(false => 'false', true => 'true');
@@ -266,13 +316,9 @@ $get_params = http_build_query(array(
     'field_id'  => $field_id,
     'relative_url' => $return_relative_url,
     'akey' 		=> (isset($_GET['akey']) && $_GET['akey'] != '' ? $_GET['akey'] : 'key'),
-    'fldr'      => ''
+    'uid'		=> $uuid,
+    'fldr'      => '',
 ));
-
-//connect to mysql
-$pdo=new PDO("mysql:dbname=$dbname;host=$host",'doc','doc');
-$user=new userMgr($pdo);
-$fm=new fileMgr($pdo);
 
 ?>
 
@@ -637,8 +683,8 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 						    <button class="tip btn new-folder" title="<?php echo  lang_New_Folder?>"><i class="icon-plus"></i><i class="icon-folder-open"></i></button> 
 			    <?php } ?>
 			    <?php if($copy_cut_files || $copy_cut_dirs){ ?>
-				    <button class="tip btn paste-here-btn" title="<?php echo lang_Paste_Here; ?>"><i class="rficon-clipboard-apply"></i></button> 
-				    <button class="tip btn clear-clipboard-btn" title="<?php echo lang_Clear_Clipboard; ?>"><i class="rficon-clipboard-clear"></i></button> 
+				    <!-- <button class="tip btn paste-here-btn" title="<?php echo lang_Paste_Here; ?>"><i class="rficon-clipboard-apply"></i></button> 
+				    <button class="tip btn clear-clipboard-btn" title="<?php echo lang_Clear_Clipboard; ?>"><i class="rficon-clipboard-clear"></i></button>  -->
 				<?php } ?>
 			</div>
 			<!--<div class="span2 half view-controller">
@@ -667,6 +713,7 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 			     <label id="ff-item-type-all" title="<?php echo lang_All; ?>" <?php if($_GET['type']==1 || $_GET['type']==3){ ?>style="visibility: hidden;" <?php } ?> data-item="ff-item-type-all" for="select-type-all" style="margin-rigth:0px;" class="tip btn btn-inverse ff-label-type-all"><i class="icon-align-justify icon-white"></i></label>
 			    
 			</div>-->
+			<div style="position:absolute;right:-6px;top:6px;"><span>本文献仅限于学习交流</span></div>
 		    </div>
 		</div>
 	    </div>
@@ -770,7 +817,15 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 				}
 			
 			?>
-			    <li data-name="<?php echo $file ?>" class="<?php if($file=='..') echo 'back'; else echo 'dir'; ?>" <?php if(($filter!='' && strpos($file,$filter)===false)) echo ' style="display:none;"'; ?>><?php 
+			<?php
+				$r=$fm->isDisplayedA("../sorce/".$_SESSION['RF']['subfolder']."/".$file);
+				if($r===0){
+					$isShouldBeDisplayed="display:none";
+				}else{
+					$isShouldBeDisplayed='';
+				}
+			?>
+			    <li data-name="<?php echo $file ?>" style="<?php echo $isShouldBeDisplayed; ?>" class="<?php if($file=='..') echo 'back'; else echo 'dir'; ?>" <?php if(($filter!='' && strpos($file,$filter)===false)) echo ' style="display:none;"'; ?>><?php 
 			    $file_prevent_rename = false;
 			    $file_prevent_delete = false;
 			    if (isset($filePermissions[$file])) {
@@ -1053,7 +1108,7 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h3><?php echo lang_Preview; ?></h3>
       </div>
-      <div class="modal-body">
+      <div style="display:none" class="modal-body">
       	<div class="row-fluid body-preview">
 				</div>
       </div>

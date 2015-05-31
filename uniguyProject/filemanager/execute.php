@@ -307,11 +307,6 @@ if (isset($_GET['action']))
             $fm=new fileMgr($pdo);
 
             $fid=$fm->getFidByPath($path);
-            //'
-            //echo $_POST['path'].'---------';
-            //print_r($path);
-
-            //print_r($fid);
 
             if(!$fm->isFileStard($fid['fid'],$_SESSION['RF']['subfolder'])){
                 if($a=$fm->star($_SESSION['RF']['subfolder'],$fid['fid'])){

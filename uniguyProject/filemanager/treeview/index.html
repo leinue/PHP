@@ -125,6 +125,59 @@
 					window.console && console.log("%o was toggled", this);
 				}
 			});
+
+			$.ajax({
+				url:"ContentCatalogJson.php",
+				success:function(data){
+					var jsondata=JSON.parse(data);
+					//console.log(jsondata);
+					getContent(jsondata);
+
+				}
+			})
+
+
+			function getContent(dataContent){
+				   var div=document.createElement('div');
+					 var ul=document.createElement('ul');
+					for(var key in dataContent){
+                              var li=document.createElement('li');
+                              var span=document.createElement('span');
+                               //var type =(typeof key);
+                              //console.log(type);
+                              //console.log(key);
+	                               if(!isNaN(key))
+	                               {
+	                               	   var text=document.createTextNode(key);
+	                               	   span.appendChild(text);
+	                               	   li.appendChild(span);
+	                               	   var ulList=document.createElement('ul');
+	                               	   var liList=document.createElement('li');
+	                               	   var spanList=document.createElement('span');
+	                               	   var textList=document.createTextNode(dataContent[key]);
+	                               	   spanList.appendChild(textList);
+	                               	   liList.appendChild(spanList);
+	                               	   ulList.appendChild(liList);
+	                               	   li.appendChild(ulList);
+	                               	   getContent(key);
+	                               	   //console.log(key);
+
+
+	                               }
+                              else{
+                              	 var text=document.createTextNode(dataContent[key]);
+                              	 span.appendChild(text);
+                                 li.appendChild(span);                
+                              }
+                            
+
+                            ul.appendChild(li);
+                              //console.log(key);
+                              //console.log(ul.innerHTML);
+					}
+					div.appendChild(ul);
+					console.log(div.innerHTML);
+			}
 		});
 	</script>
 

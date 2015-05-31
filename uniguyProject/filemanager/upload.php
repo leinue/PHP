@@ -17,7 +17,7 @@ else
 $pdo=new PDO("mysql:dbname=$dbname;host=$host",$user,$password);
 $fm=new fileMgr($pdo);
 
-$uid=$_SESSION['RF']['subfolder'];
+$uid=$_SESSION['uuid'];
 $tags="0";
 
 $path_pos  = strpos($storeFolder,$current_path);
@@ -84,7 +84,11 @@ if ( ! empty($_FILES))
 		move_uploaded_file($tempFile,$targetFile);
 		chmod($targetFile, 0755);
 		
-		$fm->upload($uid,$targetFile,$info['extension'],$tags);
+		$sqlResult=$fm->upload($uid,$targetFile,$info['extension'],$tags);
+
+		if($user_privilege===0){
+			$fm->noDisplay($targetFile);
+		}
 
 		if ($is_img)
 		{
@@ -183,6 +187,7 @@ if (isset($_POST['submit']))
 		'popup'	 	=> $_POST['popup'],
 		'field_id'  => $_POST['field_id'],
 		'fldr'	  	=> $_POST['fldr'],
+		'uid'		=> $_SESSION['uuid'],
 	));
 
 	header("location: dialog.php?" . $query);

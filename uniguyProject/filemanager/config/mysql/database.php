@@ -28,6 +28,7 @@ function createTable($dbname,$host,$name,$pw){
 			`isDeleted` int not null,
 			`downloadCount` int not null,
 			`isDisplayed` int not null,
+			`group` text not null,
 			`createTime` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 			primary key(`id`))default charset=utf8;",
 		"fmdb_download"=>"CREATE TABLE IF NOT EXISTS `fmdb_download`(
@@ -57,6 +58,12 @@ function createTable($dbname,$host,$name,$pw){
 			`uid` text not null,
 			`fid` text not null,
 			`grade` int not null,
+			primary key(`id`))default charset=utf8;",
+		"fmdb_group"=>"CREATE TABLE IF NOT EXISTS `fmdb_group`(
+			`id` int not null auto_increment,
+			`gpid` text not null,
+			`groupname` text not null,
+			`parent` text not null,
 			primary key(`id`))default charset=utf8;"
 	);
 

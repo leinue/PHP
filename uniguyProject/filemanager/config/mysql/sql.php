@@ -202,6 +202,23 @@ class fmWorkpoints{
 
 }
 
+class fmGroup{
+
+	private $id;
+	private $gpid;
+	private $groupname;
+	private $parent;
+
+	function getId(){return $this->id;}
+
+	function getGpid(){return $this->gpid;}
+
+	function getGroupName(){return $this->groupname;}
+
+	function getParent(){return $this->parent;}
+
+}
+
 /**
 * class pdoOperation
 * 用于封装查询语句时的必须查询过程
@@ -219,6 +236,9 @@ class pdoOperation{
 	public $starsDB="SELECT * FROM `fmdb_stars` WHERE `uid`=?;";
 	public $commentsDB="SELECT * FROM `fmdb_comments` WHERE `uid`=?;";
 	public $workpointsDB="SELECT * FROM `fmdb_workpoints`;";
+
+	//获得所有用户ID
+	public $selectAllUid="SELECT `uid` FROM `fmdb_user`;";
 
 	//星标文件数目及下载数目
 	public $updateStarsCountDB="UPDATE `fmdb_user` SET `starCount` = `starCount`+1 WHERE `uid` = ?;";
@@ -241,6 +261,8 @@ class pdoOperation{
 
 	//查看某文件对某用户是否是被删除的上传记录
 	public $isDisplayed="SELECT `isDisplayed` FROM `fmdb_file` WHERE `fid`=? AND `uid`=?";
+	public $isDisplayedA="SELECT `isDisplayed` FROM `fmdb_file` WHERE `path`=?";
+	public $setNoDisplay="UPDATE `fmdb_file` SET `isDisplayed` = 0 WHERE `path` = ?";
 
 	//最近N天文献
 	public $latestDoc="";
@@ -269,8 +291,8 @@ class pdoOperation{
 			VALUES (uuid(),?,?,CURRENT_TIMESTAMP);
 			UPDATE `fmdb_user` SET `downloadCount` = `downloadCount`+1 WHERE `uid` = ?;
 			UPDATE `fmdb_file` SET `downloadCount` = `downloadCount`+1 WHERE `uid` = ? AND `fid`=?;";
-	public $updateUploadDB="INSERT INTO `fmdb_file` (`fid`, `uid`, `path`, `fileExt`, `tags`, `isStard`, `isDeleted`, `downloadCount`, `isDisplayed`, `createTime`) 
-			VALUES (uuid(), ?, ?, ?, ?, '0', '0', '0', '1', CURRENT_TIMESTAMP);";
+	public $updateUploadDB="INSERT INTO `fmdb_file` (`fid`, `uid`, `path`, `fileExt`, `tags`, `isStard`, `isDeleted`, `downloadCount`, `isDisplayed`, `group` ,`createTime`) 
+			VALUES (uuid(), ?, ?, ?, ?, '0', '0', '0', '1', '0' , CURRENT_TIMESTAMP);";
 	public $updateStarsDB="INSERT INTO `fmdb_stars` (`stid`,`uid`, `fid`) VALUES (uuid(),?, ?);";
 	public $updateStarsUserDB="UPDATE `fmdb_user` SET `starCount` = `starCount`+1 WHERE `uid` = ?;";
 	public $updateStarsFilesDB="UPDATE `fmdb_file` SET `isStard` = '1' WHERE `fid` = ? AND `uid` = ?;";
@@ -307,7 +329,22 @@ class pdoOperation{
 	public $updateFileTags="UPDATE `fmdb_file` SET `tags`= WHERE `fid`=?";
 
 	//通过文件路径获取fid
-	private $selectFidByPath="SELECT `fid` FROM `fmdb_file` WHERE `path`=?";
+	public $selectFidByPath="SELECT `fid` FROM `fmdb_file` WHERE `path`=?";
+
+	public $getUserPrivilege="SELECT `privilege` FROM `fmdb_user` WHERE `uid`=?";
+
+	public $obtainCommonUid="SELECT `uid` FROM `fmdb_user` WHERE `name`='common'";
+
+	public $selectGroupName="SELECT `gpid` FROM `fmdb_group` WHERE `groupname`=?";
+	public $addGroupName="INSERT INTO `fmdb_group` (`gpid`,`groupname`,`parent`) VALUES (uuid(),?,?)";
+	public $AlterGroupName="UPDATE `fmdb_group` SET `groupname` = ? WHERE `groupname` = ?";
+	public $deleteGroupName="DELETE FROM `fmdb_group` WHERE `groupname`=?";
+	public $selectAllGroupName="SELECT * FROM `fmdb_group`";
+	public $selectGroupNameParent="SELECT `parent` FROM `fmdb_group` WHERE `groupname`=?";
+	public $getGPNameByGpid="SELECT `name` FROM `fmdb_group` WHERE `gpid`=?";
+
+	public $selectFileGroup="SELECT `group` FROM `fmdb_file` WHERE `fid`=?";
+	public $updateFileGroup="UPDATE `fmdb_file` SET `group`= ? WHERE `fid`=?";
 
 	protected static $pdo;
 
@@ -407,6 +444,18 @@ class userMgr extends pdoOperation{
 		}
 	}
 
+	function getAllUid(){
+		return $this->fetchClassQuery($this->selectAllUid,array(),'');
+	}
+
+	function getPrivilege($uid){
+		return $this->fetchOdd("SELECT `privilege` FROM `fmdb_user` WHERE `uid`=?",array($uid));
+	}
+
+	function getCommonUid(){
+		return $this->fetchOdd($this->obtainCommonUid,array());
+	}
+
 }
 
 /**
@@ -438,8 +487,12 @@ class fileMgr extends pdoOperation{
 		return $this->fetchClassQuery($this->commentsDB,array($uid->getUid()),'fmComment');
 	}
 
-	function getStarsByUid(user $uid){
-		return $this->fetchClassQuery($this->starsDB,array($uid->getUid()),'fmStars');
+	function getStarsByUid($uid){
+		if($uid instanceof user){
+			return $this->fetchClassQuery($this->starsDB,array($uid->getUid()),'fmStars');	
+		}else{
+			return $this->fetchClassQuery($this->starsDB,array($uid),'fmStars');
+		}
 	}
 
 	function download($fid,$uid){
@@ -523,6 +576,14 @@ class fileMgr extends pdoOperation{
 		return $this->fetchOdd($this->isDisplayed,array($fid,$uid));
 	}
 
+	function isDisplayedA($fileName){
+		return $this->fetchOdd($this->isDisplayedA,array($fileName));
+	}
+
+	function noDisplay($filePath){
+		return $this->submitQuery($this->setNoDisplay,array($filePath));
+	}
+
 	function isFileStard($fid,$uid){
 		return $this->fetchOdd($this->fileStard,array($fid,$uid));
 	}
@@ -546,14 +607,59 @@ class fileMgr extends pdoOperation{
 	function removeFileA($path){
 		return $this->submitQuery($this->removeFile,array($path));
 	}
+
+	function getFileGroup($fid){
+		return $this->fetchOdd($this->selectFileGroup,array($fid));
+	}
+
+	function setFileGroup($fid,$group){
+		return $this->submitQuery($this->updateFileGroup,array($group,$fid));
+	}
+}
+
+class groupMgr extends pdoOperation{
+	function __construct($pdo){
+		parent::$pdo=$pdo;
+	}
+
+	function addName($name,$parent){
+		if($this->nameIsExists($name)){
+			$this->submitQuery($this->addGroupName,array($name,$parent));
+		}else{
+			return false;
+		}
+	}
+
+	function alterName($name,$new){
+		return $this->submitQuery($this->AlterGroupName,array($name,$new));
+	}
+
+	function deleteName($name){
+		return $this->submitQuery($this->deleteGroupName,array($name));
+	}
+
+	function getGroupNameByGpid($gpid){
+		return $this->fetchOdd($this->getGPNameByGpid,array($gpid));
+	}
+
+	function nameIsExists($name){
+		return $this->fetchOdd($this->selectGroupName,array($name));
+	}
+
+	function getAllName(){
+		return $this->fetchClassQuery($this->selectAllGroupName,array());
+	}
+
+	function getParent($name){
+		return $this->fetchOdd($this->selectGroupNameParent,array($name));
+	}
 }
 
 
-/*
-$pdo=new PDO("mysql:dbname=$dbname;host=$host",$user,$password);
+/*$pdo=new PDO("mysql:dbname=$dbname;host=$host",$user,$password);
 $user=new userMgr($pdo);
 
-/*for ($i=0; $i < 10; $i++) { 
+for ($i=0; $i < 10; $i++) { 
 	$user->register('ivy'.$i,'123456','2');
 }*/
 
@@ -588,7 +694,7 @@ $fm->download($fileobj[2]->getFid(),$foo[0]->getUid());
 $fm->comment($fileobj[2]->getFid(),$foo[0]->getUid(),'fucku');
 
 if(!$fm->isFileStard($fileobj[2]->getFid(),$foo[0]->getUid())){
-	$fm->star($foo[0]->getUid(),$fileobj[2]->getFid());
+	$fm->star($foo[0]->gfetUid(),$fileobj[2]->getFid());
 }else{
 	echo '不能重复标星';
 }

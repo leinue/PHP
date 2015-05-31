@@ -452,9 +452,9 @@ if(isset($_GET['action']))
 					$fixUrl=explode($current_path,$_GET['file']);
 					echo "<script type=\"text/javascript\">var a = $(\"<a href='".$upload_dir.$fixUrl[1]."#viewer.action=download' target='_blank'>viewerjs</a>\").get(0);
             			  var e = document.createEvent('MouseEvents');
-           				  e.initEvent('click', true, true);  
+           				  e.initEvent('click', true, true);
           				  a.dispatchEvent(e);
-          				  $('.modal-body').html('已在新窗口中打开');</script>";
+          				  $('.modal-body').hide();</script>";
 				}
 				elseif ($preview_mode == 'google') {
 					$url_file=$base_url.$upload_dir.str_replace($current_path,'',$_GET["file"]);

@@ -137,28 +137,35 @@ $image_resizing_override 	= FALSE;
 // YOU CAN ALSO PASS THIS PARAMETRS USING SESSION VAR => $_SESSION['RF']["VIEW"]=
 //
 //******************
-$default_view = 0;
+$default_view = 1;
 
 //set if the filename is truncated when overflow first row 
 $ellipsis_title_after_first_row = TRUE;
 
 //*************************
 //Permissions configuration
-//******************
+//************************-
 $delete_files		= TRUE;
 $create_folders		= TRUE;
 $delete_folders		= TRUE;
 $upload_files		= TRUE;
+$upload_check		= TRUE;// 须管理员同意上传才可上传
+
 $rename_files		= TRUE;
 $rename_folders		= TRUE;
+
 $duplicate_files	= TRUE;
+
 $copy_cut_files		= TRUE; // for copy/cut files
 $copy_cut_dirs		= TRUE; // for copy/cut directories
+
 $chmod_files		= FALSE; // change file permissions
 $chmod_dirs			= FALSE; // change folder permissions
 $preview_text_files	= TRUE; // eg.: txt, log etc.
 $edit_text_files 	= TRUE; // eg.: txt, log etc.
 $create_text_files 	= TRUE; // only create files with exts. defined in $editable_text_file_exts
+
+$user_privilege=0;
 
 // you can preview these type of files if $preview_text_files is true
 $previewable_text_file_exts = array('txt', 'log', 'xml','html','css','htm','js');

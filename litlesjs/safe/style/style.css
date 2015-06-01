@@ -369,6 +369,23 @@ a.close,.a.close:hover {
     background: transparent url("../images/verification_button.png") no-repeat scroll left top;
 }
 
+.detail-list{
+	font-size: 12px;
+}
+
+.detail-list:hover{
+	background: rgb(225,225,225)!important;
+}
+
+.security_list_title:hover,.detail_list_title:hover{
+	background: rgb(225,225,225);
+	cursor: pointer;
+}
+
+.admin_title_active{
+	background: rgb(225,225,225);
+}
+
 /*
 听力 30分
 阅读理解 40分 综合训练预备级第二册 课外 2:2

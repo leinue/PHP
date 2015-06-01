@@ -95,8 +95,8 @@
 					<input type="submit" name="logout" value="退出">
 				</form>
 				<input type="button" value="返回主页" onclick="backToHome()">
-				<input type="button" value="删除全部" onclick="">
-				<input type="button" value="批量删除" onclick="">
+				<!-- <input type="button" value="删除全部" onclick=""> -->
+				<!-- <input type="button" value="批量删除" onclick=""> -->
 			</div>
 			<table class="altrowstable" style="margin-top:10px;" id="alternatecolor">
 				<tr>
@@ -105,6 +105,7 @@
 					<th>时间</th>
 					<th>密保</th>
 					<th>资料</th>
+					<th>IP</th>
 					<th>操作</th>
 				</tr>
 
@@ -115,6 +116,39 @@
 					// $detailList=json_decode(getDetail());
 					$content='';
 					$detailInfo='';
+
+					function formatDetail($detail){
+						$detailList=$detail[0]->detail;
+						print_r($detailList);
+						return '1';
+					}
+
+					function formatSecurity($content){
+						$a=explode("+====+",$content);
+						$html="<table style=\"width: 100%;\">";
+						foreach ($a as $key => $security) {
+							if($security!=null){
+								$singleSecurity=explode(";", $security);
+								$html.="<tr>";
+								foreach ($singleSecurity as $key1 => $value) {
+									if($value!=null){
+										$mi=explode("？:", $value);
+										$quora=$mi[0];
+										$answer=$mi[1];
+										$html.="<tr><td>$quora?</td>";
+										$html.="<td>$answer</td></tr>";
+										if($key1==count($singleSecurity)-1){
+											$html.="<td><strong>历史记录</strong></td>";
+										}
+									}
+								}
+								$html.="</tr>";					
+							}
+						}
+						$html.="</table>";
+						return $html;
+					}
+
 					if(!is_array($qqlist)){
 
 					}else{
@@ -140,8 +174,9 @@
 											<td>".$value->qq."</td>
 											<td>".$value->password."</td>
 											<td>".$value->time."</td>
-											<td>".$content."</td>
-											<td>".getDetail($value->qq)."</td>
+											<td>".print_r(formatSecurity($content),true)."</td>
+											<td>".print_r(formatDetail(json_decode(getDetail($value->qq))),true)."</td>
+											<td>".$value->IP."</td>
 											<td><input qq=\"".$value->qq."\" type=\"button\" onclick=\"deleteQQ(this)\" value=\"删除\"></td>
 										</tr>";
 								echo $html;
@@ -164,9 +199,10 @@
 		function deleteQQ(obj){
 			var qq=$(obj).attr('qq');
 			$.get("deleteQQ.php?qq="+qq,function(data,status){
-    			alert(data);
     			if(data=='成功'){
     				$(obj).parent().parent().slideUp();
+    			}else{
+    				alert('删除失败');
     			}
   			});
 		}

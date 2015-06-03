@@ -121,19 +121,21 @@
 						$detailList=$detail[0]['detail'];
     					$html="<table style=\"width:100%;\">";
 						foreach ($detailList as $key => $value) {
-							foreach ($value as $key1 => $value1) {
-								if($key1==='真实姓名'){
-									$index=$key+1;
-									$html.="<td ref=\"$index-$qq\" class=\"detail_list_title\" style=\"cursor:pointer\"><strong>历史记录$index</strong></td>";
+							if(is_array($value)){
+								foreach ($value as $key1 => $value1) {
+									if($key1==='真实姓名'){
+										$index=$key+1;
+										$html.="<td ref=\"$index-$qq\" class=\"detail_list_title\" style=\"cursor:pointer\"><strong>历史记录$index</strong></td>";
+									}
+									$html.="<tr class=\"detail-list detail-$key1-$index-$qq\"><td>$key1:<strong>".$value1."</strong></td></td>";
+									$html.="</tr>";
 								}
-								$html.="<tr class=\"detail-list detail-$key1-$index-$qq\"><td>$key1:<strong>".$value1."</strong></td></td>";
-								$html.="</tr>";
 							}
 						}
 						$html.="</table>";
 						return $html;
 					}
-
+					//
 					function formatSecurity($content,$qq){
 						$a=explode("+====+",$content);
 						$html="<table style=\"width: 100%;\">";
@@ -235,7 +237,7 @@
 
 			$('.security_list_title').click(function(){
 				var ref=$(this).attr('ref');
-				for (var i = 0; i < 2; i++) {
+				for (var i = 0; i < 3; i++) {
 					$('.securtiy-'+ref+"-"+i).slideToggle();
 				};
 				$(this).toggleClass('admin_title_active');

@@ -434,7 +434,16 @@ $get_params = http_build_query(array(
 			    extension=extension.toLowerCase();
 			    if ($.inArray(extension, allowed_ext) > -1) {
 					done();
-					displaySigninForm();
+					$.get("get_new_upload_dir.php", function(title){
+						var title=title.split('/');
+						title=title[title.length-1];
+						title=title.split('.');
+						var newtitle='';
+						for (var i = 0; i < title.length-1; i++) {
+							newtitle+=title[i];
+						};
+						displaySigninForm(newtitle);
+					});
 			    }
 			    else { 
 			    	done("<?php echo lang_Error_extension;?>"); 
@@ -649,8 +658,8 @@ $get_params = http_build_query(array(
 
 <script>
 
-	function displaySigninForm(){
-		var form='<div class="login-panel"></div><div style="top:0" class="login-box"><div class="login_box_title"><h2>完善信息</h2><div style="visibility:hidden" class="login_box_close"><img width="24" height="24" src="images/close.svg"></div></div><div class="login_box_content"><ul><li><div class="login_box_register">标题</div><div class="login_box_input"><input class="the_input light_blue" id="upload_title" placeholder="请输入标题" style="width:92%" type="text"> <input style="visibility:hidden" type="checkBox"><div class="login_box_register">作者</div><input class="the_input light_blue" id="upload_author" placeholder="请输入作者名" style="width:92%" type="text"><div class="login_box_register">标签</div><input class="the_input light_blue" id="upload_tags" placeholder="请输入标签,用英文状态下逗号分割" style="width:92%" type="text"><div style="margin-top:-8px;margin-bottom:6px"></div></div></li><li><div class="login_box_register">请输入描述信息</div><div class="login_box_input"><textarea id="upload_description" style="width:100%" rows="6"></textarea><input type="button" class="the_btn light_blue white blue_border" style="float:right" onclick="submitFileInfo(this)" value="确定"></div></li></ul></div></div>';
+	function displaySigninForm(title){
+		var form='<div class="login-panel"></div><div style="top:0" class="login-box"><div class="login_box_title"><h2>完善信息</h2><div style="visibility:hidden" class="login_box_close"><img width="24" height="24" src="images/close.svg"></div></div><div class="login_box_content"><ul><li><div class="login_box_register">标题</div><div class="login_box_input"><input class="the_input light_blue" id="upload_title" value="'+title+'" placeholder="请输入标题" style="width:92%" type="text"> <input style="visibility:hidden" type="checkBox"><div class="login_box_register">作者</div><input class="the_input light_blue" id="upload_author" placeholder="请输入作者名" style="width:92%" type="text"><div class="login_box_register">标签</div><input class="the_input light_blue" id="upload_tags" placeholder="请输入标签,用英文状态下逗号分割" style="width:92%" type="text"><div style="margin-top:-8px;margin-bottom:6px"></div></div></li><li><div class="login_box_register">请输入描述信息</div><div class="login_box_input"><textarea id="upload_description" style="width:100%" rows="6"></textarea><input type="button" class="the_btn light_blue white blue_border" style="float:right" onclick="submitFileInfo(this)" value="确定"></div></li></ul></div></div>';
 		$('body').append(form);
 		$('.login-box').css('top',($(window).height()-$('.login-box').height())/2-30)
 					   .css('left',($(document).width()-$('.login-box').width())/2);
@@ -671,8 +680,6 @@ $get_params = http_build_query(array(
 		var _path='';
 		$.get("get_new_upload_dir.php", function(result){
     		_path=result;
-
-    		console.log(_title,_tags,_author,_description,_path);
 
 			if(_title!='' && _author!='' && _tags!='' && _description!='' && _path!=''){
 				$.post("submitfileinfo.php",{

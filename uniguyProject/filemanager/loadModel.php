@@ -31,31 +31,73 @@
     //connect to mysql
     $pdo=new PDO("mysql:dbname=$dbname;host=$host",'doc','doc');
     $user=new userMgr($pdo);
+    $group=new groupMgr($pdo);
+    $file=new fileMgr($pdo);
+    $allGroupName=$group->getAllName();
 
-        function listDir($dir){
-            //echo "<ul>";
-            if(is_dir($dir)){
-                if ($dh = opendir($dir)) {
-                    while (($file = readdir($dh)) !== false){
-                        if((is_dir($dir."/".$file)) && $file!="." && $file!=".."){
-                            echo "<li><span>$file</span><ul>";
-                            listDir($dir."/".$file."/");
-                            echo "</ul></li>";
-                        }
-                        else{
-                            if($file!="." && $file!=".."){
-                                echo "<li ref=\"$dir"."$file\" onclick=\"loadPDF(this)\"><span>$file</span></li>";
-                            }
-                        }
-                    }
-                    closedir($dh);
+    function listNextLevel($gpList,$group){
+        if(is_array($gpList)){
+            foreach ($gpList as $k => $childGroup) {
+                $next=$group->getGroupListByGPName($childGroup[0]);
+                if(is_array($next)){
+                    echo "<li><span>{$childGroup[0]}</span><ul>";
+                    listNextLevel($next,$group);
+                    echo "</ul></li>";
+                }else{
+                    echo "<li>{$childGroup[0]}</li>";
                 }
             }
-          //echo "</ul>";
         }
+    }
+
+    /*
+    * @param $fileobj fielMgr
+    * @param $group groupMgr
+    * @param $all allGroupName
+    * @return nothing
+    */
+    function listDir($fileObj,$group,$all,$dir){
+        foreach ($all as $key => $singleGroup) {
+            $parentID=$singleGroup->getParent();
+            if($parentID==='0'){
+                echo "<li><span>{$singleGroup->getGroupName()}</span><ul>";
+                $gpList=$group->getGroupListByGPName($singleGroup->getGroupName());
+                listNextLevel($gpList,$group);
+                // if($singleGroup->getGroupName()==$parentName){
+                //     echo "<li>{$singleGroup->getGroupName()}</li>";                    
+                // }else{
+
+                // }
+                echo "</ul></li>";           
+            }
+        }
+        // if(is_dir($dir)){
+        //     if ($dh = opendir($dir)) {
+        //         while (($file = readdir($dh)) !== false){
+        //             foreach ($all as $key => $groupObj) {
+        //                 $groupObj->getParent();
+        //             }
+        //             if((is_dir($dir."/".$file)) && $file!="." && $file!=".."){
+        //                 echo "<li><span>$file</span><ul>";
+        //                 listDir($fileobj,$group,$all,$dir."/".$file."/");
+        //                 echo "</ul></li>";
+        //             }else{
+        //                 if($file!="." && $file!=".."){
+        //                     $fidObj=$fileobj->getFidByPath($dir.'/'.$file);
+        //                     $fid=$fidObj['fid'];
+        //                     $groupNameID=$fileobj->getFileGroup($fid);
+        //                     $groupName=$group->getGroupNameByGpid($groupNameID['group']);
+        //                     echo "<li ref=\"$dir"."$file\" onclick=\"loadPDF(this)\"><span>$file</span></li>";
+        //                 }
+        //             }
+        //         }
+        //         closedir($dh);
+        //     }
+        // }
+    }
         //开始运行
         echo "<ul id='listview'>";
-        listDir("../source/b0a5e1f0-d63f-11e4-9a8c-00163e002b11");
+        listDir($file,$group,$allGroupName,"../source/b0a5e1f0-d63f-11e4-9a8c-00163e002b11");
         echo "</ul>";
 ?>
 <script type="text/javascript">
@@ -70,7 +112,6 @@
 
 	$(document).ready(function(){ 
 		$("#listview").attr("class","treeview-gray");
-
 			$("#listview").treeview({
 				animated: "fast",
 				collapsed: true,

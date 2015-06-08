@@ -36,22 +36,42 @@
     $allGroupName=$group->getAllName();
     $allFile=$file->getAllFile();
 
-    function listNextLevel($gpList,$group){
+    function removeExtension($filename){
+        $filename=explode(".", $filename);
+        $newfilename='';
+        for ($i=0; $i < count($filename)-1; $i++) { 
+            $newfilename.=$filename[$i];
+        }
+        return $newfilename;
+    }
+
+    function listNextLevel($gpList,$group,$file){
         if(is_array($gpList)){
             foreach ($gpList as $k => $childGroup) {
                 $next=$group->getGroupListByGPName($childGroup[0]);
                 if(is_array($next)){
                     echo "<li><span>{$childGroup[0]}</span><ul>";
-                    listNextLevel($next,$group);
+                    listNextLevel($next,$group,$file);
                     echo "</ul></li>";
                 }else{
-                    echo "<li><span>{$childGroup[0]}</span></li>";
+                    $thisGPID=$group->getGpidByGPName($childGroup[0]);
+                    $allPath=$file->getAllPathByGPID($thisGPID['gpid']);
+                    echo "<li><span>{$childGroup[0]}</span><ul>";
+                    if(is_array($allPath)){
+                    foreach ($allPath as $pathIndex => $path) {
+                        $filename=explode("/",$path['path']);
+                        $filename=$filename[count($filename)-1];
+                        $filename=removeExtension($filename);
+                        echo "<li ref=\"{$path['path']}\" onclick=\"loadPDF(this)\"><span>{$filename}</span></li>";
+                        }
+                    }
+                    echo "</ul></li>";
                 }
             }
         }
     }
 
-    function listNextFileLevel($parentNode,$allFile,$fileObj,$group){
+/*    function listNextFileLevel($parentNode,$allFile,$fileObj,$group){
         if(is_array($allFile)){
             foreach ($allFile as $k => $singleFile) {
                 $fileGroup=$group->getGroupNameByGpid($singleFile->getGroup());
@@ -64,7 +84,7 @@
                 }
             }
         }
-    }
+    }*/
 
     /*
     * @param $fileobj fileMgr
@@ -77,11 +97,20 @@
         foreach ($all as $key => $singleGroup) {
             $parentID=$singleGroup->getParent();
             if($parentID==='0'){
+                $thisGPID=$group->getGpidByGPName($singleGroup->getGroupName());
+                $allPath=$fileObj->getAllPathByGPID($thisGPID['gpid']);
                 echo "<li><span>{$singleGroup->getGroupName()}</span><ul>";
                 $parentNodeName=$singleGroup->getGroupName();
                 $gpList=$group->getGroupListByGPName($singleGroup->getGroupName());
-                listNextLevel($gpList,$group);
-                // listNextFileLevel($parentNodeName,$allFile,$fileObj,$group);
+                listNextLevel($gpList,$group,$fileObj);
+                if(is_array($allPath)){
+                    foreach ($allPath as $pathIndex => $path) {
+                        $filename=explode("/",$path['path']);
+                        $filename=$filename[count($filename)-1];
+                        $filename=removeExtension($filename);
+                        echo "<li ref=\"{$path['path']}\" onclick=\"loadPDF(this)\"><span>{$filename}</span></li>";
+                    }
+                }
                 echo "</ul></li>";           
             }
         }

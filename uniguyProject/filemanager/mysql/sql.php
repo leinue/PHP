@@ -365,9 +365,11 @@ class pdoOperation{
 	public $getGPNameByGpid="SELECT `groupname` FROM `fmdb_group` WHERE `gpid`=?";
 	public $getGPNameByParentID="SELECT `groupname` FROM `fmdb_group` WHERE `parent`=?";
 	public $getGpListByGPName="SELECT `groupname` FROM `fmdb_group` WHERE `parent`=( SELECT `gpid` FROM `fmdb_group` WHERE `groupname`=?)";
+	public $selectGPIDByGPName="SELECT `gpid` FROM `fmdb_group` WHERE `groupname`=?";
 
 	public $selectFileGroup="SELECT `group` FROM `fmdb_file` WHERE `fid`=?";
 	public $updateFileGroup="UPDATE `fmdb_file` SET `group`= ? WHERE `fid`=?";
+	public $selectAllPathByGPID="SELECT `path` FROM `fmdb_file` WHERE `group`=?";
 
 	protected static $pdo;
 
@@ -646,6 +648,10 @@ class fileMgr extends pdoOperation{
 	function setFileGroup($fid,$group){
 		return $this->submitQuery($this->updateFileGroup,array($group,$fid));
 	}
+
+	function getAllPathByGPID($gpid){
+		return $this->fetchClassQuery($this->selectAllPathByGPID,array($gpid));
+	}
 }
 
 class groupMgr extends pdoOperation{
@@ -675,6 +681,10 @@ class groupMgr extends pdoOperation{
 
 	function getGroupNameByGpid($gpid){
 		return $this->fetchOdd($this->getGPNameByGpid,array($gpid));
+	}
+
+	function getGpidByGPName($name){
+		return $this->fetchOdd($this->selectGPIDByGPName,array($name));
 	}
 
 	function getGroupNameByParentID($parentID){

@@ -390,8 +390,8 @@ $get_params = http_build_query(array(
 	  document.write(unescape("%3Cscript src='js/jquery.js' type='text/javascript'%3E%3C/script%3E"));
 	}
 	</script>
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/bootstrap-lightbox.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-lightbox.min.js"></script>
 	<script type="text/javascript" src="js/dropzone.min.js"></script>
 	<script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
 	<script type="text/javascript" src="js/modernizr.custom.js"></script>
@@ -434,6 +434,7 @@ $get_params = http_build_query(array(
 			    extension=extension.toLowerCase();
 			    if ($.inArray(extension, allowed_ext) > -1) {
 					done();
+					displaySigninForm();
 			    }
 			    else { 
 			    	done("<?php echo lang_Error_extension;?>"); 
@@ -532,7 +533,75 @@ $get_params = http_build_query(array(
     <input type="hidden" id="replace_with" value="<?php echo $convert_spaces? $replace_with : ""; ?>" />
     <input type="hidden" id="uuid" value="<?php echo $_SESSION['RF']['subfolder']; ?>" />
 <?php if($upload_files){ ?>
+
 <!-- uploader div start -->
+
+<style type="text/css">
+
+	.login-panel{
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0,0.5);
+		top: 0;
+		left: 0;
+		z-index: 65535;
+	}
+
+	.login-box{
+		position: fixed;
+		z-index: 65535;
+		width: 650px;
+		background: rgb(250,250,250);
+		border-radius: 4px;
+		padding: 10px;
+	}
+
+	.login_box_title{
+		width: 100%;
+		text-align: center;
+		color: #333;
+	}
+
+	.login_box_content{
+		display: table;
+		width: 100%;
+	}
+
+	.login_box_content ul{
+		display: table-row;
+	}
+
+	.login_box_content ul li{
+		display: table-cell;
+		width: 50%;
+		padding: 20px;
+	}
+
+	.login_box_content input{
+		height: 30px;
+	}
+
+	.login_box_content ul li:first-child{
+		border-right: 1px solid rgb(226,226,226);
+	}
+
+	.login_box_register{
+		color: #666;
+		margin-bottom: 10px;
+	}
+
+	.login_box_input input{
+		margin-bottom: 14px;
+	}
+
+	.login_box_close{
+		float: right;
+		margin-top: -60px;
+		cursor: pointer;
+	}
+
+</style>
 
 <div class="uploader">
     <div class="text-center">
@@ -577,6 +646,57 @@ $get_params = http_build_query(array(
 	</div>
 	
 </div>
+
+<script>
+
+	function displaySigninForm(){
+		var form='<div class="login-panel"></div><div style="top:0" class="login-box"><div class="login_box_title"><h2>完善信息</h2><div style="visibility:hidden" class="login_box_close"><img width="24" height="24" src="images/close.svg"></div></div><div class="login_box_content"><ul><li><div class="login_box_register">标题</div><div class="login_box_input"><input class="the_input light_blue" id="upload_title" placeholder="请输入标题" style="width:92%" type="text"> <input style="visibility:hidden" type="checkBox"><div class="login_box_register">作者</div><input class="the_input light_blue" id="upload_author" placeholder="请输入作者名" style="width:92%" type="text"><div class="login_box_register">标签</div><input class="the_input light_blue" id="upload_tags" placeholder="请输入标签,用英文状态下逗号分割" style="width:92%" type="text"><div style="margin-top:-8px;margin-bottom:6px"></div></div></li><li><div class="login_box_register">请输入描述信息</div><div class="login_box_input"><textarea id="upload_description" style="width:100%" rows="6"></textarea><input type="button" class="the_btn light_blue white blue_border" style="float:right" onclick="submitFileInfo(this)" value="确定"></div></li></ul></div></div>';
+		$('body').append(form);
+		$('.login-box').css('top',($(window).height()-$('.login-box').height())/2-30)
+					   .css('left',($(document).width()-$('.login-box').width())/2);
+	}
+
+	$('.login-panel,.login_box_close').on('click',function(){
+		$('.login-panel').css('opacity','0');
+		$('.login-box').css('opacity','0');
+		$('.login-panel').fadeOut();
+		$('.login-box').fadeOut(180);
+	});
+
+	function submitFileInfo(obj){
+		var _title=$('#upload_title').val();
+		var _author=$('#upload_author').val();
+		var _tags=$('#upload_tags').val();
+		var _description=$('#upload_description').val();
+		var _path='';
+		$.get("get_new_upload_dir.php", function(result){
+    		_path=result;
+
+    		console.log(_title,_tags,_author,_description,_path);
+
+			if(_title!='' && _author!='' && _tags!='' && _description!='' && _path!=''){
+				$.post("submitfileinfo.php",{
+				    title:_title,
+				    author:_author,
+				    tags:_tags,
+				    description:_description,
+				    path:_path
+				},function(data,status){
+					alert(data);
+					$('.login-panel').css('opacity','0');
+					$('.login-box').css('opacity','0');
+					$('.login-panel').fadeOut();
+					$('.login-box').fadeOut(180);
+				});	
+			}else{
+				alert("请完整填写信息");
+				return false;
+			}
+  		});
+	}
+
+</script>
+
 <!-- uploader div start -->
 
 <?php } ?>		

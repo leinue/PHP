@@ -370,6 +370,8 @@ class pdoOperation{
 	public $selectFileGroup="SELECT `group` FROM `fmdb_file` WHERE `fid`=?";
 	public $updateFileGroup="UPDATE `fmdb_file` SET `group`= ? WHERE `fid`=?";
 	public $selectAllPathByGPID="SELECT `path` FROM `fmdb_file` WHERE `group`=?";
+	public $updateFileInfo="UPDATE `fmdb_file` SET `title`=?,`author`=?,`tags`=?,`description`=? WHERE `path`=?";
+
 
 	protected static $pdo;
 
@@ -651,6 +653,10 @@ class fileMgr extends pdoOperation{
 
 	function getAllPathByGPID($gpid){
 		return $this->fetchClassQuery($this->selectAllPathByGPID,array($gpid));
+	}
+
+	function submitFileInfo($title,$author,$tags,$description,$path){
+		return $this->submitQuery($this->updateFileInfo,array($title,$author,$tags,$description,$path));
 	}
 }
 

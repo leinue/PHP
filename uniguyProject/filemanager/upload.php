@@ -1,3 +1,66 @@
+<style type="text/css">
+
+	.login-panel{
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0,0.5);
+		top: 0;
+		left: 0;
+		z-index: 65535;
+	}
+
+	.login-box{
+		position: fixed;
+		z-index: 65535;
+		width: 650px;
+		background: rgb(250,250,250);
+		border-radius: 4px;
+		padding: 10px;
+	}
+
+	.login_box_title{
+		width: 100%;
+		text-align: center;
+		color: #333;
+	}
+
+	.login_box_content{
+		display: table;
+		width: 100%;
+	}
+
+	.login_box_content ul{
+		display: table-row;
+	}
+
+	.login_box_content ul li{
+		display: table-cell;
+		width: 50%;
+		padding: 20px;
+	}
+
+	.login_box_content ul li:first-child{
+		border-right: 1px solid rgb(226,226,226);
+	}
+
+	.login_box_register{
+		color: #666;
+		margin-bottom: 10px;
+	}
+
+	.login_box_input input{
+		margin-bottom: 14px;
+	}
+
+	.login_box_close{
+		float: right;
+		margin-top: -60px;
+		cursor: pointer;
+	}
+
+</style>
+
 <?php
 include 'config/config.php';
 if($_SESSION['RF']["verify"] != "RESPONSIVEfilemanager") die('forbiden');
@@ -85,6 +148,8 @@ if ( ! empty($_FILES))
 		chmod($targetFile, 0755);
 		
 		$sqlResult=$fm->upload($uid,$targetFile,$info['extension'],$tags);
+
+		file_put_contents("new_upload_file.fm", $targetFile);
 
 		if($user_privilege===0){
 			$fm->noDisplay($targetFile);

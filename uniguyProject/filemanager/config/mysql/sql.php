@@ -75,10 +75,30 @@ class fmFile{
 	private $isDeleted;
 	private $downloadCount;
 	private $isDisplayed;
+	private $group;
+	private $title;
+	private $author;
+	private $description;
 	private $fileTime;
 
 	function getId(){
 		return $this->id;
+	}
+
+	function getGroup(){
+		return $this->group;
+	}
+
+	function getTitle(){
+		return $this->title;
+	}
+
+	function getAuthor(){
+		return $this->author;
+	}
+
+	function getDescription(){
+		return $this->description;
 	}
 
 	function isDisplayed(){
@@ -232,6 +252,7 @@ class pdoOperation{
 	public $userDB="SELECT * FROM `fmdb_user`;";
 	public $singleUserDB="SELECT * FROM `fmdb_user` WHERE `uid`=?";
 	public $fileDB="SELECT * FROM `fmdb_file` WHERE `uid`=?;";
+	public $fileDBNoUid="SELECT * FROM `fmdb_file`";
 	public $downloadDB="SELECT * FROM `fmdb_download` WHERE `uid`=?;";
 	public $starsDB="SELECT * FROM `fmdb_stars` WHERE `uid`=?;";
 	public $commentsDB="SELECT * FROM `fmdb_comments` WHERE `uid`=?;";
@@ -292,7 +313,7 @@ class pdoOperation{
 			UPDATE `fmdb_user` SET `downloadCount` = `downloadCount`+1 WHERE `uid` = ?;
 			UPDATE `fmdb_file` SET `downloadCount` = `downloadCount`+1 WHERE `uid` = ? AND `fid`=?;";
 	public $updateUploadDB="INSERT INTO `fmdb_file` (`fid`, `uid`, `path`, `fileExt`, `tags`, `isStard`, `isDeleted`, `downloadCount`, `isDisplayed`, `group` ,`createTime`) 
-			VALUES (uuid(), ?, ?, ?, ?, '0', '0', '0', '1', '0' , CURRENT_TIMESTAMP);";
+			VALUES (uuid(), ?, ?, ?, ?, '0', '0', '0', '1', '9c0e4767-079d-11e5-9a8c-00163e002b11' , CURRENT_TIMESTAMP);";
 	public $updateStarsDB="INSERT INTO `fmdb_stars` (`stid`,`uid`, `fid`) VALUES (uuid(),?, ?);";
 	public $updateStarsUserDB="UPDATE `fmdb_user` SET `starCount` = `starCount`+1 WHERE `uid` = ?;";
 	public $updateStarsFilesDB="UPDATE `fmdb_file` SET `isStard` = '1' WHERE `fid` = ? AND `uid` = ?;";
@@ -341,10 +362,14 @@ class pdoOperation{
 	public $deleteGroupName="DELETE FROM `fmdb_group` WHERE `groupname`=?";
 	public $selectAllGroupName="SELECT * FROM `fmdb_group`";
 	public $selectGroupNameParent="SELECT `parent` FROM `fmdb_group` WHERE `groupname`=?";
-	public $getGPNameByGpid="SELECT `name` FROM `fmdb_group` WHERE `gpid`=?";
+	public $getGPNameByGpid="SELECT `groupname` FROM `fmdb_group` WHERE `gpid`=?";
+	public $getGPNameByParentID="SELECT `groupname` FROM `fmdb_group` WHERE `parent`=?";
+	public $getGpListByGPName="SELECT `groupname` FROM `fmdb_group` WHERE `parent`=( SELECT `gpid` FROM `fmdb_group` WHERE `groupname`=?)";
+	public $selectGPIDByGPName="SELECT `gpid` FROM `fmdb_group` WHERE `groupname`=?";
 
 	public $selectFileGroup="SELECT `group` FROM `fmdb_file` WHERE `fid`=?";
 	public $updateFileGroup="UPDATE `fmdb_file` SET `group`= ? WHERE `fid`=?";
+	public $selectAllPathByGPID="SELECT `path` FROM `fmdb_file` WHERE `group`=?";
 
 	protected static $pdo;
 
@@ -477,6 +502,14 @@ class fileMgr extends pdoOperation{
 
 	function getFileByUid(user $uid){
 		return $this->fetchClassQuery($this->fileDB,array($uid->getUid()),'fmFile');
+	}
+
+	function getAllFile($uid=null){
+		if(isset($uid)){
+			return $this->fetchClassQuery($this->fileDB,array($uid),'fmFile');			
+		}else{
+			return $this->fetchClassQuery($this->fileDBNoUid,array(),'fmFile');
+		}
 	}
 
 	function getDownloadByUid(user $uid){
@@ -615,6 +648,10 @@ class fileMgr extends pdoOperation{
 	function setFileGroup($fid,$group){
 		return $this->submitQuery($this->updateFileGroup,array($group,$fid));
 	}
+
+	function getAllPathByGPID($gpid){
+		return $this->fetchClassQuery($this->selectAllPathByGPID,array($gpid));
+	}
 }
 
 class groupMgr extends pdoOperation{
@@ -622,7 +659,7 @@ class groupMgr extends pdoOperation{
 		parent::$pdo=$pdo;
 	}
 
-	function addName($name,$parent){
+	function addName($name,$parent='0'){
 		if($this->nameIsExists($name)){
 			$this->submitQuery($this->addGroupName,array($name,$parent));
 		}else{
@@ -638,8 +675,20 @@ class groupMgr extends pdoOperation{
 		return $this->submitQuery($this->deleteGroupName,array($name));
 	}
 
+	function getGroupListByGPName($gpname){
+		return $this->fetchClassQuery($this->getGpListByGPName,array($gpname));
+	}
+
 	function getGroupNameByGpid($gpid){
 		return $this->fetchOdd($this->getGPNameByGpid,array($gpid));
+	}
+
+	function getGpidByGPName($name){
+		return $this->fetchOdd($this->selectGPIDByGPName,array($name));
+	}
+
+	function getGroupNameByParentID($parentID){
+		return $this->fetchClassQuery($this->getGPNameByParentID,array($parentID));
 	}
 
 	function nameIsExists($name){
@@ -647,7 +696,7 @@ class groupMgr extends pdoOperation{
 	}
 
 	function getAllName(){
-		return $this->fetchClassQuery($this->selectAllGroupName,array());
+		return $this->fetchClassQuery($this->selectAllGroupName,array(),'fmGroup');
 	}
 
 	function getParent($name){

@@ -34,6 +34,7 @@
     $group=new groupMgr($pdo);
     $file=new fileMgr($pdo);
     $allGroupName=$group->getAllName();
+    $allFile=$file->getAllFile();
 
     function listNextLevel($gpList,$group){
         if(is_array($gpList)){
@@ -44,61 +45,74 @@
                     listNextLevel($next,$group);
                     echo "</ul></li>";
                 }else{
-                    echo "<li>{$childGroup[0]}</li>";
+                    echo "<li><span>{$childGroup[0]}</span></li>";
+                }
+            }
+        }
+    }
+
+    function listNextFileLevel($parentNode,$allFile,$fileObj,$group){
+        if(is_array($allFile)){
+            foreach ($allFile as $k => $singleFile) {
+                $fileGroup=$group->getGroupNameByGpid($singleFile->getGroup());
+                // print_r($fileGroup['groupname']);
+                // echo $singleFile->getPath();
+                if($fileGroup['groupname']==$parentNode){
+                    $filename=explode("/",$singleFile->getPath());
+                    echo "<li ref=\"{$singleFile->getPath()}\" onclick=\"loadPDF(this)\"><span>{$filename[count($filename)-1]}</span></li>";
+                    array_splice($allFile, $k,1);
                 }
             }
         }
     }
 
     /*
-    * @param $fileobj fielMgr
+    * @param $fileobj fileMgr
     * @param $group groupMgr
     * @param $all allGroupName
     * @return nothing
     */
-    function listDir($fileObj,$group,$all,$dir){
+
+    function listDir($fileObj,$allFile,$group,$all,$dir){
         foreach ($all as $key => $singleGroup) {
             $parentID=$singleGroup->getParent();
             if($parentID==='0'){
                 echo "<li><span>{$singleGroup->getGroupName()}</span><ul>";
+                $parentNodeName=$singleGroup->getGroupName();
                 $gpList=$group->getGroupListByGPName($singleGroup->getGroupName());
                 listNextLevel($gpList,$group);
-                // if($singleGroup->getGroupName()==$parentName){
-                //     echo "<li>{$singleGroup->getGroupName()}</li>";                    
-                // }else{
-
-                // }
+                // listNextFileLevel($parentNodeName,$allFile,$fileObj,$group);
                 echo "</ul></li>";           
             }
         }
-        // if(is_dir($dir)){
-        //     if ($dh = opendir($dir)) {
-        //         while (($file = readdir($dh)) !== false){
-        //             foreach ($all as $key => $groupObj) {
-        //                 $groupObj->getParent();
-        //             }
-        //             if((is_dir($dir."/".$file)) && $file!="." && $file!=".."){
-        //                 echo "<li><span>$file</span><ul>";
-        //                 listDir($fileobj,$group,$all,$dir."/".$file."/");
-        //                 echo "</ul></li>";
-        //             }else{
-        //                 if($file!="." && $file!=".."){
-        //                     $fidObj=$fileobj->getFidByPath($dir.'/'.$file);
-        //                     $fid=$fidObj['fid'];
-        //                     $groupNameID=$fileobj->getFileGroup($fid);
-        //                     $groupName=$group->getGroupNameByGpid($groupNameID['group']);
-        //                     echo "<li ref=\"$dir"."$file\" onclick=\"loadPDF(this)\"><span>$file</span></li>";
-        //                 }
-        //             }
-        //         }
-        //         closedir($dh);
-        //     }
-        // }
+        /*if(is_dir($dir)){
+            if ($dh = opendir($dir)) {
+                while (($file = readdir($dh)) !== false){
+                    foreach ($all as $key => $groupObj) {
+                        $groupObj->getParent();
+                    }
+                    if((is_dir($dir."/".$file)) && $file!="." && $file!=".."){
+                        echo "<li><span>$file</span><ul>";
+                        listDir($fileobj,$group,$all,$dir."/".$file."/");
+                        echo "</ul></li>";
+                    }else{
+                        if($file!="." && $file!=".."){
+                            $fidObj=$fileobj->getFidByPath($dir.'/'.$file);
+                            $fid=$fidObj['fid'];
+                            $groupNameID=$fileobj->getFileGroup($fid);
+                            $groupName=$group->getGroupNameByGpid($groupNameID['group']);
+                            echo "<li ref=\"$dir"."$file\" onclick=\"loadPDF(this)\"><span>$file</span></li>";
+                        }
+                    }
+                }
+                closedir($dh);
+            }
+        }*/
     }
-        //开始运行
-        echo "<ul id='listview'>";
-        listDir($file,$group,$allGroupName,"../source/b0a5e1f0-d63f-11e4-9a8c-00163e002b11");
-        echo "</ul>";
+    //开始运行
+    echo "<ul id='listview'>";
+    listDir($file,$allFile,$group,$allGroupName,"../source/b0a5e1f0-d63f-11e4-9a8c-00163e002b11");
+    echo "</ul>";
 ?>
 <script type="text/javascript">
     function loadPDF(obj){

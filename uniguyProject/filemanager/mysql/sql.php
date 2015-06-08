@@ -75,10 +75,30 @@ class fmFile{
 	private $isDeleted;
 	private $downloadCount;
 	private $isDisplayed;
+	private $group;
+	private $title;
+	private $author;
+	private $description;
 	private $fileTime;
 
 	function getId(){
 		return $this->id;
+	}
+
+	function getGroup(){
+		return $this->group;
+	}
+
+	function getTitle(){
+		return $this->title;
+	}
+
+	function getAuthor(){
+		return $this->author;
+	}
+
+	function getDescription(){
+		return $this->description;
 	}
 
 	function isDisplayed(){
@@ -342,7 +362,7 @@ class pdoOperation{
 	public $deleteGroupName="DELETE FROM `fmdb_group` WHERE `groupname`=?";
 	public $selectAllGroupName="SELECT * FROM `fmdb_group`";
 	public $selectGroupNameParent="SELECT `parent` FROM `fmdb_group` WHERE `groupname`=?";
-	public $getGPNameByGpid="SELECT `groupname` FROM `fmdb_group` WHERE `parent`=?";
+	public $getGPNameByGpid="SELECT `groupname` FROM `fmdb_group` WHERE `gpid`=?";
 	public $getGPNameByParentID="SELECT `groupname` FROM `fmdb_group` WHERE `parent`=?";
 	public $getGpListByGPName="SELECT `groupname` FROM `fmdb_group` WHERE `parent`=( SELECT `gpid` FROM `fmdb_group` WHERE `groupname`=?)";
 
@@ -482,8 +502,8 @@ class fileMgr extends pdoOperation{
 		return $this->fetchClassQuery($this->fileDB,array($uid->getUid()),'fmFile');
 	}
 
-	function getAllFile($uid){
-		if(!$uid==null){
+	function getAllFile($uid=null){
+		if(isset($uid)){
 			return $this->fetchClassQuery($this->fileDB,array($uid),'fmFile');			
 		}else{
 			return $this->fetchClassQuery($this->fileDBNoUid,array(),'fmFile');

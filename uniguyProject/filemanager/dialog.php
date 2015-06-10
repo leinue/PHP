@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_ALL & ~E_NOTICE);
+error_reporting(0);
 include 'config/config.php';
 if(isset($_GET['uid'])){
 	$uuid=$_GET['uid'];
@@ -9,6 +9,18 @@ if(isset($_GET['akey'])){
 }
 
 $_SESSION['uuid']=$uuid;
+
+//现在每页已有的文件数
+if(!isset($_SESSION['current_file_count'])){
+	$_SESSION['current_file_count']=20;	
+}
+
+// $_SESSION['current_file_count']=20;
+// echo "<script>alert('{$_SESSION['current_file_count']}')</script>";
+//每次加载的文件递增数
+if(!isset($_SESSION['file_load_step'])){
+	$_SESSION['file_load_step']=10;	
+}
 
 //connect to mysql
 $pdo=new PDO("mysql:dbname=$dbname;host=$host",'doc','doc');
@@ -735,6 +747,7 @@ elseif($_GET['type']==3) $apply = 'apply_video';
 else $apply = 'apply';
 
 $files = scandir($current_path.$rfm_subfolder.$subdir);
+// print_r($files);
 $n_files=count($files);
 
 //php sorting
@@ -933,8 +946,13 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 	    <!--ul class="thumbnails ff-items"-->
 	    <ul class="grid cs-style-2 <?php echo "list-view".$view; ?>" id="main-item-container">
 		<?php
+		$fileIndex=-1;
 		$jplayer_ext=array("mp4","flv","webmv","webma","webm","m4a","m4v","ogv","oga","mp3","midi","mid","ogg","wav");
 		foreach ($files as $file_array) {
+			$fileIndex+=1;
+			if($fileIndex>=$_SESSION['current_file_count']+$_SESSION['file_load_step']){
+				break;
+			}
 		  $file=$file_array['file'];
 			if($file == '.' || (isset($file_array['extension']) && $file_array['extension']!=lang_Type_dir) || ($file == '..' && $subdir == '') || in_array($file, $hidden_folders) || ($filter!='' && $n_files>$file_number_limit_js && $file!=".." && strpos($file,$filter)===false))
 			  continue;
@@ -962,9 +980,7 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 				$r=$fm->isDisplayedA("../sorce/".$_SESSION['RF']['subfolder']."/".$file);
 				if($r===0){
 					$isShouldBeDisplayed="display:none";
-				}else{
-					$isShouldBeDisplayed='';
-				}
+				}else{$isShouldBeDisplayed='';}
 			?>
 			    <li data-name="<?php echo $file ?>" style="<?php echo $isShouldBeDisplayed; ?>" class="<?php if($file=='..') echo 'back'; else echo 'dir'; ?>" <?php if(($filter!='' && strpos($file,$filter)===false)) echo ' style="display:none;"'; ?>><?php 
 			    $file_prevent_rename = false;
@@ -1024,8 +1040,13 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 			<?php
 		    }
 			
+			$fileIndex=-1;
             $files_prevent_duplicate = array();
-		    foreach ($files as $nu=>$file_array) {		
+		    foreach ($files as $nu=>$file_array) {
+		   	$fileIndex+=1;
+			if($fileIndex>=$_SESSION['current_file_count']+$_SESSION['file_load_step']){
+				break;
+			}
 			$file=$file_array['file'];
 		    
 			    if($file == '.' || $file == '..' || is_dir($current_path.$rfm_subfolder.$subdir.$file) || in_array($file, $hidden_files) || !in_array(fix_strtolower($file_array['extension']), $ext) || ($filter!='' && $n_files>$file_number_limit_js && strpos($file,$filter)===false))
@@ -1124,7 +1145,7 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 			    }
 			    if((!($_GET['type']==1 && !$is_img) && !(($_GET['type']==3 && !$is_video) && ($_GET['type']==3 && !$is_audio))) && $class_ext>0){
 ?>
-		    <li class="ff-item-type-<?php echo $class_ext; ?> file"  data-name="<?php echo $file; ?>" <?php if(($filter!='' && strpos($file,$filter)===false)) echo ' style="display:none;"'; ?>><?php
+		    <li  class="ff-item-type-<?php echo $class_ext; ?> file"  data-name="<?php echo $file; ?>" <?php if(($filter!='' && strpos($file,$filter)===false)) echo ' style="display:none;"'; ?>><?php
 		    $file_prevent_rename = false;
 		    $file_prevent_delete = false;
 		    if (isset($filePermissions[$file])) {
@@ -1215,9 +1236,41 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 			<?php
 			}
 		    }
-		
 	?></div>
 	    </ul>
+	    <style type="text/css">
+			.load-more-div{
+				width: 100%;
+				text-align: center;
+				border-top: 1px solid rgb(170,170,170);
+				border-bottom: 1px solid rgb(170,170,170);
+				background: rgb(255,255,255);
+				margin-top: 20px;
+				margin-bottom: 10px;
+				line-height: 2.4;
+			}
+
+			.load-more-div:hover{
+				cursor: pointer;
+				background: rgb(224,224,224);
+			}
+	    </style>
+	    <div class="load-more-div">加载更多</div>
+	    <script type="text/javascript">
+	    	$('.load-more-div').click(function(){
+	    		$.get('ajax/addfileloadcount.php',function(){
+	    			location.reload();
+	    		});
+	    	});
+
+	    	window.onbeforeunload = function(){   
+              	var n = window.event.screenX - window.screenLeft;   
+              	var b = n > document.documentElement.scrollWidth-20;   
+              	if(b && window.event.clientY < 0 || window.event.altKey){  
+                    window.event.returnValue = "$.get('ajax/unsetSession.php')"; 
+              	}
+       		}
+	    </script>
 	    <?php } ?>
 	</div>
     </div>
@@ -1322,6 +1375,9 @@ if(ex='chrome'){
         	}
         </script>
     <?php } ?>
+    <script type="text/javascript">
+	   	// $.get('ajax/unsetSession.php');
+    </script>
 </body>
 </html>
 <?php } ?>

@@ -1255,7 +1255,13 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 				background: rgb(224,224,224);
 			}
 	    </style>
-	    <div class="load-more-div">加载更多</div>
+	    <?php
+	    	if($_SESSION['RF']["subfolder"]='328eb3c3-d632-11e4-9a8c-00163e002b11' && $_GET['fldr']=='/'){
+				
+			}else{
+				echo "<div class=\"load-more-div\">加载更多</div>";
+			}
+	    ?>
 	    <script type="text/javascript">
 	    	$('.load-more-div').click(function(){
 	    		$.get('ajax/addfileloadcount.php',function(){
@@ -1271,10 +1277,8 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
               	}
        		}
 */
-			console.log(localStorage.fromLoadMore);
        		$(window).unload(function(){
 				if(localStorage.fromLoadMore=='false' || localStorage.fromLoadMore=='undefined'){
-					console.log(localStorage.fromLoadMore);
 					$.get('ajax/unsetSession.php');
 				}
 				localStorage.fromLoadMore='false';

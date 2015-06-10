@@ -450,11 +450,13 @@ if(isset($_GET['action']))
 					//echo '<iframe id="viewer" src="ViewerJS/#../'.$_GET["file"].'" allowfullscreen webkitallowfullscreen style="" class="viewer-iframe"></iframe>';
 					//echo '<script type="text/javascript">window.open("ViewerJS/#../'.$_GET["file"].'","'.$_GET["file"].'",width="100",height="200",toolbar="no",scrollbars="no",menubar="no",screenX="100",screenY="100");$(".modal-body").html("已在新窗口中打开");</script>';
 					$fixUrl=explode($current_path,$_GET['file']);
-					echo "<script type=\"text/javascript\">var a = $(\"<a href='".$upload_dir.$fixUrl[1]."#viewer.action=download' target='_blank'>viewerjs</a>\").get(0);
-            			  var e = document.createEvent('MouseEvents');
-           				  e.initEvent('click', true, true);
-          				  a.dispatchEvent(e);
-          				  $('.modal-body').hide();</script>";
+					echo "<script type=\"text/javascript\">
+							var a = $(\"<a href='".$upload_dir.$fixUrl[1]."#viewer.action=download' target='_blank'>viewerjs</a>\").get(0);
+	            			var e = document.createEvent('MouseEvents');
+	           				e.initEvent('click', true, true);
+	          				a.dispatchEvent(e);
+	          				setTimeOut(\"$('.modal-scrollable,.modal-backdrop').css('z-index','-1');\",2000);
+          				</script>";
 				}
 				elseif ($preview_mode == 'google') {
 					$url_file=$base_url.$upload_dir.str_replace($current_path,'',$_GET["file"]);

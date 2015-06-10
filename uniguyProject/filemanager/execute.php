@@ -149,7 +149,7 @@ if (isset($_GET['action']))
             if ($create_folders)
             {
                 create_folder(fix_path($path,$transliteration,$convert_spaces, $replace_with),fix_path($path_thumb,$transliteration,$convert_spaces, $replace_with));
-                $uid=$_SESSION['RF']['subfolder'];
+                $uid=$_SESSION['uuid'];
                 $tags="0";
                 $fm->upload($uid,$path,"0",$tags);
             }
@@ -308,14 +308,14 @@ if (isset($_GET['action']))
 
             $fid=$fm->getFidByPath($path);
 
-            if(!$fm->isFileStard($fid['fid'],$_SESSION['RF']['subfolder'])){
-                if($a=$fm->star($_SESSION['RF']['subfolder'],$fid['fid'])){
+            if(!$fm->isFileStard($fid['fid'],$_SESSION['uuid'])){
+                if($a=$fm->star($_SESSION['uuid'],$fid['fid'])){
                     echo 'star success';
                 }else{
                     echo 'star failed';
                 }
             }else{
-                $st=$fm->getStarsByUid($_SESSION['RF']['subfolder']);
+                $st=$fm->getStarsByUid($_SESSION['uuid']);
                 $realkey=0;
                 foreach ($st as $key => $value) {
                     if($value->getFid()==$fid['fid']){
@@ -323,7 +323,7 @@ if (isset($_GET['action']))
                         break;
                     }
                 }
-                if($fm->deleteStars($st[$realkey]->getStid(),$_SESSION['RF']['subfolder'])){
+                if($fm->deleteStars($st[$realkey]->getStid(),$_SESSION['uuid'])){
                     echo 'removing star success';
                 }else{
                     echo 'removing star failed,please try again.';

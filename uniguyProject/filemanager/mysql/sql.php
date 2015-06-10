@@ -313,7 +313,7 @@ class pdoOperation{
 			UPDATE `fmdb_user` SET `downloadCount` = `downloadCount`+1 WHERE `uid` = ?;
 			UPDATE `fmdb_file` SET `downloadCount` = `downloadCount`+1 WHERE `uid` = ? AND `fid`=?;";
 	public $updateUploadDB="INSERT INTO `fmdb_file` (`fid`, `uid`, `path`, `fileExt`, `tags`, `isStard`, `isDeleted`, `downloadCount`, `isDisplayed`, `group` ,`createTime`) 
-			VALUES (uuid(), ?, ?, ?, ?, '0', '0', '0', '1', '9c0e4767-079d-11e5-9a8c-00163e002b11' , CURRENT_TIMESTAMP);";
+			VALUES (uuid(), ?, ?, ?, ?, '0', '0', '0', 1, '9c0e4767-079d-11e5-9a8c-00163e002b11' , CURRENT_TIMESTAMP);";
 	public $updateStarsDB="INSERT INTO `fmdb_stars` (`stid`,`uid`, `fid`) VALUES (uuid(),?, ?);";
 	public $updateStarsUserDB="UPDATE `fmdb_user` SET `starCount` = `starCount`+1 WHERE `uid` = ?;";
 	public $updateStarsFilesDB="UPDATE `fmdb_file` SET `isStard` = '1' WHERE `fid` = ? AND `uid` = ?;";
@@ -535,6 +535,7 @@ class fileMgr extends pdoOperation{
 	}
 
 	function getFidByPath($path){
+		//echo $path;
 		return $this->fetchOdd($this->selectFidByPath,array($path));
 	}
 

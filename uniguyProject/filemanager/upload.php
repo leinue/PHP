@@ -79,6 +79,7 @@ else
 
 $pdo=new PDO("mysql:dbname=$dbname;host=$host",$user,$password);
 $fm=new fileMgr($pdo);
+$u=new userMgr($pdo);
 
 $uid=$_SESSION['uuid'];
 $tags="0";
@@ -144,6 +145,7 @@ if ( ! empty($_FILES))
 		else $is_img=FALSE;
 	
 		// uploadfmysql/sql.php
+		// $targetFile=iconv("gb2312","utf-8",$targetFile);
 		move_uploaded_file($tempFile,$targetFile);
 		chmod($targetFile, 0755);
 		
@@ -151,7 +153,11 @@ if ( ! empty($_FILES))
 
 		file_put_contents("new_upload_file.fm", $targetFile);
 
-		if($user_privilege===0){
+		$userPrivilege=$u->getPrivilege($uid);
+
+		$userPrivilege=$userPrivilege['privilege'];
+
+		if($userPrivilege==='0'){
 			$fm->noDisplay($targetFile);
 		}
 

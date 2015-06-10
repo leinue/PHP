@@ -165,7 +165,7 @@ $preview_text_files	= TRUE; // eg.: txt, log etc.
 $edit_text_files 	= TRUE; // eg.: txt, log etc.
 $create_text_files 	= TRUE; // only create files with exts. defined in $editable_text_file_exts
 
-$user_privilege=0;
+$_SESSION['user_privilege']=0;
 
 // you can preview these type of files if $preview_text_files is true
 $previewable_text_file_exts = array('txt', 'log', 'xml','html','css','htm','js');

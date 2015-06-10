@@ -454,7 +454,6 @@ $(document).ready(function(){
 	    $('.view-controller i').removeClass('icon-white');
 	    _this.addClass('btn-inverse');
 	    _this.find('i').addClass('icon-white');
-
 	    $.ajax({
 				url: "ajax_calls.php?action=view&type="+_this.attr('data-value')
 			    }).done(function( msg ) {
@@ -1249,8 +1248,8 @@ function apply_none(file,external){
       $.ajax({
           url: _this.attr('data-url'),
           success: function(data) {
-						bootbox.alert(data);
-    			}
+				bootbox.alert(data);
+    	  }
       });
 		}else{
 			var _this=$('li[data-name="'+file+'"]').find('.modalAV');

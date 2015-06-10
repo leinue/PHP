@@ -19,9 +19,9 @@ $userPrivilege=$user->getPrivilege($uuid);
 
 $userPrivilege=$userPrivilege['privilege'];
 
-if($userPrivilege==='0'){
+if($userPrivilege==='0' || !$userPrivilege){
 	$delete_files		= FALSE;
-	$create_folders		= FALSE;
+	$create_folders		= TRUE;
 	$delete_folders		= FALSE;
 
 	$rename_files		= FALSE;
@@ -33,7 +33,7 @@ if($userPrivilege==='0'){
 	$preview_text_files	= TRUE; // eg.: txt, log etc.
 	$edit_text_files 	= FALSE; // eg.: txt, log etc.
 
-	$user_privilege		= 0;
+	$_SESSION['user_privilege']=0;
 }else if($userPrivilege==='1'){
 	$delete_files		= TRUE;
 	$create_folders		= TRUE;
@@ -48,7 +48,7 @@ if($userPrivilege==='0'){
 	$preview_text_files	= TRUE; // eg.: txt, log etc.
 	$edit_text_files 	= TRUE; // eg.: txt, log etc.
 
-	$user_privilege		= 1;
+	$_SESSION['user_privilege']=1;
 }
 
 if (USE_ACCESS_KEYS == TRUE){
@@ -320,6 +320,19 @@ $get_params = http_build_query(array(
     'fldr'      => '',
 ));
 
+$VlaueFldr=$_GET['fldr'];
+print_r($VlaueFldr);
+if($VlaueFldr=='/' && $_SESSION['RF']["subfolder"]=='328eb3c3-d632-11e4-9a8c-00163e002b11'){
+	$_SESSION['RF']["view_type"]=1;
+}else{
+	if(strrpos($VlaueFldr, '/')==strlen($VlaueFldr)-1){
+		echo "'/在最后')</script>";		
+		$_SESSION['RF']['view_type']=1;
+	}else{
+		$_SESSION['RF']['view_type']=0;
+	}
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -505,7 +518,7 @@ $get_params = http_build_query(array(
 	<input type="hidden" id="base_url" value="<?php echo $base_url?>"/>
 	<input type="hidden" id="base_url_true" value="<?php echo base_url(); ?>"/>
 	<input type="hidden" id="fldr_value" value="<?php echo $subdir; ?>"/>
-	<input type="hidden" id="sub_folder" value="<?php echo $rfm_subfolder; ?>"/>
+	<input type="hidden" id="sub_folder" value="<?php echo $rfm_subfolder.$subdir; ?>"/>
   <input type="hidden" id="return_relative_url" value="<?php echo $return_relative_url == true ? 1 : 0;?>"/>
   <input type="hidden" id="lazy_loading_file_number_threshold" value="<?php echo $lazy_loading_file_number_threshold?>"/>
 	<input type="hidden" id="file_number_limit_js" value="<?php echo $file_number_limit_js; ?>" />
@@ -959,15 +972,18 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 				$file_prevent_rename = isset($filePermissions[$file]['prevent_rename']) && $filePermissions[$file]['prevent_rename'];
 				$file_prevent_delete = isset($filePermissions[$file]['prevent_delete']) && $filePermissions[$file]['prevent_delete'];
 			    }
-			    ?><figure data-name="<?php echo $file ?>" class="<?php if($file=="..") echo "back-"; ?>directory" data-type="<?php if($file!=".."){ echo "dir"; } ?>">
+			    ?><figure data-name="<?php echo $file ?>" class="<?php if($file=="..") {echo "back-";} ?>directory" data-type="<?php if($file!=".."){ echo "dir"; } ?>">
 			    <?php if($file==".."){ ?>
+			    <?php
+			    ?>
 			    	<input type="hidden" class="path" value="<?php echo str_replace('.','',dirname($rfm_subfolder.$subdir)); ?>"/>
 			    	<input type="hidden" class="path_thumb" value="<?php echo dirname($thumbs_path.$subdir)."/"; ?>"/>
-			    <?php } ?>
-				  <a class="folder-link" href="dialog.php?<?php echo $get_params.rawurlencode($src)."&".uniqid() ?>">
+			    <?php }else{
+			    } ?>
+				  <a class="folder-link" href="dialog.php?<?php echo $get_params.rawurlencode($src)."&".uniqid(); ?>">
 					  <div class="img-precontainer">
 							<div class="img-container directory"><span></span>
-							<img class="directory-img"  src="img/<?php echo $icon_theme; ?>/folder<?php if($file==".."){ echo "_back"; }?>.png" />
+							<img class="directory-img" src="img/<?php echo $icon_theme; ?>/folder<?php if($file==".."){ echo "_back"; }?>.png" />
 							</div>
 					  </div>
 				    <div class="img-precontainer-mini directory">
@@ -1155,7 +1171,6 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 				    <form action="force_download.php" method="post" class="download-form" id="form<?php echo $nu; ?>">
 					<input type="hidden" name="path" value="<?php echo $rfm_subfolder.$subdir?>"/>
 					<input type="hidden" class="name_download" name="name" value="<?php echo $file?>"/>
-					
 				    <a title="<?php echo lang_Download?>" class="tip-right" href="javascript:void('')" onclick="$('#form<?php echo $nu; ?>').submit();"><i class="icon-download"></i></a>
 				    <?php if($is_img && $src_thumb!=""){ ?>
 				    <a style="display:none;" class="tip-right preview" title="<?php echo lang_Preview?>" data-url="<?php echo $src;?>" data-toggle="lightbox" href="#previewLightbox"><i class=" icon-eye-open"></i></a>
@@ -1212,6 +1227,36 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
     foreach ($files_prevent_duplicate as $key => $value): ?>
         files_prevent_duplicate[<?php echo $key;?>] = '<?php echo $value; ?>';
     <?php endforeach; ?>
+
+
+function getExplorer() {
+	var explorer = window.navigator.userAgent ;
+	//ie 
+	if (explorer.indexOf("MSIE") >= 0) {
+		return 'ie';
+	}
+	//firefox 
+	else if (explorer.indexOf("Firefox") >= 0) {
+		return 'ff';
+	}
+	//Chrome
+	else if(explorer.indexOf("Chrome") >= 0){
+		return 'chrome';
+	}
+	//Opera
+	else if(explorer.indexOf("Opera") >= 0){
+		return 'opera';
+	}
+	//Safari
+	else if(explorer.indexOf("Safari") >= 0){
+		return 'safari';
+	}
+}
+
+var ex=getExplorer();
+if(ex='chrome'){
+	$('.grid .figcaption').css('padding:','0px');
+}
 </script>
 
     <!-- lightbox div start -->    

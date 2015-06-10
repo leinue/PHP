@@ -1259,17 +1259,26 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 	    <script type="text/javascript">
 	    	$('.load-more-div').click(function(){
 	    		$.get('ajax/addfileloadcount.php',function(){
+	    			localStorage.fromLoadMore="true";
 	    			location.reload();
 	    		});
 	    	});
-
-	    	window.onbeforeunload = function(){   
+/*	    	window.onbeforeunload = function(){   
               	var n = window.event.screenX - window.screenLeft;   
               	var b = n > document.documentElement.scrollWidth-20;   
               	if(b && window.event.clientY < 0 || window.event.altKey){  
                     window.event.returnValue = "$.get('ajax/unsetSession.php')"; 
               	}
        		}
+*/
+			console.log(localStorage.fromLoadMore);
+       		$(window).unload(function(){
+				if(localStorage.fromLoadMore=='false' || localStorage.fromLoadMore=='undefined'){
+					console.log(localStorage.fromLoadMore);
+					$.get('ajax/unsetSession.php');
+				}
+				localStorage.fromLoadMore='false';
+			}); 
 	    </script>
 	    <?php } ?>
 	</div>

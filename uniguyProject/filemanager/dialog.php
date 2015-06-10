@@ -214,6 +214,19 @@ if(!isset($_SESSION['RF']["view_type"]))
 	$_SESSION['RF']["view_type"] = $view; 
 }
 
+$VlaueFldr=$_GET['fldr'];
+if($_SESSION['RF']["subfolder"]=='328eb3c3-d632-11e4-9a8c-00163e002b11'){
+	if($VlaueFldr=='/'){
+		$_SESSION['RF']["view_type"]=0;
+	}else{
+		if(strrpos($VlaueFldr, '/')==strlen($VlaueFldr)-1){
+			$_SESSION['RF']['view_type']=1;
+		}else{
+			$_SESSION['RF']['view_type']=0;
+		}
+	}
+}
+
 if (isset($_GET['view']))
 {
 	$view = fix_get_params($_GET['view']); 
@@ -320,18 +333,6 @@ $get_params = http_build_query(array(
     'fldr'      => '',
 ));
 
-$VlaueFldr=$_GET['fldr'];
-print_r($VlaueFldr);
-if($VlaueFldr=='/' && $_SESSION['RF']["subfolder"]=='328eb3c3-d632-11e4-9a8c-00163e002b11'){
-	$_SESSION['RF']["view_type"]=1;
-}else{
-	if(strrpos($VlaueFldr, '/')==strlen($VlaueFldr)-1){
-		echo "'/在最后')</script>";		
-		$_SESSION['RF']['view_type']=1;
-	}else{
-		$_SESSION['RF']['view_type']=0;
-	}
-}
 
 ?>
 

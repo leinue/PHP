@@ -35,6 +35,6 @@ header('Content-Disposition: attachment; filename="'.($name).'"');
 readfile($path.$name);
 
 $mysqlPath=$fm->getFidByPath($path.$name);
-$fm->download($mysqlPath['fid'],$_SESSION['RF']['subfolder']);
+$fm->download($mysqlPath['fid'],$_SESSION['uuid']);
 exit;
 ?>

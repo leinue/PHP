@@ -1380,9 +1380,9 @@ if(ex='chrome'){
         			context: document.body, 
         			success: function(data){
         			if(data.indexOf('success')!=-1){
-        				alert('成功');
+        				alert('标星成功');
         			}else{
-        				alert('失败');
+        				alert('标星失败');
         			}
       			}});
         	}

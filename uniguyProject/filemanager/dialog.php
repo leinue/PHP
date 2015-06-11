@@ -936,7 +936,7 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 		<div class="file-name"><a class="sorter sort-name <?php if($sort_by=="name"){ echo ($descending)?"descending":"ascending"; } ?>" href="javascript:void('')" data-sort="name"><?php echo lang_Filename; ?></a></div>
 		<div class="file-date"><a class="sorter sort-date <?php if($sort_by=="date"){ echo ($descending)?"descending":"ascending"; } ?>" href="javascript:void('')" data-sort="date"><?php echo lang_Date; ?></a></div>
 		<div class="file-size"><a class="sorter sort-size <?php if($sort_by=="size"){ echo ($descending)?"descending":"ascending"; } ?>" href="javascript:void('')" data-sort="size"><?php echo lang_Size; ?></a></div>
-		<div class='img-dimension'><?php echo lang_Dimension; ?></div>
+		<!-- <div class='img-dimension'><?php echo lang_Dimension; ?></div> -->
 		<div class='file-extension'><a class="sorter sort-extension <?php if($sort_by=="extension"){ echo ($descending)?"descending":"ascending"; } ?>" href="javascript:void('')" data-sort="extension"><?php echo lang_Type; ?></a></div>
 		<div class='file-operations'><?php echo lang_Operations; ?></div>
 	    </div>
@@ -1187,9 +1187,9 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 				<input type="hidden" class="name" value="<?php echo $file_array['file_lcase']; ?>"/>
 				<div class="file-date"><?php echo date(lang_Date_type,$file_array['date'])?></div>
 				<div class="file-size"><?php echo makeSize($file_array['size'])?></div>
-				<div class='img-dimension'><?php if($is_img){ echo $img_width."x".$img_height; } ?></div>
+				<!-- <div class='img-dimension'><?php if($is_img){ echo $img_width."x".$img_height; } ?></div> -->
 				<div class='file-extension'><?php echo $extension_lower; ?></div>
-				<figcaption>
+				<figcaption id="#fucklistalter">
 				    <form action="force_download.php" method="post" class="download-form" id="form<?php echo $nu; ?>">
 					<input type="hidden" name="path" value="<?php echo $rfm_subfolder.$subdir?>"/>
 					<input type="hidden" class="name_download" name="name" value="<?php echo $file?>"/>
@@ -1321,8 +1321,8 @@ function getExplorer() {
 }
 
 var ex=getExplorer();
-if(ex='chrome'){
-	$('.grid .figcaption').css('padding:','0px');
+if(ex=='chrome'){
+	$('.list-view1.grid figcaption').css('padding','0px').css('padding-top','8px');
 }
 </script>
 

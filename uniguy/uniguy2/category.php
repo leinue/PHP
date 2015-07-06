@@ -1,38 +1,27 @@
+<?php get_header(); ?>
 
-<section>
-	<div class="news-block">
-		<ul>
-		<?php 
-        foreach(get_all_category_ids() as $v){
-            $cat_info=get_category($v);
-            if($cat_info->parent!='0'){
-            	$parent_info=get_category($cat_info->parent);
-            	if($parent_info->name=='news'){
-            		$link=get_category_link($cat_info->term_id)."?$cat_info->term_id";
-            		echo "<li>
-						<a href=\"$link\"><img src=\"$cat_info->description\"></a>
-						<span class=\"help-block\"><a href=\"$link\">$cat_info->name</a></span>
-					</li>";
-            	}
-            }
-        }
-		?>
-		</ul>
-	</div>
-
-	<div class="post-block">
+<div class="post-block">
 
 	<?php
 		$previous_year = $year = 0;
 		$previous_month = $month = 0;
 		$ul_open = false;
 
-		$myposts = get_posts('numberposts=10&orderby=post_date&order=DESC');
+		$current_url=add_query_arg($wp->query_string,'',home_url($wp->request));
+		$current_url='http://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"];
+		$cateid=explode("?", $current_url);
+		$flag=-1;
+		$myposts = get_posts('numberposts=10&orderby=&category='.$cateid[1].'post_date&order=DESC');
+
+
 	?>
 
 	<?php foreach($myposts as $post) : ?>
 
 	<?php
+
+		$flag+=1;
+
 		setup_postdata($post);
 		$year = mysql2date('Y', $post->post_date);
 		$month = mysql2date('n', $post->post_date);
@@ -70,5 +59,24 @@
 			<li><?php previous_posts_link('上一页'); ?></li>
 			<li><?php next_posts_link('下一页'); ?></li>
 		</ul>
-	</div>
-</section>
+
+	<?php
+		if($flag<0){
+			echo '<div style="width:100%;text-align:center;"><h2>暂无文章</h2></div>';
+		}
+	?>
+</div>
+
+<?php get_footer(); ?>
+
+<?php
+
+if($flag<0){
+	echo "
+				<script>
+					$('footer').css('position','absolute').css('bottom','0');
+				</script>
+			";
+}
+
+?>

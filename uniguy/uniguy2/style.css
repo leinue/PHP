@@ -618,11 +618,13 @@ footer p{margin-bottom: -6px;}
 	font-size: 32px;
 	font-weight: lighter;
 	color: #333;
+	text-align: left;
 }
 
 .case-block ul li:last-child{
 	font-size: 14px;
 	color:#444;
+	text-align: right;
 }
 
 .case-block ul li,.case-block ul li span,.case-block ul li img{

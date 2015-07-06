@@ -2,7 +2,7 @@
 	
 	<section>
 		<div class="content-panel">
-			<div class="content-heading">
+			<div style="text-align:center" class="content-heading">
 				<div class="heading-title"><?php the_title(); ?></div>
 				<div class="img-desc">
 					<span><a href="<?php echo get_option('home'); ?>">主页</a></span>&nbsp;/&nbsp;
@@ -20,7 +20,8 @@
 				        没有文章！
 				    </div>
 			    <?php endif; ?>
-			    <?php the_content(); ?></p>
+			    <?php the_content(); ?>
+			    </p>
 			</div>
 			<div class="content-tags">
 				<ul class="tags">
@@ -28,8 +29,7 @@
 				</ul>
 			</div>
 
-			<div class="ds-thread" data-thread-key="<?php the_title(); ?>" data-title="<?php the_title(); ?>" data-url="<?php the_permalink(); ?>"></div>
-			<script type="text/javascript">
+		<div class="ds-thread" data-thread-key="<?php the_title(); ?>" data-title="<?php the_title(); ?>" data-url="<?php the_permalink(); ?>"></div>			<script type="text/javascript">
 			var duoshuoQuery = {short_name:"uniguy-unity"};
 				(function() {
 					var ds = document.createElement('script');
@@ -43,6 +43,8 @@
 		</div>
 
 	</section>
+
+
 
 <?php get_footer(); ?>
 <script type="text/javascript">

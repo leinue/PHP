@@ -453,11 +453,11 @@ footer p{margin-bottom: -6px;}
 }
 
 .news-block ul li:first-child{
-	text-align: left;
+	/*text-align: left;*/
 }
 
 .news-block ul li:last-child{
-	text-align: right;
+	/*text-align: right;*/
 }
 
 .news-block ul li a img{
@@ -776,4 +776,116 @@ footer p{margin-bottom: -6px;}
 	height: 600px;
 	background-size: 100% 100%;
 	background-image:url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIxJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjI1JSIgc3RvcC1jb2xvcj0iI2Y0ZjRmNCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4="); 
+}
+
+.content-panel{
+	width: 1200px;
+	height: 150px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+/*右边主页头部*/
+.content-heading{
+	border-bottom: 1px solid rgb(230,230,230);
+	padding-bottom: 14px;
+	text-align: left;
+	padding-top: 20px;
+}
+
+.content-heading h1{
+	font-size: 200%;
+	font-weight: lighter;
+	color: rgb(75,75,75);
+}
+
+.content-heading h3{
+	font-size: 110%;
+	color: rgb(60,60,60);
+	letter-spacing: -0.02em;
+	font-weight: lighter;
+}
+
+.heading-title{
+	font-size: 26px;
+	color: rgb(75,75,75);
+}
+
+.img-desc{
+	margin-top: 6px;
+	font-size: 16px;
+	color: rgb(119,119,119);
+}
+
+.img-desc span a{
+	color: rgb(119,119,119);
+	font-weight: 200;
+	list-style: none;
+}
+
+/*图片详细描述区域*/
+
+.content-detail{
+	text-align: left;
+	width: 1200px;
+	margin: 0 auto;
+	margin-top: 20px;
+	color: rgb(119,119,119);
+}
+
+.de-title{
+	font-size: 20px;
+	text-align: center;
+}
+
+.de-desc,.content-detail p{
+	text-indent: 2em;
+	font-size: 1.2em;
+	font-weight: 200;
+}
+
+/*右边显示图片区域*/
+.content-body-img{
+	margin-top: 10px;
+	text-align: center;
+	color: rgb(119,119,119);
+	margin: 0 auto;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin-bottom: 10px;
+}
+
+.content-body-img img{
+	width: 500px;
+	height:500px; 
+}
+
+.content-body-img a,.content-body-img a{
+	color: rgb(119,119,119);
+}
+
+.content-body-img img:hover{cursor: pointer;}
+
+/*标签区域*/
+
+.content-tags{
+	margin-top: 60px;
+	border: 1px solid rgb(230,230,230);
+	background: rgb(255,255,255);
+	margin-bottom: 20px;
+	width: 1200px;
+	overflow-y: auto;
+}
+
+.tags{
+	list-style: none;
+	float: left;
+	margin-left: -20px;
+}
+
+.tags li{
+	float: left;
+	margin-right: 20px;
+	color: rgb(37,143,184);
+	font-size: 14px;
 }

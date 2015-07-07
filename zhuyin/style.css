@@ -1,0 +1,166 @@
+body{
+    background: rgb(26,26,26);
+    color: rgb(204,204,204);
+}
+
+header{
+    border-bottom:1px solid rgb(42,42,42);
+    background: rgb(26,26,26);
+}
+
+header .tidy-menu ul li a{
+    color: rgb(204,204,204);
+}
+
+header .tidy-menu{
+    width: 100%;
+}
+
+header .tidy-menu ul li:hover{
+    background: rgb(255,102,102);
+    color: rgb(204,204,204);
+}
+
+.tidy-menu-active{
+    background: rgb(255,102,102);
+    color: rgb(204,204,204);
+}
+
+.tidy-menu-active a{
+    color: rgb(204,204,204);
+}
+
+.main-section{
+    padding: 2em;
+    margin: 0px;
+}
+
+.main-section div{
+}
+
+.hero-tagline {
+    font-size: 220%;
+}
+
+.hero-tagline {
+    font-size: 150%;
+    font-weight: 200;
+    line-height: 1.5;
+    margin: 0px 0px 1em;
+    color: rgb(130,130,130);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: lighter;
+    color: rgb(204,204,204);
+}
+
+.main-box{
+    background: rgb(46,46,46);
+    color: rgb(204,204,204);
+    text-shadow: none;
+    display: block;
+    position: relative;
+    font-size: 2.2rem;
+    overflow: hidden;
+    padding:1.2em;
+}
+
+.hero-title{
+	text-align: center;
+}
+
+.hero-title .hero-logo{
+	font-size: 260%;
+}
+
+.function-btn{
+	text-align: center;
+}
+
+.marketing{
+	border-bottom: 1px solid #EEE;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	padding-bottom: 2em;
+}
+
+.marketing.noborder{
+	border:none;
+}
+.marketing.nopadding{
+	padding: 0;
+}
+.marketing.nomargin{
+	margin: 0;
+}
+
+.marketing.withpadding{
+	padding: 2em;
+	margin: 0;
+}
+
+.header, .content {
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.content {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1em;
+    padding-right: 1em;
+    max-width: 768px;
+}
+
+.marketing .content {
+    margin-bottom: 0px;
+}
+
+.marketing .content legend p{
+	font-weight: 600;
+}
+
+.marketing .content legend p,.marketing .content legend ol li{
+	color: rgb(119,119,119);
+}
+
+.marketing-header {
+    font-size: 150%;
+}
+.marketing-header {
+    font-weight: 400;
+}
+.marketing-subheader{
+	border-left: 3px solid rgb(238,238,238);
+	padding-left: .5em;
+}
+.marketing .content p{
+	font-size: .95em;
+}
+
+.doc-capation{
+	padding: 2em;
+}
+
+.doc-capation .list-group a{
+	border:none;
+	color: rgb(118,118,118);
+}
+
+.header {
+    font-family: "微软雅黑","Raleway","Helvetica Neue",Helvetica,Arial,sans-serif;
+    max-width: 768px;
+    margin: 0px auto;
+    padding: 1em;
+    text-align: center;
+    border-bottom: 1px solid #EEE;
+    background: #FFF none repeat scroll 0% 0%;
+    letter-spacing: 0.05em;
+}
+
+.header h1 {
+    font-size: 200%;
+    font-weight: 100;
+    margin: 0px;
+}

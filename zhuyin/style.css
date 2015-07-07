@@ -8,17 +8,22 @@ header{
     background: rgb(26,26,26);
 }
 
-header .tidy-menu ul li a{
-    color: rgb(204,204,204);
+.tidy-menu ul{
+    width: 100%;
 }
 
-header .tidy-menu{
-    width: 100%;
+header .tidy-menu ul li a{
+    color: rgb(204,204,204);
 }
 
 header .tidy-menu ul li:hover{
     background: rgb(255,102,102);
     color: rgb(204,204,204);
+}
+
+
+header .tidy-menu ul li a:active{
+    color: rgb(204,204,204);   
 }
 
 .tidy-menu-active{
@@ -30,8 +35,12 @@ header .tidy-menu ul li:hover{
     color: rgb(204,204,204);
 }
 
+.tidy-menu.alpha{
+    opacity: 0.5!important;
+}
+
 .main-section{
-    padding: 2em;
+    /*padding: 2em;*/
     margin: 0px;
 }
 

@@ -1,0 +1,107 @@
+<html>
+
+<head>
+<meta charset="utf8">
+<style type="text/css">
+	
+	body{
+		padding: 4px;
+	}
+
+	.st{list-style:none;border-bottom: 1px solid rgb(212,212,212);padding-bottom: 6px;}.st li{margin-left: -20px;margin-right: 20px;}.st li:first-child{color: rgb(160,160,160);font-size: 13px;}.st li:nth-child(2){font-size: 13px;font-weight: 600;margin-bottom: 4px;}.rv li:first-child,.rv li:nth-child(2){text-align: right;}
+	
+	.response-list{
+		width: 100%;
+		margin-top: 6px;
+		border-bottom: 2px solid rgb(137,137,137);
+		color: rgb(31,31,31);
+	}
+
+	.response-ask{
+		display: table;
+		width: 100%;
+		margin-bottom: 16px;
+		margin-top: 16px;
+	}
+
+	.response-ask ul{
+		list-style: none;
+		display: table-row;
+		width: 100%;
+	}
+
+	.response-ask ul li{
+		display: table-cell;
+		width: 50%;
+	}
+
+	.response-ask ul li:first-child{
+		padding-left: 20px;
+		text-align: left;
+	}
+
+	.response-ask ul li:last-child{
+		padding-right: 20px;
+		text-align: right;
+		color: rgb(170,170,170);
+		font-size: 14px;
+	}
+
+	.response-post{
+		margin-top: 6px;
+		display: table;
+		text-indent: 2em;
+		padding-top: 4px;
+		padding-left: 20px;
+		padding-right: 16px;
+		padding-bottom: 18px;
+	}
+
+	.response-split-col{
+		border-top: 2px solid rgb(220,220,220);
+		margin-left: 3.4em;
+		margin-bottom: 14px;
+	}
+
+	.submit-new-question{
+		text-align: right;
+		padding: 16px;
+	}
+
+</style>
+
+</head>
+
+<body>
+
+<a href="#" class="scrollToBottom">Scroll to bottom</a>
+
+<div id="content">
+	
+</div>
+
+<script type="text/javascript">
+
+    	var response='<div class="response-split-col"></div><div class="response-ask"><ul><li class="response-title">回复：</li><li class="response-time">2015-04-29 12:05:05</li></ul></div><div class="response-post">这是回复这是回复这是回复这是回复这是回复这是回复这是回复这是回复这是回复这是回复这是回复这是回复这是回复这是回复这是回复这是回复这是回复这是回复这是回复这是回复这是回复</div>';
+    	var question='<div class="response-list"><div class="response-ask"><ul><li class="response-title">能不能和其他人合作完成这个需求</li><li class="response-time">2015-04-29 12:05:05</li></ul></div><div class="response-post">感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好</div><div class="submit-new-question"><input type="button" onclick="anwser(this)" value="回答此问题" /></div></div><div class="submit-new-question"><input type="button" onclick="submitNew(this)" value="提出新问题" /></div>';
+
+    	function anwser(obj){obj.style.display='none';obj.parentNode.parentNode.innerHTML+=response;}
+    	function submitNew(obj){obj.style.display='none';obj.parentNode.parentNode.innerHTML+=question;}
+
+    	var htmldom='<div><ul class="st"><li>20150228</li><li>客户经理15号</li><li>我已经向您发送项目评估,请尽快给出估价.谢谢</li>	</ul><ul class="st rv"><li>20150228</li><li>客户经理08号</li><li>我正在对项目进行评估,稍候进行报价</li></ul></div>';document.writeln(htmldom);
+    	document.getElementById('content').innerHTML+='<div class="response-list"><div class="response-ask"><ul><li class="response-title">为什么我下载的文件里有大量空白</li><li class="response-time">2015-04-29 12:05:05</li></ul></div><div class="response-post">感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好</div><div class="response-split-col"></div><div class="response-ask"><ul><li class="response-title">回复：</li><li class="response-time">2015-04-29 12:05:05</li></ul></div><div class="response-post">这是回复这是回复这是回复这是回复这是回复这是回复这是回复这是回复这是回复这是回复这是回复这是回复这是回复这是回复这是回复这是回复这是回复这是回复这是回复这是回复这是回复</div></div><div class="response-list"><div class="response-ask"><ul><li class="response-title">能不能和其他人合作完成这个需求</li><li class="response-time">2015-04-29 12:05:05</li></ul></div><div class="response-post">感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好感觉上海的工人没有江苏的好</div><div class="submit-new-question"><input type="button" onclick="anwser(this)" value="回答此问题" /></div></div><div class="submit-new-question"><input type="button" onclick="submitNew(this)" value="提出新问题" /></div>';
+
+</script>
+
+</body>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('a.scrollToBottom').click(function(){
+			$('html, body ,#content').animate({scrollTop: $(document).height()}, 300);
+			return false;
+		});
+	});
+</script>
+
+</html>

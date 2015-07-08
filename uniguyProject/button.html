@@ -1,0 +1,279 @@
+<htmnl>
+<head>
+	<meta charset="utf8">
+	<style type="text/css">
+
+		.box-area{
+			width: 100%;
+			margin-top: 12px;
+		}
+
+		.main-box{
+			padding: 10px;
+			color: rgb(31,31,31);
+			box-shadow: 0px 0px 6px 1px rgb(204,204,204);
+			margin-bottom: 12px;
+			cursor: pointer;
+			overflow: hidden;
+		}
+
+		.main-box:hover{box-shadow: 0px 0px 6px 0px #09C7F7;}
+
+		.main-box input{
+			border:none;
+			border-top: 1px solid rgb(137,137,137);
+			width: 100%;
+			color: rgb(137,137,137);
+			margin-top: 6px;
+			padding-top: 4px;
+			font-size: 16px;
+			font-weight:400; 
+		}
+
+		.red-circle{
+		   background: #D56F2B!important;
+		   opacity: 1!important;
+		}
+
+		.yellow-circle{
+		   background: #FFFF00!important;
+		   opacity: 1!important;
+		}
+
+		.green-circle{
+		   background: #33FF00!important;
+		   opacity: 1!important;
+		}
+
+		.main-box-del{
+		   color: rgb(137,137,137);
+		}
+
+		.main-box-circle{
+		   width: 0.7em;
+		   height: 0.7em;
+		   border-radius: .35em;
+		   background: #33FF00;
+		   margin-right: 20px;
+		   margin-top: 4px;
+		   opacity: 0;
+		}
+
+		.main-content{
+			margin-left: 36px;
+			margin-top: -16px;
+			word-wrap: break-word; 
+			word-break: normal;
+		}
+
+		.mb-active{
+			box-shadow: 0px 0px 6px 1px #1A6BE6!important;
+		}
+
+		.edit-finish{
+			text-decoration: none!important;
+			color: rgb(31,31,31);
+		}
+	</style>
+</head>
+<body>
+	<div class="box-area">
+		<div onclick="changeStatus(this)" class="main-box">
+			<div class="main-box-circle green-circle"></div>
+		 	<div class="main-content"><span>ddssdsddssdsddssdsddssdsddssdsddsssddssdsddssdsddssdsddssdsddssdsddsssddssdsddssdsddssdsddssdsddssdsddsssddssdsddssdsddssdsddssdsddssdsddsssddssdsddssdsddssdsddssdsddssdsddsssddssdsddssdsddssdsddssdsddssdsddsssddssdsddssdsddssdsddssdsddssdsddsssddssdsddss</span></div>
+		</div>
+		<div onclick="changeStatus(this)" class="main-box">
+			<div class="main-box-circle yellow-circle"></div>
+		 	<div class="main-content">dsdfdfd</div>
+		</div>
+		<div onclick="changeStatus(this)" class="main-box main-box-del">
+			<div class="main-box-circle red-circle"></div>
+		 	<div class="main-content">
+		 		<span style="text-decoration:line-through">这是删除效果,给这个div的父div加main-box-del类</span>
+				<input value='这是删除效果,给这个div的父div加main-box-del类' type="text">
+				<button onclick="getValue(this)">submit</button>
+		 	</div>
+		</div>
+		<div onclick="changeStatus(this)" class="main-box">
+			<div class="main-box-circle green-circle"></div>
+		 	<div class="main-content"><span>elmlkds</span></div>
+		</div>
+	</div>
+	<div class="btn-group">
+		<button onclick="back2Origin()">无</button>
+		<button onclick="change2Red()">红</button>
+		<button onclick="change2Yellow()">黄</button>
+		<button onclick="change2Green()">绿</button>
+		<button onclick="addNewBox('新的box')">新建</button>
+		<button onclick="selectAllOrNone()">全选/全不选</button>
+		<button onclick="isAllGreen()">是否全绿</button>
+		<button onclick="isAllYellow()">是否全黄</button>
+	</div>
+
+	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+	<script type="text/javascript">
+
+		var isCtrlKeyPressed=false;
+
+		function isAllGreen(){
+			var allColors=$('.main-box-circle');
+			var allElemLength=allColors.length;
+			var flag=0;
+			for (var i = 0; i < allElemLength; i++) {
+				var thisCls=$(allColors[i]).attr('class');
+				var thisClsColor=thisCls.split(' ');
+				var thisColor=thisClsColor[1].split('-')[0];
+				console.log(thisColor);
+				if(thisColor=='red' || thisColor=='yellow'){
+					alert('不全为绿色');
+					break;
+				}else{
+					flag++;
+				}
+			};
+			if(flag==allElemLength){
+				alert('全为绿色');
+			}
+		}
+
+		function isAllYellow(){
+			var allColors=$('.main-box-circle');
+			var allElemLength=allColors.length;
+			var flag=0;
+			for (var i = 0; i < allElemLength; i++) {
+				var thisCls=$(allColors[i]).attr('class');
+				var thisClsColor=thisCls.split(' ');
+				var thisColor=thisClsColor[1].split('-')[0];
+				console.log(thisColor);
+				if(thisColor=='red' || thisColor=='green'){
+					alert('不全为黄色');
+					break;
+				}else{
+					flag++;
+				}
+			};
+			if(flag==allElemLength){
+				alert('全为黄色');
+			}
+		}
+
+		function changeStatus(obj){
+			if(!isCtrlKeyPressed){
+				$('.mb-active').toggleClass('mb-active');
+			}
+			$(obj).addClass('mb-active');
+		}
+
+		var isAll=false;
+		function selectAllOrNone(){
+			if(isAll){
+				$('.main-box').addClass('mb-active');
+				isAll=false;
+			}else{
+				$('.main-box').removeClass('mb-active');
+				isAll=true;
+			}
+		}
+
+		function addNewBox(content){
+			$('.box-area').append('<div onclick="changeStatus(this)" class="main-box"><div class="main-box-circle green-circle"></div><div class="main-content"><span>'+content+'</span></div></div>');
+		}
+
+		function selectAll(){
+			$('.main-box').toggleClass('mb-active');
+		}
+
+		function toColor(colorName,isRed){
+			isRed=isRed==null?false:true;
+			colorName=colorName==null?'':colorName;
+			if(colorName!=''){
+				if($('.mb-active').length==0){
+					alert('没有选中的项目');
+				}else{
+					$('.mb-active .main-box-circle').attr('class','main-box-circle '+colorName+'-circle');
+					if(isRed){
+						$('.mb-active').attr('class','main-box mb-active main-box-del');
+					}else{
+						$('.mb-active').removeClass('main-box-del');
+					}
+				}	
+			}else{
+				if($('.mb-active').length==0){
+					alert('没有选中的项目');
+				}else{
+					$('.mb-active').removeClass('main-box-del');
+					var colorList=['red','yellow','green'];
+					for (var i = 0; i < colorList.length; i++) {
+						$('.mb-active .main-box-circle').removeClass(colorList[i]+'-circle');
+					}
+					$('.mb-active .main-content').find('span').attr('style','');
+					$('.mb-active').removeClass('.mb-active');
+				}
+			}
+
+			$('.mb-active .main-content input,.mb-active .main-content button').remove();
+			$('.mb-active .main-content').find('span').attr('style','');
+		}
+
+		function back2Origin(){
+			toColor();
+			$('.mb-active .main-content').find('div').remove();
+		}
+
+		function submitGreenBox(obj){
+			$(obj).parent().html($(obj).prev().val());
+		}
+
+		function addElem(){
+			if($('.mb-active').find('.main-content').find('input').length==0){
+				var value=$('.mb-active').find('.main-content span').html();
+				$('.mb-active .main-content').find('span').attr('style','text-decoration:line-through');
+				$('.mb-active .main-content').append('<input value='+value+' type="text"><button onclick="getValue(this)">submit</button>');
+			}
+		}
+
+		function change2Red(){
+			toColor('red',true);
+			addElem();
+		}
+
+		function getValue(obj){
+			var oval=$(obj).prev().val();
+			$(obj).parent().append("<div class='edit-finish'><p style='text-decoration:none!important'>"+oval+"</p></div>");
+			$(obj).prev().remove();
+			$(obj).remove();
+		}
+
+		function change2Yellow(){
+			toColor('yellow');
+			$('.mb-active .main-content').find('div').remove();
+		}
+
+		function change2Green(){
+			toColor('green');
+			$('.mb-active .main-content').find('div').remove();
+		}
+
+		$(document).bind("click",function(e){
+			var target=$(e.target);
+			if(target.closest(".main-box,.btn-group").length==0){
+				$('.mb-active').removeClass('mb-active');
+			};
+			e.stopPropagation();
+		});
+
+		$(document).keydown(function(e){
+			if(e.ctrlKey==1){
+				isCtrlKeyPressed=true;
+			}
+		});
+
+		$(document).keyup(function(e){
+			if(e.ctrlKey==1){
+				isCtrlKeyPressed=false;
+			}
+		});
+
+	</script>
+</body>
+</htmnl>

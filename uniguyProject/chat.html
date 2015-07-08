@@ -67,18 +67,30 @@
 			float: right;
 			font-size: .8em;
 			margin-top: -1em;
-			margin-right: 0.4em;
+			margin-right: 0.8em;
+			margin-top: 0px;
+		}
+
+		.chat-content{
+			margin-top: 24px;
 		}
 
 		.chat-attachment{
 			width: 130px;
 			height: 140px;
 			border-radius: 10px;
-			background: rgb(111,116,119);
 			padding: .6em;
 			font-size: 0.8em;
 			text-align: center;
 			float: left;
+			color: rgb(0,0,0);
+			border:1px solid rgb(216,216,216);
+			box-shadow: 0px 0px 6px 1px #CCC;
+		}
+
+		.chat-attachment .chat-time{
+			margin-top: 4px;
+			text-align: right;
 		}
 
 		.chat-attachment.right{
@@ -89,6 +101,7 @@
 			width: 100%;
 			height: 60px;
 			text-align: center;
+			margin-top: 30px;
 		}
 
 		.chat-att-preview img{
@@ -98,17 +111,54 @@
 		}
 
 		.chat-att-status{
-			color: rgb(177,177,177);
 			text-align: center;
-			margin-top: 40px;
+			margin-top: 10px;
 		}
 
 		.chat-att-name{
 			margin-top: 0px;
-			color: rgb(255,255,255);
-			font-weight: 800;
 			width: 100%;
 			text-align: center;
+		}
+
+		@media screen and (min-width: 960px) and (max-width: 1199px) {
+			.chat-main{
+				width: 92%;
+			}
+
+			.chat-main.left{
+				width: 92%;
+			}
+		}
+		
+		@media screen and (min-width: 768px) and (max-width: 959px) {
+			.chat-main{
+				width: 90%;
+			}
+
+			.chat-main.left{
+				width: 90%;
+			}
+		}
+
+		@media only screen and (min-width: 480px) and (max-width: 767px){
+			.chat-main{
+				width: 88%;
+			}
+
+			.chat-main.left{
+				width: 88%;
+			}
+		}
+
+		@media only screen and (max-width: 479px) {
+			.chat-main{
+				width: 83%;
+			}
+
+			.chat-main.left{
+				width: 83%;
+			}
 		}
 
 	</style>
@@ -124,7 +174,7 @@
 				</li>
 				<li class="chat-form">
 					<div class="chat-time">2015年01月02日 00:01:21</div>
-					dskm,klm
+					<div class="chat-content">dsdslksm</div>
 				</li>
 			</ul>
 		</div>
@@ -133,7 +183,9 @@
 			<ul>
 				<li class="chat-form">
 					<div class="chat-time">2015年01月02日 00:01:21</div>
-					就是当年都是你说的都是可考虑的是
+					<div class="chat-content">
+						就是当年都是你说的都是可考虑的是就是当年都是你说的都是可考虑的是就是当年都是你说的都是可考虑的是就是当年都是你说的都是可考虑的是就是当年都是你说的都是可考虑的是就是当年都是你说的都是可考虑的是就是当年都是你说的都是可考虑的是就是当年都是你说的都是可考虑的是就是当年都是你说的都是可考虑的是
+					</div>
 				</li>
 				<li class="chat-photo right">
 					<img class="person-photo" src="">	
@@ -160,11 +212,12 @@
 				</li>
 				<li>
 					<div class="chat-attachment">
+						<div class="chat-time">2015年01月02日</div>
 						<div class="chat-att-preview">
 							<img src="">
 						</div>
 						<div class="chat-att-status">
-							哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+							哈哈哈哈哈哈哈
 						</div>
 						<div class="chat-att-name">
 							120k
@@ -178,6 +231,7 @@
 			<ul>
 				<li>
 					<div class="chat-attachment right">
+						<div class="chat-time">2015年01月02日 00:01:21</div>
 						<div class="chat-att-preview">
 							<img src="">
 						</div>
@@ -200,18 +254,20 @@
 
 	<button onclick="send('dssdsd','sdsddssd','sdsdsd')">send</button>
 	<button onclick="recive('sdds','sddssd','sdsdsd')">recive</button>
-	<button onclick="reciveAttachment('sdds','dsds','名字.zip','shit.zip')">recive attachment</button>
-	<button onclick="sendAttachment('sdds','ssd','嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿.zip','shit.zip')">send attachment</button>
+	<button onclick="reciveAttachment('sdds','dsds','名字.zip','120k','2010')">recive attachment</button>
+	<button onclick="sendAttachment('sdds','ssd','嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿.zip','120k','2016')">send attachment</button>
 
 	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
 	<script type="text/javascript">
 			
 		function send(content,time,imgsrc){
-			$('.chat-section').append('<div class="chat-main left"><ul><li class="chat-form"><div class="chat-time">'+time+'</div>'+content+'</li><li class="chat-photo right"><img class="person-photo" src="'+imgsrc+'"></li></ul></div>');
+			$('.chat-section').append('<div class="chat-main left"><ul><li class="chat-form"><div class="chat-time">'+time+'</div><div class="chat-content">'+content+'</div></li><li class="chat-photo right"><img class="person-photo" src="'+imgsrc+'"></li></ul></div>');
+			scrollToBottom();
 		}
 
 		function recive(content,time,imgsrc){
-			$('.chat-section').append('<div class="chat-main"><ul><li class="chat-photo"><img class="person-photo" src="'+imgsrc+'"></li><li class="chat-form"><div class="chat-time">'+time+'</div>'+content+'</li></ul></div>');
+			$('.chat-section').append('<div class="chat-main"><ul><li class="chat-photo"><img class="person-photo" src="'+imgsrc+'"></li><li class="chat-form"><div class="chat-time">'+time+'</div><div class="chat-content">'+content+'</div></li></ul></div>');
+			scrollToBottom();
 		}
 
 		function formatFileName(name){
@@ -229,19 +285,22 @@
 			return name;
 		}
 
-		function sendAttachment(imgsrc,personsrc,name,size){
+		function sendAttachment(imgsrc,personsrc,name,size,time){
 			var name=formatFileName(name);
-			$('.chat-section').append('<div class="chat-main left"><ul><li><div class="chat-attachment right"><div class="chat-att-preview"><img src="'+imgsrc+'"></div><div class="chat-att-status">'+name+'</div><div class="chat-att-name">'+size+'</div></div></li><li class="chat-photo right"><img class="person-photo" src="'+personsrc+'"></li></ul></div>');
+			$('.chat-section').append('<div class="chat-main left"><ul><li><div class="chat-attachment right"><div class="chat-time">'+time+'</div><div class="chat-att-preview"><img src="'+imgsrc+'"></div><div class="chat-att-status">'+name+'</div><div class="chat-att-name">'+size+'</div></div></li><li class="chat-photo right"><img class="person-photo" src="'+personsrc+'"></li></ul></div>');
+			scrollToBottom();
 		}
 
-		function reciveAttachment(imgsrc,personsrc,name,size){
+		function reciveAttachment(imgsrc,personsrc,name,size,time){
 			var name=formatFileName(name);
-			$('.chat-section').append('<div class="chat-main"><ul><li class="chat-photo"><img class="person-photo" src="'+personsrc+'"></li><li><div class="chat-attachment"><div class="chat-att-preview"><img src="'+imgsrc+'"></div><div class="chat-att-status">'+name+'</div><div class="chat-att-name">'+size+'</div></div></li></ul></div>');
+			$('.chat-section').append('<div class="chat-main"><ul><li class="chat-photo"><img class="person-photo" src="'+personsrc+'"></li><li><div class="chat-attachment"><div class="chat-time">'+time+'</div><div class="chat-att-preview"><img src="'+imgsrc+'"></div><div class="chat-att-status">'+name+'</div><div class="chat-att-name">'+size+'</div></div></li></ul></div>');
+			scrollToBottom();
 		}
 
-		$(document).ready(function(){
+		function scrollToBottom(){
+			$('html, body, .chat-section').animate({scrollTop: $(document).height()}, 300);
+		}
 
-		});
 	</script>
 </body>
 

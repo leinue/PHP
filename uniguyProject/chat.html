@@ -11,16 +11,17 @@
 			padding: 0;
 		}
 
-		.chat-section-main{
-			margin:1em;
-		}
-
 		.chat-main{
 			width: 94%;
 			padding: 1em;
 			display: table;
 			overflow: hidden;
 			margin-bottom: -.8em;
+		}
+
+		.chat-main.left{
+			margin-left: 2.6em;
+			width: 94%;
 		}
 
 		.chat-main ul{
@@ -57,11 +58,6 @@
 			box-shadow: 0px 0px 6px 1px #CCC;
 		}
 
-		.chat-main.left{
-			margin-left: 2.6em;
-			width: 94%;
-		}
-
 		.chat-form:hover{
 			box-shadow: 0px 0px 6px 0px #09C7F7;
 		}
@@ -90,14 +86,14 @@
 		}
 
 		.chat-att-preview{
-			width: 60px;
-			height: 60px;	
+			width: 100%;
+			height: 60px;
 			text-align: center;
 		}
 
 		.chat-att-preview img{
 			text-align: center;
-			width: 100%;
+			width: 60px;
 			height: 100%;
 		}
 
@@ -168,17 +164,17 @@
 							<img src="">
 						</div>
 						<div class="chat-att-status">
-							已取消
+							哈哈哈哈哈哈哈哈哈哈哈哈哈哈
 						</div>
 						<div class="chat-att-name">
-							fuckubitch.zip
+							120k
 						</div>
 					</div>
 				</li>
 			</ul>
 		</div>
 
-		<div class="chat-main">
+		<div class="chat-main left">
 			<ul>
 				<li>
 					<div class="chat-attachment right">
@@ -186,10 +182,10 @@
 							<img src="">
 						</div>
 						<div class="chat-att-status">
-							正在发送...
+							哈哈哈哈哈哈哈哈
 						</div>
 						<div class="chat-att-name">
-							fuckubitch.zip
+							120k
 						</div>
 					</div>
 				</li>
@@ -204,8 +200,8 @@
 
 	<button onclick="send('dssdsd','sdsddssd','sdsdsd')">send</button>
 	<button onclick="recive('sdds','sddssd','sdsdsd')">recive</button>
-	<button onclick="reciveAttachment('sdds','dsds','已取消','shit.zip')">recive attachment</button>
-	<button onclick="sendAttachment('sdds','ssd','已取消','shit.zip')">send attachment</button>
+	<button onclick="reciveAttachment('sdds','dsds','名字.zip','shit.zip')">recive attachment</button>
+	<button onclick="sendAttachment('sdds','ssd','嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿.zip','shit.zip')">send attachment</button>
 
 	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
 	<script type="text/javascript">
@@ -218,12 +214,29 @@
 			$('.chat-section').append('<div class="chat-main"><ul><li class="chat-photo"><img class="person-photo" src="'+imgsrc+'"></li><li class="chat-form"><div class="chat-time">'+time+'</div>'+content+'</li></ul></div>');
 		}
 
-		function sendAttachment(imgsrc,personsrc,status,name){
-			$('.chat-section').append('<div class="chat-main"><ul><li><div class="chat-attachment right"><div class="chat-att-preview"><img src="'+imgsrc+'"></div><div class="chat-att-status">'+status+'</div><div class="chat-att-name">'+name+'</div></div></li><li class="chat-photo right"><img class="person-photo" src="'+personsrc+'"></li></ul></div>');
+		function formatFileName(name){
+			var nameLength=name.length;
+			if(nameLength>8){
+				if(name.indexOf('.')!=-1){
+					var nameSplit=name.split('.');
+					var fileExtension=nameSplit[nameSplit.length-1];
+					var charFront=name.substring(0,3);
+					name=charFront+"..."+fileExtension;
+				}else{
+					name=name.substring(0,5)+"...";
+				}
+			}
+			return name;
 		}
 
-		function reciveAttachment(imgsrc,personsrc,status,name){
-			$('.chat-section').append('<div class="chat-main"><ul><li class="chat-photo"><img class="person-photo" src="'+personsrc+'"></li><li><div class="chat-attachment"><div class="chat-att-preview"><img src="'+imgsrc+'"></div><div class="chat-att-status">'+status+'</div><div class="chat-att-name">'+name+'</div></div></li></ul></div>');
+		function sendAttachment(imgsrc,personsrc,name,size){
+			var name=formatFileName(name);
+			$('.chat-section').append('<div class="chat-main left"><ul><li><div class="chat-attachment right"><div class="chat-att-preview"><img src="'+imgsrc+'"></div><div class="chat-att-status">'+name+'</div><div class="chat-att-name">'+size+'</div></div></li><li class="chat-photo right"><img class="person-photo" src="'+personsrc+'"></li></ul></div>');
+		}
+
+		function reciveAttachment(imgsrc,personsrc,name,size){
+			var name=formatFileName(name);
+			$('.chat-section').append('<div class="chat-main"><ul><li class="chat-photo"><img class="person-photo" src="'+personsrc+'"></li><li><div class="chat-attachment"><div class="chat-att-preview"><img src="'+imgsrc+'"></div><div class="chat-att-status">'+name+'</div><div class="chat-att-name">'+size+'</div></div></li></ul></div>');
 		}
 
 		$(document).ready(function(){

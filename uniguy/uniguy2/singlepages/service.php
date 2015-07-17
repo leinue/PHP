@@ -2,60 +2,60 @@
 <section>
 	<div class="gallery-content">
 	<?php
-		print_r($ashu_option);
+		$serviceData=$ashu_option['service'];
 	?>
-		<img src="http://images.apple.com/v/osx/c/images/overview/hero_large.jpg">
+		<img src="<?php echo $serviceData['service_bg']; ?>">
 		<div class="gallery-heading page-service">
-			<img src="http://images.apple.com/v/osx/c/images/overview/hero_icon_large.png">
+			<img src="<?php echo $serviceData['service_small_img']; ?>">
 			<div class="page-heading-outline">
-				<h1>我们的服务</h1>
-				<h5>每一点凝聚的强大，处处尽现</h5>
+				<h1><?php echo $serviceData['service_big_title']; ?></h1>
+				<h5><?php echo $serviceData['service_medium_title']; ?></h5>
 			</div>	
 			<div class="page-heading-detail">
-				<p>优雅的设计带来令人耳目一新的感觉，与此同时，又会让人倍感亲切。你日常所用的 app 增加了新的功能，而今愈加强大</p>
+				<p><?php echo $serviceData['service_small_title']; ?></p>
 			</div>
 		</div>
 	</div>
 
 	<div class="product-info">
 		<div class="heading-product">
-			<h2>蛤蛤蛤蛤</h2>
-			<p class="product-subheading">蛤蛤蛤蛤,蛤蛤蛤蛤</p>
+			<h2><?php echo $serviceData['propaganda1_big_title]']; ?></h2>
+			<p class="product-subheading"><?php echo $serviceData['propaganda1_medium_title']; ?></p>
 			<div class="product-detail">
-				<p>我们推出 OS X Yosemite 旨在提升 Mac 的使用体验。 为此，我们着眼于整个系统，对每个 app，每个功能，乃至每个像素逐一进行了完善。同时，我们将卓越的新功能构建于界面之中，让你所需的重要信息尽在指尖。如此一来，你的 Mac 有了焕然一新的外观，并依然拥有你所熟悉和喜爱的强大功能与简洁直观。</p>
-				<a href="">了解更多 ></a>
+				<p><?php echo $serviceData['propaganda1_small_desc']; ?></p>
+				<a href="<?php echo $serviceData['propaganda1_small_href']; ?>"><?php echo $serviceData['propaganda1_small_href_title']; ?></a>
 			</div>
 		</div>
 		<div class="design-hero-img">
-			<img src="http://images.apple.com/cn/osx/overview/images/design_large.png">
+			<img src="<?php echo $serviceData['propaganda1_small_img']; ?>">
 		</div>
 	</div>
 
 	<div class="product-info">
 		<div class="heading-product">
-			<h2>蛤蛤蛤蛤</h2>
-			<p class="product-subheading">蛤蛤蛤蛤,蛤蛤蛤蛤</p>
+			<h2><?php echo $serviceData['propaganda2_big_title']; ?></h2>
+			<p class="product-subheading"><?php echo $serviceData['propaganda2_medium_title']; ?></p>
 			<div class="product-detail">
-				<p>我们推出 OS X Yosemite 旨在提升 Mac 的使用体验。 为此，我们着眼于整个系统，对每个 app，每个功能，乃至每个像素逐一进行了完善。同时，我们将卓越的新功能构建于界面之中，让你所需的重要信息尽在指尖。如此一来，你的 Mac 有了焕然一新的外观，并依然拥有你所熟悉和喜爱的强大功能与简洁直观。</p>
-				<a href="">了解更多 ></a>
+				<p><?php echo $serviceData['propaganda2_small_desc']; ?></p>
+				<a href="<?php echo $serviceData['propaganda2_small_href']; ?>"><?php echo $serviceData['propaganda2_small_href_title']; ?></a>
 			</div>
 		</div>
 		<div class="design-hero-img-big">
-			<img src="http://images.apple.com/cn/osx/overview/images/mac_ios_large.png">
+			<img src="<?php echo $serviceData['propaganda2_small_img']; ?>">
 		</div>
 	</div>
 
 	<div class="product-info">
 		<div class="heading-product">
-			<h2>蛤蛤蛤蛤</h2>
-			<p class="product-subheading">蛤蛤蛤蛤,蛤蛤蛤蛤</p>
+			<h2><?php echo $serviceData['propaganda2_big_title']; ?></h2>
+			<p class="product-subheading"><?php echo $serviceData['propaganda2_medium_title']; ?></p>
 			<div class="product-detail">
-				<p>我们推出 OS X Yosemite 旨在提升 Mac 的使用体验。 为此，我们着眼于整个系统，对每个 app，每个功能，乃至每个像素逐一进行了完善。同时，我们将卓越的新功能构建于界面之中，让你所需的重要信息尽在指尖。如此一来，你的 Mac 有了焕然一新的外观，并依然拥有你所熟悉和喜爱的强大功能与简洁直观。</p>
-				<a href="">了解更多 ></a>
+				<p><?php echo $serviceData['propaganda2_small_desc']; ?></p>
+				<a href="<?php echo $serviceData['propaganda2_small_href']; ?>"><?php echo $serviceData['propaganda2_small_href_title']; ?></a>
 			</div>
 		</div>
 		<div class="design-hero-img">
-			<img src="http://images.apple.com/cn/osx/overview/images/apps_large.png">
+			<img src="<?php echo $serviceData['propaganda2_small_img']; ?>">
 		</div>
 	</div>
 

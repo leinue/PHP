@@ -1,4 +1,7 @@
 	<section>
+	<?php
+		$caseData=$ashu_option['case'];
+	?>
 		<div class="news-block case-block">
  			<ul>
  				<li id="case-top-title"><a href="">案例</a></li>
@@ -48,21 +51,21 @@
 
 		<div class="column-content">
 			<div class="section-copy">
-				<p class="case-main-title">Uniguy IT</p>
-				<p class="case-brief-desc">Biger than bigger</p>
+				<p class="case-main-title"><?php echo $caseData['case_big_title']; ?></p>
+				<p class="case-brief-desc"><?php echo $caseData['case_medium_title']; ?></p>
 			</div>
 			<div class="section-img-hero">
-				<img src="">
+				<img src="<?php echo $caseData['case_main_img']; ?>">
 			</div>
 			<div class="section-case-link">
 				<ul>
-					<li><a href="">观看影片</a></li>
-					<li><a href="">观看广告</a></li>
-					<li><a href="">体验演讲</a></li>
+					<li><a href="<?php echo $caseData['case_href1']; ?>"><?php echo $caseData['case_href1_title']; ?></a></li>
+					<li><a href="<?php echo $caseData['case_href1']; ?>"><?php echo $caseData['case_href2_title']; ?></a></li>
+					<li><a href="<?php echo $caseData['case_href1']; ?>"><?php echo $caseData['case_href3_title']; ?></a></li>
 				</ul>
 			</div>
 			<div class="section-copy intro-copy">
-				<p style="transform: translate3d(0px, 26.805px, 0px);" class="intro">iPhone&nbsp;6 之大，不只是简简单单地放大，而是方方面面都大有提升。它尺寸更大，却纤薄得不可思议；性能更强，却效能非凡。光滑圆润的金属机身，与全新 Retina HD 高清显示屏精准契合，浑然一体。而软硬件间的搭配，更是默契得宛如天作之合。无论以何种尺度衡量，这一切，都让 iPhone 新一代的至大之作，成为至为出众之作。</p>
+				<p style="transform: translate3d(0px, 26.805px, 0px);" class="intro"><?php echo $caseData['tinymce_case_main_desc']; ?></p>
 			</div>
 		</div>
 		<div class="section-compare">

@@ -49,7 +49,7 @@
 			</div>
 		</div>
 
-		<div class="column-content">
+		<div id="case-main-intro" class="column-content">
 			<div class="section-copy">
 				<p class="case-main-title"><?php echo $caseData['case_big_title']; ?></p>
 				<p class="case-brief-desc"><?php echo $caseData['case_medium_title']; ?></p>
@@ -69,7 +69,7 @@
 			</div>
 		</div>
 		<div class="section-compare">
-			<div class="column-content">
+			<div style="margin-top:100px" class="column-content case-detail-intro">
 				<div class="tidy-g">
 					<div class="tidy-u-1-2">
 						<div class="section-copy intro-copy">
@@ -89,7 +89,7 @@ Siri may not be available in all languages or in all areas, and features may var
 				</div>
 			</div>
 
-			<div class="column-content">
+			<div style="margin-top:100px" class="column-content case-detail-intro">
 				<div class="tidy-g">
 					<div class="tidy-u-1-2">
 						<div class="section-copy intro-copy">
@@ -109,11 +109,11 @@ Siri may not be available in all languages or in all areas, and features may var
 				</div>
 			</div>
 
-			<div class="column-content">
+			<div style="margin-top:100px" class="column-content case-detail-intro">
 				<div class="tidy-g">
 					<div class="tidy-u-1-2">
 						<div class="section-copy intro-copy">
-							<p style="transform: translate3d(0px, 26.805px, 0px);" class="intro">
+							<p style="transform: translate3d(0px, 126.805px, 0px);" class="intro">
 								FaceTime calling requires a FaceTime-enabled device for the caller and recipient and a Wi-Fi connection. Availability over a cellular network depends on carrier policies; data charges may apply.
 Siri may not be available in all languages or in all areas, and features may vary by area. Internet access required. Cellular data charges may apply.
 							</p>
@@ -131,3 +131,32 @@ Siri may not be available in all languages or in all areas, and features may var
 
 		</div>
 	</section>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.section-copy').css('margin-top','-50px');
+
+			$(window).scroll(handleWindowScrollEvents);
+
+			function handleWindowScrollEvents(){
+				var detail1=$('#case-main-intro').height();
+				if($(document).scrollTop()>$('#case-main-intro').height()-200){
+					$($('.case-detail-intro')[0]).css('margin-top','0px');
+				}else{
+					$($('.case-detail-intro')[0]).css('margin-top','150px');
+				}
+				if($(document).scrollTop()>$('#case-main-intro').height()+$($('.case-detail-intro')[0]).height()-240){
+					$($('.case-detail-intro')[1]).css('margin-top','0px');
+				}else{
+					$($('.case-detail-intro')[1]).css('margin-top','150px');
+				}
+
+				if($(document).scrollTop()>$('#case-main-intro').height()+$($('.case-detail-intro')[0]).height()+$($('.case-detail-intro')[1]).height()-1200){
+					console.log('sdsd');
+					$($('.case-detail-intro')[2]).css('margin-top','0px');
+				}else{
+					$($('.case-detail-intro')[2]).css('margin-top','150px');
+				}
+			}
+		});
+	</script>

@@ -725,6 +725,10 @@ footer p{margin-bottom: -6px;}
 	margin: 0 auto;
 }
 
+.intro-copy p{
+	padding-top: 30px;
+}
+
 .section-copy .case-main-title{
 	font-size: 2em;
 	margin-bottom: -6px;

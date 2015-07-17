@@ -117,7 +117,7 @@
 			//案例页面弹出小框
 			$('.case-block ul #display-search').click(function(){
 				var div=$('.case-menu-display');
-				div.slideToggle(200);
+				div.toggle();
 			});
 		});
 	</script>

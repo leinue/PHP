@@ -599,7 +599,7 @@ footer p{margin-bottom: -6px;}
 	padding: 0px;
 	height: 50px;
 	background: rgb(255,255,255);
-	opacity: 0.6;
+	opacity: 0.9;
 	z-index: 65535;
 }
 
@@ -631,7 +631,7 @@ footer p{margin-bottom: -6px;}
 	width: 110.8%;
 	margin-top: 10px;
 	background: rgb(255,255,255);
-	opacity: 0.6;
+	/*opacity: 0.6;*/
 	border-bottom: 1px solid rgb(226,226,226);
 }
 

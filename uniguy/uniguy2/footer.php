@@ -82,8 +82,12 @@
 
 			$(window).scroll(floatMenuCase);
 
+			var isMenuFloated=false;
+			var isCaseMenuSlided=false;
+
 			function floatMenuCase(){
 				if($(document).scrollTop()>46){
+					isMenuFloated=true;
 					$('.case-block').css('position','fixed')
 								.css('top','0px')
 								.css('width','100%')
@@ -93,7 +97,12 @@
 					$('.case-menu-display').css('position','relative')
 										.css('paddingLeft','14.8999258%')
 										.css('paddingRight','13.343217%');
+					if(isCaseMenuSlided){
+						$('.case-menu-display').hide();
+						isCaseMenuSlided=false;
+					}
 				}else{
+					isMenuFloated=false;
 					$('.case-block').css('position','relative')
 									.css('width','71.74231%')
 									.css('marginLeft','14.928843%');
@@ -119,9 +128,26 @@
       		});
 
 			//案例页面弹出小框
+			var orignPaddingLeft="14.8999%";
+			var orignPadingRight="13.3432%";
 			$('.case-block ul #display-search').click(function(){
-				var div=$('.case-menu-display');
-				div.toggle();
+				if(!isCaseMenuSlided){
+					$('#display-search').css('padding-right','20px');
+					$('#case-top-title').css('padding-left','20px');
+					isCaseMenuSlided=true;
+				}else{
+					if(!isMenuFloated){
+						orignPadingRight="0px";
+						orignPaddingLeft="0px";
+					}else{
+						orignPaddingLeft="14.8999%";
+							orignPadingRight="13.3432%";
+					}
+					$('#display-search').css('padding-right',orignPadingRight);
+					$('#case-top-title').css('padding-left',orignPaddingLeft);
+					isCaseMenuSlided=false;
+				}
+				$('.case-menu-display').toggle();
 			});
 		});
 	</script>

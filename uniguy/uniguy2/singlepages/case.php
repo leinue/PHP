@@ -4,7 +4,7 @@
 	?>
 		<div class="news-block case-block">
  			<ul>
- 				<li id="case-top-title"><a href="">案例</a></li>
+ 				<li id="case-top-title"><a style="color: #333333;"  href="">案例</a></li>
  				<li id="display-search">
  					<span>展开搜索 X</span>
  				</li>

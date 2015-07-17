@@ -18,7 +18,7 @@ function get_post_thumbnail_url($post_id,$size='large'){
 <section>
 	<div class="gallery-content" style="background: url('<?php bloginfo('url'); ?>/wp-content/themes/uniguy2/imgs/home.jpg');background-position: center center;">
 		<div style="margin-top:100px" class="gallery-heading">
-			<h1><a href="<?php bloginfo('url'); ?>"><?php bloginfo('description'); ?></a></h1>
+			<h1><a style="color: #333333;" href="<?php bloginfo('url'); ?>"><?php bloginfo('description'); ?></a></h1>
 		</div>
 	</div>
 

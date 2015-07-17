@@ -29,6 +29,7 @@
 			);
 
 			//搜索框动态加载
+			var headingListWidth=parseInt($('.heading-list').css('width'))/$(document).width()*100;
 			$('#btn-search').click(function(){
 				var docWidth=$(document).width();
 				var inputWidth=0.16401778496362166531932093775263*docWidth;//记录搜索框的宽度,随屏幕大小改变
@@ -38,10 +39,13 @@
     					width:'-='+inputWidth+'px'
   					},400,function(){
   						$('.input-search').toggle();
+
+  						$('.heading-list').css('width',headingListWidth+'%');
   					});
   					$('.heading-list .heading-big .heading-input').css('width','0px');
   					inputSearchIsDiaplayed=false;
 				}else{
+					$('.heading-list').css('width','60%');
 					$('.input-search').toggle();
 					$(".input-search").animate({
     					left:'0px',

@@ -48,7 +48,6 @@
 
 <?php get_footer(); ?>
 <script type="text/javascript">
-	$('body').css('background','rgb(250,250,250)');
 	$('footer').hide();
 	$(document).ready(function(){
 		$('.content-panel').css('margin-top','0px');

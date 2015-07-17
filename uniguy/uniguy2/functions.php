@@ -341,18 +341,20 @@ class ashu_option_class{
 }
 ?>
 
-<?php   
+<?php
+
+/************************************PAGE INDEX******************************************/
   
 $pageinfo = array('full_name' => 'UniguyIT选项', 'optionname'=>'ashu', 'child'=>false, 'filename' => basename(__FILE__));   
   
-$options = array();   
+$options = array();
                
 $options[] = array( "type" => "open");   
   
 $options[] = array(    
                 "name"=>"基本设置",   
                 "desc"=>"这里可以设置一些基本信息",   
-                "type" => "title");   
+                "type" => "title");
                    
 // $options[] = array(   
 //                 "name"=>"文本框",   
@@ -442,9 +444,221 @@ $options[] = array(
 //             "type" => "numbers_array"  
 //             ); 			
                
-$options[] = array( "type" => "close");   
+$options[] = array( "type" => "close");
+
+/************************************PAGE SERVICE******************************************/
   
 $options_page = new ashu_option_class($options, $pageinfo);
+
+$subpageinfo = array('full_name' => '服务页面设置', 'optionname'=>'service', 'child'=>false, 'filename' => basename(__FILE__));   
+  
+$options = array();
+               
+$options[] = array( "type" => "open");   
+  
+$options[] = array(
+                "name"=>"基本设置",   
+                "desc"=>"这里可以设置一些基本信息",   
+                "type" => "title");
+
+$options[] = array(   
+                "name"=>"大标题",   
+                "id"=>"service_big_title",   
+                "std"=>"",   
+                "desc"=>"显示在服务页面的大标题",   
+                "size"=>"60",   
+                "type"=>"text"  
+            );
+
+$options[] = array(   
+                "name"=>"中标题",   
+                "id"=>"service_medium_title",   
+                "std"=>"",   
+                "desc"=>"显示在服务页面的中标题",   
+                "size"=>"60",   
+                "type"=>"text"  
+            );
+
+$options[] = array(   
+                "name"=>"详细描述",   
+                "id"=>"service_small_title",   
+                "std"=>"",   
+                "desc"=>"显示在服务页面的详细描述",   
+                "size"=>"60",   
+                "type"=>"text"  
+            );
+
+$options[] = array(   
+            "name" => "服务页小图",   
+            "desc" => "请上传一个图片或填写一个图片地址",   
+            "std"=>"",   
+            "id" => "service_small_img",   
+            "type" => "upload");
+
+$options[] = array(   
+            "name" => "首页背景图",   
+            "desc" => "请上传一个图片或填写一个图片地址",   
+            "std"=>"",   
+            "id" => "service_bg",   
+            "type" => "upload");
+
+/*************宣传版面1**************/
+
+$options[] = array(   
+                "name"=>"宣传版面1-大标题",   
+                "id"=>"propaganda1_big_title",   
+                "std"=>"",   
+                "desc"=>"显示在宣传版面1的大标题",   
+                "size"=>"60",   
+                "type"=>"text"  
+            );
+
+$options[] = array(   
+                "name"=>"宣传版面1-中标题",   
+                "id"=>"propaganda1_medium_title",   
+                "std"=>"",   
+                "desc"=>"显示在宣传版面1的中标题",   
+                "size"=>"60",   
+                "type"=>"text"  
+            );
+
+$options[] = array(   
+                "name"=>"宣传版面1-详细描述",   
+                "id"=>"propaganda1_small_desc",   
+                "std"=>"",   
+                "desc"=>"显示在宣传版面1的详细描述",   
+                "size"=>"60",   
+                "type"=>"text"  
+            );
+
+$options[] = array(   
+                "name"=>"宣传版面1-链接",   
+                "id"=>"propaganda1_small_href",   
+                "std"=>"",   
+                "desc"=>"显示在宣传版面1的详细描述",   
+                "size"=>"60",   
+                "type"=>"text"  
+            );
+
+$options[] = array(   
+            "name" => "宣传版面1-图片",   
+            "desc" => "请上传一个图片或填写一个图片地址",   
+            "std"=>"",   
+            "id" => "propaganda1_small_img",   
+            "type" => "upload");
+
+/**************宣传版面2**************/
+
+$options[] = array(   
+                "name"=>"宣传版面2-大标题",   
+                "id"=>"propaganda2_big_title",   
+                "std"=>"",   
+                "desc"=>"显示在宣传版面2的大标题",   
+                "size"=>"60",   
+                "type"=>"text"  
+            );
+
+$options[] = array(   
+                "name"=>"宣传版面2-中标题",   
+                "id"=>"propaganda2_medium_title",   
+                "std"=>"",   
+                "desc"=>"显示在宣传版面2的中标题",   
+                "size"=>"60",   
+                "type"=>"text"  
+            );
+
+$options[] = array(   
+                "name"=>"宣传版面2-详细描述",   
+                "id"=>"propaganda2_small_desc",   
+                "std"=>"",   
+                "desc"=>"显示在宣传版面2的详细描述",   
+                "size"=>"60",   
+                "type"=>"text"  
+            );
+
+$options[] = array(   
+                "name"=>"宣传版面2-链接",   
+                "id"=>"propaganda2_small_href",   
+                "std"=>"",   
+                "desc"=>"显示在宣传版面2的详细描述",   
+                "size"=>"60",   
+                "type"=>"text"  
+            );
+
+$options[] = array(   
+            "name" => "宣传版面2-图片",   
+            "desc" => "请上传一个图片或填写一个图片地址",   
+            "std"=>"",   
+            "id" => "propaganda2_small_img",   
+            "type" => "upload");
+
+/**************宣传版面3**************/
+
+$options[] = array(   
+                "name"=>"宣传版面3-大标题",   
+                "id"=>"propaganda3_big_title",   
+                "std"=>"",   
+                "desc"=>"显示在宣传版面3的大标题",   
+                "size"=>"60",   
+                "type"=>"text"  
+            );
+
+$options[] = array(   
+                "name"=>"宣传版面3-中标题",   
+                "id"=>"propaganda3_medium_title",   
+                "std"=>"",   
+                "desc"=>"显示在宣传版面3的中标题",   
+                "size"=>"60",   
+                "type"=>"text"  
+            );
+
+$options[] = array(   
+                "name"=>"宣传版面3-详细描述",   
+                "id"=>"propaganda3_small_desc",   
+                "std"=>"",   
+                "desc"=>"显示在宣传版面3的详细描述",   
+                "size"=>"60",   
+                "type"=>"text"  
+            );
+
+$options[] = array(   
+                "name"=>"宣传版面3-链接",   
+                "id"=>"propaganda3_small_href",   
+                "std"=>"",   
+                "desc"=>"显示在宣传版面3的详细描述",   
+                "size"=>"60",   
+                "type"=>"text"  
+            );
+
+$options[] = array(   
+            "name" => "宣传版面3-图片",   
+            "desc" => "请上传一个图片或填写一个图片地址",   
+            "std"=>"",   
+            "id" => "propaganda3_small_img",   
+            "type" => "upload");
+
+$options[] = array( "type" => "close");   
+
+$options_page = new ashu_option_class($options, $subpageinfo);
+
+/************************************PAGE CASE******************************************/
+
+$servicepageinfo = array('full_name' => '案例页面设置', 'optionname'=>'service', 'child'=>false, 'filename' => basename(__FILE__));   
+  
+$options = array();
+               
+$options[] = array( "type" => "open");   
+  
+$options[] = array(
+                "name"=>"基本设置",   
+                "desc"=>"这里可以设置一些基本信息",   
+                "type" => "title");
+
+
+$options[] = array( "type" => "close");   
+
+$options_page = new ashu_option_class($options, $servicepageinfo);
+
 
 ?>
 

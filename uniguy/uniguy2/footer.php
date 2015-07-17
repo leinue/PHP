@@ -1,9 +1,13 @@
 <footer>
     <?php
     	global $ashu_option;
-    	echo $ashu_option['ashu']['tinymce_uniguy_copy_right']; 
+
+    	if($ashu_option['ashu']['tinymce_uniguy_copy_right']!=''){
+    		echo $ashu_option['ashu']['tinymce_uniguy_copy_right'];    		
+    	}else{
+    		echo '<p>上海<span class="help">诸君信息科技</span>有限公司，保留业务与网站的最终解释权，<span class="help">2008-2015</span></p><p>上海市 闵行区 <span class="help">罗锦路55号C座210</span></p><p>QQ: <span class="help">2208934488</span> , 微信: <span class="help">uniguy</span> , 电邮: <span class="help">service@uniguyit.com</span></p>';
+    	}
     ?>
-	<!-- <p>上海<span class="help">诸君信息科技</span>有限公司，保留业务与网站的最终解释权，<span class="help">2008-2015</span></p><p>上海市 闵行区 <span class="help">罗锦路55号C座210</span></p><p>QQ: <span class="help">2208934488</span> , 微信: <span class="help">uniguy</span> , 电邮: <span class="help">service@uniguyit.com</span></p>-->
  </footer>
 
 	<script>
@@ -115,9 +119,7 @@
 			//案例页面弹出小框
 			$('.case-block ul #display-search').click(function(){
 				var div=$('.case-menu-display');
-				div.slideToggle(200,function(){
-					$('.case-menu ul').fadeToggle(400);
-				});
+				div.slideToggle(200);
 			});
 		});
 	</script>

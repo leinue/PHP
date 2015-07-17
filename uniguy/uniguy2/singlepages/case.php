@@ -8,7 +8,7 @@
  			</ul>
  			<div class="case-menu-display">
  			<div class="case-menu">
-				<ul style="display:none">
+				<ul>
 					<li>
 						<a href=""><div class="case-menu-img"><img src=""><span>设计</span></div></a>
 					</li>
@@ -25,7 +25,7 @@
 						<a href=""><div class="case-menu-img"><img src=""><span>设计</span></div></a>
 					</li>
 				</ul>
-				<ul style="display:none">
+				<ul>
 					<li>
 						<a href=""><div class="case-menu-img"><img src=""><span>设计</span></div></a>
 					</li>

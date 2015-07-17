@@ -5,7 +5,7 @@
 		$serviceData=$ashu_option['service'];
 	?>
 		<img src="<?php echo $serviceData['service_bg']; ?>">
-		<div class="gallery-heading page-service">
+		<div style="margin-top:100px" class="gallery-heading page-service">
 			<img src="<?php echo $serviceData['service_small_img']; ?>">
 			<div class="page-heading-outline">
 				<h1><?php echo $serviceData['service_big_title']; ?></h1>
@@ -17,7 +17,7 @@
 		</div>
 	</div>
 
-	<div class="product-info">
+	<div style="margin-top:100px" class="product-info">
 		<div class="heading-product">
 			<h2><?php echo $serviceData['propaganda1_big_title]']; ?></h2>
 			<p class="product-subheading"><?php echo $serviceData['propaganda1_medium_title']; ?></p>
@@ -31,7 +31,7 @@
 		</div>
 	</div>
 
-	<div class="product-info">
+	<div style="margin-top:100px" class="product-info">
 		<div class="heading-product">
 			<h2><?php echo $serviceData['propaganda2_big_title']; ?></h2>
 			<p class="product-subheading"><?php echo $serviceData['propaganda2_medium_title']; ?></p>
@@ -45,7 +45,7 @@
 		</div>
 	</div>
 
-	<div class="product-info">
+	<div style="margin-top:100px" class="product-info">
 		<div class="heading-product">
 			<h2><?php echo $serviceData['propaganda2_big_title']; ?></h2>
 			<p class="product-subheading"><?php echo $serviceData['propaganda2_medium_title']; ?></p>
@@ -61,3 +61,9 @@
 
 </section>
 
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.gallery-heading').css('margin-top','0px');
+		$('.product-info').css('margin-top','-20px');
+	});
+</script>

@@ -17,12 +17,12 @@ function get_post_thumbnail_url($post_id,$size='large'){
 
 <section>
 	<div class="gallery-content" style="background: url('<?php bloginfo('url'); ?>/wp-content/themes/uniguy2/imgs/home.jpg');background-position: center center;">
-		<div class="gallery-heading">
+		<div style="margin-top:100px" class="gallery-heading">
 			<h1><a href="<?php bloginfo('url'); ?>"><?php bloginfo('description'); ?></a></h1>
 		</div>
 	</div>
 
-	<div class="tidy-g">
+	<div style="margin-top:100px" class="tidy-g gallery-wall">
 		<?php
 			$myposts = get_posts('numberposts=10&orderby=post_date&order=DESC');
 
@@ -50,6 +50,9 @@ function get_post_thumbnail_url($post_id,$size='large'){
 		$('.promos .news-mo li').click(function(){
 			window.location.href=$(this).attr('ref');
 		});
+
+		$('.gallery-heading').css('margin-top','0px');
+		$('.gallery-wall').css('margin-top','0px');
 	});
 </script>
 

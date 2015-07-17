@@ -1,6 +1,6 @@
 
 <section>
-	<div class="news-block">
+	<div style="margin-top:100px" class="news-block">
 		<ul>
 		<?php 
         foreach(get_all_category_ids() as $v){
@@ -20,7 +20,7 @@
 		</ul>
 	</div>
 
-	<div class="post-block">
+	<div style="margin-top:100px" class="post-block">
 
 	<?php
 		$previous_year = $year = 0;
@@ -74,3 +74,10 @@
 		</ul>
 	</div>
 </section>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.news-block').css('margin-top','0px');
+		$('.post-block').css('margin-top','0px');
+	});
+</script>

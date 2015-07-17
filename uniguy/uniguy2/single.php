@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 	
 	<section>
-		<div class="content-panel">
+		<div style="margin-top:100px" class="content-panel">
 			<div class="content-heading">
 				<div class="heading-title"><?php the_title(); ?></div>
 				<div class="img-desc">
@@ -48,4 +48,7 @@
 <script type="text/javascript">
 	$('body').css('background','rgb(250,250,250)');
 	$('footer').hide();
+	$(document).ready(function(){
+		$('.content-panel').css('margin-top','0px');
+	});
 </script>

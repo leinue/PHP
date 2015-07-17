@@ -376,7 +376,7 @@ $options[] = array(
   
 $options[] = array(   
             "name" => "首页背景图",   
-            "desc" => "请上传一个图片或填写一个图片地址",   
+            "desc" => "请上传一个图片或填写一个图片地址,建议大小:1440*1200",   
             "std"=>"http://localhost/wordpress/wp-content/themes/uniguy2/imgs/home.jpg",   
             "id" => "home_bg",   
             "type" => "upload");           
@@ -490,14 +490,14 @@ $options[] = array(
 
 $options[] = array(   
             "name" => "服务页小图",   
-            "desc" => "请上传一个图片或填写一个图片地址",   
+            "desc" => "请上传一个图片或填写一个图片地址,建议大小:240*240",   
             "std"=>"http://images.apple.com/v/osx/c/images/overview/hero_icon_large.png",   
             "id" => "service_small_img",   
             "type" => "upload");
 
 $options[] = array(   
             "name" => "首页背景图",   
-            "desc" => "请上传一个图片或填写一个图片地址",   
+            "desc" => "请上传一个图片或填写一个图片地址,建议大小:1440*1200",   
             "std"=>"http://images.apple.com/v/osx/c/images/overview/hero_large.jpg",   
             "id" => "service_bg",   
             "type" => "upload");
@@ -552,7 +552,7 @@ $options[] = array(
 
 $options[] = array(   
             "name" => "宣传版面1-图片",   
-            "desc" => "请上传一个图片或填写一个图片地址",   
+            "desc" => "请上传一个图片或填写一个图片地址,建议大小:980*568",   
             "std"=>"http://images.apple.com/cn/osx/overview/images/design_large.png",   
             "id" => "propaganda1_small_img",   
             "type" => "upload");
@@ -606,7 +606,7 @@ $options[] = array(
 
 $options[] = array(   
             "name" => "宣传版面2-图片",   
-            "desc" => "请上传一个图片或填写一个图片地址",   
+            "desc" => "请上传一个图片或填写一个图片地址,建议大小:980*568",   
             "std"=>"http://images.apple.com/cn/osx/overview/images/mac_ios_large.png",   
             "id" => "propaganda2_small_img",   
             "type" => "upload");
@@ -660,7 +660,7 @@ $options[] = array(
 
 $options[] = array(   
             "name" => "宣传版面3-图片",   
-            "desc" => "请上传一个图片或填写一个图片地址",   
+            "desc" => "请上传一个图片或填写一个图片地址,建议大小:980*568",   
             "std"=>"http://images.apple.com/cn/osx/overview/images/apps_large.png",   
             "id" => "propaganda3_small_img",   
             "type" => "upload");
@@ -702,8 +702,8 @@ $options[] = array(
 
 $options[] = array(   
             "name" => "案例图片",   
-            "desc" => "请上传一个图片或填写一个图片地址",   
-            "std"=>"http://images.apple.com/cn/osx/overview/images/apps_large.png",   
+            "desc" => "请上传一个图片或填写一个图片地址,建议大小:960*220",   
+            "std"=>"http://images.apple.com/v/watch/e/home/images/health_hero_large.jpg",   
             "id" => "case_main_img",   
             "type" => "upload");
 

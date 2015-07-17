@@ -69,6 +69,65 @@
 			</div>
 		</div>
 		<div class="section-compare">
-				
+			<div class="column-content">
+				<div class="tidy-g">
+					<div class="tidy-u-1-2">
+						<div class="section-copy intro-copy">
+							<p style="transform: translate3d(0px, 26.805px, 0px);" class="intro">
+								FaceTime calling requires a FaceTime-enabled device for the caller and recipient and a Wi-Fi connection. Availability over a cellular network depends on carrier policies; data charges may apply.
+Siri may not be available in all languages or in all areas, and features may vary by area. Internet access required. Cellular data charges may apply.
+							</p>
+						</div>
+					</div>
+					<div class="tidy-u-1-2">
+						<div class="section-copy intro-copy">
+							<p style="transform: translate3d(0px, 26.805px, 0px);" class="intro">
+								<img src="http://images.apple.com/v/iphone/compare/c/images/6plus_buy_medium.jpg">
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="column-content">
+				<div class="tidy-g">
+					<div class="tidy-u-1-2">
+						<div class="section-copy intro-copy">
+							<p style="transform: translate3d(0px, 26.805px, 0px);" class="intro">
+								<img src="http://images.apple.com/v/iphone/compare/c/images/6plus_buy_medium.jpg">
+							</p>
+						</div>
+					</div>
+					<div class="tidy-u-1-2">
+						<div class="section-copy intro-copy">
+							<p style="transform: translate3d(0px, 26.805px, 0px);" class="intro">
+								FaceTime calling requires a FaceTime-enabled device for the caller and recipient and a Wi-Fi connection. Availability over a cellular network depends on carrier policies; data charges may apply.
+Siri may not be available in all languages or in all areas, and features may vary by area. Internet access required. Cellular data charges may apply.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="column-content">
+				<div class="tidy-g">
+					<div class="tidy-u-1-2">
+						<div class="section-copy intro-copy">
+							<p style="transform: translate3d(0px, 26.805px, 0px);" class="intro">
+								FaceTime calling requires a FaceTime-enabled device for the caller and recipient and a Wi-Fi connection. Availability over a cellular network depends on carrier policies; data charges may apply.
+Siri may not be available in all languages or in all areas, and features may vary by area. Internet access required. Cellular data charges may apply.
+							</p>
+						</div>
+					</div>
+					<div class="tidy-u-1-2">
+						<div class="section-copy intro-copy">
+							<p style="transform: translate3d(0px, 26.805px, 0px);" class="intro">
+								<img src="http://images.apple.com/v/iphone/compare/c/images/6plus_buy_medium.jpg">
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
 		</div>
 	</section>

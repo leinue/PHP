@@ -22,8 +22,7 @@ function get_post_thumbnail_url($post_id,$size='large'){
 		</div>
 	</div>
 
-	<div class="promos">
-		<ul class="news-mo">
+	<div class="tidy-g">
 		<?php
 			$myposts = get_posts('numberposts=10&orderby=post_date&order=DESC');
 
@@ -39,11 +38,10 @@ function get_post_thumbnail_url($post_id,$size='large'){
 				// print_r($myposts[$i]);
 				if($myposts[$i]->post_status=='publish'){
 					$image = get_post_thumbnail_url($myposts[$i]->ID);
-					echo "<li ref=\"".$myposts[$i]->guid."\" style=\"background: transparent url('$image') repeat scroll center center!important;\"><a href=\"".$myposts[$i]->guid."\"></a></li>";
+					echo "<div ref=\"".$myposts[$i]->guid."\" class=\"tidy-u-1-4\" style=\"min-height:200px;background: transparent url('$image') repeat scroll center center!important;\"><a href=\"".$myposts[$i]->guid."\"></a></div>";
 				}
 			}
 		?>
-		</ul>
 	</div>
 </section>
 

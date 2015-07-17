@@ -1,6 +1,9 @@
 
 <section>
 	<div class="gallery-content">
+	<?php
+		print_r($ashu_option);
+	?>
 		<img src="http://images.apple.com/v/osx/c/images/overview/hero_large.jpg">
 		<div class="gallery-heading page-service">
 			<img src="http://images.apple.com/v/osx/c/images/overview/hero_icon_large.png">

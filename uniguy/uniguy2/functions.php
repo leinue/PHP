@@ -312,7 +312,7 @@ class ashu_option_class{
 	function upload($values) {	
 		$prevImg = '';
 		if(isset($this->database_options[$values['id']])) $values['std'] = $this->database_options[$values['id']];
-		if($values['std'] != ''){$prevImg = '<img src='.$values['std'].' alt="" />';}
+		if($values['std'] != ''){$prevImg = '<img width="640" height="200" src='.$values['std'].' alt="" />';}
 		
 		echo '<tr valign="top" >';
 		echo '<th scope="row" width="200px">'.$values['name'].'</th>';
@@ -377,8 +377,8 @@ $options[] = array(
 $options[] = array(   
             "name" => "首页背景图",   
             "desc" => "请上传一个图片或填写一个图片地址",   
-            "std"=>"",   
-            "id" => "_ashu_logo",   
+            "std"=>"http://localhost/wordpress/wp-content/themes/uniguy2/imgs/home.jpg",   
+            "id" => "home_bg",   
             "type" => "upload");           
   
 // $options[] = array(  "name" => "单选框",   
@@ -464,7 +464,7 @@ $options[] = array(
 $options[] = array(   
                 "name"=>"大标题",   
                 "id"=>"service_big_title",   
-                "std"=>"",   
+                "std"=>"我们的服务",   
                 "desc"=>"显示在服务页面的大标题",   
                 "size"=>"60",   
                 "type"=>"text"  
@@ -473,7 +473,7 @@ $options[] = array(
 $options[] = array(   
                 "name"=>"中标题",   
                 "id"=>"service_medium_title",   
-                "std"=>"",   
+                "std"=>"每一点凝聚的强大，处处尽现",   
                 "desc"=>"显示在服务页面的中标题",   
                 "size"=>"60",   
                 "type"=>"text"  
@@ -482,23 +482,23 @@ $options[] = array(
 $options[] = array(   
                 "name"=>"详细描述",   
                 "id"=>"service_small_title",   
-                "std"=>"",   
+                "std"=>"优雅的设计带来令人耳目一新的感觉，与此同时，又会让人倍感亲切。你日常所用的 app 增加了新的功能，而今愈加强大",   
                 "desc"=>"显示在服务页面的详细描述",   
                 "size"=>"60",   
-                "type"=>"text"  
+                "type"=>"textarea"
             );
 
 $options[] = array(   
             "name" => "服务页小图",   
             "desc" => "请上传一个图片或填写一个图片地址",   
-            "std"=>"",   
+            "std"=>"http://images.apple.com/v/osx/c/images/overview/hero_icon_large.png",   
             "id" => "service_small_img",   
             "type" => "upload");
 
 $options[] = array(   
             "name" => "首页背景图",   
             "desc" => "请上传一个图片或填写一个图片地址",   
-            "std"=>"",   
+            "std"=>"http://images.apple.com/v/osx/c/images/overview/hero_large.jpg",   
             "id" => "service_bg",   
             "type" => "upload");
 
@@ -507,7 +507,7 @@ $options[] = array(
 $options[] = array(   
                 "name"=>"宣传版面1-大标题",   
                 "id"=>"propaganda1_big_title",   
-                "std"=>"",   
+                "std"=>"蛤蛤蛤蛤蛤蛤蛤蛤",   
                 "desc"=>"显示在宣传版面1的大标题",   
                 "size"=>"60",   
                 "type"=>"text"  
@@ -516,7 +516,7 @@ $options[] = array(
 $options[] = array(   
                 "name"=>"宣传版面1-中标题",   
                 "id"=>"propaganda1_medium_title",   
-                "std"=>"",   
+                "std"=>"蛤蛤蛤蛤,蛤蛤蛤蛤",   
                 "desc"=>"显示在宣传版面1的中标题",   
                 "size"=>"60",   
                 "type"=>"text"  
@@ -525,8 +525,18 @@ $options[] = array(
 $options[] = array(   
                 "name"=>"宣传版面1-详细描述",   
                 "id"=>"propaganda1_small_desc",   
-                "std"=>"",   
+                "std"=>"
+我们推出 OS X Yosemite 旨在提升 Mac 的使用体验。 为此，我们着眼于整个系统，对每个 app，每个功能，乃至每个像素逐一进行了完善。同时，我们将卓越的新功能构建于界面之中，让你所需的重要信息尽在指尖。如此一来，你的 Mac 有了焕然一新的外观，并依然拥有你所熟悉和喜爱的强大功能与简洁直观。",   
                 "desc"=>"显示在宣传版面1的详细描述",   
+                "size"=>"60",   
+                "type"=>"textarea"  
+            );
+
+$options[] = array(   
+                "name"=>"宣传版面1-链接标题",   
+                "id"=>"propaganda1_small_href_title",   
+                "std"=>"了解更多 >",   
+                "desc"=>"显示在宣传版面1的链接标题",   
                 "size"=>"60",   
                 "type"=>"text"  
             );
@@ -534,8 +544,8 @@ $options[] = array(
 $options[] = array(   
                 "name"=>"宣传版面1-链接",   
                 "id"=>"propaganda1_small_href",   
-                "std"=>"",   
-                "desc"=>"显示在宣传版面1的详细描述",   
+                "std"=>"http://ivydom.com",   
+                "desc"=>"显示在宣传版面1的链接",   
                 "size"=>"60",   
                 "type"=>"text"  
             );
@@ -543,7 +553,7 @@ $options[] = array(
 $options[] = array(   
             "name" => "宣传版面1-图片",   
             "desc" => "请上传一个图片或填写一个图片地址",   
-            "std"=>"",   
+            "std"=>"http://images.apple.com/cn/osx/overview/images/design_large.png",   
             "id" => "propaganda1_small_img",   
             "type" => "upload");
 
@@ -552,7 +562,7 @@ $options[] = array(
 $options[] = array(   
                 "name"=>"宣传版面2-大标题",   
                 "id"=>"propaganda2_big_title",   
-                "std"=>"",   
+                "std"=>"蛤蛤蛤蛤",   
                 "desc"=>"显示在宣传版面2的大标题",   
                 "size"=>"60",   
                 "type"=>"text"  
@@ -561,7 +571,7 @@ $options[] = array(
 $options[] = array(   
                 "name"=>"宣传版面2-中标题",   
                 "id"=>"propaganda2_medium_title",   
-                "std"=>"",   
+                "std"=>"蛤蛤蛤蛤,蛤蛤蛤蛤",   
                 "desc"=>"显示在宣传版面2的中标题",   
                 "size"=>"60",   
                 "type"=>"text"  
@@ -570,8 +580,17 @@ $options[] = array(
 $options[] = array(   
                 "name"=>"宣传版面2-详细描述",   
                 "id"=>"propaganda2_small_desc",   
-                "std"=>"",   
+                "std"=>"我们推出 OS X Yosemite 旨在提升 Mac 的使用体验。 为此，我们着眼于整个系统，对每个 app，每个功能，乃至每个像素逐一进行了完善。同时，我们将卓越的新功能构建于界面之中，让你所需的重要信息尽在指尖。如此一来，你的 Mac 有了焕然一新的外观，并依然拥有你所熟悉和喜爱的强大功能与简洁直观。",   
                 "desc"=>"显示在宣传版面2的详细描述",   
+                "size"=>"60",   
+                "type"=>"textarea"  
+            );
+
+$options[] = array(   
+                "name"=>"宣传版面2-链接标题",   
+                "id"=>"propaganda2_small_href_title",   
+                "std"=>"了解更多 >",   
+                "desc"=>"显示在宣传版面2的链接标题",   
                 "size"=>"60",   
                 "type"=>"text"  
             );
@@ -579,7 +598,7 @@ $options[] = array(
 $options[] = array(   
                 "name"=>"宣传版面2-链接",   
                 "id"=>"propaganda2_small_href",   
-                "std"=>"",   
+                "std"=>"http://ivydom.com",   
                 "desc"=>"显示在宣传版面2的详细描述",   
                 "size"=>"60",   
                 "type"=>"text"  
@@ -588,7 +607,7 @@ $options[] = array(
 $options[] = array(   
             "name" => "宣传版面2-图片",   
             "desc" => "请上传一个图片或填写一个图片地址",   
-            "std"=>"",   
+            "std"=>"http://images.apple.com/cn/osx/overview/images/mac_ios_large.png",   
             "id" => "propaganda2_small_img",   
             "type" => "upload");
 
@@ -597,7 +616,7 @@ $options[] = array(
 $options[] = array(   
                 "name"=>"宣传版面3-大标题",   
                 "id"=>"propaganda3_big_title",   
-                "std"=>"",   
+                "std"=>"蛤蛤蛤蛤",   
                 "desc"=>"显示在宣传版面3的大标题",   
                 "size"=>"60",   
                 "type"=>"text"  
@@ -606,7 +625,7 @@ $options[] = array(
 $options[] = array(   
                 "name"=>"宣传版面3-中标题",   
                 "id"=>"propaganda3_medium_title",   
-                "std"=>"",   
+                "std"=>"蛤蛤蛤蛤,蛤蛤蛤蛤",   
                 "desc"=>"显示在宣传版面3的中标题",   
                 "size"=>"60",   
                 "type"=>"text"  
@@ -615,8 +634,17 @@ $options[] = array(
 $options[] = array(   
                 "name"=>"宣传版面3-详细描述",   
                 "id"=>"propaganda3_small_desc",   
-                "std"=>"",   
+                "std"=>"我们推出 OS X Yosemite 旨在提升 Mac 的使用体验。 为此，我们着眼于整个系统，对每个 app，每个功能，乃至每个像素逐一进行了完善。同时，我们将卓越的新功能构建于界面之中，让你所需的重要信息尽在指尖。如此一来，你的 Mac 有了焕然一新的外观，并依然拥有你所熟悉和喜爱的强大功能与简洁直观。",   
                 "desc"=>"显示在宣传版面3的详细描述",   
+                "size"=>"60",   
+                "type"=>"textarea"  
+            );
+
+$options[] = array(   
+                "name"=>"宣传版面3-链接标题",   
+                "id"=>"propaganda3_small_href_title",   
+                "std"=>"了解更多 >",   
+                "desc"=>"显示在宣传版面3的链接标题",   
                 "size"=>"60",   
                 "type"=>"text"  
             );
@@ -624,7 +652,7 @@ $options[] = array(
 $options[] = array(   
                 "name"=>"宣传版面3-链接",   
                 "id"=>"propaganda3_small_href",   
-                "std"=>"",   
+                "std"=>"http://ivydom.com",   
                 "desc"=>"显示在宣传版面3的详细描述",   
                 "size"=>"60",   
                 "type"=>"text"  
@@ -633,7 +661,7 @@ $options[] = array(
 $options[] = array(   
             "name" => "宣传版面3-图片",   
             "desc" => "请上传一个图片或填写一个图片地址",   
-            "std"=>"",   
+            "std"=>"http://images.apple.com/cn/osx/overview/images/apps_large.png",   
             "id" => "propaganda3_small_img",   
             "type" => "upload");
 
@@ -643,7 +671,7 @@ $options_page = new ashu_option_class($options, $subpageinfo);
 
 /************************************PAGE CASE******************************************/
 
-$servicepageinfo = array('full_name' => '案例页面设置', 'optionname'=>'service', 'child'=>false, 'filename' => basename(__FILE__));   
+$servicepageinfo = array('full_name' => '案例页面设置', 'optionname'=>'case', 'child'=>false, 'filename' => basename(__FILE__));   
   
 $options = array();
                
@@ -653,6 +681,93 @@ $options[] = array(
                 "name"=>"基本设置",   
                 "desc"=>"这里可以设置一些基本信息",   
                 "type" => "title");
+
+$options[] = array(   
+                "name"=>"大标题",   
+                "id"=>"case_big_title",   
+                "std"=>"UniguyIT",   
+                "desc"=>"显示在案例页面的大标题",   
+                "size"=>"60",   
+                "type"=>"text"  
+            );
+
+$options[] = array(   
+                "name"=>"小标题",   
+                "id"=>"case_medium_title",   
+                "std"=>"Biger than bigger",   
+                "desc"=>"显示在案例页面的中标题",   
+                "size"=>"60",   
+                "type"=>"text"  
+            );
+
+$options[] = array(   
+            "name" => "案例图片",   
+            "desc" => "请上传一个图片或填写一个图片地址",   
+            "std"=>"http://images.apple.com/cn/osx/overview/images/apps_large.png",   
+            "id" => "case_main_img",   
+            "type" => "upload");
+
+$options[] = array(   
+                "name"=>"链接1标题",   
+                "id"=>"case_href1_title",   
+                "std"=>"观看影片",   
+                "desc"=>"案例页面中的第一个链接标题",   
+                "size"=>"60",   
+                "type"=>"text"
+            );
+
+$options[] = array(   
+                "name"=>"链接1地址",   
+                "id"=>"case_href1",   
+                "std"=>"http://ivydom.com",   
+                "desc"=>"案例页面中的第一个链接地址",   
+                "size"=>"60",   
+                "type"=>"text"
+            );
+
+$options[] = array(   
+                "name"=>"链接2标题",   
+                "id"=>"case_href2_title",   
+                "std"=>"观看广告",   
+                "desc"=>"案例页面中的第二个链接标题",   
+                "size"=>"60",   
+                "type"=>"text"
+            );
+
+$options[] = array(   
+                "name"=>"链接2地址",   
+                "id"=>"case_href2",   
+                "std"=>"http://ivydom.com",   
+                "desc"=>"案例页面中的第二个链接地址",   
+                "size"=>"60",   
+                "type"=>"text"
+            );
+
+$options[] = array(   
+                "name"=>"链接3标题",   
+                "id"=>"case_href3_title",   
+                "std"=>"体验演讲",   
+                "desc"=>"案例页面中的第三个链接标题",   
+                "size"=>"60",   
+                "type"=>"text"
+            );
+
+$options[] = array(   
+                "name"=>"链接3地址",   
+                "id"=>"case_href3",   
+                "std"=>"http://ivydom.com",   
+                "desc"=>"案例页面中的第三个链接地址",   
+                "size"=>"60",   
+                "type"=>"text"
+            );
+
+$options[] = array(   
+            "name" => "案例页面主介绍",   
+            "desc" => "案例页面的主介绍",   
+            "id" => "tinymce_case_main_desc",   //id必须以 tinymce_开头
+            "std"=>"iPhone&nbsp;6 之大，不只是简简单单地放大，而是方方面面都大有提升。它尺寸更大，却纤薄得不可思议；性能更强，却效能非凡。光滑圆润的金属机身，与全新 Retina HD 高清显示屏精准契合，浑然一体。而软硬件间的搭配，更是默契得宛如天作之合。无论以何种尺度衡量，这一切，都让 iPhone 新一代的至大之作，成为至为出众之作。",   
+            "type" => "tinymce"  
+            );
 
 
 $options[] = array( "type" => "close");   

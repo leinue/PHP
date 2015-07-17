@@ -1,7 +1,5 @@
 <footer>
     <?php
-    	global $ashu_option;
-
     	if($ashu_option['ashu']['tinymce_uniguy_copy_right']!=''){
     		echo $ashu_option['ashu']['tinymce_uniguy_copy_right'];    		
     	}else{

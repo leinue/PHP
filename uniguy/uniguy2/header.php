@@ -36,3 +36,5 @@
 		</div>
 	</nav>
 </header>
+
+<?php global $ashu_option; ?>

@@ -2,6 +2,55 @@
 	<?php
 		$caseData=$ashu_option['case'];
 	?>
+	<?php
+		$cateIDs=get_all_category_ids();
+		function printCateDetail($arr){
+			$a=array();
+			foreach($arr as $v){
+	            $cat_info=get_category($v);
+	            if($cat_info->parent!='0'){
+	            	$parent_info=get_category($cat_info->parent);
+	            	if($parent_info->name=='case'){
+	            		$link=get_category_link($cat_info->term_id)."?$cat_info->term_id";
+						array_push($a, "<li><a href=\"$link\"><div class=\"case-menu-img\"><img src=\"$cat_info->description\"><span>$cat_info->name</span></div></a></li>");
+	            	}
+	            }
+        	}
+        	return $a;
+		}
+
+		function getCaseMenuDom($cateIDs){
+			$html='';
+			$arr=printCateDetail($cateIDs);
+	        if(count($arr)<5){
+	        	$html="<ul>";
+	        	foreach ($arr as $key => $value) {
+	        		$html.=$value;
+	        	}
+	        	$html.="</ul>";
+	        }else{
+	        	if(count($arr)>10){
+	        		$arr=array_slice($arr,0,10);
+	        	}
+	        	$html="<ul>";
+	        	if(is_array($arr)){
+	        		$count=count($arr);
+	        		for ($i=0; $i < 5; $i++) {
+	        			$value=$arr[$i];
+	        			$html.=$value;
+	        		}
+	        		$html.="</ul><ul>";
+	        		for ($j=$i; $j < count($arr); $j++) { 
+	        			$value=$arr[$j];
+	        			$html.=$value;
+	        		}
+	        		$html.="</ul>";
+	        	}
+	        }
+	        return $html;
+		}
+        
+ 	?>
 		<div class="news-block case-block">
  			<ul>
  				<li id="case-top-title"><a style="color: #333333;"  href="">案例</a></li>
@@ -10,42 +59,45 @@
  				</li>
  			</ul>
  			<div class="case-menu-display">
- 			<div class="case-menu">
-				<ul>
-					<li>
-						<a href=""><div class="case-menu-img"><img src=""><span>设计</span></div></a>
-					</li>
-					<li>
-						<a href=""><div class="case-menu-img"><img src=""><span>设计</span></div></a>
-					</li>
-					<li>
-						<a href=""><div class="case-menu-img"><img src=""><span>设计</span></div></a>
-					</li>
-					<li>
-						<a href=""><div class="case-menu-img"><img src=""><span>设计</span></div></a>
-					</li>
-					<li>
-						<a href=""><div class="case-menu-img"><img src=""><span>设计</span></div></a>
-					</li>
-				</ul>
-				<ul>
-					<li>
-						<a href=""><div class="case-menu-img"><img src=""><span>设计</span></div></a>
-					</li>
-					<li>
-						<a href=""><div class="case-menu-img"><img src=""><span>设计</span></div></a>
-					</li>
-					<li>
-						<a href=""><div class="case-menu-img"><img src=""><span>设计</span></div></a>
-					</li>
-					<li>
-						<a href=""><div class="case-menu-img"><img src=""><span>设计</span></div></a>
-					</li>
-					<li>
-						<a href=""><div class="case-menu-img"><img src=""><span>设计</span></div></a>
-					</li>
-				</ul>
-			</div>
+	 			<div class="case-menu">
+	 			<?php
+	 				echo getCaseMenuDom($cateIDs);
+	 			?>
+					<!-- <ul>
+						<li>
+							<a href=""><div class="case-menu-img"><img src=""><span>设计</span></div></a>
+						</li>
+						<li>
+							<a href=""><div class="case-menu-img"><img src=""><span>设计</span></div></a>
+						</li>
+						<li>
+							<a href=""><div class="case-menu-img"><img src=""><span>设计</span></div></a>
+						</li>
+						<li>
+							<a href=""><div class="case-menu-img"><img src=""><span>设计</span></div></a>
+						</li>
+						<li>
+							<a href=""><div class="case-menu-img"><img src=""><span>设计</span></div></a>
+						</li>
+					</ul>
+					<ul>
+						<li>
+							<a href=""><div class="case-menu-img"><img src=""><span>设计</span></div></a>
+						</li>
+						<li>
+							<a href=""><div class="case-menu-img"><img src=""><span>设计</span></div></a>
+						</li>
+						<li>
+							<a href=""><div class="case-menu-img"><img src=""><span>设计</span></div></a>
+						</li>
+						<li>
+							<a href=""><div class="case-menu-img"><img src=""><span>设计</span></div></a>
+						</li>
+						<li>
+							<a href=""><div class="case-menu-img"><img src=""><span>设计</span></div></a>
+						</li>
+					</ul> -->
+				</div>
 			</div>
 		</div>
 

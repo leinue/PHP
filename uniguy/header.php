@@ -1,40 +1,42 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-	<head>
-		<meta charset="utf-8">
-		<title><?php bloginfo('name'); ?></title>
-		<link href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-	</head>
-	<body>
-	<div class="container-fluid">
-	<div class="row">
-		<nav class="navbar navbar-inverse nav-own">
-  			<div class="container-fluid col-md-offset-2">
-    		<!-- Brand and toggle get grouped for better mobile display  -->
+<html>
 
-          <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="<?php bloginfo('url'); ?>">
-                <img alt="Brand" width="20" height="20" src="http://localhost/wordpress/wp-content/themes/uniguy/brand.png">
-              </a>
-          </div>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
+	<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+	<link rel="stylesheet" href="<?php echo get_bloginfo( 'stylesheet_directory' )?>/css/tidy.css">
+	<script type="text/javascript" src="<?php echo get_bloginfo( 'stylesheet_directory' )?>/js/tidy.js"></script>
+	<title><?php bloginfo('name'); ?></title>
+</head>
 
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav">
-                
-                <li><a style="color: rgb(255,255,255);" href="<?php bloginfo('url'); ?>">首页 <span class="sr-only">(current)</span></a></li>
-                <?php wp_list_pages('title_li=&sort_column=post_date'); ?>
-                <li><a href="#"><span class="glyphicon glyphicon-search menu-own" aria-hidden="true"></span></a></li>
-              </ul>
-          </div><!-- /.navbar-collapse -->
-          
-  			</div><!-- /.container-fluid -->
-		</nav>
+<body>
+
+<header>
+	<nav>
+		<div class="heading">
+			<div class="heading-list">
+				<ul class="heading-big">
+					<li class="heading-menu heading-brand"><a href="<?php bloginfo('url'); ?>"><img id="brand" src="<?php bloginfo('url'); ?>/wp-content/themes/uniguy2/brand.png" width="20" height="20"></a></li>
+					<li class="heading-menu heading-o"><a href="<?php bloginfo('url'); ?>">首页</a></li>
+					<?php wp_list_pages('title_li=&sort_column=post_date'); ?>
+					<li class="heading-menu heading-o"><a href="javascript:void('')"><img id="btn-search" src="<?php bloginfo('url'); ?>/wp-content/themes/uniguy2/imgs/search.png" width="20" height="20"></a></li>
+					<li style="position:absolute;margin-top:-28px" class="heading-menu heading-o heading-input"><input class="input-search" type="search" placeholder="搜索 uniguy.com"></li>
+					<li class="heading-menu heading-toggle"><img id="list-toggle" src="<?php bloginfo('url'); ?>/wp-content/themes/uniguy2/imgs/toggle_list.png" width="20" height="20"></li>
+				</ul>
+			</div>
+			<div class="heading heading-bottom">
+				<div class="heading-list">
+					<ul class="heading-small">
+						<li class="heading-menu heading-o"><a href="<?php bloginfo('url'); ?>">首页</a></li>
+						<?php wp_list_pages('title_li=&sort_column=post_date'); ?>
+						<li class="heading-menu heading-o"><a href="">搜索</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+</header>
+
+<?php global $ashu_option; ?>

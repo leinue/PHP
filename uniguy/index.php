@@ -1,49 +1,59 @@
+
 <?php get_header(); ?>
-		
-		<section>
 
-		<div class="carousel">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="main-title">
-						<a href="#"><h1><?php bloginfo('description'); ?></h1></a>
-					</div>
-				</div>
-			</div>
+<?php
+
+function get_post_thumbnail_url($post_id,$size='large'){
+	$thumbnail_id = get_post_thumbnail_id($post_id);
+	if($thumbnail_id ){
+		$thumb = wp_get_attachment_image_src($thumbnail_id, $size);
+		return $thumb[0];
+	}else{
+		return false;
+	}
+}
+
+?>
+
+<section>
+	<div class="gallery-content" style="background: url('<?php bloginfo('url'); ?>/wp-content/themes/uniguy2/imgs/home.jpg');background-position: center center;">
+		<div style="margin-top:100px" class="gallery-heading">
+			<h1><a style="color: #333333;" href="<?php bloginfo('url'); ?>"><?php bloginfo('description'); ?></a></h1>
 		</div>
-	
-		<div class="container-fluid">
-			<div class="row">
-				<div class="news-display">
-					<?php $i=0;if(have_posts()): ?><?php while(have_posts()):
+	</div>
 
-						if($i<4){
-							the_post();
-						?>
-						<div class="col-md-3 news-block">
-							<div class="news-block-title">
-								<h4 class="text-muted"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
-								<strong><h5 class="text-muted">点击查看新闻</h5></strong>
-							</div>
-							<div class="news-block-img">
-								<img src="http://images.apple.com/cn/home/images/promo_iphone6_medium.jpg">
-							</div>
-							<?php //edit_post_link('Edit'); ?> 
-						</div>
+	<div style="margin-top:100px" class="tidy-g gallery-wall">
+		<?php
+			$myposts = get_posts('numberposts=10&orderby=post_date&order=DESC');
 
-						<?php
-						}else{
-							break;
-						}
-						?>
-						
-					<?php $i=$i+1; ?>
-					<?php endwhile; ?>
-					<?php endif; ?>
-				</div>
-			</div>
-		</div>
+			$postCount=count($myposts);
 
-		</section>
+			if($postCount>4){
+				$postCount=4;
+			}
+
+			$current_url = home_url(add_query_arg(array(),$wp->request)); 
+
+			for ($i=0; $i < $postCount; $i++) {
+				// print_r($myposts[$i]);
+				if($myposts[$i]->post_status=='publish'){
+					$image = get_post_thumbnail_url($myposts[$i]->ID);
+					echo "<div ref=\"".$myposts[$i]->guid."\" class=\"tidy-u-1-4\" style=\"min-height:200px;background: transparent url('$image') repeat scroll center center!important;\"><a href=\"".$myposts[$i]->guid."\"></a></div>";
+				}
+			}
+		?>
+	</div>
+</section>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.promos .news-mo li').click(function(){
+			window.location.href=$(this).attr('ref');
+		});
+
+		$('.gallery-heading').css('margin-top','0px');
+		$('.gallery-wall').css('margin-top','0px');
+	});
+</script>
 
 <?php get_footer(); ?>

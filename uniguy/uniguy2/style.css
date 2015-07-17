@@ -202,6 +202,10 @@ a{
 
 /*news starts*/
 
+.preview_pic_optionspage img{
+	max-width:800px;
+}
+
 .promos{
 	width: 100%;
 	margin-top: 10px;

@@ -215,6 +215,7 @@ a{
 	list-style: none;
 	width: 100%;
 	margin-left: -40px;
+	cursor: pointer;
 }
 
 .news-mo li{
@@ -224,26 +225,11 @@ a{
 	min-height: 200px;
 	margin-top: 10px;
 	margin-right: 0.4447739065%;
+	cursor: pointer;
 }
 
-.news-mo li:first-child{
-	background: url(imgs/promo_world_gallery_large.jpg);
-	background-position: center center;
-}
-
-.news-mo li:nth-child(2){
-	background: url(imgs/promo_blog_large.jpg);
-	background-position: center center;
-}
-
-.news-mo li:nth-child(3){
-	background: url(imgs/promo_changes_ipad_large.jpg);
-	background-position: center center;
-}
-
-.news-mo li:last-child{
-	background: url(imgs/promo_appletv_hbonow_large.jpg);
-	background-position: center center;
+.news-mo li:hover{
+	cursor: pointer;
 }
 
 .news-mo li a img{

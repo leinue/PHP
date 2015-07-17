@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
+	<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
 	<title><?php bloginfo('name'); ?></title>
 </head>
 

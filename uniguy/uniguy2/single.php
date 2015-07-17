@@ -9,7 +9,7 @@
 					<span><?php edit_post_link('编辑', '', ''); ?></span>&nbsp;/&nbsp;
 					<span>发表于：<span><?php the_time('Y年m月d日') ?></span></span>&nbsp;/&nbsp;
 					<span><?php comments_popup_link('0 条评论', '1 条评论', '% 条评论', '', '评论已关闭'); ?></span>
-					<span><a href="#commentform">发表评论</a></span>
+					<!-- <span><a href="#commentform">发表评论</a></span> -->
 				</div>
 			</div>
 			<div class="content-detail">

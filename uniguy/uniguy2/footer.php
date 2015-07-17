@@ -4,7 +4,6 @@
 	<p>QQ: <span class="help">2208934488</span> , 微信: <span class="help">uniguy</span> , 电邮: <span class="help">service@uniguyit.com</span></p>
 </footer>
 
-	<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
 	<script>
 		$(document).ready(function(){
 			//搜索框是否已展示

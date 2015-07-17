@@ -1,6 +1,20 @@
 
 <?php get_header(); ?>
 
+<?php
+
+function get_post_thumbnail_url($post_id,$size='large'){
+	$thumbnail_id = get_post_thumbnail_id($post_id);
+	if($thumbnail_id ){
+		$thumb = wp_get_attachment_image_src($thumbnail_id, $size);
+		return $thumb[0];
+	}else{
+		return false;
+	}
+}
+
+?>
+
 <section>
 	<div class="gallery-content" style="background: url('<?php bloginfo('url'); ?>/wp-content/themes/uniguy2/imgs/home.jpg');background-position: center center;">
 		<div class="gallery-heading">
@@ -21,16 +35,15 @@
 
 			$current_url = home_url(add_query_arg(array(),$wp->request)); 
 
-			for ($i=0; $i < $postCount; $i++) { 
-				// print_r($myposts[$postCount]);
-				echo "<li ref=\"".$myposts[$i]->guid."\" style=\"background: transparent url('".$current_url."/wp-content/themes/uniguy2/imgs/promo".($i+1).".jpg') repeat scroll center center!important;\"><a href=\"".$myposts[$i]->guid."\"></a></li>";
+			for ($i=0; $i < $postCount; $i++) {
+				// print_r($myposts[$i]);
+				if($myposts[$i]->post_status=='publish'){
+					$image = get_post_thumbnail_url($myposts[$i]->ID);
+					echo "<li ref=\"".$myposts[$i]->guid."\" style=\"background: transparent url('$image') repeat scroll center center!important;\"><a href=\"".$myposts[$i]->guid."\"></a></li>";
+				}
 			}
 		?>
-<!-- 			<li style="background: transparent url('<?php bloginfo('url'); ?>/wp-content/themes/uniguy2/imgs/promo_world_gallery_large.jpg') repeat scroll center center!important;"><a href=""></a></li>
-			<li style="background: transparent url('<?php bloginfo('url'); ?>/wp-content/themes/uniguy2/imgs/promo_blog_large.jpg') repeat scroll center center!important;"><a href=""></a></li>
-			<li style="background: transparent url('<?php bloginfo('url'); ?>/wp-content/themes/uniguy2/imgs/promo_changes_ipad_large.jpg') repeat scroll center center!important;"><a href=""></a></li>
-			<li style="background: transparent url('<?php bloginfo('url'); ?>/wp-content/themes/uniguy2/imgs/promo_appletv_hbonow_large.jpg') repeat scroll center center!important;"><a href=""></a></li>
- -->		</ul>
+		</ul>
 	</div>
 </section>
 

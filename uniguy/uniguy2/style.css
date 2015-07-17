@@ -179,8 +179,6 @@ a{
 	height: 875px;
 	width: 100%;
 	margin-top: -46px;
-	background: url(imgs/home.jpg);
-	background-position: center center;
 }
 
 .gallery-content img{
@@ -208,6 +206,7 @@ a{
 	width: 100%;
 	margin-top: 10px;
 	margin-bottom: 20px;
+	min-height: 200px;
 }
 
 .news-mo{

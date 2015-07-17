@@ -32,6 +32,8 @@
 
 	<?php foreach($myposts as $post) : ?>
 
+		<?php if($post->post_status!='publish'){continue;} ?>
+
 	<?php
 		setup_postdata($post);
 		$year = mysql2date('Y', $post->post_date);

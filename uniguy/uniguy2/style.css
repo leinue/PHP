@@ -36,11 +36,13 @@ a{
 	margin-left:14.928843%;
 	font-size: 1.125em;
 	display: table;
+	z-index: 65535;
 }
 
 .heading-list ul{
 	list-style: none;
 	display: table-row;
+	z-index: 65535;
 }
 
 .heading-list ul li{
@@ -48,6 +50,7 @@ a{
 	margin-right: 13.9040816%;
 	text-align: center;
 	padding-top: 10px;
+	z-index: 65535;
 }
 
 .heading-list ul li:first-child{
@@ -152,6 +155,7 @@ a{
 		width: 100%;
 		margin-top: 4px;
 	}
+
 }
 
 @media screen and (max-width: 350px;) {
@@ -159,14 +163,19 @@ a{
 		height: auto;
 	}
 	
+	.big-heading{
+		display: none;
+	}
+
 	.heading-bottom .heading-list{
 		margin-left: 0px;
-		z-index: 1000;
+		z-index: 65535;
 	}
 
 	.heading-bottom .heading-list li{
 		display: table-row;
 		text-align: left;
+		z-index: 65535;
 	}
 
 	.heading-bottom .heading-list li:last-child{

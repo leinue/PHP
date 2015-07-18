@@ -1,42 +1,34 @@
 
 <section>
-	<div style="margin-top:100px;overflow:hidden" class="news-block">
-		<ul>
-		<?php
-		$allCateIds=get_all_category_ids();
-        foreach($allCateIds as $v){
-            $cat_info=get_category($v);
-            if($cat_info->parent!='0'){
-            	$parent_info=get_category($cat_info->parent);
-            	if($parent_info->name=='news'){
-            		$link=get_category_link($cat_info->term_id)."?$cat_info->term_id";
-            		echo "<li>
-						<a href=\"$link\"><img src=\"$cat_info->description\"></a>
-						<span class=\"help-block\"><a href=\"$link\">$cat_info->name</a></span>
-					</li>";
-            	}
-            }
-        }
-		?>
+	<div style="margin-top:100px;border:none;" class="news-block">
+		<ul style="left: 0px;" id="st_nav" class="st_navigation">
+			<li style="height: 170px; display: list-item;" class="album current">
+				<div style="overflow: hidden; display: block;" class="st_wrapper st_thumbs_wrapper">
+					<div style="width: 366px;" class="st_thumbs">
+					<?php
+						$allCateIds=get_all_category_ids();
+				        foreach($allCateIds as $v){
+				            $cat_info=get_category($v);
+				            if($cat_info->parent!='0'){
+				            	$parent_info=get_category($cat_info->parent);
+				            	if($parent_info->name=='news'){
+				            		$link=get_category_link($cat_info->term_id)."?$cat_info->term_id";
+				     				//echo "<li>
+									// 	<a href=\"$link\"><img src=\"$cat_info->description\"></a>
+									// 	<span class=\"help-block\"><a href=\"$link\">$cat_info->name</a></span>
+									// </li>";
+									echo "<div href=\"$link\" class=\"news-cate-link\"><img style=\"height: 126px; width: 150px; opacity: 0.7;\" src=\"$cat_info->description\" alt=\"$cat_info->name\"><a href=\"$link\">$cat_info->name</a></div>";
+				            	}
+				            }
+				        }
+					?>
+					</div>
+				</div>
+			</li>
 		</ul>
 	</div>
 
-	<ul style="left: 0px;" id="st_nav" class="st_navigation">
-		<li style="height: 170px; display: list-item;" class="album current">
-			<div style="overflow: hidden; display: block;" class="st_wrapper st_thumbs_wrapper">
-				<div style="width: 366px;" class="st_thumbs">
-					<img style="height: 126px; width: 150px; opacity: 0.7;" src="http://localhost/HTML5/zhuyin/gallery/images/album/train/0.jpg" alt="images/album/train/0.jpg">
-					<img style="height: 126px; width: 150px; opacity: 0.7;" src="http://localhost/HTML5/zhuyin/gallery/images/album/train/0.jpg" alt="images/album/train/1.jpg">
-					<img style="height: 126px; width: 150px; opacity: 0.7;" src="http://localhost/HTML5/zhuyin/gallery/images/album/train/0.jpg" alt="images/album/train/0.jpg">
-					<img style="height: 126px; width: 150px; opacity: 0.7;" src="http://localhost/HTML5/zhuyin/gallery/images/album/train/0.jpg" alt="images/album/train/1.jpg">
-					<img style="height: 126px; width: 150px; opacity: 0.7;" src="http://localhost/HTML5/zhuyin/gallery/images/album/train/0.jpg" alt="images/album/train/0.jpg">
-					<img style="height: 126px; width: 150px; opacity: 0.7;" src="http://localhost/HTML5/zhuyin/gallery/images/album/train/0.jpg" alt="images/album/train/1.jpg">
-					<img style="height: 126px; width: 150px; opacity: 0.7;" src="http://localhost/HTML5/zhuyin/gallery/images/album/train/0.jpg" alt="images/album/train/0.jpg">
-					<img style="height: 126px; width: 150px; opacity: 0.7;" src="http://localhost/HTML5/zhuyin/gallery/images/album/train/0.jpg" alt="images/album/train/1.jpg">
-				</div>
-			</div>
-		</li>
-	</ul>
+	
 
 
 	<div style="margin-top:100px" class="post-block">
@@ -130,7 +122,7 @@
 				var $thumbs_wrapper = $elem.find('.st_thumbs_wrapper');
 				var $thumbs 		= $thumbs_wrapper.children(':first');
 				//each thumb has 180px and we add 3 of margin
-				var finalW 			= $thumbs.find('img').length * 183;
+				var finalW 			= $thumbs.find('img').length * 190;
 				$thumbs.css('width',finalW + 'px');
 				//make this element scrollable
 				makeScrollable($thumbs_wrapper,$thumbs);
@@ -138,7 +130,7 @@
 		}
 
 		function makeScrollable($outer, $inner){
-			var extra = 800;
+			var extra 			= 800;
 			//Get menu width
 			var divWidth = $outer.width();
 			//Remove scrollbars
@@ -156,5 +148,9 @@
 			});
 		}
 
+		$('.st_thumbs div.news-cate-link').click(function(){
+			var href=$(this).attr('href');
+			window.location.href=href;
+		});
 	});
 </script>

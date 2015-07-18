@@ -83,6 +83,16 @@ a{
 	display:none;
 }
 
+.heading-bottom .heading-list ul{
+	background: rgb(0,0,0);
+}
+
+.heading-bottom .heading-list ul li{
+	height: auto;
+	border-top: 1px solid rgb(80,80,80);
+	cursor: pointer;
+}
+
 /*header ends*/
 
 @media screen and (max-width: 900px) {
@@ -144,7 +154,7 @@ a{
 }
 
 @media screen and (max-width: 350px;) {
-	.heading-bottom{
+	.heading .heading-bottom{
 		height: auto;
 	}
 	
@@ -157,7 +167,7 @@ a{
 		display: table-row;
 		text-align: left;
 	}
-	
+
 	.heading-bottom .heading-list li:last-child{
 		text-align: left;
 	}

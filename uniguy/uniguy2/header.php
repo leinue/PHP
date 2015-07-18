@@ -26,12 +26,12 @@
 					<li class="heading-menu heading-toggle"><img id="list-toggle" src="<?php bloginfo('url'); ?>/wp-content/themes/uniguy2/imgs/toggle_list.png" width="20" height="20"></li>
 				</ul>
 			</div>
-			<div class="heading heading-bottom">
-				<div class="heading-list">
-					<ul class="heading-small">
-						<li class="heading-menu heading-o"><a href="<?php bloginfo('url'); ?>">首页</a></li>
+			<div style="" class="heading heading-bottom">
+				<div style="width:100%;text-align:center" class="heading-list">
+					<ul style="text-align:center" class="heading-small">
+						<li style="text-align:center!important" class="heading-menu heading-o"><a href="<?php bloginfo('url'); ?>">首页</a></li>
 						<?php wp_list_pages('title_li=&sort_column=post_date'); ?>
-						<li class="heading-menu heading-o"><a href="">搜索</a></li>
+						<li style="text-align:center!important" class="heading-menu heading-o"><a href="<?php bloginfo('home'); ?>/?s=&sa.x=0&sa.y=0">搜索</a></li>
 					</ul>
 				</div>
 			</div>

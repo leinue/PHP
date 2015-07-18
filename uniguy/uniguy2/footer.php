@@ -56,20 +56,44 @@
 				}
 			});
 
+			var liCount=$('.heading-bottom ul li').length;
+
+			var headingLiHeight=$('.heading-bottom .heading-list ul li').height();
+			console.log(parseInt(headingLiHeight));
+			headingLiHeight=liCount*headingLiHeight;
+			console.log(headingLiHeight);
+
 			//小屏幕时菜单弹出
 			$('#list-toggle').click(function(){
 				$('.heading-bottom').slideToggle();
-				var elemHeight=$('.heading-bottom .heading-list').height()+46;
+				var elemHeight=$('.heading-bottom .heading-list').height()+126;
+				var originGalleryHeadingMarginTop=$('.gallery-heading').css('marginTop');
 				if(smallScreenMenuIsDisplayed){
 					if(screen.width<=350){
 						$('.gallery-content img,.gallery-heading,.news-block').animate({
 							marginTop:'-='+elemHeight+'px'
+						},function(){
+							$('.gallery-heading').animate({
+								marginTop:'0px'
+							});
 						});
 					}
-					//$('.heading-bottom').css('borderTop','1px solid rgb(255,255,255)');
 					smallScreenMenuIsDisplayed=false;
 				}else{
-					//$('.heading-bottom').css('borderTop','none');
+
+
+
+					$('.heading-bottom').css({
+						'display':'block',
+						'height':headingLiHeight
+					});
+					
+					$('.heading-bottom .heading-list ul li').css({
+						'display':'block',
+						'margin-bottom':'10px',
+						'width':'100%'
+					});
+					
 					if(screen.width<=350){
 						$('.gallery-content img,.gallery-heading,.news-block').animate({
 							marginTop:'+='+elemHeight+'px'

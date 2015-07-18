@@ -895,7 +895,7 @@ ul.st_navigation li span.st_arrow_up{
 }
 
 .content-panel{
-	width: 1200px;
+	width: 88.95478%;
 	height: 150px;
 	margin: 0 auto;
 	text-align: center;
@@ -943,7 +943,7 @@ ul.st_navigation li span.st_arrow_up{
 
 .content-detail{
 	text-align: left;
-	width: 1200px;
+	width: 88.95478%;
 	margin: 0 auto;
 	margin-top: 20px;
 	color: rgb(119,119,119);
@@ -989,7 +989,7 @@ ul.st_navigation li span.st_arrow_up{
 	border: 1px solid rgb(230,230,230);
 	background: rgb(255,255,255);
 	margin-bottom: 20px;
-	width: 1200px;
+	width: 88.95478%;
 	overflow-y: auto;
 }
 

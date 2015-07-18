@@ -70,10 +70,10 @@
 				var originGalleryHeadingMarginTop=$('.gallery-heading').css('marginTop');
 				if(smallScreenMenuIsDisplayed){
 					if(screen.width<=350){
-						$('.gallery-heading,.news-block').animate({
+						$('.gallery-heading,.news-block,.content-panel').animate({
 							marginTop:'-='+elemHeight+'px'
 						},function(){
-							$('.gallery-heading,.news-block').animate({
+							$('.gallery-heading,.news-block,.content-panel').animate({
 								marginTop:'0px'
 							});
 						});
@@ -94,7 +94,7 @@
 					});
 					
 					if(screen.width<=350){
-						$('.gallery-heading,.news-block').animate({
+						$('.gallery-heading,.news-block,.content-panel').animate({
 							marginTop:'+='+elemHeight+'px'
 						});
 						smallScreenMenuIsDisplayed=true;

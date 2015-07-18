@@ -18,6 +18,29 @@
 			//隐藏搜索框
 			$('.input-search').hide();
 
+			function getExplorer() {
+				var explorer = window.navigator.userAgent ;
+				if (explorer.indexOf("MSIE") >= 0) {
+					return "ie";
+				}else if (explorer.indexOf("Firefox") >= 0){
+					return "ff";
+				}else if(explorer.indexOf("Chrome") >= 0){
+					return "chrome";
+				}else if(explorer.indexOf("Opera") >= 0){
+					return "opera";
+				}else if(explorer.indexOf("Safari") >= 0){
+					return "safari";
+				}
+			}
+
+			var explorer=getExplorer();
+
+			if(explorer=='chrome'){
+				var menuCount=$('.heading-big li').length;
+				var inputPos=menuCount-1;
+				$('.heading-big li:nth-child('+inputPos+')').css('margin-top','0');
+			}
+
 			//按钮动态效果
 			$('#btn-search,.heading-list ul li,a,li,h1,h2,h3,h4,h5,h6,p').hover(
 				function(){
@@ -59,9 +82,7 @@
 			var liCount=$('.heading-bottom ul li').length;
 
 			var headingLiHeight=$('.heading-bottom .heading-list ul li').height();
-			console.log(parseInt(headingLiHeight));
 			headingLiHeight=liCount*headingLiHeight;
-			console.log(headingLiHeight);
 
 			//小屏幕时菜单弹出
 			$('#list-toggle').click(function(){

@@ -1,24 +1,35 @@
 
 <section>
-	<div style="margin-top:100px" class="news-block">
-		<ul>
-		<?php 
-        foreach(get_all_category_ids() as $v){
-            $cat_info=get_category($v);
-            if($cat_info->parent!='0'){
-            	$parent_info=get_category($cat_info->parent);
-            	if($parent_info->name=='news'){
-            		$link=get_category_link($cat_info->term_id)."?$cat_info->term_id";
-            		echo "<li>
-						<a href=\"$link\"><img src=\"$cat_info->description\"></a>
-						<span class=\"help-block\"><a href=\"$link\">$cat_info->name</a></span>
-					</li>";
-            	}
-            }
-        }
-		?>
+	<div style="margin-top:100px;border:none;" class="news-block">
+		<ul style="left: 0px;" id="st_nav" class="st_navigation">
+			<li style="height: 170px; display: list-item;" class="album current">
+				<div style="overflow: hidden; display: block;" class="st_wrapper st_thumbs_wrapper">
+					<div style="width: 366px;" class="st_thumbs">
+					<?php
+						$allCateIds=get_all_category_ids();
+				        foreach($allCateIds as $v){
+				            $cat_info=get_category($v);
+				            if($cat_info->parent!='0'){
+				            	$parent_info=get_category($cat_info->parent);
+				            	if($parent_info->name=='news'){
+				            		$link=get_category_link($cat_info->term_id)."?$cat_info->term_id";
+				     				//echo "<li>
+									// 	<a href=\"$link\"><img src=\"$cat_info->description\"></a>
+									// 	<span class=\"help-block\"><a href=\"$link\">$cat_info->name</a></span>
+									// </li>";
+									echo "<div><img style=\"height: 126px; width: 150px; opacity: 0.7;\" href=\"$link\" src=\"$cat_info->description\" alt=\"$cat_info->name\"><a href=\"\">212</a></div>";
+				            	}
+				            }
+				        }
+					?>
+					</div>
+				</div>
+			</li>
 		</ul>
 	</div>
+
+	
+
 
 	<div style="margin-top:100px" class="post-block">
 
@@ -77,7 +88,64 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
+
+		var $list = $('#st_nav');
+
 		$('.news-block').css('margin-top','0px');
 		$('.post-block').css('margin-top','0px');
+
+		var newCateCount=$('.news-block ul li').length;
+
+		$('.news-block ul li').mouseenter(function(){
+			if(newCateCount>6){
+				$(this).scrollLeft(200);
+			}
+		});
+		
+		if(newCateCount>6){
+			for (var i = 7; i < newCateCount+1; i++) {
+				$('.news-block ul li:nth-child('+i+')').hide();
+			};
+		}
+
+		$list.find('.st_thumbs img').bind('mouseenter',function(){
+			$(this).stop().animate({'opacity':'1'});
+		}).bind('mouseleave',function(){
+			$(this).stop().animate({'opacity':'0.7'});
+		});
+
+		buildThumbs();
+				
+		function buildThumbs(){
+			$list.children('li.album').each(function(){
+				var $elem 			= $(this);
+				var $thumbs_wrapper = $elem.find('.st_thumbs_wrapper');
+				var $thumbs 		= $thumbs_wrapper.children(':first');
+				//each thumb has 180px and we add 3 of margin
+				var finalW 			= $thumbs.find('img').length * 190;
+				$thumbs.css('width',finalW + 'px');
+				//make this element scrollable
+				makeScrollable($thumbs_wrapper,$thumbs);
+			});
+		}
+
+		function makeScrollable($outer, $inner){
+			var extra 			= 800;
+			//Get menu width
+			var divWidth = $outer.width();
+			//Remove scrollbars
+			$outer.css({
+				overflow: 'hidden'
+			});
+			//Find last image in container
+			var lastElem = $inner.find('img:last');
+			$outer.scrollLeft(0);
+			//When user move mouse over menu
+			$outer.unbind('mousemove').bind('mousemove',function(e){
+				var containerWidth = lastElem[0].offsetLeft + lastElem.outerWidth() + 2*extra;
+				var left = (e.pageX - $outer.offset().left) * (containerWidth-divWidth) / divWidth - extra;
+				$outer.scrollLeft(left);
+			});
+		}
 	});
 </script>

@@ -769,6 +769,95 @@ $options[] = array(
             "type" => "tinymce"  
             );
 
+$options[] = array(   
+                "name"=>"宣传板1标题",   
+                "id"=>"case_pa_title1",   
+                "std"=>"蛤蛤蛤蛤",   
+                "desc"=>"案例页面中宣传板1的标题",   
+                "size"=>"60",   
+                "type"=>"text"
+            );
+
+$options[] = array(   
+                "name"=>"宣传板1介绍",   
+                "id"=>"case_pa_desc1",   
+                "std"=>"蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤",   
+                "desc"=>"案例页面中宣传板1的介绍",   
+                "size"=>"60",   
+                "type"=>"text"
+            );
+
+$options[] = array(   
+            "name" => "宣传板1图片",   
+            "desc" => "请上传一个图片或填写一个图片地址,建议大小:146*428",   
+            "std"=>"http://images.apple.com/v/iphone/compare/c/images/6plus_buy_medium.jpg",   
+            "id" => "case_pa_img1",   
+            "type" => "upload");
+
+$options[] = array(   
+                "name"=>"宣传板2标题",   
+                "id"=>"case_pa_title2",   
+                "std"=>"蛤蛤蛤蛤",   
+                "desc"=>"案例页面中宣传板2的标题",   
+                "size"=>"60",   
+                "type"=>"text"
+            );
+
+$options[] = array(   
+                "name"=>"宣传板2介绍",   
+                "id"=>"case_pa_desc2",   
+                "std"=>"蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤",   
+                "desc"=>"案例页面中宣传板2的介绍",   
+                "size"=>"60",   
+                "type"=>"text"
+            );
+
+$options[] = array(   
+            "name" => "宣传板2图片",   
+            "desc" => "请上传一个图片或填写一个图片地址,建议大小:146*428",   
+            "std"=>"http://images.apple.com/v/iphone/compare/c/images/6plus_buy_medium.jpg",   
+            "id" => "case_pa_img2",   
+            "type" => "upload");
+
+$options[] = array(   
+                "name"=>"宣传板3标题",   
+                "id"=>"case_pa_title3",   
+                "std"=>"蛤蛤蛤蛤",   
+                "desc"=>"案例页面中宣传板3的标题",   
+                "size"=>"60",   
+                "type"=>"text"
+            );
+
+$options[] = array(   
+                "name"=>"宣传板3介绍",   
+                "id"=>"case_pa_desc3",   
+                "std"=>"蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤",   
+                "desc"=>"案例页面中宣传板3的介绍",   
+                "size"=>"60",   
+                "type"=>"text"
+            );
+
+$options[] = array(   
+            "name" => "宣传板3图片",   
+            "desc" => "请上传一个图片或填写一个图片地址,建议大小:146*428",   
+            "std"=>"http://images.apple.com/v/iphone/compare/c/images/6plus_buy_medium.jpg",   
+            "id" => "case_pa_img3",   
+            "type" => "upload");
+
+$options[] = array(   
+            "name" => "宣传板4图片1",   
+            "desc" => "请上传一个图片或填写一个图片地址,建议大小:146*428",   
+            "std"=>"http://images.apple.com/v/iphone/compare/c/images/6plus_buy_medium.jpg",   
+            "id" => "case_pa_img41",   
+            "type" => "upload");
+
+$options[] = array(   
+            "name" => "宣传板4图片2",   
+            "desc" => "请上传一个图片或填写一个图片地址,建议大小:146*428",   
+            "std"=>"http://images.apple.com/v/iphone/compare/c/images/6plus_buy_medium.jpg",   
+            "id" => "case_pa_img42",   
+            "type" => "upload");
+
 
 $options[] = array( "type" => "close");   
 
@@ -779,7 +868,7 @@ $options_page = new ashu_option_class($options, $servicepageinfo);
 
 <?php
 //开启/设置缩略图
-add_theme_support( 'post-thumbnails' );
+add_theme_support('post-thumbnails');
 set_post_thumbnail_size(640,200);
 
 // //添加主题选项

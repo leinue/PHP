@@ -433,7 +433,7 @@ footer p{margin-bottom: -6px;}
 
 .news-block ul{
 	display: table-row;
-	overflow: scroll;
+	overflow: hidden;
 }
 
 .news-block ul li{
@@ -458,6 +458,32 @@ footer p{margin-bottom: -6px;}
 	.news-block ul li a img{
 		width: 90px;
 		height: 90px;
+	}
+
+	.st_wrapper{
+		height: 130px!important;
+	}
+
+	.st_thumbs{
+		height: 130px!important;
+	}
+
+	.st_thumbs img{
+		height: 80px!important;
+		width: 80px!important;
+	}
+
+	.st_thumbs div a{
+		margin-top: 80px!important;
+		margin-left: 20px!important;
+	}
+
+	.st_thumbs div a:first-child{
+		margin-left: 30px!important;
+	}
+
+	ul.st_navigation li{
+		height: 130px!important;
 	}
 
 	.news-block{
@@ -510,6 +536,83 @@ footer p{margin-bottom: -6px;}
 		float: left;
 		margin-right: 20px;
 	}
+}
+
+ul.st_navigation{
+	position:absolute;
+	width:71.7423%;
+	/*top:140px;*/
+	left:0px;
+	list-style:none;
+	margin-left: 14.9288%;
+}
+
+ul.st_navigation li {
+	float:left;
+	clear:both;
+	margin-bottom:8px;
+	position:relative;
+	width:100%;
+}
+
+ul.st_navigation li span.st_link{
+	background-color:#000;
+	float:left;
+	position:relative;
+	line-height:50px;
+	padding:0px 20px;
+	-moz-box-shadow:0px 0px 2px #000;
+	-webkit-box-shadow:0px 0px 2px #000;
+	box-shadow:0px 0px 2px #000;
+}
+
+ul.st_navigation li span.st_arrow_down,
+ul.st_navigation li span.st_arrow_up{
+	position:absolute;
+	margin-left:15px;
+	width:40px;
+	height:50px;
+	cursor:pointer;
+	-moz-box-shadow:0px 0px 2px #000;
+	-webkit-box-shadow:0px 0px 2px #000;
+	box-shadow:0px 0px 2px #000;
+}
+
+.st_wrapper{
+	display:none;
+	position: absolute;
+    width:100%;
+    height:166px;
+	top:0px;
+    left:0px;
+}
+
+.st_thumbs{
+    height:166px;
+    margin: 0;
+}
+
+.st_thumbs img,.st_thumbs div{
+    float:left;
+    margin:3px 3px 0px 0px;
+    cursor:pointer;
+    margin-right: 10px;
+/*	-moz-box-shadow:1px 1px 5px #000;
+	-webkit-box-shdow:1px 1px 5px #000;
+	box-shadow:1px 1px 5px #000;
+*/	opacity:0.7;
+	/*filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);*/
+}
+
+.st_thumbs div{
+	text-align: center;
+}
+
+.st_thumbs div a{
+	display: block;
+	position: absolute;
+	margin-top: 130px;
+	margin-left: 48px;
 }
 
 /*post block area*/
@@ -599,7 +702,7 @@ footer p{margin-bottom: -6px;}
 	padding: 0px;
 	height: 50px;
 	background: rgb(255,255,255);
-	opacity: 0.6;
+	opacity: 0.9;
 	z-index: 65535;
 }
 
@@ -631,7 +734,7 @@ footer p{margin-bottom: -6px;}
 	width: 110.8%;
 	margin-top: 10px;
 	background: rgb(255,255,255);
-	opacity: 0.6;
+	/*opacity: 0.6;*/
 	border-bottom: 1px solid rgb(226,226,226);
 }
 

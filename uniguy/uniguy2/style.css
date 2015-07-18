@@ -631,7 +631,8 @@ ul.st_navigation li span.st_arrow_up{
 	width: 71.7964647%;
 	margin-left:14.928843%;
 	margin-top: 10px;
-	display: table;
+	/*display: table;*/
+	overflow: hidden;
 }
 
 .latest-post{
@@ -640,6 +641,7 @@ ul.st_navigation li span.st_arrow_up{
 	list-style: none;
 	display: table-row;
 	margin: 0px;
+	max-width: 100%;
 }
 
 .latest-post li{
@@ -686,7 +688,10 @@ ul.st_navigation li span.st_arrow_up{
 	font-size: 14px;
 	color: #666;
 	margin-bottom: 4px;
+	overflow: hidden;
+	position: relative;
 }
+
 
 .post-more{
 	display: block;

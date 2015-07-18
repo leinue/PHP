@@ -38,9 +38,8 @@
     					left:'0px',
     					width:'-='+inputWidth+'px'
   					},400,function(){
-  						$('.input-search').toggle();
-
   						$('.heading-list').css('width',headingListWidth+'%');
+  						$('.input-search').toggle();
   					});
   					$('.heading-list .heading-big .heading-input').css('width','0px');
   					inputSearchIsDiaplayed=false;

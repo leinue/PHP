@@ -989,3 +989,105 @@ ul.st_navigation li span.st_arrow_up{
 	color: rgb(37,143,184);
 	font-size: 14px;
 }
+
+/*搜索页面*/
+
+/*搜索页面*/
+
+.search_top{
+	padding: 20px;
+}
+
+.search_title{
+	text-align: center;
+}
+
+.search_input{
+	text-align: center;
+	width: 73.15289%;
+	margin: 0 auto;
+}
+
+#search_btn{
+	
+	padding: 6px 14px 4px;
+	margin-top: -70px;
+}
+
+#search_btn:hover{
+	border-color: rgb(120,120,120);
+	opacity: 0.5;
+}
+
+
+/*搜索记录*/
+
+.memo-top{
+	border:1px solid rgb(230,230,230);
+	padding: 20px;
+	background: rgb(250,250,250);
+}
+
+.m-h-t{font-size: 20px;}
+
+.line-box{
+	border-bottom: 1px solid rgb(230,230,230);
+	margin-top: -14px;
+	margin-left: 90px;
+}
+
+.memo-content{margin-top: 20px;}
+
+.memo-box{
+	border:1px solid rgb(230,230,230);
+	background: rgb(255,255,255);
+	margin-bottom: 10px;
+	height: 110px;
+}
+
+.memo-left{
+	float: left;
+	padding: 10px;
+	width: 160px;
+	height: 100px;
+}
+
+.memo-left-img a{color: rgb(51,51,51);}
+
+.memo-right{float: left;padding: 10px;}
+
+.memo-right-head{font-size: 20px;}
+
+.memo-right-head a{color: rgb(51,51,51);}
+
+.memo-right-head a:hover{color: rgb(153,153,153);}
+
+.memo-right-desc{
+	font-size: 14px;
+	color: rgb(120,120,120);
+	font-weight: bold;
+	margin-top: 5px;
+}
+
+.memo-time{
+	margin-left: 20px;
+	color: rgb(102,102,102);
+}
+
+.memo-right-tags{
+	color: rgb(95,95,95);
+	font-size: 15px;
+	border-top: 1px solid rgb(216,216,216);
+	margin-top: 10px;
+	padding: 10px;
+	padding-left: 0px;
+}
+
+.memo-page{
+	border:1px solid rgb(230,230,230);
+	background: rgb(250,250,250);
+	padding: 10px;
+	text-align: center;
+	color: rgb(85,167,199);
+	display: none;
+}

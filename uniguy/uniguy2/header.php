@@ -22,7 +22,7 @@
 					<li class="heading-menu heading-o"><a href="<?php bloginfo('url'); ?>">首页</a></li>
 					<?php wp_list_pages('title_li=&sort_column=post_date'); ?>
 					<li class="heading-menu heading-o"><a href="javascript:void('')"><img id="btn-search" src="<?php bloginfo('url'); ?>/wp-content/themes/uniguy2/imgs/search.png" width="20" height="20"></a></li>
-					<li style="position:absolute;margin-top:-28px" class="heading-menu heading-o heading-input"><input class="input-search" type="search" placeholder="搜索 uniguy.com"></li>
+					<li style="position:absolute;margin-top:-28px;" class="heading-menu heading-o heading-input"><input class="input-search" style="padding:0" id="top_input_search" type="search" placeholder="回车 搜索 uniguy.com"></li>
 					<li class="heading-menu heading-toggle"><img id="list-toggle" src="<?php bloginfo('url'); ?>/wp-content/themes/uniguy2/imgs/toggle_list.png" width="20" height="20"></li>
 				</ul>
 			</div>
@@ -40,3 +40,16 @@
 </header>
 
 <?php global $ashu_option; ?>
+
+<script type="text/javascript">
+	$('#top_input_search').keyup(function(e){
+		if(e.which == 13){ 
+			var input=$(this).val();
+			if(input!=''){
+				window.location.href="<?php bloginfo('home'); ?>/?s="+input+"&sa.x=0&sa.y=0";
+			}else{
+				alert('请输入搜索内容');
+			}
+		}
+	});
+</script>

@@ -36,7 +36,8 @@ function ashu_media_uploader()
         // set a variable depending on what has been clicked, normal media uploader or kriesi hijacked uploader
         $buttons.click(function()
         {   
-            window.custom_editor = jQuery(this).attr('id');         
+            window.custom_editor = jQuery(this).attr('id');
+            console.log(window.custom_editor);
         });
         
         $realmediabuttons.click(function()
@@ -129,8 +130,7 @@ function copy_table()
             _helper_correct_numbers($current_table);
             return false;
             });
-        
-        
+
     });
     
 }

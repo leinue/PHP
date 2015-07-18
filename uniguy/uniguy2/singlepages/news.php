@@ -31,7 +31,7 @@
 	
 
 
-	<div style="margin-top:100px" class="post-block">
+	<div style="margin-top:100px;padding:10px;" class="post-block">
 
 	<?php
 		$previous_year = $year = 0;

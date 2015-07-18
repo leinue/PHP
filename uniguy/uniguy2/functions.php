@@ -23,8 +23,9 @@ class ashu_option_class{
 	
 	function enqueue_head() {
 		//加载的js路径
-		wp_enqueue_script('ashu_options_js', TEMJS_URI.'js/upload.js'); 
-		// wp_enqueue_style('ashu_options_css', TEMJS_URI.'style.css'); 
+		wp_enqueue_script('ashu_options_js', get_bloginfo( 'stylesheet_directory' ).'/ashu_options.js'); 
+		wp_enqueue_style('ashu_options_css', get_bloginfo( 'stylesheet_directory' ).'/ashu_options.css');
+		// echo "<script>alert('".TEMJS_URI."')</script>";
 		wp_enqueue_script('thickbox');
 		wp_enqueue_style('thickbox');
 	}

@@ -17,7 +17,7 @@
 									// 	<a href=\"$link\"><img src=\"$cat_info->description\"></a>
 									// 	<span class=\"help-block\"><a href=\"$link\">$cat_info->name</a></span>
 									// </li>";
-									echo "<div><img style=\"height: 126px; width: 150px; opacity: 0.7;\" href=\"$link\" src=\"$cat_info->description\" alt=\"$cat_info->name\"><a href=\"\">212</a></div>";
+									echo "<div href=\"$link\" class=\"news-cate-link\"><img style=\"height: 126px; width: 150px; opacity: 0.7;\" src=\"$cat_info->description\" alt=\"$cat_info->name\"><a href=\"$link\">$cat_info->name</a></div>";
 				            	}
 				            }
 				        }
@@ -31,7 +31,7 @@
 	
 
 
-	<div style="margin-top:100px" class="post-block">
+	<div style="margin-top:100px;padding:10px;" class="post-block">
 
 	<?php
 		$previous_year = $year = 0;
@@ -147,5 +147,10 @@
 				$outer.scrollLeft(left);
 			});
 		}
+
+		$('.st_thumbs div.news-cate-link').click(function(){
+			var href=$(this).attr('href');
+			window.location.href=href;
+		});
 	});
 </script>

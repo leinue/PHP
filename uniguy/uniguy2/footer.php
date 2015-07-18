@@ -66,14 +66,14 @@
 			//小屏幕时菜单弹出
 			$('#list-toggle').click(function(){
 				$('.heading-bottom').slideToggle();
-				var elemHeight=$('.heading-bottom .heading-list').height()+126;
+				var elemHeight=$('.heading-bottom .heading-list').height()+400;
 				var originGalleryHeadingMarginTop=$('.gallery-heading').css('marginTop');
 				if(smallScreenMenuIsDisplayed){
 					if(screen.width<=350){
-						$('.gallery-content img,.gallery-heading,.news-block').animate({
+						$('.gallery-heading,.news-block').animate({
 							marginTop:'-='+elemHeight+'px'
 						},function(){
-							$('.gallery-heading').animate({
+							$('.gallery-heading,.news-block').animate({
 								marginTop:'0px'
 							});
 						});
@@ -81,11 +81,10 @@
 					smallScreenMenuIsDisplayed=false;
 				}else{
 
-
-
 					$('.heading-bottom').css({
 						'display':'block',
-						'height':headingLiHeight
+						'height':headingLiHeight,
+						'position':'relative'
 					});
 					
 					$('.heading-bottom .heading-list ul li').css({
@@ -95,12 +94,16 @@
 					});
 					
 					if(screen.width<=350){
-						$('.gallery-content img,.gallery-heading,.news-block').animate({
+						$('.gallery-heading,.news-block').animate({
 							marginTop:'+='+elemHeight+'px'
 						});
 						smallScreenMenuIsDisplayed=true;
 					}
 				}
+			});
+
+			$('.heading-bottom .heading-list ul li').click(function(){
+				window.location.href=$(this).find('a').attr('href');
 			});
 
 			$(window).scroll(floatMenuCase);

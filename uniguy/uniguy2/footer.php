@@ -1,10 +1,7 @@
 <footer>
     <?php
-    	if($ashu_option['ashu']['tinymce_uniguy_copy_right']!=''){
-    		echo $ashu_option['ashu']['tinymce_uniguy_copy_right'];    		
-    	}else{
-    		echo '<p>上海<span class="help">诸君信息科技</span>有限公司，保留业务与网站的最终解释权，<span class="help">2008-2015</span></p><p>上海市 闵行区 <span class="help">罗锦路55号C座210</span></p><p>QQ: <span class="help">2208934488</span> , 微信: <span class="help">uniguy</span> , 电邮: <span class="help">service@uniguyit.com</span></p>';
-    	}
+    	global $ashu_option;
+    	echo $ashu_option['ashu']['tinymce_uniguy_copy_right'];
     ?>
  </footer>
 
@@ -96,6 +93,11 @@
 						},function(){
 							$('.gallery-heading,.news-block,.content-panel').animate({
 								marginTop:'0px'
+							},function(){
+								var caseSearchBtn=$('.case-block ul li#display-search span');
+								if(caseSearchBtn!=0){
+									caseSearchBtn.toggle();
+								}
 							});
 						});
 					// }
@@ -111,7 +113,8 @@
 					$('.heading-bottom .heading-list ul li').css({
 						'display':'block',
 						'margin-bottom':'10px',
-						'width':'100%'
+						'width':'100%',
+						'text-align':'center'
 					});
 
 					// if(screen.width<=350){
@@ -121,6 +124,11 @@
 						});
 						smallScreenMenuIsDisplayed=true;
 					// }
+
+					var caseSearchBtn=$('.case-block ul li#display-search span');
+					if(caseSearchBtn!=0){
+						caseSearchBtn.hide();
+					}
 				}
 			});
 

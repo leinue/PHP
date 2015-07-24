@@ -1,10 +1,7 @@
 <footer>
     <?php
-    	if($ashu_option['ashu']['tinymce_uniguy_copy_right']!=''){
-    		echo $ashu_option['ashu']['tinymce_uniguy_copy_right'];    		
-    	}else{
-    		echo '<p>上海<span class="help">诸君信息科技</span>有限公司，保留业务与网站的最终解释权，<span class="help">2008-2015</span></p><p>上海市 闵行区 <span class="help">罗锦路55号C座210</span></p><p>QQ: <span class="help">2208934488</span> , 微信: <span class="help">uniguy</span> , 电邮: <span class="help">service@uniguyit.com</span></p>';
-    	}
+    	global $ashu_option;
+    	echo $ashu_option['ashu']['tinymce_uniguy_copy_right'];
     ?>
  </footer>
 
@@ -17,6 +14,29 @@
 
 			//隐藏搜索框
 			$('.input-search').hide();
+
+			function getExplorer() {
+				var explorer = window.navigator.userAgent ;
+				if (explorer.indexOf("MSIE") >= 0) {
+					return "ie";
+				}else if (explorer.indexOf("Firefox") >= 0){
+					return "ff";
+				}else if(explorer.indexOf("Chrome") >= 0){
+					return "chrome";
+				}else if(explorer.indexOf("Opera") >= 0){
+					return "opera";
+				}else if(explorer.indexOf("Safari") >= 0){
+					return "safari";
+				}
+			}
+
+			var explorer=getExplorer();
+
+			if(explorer=='chrome'){
+				var menuCount=$('.heading-big li').length;
+				var inputPos=menuCount-1;
+				$('.heading-big li:nth-child('+inputPos+')').css('margin-top','0');
+			}
 
 			//按钮动态效果
 			$('#btn-search,.heading-list ul li,a,li,h1,h2,h3,h4,h5,h6,p').hover(
@@ -38,9 +58,8 @@
     					left:'0px',
     					width:'-='+inputWidth+'px'
   					},400,function(){
-  						$('.input-search').toggle();
-
   						$('.heading-list').css('width',headingListWidth+'%');
+  						$('.input-search').toggle();
   					});
   					$('.heading-list .heading-big .heading-input').css('width','0px');
   					inputSearchIsDiaplayed=false;
@@ -57,27 +76,64 @@
 				}
 			});
 
+			var liCount=$('.heading-bottom ul li').length;
+
+			var headingLiHeight=$('.heading-bottom .heading-list ul li').height();
+			headingLiHeight=liCount*headingLiHeight;
+
 			//小屏幕时菜单弹出
 			$('#list-toggle').click(function(){
 				$('.heading-bottom').slideToggle();
-				var elemHeight=$('.heading-bottom .heading-list').height()+46;
+				var elemHeight=$('.heading-bottom .heading-list').height()+400;
+				var originGalleryHeadingMarginTop=$('.gallery-heading').css('marginTop');
 				if(smallScreenMenuIsDisplayed){
-					if(screen.width<=350){
-						$('.gallery-content img,.gallery-heading,.news-block').animate({
+					// if(screen.width<=350){
+						$('.gallery-heading,.news-block,.content-panel').animate({
 							marginTop:'-='+elemHeight+'px'
+						},function(){
+							$('.gallery-heading,.news-block,.content-panel').animate({
+								marginTop:'0px'
+							},function(){
+								var caseSearchBtn=$('.case-block ul li#display-search span');
+								if(caseSearchBtn!=0){
+									caseSearchBtn.toggle();
+								}
+							});
 						});
-					}
-					//$('.heading-bottom').css('borderTop','1px solid rgb(255,255,255)');
+					// }
 					smallScreenMenuIsDisplayed=false;
 				}else{
-					//$('.heading-bottom').css('borderTop','none');
-					if(screen.width<=350){
-						$('.gallery-content img,.gallery-heading,.news-block').animate({
+
+					$('.heading-bottom').css({
+						'display':'block',
+						'height':headingLiHeight,
+						'position':'relative'
+					});
+					
+					$('.heading-bottom .heading-list ul li').css({
+						'display':'block',
+						'margin-bottom':'10px',
+						'width':'100%',
+						'text-align':'center'
+					});
+
+					// if(screen.width<=350){
+						// alert('dssd');
+						$('.gallery-heading,.news-block,.content-panel').animate({
 							marginTop:'+='+elemHeight+'px'
 						});
 						smallScreenMenuIsDisplayed=true;
+					// }
+
+					var caseSearchBtn=$('.case-block ul li#display-search span');
+					if(caseSearchBtn!=0){
+						caseSearchBtn.hide();
 					}
 				}
+			});
+
+			$('.heading-bottom .heading-list ul li').click(function(){
+				window.location.href=$(this).find('a').attr('href');
 			});
 
 			$(window).scroll(floatMenuCase);

@@ -102,7 +102,7 @@
 		</div>
 
 		<div id="case-main-intro" class="column-content">
-			<div class="section-copy">
+			<div style="margin-top:80px" class="section-copy">
 				<p class="case-main-title"><?php echo $caseData['case_big_title']; ?></p>
 				<p class="case-brief-desc"><?php echo $caseData['case_medium_title']; ?></p>
 			</div>
@@ -207,7 +207,7 @@
 
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$('.section-copy').css('margin-top','-50px');
+			$('.section-copy').css('margin-top','-30px');
 
 			$(window).scroll(handleWindowScrollEvents);
 

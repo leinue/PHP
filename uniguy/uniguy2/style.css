@@ -93,8 +93,11 @@ a{
 
 .heading-bottom .heading-list ul li{
 	height: auto;
-	border-top: 1px solid rgb(80,80,80);
+	border-top: 1px solid rgba(80,80,80,0.6);
 	cursor: pointer;
+	display: block;
+	width: 100%;
+	text-align: center;
 }
 
 /*header ends*/
@@ -324,6 +327,13 @@ footer p{margin-bottom: -6px;}
 
 /*服务页面产品介绍区域*/
 
+.product-info-bg{
+	background-color: #FFF;
+	background-image: -webkit-linear-gradient(#F4F4F4 0px, #FFF 500px);
+	background-image: -o-linear-gradient(#F4F4F4 0px, #FFF 500px);
+	background-image: linear-gradient(#F4F4F4 0px, #FFF 500px);
+}
+
 .product-info{
 	margin-top: -20px;
 	height: 900px;
@@ -521,7 +531,7 @@ footer p{margin-bottom: -6px;}
 	}
 
 	.news-block ul li a img{
-		margin-top: 24px;
+		/*margin-top: 24px;*/
 		width: 46px;
 		height: 46px;
 	}
@@ -793,7 +803,7 @@ ul.st_navigation li span.st_arrow_up{
 }
 
 .case-menu ul li .case-menu-img img{
-	height: 110px;/*110*/
+	height: 100%;/*110*/
 }
 
 .section-img-hero img{
@@ -891,6 +901,21 @@ ul.st_navigation li span.st_arrow_up{
 
 	.intro-copy .intro{
 		font-size: 16px;
+	}
+
+	.case-block ul li#display-search span{
+		position: absolute;
+		width: 200px;
+		top: 70px;
+		right: 20px;
+	} 
+
+	.case-menu ul li .case-menu-img{
+		height: 50px;
+	}
+
+	.case-menu ul li{
+		height: 80px;
 	}
 }
 

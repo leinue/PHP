@@ -15,12 +15,14 @@
 
 <body>
 
+<?php global $ashu_option; ?>
+
 <header>
 	<nav>
 		<div class="heading">
 			<div class="heading-list">
 				<ul class="heading-big">
-					<li class="heading-menu heading-brand"><a href="<?php bloginfo('url'); ?>"><img id="brand" src="<?php bloginfo('url'); ?>/wp-content/themes/uniguy2/brand.png" width="20" height="20"></a></li>
+					<li class="heading-menu heading-brand"><a href="<?php bloginfo('url'); ?>"><img id="brand" src="<?php echo $ashu_option['ashu']['site_logo']; ?>" width="20" height="20"></a></li>
 					<li class="heading-menu heading-o"><a href="<?php bloginfo('url'); ?>">首页</a></li>
 					<?php wp_list_pages('title_li=&sort_column=post_date'); ?>
 					<li class="heading-menu heading-o"><a href="javascript:void('')"><img id="btn-search" src="<?php bloginfo('url'); ?>/wp-content/themes/uniguy2/imgs/search.png" width="20" height="20"></a></li>
@@ -40,8 +42,6 @@
 		</div>
 	</nav>
 </header>
-
-<?php global $ashu_option; ?>
 
 <script type="text/javascript">
 	$('#top_input_search').keyup(function(e){

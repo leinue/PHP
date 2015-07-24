@@ -376,6 +376,13 @@ $options[] = array(
 //             );   
   
 $options[] = array(   
+            "name" => "网站Logo",   
+            "desc" => "请上传一个图片或填写一个图片地址,建议大小:128*128",   
+            "std"=>"http://localhost/wordpress/wp-content/themes/uniguy2/brand.png",   
+            "id" => "site_logo",   
+            "type" => "upload");
+
+$options[] = array(   
             "name" => "首页背景图",   
             "desc" => "请上传一个图片或填写一个图片地址,建议大小:1440*1200",   
             "std"=>"http://localhost/wordpress/wp-content/themes/uniguy2/imgs/home.jpg",   

@@ -117,6 +117,7 @@ class ashu_option_class{
 					$value = stripslashes($value);
 					$newoptions[$key] = $value;
 				}elseif( preg_match("/^(checkbox_)/", $key, $result) ){
+					// echo '<script>alert("'.$value.'")</script>';
 					$newoptions[$key] = $value;
 				}else{
 					$value = stripslashes($value);
@@ -124,6 +125,8 @@ class ashu_option_class{
 				}
 			}
 		}
+
+		// print_r($newoptions);
 			
 		if ( $options != $newoptions ) {
 			$options = $newoptions;
@@ -187,22 +190,36 @@ class ashu_option_class{
 
 	/**************复选框*******************/
 	function checkbox($values) {
-		if(isset($this->database_options[$values['id']])) $values['std'] = $this->database_options[$values['id']];
+
+
+		if(isset($this->database_options[$values['std']])) {
+			$values['std'] = $this->database_options[$values['std']];
+								// echo '<script>alert("'.$values['std'].'")</script>';
+		}
 		
 		echo '<tr valign="top">';
 		echo '<th scope="row" width="200px">'.$values['name'].'</th>';
 		echo '<td>'.$values['desc'].'<br/>';
+
+		// print_r( $values['buttons'] );
 		
 		foreach( $values['buttons'] as $key=>$value ) {
 			$checked ="";
-			if( is_array($values['std']) && in_array($key,$values['std'])) {
+			// if( is_array($values['std']) && in_array($key,$values['std'])) {
+			// 	$checked = 'checked = "checked"';
+			// }
+
+			// echo '<script>alert("'.$values['std'] .'")</script>';
+
+			if($values['std'] == '1'){
 				$checked = 'checked = "checked"';
 			}
 
-			echo '<input '.$checked.' type="checkbox" class="kcheck" value="'.$key.'" name="'.$values['id'].'[]"/>'.$value;
-		}
+			// echo '<script>alert("'.$checked.'")</script>';
 
-		
+			echo '<input '.$checked.' type="checkbox" class="kcheck" value="'.$key.'" name="'.$values['id'].'"/>'.$value;
+		}		
+
 		echo '<label for="'.$values['id'].'">'.$values['desc'].'</label><br/>';
 	    echo '<br/></td>';
 		echo '</tr>';
@@ -533,12 +550,23 @@ $options[] = array(
 
 /*************宣传版面1**************/
 
+// $options[] = array( "name" => "宣传板1是否可视",   
+//             "desc" => "",   
+//             "id" => "checkbox_service_pa1_visibile",   //id必须以checkbox_开头
+//             "std" => 1,  
+// 			"buttons" => array('可视'), 			
+//             "type" => "checkbox");
+
 $options[] = array( "name" => "宣传板1是否可视",   
-            "desc" => "",   
-            "id" => "checkbox_service_pa1_visibile",   //id必须以checkbox_开头
-            "std" => 1,  
-			"buttons" => array('可视'), 			
-            "type" => "checkbox");
+            "desc" => "请选择",   
+            "id" => "checkbox_service_pa1_visibile", 
+			"std" => "1",
+            "type" => "dropdown",   
+            "subtype" => array(   
+                '1'=>'可视',   
+                '0'=>'不可视' 
+                )
+            );
 
 $options[] = array(   
                 "name"=>"宣传版面1-大标题",   
@@ -596,11 +624,15 @@ $options[] = array(
 /**************宣传版面2**************/
 
 $options[] = array( "name" => "宣传板2是否可视",   
-            "desc" => "",   
-            "id" => "checkbox_service_pa2_visibile",   //id必须以checkbox_开头
-            "std" => '1',  
-			"buttons" => array('可视'), 			
-            "type" => "checkbox");
+            "desc" => "请选择",   
+            "id" => "checkbox_service_pa2_visibile", 
+			"std" => "1",
+            "type" => "dropdown",   
+            "subtype" => array(   
+                '1'=>'可视',   
+                '0'=>'不可视' 
+                )
+            );
 
 $options[] = array(   
                 "name"=>"宣传版面2-大标题",   
@@ -657,11 +689,15 @@ $options[] = array(
 /**************宣传版面3**************/
 
 $options[] = array( "name" => "宣传板3是否可视",   
-            "desc" => "",   
-            "id" => "checkbox_service_pa3_visibile",   //id必须以checkbox_开头
-            "std" => '1',  
-			"buttons" => array('可视'), 			
-            "type" => "checkbox");
+            "desc" => "请选择",   
+            "id" => "checkbox_service_pa3_visibile", 
+			"std" => "1",
+            "type" => "dropdown",   
+            "subtype" => array(   
+                '1'=>'可视',   
+                '0'=>'不可视' 
+                )
+            );
 
 $options[] = array(   
                 "name"=>"宣传版面3-大标题",   
@@ -866,11 +902,16 @@ $options[] = array(
             );
 
 $options[] = array( "name" => "宣传板1是否可视",   
-            "desc" => "",   
-            "id" => "checkbox_case_pa1_visibile",   //id必须以checkbox_开头
-            "std" => '1',  
-			"buttons" => array('可视'), 			
-            "type" => "checkbox");
+            "desc" => "请选择",   
+            "id" => "checkbox_case_pa1_visibile", 
+			"std" => "1",
+            "type" => "dropdown",   
+            "subtype" => array(   
+                '1'=>'可视',   
+                '0'=>'不可视' 
+                )
+            );
+
 
 $options[] = array(   
                 "name"=>"宣传板1介绍",   
@@ -910,11 +951,15 @@ $options[] = array(
             );
 
 $options[] = array( "name" => "宣传板2是否可视",   
-            "desc" => "",   
-            "id" => "checkbox_case_pa2_visibile",   //id必须以checkbox_开头
-            "std" => '1',  
-			"buttons" => array('可视'), 			
-            "type" => "checkbox");
+            "desc" => "请选择",   
+            "id" => "checkbox_case_pa2_visibile", 
+			"std" => "1",
+            "type" => "dropdown",   
+            "subtype" => array(   
+                '1'=>'可视',   
+                '0'=>'不可视' 
+                )
+            );
 
 $options[] = array(   
                 "name"=>"宣传板2介绍",   
@@ -945,11 +990,15 @@ $options[] = array(
             "type" => "upload");
 
 $options[] = array( "name" => "宣传板3是否可视",   
-            "desc" => "",   
-            "id" => "checkbox_case_pa3_visibile",   //id必须以checkbox_开头
-            "std" => '1',  
-			"buttons" => array('可视'), 			
-            "type" => "checkbox");
+            "desc" => "请选择",   
+            "id" => "checkbox_case_pa3_visibile", 
+			"std" => "1",
+            "type" => "dropdown",   
+            "subtype" => array(   
+                '1'=>'可视',   
+                '0'=>'不可视' 
+                )
+            );
 
 $options[] = array(   
                 "name"=>"宣传板3标题",   
@@ -1064,7 +1113,6 @@ set_post_thumbnail_size(640,200);
 
 <style type="text/css">
 	.split{background: rgb(250,250,250);}
-
 </style>
 
 <script type="text/javascript">
@@ -1072,6 +1120,8 @@ set_post_thumbnail_size(640,200);
 	var currentPropageteCount="<?php echo $ashu_option['case']['case_pa_count']; ?>";
 
 	var propagateExists='<?php echo json_encode($caseDataAdded); ?>';
+
+	console.log(propagateExists);
 
 	var servicePropagate='<?php echo json_encode($serviceDataAdded); ?>';
 
@@ -1097,74 +1147,89 @@ set_post_thumbnail_size(640,200);
 
 		hidePaCount();
 
+		function getLength(obj){
+			var index=0;
+			for(var elem in obj){
+				index++;
+			}
+			return index;
+		}
 
 		if(propagateExists!='' && page=='case'){
 			var json=JSON.parse(propagateExists);
-			var propagateCount=json['case_add_pa_count'];
-			var propagateAddedStack={};
-			var singleAdded={};
-			var index=0;
-			var count=0;
-			for(var elem in json){
-				if(elem=='Submit' || elem=='save_my_options' || elem=='case_add_pa_count' || elem=='case_add_pa'){
-					continue;
-				}
-				if(count==4){
-					count=0;
-					index+=1;
-					singleAdded={};
+			console.log(getLength(json));
+			if(getLength(json)>3){
+				var propagateCount=json['case_add_pa_count'];
+				var propagateAddedStack={};
+				var singleAdded={};
+				var index=0;
+				var count=0;
+				for(var elem in json){
+					if(elem=='Submit' || elem=='save_my_options' || elem=='case_add_pa_count' || elem=='case_add_pa'){
+						continue;
+					}
+					if(count==4){
+						count=0;
+						index+=1;
+						singleAdded={};
+						singleAdded[elem]=json[elem];
+						// continue;
+					}else{
+						propagateAddedStack[index]=singleAdded;
+					}
 					singleAdded[elem]=json[elem];
-					// continue;
-				}else{
-					propagateAddedStack[index]=singleAdded;
+					count+=1;
 				}
-				singleAdded[elem]=json[elem];
-				count+=1;
-			}
 
-			for(elem in propagateAddedStack){
-				var propagate=propagateAddedStack[elem];
-				currentPropageteCount++;
-				var visible=propagate['checkbox_case_pa'+currentPropageteCount+'_visibile'];
-				visible=visible['0']=='true'?'true':'false';
-				addPropagatePanel(container,propagate['case_pa_desc'+currentPropageteCount],propagate['case_pa_img'+currentPropageteCount],propagate['case_pa_img'+currentPropageteCount+'_pos'],visible);
+				console.log(propagateAddedStack);
+
+				for(elem in propagateAddedStack){
+					var propagate=propagateAddedStack[elem];
+					currentPropageteCount++;
+					var visible=propagate['checkbox_case_pa'+currentPropageteCount+'_visibile'];
+					console.log(visible);
+					addPropagatePanel(container,propagate['case_pa_desc'+currentPropageteCount],propagate['case_pa_img'+currentPropageteCount],propagate['case_pa_img'+currentPropageteCount+'_pos'],visible);
+				}
 			}
+			
 		}
 
 		if(servicePropagate!='' && page=='service'){
 			var json=JSON.parse(servicePropagate);
-			var propagateCount=json['service_add_pa_count'];
-			var propagateAddedStack={};
-			var singleAdded={};
-			var index=0;
-			var count=0;
-			for(var elem in json){
-				if(elem=='Submit' || elem=='save_my_options' || elem=='service_add_pa_count' || elem=='service_add_pa'){
-					continue;
-				}
-				if(count==7){
-					count=0;
-					index+=1;
-					singleAdded={};
+			if(getLength(json)>3){
+				var propagateCount=json['service_add_pa_count'];
+				var propagateAddedStack={};
+				var singleAdded={};
+				var index=0;
+				var count=0;
+				for(var elem in json){
+					if(elem=='Submit' || elem=='save_my_options' || elem=='service_add_pa_count' || elem=='service_add_pa'){
+						continue;
+					}
+					if(count==7){
+						count=0;
+						index+=1;
+						singleAdded={};
+						singleAdded[elem]=json[elem];
+						// continue;
+					}else{
+						propagateAddedStack[index]=singleAdded;
+					}
 					singleAdded[elem]=json[elem];
-					// continue;
-				}else{
-					propagateAddedStack[index]=singleAdded;
+					count+=1;
 				}
-				singleAdded[elem]=json[elem];
-				count+=1;
-			}
 
-			var serviceIndex=currentAServiceProTotalCount;
+				var serviceIndex=currentAServiceProTotalCount;
 
-			for(elem in propagateAddedStack){
-				var propagate=propagateAddedStack[elem];
-				serviceIndex++;
-				var visible=propagate['checkbox_service_pa'+serviceIndex+'_visibile'];
-				visible=visible['0']=='true'?'true':'false';
-				//visible,title,subtitle,desc,ahrefTitle,ahref,img,split
-				addServicePropagatePanel(visible,propagate['propaganda'+serviceIndex+'_big_title'],propagate['propaganda'+serviceIndex+'_medium_title'],propagate['propaganda'+serviceIndex+'_small_desc'],propagate['propaganda'+serviceIndex+'_small_href'],propagate['propaganda'+serviceIndex+'_small_href_title'],propagate['propaganda'+serviceIndex+'_small_img'],true);
+				for(elem in propagateAddedStack){
+					var propagate=propagateAddedStack[elem];
+					serviceIndex++;
+					var visible=propagate['checkbox_service_pa'+serviceIndex+'_visibile'];
+					//visible,title,subtitle,desc,ahrefTitle,ahref,img,split
+					addServicePropagatePanel(visible,propagate['propaganda'+serviceIndex+'_big_title'],propagate['propaganda'+serviceIndex+'_medium_title'],propagate['propaganda'+serviceIndex+'_small_desc'],propagate['propaganda'+serviceIndex+'_small_href'],propagate['propaganda'+serviceIndex+'_small_href_title'],propagate['propaganda'+serviceIndex+'_small_img'],true);
+				}
 			}
+			
 		}
 
 	}
@@ -1214,8 +1279,23 @@ set_post_thumbnail_size(640,200);
 		if(split){splitcol=' class="split" ';}
 
 		currentAServiceProTotalCount++;
+
+		var vis='<select class="postform" id="checkbox_service_pa'+currentAServiceProTotalCount+'_visibile" name="checkbox_service_pa'+currentAServiceProTotalCount+'_visibile"> <option value="">请选择</option>  <option value="1">可视</option><option value="0">不可视</option></select>';
 		
-		var _checkbox='<tr valign="top"><th scope="row" width="200px">当前是否可视</th><td><br><input checked="'+visible+'" class="kcheck" value="0" name="checkbox_service_pa'+currentAServiceProTotalCount+'_visibile[]" type="checkbox">可视<label for="checkbox_service_pa'+currentAServiceProTotalCount+'_visibile"></label><br><br></td></tr>';
+		switch(visible){
+			case '1':
+				vis='<select class="postform" id="checkbox_service_pa'+currentAServiceProTotalCount+'_visibile" name="checkbox_service_pa'+currentAServiceProTotalCount+'_visibile"> <option value="">请选择</option>  <option selected="selected" value="1">可视</option><option value="0">不可视</option></select>';
+				break;
+			case '0':
+				vis='<select class="postform" id="checkbox_service_pa'+currentAServiceProTotalCount+'_visibile" name="checkbox_service_pa'+currentAServiceProTotalCount+'_visibile"> <option value="">请选择</option>  <option value="1">可视</option><option selected="selected" value="0">不可视</option></select>';
+				break;
+			default:
+				var vis='<select class="postform" id="checkbox_service_pa'+currentAServiceProTotalCount+'_visibile" name="checkbox_service_pa'+currentAServiceProTotalCount+'_visibile"> <option value="">请选择</option>  <option value="1">可视</option><option value="0">不可视</option></select>';
+				break;
+		}
+
+		
+		var _checkbox='<tr valign="top"><th scope="row" width="200px">宣传板是否可视</th><td>请选择<br>'+vis+'<br><br></td></tr>';
 		var title='<tr valign="top"><th scope="row" width="200px">当前宣传版面-大标题</th><td>显示在当前宣传版面的大标题<br><input size="60" value="'+title+'" id="propaganda'+currentAServiceProTotalCount+'_big_title" name="propaganda'+currentAServiceProTotalCount+'_big_title" type="text"><br><br></td></tr>';
 		var midTitle='<tr valign="top"><th scope="row" width="200px">当前宣传版面-中标题</th><td>显示在当前宣传版面的中标题<br><input size="60" value="'+subtitle+'" id="propaganda'+currentAServiceProTotalCount+'_medium_title" name="propaganda'+currentAServiceProTotalCount+'_medium_title" type="text"><br><br></td></tr>';
 		var desc='<tr valign="top"><th scope="row" width="200px">当前宣传版面-详细描述</th><td>显示在当前宣传版面的详细描述<br><textarea name="propaganda'+currentAServiceProTotalCount+'_small_desc" cols="60" rows="7" id="propaganda'+currentAServiceProTotalCount+'_small_desc" style="width: 80%; font-size: 12px;" class="code">'+desc+'</textarea><br><br></td></tr>';
@@ -1251,10 +1331,24 @@ set_post_thumbnail_size(640,200);
 				break;
 		}
 
+		var vis='<select class="postform" id="checkbox_case_pa'+currentPropageteCount+'_visibile" name="checkbox_case_pa'+currentPropageteCount+'_visibile"> <option value="">请选择</option>  <option value="1">可视</option><option value="0">不可视</option></select>';
+		
+		switch(visible){
+			case '1':
+				vis='<select class="postform" id="checkbox_case_pa'+currentPropageteCount+'_visibile" name="checkbox_case_pa'+currentPropageteCount+'_visibile"> <option value="">请选择</option>  <option selected="selected" value="1">可视</option><option value="0">不可视</option></select>';
+				break;
+			case '0':
+				vis='<select class="postform" id="checkbox_case_pa'+currentPropageteCount+'_visibile" name="checkbox_case_pa'+currentPropageteCount+'_visibile"> <option value="">请选择</option>  <option value="1">可视</option><option selected="selected" value="0">不可视</option></select>';
+				break;
+			default:
+				var vis='<select class="postform" id="checkbox_case_pa'+currentPropageteCount+'_visibile" name="checkbox_case_pa'+currentPropageteCount+'_visibile"> <option value="">请选择</option>  <option value="1">可视</option><option value="0">不可视</option></select>';
+				break;
+		}
+
 		addElment(container,'新建宣传面板'+currentPropageteCount+'介绍','案例页面中宣传板'+currentPropageteCount+'的介绍','<input size="60" value="'+desc+'" id="case_pa_desc'+currentPropageteCount+'" name="case_pa_desc'+currentPropageteCount+'" type="text">');
 		addElment(container,'新建宣传面板'+currentPropageteCount+'图片位置','请选择图片位置'+currentPropageteCount+'的介绍',str);
 		addElment(container,'新建宣传面板'+currentPropageteCount+'图片','请上传一个图片或填写一个图片地址,建议大小:146*428'+currentPropageteCount+'的介绍','<div class="preview_pic_optionspage" id="case_pa_img'+currentPropageteCount+'_div"><img src="'+imgsrc+'"></div>请上传一个图片或填写一个图片地址,建议大小:146*428<br><input size="60" value="'+imgsrc+'" name="case_pa_img'+currentPropageteCount+'" class="upload_pic_input" type="text">&nbsp;<a onclick="return false;" title="" class="k_hijack button thickbox" id="case_pa_img'+currentPropageteCount+'" href="media-upload.php?type=image&amp;hijack_target=case_pa_img'+currentPropageteCount+'&amp;TB_iframe=true">插入图片</a>');
-		addElment(container,'新建宣传面板'+currentPropageteCount+'是否可视','设置此宣传板是否可视','<input checked="'+visible+'" class="kcheck" value="0" name="checkbox_case_pa'+currentPropageteCount+'_visibile[]" type="checkbox">可视<label for="checkbox_case_pa'+currentPropageteCount+'_visibile"></label>',true);
+		addElment(container,'新建宣传面板'+currentPropageteCount+'是否可视','设置此宣传板是否可视',vis,true);
 	}
 
 	function addElment(container,title,subtitle,element,isSplited){

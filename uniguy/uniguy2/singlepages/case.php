@@ -131,7 +131,7 @@
 
 					$currentVisible=$caseData['checkbox_case_pa'.$i.'_visibile'];
 
-					if($currentVisible==='0'){continue;}
+					if($currentVisible=='0'){continue;}
 
 					$currentImgPos=$caseData['case_pa_img'.$i.'_pos'];
 					$currentTitle=$caseData['case_pa_title'.$i];

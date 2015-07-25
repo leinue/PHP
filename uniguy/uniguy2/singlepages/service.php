@@ -64,7 +64,7 @@
 		// echo "<script>alert('".$serviceData['service_pa_count']."')</script>";
 
 		for ($i=1; $i <=$serviceData['service_pa_count']; $i++) {
-			if($serviceData['checkbox_service_pa'.$i.'_visibile'][0]!=='0'){continue;}
+			if($serviceData['checkbox_service_pa'.$i.'_visibile']=='0'){continue;}
 			// echo "<script>alert('".$serviceData['checkbox_service_pa'.$i.'_visibile']['0']."')</script>";
 			echo '<div class="tidy-u-1 product-info-bg">
 					<div class="heading-product">
@@ -85,6 +85,7 @@
 
 		if($serviceDataAdded['service_add_pa_count']!=='0'){
 			for ($i=$serviceData['service_pa_count']+1; $i <=$serviceDataAdded['service_add_pa_count']+$serviceData['service_pa_count']; $i++) { 
+				if($serviceData['checkbox_service_pa'.$i.'_visibile']=='0'){continue;}
 				echo '<div class="tidy-u-1 product-info-bg">
 						<div class="heading-product">
 							<h2>'.$serviceDataAdded['propaganda'.$i.'_big_title'].'</h2>

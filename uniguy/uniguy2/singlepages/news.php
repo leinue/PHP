@@ -70,8 +70,8 @@
 					</div>
 					<div class="post-more">
 						<ul>
-							<li class="post-comment"><?php comments_popup_link('0 条评论', '1 条评论', '% 条评论', '', '评论已关闭'); ?></li>
-							<li class="post-time">wo 发表于 <?php the_time('Y年m月d日'); ?></li>
+							<li class="post-time"><?php the_author(); ?> 发表于 <?php the_time('Y年m月d日'); ?></li>
+							<li class="post-comment">更改于 <?php echo $post->post_date_gmt; ?></li>
 						</ul>
 					</div>
 				</li>

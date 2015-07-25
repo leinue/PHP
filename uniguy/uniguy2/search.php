@@ -6,7 +6,7 @@ $search_query =& new WP_Query("s=$s & showposts=-1");
 
 ?>
 
-	<section style="margin-top:-100px">
+	<section style="margin-top:-100px" class="search-section">
 		<div class="search_top">
 			<div class="search_title">
 				<h1>搜索</h1>
@@ -29,7 +29,7 @@ $search_query =& new WP_Query("s=$s & showposts=-1");
 							<div class="post-more">
 								<ul>
 									<!-- <li class="post-comment"><?php comments_popup_link('0 条评论', '1 条评论', '% 条评论', '', '评论已关闭'); ?></li> -->
-									<li class="post-time">wo 发表于 <?php the_time('Y年m月d日'); ?></li>
+									<li class="post-time"><?php the_author(); ?> 发表于 <?php the_time('Y年m月d日'); ?></li>
 								</ul>
 							</div>
 						</li>
@@ -48,17 +48,13 @@ $search_query =& new WP_Query("s=$s & showposts=-1");
 		</div>
 	</section>
 
-<section class="main clearfix">
-  
-</section>
-
 	<script type="text/javascript">
 		$(document).ready(function(){
 			var docHeight=$(document).height();
 			var headerHeight=$('header').height();
 			var footerheight=$('footer').height();
 			
-			$('.search_top').css({
+			$('.search_top,section').css({
 				'margin-top':'100px'
 			});
 

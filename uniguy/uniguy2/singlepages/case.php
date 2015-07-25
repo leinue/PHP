@@ -1,6 +1,7 @@
 	<section>
 	<?php
 		$caseData=$ashu_option['case'];
+		$caseDataAdded=$ashu_option['case-add'];
 	?>
 	<?php
 		$cateIDs=get_all_category_ids();
@@ -121,66 +122,89 @@
 			</div>
 		</div>
 		<div class="section-compare">
-			<div style="margin-top:100px" class="column-content case-detail-intro">
-				<div class="tidy-g">
-					<div class="tidy-u-1-2">
-						<div class="section-copy intro-copy">
-							<p><?php echo $caseData['case_pa_title1']; ?></p>
-							<p style="transform: translate3d(0px, 26.805px, 0px);" class="intro">
-								<?php echo $caseData['case_pa_desc1']; ?>
-							</p>
-						</div>
-					</div>
-					<div class="tidy-u-1-2">
-						<div class="section-copy intro-copy">
-							<p style="transform: translate3d(0px, 26.805px, 0px);" class="intro">
-								<img src="<?php echo $caseData['case_pa_img1']; ?>">
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
 
-			<div style="margin-top:100px" class="column-content case-detail-intro">
-				<div class="tidy-g">
-					<div class="tidy-u-1-2">
-						<div class="section-copy intro-copy">
-							<p style="transform: translate3d(0px, 26.805px, 0px);" class="intro">
-								<img src="<?php echo $caseData['case_pa_img2']; ?>">
-							</p>
-						</div>
-					</div>
-					<div class="tidy-u-1-2">
-						<div class="section-copy intro-copy">
-							<p><?php echo $caseData['case_pa_title2']; ?></p>
-							<p style="transform: translate3d(0px, 26.805px, 0px);" class="intro">
-								<?php echo $caseData['case_pa_desc2']; ?>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
+		<?php
+			// echo "<script>alert('".$caseData['case_pa_count']."')</script>";
+			//$caseData['case_pa_count']
+			function generateCasePropagate($caseData,$count,$start=1){
+				for ($i=$start; $i <= $count; $i++) {
 
-			<div style="margin-top:100px" class="column-content case-detail-intro">
-				<div class="tidy-g">
-					<div class="tidy-u-1-2">
-						<div class="section-copy intro-copy">
-							<p><?php echo $caseData['case_pa_title2']; ?></p>
-							<p style="transform: translate3d(0px, 126.805px, 0px);" class="intro">
-								<?php echo $caseData['case_pa_desc2']; ?>
-							</p>
-						</div>
-					</div>
-					<div class="tidy-u-1-2">
-						<div class="section-copy intro-copy">
-							<p style="transform: translate3d(0px, 26.805px, 0px);" class="intro">
-								<img src="<?php echo $caseData['case_pa_img3']; ?>">
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
+					$currentVisible=$caseData['checkbox_case_pa'.$i.'_visibile'];
 
+					if($currentVisible==='0'){continue;}
+
+					$currentImgPos=$caseData['case_pa_img'.$i.'_pos'];
+					$currentTitle=$caseData['case_pa_title'.$i];
+					$currentDesc=$caseData['case_pa_desc'.$i];
+					$currentImgData=$caseData['case_pa_img'.$i];
+					
+					$caseDetailDom='';
+					$caseDetailOuter='<div style="margin-top:100px" class="column-content case-detail-intro">
+					<div class="tidy-g">';
+					$caseDetailResult='';
+
+					switch ($currentImgPos) {
+						case 'left':
+							$caseDetailDom.='<div class="tidy-u-1-2">
+							<div class="section-copy intro-copy">
+								<p style="transform: translate3d(0px, 26.805px, 0px);" class="intro">
+									<img src="'.$currentImgData.'">
+								</p>
+							</div>
+						</div>';
+							$caseDetailDom.='<div class="tidy-u-1-2">
+							<div class="section-copy intro-copy">
+								<p>'.$currentTitle.'</p>
+								<p style="transform: translate3d(0px, 26.805px, 0px);" class="intro">
+									'.$currentDesc.'
+								</p>
+							</div>
+						</div>';
+							break;
+						case 'right':
+							$caseDetailDom.='<div class="tidy-u-1-2">
+							<div class="section-copy intro-copy">
+								<p>'.$currentTitle.'</p>
+								<p style="transform: translate3d(0px, 26.805px, 0px);" class="intro">
+									'.$currentDesc.'
+								</p>
+							</div>
+						</div>';
+							$caseDetailDom.='<div class="tidy-u-1-2">
+								<div class="section-copy intro-copy">
+									<p style="transform: translate3d(0px, 26.805px, 0px);" class="intro">
+										<img src="'.$currentImgData.'">
+									</p>
+								</div>
+							</div>';
+							break;
+						default:
+							# code...
+							break;
+					}
+
+					$caseDetailResult=$caseDetailOuter.$caseDetailDom.'</div></div>';
+
+					echo $caseDetailResult;
+					$caseDetailResult='';
+					$caseDetailDom='';
+					$caseDetailOuter='<div style="margin-top:100px" class="column-content case-detail-intro">
+					<div class="tidy-g">';
+
+				}
+			}
+
+			generateCasePropagate($caseData,$caseData['case_pa_count']);
+
+			// echo "<script>alert('".$caseData['case_pa_count']."')</script>";
+
+			if(is_array($caseDataAdded) && count($caseDataAdded)!=0){
+				// echo "<script>alert('ddf')</script>";
+				// print_r($caseDataAdded);
+				generateCasePropagate($caseDataAdded,$caseDataAdded['case_add_pa_count']+$caseData['case_pa_count'],$caseData['case_pa_count']+1);
+			}
+		?>
+	
 			<div style="margin-top:100px" class="column-content case-detail-intro">
 				<div class="tidy-g">
 					<div class="tidy-u-1-2">

@@ -313,7 +313,7 @@ class ashu_option_class{
 	function upload($values) {	
 		$prevImg = '';
 		if(isset($this->database_options[$values['id']])) $values['std'] = $this->database_options[$values['id']];
-		if($values['std'] != ''){$prevImg = '<img width="640" height="200" src='.$values['std'].' alt="" />';}
+		if($values['std'] != ''){$prevImg = '<img  src='.$values['std'].' alt="" />';}
 		
 		echo '<tr valign="top" >';
 		echo '<th scope="row" width="200px">'.$values['name'].'</th>';
@@ -335,6 +335,17 @@ class ashu_option_class{
 		echo '<th scope="row" width="200px">'.$values['name'].'</th>';
 		echo '<td>'.$values['desc'].'<br/>';
 		wp_editor( $values['std'], $values['id'],$settings=array('tinymce'=>1,'media_buttons'=>0,) );
+	    echo '<br/></td>';
+		echo '</tr>';
+	}
+	//button
+	function button($values){
+		if(isset($this->database_options[$values['id']]))
+			$values['std'] = $this->database_options[$values['id']];
+		echo '<tr valign="top" >';
+		echo '<th scope="row" width="200px">'.$values['name'].'</th>';
+		echo '<td>'.$values['desc'].'<br/>';
+		echo '<input type="button" onclick="'.$values['onclick'].'" id="'.$values['id'].'" class="button" value="'.$values['std'].'" />';
 	    echo '<br/></td>';
 		echo '</tr>';
 	}
@@ -458,8 +469,8 @@ $options[] = array( "type" => "close");
   
 $options_page = new ashu_option_class($options, $pageinfo);
 
-$subpageinfo = array('full_name' => '服务页面设置', 'optionname'=>'service', 'child'=>false, 'filename' => basename(__FILE__));   
-  
+$subpageinfo = array('full_name' => '服务页面设置', 'optionname'=>'service', 'child'=>true, 'filename' => basename(__FILE__).'-case');   
+
 $options = array();
                
 $options[] = array( "type" => "open");   
@@ -509,6 +520,15 @@ $options[] = array(
             "std"=>"http://images.apple.com/v/osx/c/images/overview/hero_large.jpg",   
             "id" => "service_bg",   
             "type" => "upload");
+
+$options[] = array(   
+                "name"=>"宣传板数量",   
+                "id"=>"service_pa_count",   
+                "std"=>"3",   
+                "desc"=>"宣传板数量",   
+                "size"=>"60",   
+                "type"=>"text"  
+            );
 
 /*************宣传版面1**************/
 
@@ -677,9 +697,44 @@ $options[] = array( "type" => "close");
 
 $options_page = new ashu_option_class($options, $subpageinfo);
 
+
+$subpageinfo = array('full_name' => '添加服务宣传板', 'optionname'=>'service-add', 'child'=>true, 'filename' => basename(__FILE__).'-case-add');   
+
+$options = array();
+               
+$options[] = array( "type" => "open");   
+  
+$options[] = array(
+                "name"=>"基本设置",   
+                "desc"=>"这里可以添加服务宣传板",   
+                "type" => "title");
+
+$options[] = array(   
+                "name"=>"新建的宣传板数量",   
+                "id"=>"service_add_pa_count", 
+                "std"=>"0",   
+                "desc"=>"宣传板数量",   
+                "size"=>"60",   
+                "type"=>"text"  
+            );
+
+$options[] = array(   
+                "name"=>"添加宣传板",
+                "id"=>"service_add_pa",   
+                "std"=>"添加宣传板",
+                "desc"=>"点击按钮添加一个新的宣传板",   
+                "size"=>"60",   
+                "type"=>"button",
+                "onclick"=>"addServicePropagate(this)"
+            );
+
+$options[] = array( "type" => "close");
+
+$options_page = new ashu_option_class($options, $subpageinfo);
+
 /************************************PAGE CASE******************************************/
 
-$servicepageinfo = array('full_name' => '案例页面设置', 'optionname'=>'case', 'child'=>false, 'filename' => basename(__FILE__));   
+$servicepageinfo = array('full_name' => '案例页面设置', 'optionname'=>'case', 'child'=>true, 'filename' => basename(__FILE__).'-service');   
   
 $options = array();
                
@@ -778,13 +833,20 @@ $options[] = array(
             );
 
 $options[] = array(   
-                "name"=>"宣传板1标题",   
-                "id"=>"case_pa_title1",   
-                "std"=>"蛤蛤蛤蛤",   
-                "desc"=>"案例页面中宣传板1的标题",   
+                "name"=>"宣传板数量",   
+                "id"=>"case_pa_count",   
+                "std"=>"3",   
+                "desc"=>"宣传板数量",   
                 "size"=>"60",   
-                "type"=>"text"
+                "type"=>"text"  
             );
+
+$options[] = array( "name" => "宣传板1是否可视",   
+            "desc" => "",   
+            "id" => "checkbox_case_pa1_visibile",   //id必须以checkbox_开头
+            "std" => 1,  
+			"buttons" => array('可视'), 			
+            "type" => "checkbox");
 
 $options[] = array(   
                 "name"=>"宣传板1介绍",   
@@ -793,6 +855,18 @@ $options[] = array(
                 "desc"=>"案例页面中宣传板1的介绍",   
                 "size"=>"60",   
                 "type"=>"text"
+            );
+
+$options[] = array( "name" => "宣传板1图片位置",   
+            "desc" => "请选择图片位置",   
+            "id" => "case_pa_img1_pos", 
+            "type" => "dropdown",
+            "subtype" => array(   
+                'left'=>'居左',   
+                'top'=>'居上',
+                'right'=>'居右',
+                'bottom'=>'居下'
+                )   
             );
 
 $options[] = array(   
@@ -811,6 +885,13 @@ $options[] = array(
                 "type"=>"text"
             );
 
+$options[] = array( "name" => "宣传板2是否可视",   
+            "desc" => "",   
+            "id" => "checkbox_case_pa2_visibile",   //id必须以checkbox_开头
+            "std" => 1,  
+			"buttons" => array('可视'), 			
+            "type" => "checkbox");
+
 $options[] = array(   
                 "name"=>"宣传板2介绍",   
                 "id"=>"case_pa_desc2",   
@@ -820,12 +901,31 @@ $options[] = array(
                 "type"=>"text"
             );
 
+$options[] = array( "name" => "宣传板2图片位置",   
+            "desc" => "请选择图片位置",   
+            "id" => "case_pa_img2_pos", 
+            "type" => "dropdown",
+            "subtype" => array(   
+                'left'=>'居左',   
+                'top'=>'居上',
+                'right'=>'居右',
+                'bottom'=>'居下'
+                )   
+            );
+
 $options[] = array(   
             "name" => "宣传板2图片",   
             "desc" => "请上传一个图片或填写一个图片地址,建议大小:146*428",   
             "std"=>"http://images.apple.com/v/iphone/compare/c/images/6plus_buy_medium.jpg",   
             "id" => "case_pa_img2",   
             "type" => "upload");
+
+$options[] = array( "name" => "宣传板3是否可视",   
+            "desc" => "",   
+            "id" => "checkbox_case_pa3_visibile",   //id必须以checkbox_开头
+            "std" => 1,  
+			"buttons" => array('可视'), 			
+            "type" => "checkbox");
 
 $options[] = array(   
                 "name"=>"宣传板3标题",   
@@ -837,13 +937,35 @@ $options[] = array(
             );
 
 $options[] = array(   
-                "name"=>"宣传板3介绍",   
-                "id"=>"case_pa_desc3",   
-                "std"=>"蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤",   
-                "desc"=>"案例页面中宣传板3的介绍",   
+                "name"=>"宣传板3标题",   
+                "id"=>"case_pa_title3",   
+                "std"=>"蛤蛤蛤蛤",   
+                "desc"=>"案例页面中宣传板3的标题",   
                 "size"=>"60",   
                 "type"=>"text"
             );
+
+$options[] = array(
+                "name"=>"宣传板3介绍",
+                "id"=>"case_pa_desc3",
+                "std"=>"蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤蛤",
+                "desc"=>"案例页面中宣传板3的介绍",
+                "size"=>"60",
+                "type"=>"text"
+            );
+
+$options[] = array( "name" => "宣传板3图片位置",    
+            "desc" => "请选择图片位置",   
+            "id" => "case_pa_img3_pos", 
+            "type" => "dropdown",
+            "subtype" => array(   
+                'left'=>'居左',   
+                'top'=>'居上',
+                'right'=>'居右',
+                'bottom'=>'居下'  
+                )   
+            );
+
 
 $options[] = array(   
             "name" => "宣传板3图片",   
@@ -871,6 +993,41 @@ $options[] = array( "type" => "close");
 
 $options_page = new ashu_option_class($options, $servicepageinfo);
 
+$servicepageinfo = array('full_name' => '添加案例宣传板', 'optionname'=>'case-add', 'child'=>true, 'filename' => basename(__FILE__).'-service-add');   
+  
+$options = array();
+               
+$options[] = array( "type" => "open");   
+  
+$options[] = array(
+                "name"=>"基本设置",   
+                "desc"=>"这里可以设置一些基本信息",   
+                "type" => "title");
+
+$options[] = array(   
+                "name"=>"新建的宣传板数量",   
+                "id"=>"case_add_pa_count",   
+                "std"=>"0",   
+                "desc"=>"宣传板数量",   
+                "size"=>"60",   
+                "type"=>"text"  
+            );
+
+$options[] = array(   
+                "name"=>"添加宣传板",   
+                "id"=>"case_add_pa",   
+                "std"=>"添加宣传板",
+                "desc"=>"点击按钮添加一个新的宣传板",   
+                "size"=>"60",   
+                "type"=>"button",
+                "onclick"=>"addPropagate(this)"
+            );
+
+$options[] = array( "type" => "close");   
+
+$options_page = new ashu_option_class($options, $servicepageinfo);
+
+$caseDataAdded=$ashu_option['case-add'];
 
 ?>
 
@@ -941,7 +1098,8 @@ set_post_thumbnail_size(640,200);
 // add_action('admin_menu', 'add_my_custom_case_page');   
   
 // function add_my_custom_case_page() {
-//     add_submenu_page( 'uniguy-option', '子菜单', '案例页面设置', 'edit_themes', 'ungiuy-case-page', 'my_service_case_display' );    
+// 		add_submenu_page(TOP_LEVEL_BASEAME, $this->pageinfo['full_name'], $this->pageinfo['full_name'], 'edit_themes', $this->pageinfo['filename'], array(&$this, 'initialize'));
+//  	add_submenu_page( 'uniguy-option', '子菜单', '案例页面设置', 'edit_themes', 'ungiuy-case-page', 'my_service_case_display' );    
 // }   
   
 // function my_service_case_display() {   
@@ -949,3 +1107,131 @@ set_post_thumbnail_size(640,200);
 // }
 
 ?>
+
+<style type="text/css">
+	.split{background: rgb(250,250,250);}
+
+</style>
+
+<script type="text/javascript">
+
+	var currentPropageteCount="<?php echo $ashu_option['case']['case_pa_count']; ?>";
+
+	var propagateExists='<?php echo json_encode($caseDataAdded); ?>';
+
+	var container;
+
+	window.onload=function(){
+		container=document.getElementById('case_add_pa').parentNode.parentNode.parentNode;
+
+		hidePaCount();
+
+		document.getElementById('case_add_pa_count').setAttribute('value',"<?php echo $caseDataAdded['case_add_pa_count'] ?>");
+
+		if(propagateExists!=''){
+			var json=JSON.parse(propagateExists);
+			var propagateCount=json['case_add_pa_count'];
+			var propagateAddedStack={};
+			var singleAdded={};
+			var index=0;
+			var count=0;
+			for(var elem in json){
+				if(elem=='Submit' || elem=='save_my_options' || elem=='case_add_pa_count' || elem=='case_add_pa'){
+					continue;
+				}
+				if(count==4){
+					count=0;
+					index+=1;
+					singleAdded={};
+					singleAdded[elem]=json[elem];
+					// continue;
+				}else{
+					propagateAddedStack[index]=singleAdded;
+				}
+				singleAdded[elem]=json[elem];
+				count+=1;
+			}
+
+			console.log(propagateAddedStack);
+
+			for(elem in propagateAddedStack){
+				var propagate=propagateAddedStack[elem];
+				currentPropageteCount++;
+				var visible=propagate['checkbox_case_pa'+currentPropageteCount+'_visibile'];
+				visible=visible['0']=='true'?'true':'false';
+				addPropagatePanel(container,propagate['case_pa_desc'+currentPropageteCount],propagate['case_pa_img'+currentPropageteCount],propagate['case_pa_img'+currentPropageteCount+'_pos'],visible);
+			}
+		}
+	}
+
+	function hidePaCount(){
+		var paCount=document.getElementById('case_add_pa_count').parentNode.parentNode;
+		paCount.style.display='none';
+	}
+
+	var addPropagate=function(elem){
+		var _this=elem;
+		container=_this.parentNode.parentNode.parentNode;
+		currentPropageteCount++;
+
+		addPropagatePanel(container,'','','','true');
+		document.getElementById('case_add_pa_count').setAttribute('value',parseInt(document.getElementById('case_add_pa_count').getAttribute('value'))+1);
+	};
+
+	var addPropagatePanel=function(container,desc,imgsrc,pos,visible){
+
+		var str='<select class="postform" id="case_pa_img'+currentPropageteCount+'_pos" name="case_pa_img'+currentPropageteCount+'_pos"> <option value="">请选择</option>  <option value="left">居左</option><option value="top">居上</option><option value="right">居右</option><option value="bottom">居下</option></select>';
+
+		switch(pos){
+			case 'left':
+				var str='<select class="postform" id="case_pa_img'+currentPropageteCount+'_pos" name="case_pa_img'+currentPropageteCount+'_pos"> <option value="">请选择</option>  <option selected="true" value="left">居左</option><option value="top">居上</option><option value="right">居右</option><option value="bottom">居下</option></select>';
+				break;
+			case 'right':
+				var str='<select class="postform" id="case_pa_img'+currentPropageteCount+'_pos" name="case_pa_img'+currentPropageteCount+'_pos"> <option value="">请选择</option>  <option value="left">居左</option><option value="top">居上</option><option selected="true" value="right">居右</option><option value="bottom">居下</option></select>';			
+				break;
+			case 'top':
+				var str='<select class="postform" id="case_pa_img'+currentPropageteCount+'_pos" name="case_pa_img'+currentPropageteCount+'_pos"> <option value="">请选择</option>  <option value="left">居左</option><option selected="true" value="top">居上</option><option value="right">居右</option><option value="bottom">居下</option></select>';
+				break;
+			case 'bottom':
+				var str='<select class="postform" id="case_pa_img'+currentPropageteCount+'_pos" name="case_pa_img'+currentPropageteCount+'_pos"> <option value="">请选择</option>  <option value="left">居左</option><option value="top">居上</option><option value="right">居右</option><option selected="true" value="bottom">居下</option></select>';
+				break;
+			default:
+				var str='<select class="postform" id="case_pa_img'+currentPropageteCount+'_pos" name="case_pa_img'+currentPropageteCount+'_pos"> <option value="">请选择</option>  <option value="left">居左</option><option value="top">居上</option><option value="right">居右</option><option value="bottom">居下</option></select>';
+				break;
+		}
+
+		addElment(container,'新建宣传面板'+currentPropageteCount+'介绍','案例页面中宣传板'+currentPropageteCount+'的介绍','<input size="60" value="'+desc+'" id="case_pa_desc'+currentPropageteCount+'" name="case_pa_desc'+currentPropageteCount+'" type="text">');
+		addElment(container,'新建宣传面板'+currentPropageteCount+'图片位置','请选择图片位置'+currentPropageteCount+'的介绍',str);
+		addElment(container,'新建宣传面板'+currentPropageteCount+'图片','请上传一个图片或填写一个图片地址,建议大小:146*428'+currentPropageteCount+'的介绍','<div class="preview_pic_optionspage" id="case_pa_img'+currentPropageteCount+'_div"><img src="'+imgsrc+'"></div>请上传一个图片或填写一个图片地址,建议大小:146*428<br><input size="60" value="'+imgsrc+'" name="case_pa_img'+currentPropageteCount+'" class="upload_pic_input" type="text">&nbsp;<a onclick="return false;" title="" class="k_hijack button thickbox" id="case_pa_img'+currentPropageteCount+'" href="media-upload.php?type=image&amp;hijack_target=case_pa_img'+currentPropageteCount+'&amp;TB_iframe=true">插入图片</a>');
+		addElment(container,'新建宣传面板'+currentPropageteCount+'是否可视','设置此宣传板是否可视','<input checked="'+visible+'" class="kcheck" value="0" name="checkbox_case_pa'+currentPropageteCount+'_visibile[]" type="checkbox">可视<label for="checkbox_case_pa'+currentPropageteCount+'_visibile"></label>',true);
+	}
+
+	function addElment(container,title,subtitle,element,isSplited){
+		isSplited=isSplited||false;
+
+		var newPropagatePanel=document.createElement('tr');
+		newPropagatePanel.setAttribute('valign','top');
+
+		var th=document.createElement('th');
+		th.style.width='200px';
+		th.setAttribute('scope','row');
+		th.innerHTML=title;
+
+		var td=document.createElement('td');
+
+		td.innerHTML=subtitle+'<br><br>'+element+'<br><br>';
+
+		container.appendChild(newPropagatePanel);
+		newPropagatePanel.appendChild(th);
+		newPropagatePanel.appendChild(td);
+		if(isSplited){
+			newPropagatePanel.setAttribute('class','split');
+		}
+
+	}
+
+	
+
+	// window.onload=hidePaCount;
+	
+</script>

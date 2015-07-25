@@ -328,6 +328,7 @@ footer p{margin-bottom: -6px;}
 /*服务页面产品介绍区域*/
 
 .product-info-bg{
+	padding-bottom: 20px;
 	background-color: #FFF;
 	background-image: -webkit-linear-gradient(#F4F4F4 0px, #FFF 500px);
 	background-image: -o-linear-gradient(#F4F4F4 0px, #FFF 500px);
@@ -346,7 +347,7 @@ footer p{margin-bottom: -6px;}
 
 .heading-product{
 	width: 72.6464647%;
-	height: 12.22222222%;
+	/*height: 12.22222222%;*/
 	margin: 0 auto;
 	text-align: center;
 	padding-top: 70px;
@@ -630,7 +631,6 @@ ul.st_navigation li span.st_arrow_up{
 /*	-moz-box-shadow:1px 1px 5px #000;
 	-webkit-box-shdow:1px 1px 5px #000;
 	box-shadow:1px 1px 5px #000;
-*/	opacity:0.7;
 	/*filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);*/
 }
 
@@ -672,6 +672,8 @@ ul.st_navigation li span.st_arrow_up{
 	padding-top: 20px;
 	width: 810px;
 	margin-right: 14px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid rgb(170,170,170);
 }
 
 .pagation{
@@ -788,6 +790,7 @@ ul.st_navigation li span.st_arrow_up{
 
 .case-menu ul li a span{
 	display: block;
+	padding-bottom: 14px;
 }
 
 .case-menu ul li:first-child{
@@ -796,7 +799,7 @@ ul.st_navigation li span.st_arrow_up{
 }
 
 .case-menu ul li .case-menu-img{
-	background: rgb(247,247,247);
+	/*background: rgb(247,247,247);*/
 	width: 100%;
 	height: 110px;
 	text-align: center;
@@ -804,6 +807,7 @@ ul.st_navigation li span.st_arrow_up{
 
 .case-menu ul li .case-menu-img img{
 	height: 100%;/*110*/
+	margin-top: 0 auto;
 }
 
 .section-img-hero img{

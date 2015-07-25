@@ -198,6 +198,7 @@ class ashu_option_class{
 			if( is_array($values['std']) && in_array($key,$values['std'])) {
 				$checked = 'checked = "checked"';
 			}
+
 			echo '<input '.$checked.' type="checkbox" class="kcheck" value="'.$key.'" name="'.$values['id'].'[]"/>'.$value;
 		}
 
@@ -532,6 +533,13 @@ $options[] = array(
 
 /*************宣传版面1**************/
 
+$options[] = array( "name" => "宣传板1是否可视",   
+            "desc" => "",   
+            "id" => "checkbox_service_pa1_visibile",   //id必须以checkbox_开头
+            "std" => 1,  
+			"buttons" => array('可视'), 			
+            "type" => "checkbox");
+
 $options[] = array(   
                 "name"=>"宣传版面1-大标题",   
                 "id"=>"propaganda1_big_title",   
@@ -587,6 +595,13 @@ $options[] = array(
 
 /**************宣传版面2**************/
 
+$options[] = array( "name" => "宣传板2是否可视",   
+            "desc" => "",   
+            "id" => "checkbox_service_pa2_visibile",   //id必须以checkbox_开头
+            "std" => '1',  
+			"buttons" => array('可视'), 			
+            "type" => "checkbox");
+
 $options[] = array(   
                 "name"=>"宣传版面2-大标题",   
                 "id"=>"propaganda2_big_title",   
@@ -640,6 +655,13 @@ $options[] = array(
             "type" => "upload");
 
 /**************宣传版面3**************/
+
+$options[] = array( "name" => "宣传板3是否可视",   
+            "desc" => "",   
+            "id" => "checkbox_service_pa3_visibile",   //id必须以checkbox_开头
+            "std" => '1',  
+			"buttons" => array('可视'), 			
+            "type" => "checkbox");
 
 $options[] = array(   
                 "name"=>"宣传版面3-大标题",   
@@ -709,7 +731,7 @@ $options[] = array(
                 "desc"=>"这里可以添加服务宣传板",   
                 "type" => "title");
 
-$options[] = array(   
+$options[] = array(   	
                 "name"=>"新建的宣传板数量",   
                 "id"=>"service_add_pa_count", 
                 "std"=>"0",   
@@ -731,6 +753,8 @@ $options[] = array(
 $options[] = array( "type" => "close");
 
 $options_page = new ashu_option_class($options, $subpageinfo);
+
+$serviceDataAdded=$ashu_option['service-add'];
 
 /************************************PAGE CASE******************************************/
 
@@ -844,7 +868,7 @@ $options[] = array(
 $options[] = array( "name" => "宣传板1是否可视",   
             "desc" => "",   
             "id" => "checkbox_case_pa1_visibile",   //id必须以checkbox_开头
-            "std" => 1,  
+            "std" => '1',  
 			"buttons" => array('可视'), 			
             "type" => "checkbox");
 
@@ -888,7 +912,7 @@ $options[] = array(
 $options[] = array( "name" => "宣传板2是否可视",   
             "desc" => "",   
             "id" => "checkbox_case_pa2_visibile",   //id必须以checkbox_开头
-            "std" => 1,  
+            "std" => '1',  
 			"buttons" => array('可视'), 			
             "type" => "checkbox");
 
@@ -923,7 +947,7 @@ $options[] = array(
 $options[] = array( "name" => "宣传板3是否可视",   
             "desc" => "",   
             "id" => "checkbox_case_pa3_visibile",   //id必须以checkbox_开头
-            "std" => 1,  
+            "std" => '1',  
 			"buttons" => array('可视'), 			
             "type" => "checkbox");
 
@@ -1036,76 +1060,6 @@ $caseDataAdded=$ashu_option['case-add'];
 add_theme_support('post-thumbnails');
 set_post_thumbnail_size(640,200);
 
-// //添加主题选项
-// function TopMenu(){
-//     add_menu_page( 'title标题', 'UniguyIT选项', 'edit_themes', 'uniguy-option','display_function','',6);  
-// }
-  
-// function display_function(){
-//     echo '<h1>UniguyIT选项</h1>'; 
-//     wp_enqueue_script('my-upload', get_bloginfo( 'stylesheet_directory' ) . '/js/upload.js');   
-//     //加载上传图片的js(wp自带)   
-//     wp_enqueue_script('thickbox');
-//     //加载css(wp自带)   
-//     wp_enqueue_style('thickbox');
-// ?>
-<!-- // 	<br>
-// 	<form method="post" name="uniguy_form" enctype="multipart/form-data" id="uni_form" action="options.php">
-// 	    <h2>页脚设置</h2>
-// 	    <p>
-// 		    <label>
-// 		    <textarea name="uniguy_copy_right" rows="5" cols="80"><?php echo get_option('uniguy_copy_right'); ?></textarea>
-// 		    请输入文字,支持html
-// 		    </label>
-// 	    </p>
-// 	    <?php wp_nonce_field('update-options'); ?>   
-// 	    <input type="hidden" name="action" value="update" />   
-// 	    <input type="hidden" name="page_options" value="uniguy_copy_right" />
-// 	    <h2>首页图片选项</h2>
-// 	    <?php
-// 	    echo $options['ashu_logo'];
-// 	    	if($options['ashu_logo'] != ''){
-// 	    		echo 'dssd';            	
-// 	    		echo '<span class="ashu_logo_img"><img src='.$options['ashu_logo'].' alt="" /></span>';   
-//        	 	}
-// 	    ?>
-//         <label>
-//             <input type="text" size="80" class="ashu_upload_input" name="ashu_logo" id="ashu_logo" value="<?php echo($options['ashu_logo']); ?>"/>
-//             <input type="button" value="上传" class="button ashu_bottom"/>
-//         </label>
-//         </p>
-// 	    <p class="submit">
-// 	        <input type="submit" class="button button-primary" name="option_save" value="<?php _e('保存设置'); ?>" />
-// 	    </p>
-//     </form> -->
- <?php
-// }
-
-// add_action('admin_menu', 'TopMenu');
-
-// //添加子菜单项代码
-// add_action('admin_menu', 'add_my_custom_service_page');   
-  
-// function add_my_custom_service_page() {
-//     add_submenu_page( 'uniguy-option', '子菜单', '服务页面设置', 'edit_themes', 'uniguy-service-page', 'my_service_page_display' );    
-// }   
-  
-// function my_service_page_display() {   
-//     echo '<h3>服务页面设置</h3>';
-// }
-
-// //添加子菜单项案例代码
-// add_action('admin_menu', 'add_my_custom_case_page');   
-  
-// function add_my_custom_case_page() {
-// 		add_submenu_page(TOP_LEVEL_BASEAME, $this->pageinfo['full_name'], $this->pageinfo['full_name'], 'edit_themes', $this->pageinfo['filename'], array(&$this, 'initialize'));
-//  	add_submenu_page( 'uniguy-option', '子菜单', '案例页面设置', 'edit_themes', 'ungiuy-case-page', 'my_service_case_display' );    
-// }   
-  
-// function my_service_case_display() {   
-//     echo '<h3>案例页面设置</h3>';
-// }
-
 ?>
 
 <style type="text/css">
@@ -1119,16 +1073,32 @@ set_post_thumbnail_size(640,200);
 
 	var propagateExists='<?php echo json_encode($caseDataAdded); ?>';
 
+	var servicePropagate='<?php echo json_encode($serviceDataAdded); ?>';
+
+	var currentServicePropagateCount="<?php echo $ashu_option['service']['service_pa_count'];  ?>";
+	var currentAServiceProTotalCount="<?php echo $ashu_option['service']['service_pa_count']+$ashu_option['service']['service_add_pa_count']; ?>";
+
 	var container;
 
+	var page;
+
 	window.onload=function(){
-		container=document.getElementById('case_add_pa').parentNode.parentNode.parentNode;
+		
+		if(document.getElementById('case_add_pa')!=null){
+			page='case'
+			container=document.getElementById('case_add_pa').parentNode.parentNode.parentNode;
+			document.getElementById('case_add_pa_count').setAttribute('value',"<?php echo $caseDataAdded['case_add_pa_count'] ?>");			
+		}
+
+		if(document.getElementById('service_add_pa')!=null){
+			page='service';
+			container=document.getElementById('service_add_pa').parentNode.parentNode.parentNode;			
+		}
 
 		hidePaCount();
 
-		document.getElementById('case_add_pa_count').setAttribute('value',"<?php echo $caseDataAdded['case_add_pa_count'] ?>");
 
-		if(propagateExists!=''){
+		if(propagateExists!='' && page=='case'){
 			var json=JSON.parse(propagateExists);
 			var propagateCount=json['case_add_pa_count'];
 			var propagateAddedStack={};
@@ -1152,8 +1122,6 @@ set_post_thumbnail_size(640,200);
 				count+=1;
 			}
 
-			console.log(propagateAddedStack);
-
 			for(elem in propagateAddedStack){
 				var propagate=propagateAddedStack[elem];
 				currentPropageteCount++;
@@ -1162,11 +1130,53 @@ set_post_thumbnail_size(640,200);
 				addPropagatePanel(container,propagate['case_pa_desc'+currentPropageteCount],propagate['case_pa_img'+currentPropageteCount],propagate['case_pa_img'+currentPropageteCount+'_pos'],visible);
 			}
 		}
+
+		if(servicePropagate!='' && page=='service'){
+			var json=JSON.parse(servicePropagate);
+			var propagateCount=json['service_add_pa_count'];
+			var propagateAddedStack={};
+			var singleAdded={};
+			var index=0;
+			var count=0;
+			for(var elem in json){
+				if(elem=='Submit' || elem=='save_my_options' || elem=='service_add_pa_count' || elem=='service_add_pa'){
+					continue;
+				}
+				if(count==7){
+					count=0;
+					index+=1;
+					singleAdded={};
+					singleAdded[elem]=json[elem];
+					// continue;
+				}else{
+					propagateAddedStack[index]=singleAdded;
+				}
+				singleAdded[elem]=json[elem];
+				count+=1;
+			}
+
+			var serviceIndex=currentAServiceProTotalCount;
+
+			for(elem in propagateAddedStack){
+				var propagate=propagateAddedStack[elem];
+				serviceIndex++;
+				var visible=propagate['checkbox_service_pa'+serviceIndex+'_visibile'];
+				visible=visible['0']=='true'?'true':'false';
+				//visible,title,subtitle,desc,ahrefTitle,ahref,img,split
+				addServicePropagatePanel(visible,propagate['propaganda'+serviceIndex+'_big_title'],propagate['propaganda'+serviceIndex+'_medium_title'],propagate['propaganda'+serviceIndex+'_small_desc'],propagate['propaganda'+serviceIndex+'_small_href'],propagate['propaganda'+serviceIndex+'_small_href_title'],propagate['propaganda'+serviceIndex+'_small_img'],true);
+			}
+		}
+
 	}
 
 	function hidePaCount(){
-		var paCount=document.getElementById('case_add_pa_count').parentNode.parentNode;
-		paCount.style.display='none';
+		if(page=='case'){
+			var paCount=document.getElementById('case_add_pa_count').parentNode.parentNode;
+			paCount.style.display='none';
+		}
+		if(page=="service"){
+			document.getElementById('service_add_pa_count').parentNode.parentNode.style.display='none';			
+		}
 	}
 
 	var addPropagate=function(elem){
@@ -1177,6 +1187,37 @@ set_post_thumbnail_size(640,200);
 		addPropagatePanel(container,'','','','true');
 		document.getElementById('case_add_pa_count').setAttribute('value',parseInt(document.getElementById('case_add_pa_count').getAttribute('value'))+1);
 	};
+
+	var addServicePropagate=function(elem){
+		var _this=elem;
+		container=_this.parentNode.parentNode.parentNode;
+
+		addServicePropagatePanel('','','','','','','',true);
+
+		document.getElementById('service_add_pa_count').setAttribute('value',parseInt(document.getElementById('service_add_pa_count').getAttribute('value'))+1);
+	}
+
+	var addServicePropagatePanel=function(visible,title,subtitle,desc,ahrefTitle,ahref,img,split){
+
+		split=split||false;
+		var splitcol;
+		if(split){splitcol=' class="split" ';}
+
+		currentAServiceProTotalCount++;
+		
+		var _checkbox='<tr valign="top"><th scope="row" width="200px">当前是否可视</th><td><br><input checked="'+visible+'" class="kcheck" value="0" name="checkbox_service_pa'+currentAServiceProTotalCount+'_visibile[]" type="checkbox">可视<label for="checkbox_service_pa'+currentAServiceProTotalCount+'_visibile"></label><br><br></td></tr>';
+		var title='<tr valign="top"><th scope="row" width="200px">当前宣传版面-大标题</th><td>显示在当前宣传版面的大标题<br><input size="60" value="'+title+'" id="propaganda'+currentAServiceProTotalCount+'_big_title" name="propaganda'+currentAServiceProTotalCount+'_big_title" type="text"><br><br></td></tr>';
+		var midTitle='<tr valign="top"><th scope="row" width="200px">当前宣传版面-中标题</th><td>显示在当前宣传版面的中标题<br><input size="60" value="'+subtitle+'" id="propaganda'+currentAServiceProTotalCount+'_medium_title" name="propaganda'+currentAServiceProTotalCount+'_medium_title" type="text"><br><br></td></tr>';
+		var desc='<tr valign="top"><th scope="row" width="200px">当前宣传版面-详细描述</th><td>显示在当前宣传版面的详细描述<br><textarea name="propaganda'+currentAServiceProTotalCount+'_small_desc" cols="60" rows="7" id="propaganda'+currentAServiceProTotalCount+'_small_desc" style="width: 80%; font-size: 12px;" class="code">'+desc+'</textarea><br><br></td></tr>';
+		var ahrefTitle='<tr valign="top"><th scope="row" width="200px">当前宣传版面-链接标题</th><td>显示在当前宣传版面的链接标题<br><input size="60" value="'+ahrefTitle+'" id="propaganda'+currentAServiceProTotalCount+'_small_href_title" name="propaganda'+currentAServiceProTotalCount+'_small_href_title" type="text"><br><br></td></tr>';
+		var aherf='<tr valign="top"><th scope="row" width="200px">当前宣传版面-链接</th><td>显示在当前宣传版面的链接<br><input size="60" value="'+ahref+'" id="propaganda'+currentAServiceProTotalCount+'_small_href" name="propaganda'+currentAServiceProTotalCount+'_small_href" type="text"><br><br></td></tr>';
+		var img='<tr '+splitcol+' valign="top"><th scope="row" width="200px">当前宣传版面-图片</th><td><div class="preview_pic_optionspage" id="propaganda'+currentAServiceProTotalCount+'_small_img_div"><img src="'+img+'" alt=""></div>请上传一个图片或填写一个图片地址,建议大小:980*568<br><input size="60" value="'+img+'" name="propaganda'+currentAServiceProTotalCount+'_small_img" class="upload_pic_input" type="text">&nbsp;<a onclick="return false;" title="" class="k_hijack button thickbox" id="propaganda'+currentAServiceProTotalCount+'_small_img" href="media-upload.php?type=image&amp;hijack_target=propaganda'+currentAServiceProTotalCount+'_small_img&amp;TB_iframe=true">插入图片</a><br><br></td></tr>';
+
+		var result=_checkbox+title+midTitle+desc+ahrefTitle+aherf+img;
+
+		container.innerHTML=container.innerHTML+result;
+
+	}
 
 	var addPropagatePanel=function(container,desc,imgsrc,pos,visible){
 
@@ -1229,8 +1270,6 @@ set_post_thumbnail_size(640,200);
 		}
 
 	}
-
-	
 
 	// window.onload=hidePaCount;
 	

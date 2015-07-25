@@ -178,6 +178,26 @@
 								</div>
 							</div>';
 							break;
+						case 'top':
+							$caseDetailDom.='<div id="case-main-intro" class="column-content">
+								<div class="section-img-hero">
+									<img src="'.$currentImgData.'">
+								</div>
+								<div class="section-copy intro-copy">
+									<p style="transform: translate3d(0px, 26.805px, 0px);" class="intro">'.$currentDesc.'</p>
+								</div>
+							</div>';
+							break;
+						case 'bottom':
+							$caseDetailDom.='<div id="case-main-intro" class="column-content">
+								<div class="section-copy intro-copy">
+									<p style="transform: translate3d(0px, 26.805px, 0px);" class="intro">'.$currentDesc.'</p>
+								</div>
+								<div class="section-img-hero">
+									<img src="'.$currentImgData.'">
+								</div>
+							</div>';
+							break;
 						default:
 							# code...
 							break;

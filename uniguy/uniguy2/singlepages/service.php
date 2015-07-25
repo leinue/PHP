@@ -59,51 +59,27 @@
 		</div>
 	</div> -->
 
-	<div class="tidy-u-1 product-info-bg">
+	<?php
+		// echo "<script>alert('".$serviceData['service_pa_count']."')</script>";
+
+		for ($i=1; $i <=$serviceData['service_pa_count']; $i++) { 
+			echo '<div class="tidy-u-1 product-info-bg">
 		<div class="heading-product">
-			<h2><?php echo $serviceData['propaganda1_big_title']; ?></h2>
-			<p class="product-subheading"><?php echo $serviceData['propaganda1_medium_title']; ?></p>
+			<h2>'.$serviceData['propaganda'.$i.'_big_title'].'</h2>
+			<p class="product-subheading">'.$serviceData['propaganda'.$i.'_medium_title'].'</p>
 			<div class="product-detail">
-				<p><?php echo $serviceData['propaganda1_small_desc']; ?></p>
-				<a href="<?php echo $serviceData['propaganda1_small_href']; ?>"><?php echo $serviceData['propaganda1_small_href_title']; ?></a>
+				<p>'.$serviceData['propaganda'.$i.'_small_desc'].'</p>
+				<a href="'.$serviceData['propaganda'.$i.'_small_href'].'">'.$serviceData['propaganda'.$i.'_small_href_title'].'</a>
 			</div>
 		</div>
 		<div class="tidy-u-1-3"></div>
 		<div class="tidy-u-1-3" style="margin-top:20px;text-align-center">
-			<img class="tidy-img-responsive" src="<?php echo $serviceData['propaganda1_small_img']; ?>">
+			<img class="tidy-img-responsive" src="'.$serviceData['propaganda'.$i.'_small_img'].'">
 		</div>
 		<div class="tidy-u-1-3"></div>
-	</div>
-
-	<div class="tidy-u-1 product-info-bg">
-		<div class="heading-product">
-			<h2><?php echo $serviceData['propaganda2_big_title']; ?></h2>
-			<p class="product-subheading"><?php echo $serviceData['propaganda2_medium_title']; ?></p>
-			<div class="product-detail">
-				<p><?php echo $serviceData['propaganda2_small_desc']; ?></p>
-				<a href="<?php echo $serviceData['propaganda2_small_href']; ?>"><?php echo $serviceData['propaganda2_small_href_title']; ?></a>
-			</div>
-		</div>
-		<div class="tidy-u-2-3" style="margin-top:20px;margin-bottom:-8px;">
-			<img class="tidy-img-responsive" src="<?php echo $serviceData['propaganda2_small_img']; ?>">
-		</div>
-	</div>
-
-	<div class="tidy-u-1 product-info-bg">
-		<div class="heading-product">
-			<h2><?php echo $serviceData['propaganda3_big_title']; ?></h2>
-			<p class="product-subheading"><?php echo $serviceData['propaganda3_medium_title']; ?></p>
-			<div class="product-detail">
-				<p><?php echo $serviceData['propaganda3_small_desc']; ?></p>
-				<a href="<?php echo $serviceData['propaganda3_small_href']; ?>"><?php echo $serviceData['propaganda3_small_href_title']; ?></a>
-			</div>
-		</div>
-		<div class="tidy-u-1-3"></div>
-		<div class="tidy-u-1-3" style="margin-top:20px;text-align-center">
-			<img class="tidy-img-responsive" src="<?php echo $serviceData['propaganda3_small_img']; ?>">
-		</div>
-		<div class="tidy-u-1-3"></div>
-	</div>
+	</div>';
+		}
+	?>
 
 </section>
 

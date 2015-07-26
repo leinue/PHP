@@ -17,7 +17,7 @@
 									// 	<a href=\"$link\"><img src=\"$cat_info->description\"></a>
 									// 	<span class=\"help-block\"><a href=\"$link\">$cat_info->name</a></span>
 									// </li>";
-									echo "<div href=\"$link\" class=\"news-cate-link\"><img style=\"height: 126px; width: 150px; opacity: 0.7;\" src=\"$cat_info->description\" alt=\"$cat_info->name\"><a href=\"$link\">$cat_info->name</a></div>";
+									echo "<div href=\"$link\" class=\"news-cate-link\"><img style=\"height: 126px; width: 150px; opacity: 0.7;\" src=\"$cat_info->description\" alt=\"$cat_info->name\"><a style=\"color:rgb(100,100,100)\" href=\"$link\">$cat_info->name</a></div>";
 				            	}
 				            }
 				        }

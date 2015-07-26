@@ -1,4 +1,5 @@
 <?php
+ob_start();
 
 class ashu_option_class{
 
@@ -1102,15 +1103,12 @@ $options_page = new ashu_option_class($options, $servicepageinfo);
 
 $caseDataAdded=$ashu_option['case-add'];
 
-?>
-
-<?php
 //开启/设置缩略图
 add_theme_support('post-thumbnails');
 set_post_thumbnail_size(640,200);
 
+ob_end_flush();
 ?>
-
 <style type="text/css">
 	.split{background: rgb(250,250,250);}
 </style>

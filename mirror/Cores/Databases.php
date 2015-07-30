@@ -6,13 +6,15 @@ class Databases{
 
 	protected static $instance;
 	protected static $databaseObj;
-	protected static $sql;
+	protected $sql;
+	protected static $table;
 
-	static function CreateDatabase($dbconfig){
+	static function CreateDatabase($dbconfig,$table=null){
 
 		if(self::$instance instanceof self){
 			return self::$instance;
 		}else{
+			self::$table=$table;
 			$dbtype=$dbconfig['dbtype'];
 			$dbtype='Cores\\Databases\\'.$dbtype;
 			self::$databaseObj=new $dbtype($dbconfig);
@@ -42,15 +44,45 @@ class Databases{
 		return self::$instance;
 	}
 
-	function select(){
-		return self::$instance;
+	function select($field=null){
+		$field=$field==null?'*':$field;
+		$this->sql="select ".$field." from ".$this->sql;
+		return $this->query($this->sql);
 	}
 
 	function find($id){
 		return self::$instance;
 	}
 
-	function where(){
+	function where($where){
+		$whereSQL='';
+		if(is_array($where)){
+			
+			if(isset($where['table'])){
+				self::$table=$where['table'];
+			}
+			$conCount=count($where);
+			$index=0;
+			foreach ($where as $key => $value) {
+				
+				if($key=='table'){continue;}
+
+				if(!is_numeric($value)){
+					$value="'$value'";
+				}
+
+				$whereSQL.=" `$key`=$value ";
+				if($index!=$conCount-2){
+					$whereSQL.='and ';
+				}
+
+				$index++;
+			
+			}
+		}else{
+			$whereSQL=$where;
+		}
+		$this->sql.='`'.self::$table.'` where '." $whereSQL";
 		return self::$instance;
 	}
 
@@ -68,6 +100,10 @@ class Databases{
 
 	function getDatabase(){
 		return self::$databaseObj;
+	}
+
+	function getSQL(){
+		return $this->sql;
 	}
 
 }

@@ -22,8 +22,12 @@ function C($key=null,$value=null){
 	
 
 //创建数据库,根据当前配置文件中的数据库类型生成数据库对象
-function D(){	
+function D($table=null){	
 	$dbconfig=C('dbconfig');
-	return Cores\Databases::CreateDatabase($dbconfig);
+	return Cores\Databases::CreateDatabase($dbconfig,$table);
+}
+
+function A(){
+	return new Cores\shit\Child();
 }
 

@@ -88,7 +88,7 @@
 				var originGalleryHeadingMarginTop=$('.gallery-heading').css('marginTop');
 				if(smallScreenMenuIsDisplayed){
 					// if(screen.width<=350){
-						$('.gallery-heading,.news-block,.content-panel,.search-section').animate({
+						$('.gallery-heading,.news-block,.content-panel,#catagory-post-block,.search-section').animate({
 							marginTop:'-='+elemHeight+'px'
 						},function(){
 							$('.gallery-heading,.news-block,.content-panel').animate({
@@ -119,7 +119,7 @@
 
 					// if(screen.width<=350){
 						// alert('dssd');
-						$('.gallery-heading,.news-block,.content-panel,.search-section').animate({
+						$('.gallery-heading,.news-block,.content-panel,#catagory-post-block,.search-section').animate({
 							marginTop:'+='+elemHeight+'px'
 						});
 						smallScreenMenuIsDisplayed=true;

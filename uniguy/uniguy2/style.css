@@ -908,7 +908,7 @@ ul.st_navigation li span.st_arrow_up{
 	}
 
 	.case-block ul li#display-search span{
-		position: absolute;
+		/*position: absolute;*/
 		width: 200px;
 		top: 70px;
 		right: 20px;

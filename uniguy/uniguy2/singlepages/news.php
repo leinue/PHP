@@ -31,7 +31,7 @@
 	
 
 
-	<div style="margin-top:100px;padding:10px;" class="post-block">
+	<div style="margin-top:100px;padding:10px!important;" class="post-block">
 
 	<?php
 		$previous_year = $year = 0;
@@ -71,7 +71,7 @@
 					<div class="post-more">
 						<ul>
 							<li class="post-time"><?php the_author(); ?> 发表于 <?php the_time('Y年m月d日'); ?></li>
-							<li class="post-comment">更改于 <?php echo $post->post_date_gmt; ?></li>
+							<!-- <li class="post-comment">更改于 <?php echo $post->post_date_gmt; ?></li> -->
 						</ul>
 					</div>
 				</li>

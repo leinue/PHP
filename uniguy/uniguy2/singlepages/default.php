@@ -29,7 +29,7 @@
 				</ul>
 			</div>
 
-		<div class="ds-thread" data-thread-key="<?php the_title(); ?>" data-title="<?php the_title(); ?>" data-url="<?php the_permalink(); ?>"></div>			<script type="text/javascript">
+		<!--<div class="ds-thread" data-thread-key="<?php the_title(); ?>" data-title="<?php the_title(); ?>" data-url="<?php the_permalink(); ?>"></div>			<script type="text/javascript">
 			var duoshuoQuery = {short_name:"uniguy-unity"};
 				(function() {
 					var ds = document.createElement('script');
@@ -40,7 +40,21 @@
 					 || document.getElementsByTagName('body')[0]).appendChild(ds);
 				})();
 			</script>
-		</div>
+		</div>-->
+
+	<div class="ds-thread" data-thread-key="<?php the_title(); ?>" data-title="<?php the_title(); ?>" data-url="<?php the_permalink(); ?>"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"uniguy-unity2"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	</div>
 
 	</section>
 

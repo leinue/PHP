@@ -16,7 +16,7 @@ function get_post_thumbnail_url($post_id,$size='large'){
 ?>
 
 <section>
-	<div class="gallery-content" style="background: url('<?php echo $ashu_option['ashu']['home_bg']; ?>');background-position: center center;">
+	<div class="gallery-content" style="background: url('<?php echo $ashu_option['ashu']['home_bg']; ?>');background-position: center center;background-repeat:no-repeat">
 		<div style="margin-top:100px" class="gallery-heading">
 			<h1><a style="color: #333333;" href="<?php bloginfo('url'); ?>"><?php bloginfo('description'); ?></a></h1>
 		</div>

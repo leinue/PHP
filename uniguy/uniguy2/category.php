@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div class="post-block">
+<div style="margin-top:100px;padding:10px!important;" class="post-block" id="catagory-post-block">
 
 	<?php
 		$previous_year = $year = 0;
@@ -46,7 +46,7 @@
 					</div>
 					<div class="post-more">
 						<ul>
-							<li class="post-comment"><?php comments_popup_link('0 条评论', '1 条评论', '% 条评论', '', '评论已关闭'); ?></li>
+							<!-- <li class="post-comment"><?php comments_popup_link('0 条评论', '1 条评论', '% 条评论', '', '评论已关闭'); ?></li> -->
 							<li class="post-time">wo 发表于 <?php the_time('Y年m月d日'); ?></li>
 						</ul>
 					</div>

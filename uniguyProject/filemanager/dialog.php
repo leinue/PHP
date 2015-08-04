@@ -356,7 +356,7 @@ $get_params = http_build_query(array(
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="robots" content="noindex,nofollow">
   <title>华润双鹤文献系统</title>
-	<link rel="shortcut icon" href="img/ico/favicon.ico">
+  <link rel="shortcut icon" href="img/ico/favicon.ico">
   <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
   <link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
   <link href="css/bootstrap-lightbox.min.css" rel="stylesheet" type="text/css" />
@@ -399,6 +399,11 @@ $get_params = http_build_query(array(
 		    	background-image: url(<?php echo $sprite_lang_file; ?>);
 		    }
 		}
+	
+		body{
+			font-family: "宋体"!important;
+		}
+
 	</style>
 	<link href="css/jquery.contextMenu.min.css" rel="stylesheet" type="text/css" />	
 	<link href="css/bootstrap-modal.min.css" rel="stylesheet" type="text/css" />
@@ -685,7 +690,7 @@ $get_params = http_build_query(array(
 <script>
 
 	function displaySigninForm(title){
-		var form='<div class="login-panel"></div><div style="top:0" class="login-box"><div class="login_box_title"><h2>完善信息</h2><div style="visibility:hidden" class="login_box_close"><img width="24" height="24" src="images/close.svg"></div></div><div class="login_box_content"><ul><li><div class="login_box_register">标题</div><div class="login_box_input"><input class="the_input light_blue" id="upload_title" value="'+title+'" placeholder="请输入标题" style="width:92%" type="text"> <input style="visibility:hidden" type="checkBox"><div class="login_box_register">作者</div><input class="the_input light_blue" id="upload_author" placeholder="请输入作者名" style="width:92%" type="text"><div class="login_box_register">标签</div><input class="the_input light_blue" id="upload_tags" placeholder="请输入标签,用英文状态下逗号分割" style="width:92%" type="text"><div style="margin-top:-8px;margin-bottom:6px"></div></div></li><li><div class="login_box_register">请输入描述信息</div><div class="login_box_input"><textarea id="upload_description" style="width:100%" rows="6"></textarea><input type="button" class="the_btn light_blue white blue_border" style="float:right" onclick="submitFileInfo(this)" value="确定"></div></li></ul></div></div>';
+		var form='<div class="login-panel"></div><div style="top:0" class="login-box"><div class="login_box_title"><h2>完善信息</h2><div style="visibility:hidden" class="login_box_close"><img width="24" height="24" src="images/close.svg"></div></div><div class="login_box_content"><ul><li><!--<div class="login_box_register">标题</div>--><div class="login_box_input"><!--<input class="the_input light_blue" id="upload_title" value="'+title+'" placeholder="请输入标题" style="width:92%" type="text">--> <input style="visibility:hidden" type="checkBox"><div class="login_box_register">作者</div><input class="the_input light_blue" id="upload_author" placeholder="请输入作者名" style="width:92%" type="text"><div class="login_box_register">标签</div><input class="the_input light_blue" id="upload_tags" placeholder="请输入标签,用英文状态下逗号分割" style="width:92%" type="text"><div style="margin-top:-8px;margin-bottom:6px"></div></div></li><li><div class="login_box_register">请输入描述信息</div><div class="login_box_input"><textarea id="upload_description" style="width:100%" rows="6"></textarea><input type="button" class="the_btn light_blue white blue_border" style="float:right" onclick="submitFileInfo(this)" value="确定"></div></li></ul></div></div>';
 		$('body').append(form);
 		$('.login-box').css('top',($(window).height()-$('.login-box').height())/2-30)
 					   .css('left',($(document).width()-$('.login-box').width())/2);
@@ -706,6 +711,16 @@ $get_params = http_build_query(array(
 		var _path='';
 		$.get("get_new_upload_dir.php", function(result){
     		_path=result;
+
+    		var _title=result.split('/');
+			_title=_title[_title.length-1];
+			_title=_title.split('.');
+			var newtitle='';
+			for (var i = 0; i < _title.length-1; i++) {
+				newtitle+=_title[i];
+			};
+
+			_title=newtitle;
 
 			if(_title!='' && _author!='' && _tags!='' && _description!='' && _path!=''){
 				$.post("submitfileinfo.php",{
@@ -1217,11 +1232,11 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 				    <?php
 
            	 			$fid=$fm->getFidByPath($current_path.$rfm_subfolder.$subdir.$file);
-           	 			$starFlag=$fm->isFileStard($fid['fid'],$_SESSION['RF']['subfolder']);
-
+           	 			$starFlag=$fm->isFileStard($fid['fid'],$_SESSION['uuid']);
+           	 			
 				    ?>
-				    <a href="javascript:void('')" id="star-btn" onclick="starFile(this,'<?php if($starFlag){echo '取消标星';}else{echo '标星';} ?>')" class="tip-left star-button star-file" title="<?php if($starFlag){echo '取消标星';}else{echo '标星';} ?>" data-path="<?php echo $rfm_subfolder.$subdir .$file; ?>" data-thumb="<?php echo $thumbs_path.$subdir .$file; ?>">
- 				    <i class="icon-star icon-blue"></i></a>
+				    <a href="javascript:void('')" id="<?php echo $fid['fid']; ?>" onclick="starFile(this,'<?php if($starFlag){echo '取消标星';}else{echo '标星';} ?>')" class="tip-left star-button star-file" title="<?php if($starFlag){echo '取消标星';}else{echo '标星';} ?>" data-path="<?php echo $rfm_subfolder.$subdir .$file; ?>" data-thumb="<?php echo $thumbs_path.$subdir .$file; ?>">
+ 				    <i class="icon-star icon-<?php if($starFlag){echo 'blue';}else{echo 'white';} ?>"></i></a>
 
 				    <a href="javascript:void('')" class="tip-left edit-button rename-file-paths <?php if($rename_files && !$file_prevent_rename) echo "rename-file"; ?>" title="<?php echo lang_Rename?>" data-path="<?php echo $rfm_subfolder.$subdir .$file; ?>" data-thumb="<?php echo $thumbs_path.$subdir .$file; ?>">
  				    <i class="icon-pencil <?php if(!$rename_files || $file_prevent_rename) echo 'icon-white'; ?>"></i></a>
@@ -1245,8 +1260,9 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 				border-top: 1px solid rgb(170,170,170);
 				border-bottom: 1px solid rgb(170,170,170);
 				background: rgb(255,255,255);
-				margin-top: 20px;
-				margin-bottom: 10px;
+				/*margin-top: 20px;*/
+				/*margin-bottom: 10px;*/
+				margin-top: -1px;
 				line-height: 2.4;
 			}
 
@@ -1254,21 +1270,52 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 				cursor: pointer;
 				background: rgb(224,224,224);
 			}
+	
+			.load-more-select select{
+				margin-top: 10px;
+			}
+
 	    </style>
 	    <?php
-	    	if($_SESSION['RF']["subfolder"]='328eb3c3-d632-11e4-9a8c-00163e002b11' && $_GET['fldr']=='/'){
+
+	    	function getDirFileCount($dir){
+	    		return count(scandir($dir))-2;
+	    	}
+
+	    	if($_SESSION['RF']["subfolder"]='328eb3c3-d632-11e4-9a8c-00163e002b11' && $_SESSION['RF']['view_type']==0){
 				
 			}else{
-				echo "<div class=\"load-more-div\">加载更多</div>";
+				echo "<div class=\"load-more-div load-more-select\"><select id=\"page-nav\">";
+				$AllPages=getDirFileCount($current_path.$rfm_subfolder.$subdir);
+				$AllPages=ceil($AllPages/20);
+				for ($i=1; $i <= $AllPages; $i++) { 
+					if(ceil($_SESSION['current_file_count']/20)==$i){
+						echo "<option value=\"$i\" selected=\"selected\">$i</option>";
+					}else{
+						echo "<option value=\"$i\">$i</option>";
+					}
+				}
+				echo "</select></div>";
+				echo "<div class=\"load-more-div load-more-next\">下一页</div>";
 			}
 	    ?>
 	    <script type="text/javascript">
-	    	$('.load-more-div').click(function(){
+	    	
+	    	$('.load-more-next').click(function(){
 	    		$.get('ajax/addfileloadcount.php',function(){
 	    			localStorage.fromLoadMore="true";
 	    			location.reload();
 	    		});
 	    	});
+
+	    	$('.load-more-select #page-nav').change(function(){
+	    		var toPage=$(this).children('option:selected').val();
+	    		$.get('ajax/addfileloadcount.php?page='+toPage,function(){
+	    			localStorage.fromLoadMore="true";
+	    			location.reload();
+	    		});
+	    	});
+
 /*	    	window.onbeforeunload = function(){   
               	var n = window.event.screenX - window.screenLeft;   
               	var b = n > document.documentElement.scrollWidth-20;   
@@ -1379,11 +1426,7 @@ if(ex=='chrome'){
         			},
         			context: document.body, 
         			success: function(data){
-        			if(data.indexOf('success')!=-1){
-        				alert('标星成功');
-        			}else{
-        				alert('标星失败');
-        			}
+        				alert(data);
       			}});
         	}
         </script>

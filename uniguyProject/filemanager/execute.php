@@ -310,9 +310,9 @@ if (isset($_GET['action']))
 
             if(!$fm->isFileStard($fid['fid'],$_SESSION['uuid'])){
                 if($a=$fm->star($_SESSION['uuid'],$fid['fid'])){
-                    echo 'star success';
+                    echo '标星成功';
                 }else{
-                    echo 'star failed';
+                    echo '标星失败';
                 }
             }else{
                 $st=$fm->getStarsByUid($_SESSION['uuid']);
@@ -324,9 +324,9 @@ if (isset($_GET['action']))
                     }
                 }
                 if($fm->deleteStars($st[$realkey]->getStid(),$_SESSION['uuid'])){
-                    echo 'removing star success';
+                    echo '取消标星成功';
                 }else{
-                    echo 'removing star failed,please try again.';
+                    echo '取消标星失败';
                 }
             }
             break;

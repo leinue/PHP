@@ -148,7 +148,9 @@ if (isset($_GET['action']))
         case 'create_folder':
             if ($create_folders)
             {
-                create_folder(fix_path($path,$transliteration,$convert_spaces, $replace_with),fix_path($path_thumb,$transliteration,$convert_spaces, $replace_with));
+
+                file_put_contents("test.txt", $path);
+                create_folder($path,$path_thumb);
                 $uid=$_SESSION['uuid'];
                 $tags="0";
                 $fm->upload($uid,$path,"0",$tags);

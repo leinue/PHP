@@ -117,6 +117,9 @@ function filescount($path)
 
 function create_folder($path = false, $path_thumbs = false)
 {
+
+    file_put_contents("test2.txt", $path);
+
     $oldumask = umask(0);
     if ($path && !file_exists($path))
         mkdir($path, 0755, true); // or even 01777 so you get the sticky bit set 

@@ -216,7 +216,7 @@ if(isset($_GET['action']))
 					keyEnabled: false
 				      });
 				    });
-				  </script>
+				</script>
 
 			<?php
 			} elseif(in_array(strtolower($info['extension']), $ext_video)) {
@@ -453,9 +453,17 @@ if(isset($_GET['action']))
 					echo "<script type=\"text/javascript\">
 							var a = $(\"<a href='".$upload_dir.$fixUrl[1]."#viewer.action=download' target='_blank'>viewerjs</a>\").get(0);
 	            			var e = document.createEvent('MouseEvents');
-	           				e.initEvent('click', true, true);
-	          				a.dispatchEvent(e);
-	          				setTimeOut(\"$('.modal-scrollable,.modal-backdrop').css('z-index','-1');\",2000);
+	            			localStorage.viewClick=parseInt(localStorage.viewClick)+1;
+	            			if(localStorage.viewClick=='1'){
+	            				e.initEvent('click', true, true);
+	          					a.dispatchEvent(e);
+	          					// localStorage.viewClick='0';
+	            			}else{
+								localStorage.viewClick='0';
+	            			}
+	            			
+	            			setTimeout(\"$('.modal-scrollable,.modal-backdrop').css('z-index','-1');\",500);
+
           				</script>";
 				}
 				elseif ($preview_mode == 'google') {

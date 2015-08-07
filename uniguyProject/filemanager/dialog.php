@@ -517,7 +517,7 @@ $get_params = http_build_query(array(
 	   });
 	    }
 	</script>
-	<script type="text/javascript" src="js/include.min.js"></script>
+	<script type="text/javascript" src="js/include.js"></script>
 </head>
 <body>
 	<input type="hidden" id="popup" value="<?php echo $popup; ?>" />
@@ -1288,15 +1288,13 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 				echo "<div class=\"load-more-div load-more-select\"><select id=\"page-nav\">";
 				$AllPages=getDirFileCount($current_path.$rfm_subfolder.$subdir);
 				$AllPages=ceil($AllPages/20);
-				for ($i=1; $i <= $AllPages; $i++) { 
-					if(ceil($_SESSION['current_file_count']/20)==$i){
-						echo "<option value=\"$i\" selected=\"selected\">$i</option>";
-					}else{
+				if($AllPages>1){
+					for ($i=1; $i <= $AllPages; $i++) { 
 						echo "<option value=\"$i\">$i</option>";
 					}
 				}
 				echo "</select></div>";
-				echo "<div class=\"load-more-div load-more-next\">下一页</div>";
+				// echo "<div class=\"load-more-div load-more-next\">下一页</div>";
 			}
 	    ?>
 	    <script type="text/javascript">
@@ -1310,10 +1308,16 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 
 	    	$('.load-more-select #page-nav').change(function(){
 	    		var toPage=$(this).children('option:selected').val();
-	    		$.get('ajax/addfileloadcount.php?page='+toPage,function(){
+	    		$.get('ajax/addfileloadcount.php?page='+toPage,function(data){
 	    			localStorage.fromLoadMore="true";
 	    			location.reload();
 	    		});
+	    	});
+
+	    	$('.load-more-select select option').each(function(e){
+	    		if(e+1==parseInt(<?php echo $_SESSION['current_file_count']; ?>)/10){
+	    			$(this).attr('selected','selected');
+	    		}
 	    	});
 
 /*	    	window.onbeforeunload = function(){   
@@ -1433,6 +1437,7 @@ if(ex=='chrome'){
     <?php } ?>
     <script type="text/javascript">
 	   	// $.get('ajax/unsetSession.php');
+	   	localStorage.viewClick=0;
     </script>
 </body>
 </html>

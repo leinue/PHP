@@ -46,7 +46,7 @@ class Databases{
 
 	function select($field=null){
 		$field=$field==null?'*':$field;
-		$this->sql="select ".$field." from ".$this->sql;
+		$this->sql="select ".$field." from `".self::$table.'` '.$this->sql;
 		return $this->query($this->sql);
 	}
 
@@ -54,7 +54,7 @@ class Databases{
 		return self::$instance;
 	}
 
-	function where($where){
+	function where($where=null){
 		$whereSQL='';
 		if(is_array($where)){
 			
@@ -82,7 +82,11 @@ class Databases{
 		}else{
 			$whereSQL=$where;
 		}
-		$this->sql.='`'.self::$table.'` where '." $whereSQL";
+		if(is_null($whereSQL)){
+			$this->sql.='';
+		}else{
+			$this->sql.=' where '." $whereSQL";
+		}
 		return self::$instance;
 	}
 

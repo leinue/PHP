@@ -6,7 +6,7 @@ class Loader{
 
 	static function autoload($class){
 
-		echo BASEDIR.'\\'.str_replace('\\', '/', $class).'.php'.'<br>';
+		// echo BASEDIR.'\\'.str_replace('\\', '/', $class).'.php'.'<br>';
 
         require BASEDIR.'\\'.str_replace('\\', '/', $class).'.php';
 	}

@@ -27,7 +27,22 @@ function D($table=null){
 	return Cores\Databases::CreateDatabase($dbconfig,$table);
 }
 
-function A(){
-	return new Cores\shit\Child();
+//创建模型
+function M($modelName){
+
 }
 
+function hump($str){
+	$result='';
+	
+	if(stripos($str,'_')){
+		$str_array=explode("_",$str);
+		foreach ($str_array as $key => $value) {
+			$result.=ucfirst($value);
+		}
+	}else{
+		$result=ucfirst($str);
+	}
+
+	return $result;
+}

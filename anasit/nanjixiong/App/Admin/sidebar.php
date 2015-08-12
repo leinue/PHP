@@ -32,6 +32,9 @@
                         <a class="<?php echo displayAvtive($view,"comments"); ?>" href="admin.php?v=comments"><i class="fa fa-bar-chart-o"></i> 评论/评分管理</a>
                     </li>
                     <li>
+                        <a class="<?php echo displayAvtive($view,"useradd"); ?>" href="admin.php?v=useradd"><i class="fa fa-eye"></i> 用户发布管理</a>
+                    </li>
+                    <li>
                         <a class="<?php echo displayAvtive($view,"ads"); ?>" href="admin.php?v=ads"><i class="fa fa-usd"></i> &nbsp;广告位管理</a>
                     </li>
                     <li>

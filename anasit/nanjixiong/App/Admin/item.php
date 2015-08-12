@@ -1,3 +1,42 @@
+<?php
+
+$page=1;
+if(!empty($_GET['[page'])){
+    $page=$_GET['page'];
+}
+
+$itemsObj=new Cores\Models\ItemsModel();
+$pageCount=count($itemsObj->selectAll());
+$allPages=ceil($pageCount/20);
+
+$prevPage=$page-1;
+if($prevPage<=0){
+    $prevPage=1;
+}
+
+$nextPage=$page+1;
+if($nextPage>$allPages){
+    $nextPage=$allPages;
+}
+
+function printItems($itemsObj,$status,$page){
+    $allItemObj=$itemsObj->selectAll($page);
+    if(is_array($allItemObj)){
+        foreach ($allItemObj as $key => $value) {
+            if($value['status']===$status){
+                echo '<a target="_blank" href="#" class="list-group-item">
+                    <span class="badge">'.$value['createTime'].'</span>
+                    <i class="fa fa-fw fa-comment"></i> '.$value['caid'].'
+                  </a>';
+            }
+        }
+    }else{
+        echo '暂无数据';
+    }
+}
+
+?>
+
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper">
             <div id="page-inner">
@@ -19,53 +58,55 @@
                                 投稿管理
                             </div>
                             <div class="panel-body">
-                                <ul class="nav nav-tabs">
-                                  <li role="presentation" class="active"><a href="#">已通过</a></li>
-                                  <li role="presentation"><a href="#">待审核</a></li>
-                                </ul>
-                                <div style="margin-top:-2px;" class="list-group">
+                                <div>
 
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">7 minutes ago</span>
-                                        <i class="fa fa-fw fa-comment"></i> Commented on a post
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">16 minutes ago</span>
-                                        <i class="fa fa-fw fa-truck"></i> Order 392 shipped
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">36 minutes ago</span>
-                                        <i class="fa fa-fw fa-globe"></i> Invoice 653 has paid
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">1 hour ago</span>
-                                        <i class="fa fa-fw fa-user"></i> A new user has been added
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">1.23 hour ago</span>
-                                        <i class="fa fa-fw fa-user"></i> A new user has added
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <span class="badge">yesterday</span>
-                                        <i class="fa fa-fw fa-globe"></i> Saved the world
-                                    </a>
+                                  <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#approved" aria-controls="approved" role="tab" data-toggle="tab">已通过</a></li>
+                                    <li role="presentation"><a href="#rejected" aria-controls="rejected" role="tab" data-toggle="tab">待审核</a></li>
+                                  </ul>
+
+                                  <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active" id="approved">
+                                        <div style="margin-top:-2px;" class="list-group">
+
+                                            <?php
+                                                printItems($itemsObj,'1',$page);
+                                            ?>
+
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="rejected">
+                                        <div style="margin-top:-2px;" class="list-group">
+
+                                            <?php
+                                                printItems($itemsObj,'0',$page);
+                                            ?>
+
+                                        </div>
+                                    </div>
+                                  </div>
+
                                 </div>
 
                                 <div class="text-right">
                                     <nav>
                                       <ul class="pagination">
                                         <li>
-                                          <a href="#" aria-label="Previous">
+                                          <a href="admin.php?v=<?php echo $_GET['v'] ?>&page=<?php echo $prevPage; ?>" aria-label="Previous">
                                             <span aria-hidden="true">&laquo;</span>
                                           </a>
                                         </li>
-                                        <li class="active"><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
+                                        <?php
+                                            $classActive='';
+                                            for ($i=1; $i <= $allPages; $i++) {
+                                                if($i==$page){
+                                                    $classActive='class="active"';
+                                                }
+                                                echo '<li><a '.$classActive.' href="admin.php?v='.$_GET['v'].'&page='.$i.'">'.$i.'</a></li>';
+                                            }
+                                        ?>
                                         <li>
-                                          <a href="#" aria-label="Next">
+                                          <a href="admin.php?v=<?php echo $_GET['v'] ?>&page=<?php echo $nextPage; ?>" aria-label="Next">
                                             <span aria-hidden="true">&raquo;</span>
                                           </a>
                                         </li>

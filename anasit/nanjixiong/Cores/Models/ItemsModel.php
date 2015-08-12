@@ -13,9 +13,13 @@ class ItemsModel{
 		self::$model=D('njx_items');
 	}
 
-	function selectAll(){
-		$cataObj=self::$model->getDatabase()->query("select * from njx_items",[],'Cores\Models\Items');
-		return $cataObj;
+	function selectAll($page=null){
+		if($page==null){
+			$cataObj=self::$model->getDatabase()->query("SELECT * from `njx_items`",[],'Cores\Models\Items');
+			return $cataObj;
+		}else{
+			return $cataObj=self::$model->getDatabase()->query("SELECT * FROM `njx_items` LIMIT $page,".($page+10));
+		}
 	}
 
 	function count(){

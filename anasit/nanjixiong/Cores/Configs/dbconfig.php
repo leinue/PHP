@@ -5,7 +5,8 @@ $configs=array(
 	"host"=>"localhost",
 	"user"=>"root",
 	"password"=>"xieyang",
-	"dbname"=>"ncu"
+	"dbname"=>"ncu",
+	'dbprefix'=>'njx_'
 );
 
 return $configs;

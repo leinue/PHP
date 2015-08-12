@@ -28,8 +28,8 @@ class Databases{
 		return self::$databaseObj->query($sql);
 	}
 
-	function execute($sql=null){
-		return self::$databaseObj->execute($sql);
+	function execute($sql=null,$arr=null,$class=null){
+		return self::$databaseObj->execute($sql,$arr,$class);
 	}
 
 	function update(){

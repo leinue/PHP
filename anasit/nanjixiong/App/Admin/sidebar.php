@@ -26,11 +26,16 @@
                         <a class="<?php echo displayAvtive($view,"item"); ?>" href="admin.php?v=item"><i class="fa fa-edit"></i> 投稿管理</a>
                     </li>
                     <li>
+                        <a class="<?php echo displayAvtive($view,"itemadd"); ?>" href="admin.php?v=itemadd"><i class="fa fa-plus"></i> &nbsp;添加投稿</a>
+                    </li>
+                    <li>
                         <a class="<?php echo displayAvtive($view,"comments"); ?>" href="admin.php?v=comments"><i class="fa fa-bar-chart-o"></i> 评论/评分管理</a>
                     </li>
-                    
                     <li>
-                        <a class="<?php echo displayAvtive($view,"setting"); ?>" href="admin.php?v=setting"><i class="fa fa-qrcode"></i> 系统设置</a>
+                        <a class="<?php echo displayAvtive($view,"ads"); ?>" href="admin.php?v=ads"><i class="fa fa-usd"></i> &nbsp;广告位管理</a>
+                    </li>
+                    <li>
+                        <a class="<?php echo displayAvtive($view,"setting"); ?>" href="admin.php?v=setting"><i class="fa fa-qrcode"></i> &nbsp;系统设置</a>
                     </li>
                 </ul>
 

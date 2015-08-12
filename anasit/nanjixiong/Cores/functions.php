@@ -75,3 +75,36 @@ function debug($content){
 function redirectTo($url){
 	echo "<script>window.location.href='$url';</script>";
 }
+
+function success($text){
+	return '<div class="alert alert-success alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'.$text.'</div>';
+}
+
+function warning($text){
+	return '<div class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'.$text.'</div>';
+}
+
+function dangerConfirm($text){
+	return '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">'.$text.'</span>
+</button>';
+}
+
+function confirm($tips,$request,$btnValue){
+	return $tips=warning($tips.'
+        <p><a href="'.$request.'" class="btn btn-danger">'.$btnValue.'</a></p>');
+}
+
+function modal($title,$content){
+	return '<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">'.$title.'</button>
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      '.$content.'
+    </div>
+  </div>
+</div>';
+}

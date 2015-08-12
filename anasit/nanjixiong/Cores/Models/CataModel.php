@@ -18,8 +18,12 @@ class CataModel{
 		return $cataObj;
 	}
 
-	function selectOne($caid){
-		return self::$model->getDatabase()->query("SELECT * FROM `njx_cata` WHERE `caid`='$caid'",[],'Cores\Models\Cata');
+	function selectOne($caid,$arr=false){
+		if($arr){
+			return self::$model->getDatabase()->query("SELECT * FROM `njx_cata` WHERE `caid`='$caid'",[]);
+		}else{
+			return self::$model->getDatabase()->query("SELECT * FROM `njx_cata` WHERE `caid`='$caid'",[],'Cores\Models\Cata');
+		}
 	}
 
 	function getFieldChild($caid){
@@ -41,6 +45,21 @@ class CataModel{
 		return self::$model->getDatabase()->query("SELECT * FROM `njx_cata` WHERE `caid`='$caid'");
 	}
 
+	function setChild($caid,$value){
+		return self::$model->execute("UPDATE `njx_cata` SET `child`=? WHERE `caid`=?",array($value,$caid));
+	}
+
+	function addSecondLevelChild($caid,$name,$parent){
+		//$name,$parent=null,$child=null,$arr=false
+		$childAdded=$this->addChild($name,$parent,null,false);
+		$this->setChild($childAdded[0]->getCaid(),'second');
+		return $this->selectOne($childAdded[0]->getCaid(),true);
+	}
+
+	function getSecondLevel(){
+
+	}
+
 	function getCataByName($name){
 		return self::$model->getDatabase()->query("SELECT `caid` FROM `njx_cata` WHERE `name`='$name'");
 	}
@@ -50,7 +69,7 @@ class CataModel{
 		return is_array($tmp);
 	}	
 
-	function addChild($name,$parent=null,$child=null){
+	function addChild($name,$parent=null,$child=null,$arr=false){
 
 		if($name==null){
 			return false;
@@ -66,7 +85,7 @@ class CataModel{
 		$currentGuid=guid();
 		
 		$result=self::$model->execute("INSERT INTO `njx_cata` SET `caid`=? ,`name`=? ,`parent`=?,`child`=?",array($currentGuid,$name,$parent,$child));
-		return $this->selectOne($currentGuid);
+		return $this->selectOne($currentGuid,$arr);
 	}
 
 	function add($name){

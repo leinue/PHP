@@ -62,7 +62,6 @@ class PDO implements IDatabase{
 		}
 
 		$stmt=self::$pdo->prepare($sql);
-		print_r($stmt);
 		$result=$stmt->execute($arr);
 		if(!$result){
 			return self::$pdo->errorInfo();

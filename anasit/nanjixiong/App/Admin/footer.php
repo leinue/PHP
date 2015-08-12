@@ -18,6 +18,7 @@
     <script src="<?php echo DOMAIN; ?>/App/Admin/assets/js/morris/morris.js"></script>
     <!-- Custom Js -->
     <script src="<?php echo DOMAIN; ?>/App/Admin/assets/js/custom-scripts.js"></script>
+    <script src="<?php echo DOMAIN; ?>/App/Admin/js/scripts.js"></script>
 
 
 </body>

@@ -50,8 +50,12 @@ if(!empty($_GET['cata_to_view'])){
                                     <div class="panel-heading">
                                         <form role="form">
                                             <div class="form-group">
-                                                <label>筛选字段总名称</label>
-                                                <input placeholder="显示在筛选页面左边的名称" name="cata_selector_name" class="form-control">
+                                                <label>
+                                                    <a id="edit_second_level_name" class="btn btn-primary">修改</a>
+                                                    筛选字段总名称
+                                                </label>
+                                                <input placeholder="显示在筛选页面左边的名称" id="second_name_area" name="cata_selector_name" class="form-control">
+                                                
                                             </div>
                                         </form>                                        
                                     </div>
@@ -91,14 +95,29 @@ if(!empty($_GET['cata_to_view'])){
                                     </div>
                                 </div>
                             </div>
-                            <div role="tabpanel" class="tab-pane" id="edit_selector_fields">edit_selector_fields</div>
+                            <div role="tabpanel" class="tab-pane" id="edit_selector_fields">
+                                <div class="table-responsive">
+                                    <table class="table table-striped" id="cata_edit_field_list">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>原名称</th>
+                                                <th>修改为</th>
+                                                <th>确认</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                           </div>
 
                         </div>
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                        <button type="button" class="btn btn-primary">保存设置</button>
+                        <!-- <button type="button" class="btn btn-primary">保存设置</button> -->
                       </div>
                     </div>
                   </div>

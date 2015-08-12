@@ -32,9 +32,36 @@ if(!empty($_GET['cata_field_to_add']) && !empty($_GET['name'])){
 	}
 }
 
-if(!empty($_GET['cata_field_second'])){
+if(!empty($_GET['cata_field_second']) && !empty($_GET['name'])){
 	$cataObj=new Cores\Models\CataModel();
-	// $cataObj
+	$secondAdded=$cataObj->addSecondLevelChild($_GET['name'],$_GET['cata_field_second']);
+	if(!$secondAdded){
+		echo -1;
+	}else{
+		print_r($secondAdded);
+	}
+}
+
+if(!empty($_GET['cata_second_to_view'])){
+	$cataObj=new Cores\Models\CataModel();
+	$result=$cataObj->getSecondLevel($_GET['cata_second_to_view'],true);
+	if(!$result){
+		echo -1;
+	}else{
+		print_r(json_encode($result));
+	}
+}
+
+if(!empty($_GET['cata_second_to_edit']) && !empty($_GET['name'])){
+	$cataObj=new Cores\Models\CataModel();
+	$result=$cataObj->editSecondLevel($_GET['cata_second_to_edit'],$_GET['name']);
+	print_r(json_encode($result));
+}
+
+if(!empty($_GET['edit_third_lvl_field']) && !empty($_GET['name'])){
+	$cataObj=new Cores\Models\CataModel();
+	$result=$cataObj->modify($_GET['edit_third_lvl_field'],$_GET['name']);
+	print_r(json_encode($result));
 }
 
 ?>

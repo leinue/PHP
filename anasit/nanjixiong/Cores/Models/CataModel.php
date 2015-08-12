@@ -13,9 +13,12 @@ class CataModel{
 		self::$model=D('njx_cata');
 	}
 
-	function selectAll(){
-		$cataObj=self::$model->getDatabase()->query("SELECT * FROM `njx_cata`",[],'Cores\Models\Cata');
-		return $cataObj;
+	function selectAll($arr=false){
+		if(!$arr){
+			return self::$model->getDatabase()->query("SELECT * FROM `njx_cata`",[],'Cores\Models\Cata');
+		}else{
+			return self::$model->getDatabase()->query("SELECT * FROM `njx_cata`",[]);
+		}
 	}
 
 	function selectOne($caid,$arr=false){
@@ -49,15 +52,52 @@ class CataModel{
 		return self::$model->execute("UPDATE `njx_cata` SET `child`=? WHERE `caid`=?",array($value,$caid));
 	}
 
-	function addSecondLevelChild($caid,$name,$parent){
+	function addSecondLevelChild($name,$parent){
 		//$name,$parent=null,$child=null,$arr=false
 		$childAdded=$this->addChild($name,$parent,null,false);
 		$this->setChild($childAdded[0]->getCaid(),'second');
 		return $this->selectOne($childAdded[0]->getCaid(),true);
 	}
 
-	function getSecondLevel(){
+	function editSecondLevel($caid,$value){
+		
+		if($caid==null || $value==null){
+			return false;
+		}
 
+		return self::$model->execute("UPDATE `njx_cata` SET `name`=? WHERE `caid`=?",array($value,$caid));
+	}
+
+	function getSecondLevel($parent,$arr=false){
+		$allObj=$this->selectAll(false);
+		$childList=array();
+
+		if(!is_array($allObj)){
+			return false;
+		}
+
+		foreach ($allObj as $key => $value) {
+			$valueChild=$value->getChild();
+			$valueParent=$value->getParent();
+			if($valueChild=='second' && $valueParent==$parent){
+				array_push($childList,$value);
+			}
+		}
+
+		$newChildList=array();
+		$tmp=array();
+
+		if($arr){
+			foreach ($childList as $key => $value) {
+				$tmp['caid']=$value->getCaid();
+				$tmp['name']=$value->getName();
+				$tmp['parent']=$value->getParent();
+				$tmp['child']=$value->getChild();
+				array_push($newChildList, $tmp);
+				$tmp=array();
+			}
+		}
+		return $newChildList;
 	}
 
 	function getCataByName($name){

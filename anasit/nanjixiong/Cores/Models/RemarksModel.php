@@ -29,7 +29,7 @@ class RemarksModel{
 		}
 
 		$remarkId=guid();
-		self::$model->getDatabase()->execute("INSERT INTO `njx_remarks` SET `remarkId`=?,`points`=?,`itemId`=?",array($remarkId,$points,$itemId));
+		self::$model->getDatabase()->execute("INSERT INTO `njx_remarks` SET `remarkId`=?,`points`=?,`itemId`=?",array($remarkId,$points,$ite=]mId));
 		return $this->selectOne($remarkId);
 	}
 

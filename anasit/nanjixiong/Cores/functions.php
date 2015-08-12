@@ -67,3 +67,11 @@ function guid($namespace = '') {
             substr($hash, 20, 12) ;
     return $guid;
 }
+
+function debug($content){
+	echo "<script>console.log('$content')</script>";
+}
+
+function redirectTo($url){
+	echo "<script>window.location.href='$url';</script>";
+}

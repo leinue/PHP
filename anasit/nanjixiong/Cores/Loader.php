@@ -2,7 +2,11 @@
 
 namespace Cores;
 
-date_default_timezone_set("Asia/Shanghai"); 
+date_default_timezone_set("Asia/Shanghai");
+
+$requestURI=explode("/", $_SERVER['REQUEST_URI']);
+$requestURI=$requestURI[1];
+define('DOMAIN','http://'.$_SERVER['HTTP_HOST'].'/'.$requestURI);
 
 class Loader{
 

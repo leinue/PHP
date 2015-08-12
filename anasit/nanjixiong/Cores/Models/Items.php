@@ -12,6 +12,7 @@ class Items{
 	protected $isDeleted;
 	protected $commentsCount;
 	protected $status;
+	protected $openComments;
 
 	function getIid(){return $this->iid;}
 	function getUid(){return $this->uid;}
@@ -22,6 +23,7 @@ class Items{
 	function isDeleted(){return $this->isDeleted;}
 	function getCommentsCount(){return $this->commentsCount;}
 	function getStatus(){return $this->status;}
+	function openComments(){return $this->openComments;}
 }
 
 ?>

@@ -45,14 +45,14 @@ class CommentsModel{
 
 	}
 
-	// function modify($rid,$value){
+	function modify($rid,$content){
 
-	// 	if($oid==null || $value==null){
-	// 		return false;
-	// 	}
+		if($rid==null || $content==null){
+			return false;
+		}
 
-	// 	return self::$model->getDatabase()->execute("UPDATE `njx_fields` SET `value`=? WHERE `oid`=?",array($value,$oid));
-	// }
+		return self::$model->getDatabase()->execute("UPDATE `njx_comments` SET `content`=? WHERE `rid`=?",array($content,$rid));
+	}
 
 }
 

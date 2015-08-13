@@ -25,7 +25,7 @@ class AdsModel{
 
 	function add($content,$image,$url){
 		
-		if($content==null || $image==null || $url=null){
+		if($content==null || $image==null || $url==null){
 			return false;
 		}
 

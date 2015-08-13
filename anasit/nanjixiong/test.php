@@ -48,7 +48,9 @@ print_r($allItemObj);
 
 echo '<br>========================================<br>';
 
-$itemsObj->add('111111','222222222');
+// $itemsObj->add('111111','222222222');
+echo '<br>======upOrde======<br>';
+$itemsObj->upOrder('1');
 
 echo '<br>====================<br>';
 

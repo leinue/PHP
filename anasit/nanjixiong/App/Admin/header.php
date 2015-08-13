@@ -5,10 +5,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>南极熊 - 控制面板</title>
+    <!-- <link href="<?php echo DOMAIN; ?>/App/Admin/assets/css/bootstrap-combined.no-icons.min.css" rel="stylesheet"> -->
+    <link href="<?php echo DOMAIN; ?>/App/Admin/assets/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link href="<?php echo DOMAIN; ?>/App/Admin/assets/css/bootstrap.css" rel="stylesheet" />
     <link href="<?php echo DOMAIN; ?>/App/Admin/assets/css/font-awesome.css" rel="stylesheet" />
     <link href="<?php echo DOMAIN; ?>/App/Admin/assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
     <link href="<?php echo DOMAIN; ?>/App/Admin/assets/css/custom-styles.css" rel="stylesheet" />
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
+    <link href="<?php echo DOMAIN; ?>/App/Admin/assets/css/index.css" rel="stylesheet" >
 </head>
 
 <body>

@@ -13,6 +13,7 @@ class Items{
 	protected $commentsCount;
 	protected $status;
 	protected $openComments;
+	protected $title;
 
 	function getIid(){return $this->iid;}
 	function getUid(){return $this->uid;}
@@ -24,6 +25,7 @@ class Items{
 	function getCommentsCount(){return $this->commentsCount;}
 	function getStatus(){return $this->status;}
 	function openComments(){return $this->openComments;}
+	function getTitle(){return $this->title;}
 }
 
 ?>

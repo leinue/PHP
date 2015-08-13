@@ -67,6 +67,7 @@ if(!empty($_GET['cata_to_view'])){
                                                         <th>#</th>
                                                         <th>名称</th>
                                                         <th>父结点</th>
+                                                        <th>操作</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>

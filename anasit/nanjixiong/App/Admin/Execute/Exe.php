@@ -64,4 +64,9 @@ if(!empty($_GET['edit_third_lvl_field']) && !empty($_GET['name'])){
 	print_r(json_encode($result));
 }
 
+if(!empty($_GET['cata_rd_lve_del'])){
+	$cataObj=new Cores\Models\CataModel();
+	print_r(json_encode($cataObj->delete($_GET['cata_rd_lve_del'])));
+}
+
 ?>

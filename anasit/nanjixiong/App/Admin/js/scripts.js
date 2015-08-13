@@ -1,3 +1,42 @@
+$(function(){
+    function initToolbarBootstrapBindings() {
+      var fonts = ['Serif', 'Sans', 'Arial', 'Arial Black', 'Courier', 
+            'Courier New', 'Comic Sans MS', 'Helvetica', 'Impact', 'Lucida Grande', 'Lucida Sans', 'Tahoma', 'Times',
+            'Times New Roman', 'Verdana'],
+            fontTarget = $('[title=Font]').siblings('.dropdown-menu');
+      $.each(fonts, function (idx, fontName) {
+          fontTarget.append($('<li><a data-edit="fontName ' + fontName +'" style="font-family:\''+ fontName +'\'">'+fontName + '</a></li>'));
+      });
+      $('a[title]').tooltip({container:'body'});
+    	$('.dropdown-menu input').click(function() {return false;})
+		    .change(function () {$(this).parent('.dropdown-menu').siblings('.dropdown-toggle').dropdown('toggle');})
+        .keydown('esc', function () {this.value='';$(this).change();});
+
+      $('[data-role=magic-overlay]').each(function () { 
+        var overlay = $(this), target = $(overlay.data('target')); 
+        overlay.css('opacity', 0).css('position', 'absolute').offset(target.offset()).width(target.outerWidth()).height(target.outerHeight());
+      });
+      if ("onwebkitspeechchange"  in document.createElement("input")) {
+        var editorOffset = $('#editor').offset();
+        $('#voiceBtn').css('position','absolute').offset({top: editorOffset.top, left: editorOffset.left+$('#editor').innerWidth()-35});
+      } else {
+        $('#voiceBtn').hide();
+      }
+	};
+	function showErrorAlert (reason, detail) {
+		var msg='';
+		if (reason==='unsupported-file-type') { msg = "Unsupported format " +detail; }
+		else {
+			console.log("error uploading file", reason, detail);
+		}
+		$('<div class="alert"> <button type="button" class="close" data-dismiss="alert">&times;</button>'+ 
+		 '<strong>File upload error</strong> '+msg+' </div>').prependTo('#alerts');
+	};
+    initToolbarBootstrapBindings(); 
+	$('#editor').wysiwyg({ fileUploadError: showErrorAlert} );
+});
+
+
 var cata_selector_id='';
 var cata_selector_name='';
 
@@ -21,7 +60,7 @@ $('.modal-view-cata').on('show.bs.modal', function (event) {
     		var j=1;
     		for (var i = 0; i < childList.length; i++) {
     			if(childList[i]['child']!='second'){
-    				$('#cata_field_list tbody').append('<tr><td>'+j+'</td><td>'+childList[i]['name']+'</td><td>'+cata_selector_name+'</td></tr>');
+    				$('#cata_field_list tbody').append('<tr><td>'+j+'</td><td>'+childList[i]['name']+'</td><td>'+cata_selector_name+'</td><td><a class="btn btn-danger del_rd_lvl" id="cata_rd_lve_del_'+childList[i]['caid']+'" caid="'+childList[i]['caid']+'" onclick="confirmToDel3rdLvlField(this)" href="#">删除</a></td></tr>');
     				$('#cata_edit_field_list tbody').append('<tr><td>'+j+'</td> <td>'+childList[i]['name']+'</td> <td><input placeholder="这里填写要修改的值" name="cata_field_edit_name" id="cata_field_edit_name_'+childList[i]['caid']+'" class="form-control"></td> <td><a caid="'+childList[i]['caid']+'" onclick="confirmToEdit3rdLvlField(this)" class="btn btn-primary btn-sm edit_third_lvl_field">确认</a></td></tr>');
     				j++;
     			}
@@ -94,6 +133,21 @@ function confirmToEdit3rdLvlField(obj){
 				alert('修改成功');
 			}else{
 				alert('修改失败');
+			}
+		});
+	}
+}
+
+function confirmToDel3rdLvlField(obj){
+	var caid=$(obj).attr('caid');
+	var r=confirm("该操作不可恢复,确定要继续吗?");
+	if(!r){
+	}else{
+		$.get('App/Admin/Execute/Exe.php?cata_rd_lve_del='+caid,function(data){
+			if(data!='-1'){
+				alert('删除成功');
+			}else{
+				alert('删除失败');
 			}
 		});
 	}

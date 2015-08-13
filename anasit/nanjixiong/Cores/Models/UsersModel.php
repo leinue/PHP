@@ -68,6 +68,11 @@ class UsersModel{
 
 	}
 
+	function getUserItem($uid){
+		$itemObj=new ItemsModel();
+		return $itemObj->getUserItem($uid);
+	}
+
 	// function modify($oid,$value){
 
 	// 	if($oid==null || $value==null){

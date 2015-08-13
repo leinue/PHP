@@ -105,6 +105,10 @@ class ItemsModel{
 		return self::$model->getDatabase()->query("SELECT `order` FROM `njx_items` WHERE `iid`='$iid'");
 	}
 
+	function getUserItem($uid){
+		return self::$model->getDatabase()->query("SELECT * FROM `njx_items` WHERE `uid`=$uid");
+	}
+
 	function upOrder($iid){
 
 		if($iid==null){

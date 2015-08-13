@@ -21,6 +21,51 @@ if($nextPage>$allPages){
 
 $prompt='';
 
+function printUserItems($usersModel,$page,$uid){
+    $allItemObj=$usersModel->getUserItem($uid);
+    $str='';
+    $header='<div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            用户投稿管理
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>主题</th>
+                                                <th>所属分类</th>
+                                                <th>发布时间</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>';
+    $footer='</tbody> </table> </div> </div> </div> </div>'; 
+    if(is_array($allItemObj)){$j=$page>1?($page*5+1):0;
+        foreach ($allItemObj as $key => $value) {
+            $j++;
+            $cataObj=new Cores\Models\CataModel();
+            $cataName=$cataObj->selectOne($value['caid'],true);
+            $cataName=$cataName[0]['name'];
+            $str.='<tr>
+                    <td>'.$j.'</td>
+                    <td>'.$value['title'].'</td>
+                    <td>'.$cataName.'</td>
+                    <td>'.$value['uid'].'</td>
+                    <td>'.$value['createTime'].'</td>
+                </tr>';
+        }
+        return $header.$str.$footer;
+    }else{
+        return '<div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            暂无数据
+                        </div></div></div>';
+    }
+}
+
 if(!empty($_GET['action']) && !empty($_GET['uid'])){
     $uid=$_GET['uid'];
     switch ($_GET['action']) {
@@ -33,7 +78,7 @@ if(!empty($_GET['action']) && !empty($_GET['uid'])){
             $prompt=success('解封成功');
             break;
         case 'view_user_item':
-
+            $prompt=printUserItems($usersModel,$page,$uid);
             break;
         default:
             break;
@@ -91,7 +136,7 @@ if(!empty($_GET['action']) && !empty($_GET['uid'])){
                                                         $block=$value['privilege']==='9'?'deblock_user':'block_user';
                                                         $blockBtn='';
                                                         if($value['privilege']!='0'){
-                                                            $blockBtn='<a href="admin.php?v='.$_GET['v'].'&action='.$block.'&uid='.$value['uid'].'" class="btn btn-sm btn-danger">'.$btnName.'</a>';
+                                                            $blockBtn='<a href="admin.php?v='.$_GET['v'].'&action='.$block.'&uid='.$value['uid'].'&page='.$page.'" class="btn btn-sm btn-danger">'.$btnName.'</a>';
                                                         }else{
                                                             $blockBtn='';
                                                         }
@@ -101,7 +146,7 @@ if(!empty($_GET['action']) && !empty($_GET['uid'])){
                                                                 <td>'.$userGroup.'</td>
                                                                 <td>'.$value['createTime'].'</td>
                                                                 <td>
-                                                                    <a href="admin.php?v='.$_GET['v'].'&action=view_user_item&uid='.$value['uid'].'" class="btn btn-sm btn-primary">查看投稿</a>
+                                                                    <a href="admin.php?v='.$_GET['v'].'&action=view_user_item&uid='.$value['uid'].'&page='.$page.'" class="btn btn-sm btn-primary">查看投稿</a>
                                                                     '.$blockBtn.'
                                                                 </td>
                                                             </tr>';

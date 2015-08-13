@@ -1,3 +1,48 @@
+<?php
+
+$page=1;
+if(!empty($_GET['page'])){
+    $page=$_GET['page'];
+}
+
+$usersModel=new Cores\Models\UsersModel();
+$pageCount=count($usersModel->selectAll());
+$allPages=ceil($pageCount/20);
+
+$prevPage=$page-1;
+if($prevPage<=0){
+    $prevPage=1;
+}
+
+$nextPage=$page+1;
+if($nextPage>$allPages){
+    $nextPage=$allPages;
+}
+
+$prompt='';
+
+if(!empty($_GET['action']) && !empty($_GET['uid'])){
+    $uid=$_GET['uid'];
+    switch ($_GET['action']) {
+        case 'block_user':
+            $usersModel->block($uid);
+            $prompt=success('封禁成功');
+            break;
+        case 'deblock_user':
+            $usersModel->deblock($uid);
+            $prompt=success('解封成功');
+            break;
+        case 'view_user_item':
+
+            break;
+        default:
+            break;
+    }
+}
+
+
+?>
+
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper">
             <div id="page-inner">
@@ -6,49 +51,93 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                            系统设置 <small>在这里管理本系统:)</small>
+                            用户管理 <small>在这里管理来自discuz的用户,更详细的管理请到discuz中管理:)</small>
                         </h1>
                     </div>
                 </div>
 
                 <div class="row">
 
+                <?php echo $prompt; ?>
+
                     <div class="col-md-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                系统设置
+                                用户管理
                             </div>
                             <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <form role="form" action="admin.php?v=<?php echo $_GET['v']; ?>" method="post">
-                                            <div class="form-group">
-                                                <label>站点标题</label>
-                                                <input placeholder="南极熊" name="site_title" class="form-control">
-                                                <p class="help-block">作为站点首页的显示标题</p>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>站点副标题</label>
-                                                <input placeholder="南极熊" name="site_sub_title" class="form-control">
-                                                <p class="help-block">作为站点首页的副标题</p>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>管理后台标题</label>
-                                                <input placeholder="南极熊" name="site_admin_title" class="form-control">
-                                                <p class="help-block">作为管理后台的标题</p>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>站点Logo</label>
-                                                <input name="site_logo" type="file">
-                                            </div>
-                                            <button type="submit" class="btn btn-default">提交</button>
-                                        </form>
-                                    </div>
-                                    <!-- /.col-lg-6 (nested) -->
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>昵称</th>
+                                                <th>用户组</th>
+                                                <th>创建时间</th>
+                                                <th>操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+
+                                                $usersList=$usersModel->selectAll($page);
+                                                if(is_array($usersList)){
+                                                    $j=$page>1?($page*5)+1:0;
+                                                    foreach ($usersList as $key => $value) {
+                                                        $j++;
+                                                        //9是被封禁的
+                                                        $userGroup=$value['privilege']==='0'?'管理员':($value['privilege']==='9'?'封禁者':'投稿者');
+                                                        $btnName=$value['privilege']==='9'?'解封':'封禁';
+                                                        $block=$value['privilege']==='9'?'deblock_user':'block_user';
+                                                        $blockBtn='';
+                                                        if($value['privilege']!='0'){
+                                                            $blockBtn='<a href="admin.php?v='.$_GET['v'].'&action='.$block.'&uid='.$value['uid'].'" class="btn btn-sm btn-danger">'.$btnName.'</a>';
+                                                        }else{
+                                                            $blockBtn='';
+                                                        }
+                                                        echo '<tr>
+                                                                <td>'.$j.'</td>
+                                                                <td>'.$value['name'].'</td>
+                                                                <td>'.$userGroup.'</td>
+                                                                <td>'.$value['createTime'].'</td>
+                                                                <td>
+                                                                    <a href="admin.php?v='.$_GET['v'].'&action=view_user_item&uid='.$value['uid'].'" class="btn btn-sm btn-primary">查看投稿</a>
+                                                                    '.$blockBtn.'
+                                                                </td>
+                                                            </tr>';
+                                                    }
+                                                }
+
+                                            ?>
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <!-- /.row (nested) -->
+                                <div class="text-right">
+                                    <nav>
+                                      <ul class="pagination">
+                                        <li>
+                                          <a href="admin.php?v=<?php echo $_GET['v'] ?>&page=<?php echo $prevPage; ?>" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                          </a>
+                                        </li>
+                                        <?php
+                                            $classActive='';
+                                            for ($i=1; $i <= $allPages; $i++) {
+                                                if($i==$page){
+                                                    $classActive='class="active"';
+                                                }
+                                                echo '<li><a '.$classActive.' href="admin.php?v='.$_GET['v'].'&page='.$i.'">'.$i.'</a></li>';
+                                            }
+                                        ?>
+                                        <li>
+                                          <a href="admin.php?v=<?php echo $_GET['v'] ?>&page=<?php echo $nextPage; ?>" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                          </a>
+                                        </li>
+                                      </ul>
+                                    </nav>
+                                </div>
                             </div>
-                            <!-- /.panel-body -->
                         </div>
                     </div>
                 </div>

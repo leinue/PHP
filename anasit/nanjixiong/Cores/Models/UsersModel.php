@@ -13,9 +13,13 @@ class UsersModel{
 		self::$model=D('njx_users');
 	}
 
-	function selectAll(){
-		$cataObj=self::$model->getDatabase()->query("select * from njx_users",[],'Cores\Models\Users');
-		return $cataObj;
+	function selectAll($page=null){
+		if($page==null){
+			$cataObj=self::$model->getDatabase()->query("SELECT * FROM njx_users",[],'Cores\Models\Users');
+			return $cataObj;
+		}else{
+			return self::$model->getDatabase()->query("SELECT * FROM `njx_users` ORDER BY `privilege` LIMIT ".($page-1).','.($page+10));
+		}
 	}
 
 	function selectOne($uid){
@@ -41,6 +45,26 @@ class UsersModel{
 		}
 
 		return self::$model->getDatabase()->execute("DELETE FROM `njx_users` WHERE `uid`=?",array($uid));
+
+	}
+
+	function block($uid){
+		
+		if($uid==null){
+			return false;
+		}
+
+		return self::$model->getDatabase()->execute("UPDATE `njx_users` SET `privilege`=9 WHERE `uid`=?",array($uid));
+
+	}
+
+	function deblock($uid){
+
+		if($uid==null){
+			return false;
+		}
+
+		return self::$model->getDatabase()->execute("UPDATE `njx_users` SET `privilege`=127 WHERE `uid`=?",array($uid));
 
 	}
 

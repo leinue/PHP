@@ -1,10 +1,15 @@
+<?php
+
+$settingObj=new Cores\Models\SettingModel();
+
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>南极熊 - 控制面板</title>
+    <title>控制面板 - <?php echo $settingObj->get('site_admin_title'); ?></title>
     <!-- <link href="<?php echo DOMAIN; ?>/App/Admin/assets/css/bootstrap-combined.no-icons.min.css" rel="stylesheet"> -->
     <link href="<?php echo DOMAIN; ?>/App/Admin/assets/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link href="<?php echo DOMAIN; ?>/App/Admin/assets/css/bootstrap.css" rel="stylesheet" />
@@ -25,7 +30,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">南极熊</a>
+                <a class="navbar-brand" href="index.html"><?php echo $settingObj->get('site_admin_title'); ?></a>
             </div>
 
             <ul class="nav navbar-top-links navbar-right">

@@ -152,3 +152,20 @@ function confirmToDel3rdLvlField(obj){
 		});
 	}
 }
+
+function editCommentsContent(obj){
+	var requestUrl=$(obj).attr('ref');
+	var content=$(obj).parent().prev().val();
+	if(content!=''){
+		$.get('App/Admin/Execute/Exe.php?'+requestUrl+'&content='+content,function(data){
+			if(data!='-1'){
+				alert('修改成功');
+				window.location.href="admin.php?v=comments";
+			}else{
+				alert('修改失败');
+			}
+		});
+	}else{
+		alert('修改内容不能为空!');
+	}
+}

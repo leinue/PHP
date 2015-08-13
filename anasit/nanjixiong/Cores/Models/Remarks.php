@@ -8,7 +8,7 @@ class Remarks{
 	protected $itemId;
 	
 	function getRemarkId(){return $this->remarkId;}
-	function getPoints(){return $this->getPoints;}
+	function getPoints(){return $this->points;}
 	function getItemId(){return $this->itemId;}
 }
 

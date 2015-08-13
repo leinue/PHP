@@ -126,3 +126,7 @@ function arrayToObject($arr){
     }
 }
 
+function cutOutStr($str,$count=20){
+	$s=mb_substr($str , 0 , $count);
+	return strlen($str)>20?$s.'[...]':$s;
+}

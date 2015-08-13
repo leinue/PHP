@@ -69,4 +69,21 @@ if(!empty($_GET['cata_rd_lve_del'])){
 	print_r(json_encode($cataObj->delete($_GET['cata_rd_lve_del'])));
 }
 
+if(!empty($_GET['action']) && !empty($_GET['rid'])){
+	$rid=$_GET['rid'];
+    switch ($_GET['action']) {
+    	case 'edit_comments_confirm':
+    		if(!empty($_GET['content'])){
+    			$commentsObj=new Cores\Models\CommentsModel();
+    			$result=$commentsObj->modify($rid,$_GET['content']);
+    			echo $result;
+    		}else{
+    			echo -1;
+    		}
+    		break;
+    	default:
+    		break;
+    }
+}
+
 ?>

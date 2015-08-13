@@ -13,8 +13,12 @@ class CommentsModel{
 		self::$model=D('njx_comments');
 	}
 
-	function selectAll(){
-		return self::$model->getDatabase()->query("select * from njx_comments",[],'Cores\Models\Comments');
+	function selectAll($page=null){
+		if($page==null){
+			return self::$model->getDatabase()->query("select * from njx_comments",[],'Cores\Models\Comments');
+		}else{
+			return self::$model->getDatabase()->query("SELECT * FROM `njx_comments` LIMIT ".($page-1).','.($page+10));
+		}
 	}
 
 

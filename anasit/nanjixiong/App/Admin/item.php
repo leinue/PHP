@@ -66,7 +66,7 @@ if(!empty($_GET['action']) && !empty($_GET['iid'])){
 function printItems($itemsObj,$status,$page){
     $allItemObj=$itemsObj->selectAll($page);
     if(is_array($allItemObj)){
-        $j=0;
+        $j=$page>1?($page*5+1):0;
         foreach ($allItemObj as $key => $value) {
             if($value['status']===$status){
                 $j++;
@@ -74,11 +74,11 @@ function printItems($itemsObj,$status,$page){
                 $cataName=$cataObj->selectOne($value['caid'],true);
                 $cataName=$cataName[0]['name'];
                 $btnName=$status=='1'?'拒绝':'通过';
-                $action=$status=='1'?'admin.php?v='.$_GET['v'].'&action=reject_item&iid='.$value['iid']:'admin.php?v='.$_GET['v'].'&action=approve_item&iid='.$value['iid'];
+                $action=$status=='1'?'admin.php?v='.$_GET['v'].'&action=reject_item&iid='.$value['iid'].'&page='.$page:'admin.php?v='.$_GET['v'].'&action=approve_item&iid='.$value['iid'].'&page='.$page;
                 $order=$status=='1'?'
-                            <a href="admin.php?v='.$_GET['v'].'&action=view_comments&iid='.$value['iid'].'" class="btn btn-primary btn-sm">评论列表</a>
-                            <a href="admin.php?v='.$_GET['v'].'&action=up_order&iid='.$value['iid'].'" class="btn btn-primary btn-sm">向上</a>
-                            <a href="admin.php?v='.$_GET['v'].'&action=down_order&iid='.$value['iid'].'" class="btn btn-primary btn-sm">向下</a>':'';
+                            <a href="admin.php?v='.$_GET['v'].'&action=view_comments&iid='.$value['iid'].'&page='.$page.'" class="btn btn-primary btn-sm">评论列表</a>
+                            <a href="admin.php?v='.$_GET['v'].'&action=up_order&iid='.$value['iid'].'&page='.$page.'" class="btn btn-primary btn-sm">向上</a>
+                            <a href="admin.php?v='.$_GET['v'].'&action=down_order&iid='.$value['iid'].'&page='.$page.'" class="btn btn-primary btn-sm">向下</a>':'';
                 echo '<tr>
                         <td>'.$j.'</td>
                         <td>'.$value['title'].'</td>
@@ -89,7 +89,7 @@ function printItems($itemsObj,$status,$page){
                             <a href="" class="btn btn-primary btn-sm">查看</a>
                             <a href="'.$action.'" class="btn btn-primary btn-sm">'.$btnName.'</a>
                             '.$order.'
-                            <a href="admin.php?v='.$_GET['v'].'&action=delete_item&iid='.$value['iid'].'" class="btn btn-danger btn-sm">删除</a>
+                            <a href="admin.php?v='.$_GET['v'].'&action=delete_item&iid='.$value['iid'].'&page='.$page.'" class="btn btn-danger btn-sm">删除</a>
                         </td>
                     </tr>';
             }
@@ -160,6 +160,31 @@ function printItems($itemsObj,$status,$page){
                                                         </tbody>
                                                     </table>
                                                 </div>
+                                                <div class="text-right">
+                                                    <nav>
+                                                      <ul class="pagination">
+                                                        <li>
+                                                          <a href="admin.php?v=<?php echo $_GET['v'] ?>&page=<?php echo $prevPage; ?>" aria-label="Previous">
+                                                            <span aria-hidden="true">&laquo;</span>
+                                                          </a>
+                                                        </li>
+                                                        <?php
+                                                            $classActive='';
+                                                            for ($i=1; $i <= $allPages; $i++) {
+                                                                if($i==$page){
+                                                                    $classActive='class="active"';
+                                                                }
+                                                                echo '<li><a '.$classActive.' href="admin.php?v='.$_GET['v'].'&page='.$i.'">'.$i.'</a></li>';
+                                                            }
+                                                        ?>
+                                                        <li>
+                                                          <a href="admin.php?v=<?php echo $_GET['v'] ?>&page=<?php echo $nextPage; ?>" aria-label="Next">
+                                                            <span aria-hidden="true">&raquo;</span>
+                                                          </a>
+                                                        </li>
+                                                      </ul>
+                                                    </nav>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -188,31 +213,6 @@ function printItems($itemsObj,$status,$page){
 
                                 </div>
 
-                                <div class="text-right">
-                                    <nav>
-                                      <ul class="pagination">
-                                        <li>
-                                          <a href="admin.php?v=<?php echo $_GET['v'] ?>&page=<?php echo $prevPage; ?>" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                          </a>
-                                        </li>
-                                        <?php
-                                            $classActive='';
-                                            for ($i=1; $i <= $allPages; $i++) {
-                                                if($i==$page){
-                                                    $classActive='class="active"';
-                                                }
-                                                echo '<li><a '.$classActive.' href="admin.php?v='.$_GET['v'].'&page='.$i.'">'.$i.'</a></li>';
-                                            }
-                                        ?>
-                                        <li>
-                                          <a href="admin.php?v=<?php echo $_GET['v'] ?>&page=<?php echo $nextPage; ?>" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                          </a>
-                                        </li>
-                                      </ul>
-                                    </nav>
-                                </div>
                             </div>
                         </div>
                     </div>

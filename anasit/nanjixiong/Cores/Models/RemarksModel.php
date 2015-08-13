@@ -13,9 +13,13 @@ class RemarksModel{
 		self::$model=D('njx_remarks');
 	}
 
-	function selectAll(){
-		$cataObj=self::$model->getDatabase()->query("select * from njx_remarks",[],'Cores\Models\Remarks');
-		return $cataObj;
+	function selectAll($page=null){
+		if($page==null){
+			$cataObj=self::$model->getDatabase()->query("select * from `njx_remarks`",[],'Cores\Models\Remarks');
+			return $cataObj;
+		}else{
+			return self::$model->getDatabase()->query("SELECT * FROM `njx_remarks` LIMIT ".($page-1).','.($page+10),[],'Cores\Models\Remarks');
+		}
 	}
 
 	function selectOne($remarkId){
@@ -39,7 +43,7 @@ class RemarksModel{
 			return false;
 		}
 
-		return self::$model->getDatabase()->execute("DELETE FROM `njx_remarks` WHERE `oid`=?",array($remarkId));
+		return self::$model->getDatabase()->execute("DELETE FROM `njx_remarks` WHERE `remarkId`=?",array($remarkId));
 
 	}
 

@@ -42,43 +42,6 @@ if($remarksNextPage>$allRemarksPages){
 
 $prompt='';
 
-function generatorCommentsEditingForm($comments,$request=null){
-    return '<div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        修改
-                    </div>
-                    <div class="panel-body">
-                        <textarea class="form-control">'.$comments.'</textarea>
-                        <div style="padding-top:10px;" class="text-right">
-                            <a ref="'.$request.'" id="modify_comments_content" onclick="editCommentsContent(this)" class="btn btn-sm btn-primary">确定</a>
-                        </div>
-                    </div>
-                </div>
-            </div>';
-}
-
-function generatorCommentsViewingForm($comments,$time,$ref='#',$request=null,$rid=null){
-    return '<div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        查看
-                    </div>
-                    <div class="panel-body">
-                        <div class="list-group">
-                          <a href="'.$ref.'" class="list-group-item">
-                            <h4 class="list-group-item-heading">发布于 : '.$time.'</h4>
-                            <p class="list-group-item-text">正文 : <p></p>'.$comments.'</p>
-                          </a>
-                        </div>
-                        <div class="text-right">
-                            <a href="admin.php?v='.$_GET['v'].'&action=edit_comments&rid='.$rid.'" class="btn btn-primary btn-sm">修改</a>
-                        </div>
-                    </div>
-                </div>
-            </div>';
-}
-
 if(!empty($_GET['action']) && !empty($_GET['rid'])){
     $rid=$_GET['rid'];
     switch ($_GET['action']) {

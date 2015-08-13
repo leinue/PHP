@@ -53,7 +53,7 @@ class RemarksModel{
 			return false;
 		}
 
-		return self::$model->getDatabase()->execute("UPDATE `njx_remarks` SET `remarkId`=? WHERE `points`=?",array($remarkId,$points));
+		return self::$model->getDatabase()->execute("UPDATE `njx_remarks` SET `points`=? WHERE `remarkId`=?",array($points,$remarkId));
 	}
 }
 

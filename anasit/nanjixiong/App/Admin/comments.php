@@ -111,7 +111,6 @@ if(!empty($_GET['action']) && !empty($_GET['remarkId'])){
     $remarkId=$_GET['remarkId'];
     switch ($_GET['action']) {
         case 'edit_remarks':
-        debug('ssds');
             $request='action=edit_remarkId_confirm&remarkId='.$remarkId;
             $remarksPoints=$remarksObj->selectOne($remarkId);
             $prompt=generatorCommentsEditingForm($remarksPoints[0]->getPoints(),$request);

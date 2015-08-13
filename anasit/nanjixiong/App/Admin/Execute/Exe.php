@@ -86,4 +86,21 @@ if(!empty($_GET['action']) && !empty($_GET['rid'])){
     }
 }
 
+if(!empty($_GET['action']) && !empty($_GET['remarkId'])){
+	$remarkId=$_GET['remarkId'];
+    switch ($_GET['action']) {
+    	case 'edit_remarkId_confirm':
+    		if(!empty($_GET['content'])){
+    			$commentsObj=new Cores\Models\RemarksModel();
+    			$result=$commentsObj->modify($remarkId,$_GET['content']);
+    			echo $result;
+    		}else{
+    			echo -1;
+    		}
+    		break;
+    	default:
+    		break;
+    }
+}
+
 ?>

@@ -60,7 +60,7 @@ class AdsModel{
 			return false;
 		}
 
-		return self::$model->getDatabase()->execute("UPDATE `njx_ads` SET `display`=1 WHERE `aid`=$aid");
+		return self::$model->getDatabase()->execute("UPDATE `njx_ads` SET `display`=1 WHERE `aid`='$aid'");
 
 	}
 
@@ -70,7 +70,7 @@ class AdsModel{
 			return false;
 		}
 
-		return self::$model->getDatabase()->execute("UPDATE `njx_ads` SET `display`=0 WHERE `aid`=$aid");
+		return self::$model->getDatabase()->execute("UPDATE `njx_ads` SET `display`=0 WHERE `aid`='$aid'");
 
 	}
 }

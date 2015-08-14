@@ -63,7 +63,7 @@ class ItemsModel{
 			return false;
 		}
 
-		return self::$model->getDatabase()->query("UPDATE `njx_items` SET `status`=1 WHERE `iid`=$iid");
+		return self::$model->getDatabase()->query("UPDATE `njx_items` SET `status`=1 WHERE `iid`='$iid'");
 	}
 
 	function reject($iid){
@@ -72,7 +72,7 @@ class ItemsModel{
 			return false;
 		}
 
-		return self::$model->getDatabase()->query("UPDATE `njx_items` SET `status`=0 WHERE `iid`=$iid");
+		return self::$model->getDatabase()->query("UPDATE `njx_items` SET `status`=0 WHERE `iid`='$iid'");
 
 	}
 
@@ -132,7 +132,7 @@ class ItemsModel{
 
 		$realOrder=$myOrder;
 
-		return self::$model->getDatabase()->execute("UPDATE `njx_items` SET `order`=$realOrder WHERE `iid`=$iid");
+		return self::$model->getDatabase()->execute("UPDATE `njx_items` SET `order`=$realOrder WHERE `iid`='$iid'");
 
 	}
 
@@ -147,7 +147,7 @@ class ItemsModel{
 
 		$realOrder=$myOrder-2;
 
-		return self::$model->getDatabase()->execute("UPDATE `njx_items` SET `order`=$realOrder WHERE `iid`=$iid");
+		return self::$model->getDatabase()->execute("UPDATE `njx_items` SET `order`=$realOrder WHERE `iid`='$iid'");
 
 	}
 

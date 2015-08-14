@@ -53,7 +53,7 @@ function displayAvtive($current,$to){
                 if(is_array($allCataObj)){
                 	$i=0;
                     foreach ($allCataObj as $key => $value) {
-                        if($value->getParent()==='0'){
+                        if($value->getParent()==='0' && $value->getVisible()==='1'){
                         	array_push($firstCaid, $value->getCaid());
                             // echo '<tr class="odd gradeX">
                             //     <td>'.$value->getName().'</td>

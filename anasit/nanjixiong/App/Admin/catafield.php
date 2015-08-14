@@ -4,7 +4,7 @@ $tips='';
 
 if(!empty($_POST['new_cata_name'])){
     $cataObj=new Cores\Models\CataModel();
-    $cataObj->add($_POST['new_cata_name']);
+    $cataObj->addSecond($_POST['new_cata_name']);
     $tips=success('添加成功');
 }
 
@@ -34,7 +34,6 @@ if(!empty($_GET['set_visible'])){
     $tips=success('设置可视成功');
 }
 
-
 // alert($_POST['edit_cata_name']);
 
 if(!empty($_GET['action'])){
@@ -49,18 +48,17 @@ if(!empty($_GET['action'])){
 if(!empty($_GET['cata_to_edit'])){
     $cataObj=new Cores\Models\CataModel();
     $name=$cataObj->selectOne($_GET['cata_to_edit']);
-    debug($name);
     $tips='<div role="tabpanel" class="tab-pane" id="edit_cata_field">
                 <div role="tabpanel" class="tab-pane active" id="list">
                     <div style="margin-top:-2px!important;" class="panel panel-default">
                         <div class="panel-heading">
-                            编辑大分类名称
+                            编辑筛选分类名称
                         </div>
                         <div class="panel-body">
                             <form action="admin.php?v='.$_GET['v'].'&action=edit_cata_name&caid='.$_GET['cata_to_edit'].'" method="post">
                                 <div class="col-md-10">
                                     <div class="form-group">
-                                        <input placeholder="大分类名称" value="'.$name[0]->getName().'" name="cata_name_edit_text" id="cata_name_edit_text" class="form-control">
+                                        <input placeholder="筛选分类名称" value="'.$name[0]->getName().'" name="cata_name_edit_text" id="cata_name_edit_text" class="form-control">
                                     </div>
                                 </div>
                                 <div style="text-align:center" class="col-md-2">
@@ -99,7 +97,8 @@ if(!empty($_GET['cata_to_edit'])){
                             <div role="tabpanel" class="tab-pane active" id="list">
                                 <div style="margin-top:-2px!important;" class="panel panel-default">
                                     <div class="panel-heading">
-                                        <form role="form">
+                                        这里显示已有的筛选字段
+                                        <!-- <form role="form">
                                             <div class="form-group">
                                                 <label>
                                                     <a id="edit_second_level_name" class="btn btn-primary">修改</a>
@@ -108,7 +107,7 @@ if(!empty($_GET['cata_to_edit'])){
                                                 <input placeholder="显示在筛选页面左边的名称" id="second_name_area" name="cata_selector_name" class="form-control">
                                                 
                                             </div>
-                                        </form>                                        
+                                        </form>  -->                                       
                                     </div>
                                     <div class="panel-body">
                                         <div class="table-responsive">
@@ -178,7 +177,7 @@ if(!empty($_GET['cata_to_edit'])){
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                            分类管理 <small>在这里管理页面的分类:)</small>
+                            筛选字段管理 <small>在这里管理筛选字段:)</small>
                         </h1>
                     </div>
                 </div>
@@ -188,7 +187,7 @@ if(!empty($_GET['cata_to_edit'])){
                         <?php echo $tips; ?>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                添加分类页面
+                                添加筛选分类
                             </div>
                             <div class="panel-body">
                                 <div class="col-lg-6">
@@ -213,36 +212,34 @@ if(!empty($_GET['cata_to_edit'])){
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                             已有分类页面
+                             已有筛选分类名称
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>一级分类名称</th>
+                                            <th>筛选分类名称</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     <?php
                                         $cataMgr=new Cores\Models\CataModel();
-                                        $allCataObj=$cataMgr->selectAll();
+                                        $allCataObj=$cataMgr->getSecond();
                                         if(is_array($allCataObj)){
                                             foreach ($allCataObj as $key => $value) {
-                                                $btnName=$value->getVisible()==='1'?'置不可视':'置可视';
-                                                $btnRequest=$value->getVisible()==='1'?'admin.php?v='.$view.'&set_no_visible='.$value->getCaid():'admin.php?v='.$view.'&set_visible='.$value->getCaid();
-                                                if($value->getParent()==='0'){
-                                                    echo '<tr class="odd gradeX">
-                                                        <td>'.$value->getName().'</td>
+                                                $btnName=$value['visible']==='1'?'置不可视':'置可视';
+                                                $btnRequest=$value['visible']==='1'?'admin.php?v='.$view.'&set_no_visible='.$value['caid']:'admin.php?v='.$view.'&set_visible='.$value['caid'];
+                                                echo '<tr class="odd gradeX">
+                                                        <td>'.$value['name'].'</td>
                                                         <td style="text-align:center">
-                                                            <a href="admin.php?v='.$view.'&cata_to_edit='.$value->getCaid().'" class="btn btn-primary btn-sm">编辑</a>
+                                                            <a href="admin.php?v='.$view.'&cata_to_edit='.$value['caid'].'" class="btn btn-primary btn-sm">编辑</a>
                                                             <a href="'.$btnRequest.'" class="btn btn-primary btn-sm">'.$btnName.'</a>
-                                                            <!--<a ref="admin.php?v='.$view.'&cata_to_view='.$value->getCaid().'" class="btn btn-primary btn-sm view_cata" data-toggle="modal" data-whatever="'.$value->getCaid().'=='.$value->getName().'" data-target=".modal-view-cata">详细</a>-->
-                                                            <a href="admin.php?v='.$view.'&cata_to_del='.$value->getCaid().'" class="btn btn-danger btn-sm">删除</a>
+                                                            <a ref="admin.php?v='.$view.'&cata_to_view='.$value['caid'].'" class="btn btn-primary btn-sm view_cata" data-toggle="modal" data-whatever="'.$value['caid'].'=='.$value['name'].'" data-target=".modal-view-cata">详细</a>
+                                                            <a href="admin.php?v='.$view.'&cata_to_del='.$value['caid'].'" class="btn btn-danger btn-sm">删除</a>
                                                         </td>
                                                     </tr>';
-                                                }
                                             }
                                         }else{
                                             echo '<tr class="odd gradeX">
@@ -257,7 +254,7 @@ if(!empty($_GET['cata_to_edit'])){
                                 </table>
                             </div>
                             <div class="text-right">
-                                    <nav>
+                                    <!-- <nav>
                                       <ul class="pagination">
                                       <?php
 
@@ -283,7 +280,7 @@ if(!empty($_GET['cata_to_edit'])){
 
                                       ?>
                                       </ul>
-                                    </nav>
+                                    </nav> -->
                                 </div>
                         </div>
                     </div>

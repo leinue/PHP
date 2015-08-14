@@ -20,7 +20,7 @@ $settingObj=new Cores\Models\SettingModel();
     <link href="<?php echo DOMAIN; ?>/App/Admin/assets/css/index.css" rel="stylesheet" >
 </head>
 
-<body>
+<body style="padding: 0;">
     <div id="wrapper">
         <nav class="navbar navbar-default top-navbar" role="navigation">
             <div class="navbar-header">

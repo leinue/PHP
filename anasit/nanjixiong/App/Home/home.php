@@ -6,8 +6,9 @@
 	}
 
 	$cataObj=new Cores\Models\CataModel();
-	$childList=$cataObj->getCataChild($caid);
-	$secondLevelList=$cataObj->getSecondLevel($caid,true);
+	$childList=$cataObj->selectAll();
+	$secondList=$cataObj->getSecond();
+	// $secondLevelList=$cataObj->getSecondLevel($caid,true);
 
 	function displayBadge($current,$to){
 		// alert($current);
@@ -28,12 +29,15 @@
 				<div class="col-md-12">
 
 					<?php
-						if(is_array($secondLevelList)){
-							foreach ($secondLevelList as $key => $value) {
+						if(is_array($secondList)){
+							foreach ($secondList as $key => $value) {
 								$list='';
-								foreach ($childList as $childKey => $childValue) {
-									if($childValue['child']!='second'){
-										$list.='<a style="color:rgb(68,68,68)" href="index.php?v=home&caid='.$caid.'&view_type_id='.$childValue['caid'].'"> <span '.displayBadge($_GET['view_type_id'],$childValue['caid']).'>'.$childValue['name'].'</span></a>';
+								$rdList=$cataObj->getCataChild($value['caid']);
+								if(is_array($rdList)){
+									foreach ($rdList as $childKey => $childValue) {
+										if($childValue['child']!='second'){
+											$list.='<a style="color:rgb(68,68,68)" href="index.php?v=home&caid='.$caid.'&view_type_id='.$childValue['caid'].'"> <span '.displayBadge($_GET['view_type_id'],$childValue['caid']).'>'.$childValue['name'].'</span></a>';
+										}
 									}
 								}
 								echo '<div class="cata-list">

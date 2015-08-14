@@ -22,6 +22,9 @@
                     <li>
                         <a class="<?php echo displayAvtive($view,"cata"); ?>" href="admin.php?v=cata"><i class="fa fa-sitemap"></i> 分类管理</a>
                     </li>
+                    <li>
+                        <a class="<?php echo displayAvtive($view,"catafield"); ?>" href="admin.php?v=catafield"><i class="fa fa-list"></i> 筛选字段管理</a>
+                    </li>
 					<li>
                         <a class="<?php echo displayAvtive($view,"item"); ?>" href="admin.php?v=item"><i class="fa fa-edit"></i> 投稿管理</a>
                     </li>

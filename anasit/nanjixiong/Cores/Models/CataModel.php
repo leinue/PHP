@@ -100,6 +100,14 @@ class CataModel{
 		return $newChildList;
 	}
 
+	function addSecond($name){
+		return $this->addChild($name,'9','second',true);
+	}
+
+	function getSecond(){
+		return self::$model->getDatabase()->query("SELECT * FROM `njx_cata` WHERE `child`='second'");
+	}
+
 	function getCataByName($name){
 		return self::$model->getDatabase()->query("SELECT `caid` FROM `njx_cata` WHERE `name`='$name'");
 	}
@@ -171,8 +179,22 @@ class CataModel{
 	function deleteChild($childList){
 		if(!is_array($childList)){return false;}
 		foreach ($childList as $key => $value) {
-			$this->delete($value['caid']);
+			return $this->delete($value['caid']);
 		}
+	}
+
+	function setVisible($caid){
+		if($caid==null){
+			return false;
+		}
+		return self::$model->getDatabase()->execute("UPDATE `njx_cata` SET `visible`=1 WHERE `caid`=?",array($caid));
+	}
+
+	function setNoVisible($caid){
+		if($caid==null){
+			return false;
+		}
+		return self::$model->getDatabase()->execute("UPDATE `njx_cata` SET `visible`=0 WHERE `caid`=?",array($caid));
 	}
 
 }

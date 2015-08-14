@@ -53,7 +53,7 @@ function printUserItems($usersModel,$page,$uid){
                     <td>'.$j.'</td>
                     <td>'.$value['title'].'</td>
                     <td>'.$cataName.'</td>
-                    <td>'.$value['uid'].'</td>
+                    <!--<td>'.$value['uid'].'</td>-->
                     <td>'.$value['createTime'].'</td>
                 </tr>';
         }

@@ -98,7 +98,6 @@ class ItemsModel{
 	function getOrder($iid){
 
 		if($iid=null){
-			echo 'dsds';
 			return false;
 		}
 
@@ -106,7 +105,7 @@ class ItemsModel{
 	}
 
 	function getUserItem($uid){
-		return self::$model->getDatabase()->query("SELECT * FROM `njx_items` WHERE `uid`=$uid");
+		return self::$model->getDatabase()->query("SELECT * FROM `njx_items` WHERE `uid`='$uid'");
 	}
 
 	function upOrder($iid){

@@ -3,6 +3,8 @@
 define('BASEDIR',__DIR__);
 require(BASEDIR.'/Cores/Loader.php');
 
-echo DOMAIN;
+require('App/Home/header.php');
+require('App/Home/index.php');
+require('App/Home/footer.php');
 
 ?>

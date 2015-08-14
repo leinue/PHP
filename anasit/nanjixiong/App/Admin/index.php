@@ -1,6 +1,4 @@
 <?php
-// require('App/Admin/header.php');
-// require('App/Admin/sidebar.php');
 
 define('BASEDIR_ADMIN',BASEDIR.'/App/Admin/');
 define('DOMAIN_ADMIN',DOMAIN.'/App/Admin/');

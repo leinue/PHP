@@ -8,14 +8,22 @@
         switch ($_GET['action']) {
             case 'add_new_item':
                 $itemObj=new Cores\Models\ItemsModel();
-                $uid='11';
+                $uid='3CEC7A3B-58BD-82B7-E4BA-8849286079BE';
                 $caid=$_POST['item_cata_add'];
                 $title=$_POST['item_theme_add'];
-                $count=$_POST['count'];
-
-                if($title==null || $caid==null || $count==null){
-                    alert('项目类别或项目主题不能为空');
+                $count=null;
+                if(!empty($_GET['count'])){
+                    $count=$_GET['count'];
+                }else{
+                    alert('count未定义');
+                    redirectTo('admin.php?v='.$_GET['v']);
                 }
+
+                if($title==null || $caid==null){
+                    alert('项目类别或项目主题不能为空');
+                    redirectTo('admin.php?v='.$_GET['v']);
+                }
+
 
                 $itemAdded=$itemObj->add($uid,$caid,$title);
                 $itemId=$itemAdded[0]->getIid();
@@ -27,12 +35,9 @@
                         foreach ($fieldList as $key => $value) {
                             $foid=$value->getFoid();
                             $v=$_POST['item_'.$value->getName().'_add'];
-                            if($v==null){
-                                alert('有空值');
-                                die();
-                            }
                             $field->add($foid,$v,$itemId);
                         }
+                        $prompt=success('添加成功');
                     }else{
                         alert('字段值为空');
                     }
@@ -61,7 +66,7 @@
         $tips=tips($tips);
         return '<div class="form-group">
                     <label>'.$name.'</label>
-                    <input id="'.$id.'" name="'.$name.'" value="'.$value.'" type="file">
+                    <input id="'.$id.'" name="'.$name_control.'" value="'.$value.'" type="file">
                     '.$tips.'
                 </div>';
     }
@@ -70,7 +75,7 @@
         $tips=tips($tips);
         return '<div class="form-group">
                     <label>'.$name.'</label>
-                    <textarea class="form-control" placeholder='.$name.' id="'.$id.'" name="'.$name.'" value="'.$value.'"></textarea>
+                    <textarea class="form-control" placeholder='.$name.' id="'.$id.'" name="'.$name_control.'" value="'.$value.'"></textarea>
                     '.$tips.'
                 </div>';
     }
@@ -79,7 +84,7 @@
         $tips=tips($tips);
         return '<div class="form-group">
                     <label>'.$name.'</label>
-                    <select class="form-control" placeholder='.$name.' id="'.$id.'" name="'.$name.'"">'.$selectorCount.'</select>
+                    <select class="form-control" placeholder='.$name.' id="'.$id.'" name="'.$name_control.'"">'.$selectorCount.'</select>
                     '.$tips.'
                 </div>';
     }
@@ -88,9 +93,9 @@
         $tips=tips($tips);
         return '<div class="form-group">
                     <label>'.$name.' ( '.$rangeUnit.' )</label>
-                    <input class="form-control" type="number" placeholder="from" id="'.$id.'" name="'.$name.'"">
+                    <input class="form-control" type="number" placeholder="from" id="'.$id.'" name="'.$name_control.'"">
                     <label></label>
-                    <input class="form-control" type="number" placeholder="to" id="'.$id.'" name="'.$name.'"">
+                    <input class="form-control" type="number" placeholder="to" id="'.$id.'" name="'.$name_control.'"">
                     '.$tips.'
                 </div>';
     }

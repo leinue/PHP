@@ -32,7 +32,7 @@ class ItemsModel{
 
 	function add($uid,$caid,$title){
 		
-		if($uid=null || $caid=null || $title==null){
+		if($uid==null || $caid==null || $title==null){
 			return false;
 		}
 

@@ -41,8 +41,9 @@ function printUserItems($usersModel,$page,$uid){
                                             </tr>
                                         </thead>
                                         <tbody>';
-    $footer='</tbody> </table> </div> </div> </div> </div>'; 
-    if(is_array($allItemObj)){$j=$page>1?($page*5+1):0;
+    $footer='</tbody> </table> </div> </div> </div> </div>';
+    if(is_array($allItemObj)){
+        $j=$page>1?($page*5+1):0;
         foreach ($allItemObj as $key => $value) {
             $j++;
             $cataObj=new Cores\Models\CataModel();
@@ -65,6 +66,7 @@ function printUserItems($usersModel,$page,$uid){
                         </div></div></div>';
     }
 }
+
 
 if(!empty($_GET['action']) && !empty($_GET['uid'])){
     $uid=$_GET['uid'];

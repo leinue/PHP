@@ -7,7 +7,37 @@
     if(!empty($_GET['action'])){
         switch ($_GET['action']) {
             case 'add_new_item':
-                $field->add();
+                $itemObj=new Cores\Models\ItemsModel();
+                $uid='11';
+                $caid=$_POST['item_cata_add'];
+                $title=$_POST['item_theme_add'];
+                $count=$_POST['count'];
+
+                if($title==null || $caid==null || $count==null){
+                    alert('项目类别或项目主题不能为空');
+                }
+
+                $itemAdded=$itemObj->add($uid,$caid,$title);
+                $itemId=$itemAdded[0]->getIid();
+                
+                if($itemId==null){
+                    alert('添加投稿失败,请重试!');
+                }else{
+                    if(is_array($fieldList)){
+                        foreach ($fieldList as $key => $value) {
+                            $foid=$value->getFoid();
+                            $v=$_POST['item_'.$value->getName().'_add'];
+                            if($v==null){
+                                alert('有空值');
+                                die();
+                            }
+                            $field->add($foid,$v,$itemId);
+                        }
+                    }else{
+                        alert('字段值为空');
+                    }
+                }
+
                 break;
             default:
                 break;
@@ -67,14 +97,34 @@
 
     function generatorItemAddingForm($fieldList,$suffix='_add',$action=null){
         if(is_array($fieldList)){
-            echo '<form role="form" method="post" action="'.$action.'">';
+            echo '<form role="form" method="post" action="'.$action.'&count='.count($fieldList).'">';
+            $cataOption='';
+            $cataObj=new Cores\Models\CataModel();
+            $cataList=$cataObj->selectAll();
+            if(is_array($cataList)){
+                foreach ($cataList as $key => $value) {
+                    if($value->getParent()!='0' && $value->getChild()!='second'){
+                        $cataOption.='<option value="'.$value->getCaid().'">'.$value->getName().'</option>';
+                    }
+                }
+            }
+            echo '<div class="form-group">
+                    <label>项目类别</label>
+                    <select name="item_cata'.$suffix.'" class="form-control">
+                        '.$cataOption.'
+                    </select>
+                </div>';
+            echo '<div class="form-group">
+                    <label>项目主题</label>
+                    <input placeholder="项目主题" value="" name="item_theme'.$suffix.'" class="form-control">
+                </div>';
             foreach ($fieldList as $key => $value) {
                 $type=$value->getType();
                 $id='item_'.$value->getName().$suffix;
                 $name=$id;
                 switch ($type) {
                     case 'input':
-                        echo input($value->getName(),$name,$id,$value->getTips());
+                         echo input($value->getName(),$name,$id,$value->getTips());
                         break;
                     case 'img':
                         echo img_($value->getName(),$name,$id,$value->getTips());
@@ -105,11 +155,10 @@
         <div id="page-wrapper">
             <div id="page-inner">
 
-
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                            投稿管理 <small>在这里管理站点的投稿:)</small>
+                            添加投稿 <small>在这里可以直接添加投稿:)</small>
                         </h1>
                     </div>
                 </div>

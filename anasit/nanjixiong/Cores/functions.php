@@ -68,6 +68,10 @@ function guid($namespace = '') {
     return $guid;
 }
 
+function alert($content){
+	echo "<script>alert('$content');</script>";
+}
+
 function debug($content){
 	echo "<script>console.log('$content')</script>";
 }

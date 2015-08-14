@@ -22,6 +22,44 @@ if(!empty($_GET['cata_to_view'])){
     // $tips=modal('test','test');
 }
 
+// alert($_POST['edit_cata_name']);
+
+if(!empty($_GET['action'])){
+    if($_POST['cata_name_edit_text']==null || $_GET['action']!='edit_cata_name'){
+        alert('修改内容不能为空或请求非法');
+    }else{
+        $cataObj=new Cores\Models\CataModel();
+        $cataObj->modify($_GET['caid'],$_POST['cata_name_edit_text']);
+    }
+}
+
+if(!empty($_GET['cata_to_edit'])){
+    $cataObj=new Cores\Models\CataModel();
+    $name=$cataObj->selectOne($_GET['cata_to_edit']);
+    debug($name);
+    $tips='<div role="tabpanel" class="tab-pane" id="edit_cata_field">
+                <div role="tabpanel" class="tab-pane active" id="list">
+                    <div style="margin-top:-2px!important;" class="panel panel-default">
+                        <div class="panel-heading">
+                            编辑大分类名称
+                        </div>
+                        <div class="panel-body">
+                            <form action="admin.php?v='.$_GET['v'].'&action=edit_cata_name&caid='.$_GET['cata_to_edit'].'" method="post">
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <input placeholder="大分类名称" value="'.$name[0]->getName().'" name="cata_name_edit_text" id="cata_name_edit_text" class="form-control">
+                                    </div>
+                                </div>
+                                <div style="text-align:center" class="col-md-2">
+                                    <button type="submit" class="btn btn-primary">提交</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>';
+}
+
 ?>
 
         <!-- /. NAV SIDE  -->
@@ -133,8 +171,8 @@ if(!empty($_GET['cata_to_view'])){
                 </div>
 
                 <div class="row">
-                <?php echo $tips; ?>
                     <div class="col-md-12">
+                        <?php echo $tips; ?>
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 添加分类页面
@@ -183,6 +221,7 @@ if(!empty($_GET['cata_to_view'])){
                                                     echo '<tr class="odd gradeX">
                                                         <td>'.$value->getName().'</td>
                                                         <td style="text-align:center">
+                                                            <a href="admin.php?v='.$view.'&cata_to_edit='.$value->getCaid().'" class="btn btn-primary btn-sm">编辑</a>
                                                             <a ref="admin.php?v='.$view.'&cata_to_view='.$value->getCaid().'" class="btn btn-primary btn-sm view_cata" data-toggle="modal" data-whatever="'.$value->getCaid().'=='.$value->getName().'" data-target=".modal-view-cata">详细</a>
                                                             <a href="admin.php?v='.$view.'&cata_to_del='.$value->getCaid().'" class="btn btn-danger btn-sm">删除</a>
                                                         </td>

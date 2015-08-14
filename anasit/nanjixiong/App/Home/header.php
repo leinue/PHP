@@ -9,6 +9,8 @@ if(!empty($_GET['caid'])){
 	$caid=$_GET['caid'];
 }
 
+$firstCaid=array();
+
 function displayAvtive($current,$to){
     if(!empty($current)){
         if($current==$to){
@@ -52,6 +54,7 @@ function displayAvtive($current,$to){
                 	$i=0;
                     foreach ($allCataObj as $key => $value) {
                         if($value->getParent()==='0'){
+                        	array_push($firstCaid, $value->getCaid());
                             // echo '<tr class="odd gradeX">
                             //     <td>'.$value->getName().'</td>
                             //     <td style="text-align:center">

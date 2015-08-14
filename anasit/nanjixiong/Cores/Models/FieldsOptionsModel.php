@@ -50,6 +50,15 @@ class FieldsOptionsModel{
 		return self::$model->getDatabase()->execute("UPDATE `njx_fields_options` SET `name`=?,`tips`=?,`type`=?,`selectorCount`=?,`rangeFrom`=?,`rangeTo`=?,`rangeUnit`=? WHERE `foid`=?",array($name,$tips,$type,$selectorCount,$rangeFrom,$rangeTo,$rangeUnit,$foid));
 
 	}
+
+	function setVisible($foid){
+		return self::$model->getDatabase()->execute("UPDATE `njx_fields_options` SET `visible`=? WHERE `foid`=?",array('1',$foid));
+	}
+
+	function setNoVisible($foid){
+		return self::$model->getDatabase()->execute("UPDATE `njx_fields_options` SET `visible`=? WHERE `foid`=?",array('0',$foid));
+	}
+
 }
 
 ?>

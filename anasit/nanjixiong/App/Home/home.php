@@ -1,66 +1,52 @@
+<?php
+	
+	if(empty($_GET['caid'])){
+		$caid=$allCataObj[0]->getCaid();
+		redirectTo('index.php?v=home&caid='.$firstCaid[0]);
+	}
 
+	$cataObj=new Cores\Models\CataModel();
+	$childList=$cataObj->getCataChild($caid);
+	$secondLevelList=$cataObj->getSecondLevel($caid,true);
+
+	function displayBadge($current,$to){
+		// alert($current);
+		if($current==$to){
+			return 'class="badge"';
+		}
+	}
+
+	if(empty($_GET['view_type_id'])){
+		redirectTo('index.php?v=home&view_type_id=all&caid='.$_GET['caid']);
+	}
+?>
 	<div class="row">
 
 	  	<div class="col-md-10 col-md-offset-1">
 	  	<div class="panel panel-default">
 			<div class="panel-body">
 				<div class="col-md-12">
-					<div class="cata-list">
-						<div class="col-md-2">
-							行业：<a href="#"> <span class="badge">全部</span></a>
-						</div>
-						<div class="cata-3rd-list" class="col-md-10">
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a><a href="#"> <span>全部</span></a><a href="#"> <span>全部</span></a><a href="#"> <span>全部</span></a><a href="#"> <span>全部</span></a>
-						</div>
-					</div>
 
-					<div class="cata-list">
-						<div class="col-md-2">
-							行业：<a href="#"> <span class="badge">全部</span></a>
-						</div>
-						<div class="cata-3rd-list" class="col-md-10">
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a><a href="#"> <span>全部</span></a><a href="#"> <span>全部</span></a><a href="#"> <span>全部</span></a><a href="#"> <span>全部</span></a>
-						</div>
-					</div>
-
-					<div class="cata-list">
-						<div class="col-md-2">
-							行业：<a href="#"> <span class="badge">全部</span></a>
-						</div>
-						<div class="cata-3rd-list" class="col-md-10">
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a>
-							<a href="#"> <span>全部</span></a><a href="#"> <span>全部</span></a><a href="#"> <span>全部</span></a><a href="#"> <span>全部</span></a><a href="#"> <span>全部</span></a>
-						</div>
-					</div>
+					<?php
+						if(is_array($secondLevelList)){
+							foreach ($secondLevelList as $key => $value) {
+								$list='';
+								foreach ($childList as $childKey => $childValue) {
+									if($childValue['child']!='second'){
+										$list.='<a style="color:rgb(68,68,68)" href="index.php?v=home&caid='.$caid.'&view_type_id='.$childValue['caid'].'"> <span '.displayBadge($_GET['view_type_id'],$childValue['caid']).'>'.$childValue['name'].'</span></a>';
+									}
+								}
+								echo '<div class="cata-list">
+										<div class="col-md-2">
+											'.$value['name'].'：<a href="index.php?v=home&caid='.$caid.'&view_type_id=all"> <span '.displayBadge($_GET['view_type_id'],'all').'>全部</span></a>
+										</div>
+										<div class="cata-3rd-list" class="col-md-10">
+											'.$list.'
+										</div>
+									</div>';
+							}
+						}
+					?>
 					
 				</div>
 			</div>

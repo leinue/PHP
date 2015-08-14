@@ -12,6 +12,7 @@ class FieldsOptions{
 	protected $rangeFrom;
 	protected $rangeTo;
 	protected $rangeUnit;
+	protected $visible;
 
 	function getFoid(){return $this->foid;}
 	function getName(){return $this->name;}
@@ -21,6 +22,7 @@ class FieldsOptions{
 	function getRangeFrom(){return $this->rangeFrom;}
 	function getRangeTo(){return $this->rangeTo;}
 	function getRangeUnit(){return $this->rangeUnit;}
+	function getVisible(){return $this->visible;}
 
 }
 

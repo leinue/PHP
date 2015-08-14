@@ -137,8 +137,8 @@ class CataModel{
 	}
 
 	function modify($caid,$name){
-		
-		if($caid==null || $name ==null){
+
+		if($caid==null || $name==null){
 			return false;
 		}
 

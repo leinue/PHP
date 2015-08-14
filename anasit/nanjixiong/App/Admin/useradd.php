@@ -101,6 +101,14 @@ if(!empty($_GET['action']) && !empty($_GET['foid'])){
             $rangeUnit=$_POST['filed_unit_edit'];
             $filedOption->modify($foid,$name,$type,$tips,$selectorCount,$rangeFrom,$rangeTo,$rangeUnit);
             $prompt=success('修改成功,请点击左侧菜单栏重新载入(勿按F5刷新)');
+        case 'set_no_visible':
+            $filedOption->setNoVisible($foid);
+            $prompt=success('置不可视成功,请点击左侧菜单栏重新载入');
+            break;
+        case 'set_visible':
+            $filedOption->setVisible($foid);
+            $prompt=success('置可视成功,请点击左侧菜单栏重新载入');
+            break;
         default:
             break;
     }
@@ -188,6 +196,8 @@ if(!empty($_GET['action'])){
                                                                 $from=$value->getRangeFrom()==='0'?'无':$value->getRangeFrom();
                                                                 $to=$value->getRangeTo()==='0'?'无':$value->getRangeTo();
                                                                 $unit=$value->getRangeUnit()==='0'?'无':$value->getRangeUnit();
+                                                                $visibleBtnName=$value->getVisible()==='1'?'置不可视':'置可视';
+                                                                $visileBtnRequest=$value->getVisible()==='1'?'admin.php?v='.$_GET['v'].'&action=set_no_visible&foid='.$value->getFoid():'admin.php?v='.$_GET['v'].'&action=set_visible&foid='.$value->getFoid();
                                                                 echo '<tr>
                                                                     <td>'.$j.'</td>
                                                                     <td>'.$name.'</td>
@@ -199,7 +209,7 @@ if(!empty($_GET['action'])){
                                                                     <td>'.$unit.'</td>
                                                                     <td>
                                                                         <a href="admin.php?v='.$_GET['v'].'&action=edit_field&foid='.$value->getFoid().'" class="btn btn-sm btn-primary">编辑</a>
-                                                                        <!--<a href="" class="btn btn-sm btn-primary">置可视</a>-->
+                                                                        <a href="'.$visileBtnRequest.'" class="btn btn-sm btn-primary">'.$visibleBtnName.'</a>
                                                                         <a href="admin.php?v='.$_GET['v'].'&action=delete_field&foid='.$value->getFoid().'" class="btn btn-sm btn-danger">删除</a>
                                                                     </td>
                                                                 </tr>';

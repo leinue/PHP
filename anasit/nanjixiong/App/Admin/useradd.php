@@ -1,8 +1,6 @@
 <?php
 
 $filedOption=new Cores\Models\FieldsOptionsModel();
-$field=new Cores\Models\FieldsModel();
-
 
 $allFieldOptions=$filedOption->selectAll();
 
@@ -14,47 +12,53 @@ function judgeFieldType($curr,$to){
     }
 }
 
-function generatorFieldEdintFOrm($name,$tips,$type,$count,$from,$to,$unit){
+function generatorFieldEdintFOrm($name,$tips,$type,$count,$from,$to,$unit,$foid){
     return '<div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
                 编辑用户发布字段
             </div>
             <div class="panel-body"><div class="col-lg-6">
-                <form role="form" method="post" action="admin.php?v='.$_GET['v'].'&action=edit_field_option">
+                <form role="form" method="post" action="admin.php?v='.$_GET['v'].'&action=edit_field_option&foid='.$foid.'">
                     <div class="form-group">
                         <label>字段名称*</label>
-                        <input placeholder="字段名称" value="'.$name.'" name="field_name_add" class="form-control">
+                        <input placeholder="字段名称" value="'.$name.'" name="field_name_edit" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>字段说明</label>
-                        <input placeholder="字段说明" value="'.$tips.'" name="filed_tips_add" class="form-control">
+                        <input placeholder="字段说明" value="'.$tips.'" name="filed_tips_edit" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>字段类型*</label>
-                        <select name="filed_type_add" class="form-control">
+                        <select name="filed_type_edit" class="form-control">
                             <option '.judgeFieldType('input',$type).' value="input">文本框</option>
                             <option '.judgeFieldType('img',$type).' value="img">图片框</option>
                             <option '.judgeFieldType('selector',$type).' value="selector">选择框</option>
-                            <option '.judgeFieldType('range',$type).' value="range">范围框</option>
+                            <option '.judgeFieldType('range_',$type).' value="range_">范围框</option>
                             <option '.judgeFieldType('textarea',$type).' value="textarea">富文本框</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>选项数量</label>
-                        <input name="filed_count_add" value="'.$count.'" type="number" placeholder="若类型为选择框则此项必填" class="form-control">
+                        <label>选择框值列表</label>
+                        <textarea name="filed_count_edit" value="'.$count.'" placeholder="若类型为选择框则此项必填" class="form-control"></textarea>
+                        <p class="help-block">
+                            选择框值列表填写格式为:<br>
+                            &lt;option value="值1"&gt;值1&lt;/option&gt;<br>
+                            &lt;option value="值2"&gt;值2&lt;/option&gt;<br>
+                            &lt;option value="值3"&gt;值3&lt;/option&gt;<br>
+                        </p>
                     </div>
                     <div class="form-group">
                         <label>区间from</label>
-                        <input name="filed_from_add" value="'.$from.'" type="number" placeholder="若类型为范围框则此项必填" class="form-control">
+                        <input name="filed_from_edit" value="'.$from.'" type="number" placeholder="若类型为范围框则此项必填" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>区间to</label>
-                        <input name="filed_to_add" value="'.$to.'" type="number" placeholder="若类型为范围框则此项必填" class="form-control">
+                        <input name="filed_to_edit" value="'.$to.'" type="number" placeholder="若类型为范围框则此项必填" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>单位</label>
-                        <input name="filed_unit_add" value="'.$unit.'" type="text" placeholder="若类型为范围框则此项必填" class="form-control">
+                        <input name="filed_unit_edit" value="'.$unit.'" type="text" placeholder="若类型为范围框则此项必填" class="form-control">
                     </div>
                     <button type="submit" class="btn btn-default">提交</button>
                 </form>
@@ -81,12 +85,22 @@ if(!empty($_GET['action']) && !empty($_GET['foid'])){
             $from=$filedOptionOne[0]->getRangeFrom();
             $to=$filedOptionOne[0]->getRangeTo();
             $unit=$filedOptionOne[0]->getRangeUnit();
-            $prompt=generatorFieldEdintFOrm($name,$tips,$type,$count,$from,$to,$unit);
+            $prompt=generatorFieldEdintFOrm($name,$tips,$type,$count,$from,$to,$unit,$foid);
             break;
         case 'delete_field_confirm':
             $filedOption->delete($foid);
             $prompt=success('删除成功');
             break;
+        case 'edit_field_option':
+            $name=$_POST['field_name_edit'];
+            $type=$_POST['filed_type_edit'];
+            $tips=$_POST['filed_tips_edit'];
+            $selectorCount=$_POST['filed_count_edit'];
+            $rangeFrom=$_POST['filed_from_edit'];
+            $rangeTo=$_POST['filed_to_edit'];
+            $rangeUnit=$_POST['filed_unit_edit'];
+            $filedOption->modify($foid,$name,$type,$tips,$selectorCount,$rangeFrom,$rangeTo,$rangeUnit);
+            $prompt=success('修改成功,请点击左侧菜单栏重新载入(勿按F5刷新)');
         default:
             break;
     }
@@ -154,7 +168,7 @@ if(!empty($_GET['action'])){
                                                         <th>名称*</th>
                                                         <th>说明</th>
                                                         <th>类型*</th>
-                                                        <th>选项数量</th>
+                                                        <th>选项值列表</th>
                                                         <th>from</th>
                                                         <th>to</th>
                                                         <th>单位</th>
@@ -213,13 +227,19 @@ if(!empty($_GET['action'])){
                                                         <option value="input">文本框</option>
                                                         <option value="img">图片框</option>
                                                         <option value="selector">选择框</option>
-                                                        <option value="range">范围框</option>
+                                                        <option value="range_">范围框</option>
                                                         <option value="textarea">富文本框</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>选项数量</label>
-                                                    <input name="filed_count_add" type="number" placeholder="若类型为选择框则此项必填" class="form-control">
+                                                    <label>选择框值列表</label>
+                                                    <textarea name="filed_count_add" placeholder="若类型为选择框则此项必填" class="form-control"></textarea>
+                                                    <p class="help-block">
+                                                        选择框值列表填写格式为:<br>
+                                                        &lt;option value="值1"&gt;值1&lt;/option&gt;<br>
+                                                        &lt;option value="值2"&gt;值2&lt;/option&gt;<br>
+                                                        &lt;option value="值3"&gt;值3&lt;/option&gt;<br>
+                                                    </p>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>区间from</label>

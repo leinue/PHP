@@ -171,3 +171,108 @@ function cutOutStr($str,$count=20){
 	$s=mb_substr($str , 0 , $count);
 	return strlen($str)>20?$s.'[...]':$s;
 }
+
+function tips($tips){
+    return $tips==null?'':'<p class="help-block">'.$tips.'</p>';
+}
+
+function input($name,$name_control,$id,$tips=null,$value=null){
+    $tips=tips($tips);
+    return '<div class="form-group">
+                <label>'.$name.'</label>
+                <input placeholder="'.$name.'" value="'.$value.'" name="'.$name_control.'" class="form-control">
+                '.$tips.'
+            </div>';
+}
+
+function img_($name,$name_control,$id,$tips=null,$value=null){
+    $tips=tips($tips);
+    return '<div class="form-group">
+                <label>'.$name.'</label>
+                <input id="'.$id.'" name="'.$name_control.'" value="'.$value.'" type="file">
+                '.$tips.'
+            </div>';
+}
+
+function textarea($name,$name_control,$id,$tips,$value=null){
+    $tips=tips($tips);
+    return '<div class="form-group">
+                <label>'.$name.'</label>
+                <textarea class="form-control" placeholder='.$name.' id="'.$id.'" name="'.$name_control.'" value="'.$value.'"></textarea>
+                '.$tips.'
+            </div>';
+}
+
+function selector($name,$name_control,$id,$tips,$selectorCount,$value=""){
+    $tips=tips($tips);
+    return '<div class="form-group">
+                <label>'.$name.'</label>
+                <select class="form-control" placeholder='.$name.' id="'.$id.'" name="'.$name_control.'"">'.$selectorCount.'</select>
+                '.$tips.'
+            </div>';
+}
+
+function range_($name,$name_control,$id,$tips,$from,$to,$rangeUnit,$value=""){
+    $tips=tips($tips);
+    return '<div class="form-group">
+                <label>'.$name.' ( '.$rangeUnit.' )</label>
+                <input class="form-control" type="number" placeholder="from" id="'.$id.'" name="'.$name_control.'"">
+                <label></label>
+                <input class="form-control" type="number" placeholder="to" id="'.$id.'" name="'.$name_control.'"">
+                '.$tips.'
+            </div>';
+}
+
+function generatorItemAddingForm($fieldList,$suffix='_add',$action=null){
+    if(is_array($fieldList)){
+        echo '<form role="form" method="post" action="'.$action.'&count='.count($fieldList).'">';
+        $cataOption='';
+        $cataObj=new Cores\Models\CataModel();
+        $cataList=$cataObj->selectAll();
+        if(is_array($cataList)){
+            foreach ($cataList as $key => $value) {
+                if($value->getParent()!='0' && $value->getChild()!='second'){
+                    $cataOption.='<option value="'.$value->getCaid().'">'.$value->getName().'</option>';
+                }
+            }
+        }
+        echo '<div class="form-group">
+                <label>项目类别</label>
+                <select name="item_cata'.$suffix.'" class="form-control">
+                    '.$cataOption.'
+                </select>
+            </div>';
+        echo '<div class="form-group">
+                <label>项目主题</label>
+                <input placeholder="项目主题" value="" name="item_theme'.$suffix.'" class="form-control">
+            </div>';
+        foreach ($fieldList as $key => $value) {
+            $type=$value->getType();
+            $id='item_'.$value->getName().$suffix;
+            $name=$id;
+            switch ($type) {
+                case 'input':
+                     echo input($value->getName(),$name,$id,$value->getTips());
+                    break;
+                case 'img':
+                    echo img_($value->getName(),$name,$id,$value->getTips());
+                case 'selector':
+                    if($type=='selector'){
+                        echo selector($value->getName(),$name,$id,$value->getTips(),$value->getSelectorCount());
+                    }
+                case 'range_':
+                    if($type=='range_'){
+                        echo range_($value->getName(),$name,$id,$value->getTips(),$value->getRangeFrom(),$value->getRangeTo(),$value->getRangeUnit());
+                    }
+                case 'textarea':
+                    if($type=='textarea'){
+                        echo textarea($value->getName(),$name,$id,$value->getTips());
+                    }
+                default:
+                    break;
+            }
+        }
+        echo '<button type="submit" class="btn btn-default">提交</button></form>';
+    }
+    
+}

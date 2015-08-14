@@ -2,6 +2,21 @@
 
 $settingObj=new Cores\Models\SettingModel();
 
+$view=$_GET['v'];
+$caid='';
+
+if(!empty($_GET['caid'])){
+	$caid=$_GET['caid'];
+}
+
+function displayAvtive($current,$to){
+    if(!empty($current)){
+        if($current==$to){
+            return 'active';
+        }
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -48,7 +63,7 @@ $settingObj=new Cores\Models\SettingModel();
                             if($i===0){
                             	$active='active';
                             }
-                            echo '<li class="'.$active.'"><a href="index.php?v=home&caid='.$value->getCaid().'">'.$value->getName().'</a></li>';
+                            echo '<li class="'.displayAvtive($caid,$value->getCaid()).'"><a href="index.php?v=home&caid='.$value->getCaid().'">'.$value->getName().'</a></li>';
                         	$i++;
                         }
                     }
@@ -59,7 +74,7 @@ $settingObj=new Cores\Models\SettingModel();
 	        ?>
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
-	        <li><a href="index.php?v=publish">发布</a></li>
+	        <li class="<?php echo displayAvtive($view,'publish'); ?>"><a href="index.php?v=publish">发布</a></li>
 	        <li><a href="admin.php">进入后台</a></li>
 	        <li><a target="_blank" href="admin.php">登录</a></li>
 	      </ul>

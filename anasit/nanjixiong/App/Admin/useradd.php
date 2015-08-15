@@ -229,7 +229,8 @@ if(!empty($_GET['action'])){
                                                 </div>
                                                 <div class="form-group">
                                                     <label>字段说明</label>
-                                                    <input placeholder="字段说明" name="filed_tips_add" class="form-control">
+                                                    <textarea placeholder="字段说明" name="filed_tips_add" class="form-control"></textarea>
+                                                    <span class="help-block">如需加入链接请使用&lt;a href="http://地址"&gt;地址名称&lt;/a&gt;,详情<a target="_blank" href="http://www.w3school.com.cn/tags/tag_a.asp">&lt;a&gt;标签</a></span>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>字段类型*</label>

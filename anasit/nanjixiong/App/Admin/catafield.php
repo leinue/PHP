@@ -34,6 +34,18 @@ if(!empty($_GET['set_visible'])){
     $tips=success('设置可视成功');
 }
 
+if(!empty($_GET['set_front_no_visible'])){
+    $cataObj=new Cores\Models\CataModel();
+    $cataObj->setNoFVisible($_GET['set_front_no_visible']);
+    $tips=success('设置前台不显示成功');
+}
+
+if(!empty($_GET['set_front_visible'])){
+    $cataObj=new Cores\Models\CataModel();
+    $cataObj->setFVisible($_GET['set_front_visible']);
+    $tips=success('设置前台显示成功');
+}
+
 // alert($_POST['edit_cata_name']);
 
 if(!empty($_GET['action'])){
@@ -229,13 +241,19 @@ if(!empty($_GET['cata_to_edit'])){
                                         $allCataObj=$cataMgr->getSecond();
                                         if(is_array($allCataObj)){
                                             foreach ($allCataObj as $key => $value) {
+                                                
                                                 $btnName=$value['visible']==='1'?'置不可视':'置可视';
                                                 $btnRequest=$value['visible']==='1'?'admin.php?v='.$view.'&set_no_visible='.$value['caid']:'admin.php?v='.$view.'&set_visible='.$value['caid'];
+
+                                                $frontBtnName=$value['fvisible']==='1'?'前台不显示':'前台显示';
+                                                $frontBtnRequest=$value['fvisible']==='1'?'admin.php?v='.$view.'&set_front_no_visible='.$value['caid']:'admin.php?v='.$view.'&set_front_visible='.$value['caid'];
+
                                                 echo '<tr class="odd gradeX">
                                                         <td>'.$value['name'].'</td>
                                                         <td style="text-align:center">
                                                             <a href="admin.php?v='.$view.'&cata_to_edit='.$value['caid'].'" class="btn btn-primary btn-sm">编辑</a>
                                                             <a href="'.$btnRequest.'" class="btn btn-primary btn-sm">'.$btnName.'</a>
+                                                            <a href="'.$frontBtnRequest.'" class="btn btn-primary btn-sm">'.$frontBtnName.'</a>
                                                             <a ref="admin.php?v='.$view.'&cata_to_view='.$value['caid'].'" class="btn btn-primary btn-sm view_cata" data-toggle="modal" data-whatever="'.$value['caid'].'=='.$value['name'].'" data-target=".modal-view-cata">详细</a>
                                                             <a href="admin.php?v='.$view.'&cata_to_del='.$value['caid'].'" class="btn btn-danger btn-sm">删除</a>
                                                         </td>

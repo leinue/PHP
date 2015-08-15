@@ -197,6 +197,21 @@ class CataModel{
 		return self::$model->getDatabase()->execute("UPDATE `njx_cata` SET `visible`=0 WHERE `caid`=?",array($caid));
 	}
 
+	function setNoFVisible($caid){
+		if($caid==null){
+			return false;
+		}
+		return self::$model->getDatabase()->execute("UPDATE `njx_cata` SET `fvisible`=0 WHERE `caid`=?",array($caid));
+
+	}
+
+	function setFVisible($caid){
+		if($caid==null){
+			return false;
+		}
+		return self::$model->getDatabase()->execute("UPDATE `njx_cata` SET `fvisible`=1 WHERE `caid`=?",array($caid));
+	}
+
 }
 
 ?>

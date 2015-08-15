@@ -21,6 +21,13 @@ class FieldsModel{
 		return self::$model->getDatabase()->query("SELECT * FROM `njx_fields` WHERE `oid`='$oid'",[],'Cores\Models\Fields');
 	}
 
+	function getByItemId($itemId){
+		if($itemId==null){
+			return false;
+		}
+		return self::$model->getDatabase()->query("SELECT * FROM `njx_fields` WHERE `itemId`=$itemId");
+	}
+
 	function add($foid,$value,$itemId){
 		
 		if($foid==null || $value==null || $itemId==null){

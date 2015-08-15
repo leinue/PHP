@@ -19,6 +19,30 @@ if(empty($_GET['iid']) || empty($_GET['uid'])){
 	$itemsCount=count($allItems);
 	$itemsCount=$itemsCount<5?$itemsCount:5;
 
+	$comemntsObj=new Cores\Models\CommentsModel();
+	$ads=new Cores\Models\AdsModel();
+
+}
+
+$prompt='';
+
+if(!empty($_GET['action'])){
+
+	switch ($_GET['action']) {
+		case 'submit_comments':
+			
+			if($_POST['comments_content']==null){
+				alert('发布内容不能为空,请重新填写');
+			}else{
+				$comemntsObj->add($_GET['iid'],$_POST['comments_content']);
+				alert('发布成功');
+			}
+
+			break;
+		default:
+			break;
+	}
+
 }
 
 ?>
@@ -37,7 +61,7 @@ if(empty($_GET['iid']) || empty($_GET['uid'])){
 						<h3 style="margin-top:0;"><?php echo $userObj[0]->getName(); ?> <span style="font-size:0.8em;color:rgb(170,170,170)"><?php echo $userTime; ?></span></h3>
 						<h5><?php echo $userObj[0]->getDescription(); ?></h5>
 						<p class="text-muted"><span class="glyphicon glyphicon-map-marker"> <?php echo $userObj[0]->getRegion(); ?></span></p>
-						<p class="text-muted"><span class="glyphicon glyphicon-link"> <?php echo $userObj[0]->getUrl(); ?></span></p>
+						<p class="text-muted"><span class="glyphicon glyphicon-link"> <a href="<?php echo $userObj[0]->getUrl(); ?>" target="_blank" ><?php echo $userObj[0]->getUrl(); ?></a></span></p>
 					</div>
 
 					<div class="col-md-4">
@@ -90,8 +114,19 @@ if(empty($_GET['iid']) || empty($_GET['uid'])){
 
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<form>
-							<textarea class="form-control" rows="10"></textarea>
+						<?php
+							$allCommentsObj=$comemntsObj->getAllByItemId($_GET['iid']);
+							if(is_array($allCommentsObj)){
+								foreach ($allCommentsObj as $key => $value) {
+									echo '<div class="alert alert-success" role="alert">
+											<strong>'.$value->getCreateTime().'</strong>
+											<p>'.$value->getContent().'</p>
+										</div>';
+								}								
+							}
+						?>
+						<form method="post" action="index.php?v=view&uid=<?php echo $_GET['uid'] ?>&iid=<?php echo $_GET['iid']; ?>&action=submit_comments">
+							<textarea class="form-control" name="comments_content" rows="10"></textarea>
 							<div style="padding-top:15px;text-align:right">
 								<input type="submit" value="提交" class="btn btn-primary">
 							</div>
@@ -147,17 +182,36 @@ if(empty($_GET['iid']) || empty($_GET['uid'])){
 								</tbody>
 							</table>
 						</div>
-												
-					</div>
-				</div>
-			</div>
 
-			<div style="" class="col-md-4 col-md-offset-8">
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<div style="text-align:center" class="col-md-6 col-md-offset-3">
-							<img width="140" height="140" class="img-rounded" src="dd">
+						<div class="responsive-table">
+							<table class="table table-hover">
+								<thead>
+									<tr><th>推广消息</th></tr>
+								</thead>
+								<tbody>
+									<?php
+										$allAds=$ads->selectAll();
+										if(is_array($allAds)){
+											foreach ($allAds as $key => $value) {
+												if($value->getDisplay()==='0'){
+													continue;
+												}
+												echo '<tr>
+														<td>
+															<p></p>
+															<a target="_blank" href="'.$value->getUrl().'">
+																<img width="140" height="140" class="img-rounded" src="'.$value->getImage().'">
+															</a>
+															<p>'.$value->getContent().'</p>
+														</td>
+													</tr>';
+											}
+										}
+									?>
+								</tbody>
+							</table>
 						</div>
+												
 					</div>
 				</div>
 			</div>

@@ -15,12 +15,15 @@ class CommentsModel{
 
 	function selectAll($page=null){
 		if($page==null){
-			return self::$model->getDatabase()->query("select * from njx_comments",[],'Cores\Models\Comments');
+			return self::$model->getDatabase()->query("SELECT * from njx_comments",[],'Cores\Models\Comments');
 		}else{
 			return self::$model->getDatabase()->query("SELECT * FROM `njx_comments` LIMIT ".($page-1).','.($page+10));
 		}
 	}
 
+	function getAllByItemId($itemId){
+		return self::$model->getDatabase()->query("SELECT * FROM `njx_comments` WHERE `itemId`='$itemId' ORDER BY `createTime` DESC",[],'Cores\Models\Comments');
+	}
 
 	function selectOne($rid){
 		return self::$model->getDatabase()->query("SELECT * FROM `njx_comments` WHERE `rid`='$rid'",[],'Cores\Models\Comments');
@@ -34,7 +37,6 @@ class CommentsModel{
 
 		$rid=guid();
 		$currentTime=date('Y-m-d H:i:s', time());
-		echo $currentTime;
 		self::$model->getDatabase()->execute("INSERT INTO `njx_comments` SET `rid`=?,`itemId`=?,`content`=?,`createTime`=?",array($rid,$itemId,$content,$currentTime));
 		return $this->selectOne($rid);
 	}

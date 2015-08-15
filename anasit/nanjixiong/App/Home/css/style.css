@@ -159,6 +159,10 @@ a:active{
     background-color: #FDFDFD;
 }
 
+.comments{
+	margin-top: 20px;
+}
+
 /*.container-fluid > .navbar-header{
 	height: 100%!important;
 	padding-top: 20px;

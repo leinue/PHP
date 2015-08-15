@@ -140,7 +140,7 @@
 														    </a>
 														  </div>
 														  <div class="media-body">
-														    <h4 class="media-heading"><a href="index.php?v=view">'.$itemValue->getTitle().'</a></h4>
+														    <h4 class="media-heading"><a href="index.php?v=view&iid='.$itemValue->getIid().'&uid='.$itemValue->getuid().'">'.$itemValue->getTitle().'</a></h4>
 														    </div>
 														</div>
 											          </td>
@@ -160,9 +160,9 @@
 													    </div>
 													</div>
 										          </td>
-										          <td><p></p>钟凯程</td>
-										          <td><p></p>电子商务</td>
-										          <td><p></p>天使轮</td>
+										          <td><p></p>暂无数据</td>
+										          <td><p></p>暂无数据</td>
+										          <td><p></p>暂无数据</td>
 										        </tr>';
 											}
 										}

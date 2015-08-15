@@ -73,13 +73,13 @@ class UsersModel{
 		return $itemObj->getUserItem($uid);
 	}
 
-	function modify($oid,$name,$photo,$region,$url,$description){
+	function modify($uid,$name,$photo,$region,$url,$description){
 
-		if($oid==null || $name==null || $photo==null || $region==null || $url==null || $description==null){
+		if($uid==null || $name==null || $photo==null || $region==null || $url==null || $description==null){
 			return false;
 		}
 
-		return self::$model->getDatabase()->execute("UPDATE `njx_users` SET `name`=?,`photo`=?,`region`=?,`url`=?,`description`=? WHERE `oid`=?",array($name,$photo,$region,$url,$description,$oid));
+		return self::$model->getDatabase()->execute("UPDATE `njx_users` SET `name`=?,`photo`=?,`region`=?,`url`=?,`description`=? WHERE `uid`=?",array($name,$photo,$region,$url,$description,$uid));
 	}
 
 }

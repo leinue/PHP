@@ -15,7 +15,7 @@
 		$url=$_POST['url_edit'];
 		$description=$_POST['description_edit'];
 
-		$userObj->modify($name,$photo,$region,$url,$description);
+		$usersObj->modify($_GET['uid'],$name,$photo,$region,$url,$description);
 	}
 
 ?>

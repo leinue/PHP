@@ -71,8 +71,26 @@ function printItems($itemsObj,$status,$page){
             if($value['status']===$status){
                 $j++;
                 $cataObj=new Cores\Models\CataModel();
-                $cataName=$cataObj->selectOne($value['caid'],true);
-                $cataName=$cataName[0]['name'];
+                $userObj=new Cores\Models\UsersModel();
+                $singleCaid=json_decode($value['caid']);
+                $cataString='';
+                
+                if(is_array($singleCaid)){
+                    foreach ($singleCaid as $k => $scaid) {
+                        $cataName=$cataObj->selectOne($scaid,true);
+                        $cataString.=$cataName[0]['name'];
+                        break;
+                    }
+                }else{
+                    $cataString=$cataObj->selectOne($value['caid'],true);
+                    $cataString=$cataString[0]['name'];
+                }
+
+                $publisher=$userObj->selectOne($value['uid']);
+                if(is_object($publisher[0])){
+                    $publisher=$publisher[0]->getName();
+                }
+
                 $btnName=$status=='1'?'拒绝':'通过';
                 $action=$status=='1'?'admin.php?v='.$_GET['v'].'&action=reject_item&iid='.$value['iid'].'&page='.$page:'admin.php?v='.$_GET['v'].'&action=approve_item&iid='.$value['iid'].'&page='.$page;
                 $order=$status=='1'?'
@@ -82,8 +100,8 @@ function printItems($itemsObj,$status,$page){
                 echo '<tr>
                         <td>'.$j.'</td>
                         <td>'.$value['title'].'</td>
-                        <td>'.$cataName.'</td>
-                        <td>'.$value['uid'].'</td>
+                        <td>'.$cataString.'</td>
+                        <td>'.$publisher.'</td>
                         <td>'.$value['createTime'].'</td>
                         <td>
                             <a href="" class="btn btn-primary btn-sm">查看</a>
@@ -92,6 +110,7 @@ function printItems($itemsObj,$status,$page){
                             <a href="admin.php?v='.$_GET['v'].'&action=delete_item&iid='.$value['iid'].'&page='.$page.'" class="btn btn-danger btn-sm">删除</a>
                         </td>
                     </tr>';
+                $cataString='';
             }
         }
     }else{

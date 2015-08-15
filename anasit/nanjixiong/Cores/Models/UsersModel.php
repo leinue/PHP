@@ -22,7 +22,7 @@ class UsersModel{
 		}
 	}
 
-	function selectOne($uid){
+	function selectOne($uid=null){
 		return self::$model->getDatabase()->query("SELECT * FROM `njx_users` WHERE `uid`='$uid'",[],'Cores\Models\Users');
 	}
 

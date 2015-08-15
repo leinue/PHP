@@ -216,32 +216,52 @@ function range_($name,$name_control,$id,$tips,$from,$to,$rangeUnit,$value=""){
     $tips=tips($tips);
     return '<div class="form-group">
                 <label>'.$name.' ( '.$rangeUnit.' )</label>
-                <input class="form-control" type="number" placeholder="from" id="'.$id.'" name="'.$name_control.'"">
+                <input class="form-control" type="number" placeholder="from" id="'.$id.'" name="from_'.$name_control.'"">
                 <label></label>
-                <input class="form-control" type="number" placeholder="to" id="'.$id.'" name="'.$name_control.'"">
+                <input class="form-control" type="number" placeholder="to" id="'.$id.'" name="to_'.$name_control.'"">
                 '.$tips.'
             </div>';
 }
 
 function generatorItemAddingForm($fieldList,$suffix='_add',$action=null){
     if(is_array($fieldList)){
-        echo '<form role="form" method="post" action="'.$action.'&count='.count($fieldList).'">';
+        echo '<div class="col-md-6"><form role="form" method="post" action="'.$action.'&count='.count($fieldList).'">';
         $cataOption='';
         $cataObj=new Cores\Models\CataModel();
         $cataList=$cataObj->selectAll();
+        $secondList=$cataObj->getSecond();
         if(is_array($cataList)){
             foreach ($cataList as $key => $value) {
-                if($value->getParent()!='0' && $value->getChild()!='second'){
+                if($value->getParent()==='0'){
                     $cataOption.='<option value="'.$value->getCaid().'">'.$value->getName().'</option>';
                 }
             }
         }
         echo '<div class="form-group">
-                <label>项目类别</label>
+                <label>项目类别*</label>
                 <select name="item_cata'.$suffix.'" class="form-control">
                     '.$cataOption.'
                 </select>
             </div>';
+        if(is_array($secondList)){
+			foreach ($secondList as $key => $value) {
+				$list='';
+				$rdList=$cataObj->getCataChild($value['caid']);
+				if(is_array($rdList)){
+					foreach ($rdList as $childKey => $childValue) {
+						if($childValue['child']!='second'){
+							$list.='<option "'.$childValue['caid'].'"> '.$childValue['name'].'</option>';
+						}
+					}
+				}
+				echo '<div class="form-group">
+		                <label>'.$value['name'].'*</label>
+		                <select name="item_'.$value['name'].'_cata'.$suffix.'" class="form-control">
+		                    '.$list.'
+		                </select>
+		            </div>';
+			}
+		}
         echo '<div class="form-group">
                 <label>项目主题</label>
                 <input placeholder="项目主题" value="" name="item_theme'.$suffix.'" class="form-control">
@@ -272,7 +292,7 @@ function generatorItemAddingForm($fieldList,$suffix='_add',$action=null){
                     break;
             }
         }
-        echo '<button type="submit" class="btn btn-default">提交</button></form>';
+        echo '<button type="submit" class="btn btn-default">提交</button></form></div>';
     }
     
 }

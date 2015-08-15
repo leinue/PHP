@@ -71,10 +71,12 @@ nav{
 
 a:hover{
 	text-decoration: none!important;
+	color: rgb(255,94,82);
 }
 
 .badge a:hover{
 	text-decoration: none!important;
+	color: rgb(255,94,82);
 }
 
 .cata-list{

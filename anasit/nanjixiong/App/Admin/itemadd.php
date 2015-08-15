@@ -8,8 +8,10 @@
         switch ($_GET['action']) {
             case 'add_new_item':
                 $itemObj=new Cores\Models\ItemsModel();
+                $cataObj=new Cores\Models\CataModel();
                 $uid='3CEC7A3B-58BD-82B7-E4BA-8849286079BE';
                 $caid=$_POST['item_cata_add'];
+                $caidList=array();
                 $title=$_POST['item_theme_add'];
                 $count=null;
                 if(!empty($_GET['count'])){
@@ -24,8 +26,30 @@
                     redirectTo('admin.php?v='.$_GET['v']);
                 }
 
+                array_push($caidList,$caid);
 
-                $itemAdded=$itemObj->add($uid,$caid,$title);
+                $secondList=$cataObj->getSecond();
+
+                if(is_array($secondList)){
+                    foreach ($secondList as $key => $value) {
+                        $list='';
+                        array_push($caidList, $value['caid']);
+                        $rdList=$cataObj->getCataChild($value['caid']);
+                        if(is_array($rdList)){
+                            foreach ($rdList as $childKey => $childValue) {
+                                if($childValue['child']!='second' && $childValue['name']==$_POST['item_'.$childValue['name'].'_cata_add']){
+                                    array_push($caidList, $childValue['caid']);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                $caidJSON='';
+
+                $caidJSON=json_encode($caidList);
+
+                $itemAdded=$itemObj->add($uid,$caidJSON,$title);
                 $itemId=$itemAdded[0]->getIid();
                 
                 if($itemId==null){

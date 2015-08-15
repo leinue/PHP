@@ -151,6 +151,10 @@ class ItemsModel{
 
 	}
 
+	function getTop5(){
+		return self::$model->getDatabase()->query("SELECT * FROM `njx_items` ORDER BY `commentsCount` LIMIT 5");
+	}
+
 	// function modify($iid,$value){
 
 	// 	if($oid==null || $value==null){

@@ -14,6 +14,11 @@ if(empty($_GET['iid']) || empty($_GET['uid'])){
 	$userTime=explode("-", $userTime);
 	$userTime=$userTime[0];
 
+	$itemsObj=new Cores\Models\ItemsModel();
+	$allItems=$itemsObj->selectAll();
+	$itemsCount=count($allItems);
+	$itemsCount=$itemsCount<5?$itemsCount:5;
+
 }
 
 ?>
@@ -107,21 +112,15 @@ if(empty($_GET['iid']) || empty($_GET['uid'])){
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>1</td>
-									</tr>
-									<tr>
-										<td>2</td>
-									</tr>
-									<tr>
-										<td>3</td>
-									</tr>
-									<tr>
-										<td>4</td>
-									</tr>
-									<tr>
-										<td>5</td>
-									</tr>
+									<?php
+
+										$i=0;
+										$top5list=$itemsObj->getTop5();
+										foreach ($top5list as $key => $value) {
+												echo '<tr><td><a href="">'.$value['title'].'</a></tr></td>';
+										}
+
+									?>
 								</tbody>
 							</table>
 						</div>
@@ -134,21 +133,17 @@ if(empty($_GET['iid']) || empty($_GET['uid'])){
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>1</td>
-									</tr>
-									<tr>
-										<td>2</td>
-									</tr>
-									<tr>
-										<td>3</td>
-									</tr>
-									<tr>
-										<td>4</td>
-									</tr>
-									<tr>
-										<td>5</td>
-									</tr>
+									<?php
+
+										$i=0;
+										foreach ($allItems as $key => $value) {
+											if($i<$itemsCount){
+												echo '<tr><td><a href="">'.$value->getTitle().'</a></tr></td>';												
+											}
+											$i++;
+										}
+
+									?>									
 								</tbody>
 							</table>
 						</div>

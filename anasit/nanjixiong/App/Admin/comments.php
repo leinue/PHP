@@ -148,6 +148,9 @@ if(!empty($_GET['action']) && !empty($_GET['remarkId'])){
                                                             foreach ($result as $key => $value) {
                                                                 $j++;
                                                                 $itemName=$itemObj->selectOne($value['itemId']);
+                                                                if(!is_object($itemName[0])){
+                                                                    continue;
+                                                                }    
                                                                 $itemName=$itemName[0]->getTitle();
                                                                 echo '  <tr>
                                                                             <td>'.$j.'</td>

@@ -12,8 +12,14 @@
 
 	function displayBadge($current,$to){
 		// alert($current);
-		if($current==$to){
-			return 'class="badge"';
+		if($to=='all'){
+			if($current==$to){
+				return 'class="badge"';
+			}
+		}else{
+			if(stristr($to,$current)){
+				return 'class="badge"';
+			}
 		}
 	}
 
@@ -31,6 +37,8 @@
 
 	if($cataToView=='all'){
 		$cataList=$cataObj->getCataChild($_GET['caid']);
+	}else{
+		$cataList=$cataObj->selectOne($cataToView,true);
 	}
 ?>
 	<div class="row">
@@ -96,6 +104,7 @@
 						
 						<?php
 							if(is_array($cataList)){
+								// print_r($cataList);
 								$filedObj=new Cores\Models\FieldsModel();
 								$filedOptionObj=new Cores\Models\FieldsOptionsModel();
 								$itemsObj=new Cores\Models\ItemsModel();
@@ -104,13 +113,12 @@
 								if(is_array($allItems)){
 									foreach ($allItems as $itemKey => $itemValue) {
 										$jsonItemCaid=$itemValue->getCaid();
+										$jsontmp=$jsonItemCaid;
 										$jsonItemCaid=json_decode($jsonItemCaid);
-										if($jsonItemCaid!==null && $itemValue->getStatus()==='1' && in_array($_GET['caid'], $jsonItemCaid) ){
+										$queryId=$_GET['view_type_id']=='all'?$_GET['caid']:$_GET['view_type_id'];
+										if($jsonItemCaid!==null && $itemValue->getStatus()==='1' && stristr($jsontmp,$queryId) && stristr($jsontmp,$_GET['caid'])){
 											if(is_array($allFields)){
 												array_shift($jsonItemCaid);
-												foreach ($allFields as $fieldKey => $fieldValue) {
-													
-												}
 
 												$secondListField='';
 

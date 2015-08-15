@@ -172,6 +172,20 @@ function cutOutStr($str,$count=20){
 	return strlen($str)>20?$s.'[...]':$s;
 }
 
+function in_array_i($x,$arr){
+	if (!is_array ($arr)){
+	        return false;
+	}
+    foreach ($arr as $key => $val ){
+        if (is_array ($val)){
+            in_array_i($x,$val);
+        }
+        else{
+            return $x==$val;
+        }
+    }
+}
+
 function tips($tips){
     return $tips==null?'':'<p class="help-block">'.$tips.'</p>';
 }

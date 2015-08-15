@@ -12,6 +12,7 @@
                 $uid='3CEC7A3B-58BD-82B7-E4BA-8849286079BE';
                 $caid=$_POST['item_cata_publish'];
                 $caidList=array();
+                $rdValueList=array();
                 $title=$_POST['item_theme_publish'];
                 $count=null;
                 if(!empty($_GET['count'])){
@@ -33,15 +34,18 @@
                 if(is_array($secondList)){
                     foreach ($secondList as $key => $value) {
                         $list='';
-                        array_push($caidList, $value['caid']);
+                        array_push($rdValueList, $value['caid']);
                         $rdList=$cataObj->getCataChild($value['caid']);
                         if(is_array($rdList)){
                             foreach ($rdList as $childKey => $childValue) {
-                                if($childValue['child']!='second' && $childValue['name']==$_POST['item_'.$childValue['name'].'_cata_publish']){
-                                    array_push($caidList, $childValue['caid']);
+                                if($childValue['child']!='second' && $childValue['name']==$_POST['item_'.$value['name'].'_cata_publish']){
+                                    array_push($rdValueList, $childValue['caid']);
+                                    array_push($rdValueList, $childValue['name']);
                                 }
                             }
                         }
+                        array_push($caidList, $rdValueList);
+                        $rdValueList=array();
                     }
                 }
 

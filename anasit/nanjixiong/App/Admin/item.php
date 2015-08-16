@@ -104,7 +104,7 @@ function printItems($itemsObj,$status,$page){
                         <td>'.$publisher.'</td>
                         <td>'.$value['createTime'].'</td>
                         <td>
-                            <a href="" class="btn btn-primary btn-sm">查看</a>
+                            <a target="_blank" href="index.php?v=view&iid='.$value['iid'].'&uid='.$value['uid'].'" class="btn btn-primary btn-sm">查看</a>
                             <a href="'.$action.'" class="btn btn-primary btn-sm">'.$btnName.'</a>
                             '.$order.'
                             <a href="admin.php?v='.$_GET['v'].'&action=delete_item&iid='.$value['iid'].'&page='.$page.'" class="btn btn-danger btn-sm">删除</a>

@@ -119,20 +119,54 @@ if(!empty($_GET['action'])){
 		<div class="col-md-10 col-md-offset-1">
 
 			<div style="" class="col-md-8">
-				
+
+				<?php
+					$fieldObj=new Cores\Models\FieldsModel();
+					$fieldOptionsObj=new Cores\Models\FieldsOptionsModel();
+
+					$filedList=$fieldObj->getByItemId($_GET['iid']);
+				?>
+
 				<div class="panel panel-default">
-				 	<div class="panel-heading">公司介绍</div>
+				 	<div class="panel-heading">总览</div>
 					<div class="panel-body">
-						
+						<?php
+
+							foreach ($filedList as $key => $value) {
+								$optionName=$fieldOptionsObj->selectOne($value['foid']);
+								if($optionName[0]->getType()!='textarea' && $optionName[0]->getVisible()==='1'){
+									// echo $optionName[0]->getName();echo $value['value'];
+									$citePost=$optionName[0]->getType()=='img'?'<img width="80" height="80" src="'.$value['value'].'" >':$value['value'];
+									echo '<blockquote>
+										  <p>'.$optionName[0]->getName().'</p>
+										  <footer style="background:rgb(255,255,255)!important;">'.$citePost.'</footer>
+										</blockquote>';
+								}
+							}
+
+						?>
 					</div>
 				</div>
 
-				<div class="panel panel-default">
-				 	<div class="panel-heading">公司介绍</div>
-					<div class="panel-body">
-						
-					</div>
-				</div>
+				<?php
+
+					if(is_array($filedList)){
+
+						foreach ($filedList as $key => $value) {
+							$optionName=$fieldOptionsObj->selectOne($value['foid']);
+							if($optionName[0]->getType()=='textarea' && $optionName[0]->getVisible()==='1'){
+								echo '<div class="panel panel-default">
+									 	<div class="panel-heading">'.$optionName[0]->getName().'</div>
+										<div class="panel-body">
+											'.$filedList['value'].'
+										</div>
+									</div>';
+							}
+						}
+
+					}
+
+				?>
 
 				<div class="panel panel-default">
 					<div class="panel-body">

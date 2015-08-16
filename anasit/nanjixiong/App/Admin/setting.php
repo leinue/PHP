@@ -15,6 +15,9 @@ if(!empty($_GET['action'])){
     }
 }
 
+$defaultImage=$settingObj->get('site_logo');
+$defaultImage=$defaultImage=='0'?null:$defaultImage;
+
 ?>
 
         <!-- /. NAV SIDE  -->
@@ -43,6 +46,8 @@ if(!empty($_GET['action'])){
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <form role="form" action="admin.php?v=<?php echo $_GET['v']; ?>&action=update_setting" method="post">
+                                            <label>站点logo</label>
+                                            <?php echo loadImageUploader('site_logo',$defaultImage); ?>
                                             <div class="form-group">
                                                 <label>站点标题</label>
                                                 <input placeholder="南极熊" value="<?php  echo $settingObj->get('site_title'); ?>" name="site_title" class="form-control">
@@ -57,10 +62,6 @@ if(!empty($_GET['action'])){
                                                 <label>管理后台标题</label>
                                                 <input placeholder="南极熊" value="<?php  echo $settingObj->get('site_admin_title'); ?>" name="site_admin_title" class="form-control">
                                                 <p class="help-block">作为管理后台的标题</p>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>站点Logo</label>
-                                                <input name="site_logo" value="<?php  echo $settingObj->get('site_logo'); ?>" type="file">
                                             </div>
                                             <button type="submit" class="btn btn-default">提交</button>
                                         </form>

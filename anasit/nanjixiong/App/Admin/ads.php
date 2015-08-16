@@ -23,7 +23,7 @@ if($nextPage>$allPages){
 $prompt='';
 
 function generateAdsEditingForm($aid,$content,$url,$image,$page){
-    return '        <div class="col-md-12">
+    return '<div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
                 编辑广告位
@@ -31,6 +31,7 @@ function generateAdsEditingForm($aid,$content,$url,$image,$page){
             <div class="panel-body">
                 <div class="col-lg-6">
                     <form role="form" method="post" action="admin.php?v='.$_GET['v'].'&action=edit_ads_confirm&aid='.$aid.'&page='.$page.'">
+                        '.loadImageUploader('image_edit',$image).'
                         <div class="form-group">
                             <label>广告位描述</label>
                             <input placeholder="广告位描述" value="'.$content.'" name="content_edit" class="form-control">
@@ -38,10 +39,6 @@ function generateAdsEditingForm($aid,$content,$url,$image,$page){
                         <div class="form-group">
                             <label>广告位链接地址</label>
                             <input placeholder="广告位链接地址" value="'.$url.'" name="url_edit" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>广告位图片</label>
-                            <input name="image_edit" value="'.$image.'" type="file">
                         </div>
                         <button type="submit" class="btn btn-default">提交</button>
                     </form>
@@ -84,7 +81,7 @@ if(!empty($_GET['action']) && !empty($_GET['aid'])){
             // debug($_POST['image_edit']);
             // debug($aid);
             // debug($_POST['url_edit']);
-            $adsObj->modify($aid,$_POST['content_edit'],$_POST['image_edit'],$_POST['url_edit']);
+            $adsObj->modify($aid,$_POST['content_edit'],DOMAIN.$_POST['image_edit'],$_POST['url_edit']);
             $prompt=success('编辑成功');
             break;
         default:
@@ -98,8 +95,12 @@ if(!empty($_GET['action'])){
             debug($_POST['content_add']);
             debug($_POST['image_add']);
             debug($_POST['url_add']);
-            $ad=$adsObj->add($_POST['content_add'],$_POST['image_add'],$_POST['url_add']);
-            $prompt=success('添加成功');
+            if($_POST['content_add']==null || $_POST['image_add']==null || $_POST['url_add']==null){
+                alert('有空值!');
+            }else{
+                $ad=$adsObj->add($_POST['content_add'],DOMAIN.$_POST['image_add'],$_POST['url_add']);
+                $prompt=success('添加成功');
+            }
             break;
         default:
             break;
@@ -168,7 +169,7 @@ if(!empty($_GET['action'])){
                                                                         echo '<tr>
                                                                                 <td>'.$j.'</td>
                                                                                 <td>'.$value->getContent().'</td>
-                                                                                <td>'.$value->getImage().'</td>
+                                                                                <td><a target="_blank" href="'.$value->getImage().'"><img width="100" height="100" src="'.$value->getImage().'" ></a></td>
                                                                                 <td>'.$value->getUrl().'</td>
                                                                                 <td>'.$display.'</td>
                                                                                 <td>
@@ -215,7 +216,16 @@ if(!empty($_GET['action'])){
 
                                     <div role="tabpanel" class="tab-pane" id="profile">
                                         <div style="padding-top:20px" class="col-lg-6">
+                                        <?php
+                                            if(!empty($_GET['action']) && $_GET['action']=='edit_ads'){
+                                        ?>
+                                            <a href="admin.php?v=<?php echo $_GET['v'] ?>#profile" class="btn btn-primary">请点击左侧导航栏再点击"添加广告位"进行添加</a>
+                                        <?php
+                                            }else{
+
+                                        ?>
                                             <form role="form" method="post" action="admin.php?v=<?php echo $_GET['v']; ?>&action=ads_add&page=<?php echo $page; ?>">
+                                                <?php echo loadImageUploader('image_add') ?>
                                                 <div class="form-group">
                                                     <label>广告位描述</label>
                                                     <input placeholder="广告位描述" name="content_add" class="form-control">
@@ -224,12 +234,12 @@ if(!empty($_GET['action'])){
                                                     <label>广告位链接地址</label>
                                                     <input placeholder="广告位链接地址" name="url_add" class="form-control">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label>广告图片</label>
-                                                    <input name="image_add" type="file">
-                                                </div>
                                                 <button type="submit" class="btn btn-default">提交</button>
                                             </form>
+                                        <?php
+                                            }
+                                        ?>
+                                            
                                         </div>
                                     </div>
 

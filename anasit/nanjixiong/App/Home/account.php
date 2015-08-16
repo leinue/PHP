@@ -33,7 +33,7 @@
 				<div class="panel-body">
 					<div class="col-md-6">
 						<form enctype="multipart/form-data" method="post" action="index.php?v=account&uid=<?php echo $_GET['uid']; ?>&action=edit_account_profile">
-							<?php loadImageUploader('photo_edit',$defaultImage); ?>
+							<?php echo loadImageUploader('photo_edit',$defaultImage); ?>
 							<div class="form-group">
 				                <label>昵称</label>
 				                <input placeholder="昵称" value="<?php echo $userObj->getName(); ?>" name="name_edit" class="form-control">

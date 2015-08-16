@@ -196,8 +196,9 @@ $uptypes=array(
         'image/x-png'  
     );
 
-function loadImageUploader($image_src_name_control,$image='default.png',$uid=null,$basedir='Cores/'){
-	echo '  <script type="text/javascript">
+function loadImageUploader($image_src_name_control,$image=null,$uid=null,$basedir='Cores/'){
+	$image=$image==null?DOMAIN.'/Cores/default.png':$image;
+	return '  <script type="text/javascript">
    function uploadevent(status,picUrl,callbackdata){
       status += "";
       switch(status){
@@ -206,6 +207,7 @@ function loadImageUploader($image_src_name_control,$image='default.png',$uid=nul
           var filename162 = picUrl+"_162.jpg";
           var filename48 = picUrl+"_48.jpg";
           var filename20 = picUrl+"_20.jpg";
+          console.log($("#'.$image_src_name_control.'"));
           $("#'.$image_src_name_control.'").val(filename162);
        break;
         case "-1":
@@ -218,7 +220,7 @@ function loadImageUploader($image_src_name_control,$image='default.png',$uid=nul
    }
   </script>
   <div class="form-group">
-    <label>昵称</label>
+    <label></label>
     <input style="display:none;" value="'.$image.'" id="'.$image_src_name_control.'" name="'.$image_src_name_control.'" class="form-control">
   </div>
   <OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"

@@ -41,7 +41,7 @@ function displayAvtive($current,$to){
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand" href="#"><img alt="<?php echo $settingObj->get('site_title'); ?>" style="width:161px;height:60px;" src="http://www.nanjixiong.com/template/dean_pink_140929/deancss/logo.png"></a>
+	      <a class="navbar-brand" href="#"><img alt="<?php echo $settingObj->get('site_title'); ?>" style="width:161px;height:60px;" src="<?php echo $settingObj->get('site_logo');  ?>"></a>
 	    </div>
 
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

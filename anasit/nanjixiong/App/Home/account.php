@@ -15,7 +15,8 @@
 		$url=$_POST['url_edit'];
 		$description=$_POST['description_edit'];
 		
-		$usersObj->modify($_GET['uid'],$name,DOMAIN.$photo,$region,$url,$description);			
+		$usersObj->modify($_GET['uid'],$name,DOMAIN.$photo,$region,$url,$description);
+		redirectTo('index.php?v=account&uid='.$_GET['uid']);		
 	}
 
 	$defaultImage=$userObj->getPhoto();

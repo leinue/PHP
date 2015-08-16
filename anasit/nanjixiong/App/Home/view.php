@@ -93,13 +93,18 @@ if(!empty($_GET['action'])){
 											}
 										}
 									}
-									$remarkCount=ceil($remarkCount/$j);
-									for ($i=0; $i < $remarkCount; $i++) { 
-										echo '<span style="color:rgb(253,108,97)" class="glyphicon glyphicon-star"></span>';
+									if($j!==0){
+										$remarkCount=ceil($remarkCount/$j);
+										for ($i=0; $i < $remarkCount; $i++) { 
+											echo '<span style="color:rgb(253,108,97)" class="glyphicon glyphicon-star"></span>';
+										}
+										for ($i=0; $i < 5-$remarkCount; $i++) { 
+											echo '<span style="color:rgb(243,243,243)" class="glyphicon glyphicon-star"></span>';
+										}
+									}else{
+										echo '0点评';
 									}
-									for ($i=0; $i < 5-$remarkCount; $i++) { 
-										echo '<span style="color:rgb(243,243,243)" class="glyphicon glyphicon-star"></span>';
-									}
+									
 								?>
 							</div>
 					</div>

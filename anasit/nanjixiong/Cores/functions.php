@@ -186,6 +186,206 @@ function in_array_i($x,$arr){
     }
 }
 
+$uptypes=array(  
+        'image/jpg',  
+        'image/jpeg',  
+        'image/png',  
+        'image/pjpeg',  
+        'image/gif',  
+        'image/bmp',  
+        'image/x-png'  
+    );
+
+function loadImageUploader($image_src_name_control,$image='default.png',$uid=null,$basedir='Cores/'){
+	echo '  <script type="text/javascript">
+   function uploadevent(status,picUrl,callbackdata){
+      status += "";
+      switch(status){
+        case "1":
+          var time = new Date().getTime();
+          var filename162 = picUrl+"_162.jpg";
+          var filename48 = picUrl+"_48.jpg";
+          var filename20 = picUrl+"_20.jpg";
+          $("#'.$image_src_name_control.'").val(filename162);
+       break;
+        case "-1":
+          window.location.reload();
+        break;
+        default:
+         window.location.reload();
+         break;
+      }
+   }
+  </script>
+  <div class="form-group">
+    <label>昵称</label>
+    <input style="display:none;" value="'.$image.'" id="'.$image_src_name_control.'" name="'.$image_src_name_control.'" class="form-control">
+  </div>
+  <OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+  codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"
+  WIDTH="650" HEIGHT="450" id="myMovieName">
+  <PARAM NAME=movie VALUE="avatar.swf">
+  <PARAM NAME=quality VALUE=high>
+  <PARAM NAME=bgcolor VALUE=#FFFFFF>
+  <param name="flashvars" value="imgUrl='.$image.'&uploadUrl='.$basedir.'/upfile.php?uid='.$uid.'&uploadSrc=false" />
+  <EMBED src="'.$basedir.'/avatar.swf" quality=high bgcolor=#FFFFFF WIDTH="650" HEIGHT="450" wmode="transparent" flashVars="imgUrl='.$image.'&uploadUrl='.$basedir.'/upfile.php'.$uid.'&uploadSrc=false"
+  NAME="myMovieName" ALIGN="" TYPE="application/x-shockwave-flash" allowScriptAccess="always"
+  PLUGINSPAGE="http://www.macromedia.com/go/getflashplayer">
+  </EMBED>
+  </OBJECT>';
+}
+
+function uploadImages($filenameControl){
+
+	alert($filenameControl);
+
+	//上传文件类型列表  
+    $uptypes=array(  
+        'image/jpg',  
+        'image/jpeg',  
+        'image/png',  
+        'image/pjpeg',  
+        'image/gif',  
+        'image/bmp',  
+        'image/x-png'  
+    );  
+      
+    $max_file_size=2000000;     //上传文件大小限制, 单位BYTE  
+    $destination_folder="Commons/uploads/"; //上传文件路径  
+    $watermark=1;      //是否附加水印(1为加水印,其他为不加水印);  
+    $watertype=1;      //水印类型(1为文字,2为图片)  
+    $waterposition=1;     //水印位置(1为左下角,2为右下角,3为左上角,4为右上角,5为居中);  
+    $waterstring="http://www.ivydom.com/";  //水印字符串  
+    $waterimg="xplore.gif";    //水印图片  
+    $imgpreview=1;      //是否生成预览图(1为生成,其他为不生成);  
+    $imgpreviewsize=1/2;    //缩略图比例
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST')  
+    {  
+        if (!is_uploaded_file($_FILES[$filenameControl][tmp_name]))  
+        //是否存在文件  
+        {  
+             return "图片不存在!";  
+        }  
+      
+        $file = $_FILES[$filenameControl];  
+        if($max_file_size < $file["size"])  
+        //检查文件大小  
+        {  
+            return "文件太大!";  
+        }  
+      
+        if(!in_array($file["type"], $uptypes))  
+        //检查文件类型  
+        {  
+            return "文件类型不符!".$file["type"];  
+        }  
+      
+        if(!file_exists($destination_folder))  
+        {  
+            mkdir($destination_folder);  
+        }  
+      
+        $filename=$file["tmp_name"];  
+        $image_size = getimagesize($filename);  
+        $pinfo=pathinfo($file["name"]);  
+        $ftype=$pinfo['extension'];  
+        $destination = $destination_folder.time().".".$ftype;  
+        if (file_exists($destination) && $overwrite != true)  
+        {  
+            return "同名文件已经存在了";
+        }
+      
+        if(!move_uploaded_file ($filename, $destination))  
+        {  
+            return "移动文件出错";
+        }  
+      
+        $pinfo=pathinfo($destination);  
+        $fname=$pinfo[basename];  
+        // echo " <font color=red>已经成功上传</font><br>文件名:  <font color=blue>".$destination_folder.$fname."</font><br>";  
+        // echo " 宽度:".$image_size[0];  
+        // echo " 长度:".$image_size[1];  
+        // echo "<br> 大小:".$file["size"]." bytes";  
+      
+        if($watermark==1)  
+        {  
+            $iinfo=getimagesize($destination,$iinfo);  
+            $nimage=imagecreatetruecolor($image_size[0],$image_size[1]);  
+            $white=imagecolorallocate($nimage,255,255,255);  
+            $black=imagecolorallocate($nimage,0,0,0);  
+            $red=imagecolorallocate($nimage,255,0,0);  
+            imagefill($nimage,0,0,$white);  
+            switch ($iinfo[2])  
+            {  
+                case 1:  
+                $simage =imagecreatefromgif($destination);  
+                break;  
+                case 2:  
+                $simage =imagecreatefromjpeg($destination);  
+                break;  
+                case 3:  
+                $simage =imagecreatefrompng($destination);  
+                break;  
+                case 6:  
+                $simage =imagecreatefromwbmp($destination);  
+                break;  
+                default:  
+                return "不支持的文件类型";
+            }  
+      
+            imagecopy($nimage,$simage,0,0,0,0,$image_size[0],$image_size[1]);  
+            imagefilledrectangle($nimage,1,$image_size[1]-15,80,$image_size[1],$white);  
+      
+            switch($watertype)  
+            {  
+                case 1:   //加水印字符串  
+                imagestring($nimage,2,3,$image_size[1]-15,$waterstring,$black);  
+                break;  
+                case 2:   //加水印图片  
+                $simage1 =imagecreatefromgif("xplore.gif");  
+                imagecopy($nimage,$simage1,0,0,0,0,85,15);  
+                imagedestroy($simage1);  
+                break;  
+            }  
+      
+            switch ($iinfo[2])  
+            {  
+                case 1:  
+                //imagegif($nimage, $destination);  
+                imagejpeg($nimage, $destination);  
+                break;  
+                case 2:  
+                imagejpeg($nimage, $destination);  
+                break;  
+                case 3:  
+                imagepng($nimage, $destination);  
+                break;  
+                case 6:  
+                imagewbmp($nimage, $destination);  
+                //imagejpeg($nimage, $destination);  
+                break;  
+            }  
+      
+            //覆盖原上传文件  
+            imagedestroy($nimage);  
+            imagedestroy($simage);  
+        }  
+      
+        // if($imgpreview==1)  {  
+        // 	echo "<br>图片预览:<br>";  
+        // 	echo "<img src=\"".$destination."\" width=".($image_size[0]*$imgpreviewsize)." height=".($image_size[1]*$imgpreviewsize);  
+        // 	echo " alt=\"图片预览:\r文件名:".$destination."\r上传时间:\">";  
+        // }
+
+        $result=array();
+        array_push($result,$destination);
+
+        return $result;
+    }
+
+}
+
 function tips($tips){
     return $tips==null?'':'<p class="help-block">'.$tips.'</p>';
 }

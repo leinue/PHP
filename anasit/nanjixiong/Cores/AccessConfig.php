@@ -21,7 +21,7 @@ class AccessConfig{
             if($this->isConfigExists($this->wholePath)){
 	            $config = require $this->wholePath;
 	            $this->configs[$key] = $config;
-	            return $this->configs[$key];
+            return $this->configs[$key];
             }else{
             	return false;
             }

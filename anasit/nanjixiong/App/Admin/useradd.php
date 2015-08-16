@@ -109,6 +109,14 @@ if(!empty($_GET['action']) && !empty($_GET['foid'])){
             $filedOption->setVisible($foid);
             $prompt=success('置可视成功,请点击左侧菜单栏重新载入');
             break;
+        case 'set_as_front_photo':
+            $filedOption->setAsFrontPhoto($foid);
+            $prompt=success('设为前台显示头像成功,请点击左侧菜单栏重新载入');
+            break;
+        case 'set_as_front_desc':
+            $filedOption->setAsFrontDesc($foid);
+            $prompt=success('设为前台显示描述成功,请点击左侧菜单栏重新载入');
+            break;
         default:
             break;
     }
@@ -196,8 +204,13 @@ if(!empty($_GET['action'])){
                                                                 $from=$value->getRangeFrom()==='0'?'无':$value->getRangeFrom();
                                                                 $to=$value->getRangeTo()==='0'?'无':$value->getRangeTo();
                                                                 $unit=$value->getRangeUnit()==='0'?'无':$value->getRangeUnit();
+                                                               
                                                                 $visibleBtnName=$value->getVisible()==='1'?'置不可视':'置可视';
                                                                 $visileBtnRequest=$value->getVisible()==='1'?'admin.php?v='.$_GET['v'].'&action=set_no_visible&foid='.$value->getFoid():'admin.php?v='.$_GET['v'].'&action=set_visible&foid='.$value->getFoid();
+                                                                
+                                                                $frontPhotoBtn=$value->isPhoto()==='1'?'':'<a href="admin.php?v='.$_GET['v'].'&action=set_as_front_photo&foid='.$value->getFoid().'" class="btn btn-sm btn-primary">设为前台显示头像</a>';
+                                                                $frontDescBtn=$value->isDesc()==='1'?'':'<a href="admin.php?v='.$_GET['v'].'&action=set_as_front_desc&foid='.$value->getFoid().'" class="btn btn-sm btn-primary">设为前台显示描述</a>';
+
                                                                 echo '<tr>
                                                                     <td>'.$j.'</td>
                                                                     <td>'.$name.'</td>
@@ -210,6 +223,8 @@ if(!empty($_GET['action'])){
                                                                     <td>
                                                                         <a href="admin.php?v='.$_GET['v'].'&action=edit_field&foid='.$value->getFoid().'" class="btn btn-sm btn-primary">编辑</a>
                                                                         <a href="'.$visileBtnRequest.'" class="btn btn-sm btn-primary">'.$visibleBtnName.'</a>
+                                                                        '.$frontPhotoBtn.'
+                                                                        '.$frontDescBtn.'
                                                                         <a href="admin.php?v='.$_GET['v'].'&action=delete_field&foid='.$value->getFoid().'" class="btn btn-sm btn-danger">删除</a>
                                                                     </td>
                                                                 </tr>';

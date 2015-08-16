@@ -13,6 +13,8 @@ class FieldsOptions{
 	protected $rangeTo;
 	protected $rangeUnit;
 	protected $visible;
+	protected $isPhoto;
+	protected $isDesc;
 
 	function getFoid(){return $this->foid;}
 	function getName(){return $this->name;}
@@ -23,6 +25,8 @@ class FieldsOptions{
 	function getRangeTo(){return $this->rangeTo;}
 	function getRangeUnit(){return $this->rangeUnit;}
 	function getVisible(){return $this->visible;}
+	function isPhoto(){return $this->isPhoto;}
+	function isDesc(){return $this->isDesc;}
 
 }
 

@@ -59,6 +59,36 @@ class FieldsOptionsModel{
 		return self::$model->getDatabase()->execute("UPDATE `njx_fields_options` SET `visible`=? WHERE `foid`=?",array('0',$foid));
 	}
 
+	function getFieldFrontPhoto(){
+		return self::$model->getDatabase()->query("SELECT * FROM `njx_fields_options` WHERE `isPhoto`=1");
+	}
+
+	function getFieldDesc(){
+		return self::$model->getDatabase()->query("SELECT * FROM `njx_fields_options` WHERE `isDesc`=1");
+	}
+
+	function modifyFieldFrontPhoto($foid,$value){
+		return self::$model->getDatabase()->execute("UPDATE `njx_fields_options` SET `isPhoto`=? WHERE `foid`=?",array($value,$foid));
+	}
+
+	function modifyFieldFrontDesc($foid,$value){
+		return self::$model->getDatabase()->execute("UPDATE `njx_fields_options` SET `isDesc`=? WHERE `foid`=?",array($value,$foid));
+	}
+
+	function setAsFrontPhoto($foid){
+		$currentField=$this->getFieldFrontPhoto();
+		$id=$currentField[0]['foid'];
+		$this->modifyFieldFrontPhoto($id,0);
+		$this->modifyFieldFrontPhoto($foid,1);
+	}
+
+	function setAsFrontDesc($foid){
+		$currentField=$this->getFieldDesc();
+		$id=$currentField[0]['foid'];
+		$this->modifyFieldFrontDesc($id,0);
+		$this->modifyFieldFrontDesc($foid,1);
+	}
+
 }
 
 ?>

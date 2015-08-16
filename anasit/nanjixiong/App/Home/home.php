@@ -107,9 +107,13 @@
 								// print_r($cataList);
 								$filedObj=new Cores\Models\FieldsModel();
 								$filedOptionObj=new Cores\Models\FieldsOptionsModel();
+
+								$frontPhoto=$filedOptionObj->getFieldFrontPhoto();
+								$frontDesc=$filedOptionObj->getFieldDesc();
+
 								$itemsObj=new Cores\Models\ItemsModel();
 								$allItems=$itemsObj->selectAll();
-								$allFields=$filedObj->selectAll();
+								
 								if(is_array($allItems)){
 									foreach ($allItems as $itemKey => $itemValue) {
 										$jsonItemCaid=$itemValue->getCaid();
@@ -117,6 +121,8 @@
 										$jsonItemCaid=json_decode($jsonItemCaid);
 										$queryId=$_GET['view_type_id']=='all'?$_GET['caid']:$_GET['view_type_id'];
 										if($jsonItemCaid!==null && $itemValue->getStatus()==='1' && stristr($jsontmp,$queryId) && stristr($jsontmp,$_GET['caid'])){
+											$allFields=$filedObj->getByItemId($itemValue->getIid());
+											// print($itemValue->getIid());
 											if(is_array($allFields)){
 												array_shift($jsonItemCaid);
 
@@ -131,17 +137,29 @@
 
 												}
 
+												$frontPhotoSrc='';
+												$frontDescContent='';
+
+												foreach ($allFields as $fKey => $fValue) {
+													if($fValue['foid']==$frontPhoto[0]['foid']){
+														$frontPhotoSrc=$fValue['value'];
+													}
+													if($fValue['foid']==$frontDesc[0]['foid']){
+														$frontDescContent=$fValue['value'];
+													}
+												}
+
 												echo '<tr>
 											          <td>
 														<div class="media">
 														  <div class="media-left">
 														    <a href="#">
-														      <img class="media-object" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNGYyYmJiZGE4YyB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE0ZjJiYmJkYThjIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMi41IiB5PSIzNi44Ij42NHg2NDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" alt="...">
+														      <img class="media-object" src="'.$frontPhotoSrc.'" alt="'.$itemValue->getTitle().'">
 														    </a>
 														  </div>
 														  <div class="media-body">
 														    <h4 class="media-heading"><a href="index.php?v=view&iid='.$itemValue->getIid().'&uid='.$itemValue->getuid().'">'.$itemValue->getTitle().'</a></h4>
-														    </div>
+														    '.$frontDescContent.'</div>
 														</div>
 											          </td>
 											          '.$secondListField.'

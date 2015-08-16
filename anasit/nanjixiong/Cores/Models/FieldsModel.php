@@ -25,7 +25,7 @@ class FieldsModel{
 		if($itemId==null){
 			return false;
 		}
-		return self::$model->getDatabase()->query("SELECT * FROM `njx_fields` WHERE `itemId`=$itemId");
+		return self::$model->getDatabase()->query("SELECT * FROM `njx_fields` WHERE `itemId`='$itemId'");
 	}
 
 	function add($foid,$value,$itemId){

@@ -205,7 +205,6 @@ function loadImageUploader($image_src_name_control,$image=null,$uid=null,$basedi
 
       switch(status){
         case "1":
-          alert("dssd");
           var time = new Date().getTime();
           var filename162 = picUrl+"_162.jpg";
           var filename48 = picUrl+"_48.jpg";

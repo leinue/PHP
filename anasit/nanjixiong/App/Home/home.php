@@ -142,7 +142,7 @@
 
 												foreach ($allFields as $fKey => $fValue) {
 													if($fValue['foid']==$frontPhoto[0]['foid']){
-														$frontPhotoSrc=$fValue['value'];
+														$frontPhotoSrc=DOMAIN.$fValue['value'];
 													}
 													if($fValue['foid']==$frontDesc[0]['foid']){
 														$frontDescContent=$fValue['value'];
@@ -154,7 +154,7 @@
 														<div class="media">
 														  <div class="media-left">
 														    <a href="#">
-														      <img class="media-object" src="'.$frontPhotoSrc.'" alt="'.$itemValue->getTitle().'">
+														      <img width="60" height="60" class="media-object" src="'.$frontPhotoSrc.'" alt="'.$itemValue->getTitle().'">
 														    </a>
 														  </div>
 														  <div class="media-body">

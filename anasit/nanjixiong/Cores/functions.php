@@ -428,13 +428,17 @@ function textarea($name,$name_control,$id,$tips,$value=null){
     // alert($ueid);
     return '<div class="form-group">
                 <label>'.$name.'</label>
-                <textarea style="display:none" class="form-control" placeholder='.$name.' id="'.$id.'" name="'.$name_control.'" value="'.$value.'"></textarea>
+                <!--<textarea style="display:none" class="form-control" placeholder='.$name.' id="'.$id.'" name="'.$name_control.'" value="'.$value.'"></textarea>-->
                 '.$tips.'
-                <script type="text/plain" id="'.$ueid.'" style="width:100%;height:240px;">
+                <script type="text/plain" id="'.$ueid.'" name="'.$name_control.'" style="width:100%;height:240px;">
 				    <p>'.$value.'</p>
 				</script>
 				<script>
 					var um = UM.getEditor(\''.$ueid.'\');
+					um.addListener(\'onkeyup\',function(){
+				        alert(\'ddd\');
+				        console.log("dssdsd	");
+				    });
 				</script>
             </div>';
 }

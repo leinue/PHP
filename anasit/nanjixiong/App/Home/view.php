@@ -136,7 +136,7 @@ if(!empty($_GET['action'])){
 								$optionName=$fieldOptionsObj->selectOne($value['foid']);
 								if($optionName[0]->getType()!='textarea' && $optionName[0]->getVisible()==='1'){
 									// echo $optionName[0]->getName();echo $value['value'];
-									$citePost=$optionName[0]->getType()=='img'?'<img width="80" height="80" src="'.$value['value'].'" >':$value['value'];
+									$citePost=$optionName[0]->getType()=='img'?'<img width="80" height="80" src="'.DOMAIN.'/Cores/'.$value['value'].'" >':$value['value'];
 									echo '<blockquote>
 										  <p>'.$optionName[0]->getName().'</p>
 										  <footer style="background:rgb(255,255,255)!important;">'.$citePost.'</footer>
@@ -158,7 +158,7 @@ if(!empty($_GET['action'])){
 								echo '<div class="panel panel-default">
 									 	<div class="panel-heading">'.$optionName[0]->getName().'</div>
 										<div class="panel-body">
-											'.$filedList['value'].'
+											'.$value['value'].'
 										</div>
 									</div>';
 							}

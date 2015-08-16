@@ -26,8 +26,20 @@
 	<script src="<?php echo DOMAIN; ?>/App/Home/js/jquery.js"></script>
 	<script src="<?php echo DOMAIN; ?>/App/Home/ex/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
+
 		$('.float-comp .ele-model a:first-child').click(function(){
 			$('html, body').animate({scrollTop:0}, 'fast');
+		});
+
+		$('#comments_publish span').click(function(){
+			var lvl=$(this).index();
+			$.get('App/Home/ajax/exe.php?action=add_remark&level='+lvl+'&iid=<?php echo $_GET["iid"] ?>',function(res){
+				if(res=='-1'){
+					alert('提交失败,请检查网络连接');
+				}else{
+					alert("提交成功,你提交了"+lvl+"分");
+				}
+			});
 		});
 	</script>
 

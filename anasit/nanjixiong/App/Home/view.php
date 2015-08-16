@@ -78,13 +78,30 @@ if(!empty($_GET['action'])){
 						<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
 						
 						<div class="comments">
-							<br>评分：
-								<span style="color:rgb(253,108,97)" class="glyphicon glyphicon-star"></span>
-								<span style="color:rgb(253,108,97)" class="glyphicon glyphicon-star"></span>
-								<span style="color:rgb(253,108,97)" class="glyphicon glyphicon-star"></span>
-								<span style="color:rgb(253,108,97)" class="glyphicon glyphicon-star"></span>
-								<span style="color:rgb(253,108,97)" class="glyphicon glyphicon-star"></span>
-						</div>
+							<br>综合评分：
+								<?php
+									$remarksObj=new Cores\Models\RemarksModel();
+									$res=$remarksObj->selectAll();
+									$remarkCount=0;
+									$j=0;
+									if(is_array($res)){
+										foreach ($res as $key => $value) {
+											if($value->getItemId()==$_GET['iid']){
+												// echo $value->getPoints();
+												$remarkCount+=$value->getPoints();
+												$j++;
+											}
+										}
+									}
+									$remarkCount=ceil($remarkCount/$j);
+									for ($i=0; $i < $remarkCount; $i++) { 
+										echo '<span style="color:rgb(253,108,97)" class="glyphicon glyphicon-star"></span>';
+									}
+									for ($i=0; $i < 5-$remarkCount; $i++) { 
+										echo '<span style="color:rgb(243,243,243)" class="glyphicon glyphicon-star"></span>';
+									}
+								?>
+							</div>
 					</div>
 
 				</div>
@@ -114,6 +131,16 @@ if(!empty($_GET['action'])){
 
 				<div class="panel panel-default">
 					<div class="panel-body">
+						
+						<div style="padding-bottom:15px;padding-top:0;" id="comments_publish" class="comments">
+							<br>评分：
+								<span style="color:rgb(253,108,97)" class="glyphicon glyphicon-star"></span>
+								<span style="color:rgb(253,108,97)" class="glyphicon glyphicon-star"></span>
+								<span style="color:rgb(253,108,97)" class="glyphicon glyphicon-star"></span>
+								<span style="color:rgb(253,108,97)" class="glyphicon glyphicon-star"></span>
+								<span style="color:rgb(253,108,97)" class="glyphicon glyphicon-star"></span>
+						</div>
+
 						<?php
 							$allCommentsObj=$comemntsObj->getAllByItemId($_GET['iid']);
 							if(is_array($allCommentsObj)){
@@ -219,3 +246,7 @@ if(!empty($_GET['action'])){
 		</div>
 
 	</div>
+	
+	<script type="text/javascript">
+
+	</script>

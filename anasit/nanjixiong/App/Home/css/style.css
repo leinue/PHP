@@ -160,7 +160,28 @@ a:active{
 }
 
 .comments{
-	margin-top: 20px;
+	margin-top: 40px;
+}
+
+.comments span{
+	cursor: pointer;
+	font-size: 1.2em;
+}
+
+.comments span:hover{
+	color: rgb(243,243,243)!important;
+}
+
+#comments_publish span{
+	color: rgb(243,243,243)!important;
+}
+
+#comments_publish span:hover{
+	color: rgb(255,94,82)!important;
+}
+
+.comments_active{
+	color: rgb(255,94,82)!important;
 }
 
 /*.container-fluid > .navbar-header{

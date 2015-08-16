@@ -196,19 +196,26 @@ $uptypes=array(
         'image/x-png'  
     );
 
-function loadImageUploader($image_src_name_control,$image=null,$uid=null,$basedir='Cores/'){
+function loadImageUploader($image_src_name_control,$image=null,$uid=null,$basedir=null){
 	$image=$image==null?DOMAIN.'/Cores/default.png':$image;
+	$basedir=$basedir==null?DOMAIN.'/Cores/':$basedir;
 	return '  <script type="text/javascript">
    function uploadevent(status,picUrl,callbackdata){
       status += "";
+
       switch(status){
         case "1":
+          alert("dssd");
           var time = new Date().getTime();
           var filename162 = picUrl+"_162.jpg";
           var filename48 = picUrl+"_48.jpg";
           var filename20 = picUrl+"_20.jpg";
-          console.log($("#'.$image_src_name_control.'"));
-          $("#'.$image_src_name_control.'").val(filename162);
+          // console.log($("#'.$image_src_name_control.'"));
+          // localStorage.imageUploaderFileName=filename162;
+          // alert(filename162);
+          // alert(localStorage.imageUploaderFileName);
+          // $("#'.$image_src_name_control.'").val(filename162);
+          document.getElementById("'.$image_src_name_control.'").value=filename162;
        break;
         case "-1":
           window.location.reload();
@@ -405,9 +412,15 @@ function img_($name,$name_control,$id,$tips=null,$value=null){
     $tips=tips($tips);
     return '<div class="form-group">
                 <label>'.$name.'</label>
-                <input id="'.$id.'" name="'.$name_control.'" value="'.$value.'" type="file">
+                <input id="'.$id.'" name="'.$name_control.'" value="'.$value.'" class="form-control" type="text">
                 '.$tips.'
-            </div>';
+                <!--<img src="" id="img_'.$id.'" width="100" height="100" />-->
+            </div>
+            <script>
+            	localStorage.currentImageId=\''.$name_control.'\';
+            	localStorage.currentImageSrc=\''.$value.'\';
+            </script>
+            <a href="javascript:var a=window.open(\''.DOMAIN.'/Cores/widgets/image_uploader.php\',\'_blank\',\'height=500px,width=750px,menubar=no,titlebar=no,scrollbar=no,toolbar=no,status=no,location=no,resizable=no\');" class="btn btn-sm btn-default">上传图片</a>';
 }
 
 function textarea($name,$name_control,$id,$tips,$value=null){

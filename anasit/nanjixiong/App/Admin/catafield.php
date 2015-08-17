@@ -120,7 +120,7 @@ if(!empty($_GET['cata_to_down'])){
 
     $cataObj=new Cores\Models\CataModel();
     $cataObj->downCata($_GET['cata_to_down']);
-    $tips=success('提级失败');
+    $tips=success('提级成功');
 }
 
 ?>

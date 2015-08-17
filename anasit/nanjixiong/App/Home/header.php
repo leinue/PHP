@@ -2,6 +2,17 @@
 
 $settingObj=new Cores\Models\SettingModel();
 
+if(!empty($_GET['action'])){
+	switch ($_GET['action']) {
+		case 'logout':
+			session_unset();
+			session_destroy();
+			break;
+		default:
+			break;
+	}
+}
+
 $view=$_GET['v'];
 $caid='';
 
@@ -92,6 +103,8 @@ function displayAvtive($current,$to){
 	        <?php 
 	        	if(empty($_SESSION['username'])){
 	        		echo '<li><a href="login.php">登录</a></li>';
+	        	}else{
+	        		echo '<li><a href="index.php?action=logout">退出</a></li>';
 	        	}
 	        ?>
 	      </ul>

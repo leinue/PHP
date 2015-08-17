@@ -1,5 +1,9 @@
 <?php
 	
+	if(empty($_SESSION['username'])){
+		redirectTo('login.php');
+	}
+
 	if(empty($_GET['uid'])){
 		redirectTo('index.php?v=home');
 	}

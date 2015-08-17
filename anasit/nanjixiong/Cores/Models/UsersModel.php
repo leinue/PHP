@@ -91,6 +91,24 @@ class UsersModel{
 		return self::$model->getDatabase()->query("SELECT * FROM `njx_users` WHERE `discuzId`='$username'");
 	}
 
+	function setAdmin($uid){
+		
+		if($uid==null){
+			return false;
+		}
+
+		return self::$model->getDatabase()->execute("UPDATE `njx_users` SET `privilege`=0 WHERE `uid`='$uid'");
+	}
+
+	function setNoAdmin($uid){
+		if($uid==null){
+			return false;
+		}
+
+		return self::$model->getDatabase()->execute("UPDATE `njx_users` SET `privilege`=1 WHERE `uid`='$uid'");
+
+	}
+
 }
 
 ?>

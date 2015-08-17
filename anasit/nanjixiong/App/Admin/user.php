@@ -82,6 +82,14 @@ if(!empty($_GET['action']) && !empty($_GET['uid'])){
         case 'view_user_item':
             $prompt=printUserItems($usersModel,$page,$uid);
             break;
+        case 'set_admin':
+            $usersModel->setAdmin($uid);
+            $prompt=success('设为管理员成功');
+            break;
+        case 'set_no_admin':
+            $usersModel->setNoAdmin($uid);
+            $prompt=success('取消管理员成功');
+            break;
         default:
             break;
     }
@@ -137,6 +145,10 @@ if(!empty($_GET['action']) && !empty($_GET['uid'])){
                                                         $btnName=$value['privilege']==='9'?'解封':'封禁';
                                                         $block=$value['privilege']==='9'?'deblock_user':'block_user';
                                                         $blockBtn='';
+
+                                                        $adminBtn=$value['privilege']!=='0'?'设为管理员':'取消管理员';
+                                                        $adminBtnRequest=$value['privilege']==='0'?'set_no_admin':'set_admin';
+
                                                         if($value['privilege']!='0'){
                                                             $blockBtn='<a href="admin.php?v='.$_GET['v'].'&action='.$block.'&uid='.$value['uid'].'&page='.$page.'" class="btn btn-sm btn-danger">'.$btnName.'</a>';
                                                         }else{
@@ -149,6 +161,7 @@ if(!empty($_GET['action']) && !empty($_GET['uid'])){
                                                                 <td>'.$value['createTime'].'</td>
                                                                 <td>
                                                                     <a href="admin.php?v='.$_GET['v'].'&action=view_user_item&uid='.$value['uid'].'&page='.$page.'" class="btn btn-sm btn-primary">查看投稿</a>
+                                                                    <a href="admin.php?v='.$_GET['v'].'&action='.$adminBtnRequest.'&uid='.$value['uid'].'&page='.$page.'" class="btn btn-sm btn-primary">'.$adminBtn.'</a>
                                                                     '.$blockBtn.'
                                                                 </td>
                                                             </tr>';

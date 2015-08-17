@@ -11,6 +11,7 @@ if(!empty($_GET['action'])){
         $settingObj->set('site_sub_title',$_POST['site_sub_title']);
         $settingObj->set('site_admin_title',$_POST['site_admin_title']);
         $settingObj->set('site_logo',$_POST['site_logo']);
+        $settingObj->set('site_footer',$_POST['site_footer']);
         $prompt=success('更新成功');
     }
 }
@@ -62,6 +63,14 @@ $defaultImage=$defaultImage=='0'?null:$defaultImage;
                                                 <label>管理后台标题</label>
                                                 <input placeholder="南极熊" value="<?php  echo $settingObj->get('site_admin_title'); ?>" name="site_admin_title" class="form-control">
                                                 <p class="help-block">作为管理后台的标题</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>前台页脚设置</label>
+                                                <textarea  class="form-control" name="site_footer"><?php  echo $settingObj->get('site_footer'); ?></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>第三方统计平台</label>
+                                                <textarea  class="form-control" name="site_ana"><?php  echo $settingObj->get('site_ana'); ?></textarea>
                                             </div>
                                             <button type="submit" class="btn btn-default">提交</button>
                                         </form>

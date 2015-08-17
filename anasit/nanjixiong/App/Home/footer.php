@@ -8,8 +8,12 @@
 						<p>Developed By <a target="_blank" href="http://ivydom.com">Xieyang</a></p>
 					</div>
 					<div style="padding-right:0;text-align:right" class="col-md-6">
-						<p>南极熊3D打印网</p>
-						<p>© 2011-2015 3D打印第一互动平台</p>
+						<?php
+							echo $settingObj->get('site_footer');
+						?>
+						<div style="display:none">
+							<?php echo $settingObj->get('site_ana'); ?>
+						</div>
 					</div>
 				</div>
 			</div>

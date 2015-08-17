@@ -32,6 +32,8 @@ class RemarksModel{
 			return false;
 		}
 
+		$one=$this->selectOne($itemId);
+		
 		$remarkId=guid();
 		self::$model->getDatabase()->execute("INSERT INTO `njx_remarks` SET `remarkId`=?,`points`=?,`itemId`=?",array($remarkId,$points,$itemId));
 		return $this->selectOne($remarkId);

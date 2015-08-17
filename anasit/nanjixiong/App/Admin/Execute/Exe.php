@@ -103,4 +103,20 @@ if(!empty($_GET['action']) && !empty($_GET['remarkId'])){
     }
 }
 
+if(!empty($_GET['down_this_cata'])){
+
+	$caid=$_GET['down_this_cata'];
+
+	$cataObj=new Cores\Models\CataModel();
+	$cataObj->downCata($caid);
+}
+
+if(!empty($_GET['up_this_cata'])){
+
+	$caid=$_GET['up_this_cata'];
+	$cataObj=new Cores\Models\CataModel();
+	$cataObj->upCata($caid);
+
+}
+
 ?>

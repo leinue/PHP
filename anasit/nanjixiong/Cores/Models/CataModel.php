@@ -15,9 +15,9 @@ class CataModel{
 
 	function selectAll($arr=false){
 		if(!$arr){
-			return self::$model->getDatabase()->query("SELECT * FROM `njx_cata`",[],'Cores\Models\Cata');
+			return self::$model->getDatabase()->query("SELECT * FROM `njx_cata` ORDER BY `order` DESC",[],'Cores\Models\Cata');
 		}else{
-			return self::$model->getDatabase()->query("SELECT * FROM `njx_cata`",[]);
+			return self::$model->getDatabase()->query("SELECT * FROM `njx_cata` ORDER BY `order` DESC",[]);
 		}
 	}
 
@@ -30,22 +30,22 @@ class CataModel{
 	}
 
 	function getFieldChild($caid){
-		$tmp=self::$model->query("SELECT `child` FROM `njx_cata` WHERE `caid`='$caid'");
+		$tmp=self::$model->query("SELECT `child` FROM `njx_cata` WHERE `caid`='$caid' ORDER BY `order` DESC");
 		return $tmp[0]['child'];
 	}
 
 	function getFieldParent($caid){
-		$tmp=self::$model->query("SELECT `parent` FROM `njx_cata` WHERE `caid`='$caid'");
+		$tmp=self::$model->query("SELECT `parent` FROM `njx_cata` WHERE `caid`='$caid' ORDER BY `order` DESC");
 		return $tmp[0]['parent'];
 	}
 
 	function getCataChild($parent_id){
-		$tmp=self::$model->query("SELECT * FROM `njx_cata` WHERE `parent`='$parent_id'");
+		$tmp=self::$model->query("SELECT * FROM `njx_cata` WHERE `parent`='$parent_id' ORDER BY `order` DESC");
 		return $tmp;
 	}
 
 	function getParent($caid){
-		return self::$model->getDatabase()->query("SELECT * FROM `njx_cata` WHERE `caid`='$caid'");
+		return self::$model->getDatabase()->query("SELECT * FROM `njx_cata` WHERE `caid`='$caid' ORDER BY `order` DESC");
 	}
 
 	function setChild($caid,$value){
@@ -105,11 +105,11 @@ class CataModel{
 	}
 
 	function getSecond(){
-		return self::$model->getDatabase()->query("SELECT * FROM `njx_cata` WHERE `child`='second'");
+		return self::$model->getDatabase()->query("SELECT * FROM `njx_cata` WHERE `child`='second' ORDER BY `order` DESC");
 	}
 
 	function getCataByName($name){
-		return self::$model->getDatabase()->query("SELECT `caid` FROM `njx_cata` WHERE `name`='$name'");
+		return self::$model->getDatabase()->query("SELECT `caid` FROM `njx_cata` WHERE `name`='$name' ORDER BY `order` DESC");
 	}
 
 	function isNameExists($name){
@@ -132,7 +132,7 @@ class CataModel{
 
 		$currentGuid=guid();
 		
-		$result=self::$model->execute("INSERT INTO `njx_cata` SET `caid`=? ,`name`=? ,`parent`=?,`child`=?",array($currentGuid,$name,$parent,$child));
+		$result=self::$model->execute("INSERT INTO `njx_cata` SET `caid`=? ,`name`=? ,`parent`=?,`child`=?,`visible`=1",array($currentGuid,$name,$parent,$child));
 		return $this->selectOne($currentGuid,$arr);
 	}
 
@@ -156,6 +156,16 @@ class CataModel{
 
 		$result=self::$model->execute("UPDATE `njx_cata` SET `name`=? WHERE `caid`=?",array($name,$caid));
 		return $result;
+	}
+
+	function modifyParent($caid,$parent){
+		
+		if($caid==null || $parent==null){
+			return false;
+		}
+
+		return self::$model->execute("UPDATE `njx_cata` SET `parent`=? WHERE `caid`=?",array($parent,$caid));
+
 	}
 
 	function delete($caid){
@@ -210,6 +220,59 @@ class CataModel{
 			return false;
 		}
 		return self::$model->getDatabase()->execute("UPDATE `njx_cata` SET `fvisible`=1 WHERE `caid`=?",array($caid));
+	}
+
+	function getOrder($caid){
+
+		if($caid==null){
+			return false;
+		}
+
+		return self::$model->getDatabase()->query("SELECT `order` FROM `njx_cata` WHERE `caid`='$caid'");
+	}
+
+	function setOrder($caid,$order){
+
+		if($caid==null || $order==null){
+			return false;
+		}
+
+		return self::$model->getDatabase()->execute("UPDATE `njx_cata` SET `order`=? WHERE `caid`=?",array($order,$caid));
+
+	}
+
+	function getMaxOrder(){
+		return self::$model->getDatabase()->query("SELECT MAX(`order`) AS `max_order` FROM `njx_cata`");
+	}
+
+	function upCata($caid){
+
+		if($caid==null){
+			return false;
+		}
+
+		$maxOrder=$this->getMaxOrder();
+		$maxOrder=$maxOrder[0]['max_order'];
+
+		$thisOrder=$this->getOrder($caid);
+		$thisOrder=$order[0]['order'];
+
+		$orderToSet=$maxOrder+1;
+
+		return self::$model->getDatabase()->execute("UPDATE `njx_cata` SET `order`=$orderToSet WHERE `caid`='$caid'");
+	}
+
+	function downCata($caid){
+		
+		if($caid==null){
+			return null;
+		}
+
+		$thisOrder=$this->getOrder($caid);
+		$thisOrder=$thisOrder[0]['order']-1;
+
+		return self::$model->getDatabase()->execute("UPDATE `njx_cata` SET `order`=$thisOrder WHERE `caid`='$caid'");
+
 	}
 
 }

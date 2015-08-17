@@ -36,13 +36,21 @@
 			$('html, body').animate({scrollTop:0}, 'fast');
 		});
 
+		console.log(localStorage.hasVoted);
+
 		$('#comments_publish span').click(function(){
 			var lvl=$(this).index();
 			$.get('App/Home/ajax/exe.php?action=add_remark&level='+lvl+'&iid=<?php echo $_GET["iid"] ?>',function(res){
 				if(res=='-1'){
 					alert('提交失败,请检查网络连接');
 				}else{
-					alert("提交成功,你提交了"+lvl+"分");
+					var hasVoted=localStorage.hasVoted;
+					if(hasVoted.indexOf('<?php echo $_GET["iid"] ?>')!=-1){
+						alert('请不要重复提交');
+					}else{
+						alert("提交成功,你提交了"+lvl+"分");
+						localStorage.hasVoted+='<?php echo $_GET["iid"]; ?>';
+					}
 				}
 			});
 		});

@@ -4,7 +4,7 @@ $tips='';
 
 if(!empty($_POST['new_cata_name'])){
     $cataObj=new Cores\Models\CataModel();
-    $cataObj->addSecond($_POST['new_cata_name']);
+    $cataObj->addSecond($_POST['new_cata_name'],$_POST['new_top_lvl']);
     $tips=success('添加成功');
 }
 
@@ -54,12 +54,34 @@ if(!empty($_GET['action'])){
     }else{
         $cataObj=new Cores\Models\CataModel();
         $cataObj->modify($_GET['caid'],$_POST['cata_name_edit_text']);
+        $cataObj->modifyParent($_GET['caid'],$_POST['edit_top_lvl']);
     }
 }
 
 if(!empty($_GET['cata_to_edit'])){
     $cataObj=new Cores\Models\CataModel();
     $name=$cataObj->selectOne($_GET['cata_to_edit']);
+    $option='';
+    $allCataObj=$cataObj->selectAll();
+    $firstCaid=array();
+    $parent=$cataObj->getParent($_GET['cata_to_edit']);
+    $parentId=$parent[0]['caid'];
+    if(is_array($allCataObj)){
+        $i=0;
+        foreach ($allCataObj as $key => $value) {
+            if($value->getParent()==='0' && $value->getVisible()==='1'){
+                array_push($firstCaid, $value->getCaid());
+                $active='';
+                if($value->getCaid()==$parentId){
+                    $active='selected';
+                }
+                $option.='<option '.$active.' value="'.$value->getCaid().'">'.$value->getName().'</option>';
+                $i++;
+            }
+        }
+    }else{
+        echo '';
+    }
     $tips='<div role="tabpanel" class="tab-pane" id="edit_cata_field">
                 <div role="tabpanel" class="tab-pane active" id="list">
                     <div style="margin-top:-2px!important;" class="panel panel-default">
@@ -72,6 +94,9 @@ if(!empty($_GET['cata_to_edit'])){
                                     <div class="form-group">
                                         <input placeholder="筛选分类名称" value="'.$name[0]->getName().'" name="cata_name_edit_text" id="cata_name_edit_text" class="form-control">
                                     </div>
+                                    <select name="edit_top_lvl" class="form-control">
+                                        '.$option.'
+                                    </select>
                                 </div>
                                 <div style="text-align:center" class="col-md-2">
                                     <button type="submit" class="btn btn-primary">提交</button>
@@ -81,6 +106,21 @@ if(!empty($_GET['cata_to_edit'])){
                     </div>
                 </div>
             </div>';
+}
+
+if(!empty($_GET['cata_to_up'])){
+
+    $cataObj=new Cores\Models\CataModel();
+    $cataObj->upCata($_GET['cata_to_up']);
+    $tips=success('提级成功');
+
+}
+
+if(!empty($_GET['cata_to_down'])){
+
+    $cataObj=new Cores\Models\CataModel();
+    $cataObj->downCata($_GET['cata_to_down']);
+    $tips=success('提级失败');
 }
 
 ?>
@@ -197,6 +237,9 @@ if(!empty($_GET['cata_to_edit'])){
                 <div class="row">
                     <div class="col-md-12">
                         <?php echo $tips; ?>
+                        <?php
+                            $cataMgr=new Cores\Models\CataModel();
+                        ?>
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 添加筛选分类
@@ -207,6 +250,31 @@ if(!empty($_GET['cata_to_edit'])){
                                         <div class="form-group">
                                             <label>分类名</label>
                                             <input placeholder="南极熊" name="new_cata_name" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>父结点</label>
+                                            <select name="new_top_lvl" class="form-control">
+                                                <?php
+                                                    $allCataObj=$cataMgr->selectAll();
+                                                        if(is_array($allCataObj)){
+                                                            $i=0;
+                                                            $firstCaid=array();
+                                                            foreach ($allCataObj as $key => $value) {
+                                                                if($value->getParent()==='0' && $value->getVisible()==='1'){
+                                                                    array_push($firstCaid, $value->getCaid());
+                                                                    $active='';
+                                                                    if($i===0){
+                                                                        $active='active';
+                                                                    }
+                                                                    echo '<option value="'.$value->getCaid().'">'.$value->getName().'</option>';
+                                                                    $i++;
+                                                                }
+                                                            }
+                                                        }else{
+                                                            echo '';
+                                                        }
+                                                ?>
+                                            </select>
                                         </div>
                                         <button type="submit" class="btn btn-default">提交</button>
                                     </form>
@@ -237,7 +305,6 @@ if(!empty($_GET['cata_to_edit'])){
                                     </thead>
                                     <tbody>
                                     <?php
-                                        $cataMgr=new Cores\Models\CataModel();
                                         $allCataObj=$cataMgr->getSecond();
                                         if(is_array($allCataObj)){
                                             foreach ($allCataObj as $key => $value) {
@@ -252,6 +319,8 @@ if(!empty($_GET['cata_to_edit'])){
                                                         <td>'.$value['name'].'</td>
                                                         <td style="text-align:center">
                                                             <a href="admin.php?v='.$view.'&cata_to_edit='.$value['caid'].'" class="btn btn-primary btn-sm">编辑</a>
+                                                            <a href="admin.php?v='.$view.'&cata_to_up='.$value['caid'].'" class="btn btn-sm btn-primary">向上</a>
+                                                            <a href="admin.php?v='.$view.'&cata_to_down='.$value['caid'].'" class="btn btn-sm btn-primary">向下</a>
                                                             <a href="'.$btnRequest.'" class="btn btn-primary btn-sm">'.$btnName.'</a>
                                                             <a href="'.$frontBtnRequest.'" class="btn btn-primary btn-sm">'.$frontBtnName.'</a>
                                                             <a ref="admin.php?v='.$view.'&cata_to_view='.$value['caid'].'" class="btn btn-primary btn-sm view_cata" data-toggle="modal" data-whatever="'.$value['caid'].'=='.$value['name'].'" data-target=".modal-view-cata">详细</a>

@@ -60,7 +60,7 @@ $('.modal-view-cata').on('show.bs.modal', function (event) {
     		var j=1;
     		for (var i = 0; i < childList.length; i++) {
     			if(childList[i]['child']!='second'){
-    				$('#cata_field_list tbody').append('<tr><td>'+j+'</td><td>'+childList[i]['name']+'</td><td>'+cata_selector_name+'</td><td><a class="btn btn-danger del_rd_lvl" id="cata_rd_lve_del_'+childList[i]['caid']+'" caid="'+childList[i]['caid']+'" onclick="confirmToDel3rdLvlField(this)" href="#">删除</a></td></tr>');
+    				$('#cata_field_list tbody').append('<tr><td>'+j+'</td><td>'+childList[i]['name']+'</td><td>'+cata_selector_name+'</td><td><a style="margin:2px" onclick="upThisCata(this)" caid="'+childList[i]['caid']+'" class="btn btn-primary">向上</a><a style="margin:2px" onclick="downThisCata(this)" caid="'+childList[i]['caid']+'" class="btn btn-primary">向下</a><a style="margin:2px" class="btn btn-danger del_rd_lvl" id="cata_rd_lve_del_'+childList[i]['caid']+'" caid="'+childList[i]['caid']+'" onclick="confirmToDel3rdLvlField(this)" href="#">删除</a></td></tr>');
     				$('#cata_edit_field_list tbody').append('<tr><td>'+j+'</td> <td>'+childList[i]['name']+'</td> <td><input placeholder="这里填写要修改的值" name="cata_field_edit_name" id="cata_field_edit_name_'+childList[i]['caid']+'" class="form-control"></td> <td><a caid="'+childList[i]['caid']+'" onclick="confirmToEdit3rdLvlField(this)" class="btn btn-primary btn-sm edit_third_lvl_field">确认</a></td></tr>');
     				j++;
     			}
@@ -79,6 +79,24 @@ $('.modal-view-cata').on('show.bs.modal', function (event) {
   	}
   });
 });
+
+function downThisCata(obj){
+
+	var caid=$(obj).attr('caid');
+
+	$.get("App/Admin/Execute/Exe.php?down_this_cata="+caid,function(data){
+		alert("成功");
+	});
+
+}
+
+function upThisCata(obj){
+	var caid=$(obj).attr('caid');
+
+	$.get("App/Admin/Execute/Exe.php?up_this_cata="+caid,function(data){
+		alert('成功');
+	});
+}
 
 $('#cata_selector_add').on('click',function(){
 	var name=$('#cata_selector_name').val();

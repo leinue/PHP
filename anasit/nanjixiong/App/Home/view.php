@@ -171,14 +171,29 @@ if(!empty($_GET['action'])){
 				<div class="panel panel-default">
 					<div class="panel-body">
 						
-						<div style="padding-bottom:15px;padding-top:0;" id="comments_publish" class="comments">
-							<br>评分：
-								<span style="color:rgb(253,108,97)" class="glyphicon glyphicon-star"></span>
-								<span style="color:rgb(253,108,97)" class="glyphicon glyphicon-star"></span>
-								<span style="color:rgb(253,108,97)" class="glyphicon glyphicon-star"></span>
-								<span style="color:rgb(253,108,97)" class="glyphicon glyphicon-star"></span>
-								<span style="color:rgb(253,108,97)" class="glyphicon glyphicon-star"></span>
-						</div>
+						<?php
+
+							if(!empty($_SESSION['username'])){
+						?>
+							<div style="padding-bottom:15px;padding-top:0;" id="comments_publish" class="comments">
+								<br>评分：
+									<span style="color:rgb(253,108,97)" class="glyphicon glyphicon-star"></span>
+									<span style="color:rgb(253,108,97)" class="glyphicon glyphicon-star"></span>
+									<span style="color:rgb(253,108,97)" class="glyphicon glyphicon-star"></span>
+									<span style="color:rgb(253,108,97)" class="glyphicon glyphicon-star"></span>
+									<span style="color:rgb(253,108,97)" class="glyphicon glyphicon-star"></span>
+							</div>
+						<?php
+							}else{
+						?>
+									<div style="padding-bottom:15px;padding-top:0;" id="comments_publish" class="comments">
+										<br>请登录后进行评分
+									</div>
+						<?php
+							}
+
+						?>
+						
 
 						<?php
 							$allCommentsObj=$comemntsObj->getAllByItemId($_GET['iid']);

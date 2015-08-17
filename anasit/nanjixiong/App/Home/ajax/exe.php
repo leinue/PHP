@@ -10,6 +10,7 @@
 	foreach ($tmp as $key => $value) {
 		$basedir.=$value.'\\';
 	}
+	
 	define('BASEDIR',$basedir);
 
 	require(BASEDIR.'/Cores/Loader.php');
@@ -19,7 +20,7 @@
 		switch ($_GET['action']) {
 			case 'add_remark':
 
-			alert($_GET['level']);
+			// alert($_GET['level']);
 				
 				if(empty($_GET['level']) || empty($_GET['iid'])){
 					echo "-1";

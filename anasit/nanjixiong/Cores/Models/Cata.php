@@ -9,6 +9,7 @@ class Cata{
 	protected $child;
 	protected $visible;
 	protected $fvisible;
+	protected $order;
 
 	function getCaid(){return $this->caid;}
 	function getName(){return $this->name;}
@@ -16,6 +17,7 @@ class Cata{
 	function getChild(){return $this->child;}
 	function getVisible(){return $this->visible;}
 	function getFVisible(){return $this->fvisible;}
+	function getOrder(){return $this->order;}
 
 }
 

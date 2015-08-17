@@ -82,6 +82,15 @@ class UsersModel{
 		return self::$model->getDatabase()->execute("UPDATE `njx_users` SET `name`=?,`photo`=?,`region`=?,`url`=?,`description`=? WHERE `uid`=?",array($name,$photo,$region,$url,$description,$uid));
 	}
 
+	function userExists($username){
+		
+		if($username==null){
+			return false;
+		}
+
+		return self::$model->getDatabase()->query("SELECT * FROM `njx_users` WHERE `discuzId`='$username'");
+	}
+
 }
 
 ?>

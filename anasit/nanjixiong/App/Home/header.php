@@ -83,9 +83,17 @@ function displayAvtive($current,$to){
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
 	        <li class="<?php echo displayAvtive($view,'publish'); ?>"><a href="index.php?v=publish">发布</a></li>
-	        <li><a href="admin.php">进入后台</a></li>
-	        <li class="<?php echo displayAvtive($view,'account'); ?>"><a href="index.php?v=account&uid=3CEC7A3B-58BD-82B7-E4BA-8849286079BE">帐户</a></li>
-	        <li><a target="_blank" href="admin.php">登录</a></li>
+	        <?php
+	        	if($_SESSION['privilege']==='0'){
+	        		echo '<li><a href="admin.php">进入后台</a></li>';
+	        	}
+	        ?>
+	        <li class="<?php echo displayAvtive($view,'account'); ?>"><a href="index.php?v=account&uid=<?php echo $_SESSION['uid']; ?>">帐户</a></li>
+	        <?php 
+	        	if(empty($_SESSION['username'])){
+	        		echo '<li><a href="login.php">登录</a></li>';
+	        	}
+	        ?>
 	      </ul>
 	    </div>
 	  </div>

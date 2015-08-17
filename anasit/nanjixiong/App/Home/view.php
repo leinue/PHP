@@ -218,7 +218,7 @@ if(!empty($_GET['action'])){
 										$i=0;
 										$top5list=$itemsObj->getTop5();
 										foreach ($top5list as $key => $value) {
-												echo '<tr><td><a href="">'.$value['title'].'</a></tr></td>';
+												echo '<tr><td><a href="index.php?v=view&iid='.$value['iid'].'&uid='.$value['uid'].'">'.$value['title'].'</a></tr></td>';
 										}
 
 									?>
@@ -239,7 +239,7 @@ if(!empty($_GET['action'])){
 										$i=0;
 										foreach ($allItems as $key => $value) {
 											if($i<$itemsCount){
-												echo '<tr><td><a href="">'.$value->getTitle().'</a></tr></td>';												
+												echo '<tr><td><a href="index.php?v=view&iid='.$value->getIid().'&uid='.$value->getUid().'">'.$value->getTitle().'</a></tr></td>';												
 											}
 											$i++;
 										}

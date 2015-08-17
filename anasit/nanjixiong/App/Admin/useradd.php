@@ -265,7 +265,7 @@ if(!empty($_GET['action'])){
                                                         &lt;option value="值1"&gt;值1&lt;/option&gt;<br>
                                                         &lt;option value="值2"&gt;值2&lt;/option&gt;<br>
                                                         &lt;option value="值3"&gt;值3&lt;/option&gt;<br>
-                                                    </p>
+                                                </p>  
                                                 </div>
                                                 <div class="form-group">
                                                     <label>区间from</label>

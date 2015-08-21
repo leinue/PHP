@@ -73,7 +73,7 @@ if(!empty($_GET['action'])){
 						foreach ($filedList as $key => $value) {
 							$optionName=$fieldOptionsObj->selectOne($value['foid']);
 							if($optionName[0]->getType()!='textarea' && $optionName[0]->getVisible()==='1'){
-								$citePost=$optionName[0]->getType()=='img'?'<div style="margin-bottom:15px;" class="col-md-2"><img width="80" height="80" src="'.DOMAIN.'/Cores/'.$value['value'].'" alt="<?php echo $userObj[0]->getName(); ?>" class="img-rounded"></div>':'';
+								$citePost=$optionName[0]->getType()=='img'?'<div style="margin-bottom:15px;" class="col-md-2"><img width="80" height="80" src="'.DOMAIN.'/Cores/'.$value['value'].'" alt="'.$value['value'].'" class="img-rounded"></div>':'';
 								echo $citePost;
 							}
 							if($optionName[0]->isDesc()==='1'){
@@ -89,12 +89,30 @@ if(!empty($_GET['action'])){
 							}
 						}
 
+						$itemCataList=generatorCataList($_GET['iid']);
+
 					?>
 
 					<div style="padding-top:0px" class="col-md-6">
 						<h3 style="margin-top:0;"><?php echo $basicProfileName; ?> <span style="font-size:0.8em;color:rgb(170,170,170)"><?php echo $userTime; ?></span></h3>
-						<h5><?php echo $basicProfileDescription; ?></h5>
-						<p class="text-muted"><span class="glyphicon glyphicon-map-marker"> <?php echo $region; ?></span></p>
+						<h5 style="margin-top:-20px;"><?php echo $basicProfileDescription; ?></h5>
+						<?php
+
+							$itemCata='';
+
+							foreach ($itemCataList as $key => $value) {
+								if(is_array($value)){
+									if($key!=count($itemCataList)-1){
+										$itemCata.=$value[2].',';
+									}else{
+										$itemCata.=$value[2];
+									}
+								}
+							}
+
+							echo '<p class="text-muted"><span class="glyphicon glyphicon-menu-hamburger"> '.$itemCata.'</span></p>';
+
+						?>
 						<p class="text-muted"><span class="glyphicon glyphicon-link"> <a href="<?php echo $itemURL; ?>" target="_blank" ><?php echo $itemURL; ?></a></span></p>
 					</div>
 

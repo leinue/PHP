@@ -463,6 +463,17 @@ function range_($name,$name_control,$id,$tips,$from,$to,$rangeUnit,$value=""){
             </div>';
 }
 
+function generatorCataList($iid){
+
+	$itemsObj=new Cores\Models\ItemsModel();
+	$singleItem=$itemsObj->selectOne($iid);
+	$cataJson=$singleItem[0]->getCaid();
+
+	$cataObj=json_decode($cataJson);
+
+	return $cataObj;
+}
+
 function generatorItemAddingForm($fieldList,$suffix='_add',$action=null,$fill=false){
     if(is_array($fieldList)){
         echo '<div class="col-md-6"><form role="form" method="post" action="'.$action.'&count='.count($fieldList).'">';

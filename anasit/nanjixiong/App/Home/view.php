@@ -10,9 +10,9 @@ if(empty($_GET['iid']) || empty($_GET['uid'])){
 	$usersObj=new Cores\Models\UsersModel();
 	$userObj=$usersObj->selectOne($uid);
 
-	$userTime=$userObj[0]->getCreateTime();
-	$userTime=explode("-", $userTime);
-	$userTime=$userTime[0];
+	// $userTime=$userObj[0]->getCreateTime();
+	// $userTime=explode("-", $userTime);
+	// $userTime=$userTime[0];
 
 	$itemsObj=new Cores\Models\ItemsModel();
 	$allItems=$itemsObj->selectAll();
@@ -52,16 +52,50 @@ if(!empty($_GET['action'])){
 	  	<div class="col-md-10 col-md-offset-1">
 		  	<div class="panel panel-default">
 				<div class="panel-body">
-					
-					<div style="margin-bottom:15px;" class="col-md-2">
-						<img width="100" height="100" src="<?php echo $userObj[0]->getPhoto(); ?>" alt="<?php echo $userObj[0]->getName(); ?>" class="img-rounded">					
-					</div>
+
+					<?php
+
+						$fieldObj=new Cores\Models\FieldsModel();
+						$fieldOptionsObj=new Cores\Models\FieldsOptionsModel();
+
+						$filedList=$fieldObj->getByItemId($_GET['iid']);
+
+					?>
+
+					<?php
+
+						$basicProfileName='';
+						$basicProfileDescription='';
+						$userTime='';
+						$region='';
+						$itemURL='';
+
+						foreach ($filedList as $key => $value) {
+							$optionName=$fieldOptionsObj->selectOne($value['foid']);
+							if($optionName[0]->getType()!='textarea' && $optionName[0]->getVisible()==='1'){
+								$citePost=$optionName[0]->getType()=='img'?'<div style="margin-bottom:15px;" class="col-md-2"><img width="80" height="80" src="'.DOMAIN.'/Cores/'.$value['value'].'" alt="<?php echo $userObj[0]->getName(); ?>" class="img-rounded"></div>':'';
+								echo $citePost;
+							}
+							if($optionName[0]->isDesc()==='1'){
+								$basicProfileDescription=$value['value'];
+								$basicProfile=$itemsObj->selectOne($value['itemId']);
+								$basicProfileName=$basicProfile[0]->getTitle();
+								$userTime=$basicProfile[0]->getModifyTime();
+								$userTime=explode("-", $userTime);
+								$userTime=$userTime[0];
+							}
+							if($optionName[0]->isRegion()==='1'){
+								$itemURL=$value['value'];
+							}
+						}
+
+					?>
 
 					<div style="padding-top:0px" class="col-md-6">
-						<h3 style="margin-top:0;"><?php echo $userObj[0]->getName(); ?> <span style="font-size:0.8em;color:rgb(170,170,170)"><?php echo $userTime; ?></span></h3>
-						<h5><?php echo $userObj[0]->getDescription(); ?></h5>
-						<p class="text-muted"><span class="glyphicon glyphicon-map-marker"> <?php echo $userObj[0]->getRegion(); ?></span></p>
-						<p class="text-muted"><span class="glyphicon glyphicon-link"> <a href="<?php echo $userObj[0]->getUrl(); ?>" target="_blank" ><?php echo $userObj[0]->getUrl(); ?></a></span></p>
+						<h3 style="margin-top:0;"><?php echo $basicProfileName; ?> <span style="font-size:0.8em;color:rgb(170,170,170)"><?php echo $userTime; ?></span></h3>
+						<h5><?php echo $basicProfileDescription; ?></h5>
+						<p class="text-muted"><span class="glyphicon glyphicon-map-marker"> <?php echo $region; ?></span></p>
+						<p class="text-muted"><span class="glyphicon glyphicon-link"> <a href="<?php echo $itemURL; ?>" target="_blank" ><?php echo $itemURL; ?></a></span></p>
 					</div>
 
 					<div class="col-md-4">
@@ -127,27 +161,6 @@ if(!empty($_GET['action'])){
 					$filedList=$fieldObj->getByItemId($_GET['iid']);
 				?>
 
-				<div class="panel panel-default">
-				 	<div class="panel-heading">总览</div>
-					<div class="panel-body">
-						<?php
-
-							foreach ($filedList as $key => $value) {
-								$optionName=$fieldOptionsObj->selectOne($value['foid']);
-								if($optionName[0]->getType()!='textarea' && $optionName[0]->getVisible()==='1'){
-									// echo $optionName[0]->getName();echo $value['value'];
-									$citePost=$optionName[0]->getType()=='img'?'<img width="80" height="80" src="'.DOMAIN.'/Cores/'.$value['value'].'" >':$value['value'];
-									echo '<blockquote>
-										  <p>'.$optionName[0]->getName().'</p>
-										  <footer style="background:rgb(255,255,255)!important;">'.$citePost.'</footer>
-										</blockquote>';
-								}
-							}
-
-						?>
-					</div>
-				</div>
-
 				<style type="text/css">
 					.textarea-field{
 						word-break:break-all;
@@ -210,11 +223,11 @@ if(!empty($_GET['action'])){
 											<strong>'.$value->getCreateTime().'</strong>
 											<p>'.$value->getContent().'</p>
 										</div>';
-								}								
+								}
 							}
 						?>
 						<form method="post" action="index.php?v=view&uid=<?php echo $_GET['uid'] ?>&iid=<?php echo $_GET['iid']; ?>&action=submit_comments">
-							<textarea class="form-control" name="comments_content" rows="10"></textarea>
+							<textarea class="form-control" name="comments_content" rows="4"></textarea>
 							<div style="padding-top:15px;text-align:right">
 								<input type="submit" value="提交" class="btn btn-primary">
 							</div>

@@ -75,6 +75,10 @@ class FieldsOptionsModel{
 		return self::$model->getDatabase()->execute("UPDATE `njx_fields_options` SET `isDesc`=? WHERE `foid`=?",array($value,$foid));
 	}
 
+	function modifyField($foid,$field,$value){
+		return self::$model->getDatabase()->execute("UPDATE `njx_fields_options` SET `$field`=? WHERE `foid`=?",array($value,$foid));
+	}
+
 	function setAsFrontPhoto($foid){
 		$currentField=$this->getFieldFrontPhoto();
 		$id=$currentField[0]['foid'];
@@ -87,6 +91,13 @@ class FieldsOptionsModel{
 		$id=$currentField[0]['foid'];
 		$this->modifyFieldFrontDesc($id,0);
 		$this->modifyFieldFrontDesc($foid,1);
+	}
+
+	function setAsFrontRegion($foid){
+		$currentField=$this->getFieldDesc();
+		$id=$currentField[0]['foid'];
+		$this->modifyField($id,'isRegion',0);
+		$this->modifyField($foid,'isRegion',1);
 	}
 
 	function getNameByFoid($foid){

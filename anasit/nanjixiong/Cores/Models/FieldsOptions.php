@@ -15,6 +15,7 @@ class FieldsOptions{
 	protected $visible;
 	protected $isPhoto;
 	protected $isDesc;
+	protected $isRegion;
 
 	function getFoid(){return $this->foid;}
 	function getName(){return $this->name;}
@@ -27,6 +28,7 @@ class FieldsOptions{
 	function getVisible(){return $this->visible;}
 	function isPhoto(){return $this->isPhoto;}
 	function isDesc(){return $this->isDesc;}
+	function isRegion(){return $this->isRegion;}
 
 }
 

@@ -117,6 +117,10 @@ if(!empty($_GET['action']) && !empty($_GET['foid'])){
             $filedOption->setAsFrontDesc($foid);
             $prompt=success('设为前台显示描述成功,请点击左侧菜单栏重新载入');
             break;
+        case 'set_as_front_region':
+            $filedOption->setAsFrontRegion($foid);
+            $prompt=success('设为前台显示URL成功,请点击左侧菜单栏重新载入');
+            break;
         default:
             break;
     }
@@ -208,8 +212,10 @@ if(!empty($_GET['action'])){
                                                                 $visibleBtnName=$value->getVisible()==='1'?'置不可视':'置可视';
                                                                 $visileBtnRequest=$value->getVisible()==='1'?'admin.php?v='.$_GET['v'].'&action=set_no_visible&foid='.$value->getFoid():'admin.php?v='.$_GET['v'].'&action=set_visible&foid='.$value->getFoid();
                                                                 
-                                                                $frontPhotoBtn=$value->isPhoto()==='1'?'':'<a href="admin.php?v='.$_GET['v'].'&action=set_as_front_photo&foid='.$value->getFoid().'" class="btn btn-sm btn-primary">设为前台显示头像</a>';
-                                                                $frontDescBtn=$value->isDesc()==='1'?'':'<a href="admin.php?v='.$_GET['v'].'&action=set_as_front_desc&foid='.$value->getFoid().'" class="btn btn-sm btn-primary">设为前台显示描述</a>';
+                                                                $frontPhotoBtn=$value->isPhoto()==='1'?'':'<a href="admin.php?v='.$_GET['v'].'&action=set_as_front_photo&foid='.$value->getFoid().'" class="btn btn-sm btn-primary">设为头像</a>';
+                                                                $frontDescBtn=$value->isDesc()==='1'?'':'<a href="admin.php?v='.$_GET['v'].'&action=set_as_front_desc&foid='.$value->getFoid().'" class="btn btn-sm btn-primary">设为描述</a>';
+
+                                                                $frontRegionBtn=$value->isRegion()==='1'?'':'<a href="admin.php?v='.$_GET['v'].'&action=set_as_front_region&foid='.$value->getFoid().'" class="btn btn-sm btn-primary">设为URL</a>';
 
                                                                 echo '<tr>
                                                                     <td>'.$j.'</td>
@@ -225,6 +231,7 @@ if(!empty($_GET['action'])){
                                                                         <a href="'.$visileBtnRequest.'" class="btn btn-sm btn-primary">'.$visibleBtnName.'</a>
                                                                         '.$frontPhotoBtn.'
                                                                         '.$frontDescBtn.'
+                                                                        '.$frontRegionBtn.'
                                                                         <a href="admin.php?v='.$_GET['v'].'&action=delete_field&foid='.$value->getFoid().'" class="btn btn-sm btn-danger">删除</a>
                                                                     </td>
                                                                 </tr>';

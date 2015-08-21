@@ -11,7 +11,7 @@ function C($key=null,$value=null){
 		return false;
 	}
 
-	$c=new Cores\AccessConfig(BASEDIR.'/Cores/configs');
+	$c=new Cores\AccessConfig(BASEDIR.'/Cores/Configs');
 
 	if($value==null){
 		return $c->offsetGet($key);

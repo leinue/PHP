@@ -155,14 +155,14 @@ class ItemsModel{
 		return self::$model->getDatabase()->query("SELECT * FROM `njx_items` ORDER BY `commentsCount` LIMIT 5");
 	}
 
-	// function modify($iid,$value){
+	function modify($iid,$caid,$title){
 
-	// 	if($oid==null || $value==null){
-	// 		return false;
-	// 	}
+		if($iid==null || $caid==null || $title==null){
+			return false;
+		}
 
-	// 	return self::$model->getDatabase()->execute("UPDATE `njx_items` SET `value`=? WHERE `oid`=?",array($value,$oid));
-	// }
+		return self::$model->getDatabase()->execute("UPDATE `njx_items` SET `caid`=?, `title`=? WHERE `iid`=?",array($caid,$title,$iid));
+	}
 }
 
 ?>

@@ -9,7 +9,7 @@
             case 'add_new_item':
                 $itemObj=new Cores\Models\ItemsModel();
                 $cataObj=new Cores\Models\CataModel();
-                $uid='3CEC7A3B-58BD-82B7-E4BA-8849286079BE';
+                $uid=$_SESSION['uid'];
                 $caid=$_POST['item_cata_add'];
                 $caidList=array();
                 $rdValueList=array();

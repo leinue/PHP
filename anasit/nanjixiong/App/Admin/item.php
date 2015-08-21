@@ -57,6 +57,74 @@ if(!empty($_GET['action']) && !empty($_GET['iid'])){
             $result=$itemsObj->delete($iid);
             $prompt=success('删除成功');
             break;
+        case 'edit_item_confirm':
+            $fieldOptions=new Cores\Models\FieldsOptionsModel();
+            $field=new Cores\Models\FieldsModel();
+            $fieldList=$field->getByItemId($_GET['iid']);
+            $itemObj=new Cores\Models\ItemsModel();
+            $cataObj=new Cores\Models\CataModel();
+            $uid=$_SESSION['uid'];
+            $caid=$_POST['item_cata_edit'];
+            $caidList=array();
+            $rdValueList=array();
+            $title=$_POST['item_theme_edit'];
+            $count=null;
+            if(!empty($_GET['count'])){
+                $count=$_GET['count'];
+            }else{
+                alert('count未定义');
+                redirectTo('admin.php?v='.$_GET['v']);
+            }
+
+            if($title==null || $caid==null){
+                alert('项目类别或项目主题不能为空');
+                redirectTo('admin.php?v='.$_GET['v']);
+            }
+
+            array_push($caidList,$caid);
+
+            $secondList=$cataObj->getSecond();
+
+            if(is_array($secondList)){
+                foreach ($secondList as $key => $value) {
+                    $list='';
+                    array_push($rdValueList, $value['caid']);
+                    $rdList=$cataObj->getCataChild($value['caid']);
+                    if(is_array($rdList)){
+                        foreach ($rdList as $childKey => $childValue) {
+                            if($childValue['child']!='second' && $childValue['name']==$_POST['item_'.$value['name'].'_cata_edit']){
+                                array_push($rdValueList, $childValue['caid']);
+                                array_push($rdValueList, $childValue['name']);
+                            }
+                        }
+                    }
+                    array_push($caidList, $rdValueList);
+                    $rdValueList=array();
+                }
+            }
+
+            $caidJSON='';
+
+            $caidJSON=json_encode($caidList);
+
+            $itemAdded=$itemObj->modify($_GET['iid'],$caidJSON,$title);
+            $itemId=$_GET['iid'];
+            
+            if($itemId==null){
+                alert('修改投稿失败,请重试!');
+            }else{
+                if(is_array($fieldList)){
+                    foreach ($fieldList as $key => $value) {
+                        $oid=$value['oid'];
+                        $name=$fieldOptions->getNameByFoid($value['foid']);
+                        $v=$_POST['item_'.$name[0]['name'].'_edit'];
+                        $field->modify($oid,$v);
+                    }
+                    $prompt=success('修改成功');
+                }else{
+                    alert('字段值为空');
+                }
+            }
         default:
             break;
     }
@@ -104,6 +172,7 @@ function printItems($itemsObj,$status,$page){
                         <td>'.$publisher.'</td>
                         <td>'.$value['createTime'].'</td>
                         <td>
+                            <a href="admin.php?v='.$_GET['v'].'&action=edit_item&iid='.$value['iid'].'" class="btn btn-sm btn-primary">编辑</a>
                             <a target="_blank" href="index.php?v=view&iid='.$value['iid'].'&uid='.$value['uid'].'" class="btn btn-primary btn-sm">查看</a>
                             <a href="'.$action.'" class="btn btn-primary btn-sm">'.$btnName.'</a>
                             '.$order.'
@@ -137,6 +206,24 @@ function printItems($itemsObj,$status,$page){
 
                 <?php 
                     echo $prompt;
+                ?>
+
+                <?php
+                    if(!empty($_GET['action']) && !empty($_GET['iid'])){
+                        switch ($_GET['action']) {
+                            case 'edit_item':
+                                case 'edit_item':
+                                    $fieldOptions=new Cores\Models\FieldsOptionsModel();
+                                    // $field=new Cores\Models\FieldsModel();
+                                    $fieldList=$fieldOptions->selectAll();
+                                    $suffix='_edit';
+                                    $action='admin.php?v='.$_GET['v'].'&action=edit_item_confirm&iid='.$_GET['iid'];
+                                    generatorItemAddingForm($fieldList,$suffix,$action,true);
+                                break;
+                            default:
+                                break;                            
+                        }
+                    }
                 ?>
 
                     <div class="col-md-12">

@@ -89,6 +89,15 @@ class FieldsOptionsModel{
 		$this->modifyFieldFrontDesc($foid,1);
 	}
 
+	function getNameByFoid($foid){
+		
+		if($foid==null){
+			return false;
+		}
+
+		return self::$model->getDatabase()->query("SELECT `name` from `njx_fields_options` WHERE `foid`=$foid");
+	}
+
 }
 
 ?>

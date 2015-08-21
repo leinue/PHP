@@ -463,7 +463,7 @@ function range_($name,$name_control,$id,$tips,$from,$to,$rangeUnit,$value=""){
             </div>';
 }
 
-function generatorItemAddingForm($fieldList,$suffix='_add',$action=null){
+function generatorItemAddingForm($fieldList,$suffix='_add',$action=null,$fill=false){
     if(is_array($fieldList)){
         echo '<div class="col-md-6"><form role="form" method="post" action="'.$action.'&count='.count($fieldList).'">';
         $cataOption='';
@@ -502,31 +502,60 @@ function generatorItemAddingForm($fieldList,$suffix='_add',$action=null){
 		            </div>';
 			}
 		}
+
+		// print_r($fieldList);
+
+		$itemTitle='';
+		if($fill){
+			$fields=new Cores\Models\FieldsModel();
+			$items=new Cores\Models\ItemsModel();
+			$currentItem=$items->selectOne($_GET['iid']);
+			$itemTitle=$currentItem[0]->getTitle();
+		}
         echo '<div class="form-group">
                 <label>项目主题</label>
-                <input placeholder="项目主题" value="" name="item_theme'.$suffix.'" class="form-control">
+                <input placeholder="项目主题" value="'.$itemTitle.'" name="item_theme'.$suffix.'" class="form-control">
             </div>';
+
         foreach ($fieldList as $key => $value) {
             $type=$value->getType();
             $id='item_'.$value->getName().$suffix;
             $name=$id;
+
+            $fieldsVal='';
+        
+        	if($fill){
+	        	
+	        	$allFields=$fields->getByItemId($_GET['iid']);
+
+	        	if(is_array($allFields)){
+	        		// print_r($allFields);
+	        		foreach ($allFields as $fieldKey => $fieldV) {
+		        		if($fieldV['foid']==$value->getFoid()){
+		        			$fieldsVal=$fieldV['value'];
+		        		}
+		        	}
+	        	}
+	        	
+        	}
+
             switch ($type) {
                 case 'input':
-                     echo input($value->getName(),$name,$id,$value->getTips());
+                     echo input($value->getName(),$name,$id,$value->getTips(),$fieldsVal);
                     break;
                 case 'img':
-                    echo img_($value->getName(),$name,$id,$value->getTips());
+                    echo img_($value->getName(),$name,$id,$value->getTips(),$fieldsVal);
                 case 'selector':
                     if($type=='selector'){
-                        echo selector($value->getName(),$name,$id,$value->getTips(),$value->getSelectorCount());
+                        echo selector($value->getName(),$name,$id,$value->getTips(),$value->getSelectorCount(),$fieldsVal);
                     }
                 case 'range_':
                     if($type=='range_'){
-                        echo range_($value->getName(),$name,$id,$value->getTips(),$value->getRangeFrom(),$value->getRangeTo(),$value->getRangeUnit());
+                        echo range_($value->getName(),$name,$id,$value->getTips(),$value->getRangeFrom(),$value->getRangeTo(),$value->getRangeUnit(),$fieldsVal);
                     }
                 case 'textarea':
                     if($type=='textarea'){
-                        echo textarea($value->getName(),$name,$id,$value->getTips());
+                        echo textarea($value->getName(),$name,$id,$value->getTips(),$fieldsVal);
                     }
                 default:
                     break;

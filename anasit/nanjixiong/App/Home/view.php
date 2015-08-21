@@ -148,6 +148,13 @@ if(!empty($_GET['action'])){
 					</div>
 				</div>
 
+				<style type="text/css">
+					.textarea-field{
+						word-break:break-all;
+						word-wrap:break-word ;
+					}
+				</style>
+
 				<?php
 
 					if(is_array($filedList)){
@@ -157,7 +164,7 @@ if(!empty($_GET['action'])){
 							if($optionName[0]->getType()=='textarea' && $optionName[0]->getVisible()==='1'){
 								echo '<div class="panel panel-default">
 									 	<div class="panel-heading">'.$optionName[0]->getName().'</div>
-										<div class="panel-body">
+										<div class="panel-body textarea-field">
 											'.$value['value'].'
 										</div>
 									</div>';

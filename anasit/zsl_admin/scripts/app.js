@@ -21,9 +21,11 @@ angular
     finance:4,
     supply:5
   })
+  .constant('BASE_URL',{
+    url:'http://service.zhangshanglv.cn/index.php'
+  })
   .run(function($rootScope,$location,User){
     $rootScope.$on('$routeChangeStart',function(evt,next,curr){
-      console.log('evt');
       if(!User.isLoggedIn){
         $location.path('/login');
       }

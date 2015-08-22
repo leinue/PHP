@@ -1,13 +1,52 @@
 angular.module('sbAdminApp')
 
-.factory('User',function(ACCESS_LEVELS){
+.factory('User',function($q,$http,ACCESS_LEVELS,BASE_URL){
 
 	var service={};
 
+	var d=$q.defer();
+	var promise=d.promise;
+
+
 	// var _user=$cookieStore.get('user');
 
-	service.setUser=function(user){
-		_user=user;
+	service.setUser=function(tel,password){
+
+		var request={
+		    "admin": {
+		        "login": {
+		            "data": {
+		                "tel": tel,
+		                "password": password
+		            }
+		        }
+		    }
+		};
+
+		request=JSON.stringify(request);
+			
+		$http.jsonp(BASE_URL.url+"/Admin/CompanyAdmin/login?data="+request+"&callback=JSON_CALLBACK")
+		.success(function(data){
+			var status=data.admin.login.status;
+			if(status==='1'){
+				_user=data.admin.login.data;
+				$location.path('/home');				
+			}else{
+				switch(status){
+					case 0:
+						alert("数据库系统查询登录失败或密码错误");
+						break;
+					case -1:
+						alert("数据库表中没有该管理员");
+						break;
+					default:
+						break;
+				}
+			}
+		})
+		.error(function(data){
+			alert('网络传输错误');
+		});
 		// $cookieStore.put('user',_user);
 	}
 
@@ -19,12 +58,7 @@ angular.module('sbAdminApp')
 		return _user;
 	}
 
-	service.setLogin=function(){
-		isLoggedIn=true;
-	}
-
 	service.logout=function(){
-		// $cookieStore.remove('user');
 		_user=null;
 	}
 
@@ -32,7 +66,7 @@ angular.module('sbAdminApp')
 
 })
 
-.factory('RouteStart',function($q,$http){
+.factory('RouteStart',function($q,$http,BASE_URL){
 
 	return {
 		update:function($scope,id,title,orderIndex){
@@ -48,7 +82,7 @@ angular.module('sbAdminApp')
 
 			request=JSON.stringify(request);
 			
-			$http.jsonp("http://service.zhangshanglv.cn/index.php/Admin/TravelArea/editStart?data="+request+"&callback=JSON_CALLBACK")
+			$http.jsonp(BASE_URL.url+"/Admin/TravelArea/editStart?data="+request+"&callback=JSON_CALLBACK")
 			.success(function(data){
 				$scope.updateSuccess=data;
 			})
@@ -69,7 +103,7 @@ angular.module('sbAdminApp')
 
 			request=JSON.stringify(request);
 			
-			$http.jsonp("http://service.zhangshanglv.cn/index.php/Admin/TravelArea/deleteStart?data="+request+"&callback=JSON_CALLBACK")
+			$http.jsonp(BASE_URL.url+"/Admin/TravelArea/deleteStart?data="+request+"&callback=JSON_CALLBACK")
 			.success(function(data){
 				$scope.deleteSuccess=data;
 			})
@@ -89,7 +123,7 @@ angular.module('sbAdminApp')
 
 			request=JSON.stringify(request);
 			
-			$http.jsonp("http://service.zhangshanglv.cn/index.php/Admin/TravelArea/createStart?data="+request+"&callback=JSON_CALLBACK")
+			$http.jsonp(BASE_URL.url+"/Admin/TravelArea/createStart?data="+request+"&callback=JSON_CALLBACK")
 			.success(function(data){
 				$scope.addSuccess=data;
 			})
@@ -102,7 +136,7 @@ angular.module('sbAdminApp')
 			var d=$q.defer();
 			var promise=d.promise;
 
-			$http.jsonp("http://service.zhangshanglv.cn/index.php/Admin/TravelArea/listStart?callback=JSON_CALLBACK")
+			$http.jsonp(BASE_URL.url+"/Admin/TravelArea/listStart?callback=JSON_CALLBACK")
 			.success(function(data){
 				$scope.allRoutes=data;
 			})
@@ -114,7 +148,7 @@ angular.module('sbAdminApp')
 
 })
 
-.factory('RouteEnd',function($q,$http){
+.factory('RouteEnd',function($q,$http,BASE_URL){
 
 	return {
 
@@ -131,7 +165,7 @@ angular.module('sbAdminApp')
 
 			request=JSON.stringify(request);
 			
-			$http.jsonp("http://service.zhangshanglv.cn/index.php/Admin/TravelArea/editEnd?data="+request+"&callback=JSON_CALLBACK")
+			$http.jsonp(BASE_URL.url+"/Admin/TravelArea/editEnd?data="+request+"&callback=JSON_CALLBACK")
 			.success(function(data){
 				$scope.updateSuccess=data;
 			})
@@ -152,7 +186,7 @@ angular.module('sbAdminApp')
 
 			request=JSON.stringify(request);
 			
-			$http.jsonp("http://service.zhangshanglv.cn/index.php/Admin/TravelArea/deleteEnd?data="+request+"&callback=JSON_CALLBACK")
+			$http.jsonp(BASE_URL.url+"/Admin/TravelArea/deleteEnd?data="+request+"&callback=JSON_CALLBACK")
 			.success(function(data){
 				$scope.deleteSuccess=data;
 			})
@@ -174,7 +208,7 @@ angular.module('sbAdminApp')
 
 			request=JSON.stringify(request);
 			
-			$http.jsonp("http://service.zhangshanglv.cn/index.php/Admin/TravelArea/createEnd?data="+request+"&callback=JSON_CALLBACK")
+			$http.jsonp(BASE_URL.url+"/Admin/TravelArea/createEnd?data="+request+"&callback=JSON_CALLBACK")
 			.success(function(data){
 				$scope.addSuccess=data;
 			})
@@ -189,7 +223,7 @@ angular.module('sbAdminApp')
 			var d=$q.defer();
 			var promise=d.promise;
 
-			$http.jsonp("http://service.zhangshanglv.cn/index.php/Admin/TravelArea/listEnd?callback=JSON_CALLBACK")
+			$http.jsonp(BASE_URL.url+"/Admin/TravelArea/listEnd?callback=JSON_CALLBACK")
 			.success(function(data){
 				$scope.allRoutesEnd=data;
 			})
@@ -203,7 +237,7 @@ angular.module('sbAdminApp')
 
 })
 
-.factory('RouteSell',function($q,$http){
+.factory('RouteSell',function($q,$http,BASE_URL){
 
 	return {
 
@@ -220,7 +254,7 @@ angular.module('sbAdminApp')
 
 			request=JSON.stringify(request);
 			
-			$http.jsonp("http://service.zhangshanglv.cn/index.php/Admin/TravelArea/editSell?data="+request+"&callback=JSON_CALLBACK")
+			$http.jsonp(BASE_URL.url+"/Admin/TravelArea/editSell?data="+request+"&callback=JSON_CALLBACK")
 			.success(function(data){
 				$scope.updateSuccess=data;
 			})
@@ -242,7 +276,7 @@ angular.module('sbAdminApp')
 
 			request=JSON.stringify(request);
 			
-			$http.jsonp("http://service.zhangshanglv.cn/index.php/Admin/TravelArea/createSell?data="+request+"&callback=JSON_CALLBACK")
+			$http.jsonp(BASE_URL.url+"/Admin/TravelArea/createSell?data="+request+"&callback=JSON_CALLBACK")
 			.success(function(data){
 				$scope.addSuccess=data;
 			})
@@ -263,7 +297,7 @@ angular.module('sbAdminApp')
 
 			request=JSON.stringify(request);
 			
-			$http.jsonp("http://service.zhangshanglv.cn/index.php/Admin/TravelArea/deleteSell?data="+request+"&callback=JSON_CALLBACK")
+			$http.jsonp(BASE_URL.url+"/Admin/TravelArea/deleteSell?data="+request+"&callback=JSON_CALLBACK")
 			.success(function(data){
 				$scope.deleteSuccess=data;
 			})
@@ -278,13 +312,60 @@ angular.module('sbAdminApp')
 			var d=$q.defer();
 			var promise=d.promise;
 
-			$http.jsonp("http://service.zhangshanglv.cn/index.php/Admin/TravelArea/listSell?callback=JSON_CALLBACK")
+			$http.jsonp(BASE_URL.url+"/Admin/TravelArea/listSell?callback=JSON_CALLBACK")
 			.success(function(data){
 				$scope.allRoutesSell=data;
 			})
 			.error(function(data){
 				console.log(data);
 			});
+
+		}
+
+	};
+
+})
+
+.factory('SupplierMgr',function($q,$http,BASE_URL){
+
+	///Admin/CompanySupplier/supplierList
+
+	return {
+
+		getAll:function($scope){
+			
+			var d=$q.defer();
+			var promise=d.promise;
+
+			$http.jsonp(BASE_URL.url+"/Admin/CompanySupplier/supplierList?callback=JSON_CALLBACK")
+			.success(function(data){
+				$scope.supplierListResult=data.supplier.list;
+				console.log($scope.supplierListResult);
+			})
+			.error(function(data){
+				$scope.supplierListResult=false;
+			});
+
+		},
+
+		delete:function($scope,uid){
+
+			var d=$q.defer();
+			var promise=d.promise;
+
+		},
+
+		add:function($scope){
+
+			var d=$q.defer();
+			var promise=d.promise;
+
+		},
+
+		update:function($scope){
+
+			var d=$q.defer();
+			var promise=d.promise;
 
 		}
 

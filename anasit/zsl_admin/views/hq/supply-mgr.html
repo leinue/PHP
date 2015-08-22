@@ -4,6 +4,39 @@
 			<h1 class="page-header">供应商管理</h1>
 		</div>
 		<!-- /.col-lg-12 -->
+
+		<table class="table table-hover">
+	        <thead>
+	            <tr>
+	                <th>uid</th>
+	                <th>联系方式</th>
+	                <th>姓名</th>
+	                <th>类型</th>
+	                <th>图一</th>
+	                <th>图二</th>
+	                <th>图三</th>
+	                <th>帐号是否可用</th>
+	                <th>操作</th>
+	            </tr>
+	        </thead>
+	        <tbody ng-repeat="suppliers in supplierListResult.data">
+	        	<tr ng-repeat="x in suppliers">
+	        		<td>{{x.uid}}</td>
+	                <td>{{x.tel}}</td>
+	                <td>{{x.name}}</td>
+	                <td>{{x.type}}</td>
+	                <td>{{x.image1}}</td>
+	                <td>{{x.image2}}</td>
+	                <td>{{x.image3}}</td>
+	                <td>{{x.isapproved}}</td>
+	                <td>
+	                	<button ng-click="editRouteStart(x.id,x.title,x.orderindex)" class="btn btn-outline btn-link">编辑</button>
+	                	<button ng-click="deleteRouteStart(x.id)" class="btn btn-outline btn-link">删除</button>
+	                </td>
+	        	</tr>
+	        </tbody>
+	    </table>
+
 	</div>
 	<!-- /.row -->
 </div>

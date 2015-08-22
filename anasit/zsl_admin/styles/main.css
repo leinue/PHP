@@ -1,0 +1,138 @@
+*{
+  transition:all 0.5s ease 0s;  
+}
+
+/* Space out content a bit */
+body {
+    padding-bottom: 20px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+.nav>li.active>a {
+text-decoration: none;
+background-color: #eee;
+}
+
+.panel{
+  border-radius: 0px;
+  border-color: #F1F2F3;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.panel-yellow{
+  border-color: #F1F2F3!important;
+}
+
+.panel-red{
+  border-color: #F1F2F3!important;
+}
+
+.panel-green{
+  border-color: #F1F2F3!important;
+}
+
+.list-group-item{
+  border-color: #F1F2F3!important;
+}
+
+.timeline > li > .timeline-panel{
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05)!important;
+  border: 1px solid #F1F2F3!important;
+}
+
+.panel-default > .panel-heading{
+  border-color: #F1F2F3;
+}
+
+.panel-footer{
+  border-color: #F1F2F3;
+}
+
+.table-bordered{
+  border-color: #F1F2F3;
+}
+
+.table-bordered > thead > tr > th{
+  border-color: #F1F2F3;
+}
+
+.navbar-top-links .dropdown-messages{
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05)!important;
+}
+
+.navbar-top-links li{
+  cursor: pointer;
+}

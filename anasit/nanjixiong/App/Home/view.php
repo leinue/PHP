@@ -49,7 +49,7 @@ if(!empty($_GET['action'])){
 
 	<div class="row">
 
-	  	<div class="col-md-10 col-md-offset-1">
+	  	<div  class="col-md-10 col-md-offset-1">
 		  	<div class="panel panel-default">
 				<div class="panel-body">
 
@@ -93,7 +93,7 @@ if(!empty($_GET['action'])){
 
 					?>
 
-					<div style="padding-top:0px" class="col-md-6">
+					<div style="padding-top:0px;" class="col-md-6">
 						<h3 style="margin-top:0;"><?php echo $basicProfileName; ?> <span style="font-size:0.8em;color:rgb(170,170,170)"><?php echo $userTime; ?></span></h3>
 						<h5><?php echo $basicProfileDescription; ?></h5>
 						<?php
@@ -102,6 +102,9 @@ if(!empty($_GET['action'])){
 
 							foreach ($itemCataList as $key => $value) {
 								if(is_array($value)){
+
+									// if($_GET['caid']==$value)
+
 									if($key!=count($itemCataList)-1){
 										$itemCata.=$value[2].',';
 									}else{
@@ -116,7 +119,7 @@ if(!empty($_GET['action'])){
 						<p class="text-muted"><span class="glyphicon glyphicon-link"> <a href="<?php echo $itemURL; ?>" target="_blank" ><?php echo $itemURL; ?></a></span></p>
 					</div>
 
-					<div class="col-md-4">
+					<div  class="col-md-4">
 
 						<div class="jiathis_style_32x32">
 							<a class="jiathis_button_qzone"></a>
@@ -168,9 +171,9 @@ if(!empty($_GET['action'])){
 
 	<div class="row">
 		
-		<div class="col-md-10 col-md-offset-1">
+		<div style="padding-right:0" class="col-md-10 col-md-offset-1">
 
-			<div style="" class="col-md-8">
+			<div style="padding-left: 0px;"  class="col-md-8">
 
 				<?php
 					$fieldObj=new Cores\Models\FieldsModel();
@@ -180,10 +183,38 @@ if(!empty($_GET['action'])){
 				?>
 
 				<style type="text/css">
+
 					.textarea-field{
 						word-break:break-all;
 						word-wrap:break-word ;
 					}
+
+					.textarea-head{
+						background: rgb(255,255,255)!important;
+						padding: 0px!important;
+						border-bottom: 2px solid rgb(221,221,221)!important;
+						line-height: 37px;
+						font-size: 16px;
+						font-weight: 400!important;
+					}
+
+					.textarea-head .textarea-title{
+						height: 100%;
+						border-bottom: 2px solid rgb(255,94,82);
+						padding-bottom: 8px;
+						margin-left: 10px;
+						width: 100%;
+						font-weight: 400!important;
+					}
+					
+					.alert-success{
+						border-radius: 0;
+						background: rgb(255,255,255);
+						border-left: none;
+						border-right: none;
+						border-top: none;
+					}
+
 				</style>
 
 				<?php
@@ -194,7 +225,7 @@ if(!empty($_GET['action'])){
 							$optionName=$fieldOptionsObj->selectOne($value['foid']);
 							if($optionName[0]->getType()=='textarea' && $optionName[0]->getVisible()==='1'){
 								echo '<div class="panel panel-default">
-									 	<div class="panel-heading">'.$optionName[0]->getName().'</div>
+									 	<div class="panel-heading textarea-head"><strong class="textarea-title">'.$optionName[0]->getName().'</strong></div>
 										<div class="panel-body textarea-field">
 											'.$value['value'].'
 										</div>
@@ -255,14 +286,57 @@ if(!empty($_GET['action'])){
 
 			</div>
 
-			<div style="" class="col-md-4">
+			<style type="text/css">
+				.table-viewer-list{
+					border-top: none!important;
+				}
+
+				.table-viewer-list a{
+					color: rgb(84,84,84);
+				}
+
+				.table-viewer-list a:hover{
+					color: rgb(253,108,97);
+				}
+
+				.table-viewer-list thead{
+					background: rgb(255,255,255)!important;
+					color: rgb(0,0,0)!important;
+					text-align: left!important;
+					border-top: none;
+					border-bottom:2px solid rgb(221,221,221);
+
+				}
+
+				.table-viewer-list > thead:first-child > tr:first-child > th{
+					text-align: left!important;
+					font-weight: 400;
+					padding: 0px;
+					/*border-width:-2px;*/
+				}
+
+				.table-viewer-list > tbody > tr > td{
+					text-align: left!important;
+				}
+
+				.viewer-top-title{
+					border-bottom: 2px solid rgb(255,94,82);
+					padding-bottom: 12px;
+					/*width: 5em;*/
+					/*line-height: 30px;*/
+					font-size: 16px;
+					font-weight: 400;
+				}
+			</style>
+
+			<div style="padding-left:0" class="col-md-4">
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<div class="responsive-table">
-							<table class="table table-hover">
+							<table class="table table-hover table-viewer-list">
 								<thead>
 									<tr>
-										<th>最热排行榜</th>
+										<th><strong class="viewer-top-title">最热排行榜</strong></th>
 									</tr>
 								</thead>
 								<tbody>
@@ -271,7 +345,7 @@ if(!empty($_GET['action'])){
 										$i=0;
 										$top5list=$itemsObj->getTop5();
 										foreach ($top5list as $key => $value) {
-												echo '<tr><td><a href="index.php?v=view&iid='.$value['iid'].'&uid='.$value['uid'].'">'.$value['title'].'</a></tr></td>';
+												echo '<tr><td><span style="margin-right:10px" class="badge">'.($key+1).'</span><a href="index.php?v=view&iid='.$value['iid'].'&uid='.$value['uid'].'">'.$value['title'].'</a></tr></td>';
 										}
 
 									?>
@@ -280,10 +354,10 @@ if(!empty($_GET['action'])){
 						</div>
 
 						<div class="responsive-table">
-							<table class="table table-hover">
+							<table class="table table-hover table-viewer-list">
 								<thead>
 									<tr>
-										<th>最新排行榜</th>
+										<th><strong class="viewer-top-title">最新排行榜</strong></th>
 									</tr>
 								</thead>
 								<tbody>
@@ -292,7 +366,7 @@ if(!empty($_GET['action'])){
 										$i=0;
 										foreach ($allItems as $key => $value) {
 											if($i<$itemsCount){
-												echo '<tr><td><a href="index.php?v=view&iid='.$value->getIid().'&uid='.$value->getUid().'">'.$value->getTitle().'</a></tr></td>';												
+												echo '<tr><td><span style="margin-right:10px" class="badge">'.($key+1).'</span><a href="index.php?v=view&iid='.$value->getIid().'&uid='.$value->getUid().'">'.$value->getTitle().'</a></tr></td>';												
 											}
 											$i++;
 										}
@@ -303,9 +377,9 @@ if(!empty($_GET['action'])){
 						</div>
 
 						<div class="responsive-table">
-							<table class="table table-hover">
+							<table class="table table-hover table-viewer-list">
 								<thead>
-									<tr><th>推广消息</th></tr>
+									<tr><th><strong class="viewer-top-title">推广消息</strong></th></tr>
 								</thead>
 								<tbody>
 									<?php

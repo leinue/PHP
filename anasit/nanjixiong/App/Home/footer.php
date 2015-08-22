@@ -54,7 +54,15 @@
 				}
 			});
 		});
-		
+
+		var textareaList=$('.textarea-title');
+		// console.log($('.textarea-title'));
+		for (var i = 0; i < textareaList.length; i++) {
+			var text=$(textareaList[i]).html();
+			var len=text.length;
+			$('.textarea-title').css('width',len+'em');
+		};
+
 	</script>
 
 </body>

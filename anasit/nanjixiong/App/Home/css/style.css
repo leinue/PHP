@@ -2,6 +2,10 @@
 	transition:all 0.5s ease 0s;	
 }
 
+html{
+	font-family: "微软雅黑";
+}
+
 body {
 	padding-top: 110px;
     background: #EEE none repeat scroll 0% 0%!important;
@@ -196,3 +200,25 @@ a:active{
 .navbar-nav > li {
     height: 100%!important;
 }*/
+
+textarea{
+	border: 1px solid rgb(214,233,198)!important;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+
+table thead{
+    background: rgb(255,94,82)!important;
+    color: rgb(255,255,255)!important;
+
+}
+
+.table > thead:first-child > tr:first-child > th{
+	padding-top: 10px!important;
+	padding-bottom: 10px!important;
+}
+
+.table-responsive{
+	margin-top: -3px!important;
+	margin-left: -1px!important;
+	width: 100.2%!important;
+}

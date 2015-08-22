@@ -41,7 +41,7 @@
 		$cataList=$cataObj->selectOne($cataToView,true);
 	}
 ?>
-	<div class="row">
+	<div class="row page-first-div">
 
 	  	<div class="col-md-10 col-md-offset-1">
 	  	<div class="panel panel-default">
@@ -89,18 +89,22 @@
 		<div class="panel panel-default">
 		  	<div style="padding:0px!important" class="panel-body">
 				<div class="table-responsive">
-				  <table class="table">
+				  <table class="table item-list">
 				  <thead>
 			        <tr>
 			          <th>项目资料</th>
 			          <?php
+			          	$fieldsCount=0;
+
 			          	if(is_array($secondList)){
 			          		foreach ($secondList as $key => $value) {
-			          			if($value['fvisible']==='1'){
+			          			if($value['fvisible']==='1' && $value['parent']==$_GET['caid']){
 			          				echo '<th>'.$value['name'].'</th>';
+			          				$fieldsCount++;
 			          			}
 			          		}
 			          	}
+
 			          ?>
 			        </tr>
 			      </thead>
@@ -117,6 +121,12 @@
 
 								$itemsObj=new Cores\Models\ItemsModel();
 								$allItems=$itemsObj->selectAll();
+
+								$noDataTips='';
+
+								for ($t=0; $t < $fieldsCount; $t++) { 
+									$noDataTips.='<td><p></p>暂无数据</td>';
+								}
 								
 								if(is_array($allItems)){
 									foreach ($allItems as $itemKey => $itemValue) {
@@ -131,14 +141,24 @@
 												array_shift($jsonItemCaid);
 
 												$secondListField='';
+												$secondFieldCount=0;
 
 												foreach ($jsonItemCaid as $rdCaidKey => $rdCaidValue) {
 
 													$rdValue=$cataObj->selectOne($rdCaidValue[0]);
 													if($rdValue[0]->getFVisible()==='1'){
+														$secondFieldCount++;
 									          			$secondListField.='<td><p></p>'.$rdCaidValue[2].'</td>';
 									          		}
 
+												}
+
+												// alert($fieldsCount-$secondFieldCount);
+
+												if($secondFieldCount<$fieldsCount){
+													for ($i=0; $i < ($fieldsCount-$secondFieldCount); $i++) { 
+														$secondListField.='<td><p></p>无</d>';
+													}
 												}
 
 												$frontPhotoSrc='';
@@ -146,7 +166,7 @@
 
 												foreach ($allFields as $fKey => $fValue) {
 													if($fValue['foid']==$frontPhoto[0]['foid']){
-														$frontPhotoSrc=DOMAIN.$fValue['value'];
+														$frontPhotoSrc=DOMAIN.'/Cores/'.$fValue['value'];
 													}
 													if($fValue['foid']==$frontDesc[0]['foid']){
 														$frontDescContent=$fValue['value'];
@@ -162,7 +182,7 @@
 														    </a>
 														  </div>
 														  <div class="media-body">
-														    <h4 class="media-heading"><a href="index.php?v=view&iid='.$itemValue->getIid().'&uid='.$itemValue->getuid().'">'.$itemValue->getTitle().'</a></h4>
+														    <h4 class="media-heading"><a href="index.php?v=view&&caid='.$_GET['caid'].'&iid='.$itemValue->getIid().'&uid='.$itemValue->getuid().'">'.$itemValue->getTitle().'</a></h4>
 														    '.$frontDescContent.'</div>
 														</div>
 											          </td>
@@ -182,9 +202,7 @@
 													    </div>
 													</div>
 										          </td>
-										          <td><p></p>暂无数据</td>
-										          <td><p></p>暂无数据</td>
-										          <td><p></p>暂无数据</td>
+										          '.$noDataTips.'
 										        </tr>';
 											}
 										}
@@ -204,9 +222,7 @@
 										    暂无数据</div>
 										</div>
 							          </td>
-							          <td><p></p>暂无数据</td>
-							          <td><p></p>暂无数据</td>
-							          <td><p></p>暂无数据</td>
+							          '.$noDataTips.'
 							        </tr>';
 							}
 						?>

@@ -103,9 +103,6 @@ class CataModel{
 
 		$parent=$parent==null?9:$parent;
 
-		alert($name);
-		alert($parent);
-
 		return $this->addChild($name,$parent,'second',true);
 	}
 

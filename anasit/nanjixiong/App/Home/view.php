@@ -95,7 +95,7 @@ if(!empty($_GET['action'])){
 
 					<div style="padding-top:0px" class="col-md-6">
 						<h3 style="margin-top:0;"><?php echo $basicProfileName; ?> <span style="font-size:0.8em;color:rgb(170,170,170)"><?php echo $userTime; ?></span></h3>
-						<h5 style="margin-top:-20px;"><?php echo $basicProfileDescription; ?></h5>
+						<h5><?php echo $basicProfileDescription; ?></h5>
 						<?php
 
 							$itemCata='';

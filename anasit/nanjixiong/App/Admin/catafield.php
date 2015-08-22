@@ -2,11 +2,11 @@
 
 $tips='';
 
-if(!empty($_POST['new_cata_name'])){
-    $cataObj=new Cores\Models\CataModel();
-    $cataObj->addSecond($_POST['new_cata_name'],$_POST['new_top_lvl']);
-    $tips=success('添加成功');
-}
+// if(!empty($_POST['new_cata_name'])){
+//     $cataObj=new Cores\Models\CataModel();
+//     $cataObj->addSecond($_POST['new_cata_name'],$_POST['new_top_lvl']);
+//     $tips=success('添加成功');
+// }
 
 if(!empty($_GET['cata_to_del'])){
     $tips=confirm('<strong>警告!</strong>该操作不可恢复,您确定要执行该操作吗?','admin.php?v='.$view.'&cata_to_del_confirm='.$_GET['cata_to_del'],'确定删除');
@@ -49,7 +49,7 @@ if(!empty($_GET['set_front_visible'])){
 // alert($_POST['edit_cata_name']);
 
 if(!empty($_GET['action'])){
-    if($_POST['cata_name_edit_text']==null || $_GET['action']!='edit_cata_name'){
+    if(($_POST['cata_name_edit_text']==null || $_GET['action']!='edit_cata_name') && $_GET['action']!='add_cata_field'){
         alert('修改内容不能为空或请求非法');
     }else{
         $cataObj=new Cores\Models\CataModel();
@@ -61,18 +61,21 @@ if(!empty($_GET['action'])){
 if(!empty($_GET['cata_to_edit'])){
     $cataObj=new Cores\Models\CataModel();
     $name=$cataObj->selectOne($_GET['cata_to_edit']);
+    $currentParent=$name[0]->getParent();
     $option='';
     $allCataObj=$cataObj->selectAll();
     $firstCaid=array();
+
     $parent=$cataObj->getParent($_GET['cata_to_edit']);
     $parentId=$parent[0]['caid'];
+
     if(is_array($allCataObj)){
         $i=0;
         foreach ($allCataObj as $key => $value) {
             if($value->getParent()==='0' && $value->getVisible()==='1'){
                 array_push($firstCaid, $value->getCaid());
                 $active='';
-                if($value->getCaid()==$parentId){
+                if($value->getCaid()==$currentParent){
                     $active='selected';
                 }
                 $option.='<option '.$active.' value="'.$value->getCaid().'">'.$value->getName().'</option>';
@@ -120,7 +123,33 @@ if(!empty($_GET['cata_to_down'])){
 
     $cataObj=new Cores\Models\CataModel();
     $cataObj->downCata($_GET['cata_to_down']);
-    $tips=success('提级成功');
+    $tips=success('降级成功');
+}
+
+if(!empty($_GET['action'])){
+
+    switch ($_GET['action']) {
+        case 'add_cata_field':
+            
+            $name=$_POST['new_cata_name'];
+            $parent=$_POST['new_top_lvl'];
+            
+            if($name=='' || $parent==''){
+                alert('非法数据');
+            }else{
+
+                $cataObj=new Cores\Models\CataModel();
+                $added=$cataObj->addSecond($name,$parent);
+
+                $tips=success('添加成功');
+
+            }
+
+            break;
+        default:
+            break;
+    }
+
 }
 
 ?>
@@ -246,7 +275,7 @@ if(!empty($_GET['cata_to_down'])){
                             </div>
                             <div class="panel-body">
                                 <div class="col-lg-6">
-                                    <form role="form" action="admin.php?v=<?php echo $view; ?>" method="post">
+                                    <form role="form" action="admin.php?v=<?php echo $view; ?>&action=add_cata_field" method="post">
                                         <div class="form-group">
                                             <label>分类名</label>
                                             <input placeholder="南极熊" name="new_cata_name" class="form-control">
@@ -300,6 +329,7 @@ if(!empty($_GET['cata_to_down'])){
                                     <thead>
                                         <tr>
                                             <th>筛选分类名称</th>
+                                            <th>筛选分类父结点</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
@@ -315,8 +345,15 @@ if(!empty($_GET['cata_to_down'])){
                                                 $frontBtnName=$value['fvisible']==='1'?'前台不显示':'前台显示';
                                                 $frontBtnRequest=$value['fvisible']==='1'?'admin.php?v='.$view.'&set_front_no_visible='.$value['caid']:'admin.php?v='.$view.'&set_front_visible='.$value['caid'];
 
+                                                $parentName=$cataMgr->selectOne($value['parent']);
+
+                                                if(is_array($parentName)){
+                                                    $parentName=$parentName[0]->getName();
+                                                }
+
                                                 echo '<tr class="odd gradeX">
                                                         <td>'.$value['name'].'</td>
+                                                        <td>'.$parentName.'</td>
                                                         <td style="text-align:center">
                                                             <a href="admin.php?v='.$view.'&cata_to_edit='.$value['caid'].'" class="btn btn-primary btn-sm">编辑</a>
                                                             <a href="admin.php?v='.$view.'&cata_to_up='.$value['caid'].'" class="btn btn-sm btn-primary">向上</a>

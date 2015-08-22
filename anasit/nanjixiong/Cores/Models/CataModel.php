@@ -53,7 +53,6 @@ class CataModel{
 	}
 
 	function addSecondLevelChild($name,$parent){
-		//$name,$parent=null,$child=null,$arr=false
 		$childAdded=$this->addChild($name,$parent,null,false);
 		$this->setChild($childAdded[0]->getCaid(),'second');
 		return $this->selectOne($childAdded[0]->getCaid(),true);
@@ -100,8 +99,11 @@ class CataModel{
 		return $newChildList;
 	}
 
-	function addSecond($name){
-		return $this->addChild($name,'9','second',true);
+	function addSecond($name,$parent=null){
+
+		$parent=$parent==null?9:$parent;
+
+		return $this->addChild($name,$parent,'second',true);
 	}
 
 	function getSecond(){

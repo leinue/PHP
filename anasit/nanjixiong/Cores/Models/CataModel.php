@@ -103,6 +103,9 @@ class CataModel{
 
 		$parent=$parent==null?9:$parent;
 
+		alert($name);
+		alert($parent);
+
 		return $this->addChild($name,$parent,'second',true);
 	}
 
@@ -257,7 +260,7 @@ class CataModel{
 		$maxOrder=$maxOrder[0]['max_order'];
 
 		$thisOrder=$this->getOrder($caid);
-		$thisOrder=$order[0]['order'];
+		$thisOrder=$thisOrder[0]['order'];
 
 		$orderToSet=$maxOrder+1;
 

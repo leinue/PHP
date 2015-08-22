@@ -54,6 +54,10 @@
 								if($value['visible']==='0'){
 									continue;
 								}
+
+								if($value['parent']!=$_GET['caid']){
+									continue;
+								}
 								$list='';
 								$rdList=$cataObj->getCataChild($value['caid']);
 								if(is_array($rdList)){

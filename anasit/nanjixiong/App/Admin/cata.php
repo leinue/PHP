@@ -256,7 +256,7 @@ if(!empty($_GET['cata_to_edit'])){
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="text-right">
+                            <!-- <div class="text-right">
                                     <nav>
                                       <ul class="pagination">
                                       <?php
@@ -284,7 +284,7 @@ if(!empty($_GET['cata_to_edit'])){
                                       ?>
                                       </ul>
                                     </nav>
-                                </div>
+                                </div> -->
                         </div>
                     </div>
                     <!--End Advanced Tables -->

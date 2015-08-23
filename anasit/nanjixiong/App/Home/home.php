@@ -1,5 +1,22 @@
 <?php
 	
+	$page=1;
+
+	if(!empty($_GET['[page'])){
+	    $page=$_GET['page'];
+	}
+
+	$prevPage=$page-1;
+	if($prevPage<=0){
+	    $prevPage=1;
+	}
+
+	$nextPage=$page+1;
+
+	if($nextPage>$allPages){
+	    $nextPage=$allPages;
+	}
+
 	if(empty($_GET['caid'])){
 		$caid=$allCataObj[0]->getCaid();
 		redirectTo('index.php?v=home&caid='.$firstCaid[0]);
@@ -17,6 +34,7 @@
 				return 'class="badge"';
 			}
 		}else{
+			// alert($current);
 			if(stristr($to,$current)){
 				return 'class="badge"';
 			}
@@ -38,7 +56,56 @@
 	if($cataToView=='all'){
 		$cataList=$cataObj->getCataChild($_GET['caid']);
 	}else{
-		$cataList=$cataObj->selectOne($cataToView,true);
+		// $cataToView
+		// $cataToView=json_decode($cataToView,true);
+		// print_r($cataToView);
+		$searchResult=array();
+		// foreach ($cataToView as $key => $value) {
+			$search=$cataObj->searchItemListByCaid($_GET['clicked'],$_GET['caid']);
+			// if(!$search){
+			// 	continue;
+			// }
+			array_push($searchResult, $search);
+		// }
+		// 
+
+		$caidClicked=$_GET['clicked'];
+		$caidParent=$_GET['parent'];
+
+		$cataToViewArr=json_decode($cataToView,true);
+		
+		if($caidParent!='no'){
+			$cataParentKey=array_search($caidParent,$cataToViewArr);
+			array_splice($cataToViewArr,$cataParentKey,1);
+		}
+		
+		$cataToView=json_encode($cataToViewArr);
+
+		echo "<script>
+
+				window.onload=function(){
+					
+					var fields=$('.filter-field a');
+					for (var i=0; i < fields.length; i++) { 
+						var currentAttr=$(fields[i]).attr('viewid');
+						// if('$caidClicked'!=currentAttr){
+						// 	console.log('caidClicked=$caidClicked'+';currentAttr='+currentAttr);
+						// }
+						if('$cataToView'.indexOf(currentAttr)!=-1){
+							console.log($(fields[i]));
+							$(fields[i]).find('span').addClass('badge');
+						}
+					}
+
+				};
+
+			</script>";
+		// foreach ($cataToView as $key => $value) {
+		// 	if($value!=$_GET['clicked']){
+		// 		print_r($value);echo "<br>";
+				
+		// 	}
+		// }
 	}
 ?>
 	<div class="row page-first-div">
@@ -46,7 +113,7 @@
 	  	<div class="col-md-10 col-md-offset-1">
 	  	<div class="panel panel-default">
 			<div class="panel-body">
-				<div class="col-md-12">
+				<div class="col-md-12 filter-field">
 
 					<?php
 						if(is_array($secondList)){
@@ -63,7 +130,11 @@
 								if(is_array($rdList)){
 									foreach ($rdList as $childKey => $childValue) {
 										if($childValue['child']!='second' && $childValue['visible']==='1'){
-											$list.='<a style="color:rgb(68,68,68)" href="index.php?v=home&caid='.$caid.'&view_type_id='.$childValue['caid'].'"> <span '.displayBadge($_GET['view_type_id'],$childValue['caid']).'>'.$childValue['name'].'</span></a>';
+											$jsonItemCaid=$_GET['view_type_id'];
+
+											$badge=displayBadge($_GET['clicked'],$childValue['caid']);
+
+											$list.='<li style="width: 112px;line-height: 20px;"><a style="color:rgb(68,68,68)" caid="'.$caid.'" viewId='.$childValue['caid'].' href="index.php?v=home&caid='.$caid.'&view_type_id='.$childValue['caid'].'"> <span '.$badge.'>'.$childValue['name'].'</span></a></li>';
 										}
 									}
 								}
@@ -72,10 +143,10 @@
 								}
 								echo '<div class="cata-list">
 										<div class="col-md-2">
-											'.$value['name'].'：<a href="index.php?v=home&caid='.$caid.'&view_type_id=all"> <span '.displayBadge($_GET['view_type_id'],'all').'>全部</span></a>
+											'.$value['name'].'：<a caid="'.$caid.'" viewId='.$childValue['parent'].' href="index.php?v=home&caid='.$caid.'&view_type_id=all"> <span '.displayBadge($_GET['view_type_id'],'all').'>全部</span></a>
 										</div>
-										<div class="cata-3rd-list" class="col-md-10">
-											'.$list.'
+										<div class="cata-3rd-list col-md-10">
+											<ul class="list-inline">'.$list.'</ul>
 										</div>
 									</div>';
 							}
@@ -85,6 +156,22 @@
 				</div>
 			</div>
 		</div>
+
+		<style type="text/css">
+
+			.table > thead:first-child > tr:first-child > th{
+				color: #464646;
+				font-size: 14px;
+				font-weight: 700;
+			}
+
+			.table a{
+				font-size: 13px;
+				color: #178CDC;
+				font-weight: 700;
+			}
+
+		</style>
 
 		<div class="panel panel-default">
 		  	<div style="padding:0px!important" class="panel-body">
@@ -111,6 +198,7 @@
 				    <tbody style="border-bottom: 1px solid rgb(221,221,221);">
 						
 						<?php
+
 							if(is_array($cataList)){
 								// print_r($cataList);
 								$filedObj=new Cores\Models\FieldsModel();
@@ -144,6 +232,12 @@
 												$secondFieldCount=0;
 
 												foreach ($jsonItemCaid as $rdCaidKey => $rdCaidValue) {
+
+													// print_r($rdCaidValue);
+													// print_r($rdCaidValue[0]);echo '<br>';
+													if($cataObj->getParentBy2ndLvl($rdCaidValue[0])!=$_GET['caid']){
+														continue;
+													}
 
 													$rdValue=$cataObj->selectOne($rdCaidValue[0]);
 													if($rdValue[0]->getFVisible()==='1'){
@@ -209,7 +303,93 @@
 									}
 								}
 							}else{
-								echo '<tr>
+
+								if(is_array($searchResult)){
+
+									$filedObj=new Cores\Models\FieldsModel();
+
+									$filedOptionObj=new Cores\Models\FieldsOptionsModel();
+
+									$frontPhoto=$filedOptionObj->getFieldFrontPhoto();
+									$frontDesc=$filedOptionObj->getFieldDesc();
+
+									foreach ($searchResult as $key => $value) {
+
+										if(!is_array($value)){
+											continue;
+										}
+
+										foreach ($value as $vkey => $itemValue) {
+											if($itemValue['status']!=='1'){
+											continue;
+										}
+
+										$jsonItemCaid=$itemValue['caid'];
+										$jsontmp=$jsonItemCaid;
+										$jsonItemCaid=json_decode($itemValue['caid'],true);
+
+										if($jsonItemCaid!==null){
+											array_shift($jsonItemCaid);
+											$secondListField='';
+											$secondFieldCount=0;
+
+											foreach ($jsonItemCaid as $rdCaidKey => $rdCaidValue) {
+
+												if($cataObj->getParentBy2ndLvl($rdCaidValue[0])!=$_GET['caid']){
+													continue;
+												}
+
+												$rdValue=$cataObj->selectOne($rdCaidValue[0]);
+												if($rdValue[0]->getFVisible()==='1'){
+													$secondFieldCount++;
+								          			$secondListField.='<td><p></p>'.$rdCaidValue[2].'</td>';
+								          		}
+
+											}
+
+											if($secondFieldCount<$fieldsCount){
+												for ($i=0; $i < ($fieldsCount-$secondFieldCount); $i++) { 
+													$secondListField.='<td><p></p>无</d>';
+												}
+											}
+
+											$frontPhotoSrc='';
+											$frontDescContent='';
+
+											$allFields=$filedObj->getByItemId($itemValue['iid']);
+
+											foreach ($allFields as $fKey => $fValue) {
+												if($fValue['foid']==$frontPhoto[0]['foid']){
+													$frontPhotoSrc=DOMAIN.'/Cores/'.$fValue['value'];
+												}
+												if($fValue['foid']==$frontDesc[0]['foid']){
+													$frontDescContent=$fValue['value'];
+												}
+											}
+
+											echo '<tr>
+										          <td>
+													<div class="media">
+													  <div class="media-left">
+													    <a href="#">
+													      <img width="60" height="60" class="media-object" src="'.$frontPhotoSrc.'" alt="'.$itemValue['title'].'">
+													    </a>
+													  </div>
+													  <div class="media-body">
+													    <h4 class="media-heading"><a href="index.php?v=view&&caid='.$_GET['caid'].'&iid='.$itemValue['iid'].'&uid='.$itemValue['uid'].'">'.$itemValue['title'].'</a></h4>
+													    '.$frontDescContent.'</div>
+													</div>
+										          </td>
+										          '.$secondListField.'
+										        </tr>';
+										}
+
+										
+										}
+										
+									}
+								}else{
+									echo '<tr>
 							          <td>
 										<div class="media">
 										  <div class="media-left">
@@ -224,6 +404,8 @@
 							          </td>
 							          '.$noDataTips.'
 							        </tr>';
+								}
+								
 							}
 						?>
 						
@@ -233,11 +415,18 @@
 
 				</div>
 
+				<?php 
+					$paramClicked='';
+					if(!empty($_GET['clicked'])){
+						$paramClicked=$_GET['clciked'];
+					}
+				?>
+
 				<div class="col-md-6 col-md-offset-3">
 					<nav style="box-shadow:none;text-align: center;">
 					  <ul class="pagination">
 					    <li>
-					      <a href="#" aria-label="Previous">
+					      <a href="index.php?v=home&caid=<?php echo $_GET['caid']; ?>&view_type_id=<?php echo $_GET['view_type_id']; ?>&clicked=<?php echo $paramClicked; ?>&page=<?php echo $prevPage; ?>" aria-label="Previous">
 					        <span aria-hidden="true">上一页</span>
 					      </a>
 					    </li>
@@ -247,7 +436,7 @@
 					    <li><a href="#">4</a></li>
 					    <li><a href="#">5</a></li>
 					    <li>
-					      <a href="#" aria-label="Next">
+					      <a href="index.php?v=home&caid=<?php echo $_GET['caid']; ?>&view_type_id=<?php echo $_GET['view_type_id']; ?>&clicked=<?php echo $paramClicked; ?>&page=<?php echo $nextPage; ?>" aria-label="Next">
 					        <span aria-hidden="true">下一页</span>
 					      </a>
 					    </li>

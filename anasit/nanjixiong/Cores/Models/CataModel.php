@@ -48,6 +48,12 @@ class CataModel{
 		return self::$model->getDatabase()->query("SELECT * FROM `njx_cata` WHERE `caid`='$caid' ORDER BY `order` DESC");
 	}
 
+	function getParentBy2ndLvl($caid){
+		$prev=$this->getParent($caid);
+		$prevId=$prev[0]['parent'];
+		return $prevId;
+	}
+
 	function setChild($caid,$value){
 		return self::$model->execute("UPDATE `njx_cata` SET `child`=? WHERE `caid`=?",array($value,$caid));
 	}
@@ -117,7 +123,18 @@ class CataModel{
 	function isNameExists($name){
 		$tmp=$this->getCataByName($name);
 		return is_array($tmp);
-	}	
+	}
+
+
+	function searchItemListByCaid($caid,$parent){
+		
+		if($caid==null){
+			return false;
+		}
+
+		return self::$model->getDatabase()->query("SELECT * FROM  `njx_items` WHERE `caid` LIKE '%$caid%' AND `caid` LIKE '%$parent%'");
+	}
+
 
 	function addChild($name,$parent=null,$child=null,$arr=false){
 

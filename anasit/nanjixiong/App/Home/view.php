@@ -342,10 +342,15 @@ if(!empty($_GET['action'])){
 								<tbody>
 									<?php
 
-										$i=0;
+										$i=1;
 										$top5list=$itemsObj->getTop5();
+										$deanrltt='';
 										foreach ($top5list as $key => $value) {
-												echo '<tr><td><span style="margin-right:10px" class="badge">'.($key+1).'</span><a href="index.php?v=view&iid='.$value['iid'].'&uid='.$value['uid'].'">'.$value['title'].'</a></tr></td>';
+											if($i>3){
+												$deanrltt='deanrltt';
+											}
+											echo '<tr><td><div class="deanrlt '.$deanrltt.'"><i style="margin-right:10px" >'.($key+1).'</i><a href="index.php?v=view&iid='.$value['iid'].'&uid='.$value['uid'].'">'.$value['title'].'</a></div></tr></td>';
+											$i++;
 										}
 
 									?>
@@ -364,11 +369,17 @@ if(!empty($_GET['action'])){
 									<?php
 
 										$i=0;
+										$j=1;
+										$deanrltt='';
 										foreach ($allItems as $key => $value) {
 											if($i<$itemsCount){
-												echo '<tr><td><span style="margin-right:10px" class="badge">'.($key+1).'</span><a href="index.php?v=view&iid='.$value->getIid().'&uid='.$value->getUid().'">'.$value->getTitle().'</a></tr></td>';												
+												if($j>3){
+													$deanrltt='deanrltt';
+												}
+												echo '<tr><td><div class="deanrlt '.$deanrltt.'"><i style="margin-right:10px" >'.($key+1).'</i><a href="index.php?v=view&iid='.$value->getIid().'&uid='.$value->getUid().'">'.$value->getTitle().'</a></div></tr></td>';												
 											}
 											$i++;
+											$j++;
 										}
 
 									?>									

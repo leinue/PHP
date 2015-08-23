@@ -48,6 +48,24 @@ function displayAvtive($current,$to){
 </head>
 <body>
 
+	<style type="text/css">
+
+		@media screen and (max-width: 755px) {
+		    
+			.navbar-default .navbar-brand img{
+				height: 24px!important;
+			}
+
+		}
+		
+		.navbar-default .navbar-brand img{
+			width:100%;
+			height:60px;
+		}
+
+
+	</style>
+
 	<nav class="navbar navbar-default navbar-fixed-top">
 	  <div class="container container-fluid">
 	    <div class="navbar-header">
@@ -57,7 +75,7 @@ function displayAvtive($current,$to){
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand" href="#"><img alt="<?php echo $settingObj->get('site_title'); ?>" style="width:161px;height:60px;" src="<?php echo $settingObj->get('site_logo');  ?>"></a>
+	      <a class="navbar-brand" href="#"><img alt="<?php echo $settingObj->get('site_title'); ?>"  src="<?php echo $settingObj->get('site_logo');  ?>"></a>
 	    </div>
 
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

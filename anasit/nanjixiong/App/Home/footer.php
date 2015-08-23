@@ -30,6 +30,10 @@
 	<script src="<?php echo DOMAIN; ?>/App/Home/js/jquery.js"></script>
 	<script src="<?php echo DOMAIN; ?>/App/Home/ex/bootstrap/js/bootstrap.min.js"></script>
 
+	<?php
+		$jsiid=empty($_GET['iid'])?'':$_GET['iid'];
+	?>
+
 	<script type="text/javascript">
 
 		$('.float-comp .ele-model a:first-child').click(function(){
@@ -40,16 +44,16 @@
 
 		$('#comments_publish span').click(function(){
 			var lvl=$(this).index();
-			$.get('App/Home/ajax/exe.php?action=add_remark&level='+lvl+'&iid=<?php echo $_GET["iid"] ?>',function(res){
+			$.get('App/Home/ajax/exe.php?action=add_remark&level='+lvl+'&iid=<?php echo $jsiid; ?>',function(res){
 				if(res=='-1'){
 					alert('提交失败,请检查网络连接');
 				}else{
 					var hasVoted=localStorage.hasVoted;
-					if(hasVoted.indexOf('<?php echo $_GET["iid"] ?>')!=-1){
+					if(hasVoted.indexOf('<?php echo $jsiid; ?>')!=-1){
 						alert('请不要重复提交');
 					}else{
 						alert("提交成功,你提交了"+lvl+"分");
-						localStorage.hasVoted+='<?php echo $_GET["iid"]; ?>';
+						localStorage.hasVoted+='<?php echo $jsiid; ?>';
 					}
 				}
 			});
@@ -62,6 +66,38 @@
 			var len=text.length;
 			$('.textarea-title').css('width',len+'em');
 		};
+
+		function get3rdlistActive(obj){
+			return $(obj).parent().parent().find('li a span.badge').parent().attr('viewid');
+		}
+
+		$('.filter-field .cata-3rd-list a').click(function(){
+			var urlToload="index.php?v=home&caid="+$(this).attr('caid');
+			var filterActive=$('.filter-field a').find('span.badge');
+			var viewTypeIdList={};
+			var parent=$(this).parent().parent().parent().prev().find('a');
+			var parentVal=parent.attr('viewid');
+
+			if(!$(this).parent().parent().parent().prev().find('a span').hasClass('badge')){
+				parentVal='no';
+			}
+
+			for (var i = 0; i < filterActive.length; i++) {
+				if($(filterActive[i]).parent().attr('viewid')==get3rdlistActive(this)){
+					continue;
+				}
+				// console.log($(filterActive[i]).parent().attr('viewid'));
+				viewTypeIdList[i]=$(filterActive[i]).parent().attr('viewid');
+			};
+
+			var viewTypeIdListString=JSON.stringify(viewTypeIdList);
+			urlToload+='&view_type_id='+viewTypeIdListString;
+			urlToload+='&clicked='+$(this).attr('viewid');
+			urlToload+='&parent='+parentVal;
+			window.location=urlToload;
+			// console.log(urlToload);
+			return false;
+		});
 
 	</script>
 

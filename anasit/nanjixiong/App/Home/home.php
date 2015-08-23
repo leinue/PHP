@@ -11,12 +11,6 @@
 	    $prevPage=1;
 	}
 
-	$nextPage=$page+1;
-
-	if($nextPage>$allPages){
-	    $nextPage=$allPages;
-	}
-
 	if(empty($_GET['caid'])){
 		$caid=$allCataObj[0]->getCaid();
 		redirectTo('index.php?v=home&caid='.$firstCaid[0]);
@@ -55,13 +49,15 @@
 
 	if($cataToView=='all'){
 		$cataList=$cataObj->getCataChild($_GET['caid']);
+		$allPages=0;
 	}else{
 		// $cataToView
 		// $cataToView=json_decode($cataToView,true);
 		// print_r($cataToView);
 		$searchResult=array();
 		// foreach ($cataToView as $key => $value) {
-			$search=$cataObj->searchItemListByCaid($_GET['clicked'],$_GET['caid']);
+			$search=$cataObj->searchItemListByCaid($_GET['clicked'],$_GET['caid'],$page);
+			$allPages=ceil(count($search)/10);
 			// if(!$search){
 			// 	continue;
 			// }
@@ -208,7 +204,9 @@
 								$frontDesc=$filedOptionObj->getFieldDesc();
 
 								$itemsObj=new Cores\Models\ItemsModel();
-								$allItems=$itemsObj->selectAll();
+								$allItems=$itemsObj->selectAll($page);
+
+								$allPages=ceil(count($allItems)/10);
 
 								$noDataTips='';
 
@@ -305,6 +303,7 @@
 							}else{
 
 								if(is_array($searchResult)){
+									// $allPages=count($allItems);
 
 									$filedObj=new Cores\Models\FieldsModel();
 
@@ -383,7 +382,6 @@
 										          '.$secondListField.'
 										        </tr>';
 										}
-
 										
 										}
 										
@@ -416,27 +414,45 @@
 				</div>
 
 				<?php 
+
+					$nextPage=$page+1;
+
+					if($nextPage>$allPages){
+					    $nextPage=$allPages;
+					}
+
 					$paramClicked='';
 					if(!empty($_GET['clicked'])){
 						$paramClicked=$_GET['clciked'];
 					}
+
+					// alert($prevPage);
+					// alert($nextPage);
+					// alert($allPages);
+
 				?>
 
 				<div class="col-md-6 col-md-offset-3">
 					<nav style="box-shadow:none;text-align: center;">
 					  <ul class="pagination">
 					    <li>
-					      <a href="index.php?v=home&caid=<?php echo $_GET['caid']; ?>&view_type_id=<?php echo $_GET['view_type_id']; ?>&clicked=<?php echo $paramClicked; ?>&page=<?php echo $prevPage; ?>" aria-label="Previous">
+					      <a href="index.php?v=home&caid=<?php echo $_GET['caid']; ?>&view_type_id=<?php echo $_GET['view_type_id']; ?>&clicked=<?php echo $paramClicked; ?>&page=<?php echo $prevPage; ?>&parent=<?php echo $_GET['parent'] ?>" aria-label="Previous">
 					        <span aria-hidden="true">上一页</span>
 					      </a>
 					    </li>
-					    <li class="active"><a href="#">1</a></li>
-					    <li><a href="#">2</a></li>
-					    <li><a href="#">3</a></li>
-					    <li><a href="#">4</a></li>
-					    <li><a href="#">5</a></li>
+					    <?php
+
+					    	$pageActive='';
+					    	for ($i=1; $i <= $allPages; $i++) {
+					    		if($i==$page){
+					    			$pageActive='active';
+					    		}
+					    		echo '<li class="'.$pageActive.'"><a href="#">'.$i.'</a></li>';
+					    	}
+					 
+					    ?>
 					    <li>
-					      <a href="index.php?v=home&caid=<?php echo $_GET['caid']; ?>&view_type_id=<?php echo $_GET['view_type_id']; ?>&clicked=<?php echo $paramClicked; ?>&page=<?php echo $nextPage; ?>" aria-label="Next">
+					      <a href="index.php?v=home&caid=<?php echo $_GET['caid']; ?>&view_type_id=<?php echo $_GET['view_type_id']; ?>&clicked=<?php echo $paramClicked; ?>&page=<?php echo $nextPage; ?>&parent=<?php echo $_GET['parent'] ?>" aria-label="Next">
 					        <span aria-hidden="true">下一页</span>
 					      </a>
 					    </li>

@@ -126,13 +126,13 @@ class CataModel{
 	}
 
 
-	function searchItemListByCaid($caid,$parent){
+	function searchItemListByCaid($caid,$parent,$page=1){
 		
 		if($caid==null){
 			return false;
 		}
 
-		return self::$model->getDatabase()->query("SELECT * FROM  `njx_items` WHERE `caid` LIKE '%$caid%' AND `caid` LIKE '%$parent%'");
+		return self::$model->getDatabase()->query("SELECT * FROM  `njx_items` WHERE `caid` LIKE '%$caid%' AND `caid` LIKE '%$parent%' ORDER BY `order` DESC LIMIT ".($page-1).",".($page+10));
 	}
 
 

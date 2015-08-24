@@ -13,12 +13,17 @@ class ItemsModel{
 		self::$model=D('njx_items');
 	}
 
-	function selectAll($page=null){
+	function selectAll($page=null,$arr=false){
 		if($page==null){
 			$cataObj=self::$model->getDatabase()->query("SELECT * from `njx_items` ORDER BY `order` DESC",[],'Cores\Models\Items');
 			return $cataObj;
 		}else{
-			return $cataObj=self::$model->getDatabase()->query("SELECT * FROM `njx_items` ORDER BY `order` DESC LIMIT ".($page-1).",".($page+10),[],'Cores\Models\Items');
+			if(!$arr){
+				return $cataObj=self::$model->getDatabase()->query("SELECT * FROM `njx_items` ORDER BY `order` DESC LIMIT ".($page-1).",".($page+10));
+			}else{
+				return $cataObj=self::$model->getDatabase()->query("SELECT * FROM `njx_items` ORDER BY `order` DESC LIMIT ".($page-1).",".($page+10),[],'Cores\Models\Items');
+			}
+			
 		}
 	}
 

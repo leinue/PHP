@@ -84,9 +84,11 @@
 					var fields=$('.filter-field a');
 					for (var i=0; i < fields.length; i++) { 
 						var currentAttr=$(fields[i]).attr('viewid');
+						console.log(currentAttr);
 						// if('$caidClicked'!=currentAttr){
 						// 	console.log('caidClicked=$caidClicked'+';currentAttr='+currentAttr);
 						// }
+						console.log('$cataToView');
 						if('$cataToView'.indexOf(currentAttr)!=-1){
 							console.log($(fields[i]));
 							$(fields[i]).find('span').addClass('badge');
@@ -139,7 +141,7 @@
 								}
 								echo '<div class="cata-list">
 										<div class="col-md-2">
-											'.$value['name'].'：<a caid="'.$caid.'" viewId='.$childValue['parent'].' href="index.php?v=home&caid='.$caid.'&view_type_id=all"> <span '.displayBadge($_GET['view_type_id'],'all').'>全部</span></a>
+											'.$value['name'].'：<a caid="'.$caid.'" viewId='.$childValue['parent'].' href="index.php?v=home&caid='.$caid.'&view_type_id=all"> <span '.displayBadge($_GET['clicked'],$childValue['parent']).'>全部</span></a>
 										</div>
 										<div class="cata-3rd-list col-md-10">
 											<ul class="list-inline">'.$list.'</ul>
@@ -204,7 +206,7 @@
 								$frontDesc=$filedOptionObj->getFieldDesc();
 
 								$itemsObj=new Cores\Models\ItemsModel();
-								$allItems=$itemsObj->selectAll($page);
+								$allItems=$itemsObj->selectAll($page,true);
 
 								$allPages=ceil(count($allItems)/10);
 
@@ -443,11 +445,12 @@
 					    <?php
 
 					    	$pageActive='';
-					    	for ($i=1; $i <= $allPages; $i++) {
+					    	for ($i=1; $i <= $allPages+1; $i++) {
 					    		if($i==$page){
 					    			$pageActive='active';
 					    		}
 					    		echo '<li class="'.$pageActive.'"><a href="#">'.$i.'</a></li>';
+					    		$pageActive='';
 					    	}
 					 
 					    ?>

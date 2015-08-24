@@ -71,7 +71,7 @@
 			return $(obj).parent().parent().find('li a span.badge').parent().attr('viewid');
 		}
 
-		$('.filter-field .cata-3rd-list a').click(function(){
+		$('.filter-field  a').click(function(){
 			var urlToload="index.php?v=home&caid="+$(this).attr('caid');
 			var filterActive=$('.filter-field a').find('span.badge');
 			var viewTypeIdList={};
@@ -81,6 +81,10 @@
 			if(!$(this).parent().parent().parent().prev().find('a span').hasClass('badge')){
 				parentVal='no';
 			}
+
+			// if(!(this).parent().parent().parent().prev().find('a span').html()=='全部'){
+			// 	parentVal='all';
+			// }
 
 			for (var i = 0; i < filterActive.length; i++) {
 				if($(filterActive[i]).parent().attr('viewid')==get3rdlistActive(this)){

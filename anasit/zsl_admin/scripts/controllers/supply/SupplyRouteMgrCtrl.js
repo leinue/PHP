@@ -31,7 +31,6 @@ angular.module('sbAdminApp')
 
 	$scope.editAfter=function(){
 		$scope.alertInfo=!$scope.alertInfo;
-		$scope.statusMessage='修改成功';
 		$scope.isEdit=!$scope.isEdit;
 	};
 
@@ -44,7 +43,6 @@ angular.module('sbAdminApp')
 	$scope.addAfter=function(){
 		$scope.alertInfo=true;
 		$scope.isAdd=false;
-		$scope.statusMessage="添加成功";
 	};
 
 	$scope.cancelToAddRoute=function(){
@@ -53,6 +51,10 @@ angular.module('sbAdminApp')
 
 	$scope.cancelToEditRoute=function(){
 		$scope.isEdit=false;
+	};
+
+	$scope.deleteAfter=function(){
+
 	};
 
 	/*****************************出发地******************************/
@@ -71,8 +73,10 @@ angular.module('sbAdminApp')
 
 	$scope.deleteRouteStart=function(id){
 		var con=confirm('确定要删除吗?');
+		$scope.alertInfo=true;
 		if(con){
-			$scope.result=RouteStart.delete(id);
+			$scope.result=RouteStart.delete($scope,id);
+			$scope.deleteAfter();
 			RouteStart.getAll($scope);
 		}
 	};
@@ -82,6 +86,7 @@ angular.module('sbAdminApp')
 	};
 
 	$scope.confirmToAddRouteStart=function(){
+		console.log($scope.addRoute.title);
 		RouteStart.add($scope,$scope.addRoute.title,0);
 		$scope.addAfter();
 		RouteStart.getAll($scope);
@@ -98,9 +103,10 @@ angular.module('sbAdminApp')
 
 	$scope.deleteRouteEnd=function(id){
 		var con=confirm('确定要删除吗');
+		$scope.alertInfo=true;
 		if(con){
-			$scope.result=RouteEnd.delete(id);
-			$scope.getAll($scope);
+			$scope.result=RouteEnd.delete($scope,id);
+			RouteEnd.getAll($scope);
 		}
 	};
 
@@ -130,8 +136,9 @@ angular.module('sbAdminApp')
 
 	$scope.deleteRouteSell=function(id){
 		var con=confirm('确定要删除吗?');
+		$scope.alertInfo=true;
 		if(con){
-			$scope.result=RouteSell.delete(id);
+			$scope.result=RouteSell.delete($scope,id);
 			RouteSell.getAll($scope);
 		}
 	};

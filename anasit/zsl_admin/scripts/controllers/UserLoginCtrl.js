@@ -1,10 +1,12 @@
 angular.module('sbAdminApp')
 .controller('UserLoginCtrl',function($scope,$location,User){
 
-	$scope.login=function(){
+	if(localStorage.userMobile!=undefined){
+		$scope.telnumber=localStorage.userMobile;
+		$scope.password=localStorage.userPwd;
+	}
 
-		console.log($scope.telnumber);
-		console.log($scope.password);
+	$scope.login=function(){
 
 		if($scope.telnumber==null || $scope.password==null){
 			alert('用户名或密码不能为空');

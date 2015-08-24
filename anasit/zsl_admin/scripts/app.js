@@ -22,7 +22,7 @@ angular
     supply:5
   })
   .constant('BASE_URL',{
-    url:'http://service.zhangshanglv.cn/index.php'
+    url:'http://service.zhangshanglv.cn'
   })
   .run(function($rootScope,$location,User){
     $rootScope.$on('$routeChangeStart',function(evt,next,curr){
@@ -31,7 +31,7 @@ angular
       }
     });
   })
-  .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider) {
+  .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider','$httpProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider,$httpProvider) {
     
     $ocLazyLoadProvider.config({
       debug:false,
@@ -39,6 +39,10 @@ angular
     });
 
     $urlRouterProvider.otherwise('/dashboard/home');
+
+    $httpProvider.defaults.useXDomain=true;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    //13044903255
 
     $stateProvider
       .state('dashboard', {

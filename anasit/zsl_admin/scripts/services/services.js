@@ -1,6 +1,6 @@
 angular.module('sbAdminApp')
 
-.factory('User',function($q,$http,ACCESS_LEVELS,BASE_URL){
+.factory('User',function($q,$http,$location,ACCESS_LEVELS,BASE_URL){
 
 	var service={};
 
@@ -12,54 +12,39 @@ angular.module('sbAdminApp')
 
 	service.setUser=function(tel,password){
 
-		var request={
-		    "admin": {
-		        "login": {
-		            "data": {
-		                "tel": tel,
-		                "password": password
-		            }
-		        }
-		    }
-		};
-
-		request=JSON.stringify(request);
-			
-		$http.jsonp(BASE_URL.url+"/Admin/CompanyAdmin/login?data="+request+"&callback=JSON_CALLBACK")
-		.success(function(data){
-			var status=data.admin.login.status;
-			if(status==='1'){
-				_user=data.admin.login.data;
-				$location.path('/home');				
-			}else{
-				switch(status){
-					case 0:
-						alert("数据库系统查询登录失败或密码错误");
-						break;
-					case -1:
-						alert("数据库表中没有该管理员");
-						break;
-					default:
-						break;
-				}
+		$http({
+			method:"POST",
+			url:BASE_URL.url+'/User/Auth/Login',
+			data:{
+				"mobile":tel,
+				"password":password
 			}
-		})
-		.error(function(data){
-			alert('网络传输错误');
+		}).success(function(data){
+			if(data.status=='success'){
+				localStorage.userMobile=tel;
+				localStorage.userPwd=password;
+				$location.path('/');
+			}else{
+				alert('登录失败,请检查用户名或密码');
+			}
+		}).catch(function(reason){
+			$q.reject(reason);
 		});
+			
 		// $cookieStore.put('user',_user);
 	}
 
 	service.isLoggedIn=function(){
-		return _user ? true : false;
+		return localStorage.userMobile ? true : false;
 	}
 
 	service.getUser=function(){
-		return _user;
+		return localStorage.userMobile;
 	}
 
 	service.logout=function(){
-		_user=null;
+		localStorage.userMobile=null;
+		localStorage.userPwd=null;
 	}
 
 	return service;
@@ -74,20 +59,21 @@ angular.module('sbAdminApp')
 			var d=$q.defer();
 			var promise=d.promise;
 
-			var request={
-				"id":id,
-				"title":title,
-				"orderindex":orderIndex
-			};
-
-			request=JSON.stringify(request);
-			
-			$http.jsonp(BASE_URL.url+"/Admin/TravelArea/editStart?data="+request+"&callback=JSON_CALLBACK")
-			.success(function(data){
-				$scope.updateSuccess=data;
-			})
-			.error(function(data){
-				$scope.updateSuccess=false;
+			$http({
+				method:"get",
+				url:BASE_URL.url+'/Admin/TravelArea/editStart',
+				params:{
+					"data":{
+						"id":id,
+						"title":title,
+						"orderindex":orderIndex
+					}
+				}
+			}).success(function(data){
+				console.log(data);
+				$scope.status=data;
+			}).catch(function(reason){
+				$q.reject(reason);
 			});
 
 		},
@@ -97,52 +83,59 @@ angular.module('sbAdminApp')
 			var d=$q.defer();
 			var promise=d.promise;
 
-			var request={
-				"id":id
-			};
-
-			request=JSON.stringify(request);
-			
-			$http.jsonp(BASE_URL.url+"/Admin/TravelArea/deleteStart?data="+request+"&callback=JSON_CALLBACK")
-			.success(function(data){
-				$scope.deleteSuccess=data;
-			})
-			.error(function(data){
-				$scope.deleteSuccess=false;
+			$http({
+				method:"get",
+				url:BASE_URL.url+'/Admin/TravelArea/deleteStart',
+				params:{
+					"data":{
+						"id":id
+					}
+				}
+			}).success(function(data){
+				console.log(data);
+				$scope.status=data;
+			}).catch(function(reason){
+				$q.reject(reason);
 			});
+
 		},
 
 		add:function($scope,title,orderindex){
 			var d=$q.defer();
 			var promise=d.promise;
 
-			var request={
-				"title":title,
-				"orderindex":orderindex
-			};
-
-			request=JSON.stringify(request);
-			
-			$http.jsonp(BASE_URL.url+"/Admin/TravelArea/createStart?data="+request+"&callback=JSON_CALLBACK")
-			.success(function(data){
-				$scope.addSuccess=data;
-			})
-			.error(function(data){
-				$scope.addSuccess=false;
+			$http({
+				method:"get",
+				url:BASE_URL.url+'/Admin/TravelArea/createStart',
+				params:{
+					"data":{
+						"title":title,
+						"orderindex":orderindex
+					}
+				}
+			}).success(function(data){
+				console.log(data);
+				$scope.status=data;
+			}).catch(function(reason){
+				$q.reject(reason);
 			});
+
 		},
 
 		getAll:function($scope){
 			var d=$q.defer();
 			var promise=d.promise;
 
-			$http.jsonp(BASE_URL.url+"/Admin/TravelArea/listStart?callback=JSON_CALLBACK")
-			.success(function(data){
-				$scope.allRoutes=data;
-			})
-			.error(function(data){
+			$http({
+				method:"get",
+				url:BASE_URL.url+'/Admin/TravelArea/listStart'
+			}).success(function(data){
 				console.log(data);
+				$scope.allRoutes=data;
+			}).catch(function(reason){
+				$q.reject(reason);
 			});
+
 		}
 	};
 
@@ -157,20 +150,21 @@ angular.module('sbAdminApp')
 			var d=$q.defer();
 			var promise=d.promise;
 
-			var request={
-				"id":id,
-				"title":title,
-				"orderindex":orderindex
-			};
-
-			request=JSON.stringify(request);
-			
-			$http.jsonp(BASE_URL.url+"/Admin/TravelArea/editEnd?data="+request+"&callback=JSON_CALLBACK")
-			.success(function(data){
-				$scope.updateSuccess=data;
-			})
-			.error(function(data){
-				$scope.updateSuccess=false;
+			$http({
+				method:"get",
+				url:BASE_URL.url+'/Admin/TravelArea/editEnd',
+				params:{
+					"data":{
+						"id":id,
+						"title":title,
+						"orderindex":orderIndex
+					}
+				}
+			}).success(function(data){
+				console.log(data);
+				$scope.status=data;
+			}).catch(function(reason){
+				$q.reject(reason);
 			});
 
 		},
@@ -180,18 +174,19 @@ angular.module('sbAdminApp')
 			var d=$q.defer();
 			var promise=d.promise;
 
-			var request={
-				"id":id
-			};
-
-			request=JSON.stringify(request);
-			
-			$http.jsonp(BASE_URL.url+"/Admin/TravelArea/deleteEnd?data="+request+"&callback=JSON_CALLBACK")
-			.success(function(data){
-				$scope.deleteSuccess=data;
-			})
-			.error(function(data){
-				$scope.deleteSuccess=false;
+			$http({
+				method:"get",
+				url:BASE_URL.url+'/Admin/TravelArea/deleteEnd',
+				params:{
+					"data":{
+						"id":id
+					}
+				}
+			}).success(function(data){
+				console.log(data);
+				$scope.status=data;
+			}).catch(function(reason){
+				$q.reject(reason);
 			});
 
 		},
@@ -201,19 +196,20 @@ angular.module('sbAdminApp')
 			var d=$q.defer();
 			var promise=d.promise;
 
-			var request={
-				"title":title,
-				"orderindex":orderindex
-			};
-
-			request=JSON.stringify(request);
-			
-			$http.jsonp(BASE_URL.url+"/Admin/TravelArea/createEnd?data="+request+"&callback=JSON_CALLBACK")
-			.success(function(data){
-				$scope.addSuccess=data;
-			})
-			.error(function(data){
-				$scope.addSuccess=false;
+			$http({
+				method:"get",
+				url:BASE_URL.url+'/Admin/TravelArea/createEnd',
+				params:{
+					"data":{
+						"title":title,
+						"orderindex":orderindex
+					}
+				}
+			}).success(function(data){
+				console.log(data);
+				$scope.status=data;
+			}).catch(function(reason){
+				$q.reject(reason);
 			});
 
 		},
@@ -223,12 +219,14 @@ angular.module('sbAdminApp')
 			var d=$q.defer();
 			var promise=d.promise;
 
-			$http.jsonp(BASE_URL.url+"/Admin/TravelArea/listEnd?callback=JSON_CALLBACK")
-			.success(function(data){
-				$scope.allRoutesEnd=data;
-			})
-			.error(function(data){
+			$http({
+				method:"get",
+				url:BASE_URL.url+'/Admin/TravelArea/listEnd'
+			}).success(function(data){
 				console.log(data);
+				$scope.allRoutesEnd=data;
+			}).catch(function(reason){
+				$q.reject(reason);
 			});
 
 		}
@@ -246,20 +244,21 @@ angular.module('sbAdminApp')
 			var d=$q.defer();
 			var promise=d.promise;
 
-			var request={
-				"id":id,
-				"title":title,
-				"orderindex":orderIndex
-			};
-
-			request=JSON.stringify(request);
-			
-			$http.jsonp(BASE_URL.url+"/Admin/TravelArea/editSell?data="+request+"&callback=JSON_CALLBACK")
-			.success(function(data){
-				$scope.updateSuccess=data;
-			})
-			.error(function(data){
-				$scope.updateSuccess=false;
+			$http({
+				method:"get",
+				url:BASE_URL.url+'/Admin/TravelArea/editSell',
+				params:{
+					"data":{
+						"id":id,
+						"title":title,
+						"orderindex":orderIndex
+					}
+				}
+			}).success(function(data){
+				console.log(data);
+				$scope.status=data;
+			}).catch(function(reason){
+				$q.reject(reason);
 			});
 
 		},
@@ -269,19 +268,20 @@ angular.module('sbAdminApp')
 			var d=$q.defer();
 			var promise=d.promise;
 
-			var request={
-				"title":title,
-				"orderindex":orderindex
-			};
-
-			request=JSON.stringify(request);
-			
-			$http.jsonp(BASE_URL.url+"/Admin/TravelArea/createSell?data="+request+"&callback=JSON_CALLBACK")
-			.success(function(data){
-				$scope.addSuccess=data;
-			})
-			.error(function(data){
-				$scope.addSuccess=false;
+			$http({
+				method:"get",
+				url:BASE_URL.url+'/Admin/TravelArea/createSell',
+				params:{
+					"data":{
+						"title":title,
+						"orderindex":orderIndex
+					}
+				}
+			}).success(function(data){
+				console.log(data);
+				$scope.status=data;
+			}).catch(function(reason){
+				$q.reject(reason);
 			});
 
 		},
@@ -291,18 +291,19 @@ angular.module('sbAdminApp')
 			var d=$q.defer();
 			var promise=d.promise;
 
-			var request={
-				"id":id
-			};
-
-			request=JSON.stringify(request);
-			
-			$http.jsonp(BASE_URL.url+"/Admin/TravelArea/deleteSell?data="+request+"&callback=JSON_CALLBACK")
-			.success(function(data){
-				$scope.deleteSuccess=data;
-			})
-			.error(function(data){
-				$scope.deleteSuccess=false;
+			$http({
+				method:"get",
+				url:BASE_URL.url+'/Admin/TravelArea/deleteSell',
+				params:{
+					"data":{
+						"id":id
+					}
+				}
+			}).success(function(data){
+				console.log(data);
+				$scope.status=data;
+			}).catch(function(reason){
+				$q.reject(reason);
 			});
 
 		},
@@ -312,12 +313,14 @@ angular.module('sbAdminApp')
 			var d=$q.defer();
 			var promise=d.promise;
 
-			$http.jsonp(BASE_URL.url+"/Admin/TravelArea/listSell?callback=JSON_CALLBACK")
-			.success(function(data){
-				$scope.allRoutesSell=data;
-			})
-			.error(function(data){
+			$http({
+				method:"get",
+				url:BASE_URL.url+'/Admin/TravelArea/listSell'
+			}).success(function(data){
 				console.log(data);
+				$scope.allRoutesSell=data;
+			}).catch(function(reason){
+				$q.reject(reason);
 			});
 
 		}
@@ -337,13 +340,15 @@ angular.module('sbAdminApp')
 			var d=$q.defer();
 			var promise=d.promise;
 
-			$http.jsonp(BASE_URL.url+"/Admin/CompanySupplier/supplierList?callback=JSON_CALLBACK")
-			.success(function(data){
-				$scope.supplierListResult=data.supplier.list;
+			$http({
+				method:"get",
+				url:BASE_URL.url+'/Admin/CompanySupplier/supplierList'
+			}).success(function(data){
+				$scope.supplierListResult=data.supplier.list.data;
 				console.log($scope.supplierListResult);
-			})
-			.error(function(data){
+			}).catch(function(reason){
 				$scope.supplierListResult=false;
+				$q.reject(reason);
 			});
 
 		},

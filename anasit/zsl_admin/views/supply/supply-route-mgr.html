@@ -41,7 +41,7 @@
 
 						      		<div style="margin-top:15px;" ng-show="alertInfo" class="alert alert-warning alert-dismissible fade in" role="alert">
 								      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-								      {{statusMessage}}
+								      {{status.message}}
 								    </div>
 						      		
 						      		<div class="well" ng-show="isEdit" style="margin-top:15px">
@@ -83,8 +83,8 @@
 				                                <th>操作</th>
 				                            </tr>
 				                        </thead>
-				                        <tbody ng-repeat="routes in allRoutes">
-				                        	<tr ng-repeat="x in routes">
+				                        <tbody>
+				                        	<tr ng-repeat="x in allRoutes.data">
 				                        		<td>{{x.id}}</td>
 				                                <td>{{x.title}}</td>
 				                                <td>{{x.orderindex}}</td>
@@ -117,7 +117,7 @@
 
 								<div style="margin-top:15px;" ng-show="alertInfo" class="alert alert-warning alert-dismissible fade in" role="alert">
 								    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-								      {{statusMessage}}
+								      {{status.message}}
 								</div>
 						      		
 					      		<div class="well" ng-show="isEdit" style="margin-top:15px">
@@ -157,8 +157,8 @@
 			                                <th>操作</th>
 			                            </tr>
 			                        </thead>
-			                        <tbody ng-repeat="routes in allRoutesEnd">
-			                            <tr ng-repeat="x in routes">
+			                        <tbody>
+			                            <tr ng-repeat="x in allRoutesEnd.data">
 			                                <td>{{x.id}}</td>
 			                                <td>{{x.title}}</td>
 			                                <td>{{x.orderindex}}</td>
@@ -211,7 +211,7 @@
 								
 								<div style="margin-top:15px;" ng-show="alertInfo" class="alert alert-warning alert-dismissible fade in" role="alert">
 								    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-								      {{statusMessage}}
+								      {{status.message}}
 							    </div>
 					      		
 					      		<div class="well" ng-show="isEdit" style="margin-top:15px">
@@ -251,8 +251,8 @@
 			                                <th>操作</th>
 			                            </tr>
 			                        </thead>
-			                        <tbody ng-repeat="routes in allRoutesSell">
-			                            <tr ng-repeat="x in routes">
+			                        <tbody>
+			                            <tr ng-repeat="x in allRoutesSell.data">
 			                                <td>{{x.id}}</td>
 			                                <td>{{x.title}}</td>
 			                                <td>{{x.orderindex}}</td>

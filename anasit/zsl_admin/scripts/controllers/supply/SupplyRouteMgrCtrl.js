@@ -1,5 +1,5 @@
 angular.module('sbAdminApp')
-.controller('SupplyRouteMgrCtrl',function($scope,$location,User,RouteStart,RouteEnd,RouteSell){
+.controller('SupplyRouteMgrCtrl',function($scope,$location,User,RouteStart,RouteEnd){
 
 	$scope.isEdit=false;
 	$scope.isAdd=false;
@@ -126,37 +126,108 @@ angular.module('sbAdminApp')
 		RouteEnd.getAll($scope);
 	};
 
-	/*****************************发售地******************************/
+})
 
-	RouteSell.getAll($scope);
+.controller('TravelProductConstract',function($scope,$location,User,TravelProductsConstract){
 
-	$scope.editRouteSell=function(id,t,o){
-		$scope.editBefore(id,t,o);
+	TravelProductsConstract.getAll($scope);
+
+	$scope.addConstract=function(){
+
 	};
 
-	$scope.deleteRouteSell=function(id){
-		var con=confirm('确定要删除吗?');
-		$scope.alertInfo=true;
-		if(con){
-			$scope.result=RouteSell.delete($scope,id);
-			RouteSell.getAll($scope);
-		}
+	$scope.confirmToAddConstract=function(){
+
 	};
 
-	$scope.addRouteSell=function(){
-		$scope.addBefore();
+	$scope.deleteConstract=function(){
+
 	};
 
-	$scope.confirmToAddRouteSell=function(){
-		RouteSell.add($scope,$scope.addRoute.title,0);
-		$scope.addAfter();
-		RouteSell.getAll($scope);
+	$scope.editConstract=function(){
+
 	};
 
-	$scope.confirmToEditRouteSell=function(){
-		RouteSell.update($scope,$scope.editRoute.id,$scope.editRoute.title,$scope.editRoute.orderindex);
-		$scope.editAfter();
-		RouteSell.getAll($scope);
+	$scope.confirmToEditConstract=function(){
+
+	};
+
+})
+
+.controller('TravelProductCategory',function($scope,$location,User,TravelProductsCategory){
+
+	TravelProductsCategory.getAll($scope);
+
+	$scope.addCategory=function(){
+
+	};
+
+	$scope.confirmToAddCategory=function(){
+
+	};
+
+	$scope.deleteCategory=function(){
+
+	};
+
+	$scope.editCategory=function(){
+
+	};
+
+	$scope.confirmToEditCategory=function(){
+
+	};
+
+})
+
+.controller('TravelProductInsure',function($scope,$location,User,TravelProductsInsure){
+
+	TravelProductsInsure.getAll($scope);
+
+	$scope.addInsure=function(){
+
+	};
+
+	$scope.confirmToAddInsure=function(){
+
+	};
+
+	$scope.deleteInsure=function(){
+
+	};
+
+	$scope.editInsure=function(){
+
+	};
+
+	$scope.confirmToEditInsure=function(){
+
+	};
+
+})
+
+.controller('TravelProductAttr',function($scope,$location,User,TravelProductsAttr){
+
+	TravelProductsAttr.getAll($scope);
+
+	$scope.addAttr=function(){
+
+	};
+
+	$scope.confirmToAddAttr=function(){
+
+	};
+
+	$scope.deleteAttr=function(){
+
+	};
+
+	$scope.editAttr=function(){
+
+	};
+
+	$scope.confirmToEditAttr=function(){
+
 	};
 
 });

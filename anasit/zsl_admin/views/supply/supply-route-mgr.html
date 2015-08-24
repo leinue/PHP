@@ -25,7 +25,10 @@
                     <p>
 						<button type="button" data-toggle="modal" data-target="#route_start" class="btn btn-outline btn-success btn-lg btn-block">出发地管理</button>
 						<button type="button" data-toggle="modal" data-target="#route_end" class="btn btn-outline btn-info btn-lg btn-block">目的地管理</button>
-						<button type="button" data-toggle="modal" data-target="#route_cell"  class="btn btn-outline btn-primary btn-lg btn-block">发售地管理</button>
+						<button type="button" data-toggle="modal" data-target="#route_constract"  class="btn btn-outline btn-primary btn-lg btn-block">旅游产品合同</button>
+						<button type="button" data-toggle="modal" data-target="#route_category"  class="btn btn-outline btn-primary btn-lg btn-block">旅游产品分类</button>
+						<button type="button" data-toggle="modal" data-target="#route_attr"  class="btn btn-outline btn-primary btn-lg btn-block">旅游产品属性</button>
+						<button type="button" data-toggle="modal" data-target="#route_insure"  class="btn btn-outline btn-primary btn-lg btn-block">旅游保险</button>
                     </p>
 
 						<div class="modal fade" id="route_start" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
@@ -199,70 +202,74 @@
 						  </div>
 						</div>
 
-						<div class="modal fade" id="route_cell" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+						<div class="modal fade" ng-controller="TravelProductConstract" id="route_constract" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 						  <div class="modal-dialog modal-lg">
 						    <div class="modal-content">
 						      <div class="modal-header">
 						        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						        <h4 class="modal-title" id="gridSystemModalLabel">发售地管理</h4>
+						        <h4 class="modal-title" id="gridSystemModalLabel">旅游产品合同</h4>
 						      </div>
 						      <div class="modal-body">
-						      	<button ng-click="addRouteSell()" class="btn btn-outline btn-success">新增发售地城市</button>
-								
-								<div style="margin-top:15px;" ng-show="alertInfo" class="alert alert-warning alert-dismissible fade in" role="alert">
-								    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+						      	<div class="table-responsive">
+						      		<button ng-click="addRouteStart()" class="btn btn-outline btn-success">新增产品合同</button>
+
+						      		<div style="margin-top:15px;" ng-show="alertInfo" class="alert alert-warning alert-dismissible fade in" role="alert">
+								      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
 								      {{status.message}}
-							    </div>
-					      		
-					      		<div class="well" ng-show="isEdit" style="margin-top:15px">
+								    </div>
+						      		
+						      		<div class="well" ng-show="isEdit" style="margin-top:15px">
 
-					      			<div class="form-group">
-									    <label for="edit_title">名称</label>
-									    <input type="text" ng-model="editRoute.title" class="form-control" id="edit_title" placeholder="名称" required>
-								  	</div>
-								  	<div class="form-group">
-									    <label for="edit_orderindex">排序</label>
-									    <input type="number" ng-model="editRoute.orderindex" class="form-control" id="edit_orderindex" placeholder="排序" required>
-								  	</div>
-								  	<button type="submit" ng-click="confirmToEditRouteSell()" class="btn btn-default">修改</button>
-								  	<button type="submit" ng-click="cancelToEditRoute()" class="btn btn-default">取消</button>
-					      		</div>
+						      			<div class="form-group">
+										    <label for="edit_title">名称</label>
+										    <input type="text" ng-model="editRoute.title" class="form-control" id="edit_title" placeholder="名称" required>
+									  	</div>
+									  	<div class="form-group">
+										    <label for="edit_orderindex">排序</label>
+										    <input type="number" ng-model="editRoute.orderindex" class="form-control" id="edit_orderindex" placeholder="排序" required>
+									  	</div>
+									  	<button type="submit" ng-click="cancelToEditRoute()" class="btn btn-default">取消</button>
+									  	<button type="submit" ng-click="confirmToEditRouteStart()" class="btn btn-default">修改</button>
 
-					      		<div class="well" ng-show="isAdd" style="margin-top:15px">
+						      		</div>
 
-					      			<div class="form-group">
-									    <label for="add_title">名称</label>
-									    <input type="text" ng-model="addRoute.title" class="form-control" id="add_title" placeholder="名称" required>
-								  	</div>
-								  	<div class="form-group">
-									    <label for="add_orderindex">排序</label>
-									    <input type="number" ng-model="addRoute.order" class="form-control" id="add_orderindex" placeholder="排序" required>
-								  	</div>
-								  	<button type="submit" ng-click="confirmToAddRouteSell()" class="btn btn-default">添加</button>
-								  	<button type="submit" ng-click="cancelToAddRoute()" class="btn btn-default">取消</button>
-					      		</div>
+						      		<div class="well" ng-show="isAdd" style="margin-top:15px">
 
-			                    <table class="table table-hover">
-			                        <thead>
-			                            <tr>
-			                                <th>编号</th>
-			                                <th>名称</th>
-			                                <th>排序</th>
-			                                <th>操作</th>
-			                            </tr>
-			                        </thead>
-			                        <tbody>
-			                            <tr ng-repeat="x in allRoutesSell.data">
-			                                <td>{{x.id}}</td>
-			                                <td>{{x.title}}</td>
-			                                <td>{{x.orderindex}}</td>
-			                                <td>
-				                                <button ng-click="editRouteSell(x.id,x.title,x.orderindex)" class="btn btn-outline btn-link">编辑</button>
-				                                <button ng-click="deleteRouteSell(x.id)" class="btn btn-outline btn-link">删除</button>
-			                                </td>
-			                            </tr>
-			                        </tbody>
-			                    </table>
+						      			<div class="form-group">
+										    <label for="add_title">名称</label>
+										    <input type="text" ng-model="addRoute.title" class="form-control" id="add_title" placeholder="名称" required>
+									  	</div>
+									  	<div class="form-group">
+										    <label for="add_orderindex">排序</label>
+										    <input type="number" ng-model="addRoute.order" class="form-control" id="add_orderindex" placeholder="排序" required>
+									  	</div>
+									  	<button type="submit" ng-click="cancelToAddRoute()" class="btn btn-default">取消</button>
+									  	<button type="submit" ng-click="confirmToAddRouteStart()" class="btn btn-default">添加</button>
+
+						      		</div>
+
+				                    <table class="table table-hover">
+				                        <thead>
+				                            <tr>
+				                                <th>编号</th>
+				                                <th>名称</th>
+				                                <th>排序</th>
+				                                <th>操作</th>
+				                            </tr>
+				                        </thead>
+				                        <tbody>
+				                        	<tr ng-repeat="x in allConstract.data">
+				                        		<td>{{x.id}}</td>
+				                                <td>{{x.title}}</td>
+				                                <td>{{x.orderindex}}</td>
+				                                <td>
+				                                	<button ng-click="editRouteStart(x.id,x.title,x.orderindex)" class="btn btn-outline btn-link">编辑</button>
+				                                	<button ng-click="deleteRouteStart(x.id)" class="btn btn-outline btn-link">删除</button>
+				                                </td>
+				                        	</tr>
+				                        </tbody>
+				                    </table>
+				                </div>
 						      </div>
 						      <div class="modal-footer">
 						        <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">关闭</button>
@@ -271,6 +278,238 @@
 						    </div>
 						  </div>
 						</div>
+
+						<div class="modal fade" ng-controller="TravelProductCategory" id="route_category" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+						  <div class="modal-dialog modal-lg">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						        <h4 class="modal-title" id="gridSystemModalLabel">旅游产品分类</h4>
+						      </div>
+						      <div class="modal-body">
+						      	<div class="table-responsive">
+						      		<button ng-click="addRouteStart()" class="btn btn-outline btn-success">新增产品分类</button>
+
+						      		<div style="margin-top:15px;" ng-show="alertInfo" class="alert alert-warning alert-dismissible fade in" role="alert">
+								      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+								      {{status.message}}
+								    </div>
+						      		
+						      		<div class="well" ng-show="isEdit" style="margin-top:15px">
+
+						      			<div class="form-group">
+										    <label for="edit_title">名称</label>
+										    <input type="text" ng-model="editRoute.title" class="form-control" id="edit_title" placeholder="名称" required>
+									  	</div>
+									  	<div class="form-group">
+										    <label for="edit_orderindex">排序</label>
+										    <input type="number" ng-model="editRoute.orderindex" class="form-control" id="edit_orderindex" placeholder="排序" required>
+									  	</div>
+									  	<button type="submit" ng-click="cancelToEditRoute()" class="btn btn-default">取消</button>
+									  	<button type="submit" ng-click="confirmToEditRouteStart()" class="btn btn-default">修改</button>
+
+						      		</div>
+
+						      		<div class="well" ng-show="isAdd" style="margin-top:15px">
+
+						      			<div class="form-group">
+										    <label for="add_title">名称</label>
+										    <input type="text" ng-model="addRoute.title" class="form-control" id="add_title" placeholder="名称" required>
+									  	</div>
+									  	<div class="form-group">
+										    <label for="add_orderindex">排序</label>
+										    <input type="number" ng-model="addRoute.order" class="form-control" id="add_orderindex" placeholder="排序" required>
+									  	</div>
+									  	<button type="submit" ng-click="cancelToAddRoute()" class="btn btn-default">取消</button>
+									  	<button type="submit" ng-click="confirmToAddRouteStart()" class="btn btn-default">添加</button>
+
+						      		</div>
+
+				                    <table class="table table-hover">
+				                        <thead>
+				                            <tr>
+				                                <th>编号</th>
+				                                <th>名称</th>
+				                                <th>排序</th>
+				                                <th>操作</th>
+				                            </tr>
+				                        </thead>
+				                        <tbody>
+				                        	<tr ng-repeat="x in allCategories.data">
+				                        		<td>{{x.id}}</td>
+				                                <td>{{x.title}}</td>
+				                                <td>{{x.orderindex}}</td>
+				                                <td>
+				                                	<button ng-click="editRouteStart(x.id,x.title,x.orderindex)" class="btn btn-outline btn-link">编辑</button>
+				                                	<button ng-click="deleteRouteStart(x.id)" class="btn btn-outline btn-link">删除</button>
+				                                </td>
+				                        	</tr>
+				                        </tbody>
+				                    </table>
+				                </div>
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">关闭</button>
+						        <!-- <button type="button" class="btn btn-outline btn-primary">Save changes</button> -->
+						      </div>
+						    </div>
+						  </div>
+						</div>
+
+						<div class="modal fade" ng-controller="TravelProductAttr" id="route_attr" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+						  <div class="modal-dialog modal-lg">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						        <h4 class="modal-title" id="gridSystemModalLabel">旅游产品属性</h4>
+						      </div>
+						      <div class="modal-body">
+						      	<div class="table-responsive">
+						      		<button ng-click="addRouteStart()" class="btn btn-outline btn-success">新增旅游保险</button>
+
+						      		<div style="margin-top:15px;" ng-show="alertInfo" class="alert alert-warning alert-dismissible fade in" role="alert">
+								      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+								      {{status.message}}
+								    </div>
+						      		
+						      		<div class="well" ng-show="isEdit" style="margin-top:15px">
+
+						      			<div class="form-group">
+										    <label for="edit_title">名称</label>
+										    <input type="text" ng-model="editRoute.title" class="form-control" id="edit_title" placeholder="名称" required>
+									  	</div>
+									  	<div class="form-group">
+										    <label for="edit_orderindex">排序</label>
+										    <input type="number" ng-model="editRoute.orderindex" class="form-control" id="edit_orderindex" placeholder="排序" required>
+									  	</div>
+									  	<button type="submit" ng-click="cancelToEditRoute()" class="btn btn-default">取消</button>
+									  	<button type="submit" ng-click="confirmToEditRouteStart()" class="btn btn-default">修改</button>
+
+						      		</div>
+
+						      		<div class="well" ng-show="isAdd" style="margin-top:15px">
+
+						      			<div class="form-group">
+										    <label for="add_title">名称</label>
+										    <input type="text" ng-model="addRoute.title" class="form-control" id="add_title" placeholder="名称" required>
+									  	</div>
+									  	<div class="form-group">
+										    <label for="add_orderindex">排序</label>
+										    <input type="number" ng-model="addRoute.order" class="form-control" id="add_orderindex" placeholder="排序" required>
+									  	</div>
+									  	<button type="submit" ng-click="cancelToAddRoute()" class="btn btn-default">取消</button>
+									  	<button type="submit" ng-click="confirmToAddRouteStart()" class="btn btn-default">添加</button>
+
+						      		</div>
+
+				                    <table class="table table-hover">
+				                        <thead>
+				                            <tr>
+				                                <th>编号</th>
+				                                <th>名称</th>
+				                                <th>排序</th>
+				                                <th>操作</th>
+				                            </tr>
+				                        </thead>
+				                        <tbody>
+				                        	<tr ng-repeat="x in allAttrs.data">
+				                        		<td>{{x.id}}</td>
+				                                <td>{{x.title}}</td>
+				                                <td>{{x.orderindex}}</td>
+				                                <td>
+				                                	<button ng-click="editRouteStart(x.id,x.title,x.orderindex)" class="btn btn-outline btn-link">编辑</button>
+				                                	<button ng-click="deleteRouteStart(x.id)" class="btn btn-outline btn-link">删除</button>
+				                                </td>
+				                        	</tr>
+				                        </tbody>
+				                    </table>
+				                </div>
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">关闭</button>
+						        <!-- <button type="button" class="btn btn-outline btn-primary">Save changes</button> -->
+						      </div>
+						    </div>
+						  </div>
+						</div>
+
+						<div class="modal fade" ng-controller="TravelProductInsure" id="route_insure" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+						  <div class="modal-dialog modal-lg">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						        <h4 class="modal-title" id="gridSystemModalLabel">旅游保险</h4>
+						      </div>
+						      <div class="modal-body">
+						      	<div class="table-responsive">
+						      		<button ng-click="addRouteStart()" class="btn btn-outline btn-success">新增旅游保险</button>
+
+						      		<div style="margin-top:15px;" ng-show="alertInfo" class="alert alert-warning alert-dismissible fade in" role="alert">
+								      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+								      {{status.message}}
+								    </div>
+						      		
+						      		<div class="well" ng-show="isEdit" style="margin-top:15px">
+
+						      			<div class="form-group">
+										    <label for="edit_title">名称</label>
+										    <input type="text" ng-model="editRoute.title" class="form-control" id="edit_title" placeholder="名称" required>
+									  	</div>
+									  	<div class="form-group">
+										    <label for="edit_orderindex">排序</label>
+										    <input type="number" ng-model="editRoute.orderindex" class="form-control" id="edit_orderindex" placeholder="排序" required>
+									  	</div>
+									  	<button type="submit" ng-click="cancelToEditRoute()" class="btn btn-default">取消</button>
+									  	<button type="submit" ng-click="confirmToEditRouteStart()" class="btn btn-default">修改</button>
+
+						      		</div>
+
+						      		<div class="well" ng-show="isAdd" style="margin-top:15px">
+
+						      			<div class="form-group">
+										    <label for="add_title">名称</label>
+										    <input type="text" ng-model="addRoute.title" class="form-control" id="add_title" placeholder="名称" required>
+									  	</div>
+									  	<div class="form-group">
+										    <label for="add_orderindex">排序</label>
+										    <input type="number" ng-model="addRoute.order" class="form-control" id="add_orderindex" placeholder="排序" required>
+									  	</div>
+									  	<button type="submit" ng-click="cancelToAddRoute()" class="btn btn-default">取消</button>
+									  	<button type="submit" ng-click="confirmToAddRouteStart()" class="btn btn-default">添加</button>
+
+						      		</div>
+
+				                    <table class="table table-hover">
+				                        <thead>
+				                            <tr>
+				                                <th>编号</th>
+				                                <th>名称</th>
+				                                <th>排序</th>
+				                                <th>操作</th>
+				                            </tr>
+				                        </thead>
+				                        <tbody>
+				                        	<tr ng-repeat="x in allInsures.data">
+				                        		<td>{{x.id}}</td>
+				                                <td>{{x.title}}</td>
+				                                <td>{{x.orderindex}}</td>
+				                                <td>
+				                                	<button ng-click="editRouteStart(x.id,x.title,x.orderindex)" class="btn btn-outline btn-link">编辑</button>
+				                                	<button ng-click="deleteRouteStart(x.id)" class="btn btn-outline btn-link">删除</button>
+				                                </td>
+				                        	</tr>
+				                        </tbody>
+				                    </table>
+				                </div>
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">关闭</button>
+						        <!-- <button type="button" class="btn btn-outline btn-primary">Save changes</button> -->
+						      </div>
+						    </div>
+						  </div>
+						</div>
+
 
                 </div>
                 <!-- /.panel-body -->

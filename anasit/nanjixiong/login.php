@@ -135,6 +135,7 @@ session_start();
 		                                <label>
 		                                    <input name="remember" type="checkbox" value="Remember Me">记住密码
 		                                </label>
+		                                <a target="_blank" href="http://www.nanjixiong.com/member.php?mod=register">没有帐号?去注册</a>
 		                            </div>
 		                            <input id="login" type="submit" class="btn btn-lg btn-success btn-block" value="登录">
 		                        </fieldset>

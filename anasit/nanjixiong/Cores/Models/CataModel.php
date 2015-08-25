@@ -145,9 +145,9 @@ class CataModel{
 		$parent=$parent==null ? '0' : $parent;
 		$child=$child==null ? '0' : $child;
 
-		if($this->isNameExists($name)){
-			return -1;
-		}
+		// if($this->isNameExists($name)){
+		// 	return -1;
+		// }
 
 		$currentGuid=guid();
 		

@@ -41,6 +41,7 @@ function displayAvtive($current,$to){
 	<link rel="stylesheet" type="text/css" href="<?php echo DOMAIN; ?>/App/Home/css/style.css">
 	<!-- <link rel="stylesheet" type="text/css" href="<?php echo DOMAIN; ?>/App/Home/ex/bootstrap/css/bootstrap-theme.min.css"> -->
 	<link href="<?php echo DOMAIN; ?>/Cores/widgets/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+    <script src="<?php echo DOMAIN; ?>/App/Home/js/jquery.js"></script>
     <script type="text/javascript" src="<?php echo DOMAIN; ?>/Cores/widgets/third-party/jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="<?php echo DOMAIN; ?>/Cores/widgets/umeditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="<?php echo DOMAIN; ?>/Cores/widgets/umeditor.min.js"></script>

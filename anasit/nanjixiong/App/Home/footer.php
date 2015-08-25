@@ -25,9 +25,10 @@
 	        <a style="display: block; opacity: 1;" href="javascript:void(0)" class="glyphicon glyphicon-arrow-up"></a>
 	    </div>
 	</div>
+
+	<script type="text/javascript" src="http://tajs.qq.com/stats?sId=50469365" charset="UTF-8"></script>
 	
 	<script src="<?php echo DOMAIN; ?>/App/Home/js/scripts.js"></script>
-	<script src="<?php echo DOMAIN; ?>/App/Home/js/jquery.js"></script>
 	<script src="<?php echo DOMAIN; ?>/App/Home/ex/bootstrap/js/bootstrap.min.js"></script>
 
 	<?php

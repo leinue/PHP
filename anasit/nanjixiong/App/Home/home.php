@@ -50,20 +50,7 @@
 	if($cataToView=='all'){
 		$cataList=$cataObj->getCataChild($_GET['caid']);
 		$allPages=0;
-	}else{
-		// $cataToView
-		// $cataToView=json_decode($cataToView,true);
-		// print_r($cataToView);
-		$searchResult=array();
-		// foreach ($cataToView as $key => $value) {
-			$search=$cataObj->searchItemListByCaid($_GET['clicked'],$_GET['caid'],$page);
-			$allPages=ceil(count($search)/10);
-			// if(!$search){
-			// 	continue;
-			// }
-			array_push($searchResult, $search);
-		// }
-		// 
+	}else{		
 
 		$caidClicked=$_GET['clicked'];
 		$caidParent=$_GET['parent'];
@@ -74,6 +61,17 @@
 			$cataParentKey=array_search($caidParent,$cataToViewArr);
 			array_splice($cataToViewArr,$cataParentKey,1);
 		}
+
+		$searchResult=array();
+		// foreach ($cataToView as $key => $value) {
+			$search=$cataObj->searchItemListByCaid($_GET['clicked'],$_GET['caid'],$page);
+			$allPages=ceil(count($search)/10);
+			// if(!$search){
+			// 	continue;
+			// }
+			array_push($searchResult, $search);
+		// }
+		// 
 		
 		$cataToView=json_encode($cataToViewArr);
 
@@ -98,12 +96,7 @@
 				};
 
 			</script>";
-		// foreach ($cataToView as $key => $value) {
-		// 	if($value!=$_GET['clicked']){
-		// 		print_r($value);echo "<br>";
-				
-		// 	}
-		// }
+		
 	}
 ?>
 	<div class="row page-first-div">
@@ -139,9 +132,11 @@
 								if($list==''){
 									$list='暂无数据';
 								}
+								$to=empty($_GET['clicked'])?'all':$childValue['parent'];
+								$current=empty($_GET['clicked'])?$_GET['view_type_id']:$_GET['clicked'];
 								echo '<div class="cata-list">
 										<div class="col-md-2">
-											'.$value['name'].'：<a caid="'.$caid.'" viewId='.$childValue['parent'].' href="index.php?v=home&caid='.$caid.'&view_type_id=all"> <span '.displayBadge($_GET['clicked'],$childValue['parent']).'>全部</span></a>
+											'.$value['name'].'：<a caid="'.$caid.'" viewId='.$childValue['parent'].' href="index.php?v=home&caid='.$caid.'&view_type_id=all"> <span '.displayBadge($current,$to).'>全部</span></a>
 										</div>
 										<div class="cata-3rd-list col-md-10">
 											<ul class="list-inline">'.$list.'</ul>
@@ -445,7 +440,7 @@
 					    <?php
 
 					    	$pageActive='';
-					    	for ($i=1; $i <= $allPages+1; $i++) {
+					    	for ($i=1; $i <= $allPages; $i++) {
 					    		if($i==$page){
 					    			$pageActive='active';
 					    		}

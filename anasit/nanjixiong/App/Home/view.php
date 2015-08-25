@@ -305,7 +305,6 @@ if(!empty($_GET['action'])){
 					text-align: left!important;
 					border-top: none;
 					border-bottom:2px solid rgb(221,221,221);
-
 				}
 
 				.table-viewer-list > thead:first-child > tr:first-child > th{
@@ -321,12 +320,33 @@ if(!empty($_GET['action'])){
 
 				.viewer-top-title{
 					border-bottom: 2px solid rgb(255,94,82);
-					padding-bottom: 12px;
+					padding-bottom: 10px;
 					/*width: 5em;*/
 					/*line-height: 30px;*/
 					font-size: 16px;
 					font-weight: 400;
 				}
+
+				.jiathis_style{
+					overflow: visible!important;
+				}
+				
+				.jiathis_style div:first-child{
+					border: none!important;
+				}
+
+				.jiathis_style td:first-child{
+					padding-left: 10px;
+				}
+
+				.jiathis_style td:nth-child(2){
+					padding-right: 10px;
+				}
+
+				.jiathis_style .jiadiv_01 .link_01{
+					display: none;
+				}
+
 			</style>
 
 			<div style="padding-left:0" class="col-md-4">
@@ -400,11 +420,12 @@ if(!empty($_GET['action'])){
 												if($value->getDisplay()==='0'){
 													continue;
 												}
+												$image=str_replace(DOMAIN, DOMAIN.'/Cores/', $value->getImage());
 												echo '<tr>
 														<td>
 															<p></p>
 															<a target="_blank" href="'.$value->getUrl().'">
-																<img width="140" height="140" class="img-rounded" src="'.$value->getImage().'">
+																<img width="140" height="140" class="img-rounded" src="'.$image.'">
 															</a>
 															<p>'.$value->getContent().'</p>
 														</td>

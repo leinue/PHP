@@ -12,6 +12,7 @@ if(!empty($_GET['action'])){
         $settingObj->set('site_admin_title',$_POST['site_admin_title']);
         $settingObj->set('site_logo',$_POST['site_logo']);
         $settingObj->set('site_footer',$_POST['site_footer']);
+        $settingObj->set('site_ana',$_POST['site_ana']);
         $prompt=success('更新成功');
     }
 }

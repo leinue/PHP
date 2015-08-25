@@ -56,6 +56,7 @@ if(!empty($_GET['action']) && !empty($_GET['aid'])){
             $content=$ad[0]->getContent();
             $url=$ad[0]->getUrl();
             $image=$ad[0]->getImage();
+            $image=$image=str_replace(DOMAIN, DOMAIN.'/Cores/', $image);
             $prompt=generateAdsEditingForm($aid,$content,$url,$image,$page);
             break;
         case 'delete_ads':
@@ -166,10 +167,11 @@ if(!empty($_GET['action'])){
                                                                         $display=$value->getDisplay()=='1'?'可视':'不可视';
                                                                         $displayRequest=$value->getDisplay()=='1'?'set_ads_no_display':'set_ads_display';
                                                                         $displayBtnName=$value->getDisplay()=='1'?'不可视':'可视';
+                                                                        $image=$image=str_replace(DOMAIN, DOMAIN.'/Cores/', $value->getImage());
                                                                         echo '<tr>
                                                                                 <td>'.$j.'</td>
                                                                                 <td>'.$value->getContent().'</td>
-                                                                                <td><a target="_blank" href="'.$value->getImage().'"><img width="100" height="100" src="'.$value->getImage().'" ></a></td>
+                                                                                <td><a target="_blank" href="'.$image.'"><img width="100" height="100" src="'.$image.'" ></a></td>
                                                                                 <td>'.$value->getUrl().'</td>
                                                                                 <td>'.$display.'</td>
                                                                                 <td>

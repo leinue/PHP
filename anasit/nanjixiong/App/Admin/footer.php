@@ -8,7 +8,6 @@
     <!-- /. WRAPPER  -->
     <!-- JS Scripts-->
     <!-- jQuery Js -->
-    <script src="<?php echo DOMAIN; ?>/App/Admin/assets/js/jquery-1.10.2.js"></script>
     <!-- Bootstrap Js -->
     <script src="<?php echo DOMAIN; ?>/App/Admin/assets/js/bootstrap.min.js"></script>
     <!-- Metis Menu Js -->

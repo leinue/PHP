@@ -54,20 +54,18 @@ angular.module('sbAdminApp')
 .factory('RouteStart',function($q,$http,BASE_URL){
 
 	return {
-		update:function($scope,id,title,orderIndex){
+		update:function($scope,id,title,orderindex){
 
 			var d=$q.defer();
 			var promise=d.promise;
 
 			$http({
-				method:"get",
+				method:"post",
 				url:BASE_URL.url+'/Admin/TravelArea/editStart',
-				params:{
-					"data":{
-						"id":id,
-						"title":title,
-						"orderindex":orderIndex
-					}
+				data:{
+					"id":id,
+					"title":title,
+					"orderindex":orderindex
 				}
 			}).success(function(data){
 				console.log(data);
@@ -84,12 +82,10 @@ angular.module('sbAdminApp')
 			var promise=d.promise;
 
 			$http({
-				method:"get",
+				method:"post",
 				url:BASE_URL.url+'/Admin/TravelArea/deleteStart',
-				params:{
-					"data":{
-						"id":id
-					}
+				data:{
+					"id":id
 				}
 			}).success(function(data){
 				console.log(data);
@@ -105,13 +101,11 @@ angular.module('sbAdminApp')
 			var promise=d.promise;
 
 			$http({
-				method:"get",
+				method:"post",
 				url:BASE_URL.url+'/Admin/TravelArea/createStart',
-				params:{
-					"data":{
-						"title":title,
-						"orderindex":orderindex
-					}
+				data:{
+					"title":title,
+					"orderindex":orderindex
 				}
 			}).success(function(data){
 				console.log(data);
@@ -127,7 +121,7 @@ angular.module('sbAdminApp')
 			var promise=d.promise;
 
 			$http({
-				method:"get",
+				method:"post",
 				url:BASE_URL.url+'/Admin/TravelArea/listStart'
 			}).success(function(data){
 				console.log(data);
@@ -151,14 +145,12 @@ angular.module('sbAdminApp')
 			var promise=d.promise;
 
 			$http({
-				method:"get",
+				method:"post",
 				url:BASE_URL.url+'/Admin/TravelArea/editEnd',
-				params:{
-					"data":{
-						"id":id,
-						"title":title,
-						"orderindex":orderIndex
-					}
+				data:{
+					"id":id,
+					"title":title,
+					"orderindex":orderindex
 				}
 			}).success(function(data){
 				console.log(data);
@@ -175,12 +167,10 @@ angular.module('sbAdminApp')
 			var promise=d.promise;
 
 			$http({
-				method:"get",
+				method:"post",
 				url:BASE_URL.url+'/Admin/TravelArea/deleteEnd',
-				params:{
-					"data":{
-						"id":id
-					}
+				data:{
+					"id":id
 				}
 			}).success(function(data){
 				console.log(data);
@@ -197,13 +187,11 @@ angular.module('sbAdminApp')
 			var promise=d.promise;
 
 			$http({
-				method:"get",
+				method:"post",
 				url:BASE_URL.url+'/Admin/TravelArea/createEnd',
-				params:{
-					"data":{
-						"title":title,
-						"orderindex":orderindex
-					}
+				data:{
+					"title":title,
+					"orderindex":orderindex
 				}
 			}).success(function(data){
 				console.log(data);
@@ -220,7 +208,7 @@ angular.module('sbAdminApp')
 			var promise=d.promise;
 
 			$http({
-				method:"get",
+				method:"post",
 				url:BASE_URL.url+'/Admin/TravelArea/listEnd'
 			}).success(function(data){
 				console.log(data);
@@ -247,7 +235,7 @@ angular.module('sbAdminApp')
 			var promise=d.promise;
 
 			$http({
-				method:"get",
+				method:"post",
 				url:BASE_URL.url+'/Admin/CompanySupplier/supplierList'
 			}).success(function(data){
 				$scope.supplierListResult=data.supplier.list.data;
@@ -267,7 +255,7 @@ angular.module('sbAdminApp')
 			$http({
 				method:"post",
 				url:BASE_URL.url+'/Admin/CompanySupplier/supplierDelete',
-				params:{
+				data:{
 					"supplier":{
 						"delete":{
 							"data":{
@@ -291,9 +279,9 @@ angular.module('sbAdminApp')
 			var promise=d.promise;
 
 			$http({
-				method:"get",
+				method:"post",
 				url:BASE_URL.url+'/Admin/CompanySupplier/supplierCreate',
-				params:{
+				data:{
 					"supplier":{
 						"create":{
 							"data":{
@@ -334,9 +322,9 @@ angular.module('sbAdminApp')
 			var promise=d.promise;
 
 			$http({
-				method:"get",
+				method:"post",
 				url:BASE_URL.url+'/Admin/CompanySupplier/supplierEdit',
-				params:{
+				data:{
 					"supplier":{
 						"create":{
 							"data":{
@@ -380,14 +368,12 @@ angular.module('sbAdminApp')
 			var promise=d.promise;
 
 			$http({
-				method:"get",
+				method:"post",
 				url:BASE_URL.url+'/Admin/TravelConstract/editConstract',
-				params:{
-					"data":{
-						"id":id,
-						"title":title,
-						"orderindex":orderIndex
-					}
+				data:{
+					"id":id,
+					"title":title,
+					"orderindex":orderindex
 				}
 			}).success(function(data){
 				console.log(data);
@@ -404,13 +390,11 @@ angular.module('sbAdminApp')
 			var promise=d.promise;
 
 			$http({
-				method:"get",
+				method:"post",
 				url:BASE_URL.url+'/Admin/TravelConstract/addConstract',
-				params:{
-					"data":{
-						"title":title,
-						"orderindex":orderIndex
-					}
+				data:{
+					"title":title,
+					"orderindex":orderindex
 				}
 			}).success(function(data){
 				console.log(data);
@@ -427,12 +411,10 @@ angular.module('sbAdminApp')
 			var promise=d.promise;
 
 			$http({
-				method:"get",
+				method:"post",
 				url:BASE_URL.url+'/Admin/TravelConstract/deleteConstract',
-				params:{
-					"data":{
-						"id":id
-					}
+				data:{
+					"id":id
 				}
 			}).success(function(data){
 				console.log(data);
@@ -449,7 +431,7 @@ angular.module('sbAdminApp')
 			var promise=d.promise;
 
 			$http({
-				method:"get",
+				method:"post",
 				url:BASE_URL.url+'/Admin/TravelConstract/getAllConstract'
 			}).success(function(data){
 				console.log(data);
@@ -474,14 +456,12 @@ angular.module('sbAdminApp')
 			var promise=d.promise;
 
 			$http({
-				method:"get",
+				method:"post",
 				url:BASE_URL.url+'/Admin/TravelProductCategory/editProductCategory',
-				params:{
-					"data":{
-						"id":id,
-						"title":title,
-						"orderindex":orderIndex
-					}
+				data:{
+					"id":id,
+					"name":title,
+					"orderindex":orderindex
 				}
 			}).success(function(data){
 				console.log(data);
@@ -498,13 +478,11 @@ angular.module('sbAdminApp')
 			var promise=d.promise;
 
 			$http({
-				method:"get",
+				method:"post",
 				url:BASE_URL.url+'/Admin/TravelProductCategory/addProductCategory',
-				params:{
-					"data":{
-						"title":title,
-						"orderindex":orderIndex
-					}
+				data:{
+					"name":title,
+					"orderindex":orderindex
 				}
 			}).success(function(data){
 				console.log(data);
@@ -521,12 +499,10 @@ angular.module('sbAdminApp')
 			var promise=d.promise;
 
 			$http({
-				method:"get",
+				method:"post",
 				url:BASE_URL.url+'/Admin/TravelProductCategory/deleteProductCategory',
-				params:{
-					"data":{
-						"id":id
-					}
+				data:{
+					"id":id
 				}
 			}).success(function(data){
 				console.log(data);
@@ -543,7 +519,7 @@ angular.module('sbAdminApp')
 			var promise=d.promise;
 
 			$http({
-				method:"get",
+				method:"post",
 				url:BASE_URL.url+'/Admin/TravelProductCategory/getProductCategory'
 			}).success(function(data){
 				console.log(data);
@@ -568,14 +544,12 @@ angular.module('sbAdminApp')
 			var promise=d.promise;
 
 			$http({
-				method:"get",
+				method:"post",
 				url:BASE_URL.url+'/Admin/TravelProductAttr/editProductAttr',
-				params:{
-					"data":{
-						"id":id,
-						"title":title,
-						"orderindex":orderIndex
-					}
+				data:{
+					"id":id,
+					"title":title,
+					"orderindex":orderindex
 				}
 			}).success(function(data){
 				console.log(data);
@@ -592,13 +566,11 @@ angular.module('sbAdminApp')
 			var promise=d.promise;
 
 			$http({
-				method:"get",
+				method:"post",
 				url:BASE_URL.url+'/Admin/TravelProductAttr/addProductAttr',
-				params:{
-					"data":{
-						"title":title,
-						"orderindex":orderIndex
-					}
+				data:{
+					"title":title,
+					"orderindex":orderindex
 				}
 			}).success(function(data){
 				console.log(data);
@@ -615,12 +587,10 @@ angular.module('sbAdminApp')
 			var promise=d.promise;
 
 			$http({
-				method:"get",
+				method:"post",
 				url:BASE_URL.url+'/Admin/TravelProductAttr/deleteProductAttr',
-				params:{
-					"data":{
-						"id":id
-					}
+				data:{
+					"id":id
 				}
 			}).success(function(data){
 				console.log(data);
@@ -637,7 +607,7 @@ angular.module('sbAdminApp')
 			var promise=d.promise;
 
 			$http({
-				method:"get",
+				method:"post",
 				url:BASE_URL.url+'/Admin/TravelProductAttr/getProductAttr'
 			}).success(function(data){
 				console.log(data);
@@ -662,14 +632,12 @@ angular.module('sbAdminApp')
 			var promise=d.promise;
 
 			$http({
-				method:"get",
+				method:"post",
 				url:BASE_URL.url+'/Admin/TravelInsure/editTravelInsure',
-				params:{
-					"data":{
-						"id":id,
-						"title":title,
-						"orderindex":orderIndex
-					}
+				data:{
+					"id":id,
+					"title":title,
+					"orderindex":orderindex
 				}
 			}).success(function(data){
 				console.log(data);
@@ -686,13 +654,11 @@ angular.module('sbAdminApp')
 			var promise=d.promise;
 
 			$http({
-				method:"get",
-				url:BASE_URL.url+'/Admin/TravelInsure/addTravelInsure',
-				params:{
-					"data":{
-						"title":title,
-						"orderindex":orderIndex
-					}
+				method:"post",
+				url:BASE_URL.url+'/Admin/TravelInsure/createTravelInsure',
+				data:{
+					"title":title,
+					"orderindex":orderindex
 				}
 			}).success(function(data){
 				console.log(data);
@@ -709,12 +675,10 @@ angular.module('sbAdminApp')
 			var promise=d.promise;
 
 			$http({
-				method:"get",
+				method:"post",
 				url:BASE_URL.url+'/Admin/TravelInsure/deleteTravelInsure',
-				params:{
-					"data":{
-						"id":id
-					}
+				data:{
+					"id":id
 				}
 			}).success(function(data){
 				console.log(data);
@@ -731,11 +695,140 @@ angular.module('sbAdminApp')
 			var promise=d.promise;
 
 			$http({
-				method:"get",
+				method:"post",
 				url:BASE_URL.url+'/Admin/TravelInsure/getTravelInsure'
 			}).success(function(data){
 				console.log(data);
 				$scope.allInsures=data;
+			}).catch(function(reason){
+				$q.reject(reason);
+			});
+
+		}
+
+	};
+
+})
+
+.factory('TravelProducts',function($q,$http,BASE_URL){
+
+	return {
+
+		update:function($scope,$data){
+
+			var d=$q.defer();
+			var promise=d.promise;
+
+			$http({
+				method:"post",
+				url:BASE_URL.url+'/Admin/TravelProduct/editTravelProduct',
+				data:{
+					"id":id,
+					"title":title,
+					"orderindex":orderindex
+				}
+			}).success(function(data){
+				console.log(data);
+				$scope.status=data;
+				alert(data.message);
+			}).catch(function(reason){
+				$q.reject(reason);
+			});
+
+		},
+
+		add:function($scope,data){
+
+			var d=$q.defer();
+			var promise=d.promise;
+
+			$http({
+				method:"post",
+				url:BASE_URL.url+'/Admin/TravelProduct/addTravelProduct',
+				data:data
+			}).success(function(data){
+				console.log(data);
+				$scope.status=data;
+				alert(data.message);
+			}).catch(function(reason){
+				$q.reject(reason);
+			});
+
+		},
+
+		delete:function($scope,pid){
+
+			var d=$q.defer();
+			var promise=d.promise;
+
+			$http({
+				method:"post",
+				url:BASE_URL.url+'/Admin/TravelProduct/deleteTravelProduct',
+				data:{
+					"pid":pid
+				}
+			}).success(function(data){
+				console.log(data);
+				$scope.status=data;
+				alert(data.message);
+			}).catch(function(reason){
+				$q.reject(reason);
+			});
+
+		},
+
+		getAll:function($scope){
+
+			var d=$q.defer();
+			var promise=d.promise;
+
+			$http({
+				method:"post",
+				url:BASE_URL.url+'/Admin/TravelProduct/getTravelRoute'
+			}).success(function(data){
+				console.log(data);
+				$scope.allTravelRoutes=data;
+			}).catch(function(reason){
+				$q.reject(reason);
+			});
+
+		},
+
+		approve:function($scope,pid){
+
+			var d=$q.defer();
+			var promise=d.promise;
+
+			$http({
+				method:"post",
+				url:BASE_URL.url+'/Admin/TravelProduct/isProductApproved',
+				data:{pid}
+			}).success(function(data){
+				console.log(data);
+				$scope.status=data;
+				alert(data.message);
+			}).catch(function(reason){
+				$q.reject(reason);
+			});
+
+		},
+
+		view:function($scope,pid,callback){
+
+			var d=$q.defer();
+			var promise=d.promise;
+
+			$http({
+				method:"post",
+				url:BASE_URL.url+'/Admin/TravelProduct/getProductById',
+				data:{"pid":pid}
+			}).success(function(data){
+				// console.log(data);
+				$scope.status=data;
+				$scope.product=data;
+				// localStorage.singleProduct=JSON.stringify(data);
+				callback(data);
+				// alert(data.message);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});

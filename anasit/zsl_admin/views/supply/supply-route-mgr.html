@@ -22,14 +22,359 @@
                 <!-- /.panel-heading -->
                 <div class="panel-body route-mgr-list">
                     <!-- <h4>Outline Buttons</h4> -->
+
                     <p>
-						<button type="button" data-toggle="modal" data-target="#route_start" class="btn btn-outline btn-success btn-lg btn-block">出发地管理</button>
+                    	<button type="button" data-toggle="modal" data-target="#route_list_new" class="btn btn-outline btn-success btn-lg btn-block">新增线路</button>
+                    	<button type="button" data-toggle="modal" data-target="#route_list" class="btn btn-outline btn-success btn-lg btn-block">线路列表</button>
+						<button type="button" data-toggle="modal" data-target="#route_start" class="btn btn-outline btn-info btn-lg btn-block">出发地管理</button>
 						<button type="button" data-toggle="modal" data-target="#route_end" class="btn btn-outline btn-info btn-lg btn-block">目的地管理</button>
 						<button type="button" data-toggle="modal" data-target="#route_constract"  class="btn btn-outline btn-primary btn-lg btn-block">旅游产品合同</button>
 						<button type="button" data-toggle="modal" data-target="#route_category"  class="btn btn-outline btn-primary btn-lg btn-block">旅游产品分类</button>
 						<button type="button" data-toggle="modal" data-target="#route_attr"  class="btn btn-outline btn-primary btn-lg btn-block">旅游产品属性</button>
 						<button type="button" data-toggle="modal" data-target="#route_insure"  class="btn btn-outline btn-primary btn-lg btn-block">旅游保险</button>
                     </p>
+
+                    	<div class="modal fade routesListNewCls" ng-controller="RouteListNew" id="route_list_new" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+						  <div class="modal-dialog modal-lg">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						        <h4 class="modal-title" id="gridSystemModalLabel">{{modalTitle}}</h4>
+						      </div>
+						      <div class="modal-body">
+						      	<div class="table-responsive">
+
+						      		<div style="margin-top:15px;" ng-show="alertInfo" class="alert alert-warning alert-dismissible fade in" role="alert">
+								      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+								      {{status.message}}
+								    </div>
+
+										<h4>线路</h4>
+									
+				                    	<div class="form-group">
+										    <label>线路名称</label>
+										    <input type="text" class="form-control"  ng-model="title"  placeholder="线路名称">
+										</div>
+										
+										<div class="form-group">
+											<label>所属分类</label>
+											<select ng-model="category" class="form-control">
+												<option value="{{x.id}}" ng-repeat="x in allCategories.data">{{x.name}}</option>
+											</select>
+										</div>
+
+										<div class="form-group">
+											<label>行程天数</label>
+											<input type="number" class="form-control" ng-change="changePlanDays()" ng-model="trip_days"  placeholder="行程天数">
+										</div>
+
+										<script type="text/javascript">
+
+									        function previewImage(file){
+									          var MAXWIDTH  = 260; 
+									          var MAXHEIGHT = 180;
+									          var div = document.getElementById('preview');
+
+									          if (file.files && file.files[0])
+									          {
+									              div.innerHTML ='<img id="imghead">';
+									              var img = document.getElementById('imghead');
+									              img.onload = function(){
+									                var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+									                img.width  =  rect.width;
+									                img.height =  rect.height;
+									//                 img.style.marginLeft = rect.left+'px';
+									                img.style.marginTop = rect.top+'px';
+									              }
+									              var reader = new FileReader();
+									              reader.onload = function(evt){img.src = evt.target.result;}
+									              reader.readAsDataURL(file.files[0]);
+									          }
+
+									          else //兼容IE
+									          {
+
+									            var sFilter='filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
+									            file.select();
+									            var src = document.selection.createRange().text;
+									            div.innerHTML = '<img id="imghead">';
+									            var img = document.getElementById('imghead');
+									            img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+									            var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+									            status =('rect:'+rect.top+','+rect.left+','+rect.width+','+rect.height);
+									            div.innerHTML = "<div id='divhead' style='width:"+rect.width+"px;height:"+rect.height+"px;margin-top:"+rect.top+"px;"+sFilter+src+"\"'></div>";
+									          }
+
+									          file.style.display='none';
+									          document.getElementById('btn_confirm_img').style.display='block';
+
+									        }
+									        function clacImgZoomParam( maxWidth, maxHeight, width, height ){
+									            var param = {top:0, left:0, width:width, height:height};
+									            if( width>maxWidth || height>maxHeight )
+									            {
+									                rateWidth = width / maxWidth;
+									                rateHeight = height / maxHeight;
+									                 
+									                if( rateWidth > rateHeight )
+									                {
+									                    param.width =  maxWidth;
+									                    param.height = Math.round(height / rateWidth);
+									                }else
+									                {
+									                    param.width = Math.round(width / rateHeight);
+									                    param.height = maxHeight;
+									                }
+									            }
+									             
+									            param.left = Math.round((maxWidth - param.width) / 2);
+									            param.top = Math.round((maxHeight - param.height) / 2);
+									            return param;
+									        }
+
+										</script>
+
+										<div class="form-group">
+											<label>上传封面</label>
+											<div style="margin-bottom:10px" id="preview">
+												<img id="imghead" width="100" height="50" src="https://cdn2.iconfinder.com/data/icons/app-types-in-grey/128/airplane_512pxGREY.png" ng-src="{{album}}">
+											</div>
+											<button class="btn btn-default" style="display:none" id="btn_confirm_img" ng-click="printBase()">确定</button>
+											<input type="file" ng-change="getBase64OfImg()" onchange="previewImage(this)" ng-model="img">
+										</div>
+
+										<div class="form-group">
+											<label>出发城市</label>
+											<select ng-model="area_start" class="form-control">
+												<option value="{{x.id}}" ng-repeat="x in allRoutes.data">{{x.title}}</option>
+											</select>
+										</div>
+
+										<div class="form-group">
+											<label>目的地城市</label>
+											<select ng-model="area_end" class="form-control">
+												<option value="{{x.id}}" ng-repeat="x in allRoutesEnd.data">{{x.title}}</option>
+											</select>
+										</div>
+
+										<div class="form-group">
+											<label>上架属性</label>
+											<select ng-model="attr" class="form-control">
+												<option value="{{x.id}}" ng-repeat="x in allAttrs.data">{{x.title}}</option>
+											</select>
+										</div>
+
+										<div class="form-gourp">
+											<label>是否上架</label>
+											<input  type="radio" name="isapproved" ng-model="isapproved" value="1" /> 是
+											<input type="radio" name="isapproved" ng-model="isapproved"  value="0" /> 否
+										</div>
+
+										<div class="form-group">
+											<label>是否购买保险</label>
+											<input type="radio" name="is_insure" ng-model="is_insure"  value="1" /> 是
+											<input type="radio" name="is_insure" ng-model="is_insure"  value="0" /> 否
+										</div>
+
+										<div class="form-group">
+											<label>旅游合同</label>
+											<select ng-model="constract" class="form-control">
+												<option value="{{x.id}}" ng-repeat="x in allConstract.data">{{x.title}}</option>
+											</select>
+										</div>
+
+										<div class="form-group">
+											<label>剩余预定数量</label>
+											<input class="form-control" type="number" ng-model="num_rest" placeholder="剩余预定数量">
+										</div>
+
+										<div class="form-group">
+											<label>限购人数</label>
+											<input class="form-control" type="number" ng-model="num_limit" placeholder="限购人数">
+										</div>
+
+										<div class="form-group">
+											<label>排序</label>
+											<input class="form-control" type="number" ng-model="order_index">
+										</div>
+
+										<div class="form-group">
+											<label>分享送的积分</label>
+											<input class="form-control" type="number" ng-model="share_score">
+										</div>
+
+										<div class="form-group">
+											<label>特色介绍</label>
+											<textarea ng-model="content" class="form-control" row="5"></textarea>
+										</div>
+
+								        <h4>行程安排</h4>
+								        
+								        <div class="form-group">
+								        	<label>行程安排</label>
+								        	<select ng-model="plan_day" ng-change="generatorPlan()" class="form-control">
+								        		<option ng-repeat="x in plan_day_datas">第{{x}}天</option>
+								        	</select>
+								        </div>
+
+								        <div class="form-group">
+								        	<label>行程标题</label>
+								        	<input class="form-control" ng-change="changePlanTitle()" type="text" ng-model="plan_title" placrholder="行程标题">
+								        </div>
+
+								        <div class="form-group">
+								        	<label>用餐</label>
+								        	<label class="checkbox-inline">
+											  <input type="checkbox" id="inlineCheckbox1" value="breakfast" ng-change="changePlanBreakfast()" ng-model="plan_food_breakfast" name="food" ng-true-value="1" ng-false-value="0"> 早餐
+											</label>
+											<label class="checkbox-inline">
+											  <input type="checkbox" id="inlineCheckbox2" value="lunch" ng-change="changePlanLunch()" name="food" ng-model="plan_food_lunch" ng-true-value="1" ng-false-value="0"> 午餐
+											</label>
+											<label class="checkbox-inline">
+											  <input type="checkbox" id="inlineCheckbox3" value="dinner" ng-change="changePlanDinner()" name="food" ng-model="plan_food_dinner" ng-true-value="1" ng-false-value="0"> 晚餐
+											</label>
+								        </div>
+
+								        <div class="form-group">
+								        	<label>住宿</label>
+								        	<input type="text" class="form-control" ng-change="changePlanRoom()" ng-model="plan_room" placeholder="住宿">
+								        </div>
+
+								        <div class="form-group">
+								        	<label>内容</label>
+								        	<textarea class="form-control" row="5" ng-change="changePlanDesc()" ng-model="plan_description"></textarea>
+								        </div>
+
+								        <h4>其它内容</h4>
+
+								        <div class="form-group">
+								        	<label>补充协议</label>
+											<textarea class="form-control" rows="5" ng-model="contract_add"></textarea>
+								        </div>
+
+								        <div class="form-group">
+								        	<label>预定须知</label>
+								        	<textarea class="form-control" rows="5" ng-model="mustknow"></textarea>
+								        </div>
+
+								        <div class="form-group">
+								        	<label>温馨提示</label>
+								        	<textarea class="form-control" rows="5" ng-model="tip"></textarea>
+								        </div>
+
+								        <div class="form-group">
+								        	<label>费用包含</label>
+								        	<textarea class="form-control" rows="5" ng-model="fee_included"></textarea>
+								        </div>
+
+								        <div class="form-group">
+								        	<label>费用不包含</label>
+								        	<textarea class="form-control" rows="5" ng-model="fee_noincluded"></textarea>
+								        </div>
+
+								        <h4>批发价格</h4>								   
+								        
+								        <div class="form-group">
+								        	<label>门市价</label>
+								        	<input type="number" class="form-control" plcaeholder="请输入数字" ng-model="old_pifa">
+								        </div>
+
+								        <div class="form-group">
+								        	<label>成人价</label>
+								        	<input type="number" class="form-control" plcaeholder="请输入数字" ng-model="adult_pifa">
+								        </div>
+
+								        <div class="form-group">
+								        	<label>儿童价</label>
+								        	<input type="number" class="form-control" plcaeholder="请输入数字" ng-model="child_pifa">
+								        </div>
+
+								        <h4>基本价格</h4>								   
+								        
+								        <div class="form-group">
+								        	<label>门市价</label>
+								        	<input type="number" class="form-control" plcaeholder="请输入数字" ng-model="old_basic">
+								        </div>
+
+								        <div class="form-group">
+								        	<label>成人价</label>
+								        	<input type="number" class="form-control" plcaeholder="请输入数字" ng-model="adult_basic">
+								        </div>
+
+								        <div class="form-group">
+								        	<label>儿童价</label>
+								        	<input type="number" class="form-control" plcaeholder="请输入数字" ng-model="child_basic">
+								        </div>
+
+				                </div>
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">关闭</button>
+						        <button type="button" ng-click="addProduct()" class="btn btn-outline btn-primary">提交</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+
+                    	<div class="modal fade routesList" ng-controller="RouteListMgr" id="route_list" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+						  <div class="modal-dialog modal-lg">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						        <h4 class="modal-title" id="gridSystemModalLabel">线路列表</h4>
+						      </div>
+						      <div class="modal-body">
+						      	<div class="table-responsive">
+
+						      		<div style="margin-top:15px;" ng-show="alertInfo" class="alert alert-warning alert-dismissible fade in" role="alert">
+								      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+								      {{status.message}}
+								    </div>
+
+				                    <table class="table table-hover">
+				                        <thead>
+				                            <tr>
+				                                <th>pid</th>
+				                                <th>名称</th>
+				                                <th>封面</th>
+				                                <th>属性</th>
+				                                <th>分类</th>
+				                                <th>出发地</th>
+				                                <th>目的地</th>
+				                                <th>排序</th>
+				                                <th>已审核</th>
+				                                <th>操作</th>
+				                            </tr>
+				                        </thead>
+				                        <tbody>
+				                        	<tr ng-repeat="x in allTravelRoutes | orderBy:'order_index'">
+				                        		<td>{{x.pid}}</td>
+				                                <td>{{x.title}}</td>
+				                                <td><img width="100" height="50" src="{{x.img}}"></td>
+				                                <td>{{x.attrname}}</td>
+				                                <td>{{x.categoryname}}</td>
+				                                <td>{{x.start}}</td>
+				                                <td>{{x.end}}</td>
+				                                <td>{{x.order_index}}</td>
+				                                <td>{{x.isapproved}}</td>
+				                                <td>
+				                                	<button ng-click="approveThis(x.pid)" class="btn btn-outline btn-link">通过</button>
+				                                	<!-- <button ng-click="viewThis(x.pid)" class="btn btn-outline btn-link">查看</button> -->
+				                                	<button ng-click="editThis(x.pid)" class="btn btn-outline btn-link">编辑</button>
+				                                	<button ng-click="deleteTravelRoute(x.pid)" class="btn btn-outline btn-link">删除</button>
+				                                </td>
+				                        	</tr>
+				                        </tbody>
+				                    </table>
+				                </div>
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">关闭</button>
+						        <!-- <button type="button" class="btn btn-outline btn-primary">Save changes</button> -->
+						      </div>
+						    </div>
+						  </div>
+						</div>
 
 						<div class="modal fade" id="route_start" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 						  <div class="modal-dialog modal-lg">
@@ -211,7 +556,7 @@
 						      </div>
 						      <div class="modal-body">
 						      	<div class="table-responsive">
-						      		<button ng-click="addRouteStart()" class="btn btn-outline btn-success">新增产品合同</button>
+						      		<button ng-click="addItem()" class="btn btn-outline btn-success">新增产品合同</button>
 
 						      		<div style="margin-top:15px;" ng-show="alertInfo" class="alert alert-warning alert-dismissible fade in" role="alert">
 								      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
@@ -222,14 +567,14 @@
 
 						      			<div class="form-group">
 										    <label for="edit_title">名称</label>
-										    <input type="text" ng-model="editRoute.title" class="form-control" id="edit_title" placeholder="名称" required>
+										    <input type="text" ng-model="inputExists.title" class="form-control" id="edit_title" placeholder="名称" required>
 									  	</div>
 									  	<div class="form-group">
 										    <label for="edit_orderindex">排序</label>
-										    <input type="number" ng-model="editRoute.orderindex" class="form-control" id="edit_orderindex" placeholder="排序" required>
+										    <input type="number" ng-model="inputExists.orderindex" class="form-control" id="edit_orderindex" placeholder="排序" required>
 									  	</div>
-									  	<button type="submit" ng-click="cancelToEditRoute()" class="btn btn-default">取消</button>
-									  	<button type="submit" ng-click="confirmToEditRouteStart()" class="btn btn-default">修改</button>
+									  	<button type="submit" ng-click="cancelToEditItem()" class="btn btn-default">取消</button>
+									  	<button type="submit" ng-click="confirmToEditItem()" class="btn btn-default">修改</button>
 
 						      		</div>
 
@@ -237,14 +582,14 @@
 
 						      			<div class="form-group">
 										    <label for="add_title">名称</label>
-										    <input type="text" ng-model="addRoute.title" class="form-control" id="add_title" placeholder="名称" required>
+										    <input type="text" ng-model="input.title" class="form-control" id="add_title" placeholder="名称" required>
 									  	</div>
 									  	<div class="form-group">
 										    <label for="add_orderindex">排序</label>
-										    <input type="number" ng-model="addRoute.order" class="form-control" id="add_orderindex" placeholder="排序" required>
+										    <input type="number" ng-model="input.order" class="form-control" id="add_orderindex" placeholder="排序" required>
 									  	</div>
-									  	<button type="submit" ng-click="cancelToAddRoute()" class="btn btn-default">取消</button>
-									  	<button type="submit" ng-click="confirmToAddRouteStart()" class="btn btn-default">添加</button>
+									  	<button type="submit" ng-click="cancelToAddItem()" class="btn btn-default">取消</button>
+									  	<button type="submit" ng-click="confirmToAddItem()" class="btn btn-default">添加</button>
 
 						      		</div>
 
@@ -263,8 +608,8 @@
 				                                <td>{{x.title}}</td>
 				                                <td>{{x.orderindex}}</td>
 				                                <td>
-				                                	<button ng-click="editRouteStart(x.id,x.title,x.orderindex)" class="btn btn-outline btn-link">编辑</button>
-				                                	<button ng-click="deleteRouteStart(x.id)" class="btn btn-outline btn-link">删除</button>
+				                                	<button ng-click="editItem(x.id,x.title,x.orderindex)" class="btn btn-outline btn-link">编辑</button>
+				                                	<button ng-click="deleteItem(x.id)" class="btn btn-outline btn-link">删除</button>
 				                                </td>
 				                        	</tr>
 				                        </tbody>
@@ -288,7 +633,7 @@
 						      </div>
 						      <div class="modal-body">
 						      	<div class="table-responsive">
-						      		<button ng-click="addRouteStart()" class="btn btn-outline btn-success">新增产品分类</button>
+						      		<button ng-click="addItem()" class="btn btn-outline btn-success">新增产品分类</button>
 
 						      		<div style="margin-top:15px;" ng-show="alertInfo" class="alert alert-warning alert-dismissible fade in" role="alert">
 								      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
@@ -299,14 +644,14 @@
 
 						      			<div class="form-group">
 										    <label for="edit_title">名称</label>
-										    <input type="text" ng-model="editRoute.title" class="form-control" id="edit_title" placeholder="名称" required>
+										    <input type="text" ng-model="inputExists.title" class="form-control" id="edit_title" placeholder="名称" required>
 									  	</div>
 									  	<div class="form-group">
 										    <label for="edit_orderindex">排序</label>
-										    <input type="number" ng-model="editRoute.orderindex" class="form-control" id="edit_orderindex" placeholder="排序" required>
+										    <input type="number" ng-model="inputExists.orderindex" class="form-control" id="edit_orderindex" placeholder="排序" required>
 									  	</div>
-									  	<button type="submit" ng-click="cancelToEditRoute()" class="btn btn-default">取消</button>
-									  	<button type="submit" ng-click="confirmToEditRouteStart()" class="btn btn-default">修改</button>
+									  	<button type="submit" ng-click="cancelToEditItem()" class="btn btn-default">取消</button>
+									  	<button type="submit" ng-click="confirmToEditItem()" class="btn btn-default">修改</button>
 
 						      		</div>
 
@@ -314,14 +659,14 @@
 
 						      			<div class="form-group">
 										    <label for="add_title">名称</label>
-										    <input type="text" ng-model="addRoute.title" class="form-control" id="add_title" placeholder="名称" required>
+										    <input type="text" ng-model="input.title" class="form-control" id="add_title" placeholder="名称" required>
 									  	</div>
 									  	<div class="form-group">
 										    <label for="add_orderindex">排序</label>
-										    <input type="number" ng-model="addRoute.order" class="form-control" id="add_orderindex" placeholder="排序" required>
+										    <input type="number" ng-model="input.order" class="form-control" id="add_orderindex" placeholder="排序" required>
 									  	</div>
-									  	<button type="submit" ng-click="cancelToAddRoute()" class="btn btn-default">取消</button>
-									  	<button type="submit" ng-click="confirmToAddRouteStart()" class="btn btn-default">添加</button>
+									  	<button type="submit" ng-click="cancelToAddItem()" class="btn btn-default">取消</button>
+									  	<button type="submit" ng-click="confirmToAddItem()" class="btn btn-default">添加</button>
 
 						      		</div>
 
@@ -337,11 +682,11 @@
 				                        <tbody>
 				                        	<tr ng-repeat="x in allCategories.data">
 				                        		<td>{{x.id}}</td>
-				                                <td>{{x.title}}</td>
+				                                <td>{{x.name}}</td>
 				                                <td>{{x.orderindex}}</td>
 				                                <td>
-				                                	<button ng-click="editRouteStart(x.id,x.title,x.orderindex)" class="btn btn-outline btn-link">编辑</button>
-				                                	<button ng-click="deleteRouteStart(x.id)" class="btn btn-outline btn-link">删除</button>
+				                                	<button ng-click="editItem(x.id,x.name,x.orderindex)" class="btn btn-outline btn-link">编辑</button>
+				                                	<button ng-click="deleteItem(x.id)" class="btn btn-outline btn-link">删除</button>
 				                                </td>
 				                        	</tr>
 				                        </tbody>
@@ -365,7 +710,7 @@
 						      </div>
 						      <div class="modal-body">
 						      	<div class="table-responsive">
-						      		<button ng-click="addRouteStart()" class="btn btn-outline btn-success">新增旅游保险</button>
+						      		<button ng-click="addItem()" class="btn btn-outline btn-success">新增产品属性</button>
 
 						      		<div style="margin-top:15px;" ng-show="alertInfo" class="alert alert-warning alert-dismissible fade in" role="alert">
 								      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
@@ -376,14 +721,14 @@
 
 						      			<div class="form-group">
 										    <label for="edit_title">名称</label>
-										    <input type="text" ng-model="editRoute.title" class="form-control" id="edit_title" placeholder="名称" required>
+										    <input type="text" ng-model="inputExists.title" class="form-control" id="edit_title" placeholder="名称" required>
 									  	</div>
 									  	<div class="form-group">
 										    <label for="edit_orderindex">排序</label>
-										    <input type="number" ng-model="editRoute.orderindex" class="form-control" id="edit_orderindex" placeholder="排序" required>
+										    <input type="number" ng-model="inputExists.orderindex" class="form-control" id="edit_orderindex" placeholder="排序" required>
 									  	</div>
-									  	<button type="submit" ng-click="cancelToEditRoute()" class="btn btn-default">取消</button>
-									  	<button type="submit" ng-click="confirmToEditRouteStart()" class="btn btn-default">修改</button>
+									  	<button type="submit" ng-click="cancelToEditItem()" class="btn btn-default">取消</button>
+									  	<button type="submit" ng-click="confirmToEditItem()" class="btn btn-default">修改</button>
 
 						      		</div>
 
@@ -391,14 +736,14 @@
 
 						      			<div class="form-group">
 										    <label for="add_title">名称</label>
-										    <input type="text" ng-model="addRoute.title" class="form-control" id="add_title" placeholder="名称" required>
+										    <input type="text" ng-model="input.title" class="form-control" id="add_title" placeholder="名称" required>
 									  	</div>
 									  	<div class="form-group">
 										    <label for="add_orderindex">排序</label>
-										    <input type="number" ng-model="addRoute.order" class="form-control" id="add_orderindex" placeholder="排序" required>
+										    <input type="number" ng-model="input.order" class="form-control" id="add_orderindex" placeholder="排序" required>
 									  	</div>
-									  	<button type="submit" ng-click="cancelToAddRoute()" class="btn btn-default">取消</button>
-									  	<button type="submit" ng-click="confirmToAddRouteStart()" class="btn btn-default">添加</button>
+									  	<button type="submit" ng-click="cancelToAddItem()" class="btn btn-default">取消</button>
+									  	<button type="submit" ng-click="confirmToAddItem()" class="btn btn-default">添加</button>
 
 						      		</div>
 
@@ -417,8 +762,8 @@
 				                                <td>{{x.title}}</td>
 				                                <td>{{x.orderindex}}</td>
 				                                <td>
-				                                	<button ng-click="editRouteStart(x.id,x.title,x.orderindex)" class="btn btn-outline btn-link">编辑</button>
-				                                	<button ng-click="deleteRouteStart(x.id)" class="btn btn-outline btn-link">删除</button>
+				                                	<button ng-click="editItem(x.id,x.title,x.orderindex)" class="btn btn-outline btn-link">编辑</button>
+				                                	<button ng-click="deleteItem(x.id)" class="btn btn-outline btn-link">删除</button>
 				                                </td>
 				                        	</tr>
 				                        </tbody>
@@ -442,7 +787,7 @@
 						      </div>
 						      <div class="modal-body">
 						      	<div class="table-responsive">
-						      		<button ng-click="addRouteStart()" class="btn btn-outline btn-success">新增旅游保险</button>
+						      		<button ng-click="addItem()" class="btn btn-outline btn-success">新增旅游保险</button>
 
 						      		<div style="margin-top:15px;" ng-show="alertInfo" class="alert alert-warning alert-dismissible fade in" role="alert">
 								      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
@@ -453,14 +798,14 @@
 
 						      			<div class="form-group">
 										    <label for="edit_title">名称</label>
-										    <input type="text" ng-model="editRoute.title" class="form-control" id="edit_title" placeholder="名称" required>
+										    <input type="text" ng-model="inputExists.title" class="form-control" id="edit_title" placeholder="名称" required>
 									  	</div>
 									  	<div class="form-group">
 										    <label for="edit_orderindex">排序</label>
-										    <input type="number" ng-model="editRoute.orderindex" class="form-control" id="edit_orderindex" placeholder="排序" required>
+										    <input type="number" ng-model="inputExists.orderindex" class="form-control" id="edit_orderindex" placeholder="排序" required>
 									  	</div>
-									  	<button type="submit" ng-click="cancelToEditRoute()" class="btn btn-default">取消</button>
-									  	<button type="submit" ng-click="confirmToEditRouteStart()" class="btn btn-default">修改</button>
+									  	<button type="submit" ng-click="cancelToEditItem()" class="btn btn-default">取消</button>
+									  	<button type="submit" ng-click="confirmToEditItem()" class="btn btn-default">修改</button>
 
 						      		</div>
 
@@ -468,14 +813,14 @@
 
 						      			<div class="form-group">
 										    <label for="add_title">名称</label>
-										    <input type="text" ng-model="addRoute.title" class="form-control" id="add_title" placeholder="名称" required>
+										    <input type="text" ng-model="input.title" class="form-control" id="add_title" placeholder="名称" required>
 									  	</div>
 									  	<div class="form-group">
 										    <label for="add_orderindex">排序</label>
-										    <input type="number" ng-model="addRoute.order" class="form-control" id="add_orderindex" placeholder="排序" required>
+										    <input type="number" ng-model="input.order" class="form-control" id="add_orderindex" placeholder="排序" required>
 									  	</div>
-									  	<button type="submit" ng-click="cancelToAddRoute()" class="btn btn-default">取消</button>
-									  	<button type="submit" ng-click="confirmToAddRouteStart()" class="btn btn-default">添加</button>
+									  	<button type="submit" ng-click="cancelToAddItem()" class="btn btn-default">取消</button>
+									  	<button type="submit" ng-click="confirmToAddItem()" class="btn btn-default">添加</button>
 
 						      		</div>
 
@@ -494,8 +839,8 @@
 				                                <td>{{x.title}}</td>
 				                                <td>{{x.orderindex}}</td>
 				                                <td>
-				                                	<button ng-click="editRouteStart(x.id,x.title,x.orderindex)" class="btn btn-outline btn-link">编辑</button>
-				                                	<button ng-click="deleteRouteStart(x.id)" class="btn btn-outline btn-link">删除</button>
+				                                	<button ng-click="editItem(x.id,x.title,x.orderindex)" class="btn btn-outline btn-link">编辑</button>
+				                                	<button ng-click="deleteItem(x.id)" class="btn btn-outline btn-link">删除</button>
 				                                </td>
 				                        	</tr>
 				                        </tbody>

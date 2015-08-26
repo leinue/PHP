@@ -25,12 +25,35 @@ angular
     url:'http://service.zhangshanglv.cn'
   })
   .run(function($rootScope,$location,User){
-    $rootScope.$on('$routeChangeStart',function(evt,next,curr){
+
+    $rootScope.$on('$locationChangeStart',function(evt,next,curr){
       if(!User.isLoggedIn){
         $location.path('/login');
       }
+
     });
+
   })
+  // .config(function($httpProvider){
+  //   var interceptor=function($scope,$rootScope,Auth){
+      
+  //     return {
+        
+  //       'response':function(resp){
+  //         if(resp.config.url=='/api/login'){
+  //           Auth.setToken();
+  //         }
+  //         return resp;
+  //       },
+
+  //       'responseError':function(rejection){
+
+  //       }
+
+  //     };
+
+  //   };
+  // })
   .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider','$httpProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider,$httpProvider) {
     
     $ocLazyLoadProvider.config({
@@ -605,6 +628,21 @@ angular
               name:'sbAdminApp',
               files:[
                 'scripts/controllers/supply/SupplyRouteMgrCtrl.js'
+              ]
+            })
+          }
+        }
+    })
+      .state('dashboard.supply-route-mgr-new',{
+        templateUrl:'views/supply/supply-route-mgr-new.html',
+        url:'/supply/supply-route-mgr-new',
+        controller:'SupplyRouteMgrNewCtrl',
+        resolve:{
+          loadMyFiles:function($ocLazyLoad){
+            return $ocLazyLoad.load({
+              name:'sbAdminApp',
+              files:[
+                'scripts/controllers/supply/SupplyRouteMgrNewCtrl.js'
               ]
             })
           }

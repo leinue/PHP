@@ -1,6 +1,11 @@
 angular.module('sbAdminApp')
 .controller('UserLoginCtrl',function($scope,$location,User){
 
+	if(User.isLoggedIn()){
+		console.log('sasa');
+		$location.path('/');
+	}
+
 	if(localStorage.userMobile!=undefined){
 		$scope.telnumber=localStorage.userMobile;
 		$scope.password=localStorage.userPwd;

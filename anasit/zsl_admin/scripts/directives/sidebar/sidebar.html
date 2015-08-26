@@ -214,18 +214,24 @@
                             <li>
                                 <a ui-sref="dashboard.supply-verify">申请及认证</a>
                             </li>
-                            <li>
+<!--                             <li>
                                 <a ui-sref="dashboard.supply-profile">商家资料完善</a>
                             </li>
-                        </ul>
+ -->                        </ul>
                         <!-- /.nav-third-level -->
                     </li>
 
                     <li ng-init="third=!third" ng-class="{active: multiCollapseVar==2}">
                         <a href="" ng-click="multiCheck(2)">旅游管理 <span class="fa arrow"></span></a>
                         <ul class="nav nav-third-level" collapse="multiCollapseVar!=2">
-                            <li>
+                            <!-- <li>
                                 <a ui-sref="dashboard.supply-route-mgr">线路产品管理</a>
+                            </li> -->
+                            <li>
+                                <a ui-sref="dashboard.supply-route-mgr-new">新增线路</a>
+                            </li>
+                            <li>
+                                <a ui-sref="dashboard.supply-route-mgr">线路列表</a>
                             </li>
                             <li>
                                 <a ui-sref="dashboard.supply-travel-order-mgr">旅游订单管理</a>

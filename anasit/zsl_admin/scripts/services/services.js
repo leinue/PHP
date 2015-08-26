@@ -7,6 +7,8 @@ angular.module('sbAdminApp')
 	var d=$q.defer();
 	var promise=d.promise;
 
+	localStorage.isLogedIn=false;
+
 
 	// var _user=$cookieStore.get('user');
 
@@ -21,8 +23,10 @@ angular.module('sbAdminApp')
 			}
 		}).success(function(data){
 			if(data.status=='success'){
+				console.log(data);
 				localStorage.userMobile=tel;
 				localStorage.userPwd=password;
+				localStorage.isLogedIn=true;
 				$location.path('/');
 			}else{
 				alert('登录失败,请检查用户名或密码');
@@ -35,7 +39,7 @@ angular.module('sbAdminApp')
 	}
 
 	service.isLoggedIn=function(){
-		return localStorage.userMobile ? true : false;
+		return localStorage.isLogedIn=='true';
 	}
 
 	service.getUser=function(){
@@ -43,8 +47,37 @@ angular.module('sbAdminApp')
 	}
 
 	service.logout=function(){
-		localStorage.userMobile=null;
-		localStorage.userPwd=null;
+
+		$http({
+			method:"POST",
+			url:BASE_URL.url+'/User/Auth/logout'
+		}).success(function(data){
+			if(data.status=='success'){
+				localStorage.isLogedIn="false";
+				$location.path('/login');
+			}else{
+				alert('注销失败');
+			}
+		}).catch(function(reason){
+			$q.reject(reason);
+		});
+	}
+
+	service.getUid=function(){
+		return 173;
+	}
+
+	service.getThisInfo=function(){
+		$http({
+			method:"post",
+			url:BASE_URL.url+'/User/Info/getthisinfo'
+		}).success(function(data){
+
+			console.log(data);
+
+		}).catch(function(reason){
+			$q.reject(reason);
+		});
 	}
 
 	return service;
@@ -714,7 +747,7 @@ angular.module('sbAdminApp')
 
 	return {
 
-		update:function($scope,$data){
+		update:function($scope,data){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -722,11 +755,7 @@ angular.module('sbAdminApp')
 			$http({
 				method:"post",
 				url:BASE_URL.url+'/Admin/TravelProduct/editTravelProduct',
-				data:{
-					"id":id,
-					"title":title,
-					"orderindex":orderindex
-				}
+				data:data
 			}).success(function(data){
 				console.log(data);
 				$scope.status=data;
@@ -777,14 +806,17 @@ angular.module('sbAdminApp')
 
 		},
 
-		getAll:function($scope){
+		getAll:function($scope,id=null){
 
 			var d=$q.defer();
 			var promise=d.promise;
 
 			$http({
 				method:"post",
-				url:BASE_URL.url+'/Admin/TravelProduct/getTravelRoute'
+				url:BASE_URL.url+'/Admin/TravelProduct/getTravelRoute',
+				data:{
+					"uid":id
+				}
 			}).success(function(data){
 				console.log(data);
 				$scope.allTravelRoutes=data;
@@ -817,7 +849,7 @@ angular.module('sbAdminApp')
 
 			var d=$q.defer();
 			var promise=d.promise;
-
+			
 			$http({
 				method:"post",
 				url:BASE_URL.url+'/Admin/TravelProduct/getProductById',

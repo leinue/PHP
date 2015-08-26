@@ -23,7 +23,7 @@ angular.module('sbAdminApp')
 		SupplierMgr.update(uid,username,password,tel,groupid,salt,status,name,image1,image2,image3,isapproved,type);
 		$scope.alertInfo=true;
 		SupplierMgr.getAll();
-	};
+};
 
 	$scope.addSupplier=function(username,password,tel,groupid,salt,status,name,joindate,joinip,lastvisit,lastip,create_time,update_time,image1,image2,image3,isapproved,type){
 		SupplierMgr.add(username,password,tel,groupid,salt,status,name,joindate,joinip,lastvisit,lastip,create_time,update_time,image1,image2,image3,isapproved,type);

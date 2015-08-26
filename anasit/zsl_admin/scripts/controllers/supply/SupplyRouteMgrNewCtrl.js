@@ -1,39 +1,8 @@
 angular.module('sbAdminApp')
-.controller('SupplyRouteMgrCtrl',function($scope,$location,User,RouteStart,RouteEnd){
 
-	User.getThisInfo();
+.controller('SupplyRouteMgrNewCtrl',function($scope,$location,User,RouteStart,RouteEnd){
 
-})
-
-.controller('RouteListMgr',function($scope,$location,User,TravelProducts){
-
-	TravelProducts.getAll($scope,User.getUid());
-
-	$scope.deleteTravelRoute=function(pid){
-		TravelProducts.delete($scope,pid);
-		TravelProducts.getAll($scope,User.getUid());
-	};
-
-	$scope.approveThis=function(pid){
-		TravelProducts.approve($scope,pid);
-		TravelProducts.getAll($scope,User.getUid());
-	};
-
-	$scope.viewThis=function(pid){
-
-	};
-
-	$scope.editThis=function(pid){
-		localStorage.currentRoutePid=false;
-		$('.routesList').modal('toggle');
-		localStorage.currentRoutePid=pid;
-		$('.routesList').on('hidden.bs.modal', function () {
-			if(localStorage.currentRoutePid!='false'){
-				$('.routesListNewCls').modal('toggle');				
-			}
-		});
-		// 
-	};
+	$('.routesListNewCls').modal('toggle');
 
 })
 
@@ -142,7 +111,7 @@ angular.module('sbAdminApp')
 
 	TravelProductsCategory.getAll($scope);
 	RouteEnd.getAll($scope);
-	RouteStart.getAll($scope);
+	RouteEnd.getAll($scope);
 	TravelProductsAttr.getAll($scope);
 	TravelProductsConstract.getAll($scope);
 
@@ -225,6 +194,7 @@ angular.module('sbAdminApp')
 		console.log($scope.img);
 	};
 
+
 	$scope.changePlanDays=function(){
 		$scope.plan_day_datas=[];
 		for (var i = 1; i <= $scope.trip_days; i++) {
@@ -277,11 +247,7 @@ angular.module('sbAdminApp')
 
 		console.log(data);
 
-		if(localStorage.currentRoutePid!='false'){
-			TravelProducts.update($scope,data);
-		}else{
-			TravelProducts.add($scope,data);
-		}
+		TravelProducts.add($scope,data);
 
 	};
 

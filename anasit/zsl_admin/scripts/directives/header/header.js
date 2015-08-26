@@ -13,6 +13,13 @@ angular.module('sbAdminApp')
         restrict: 'E',
         replace: true,
     	}
+	})
+	.controller('headerNoficationCtrl',function($scope,$location,User){
+
+		$scope.unsetUser=function(){
+			User.logout();
+		};
+
 	});
 
 

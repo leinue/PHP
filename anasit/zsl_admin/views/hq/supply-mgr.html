@@ -70,23 +70,17 @@
 		        </tbody>
 		    </table>
 
-			  <ul class="pagination">
+		    <nav style="background:rgb(255,255,255)!important">
+			  <ul class="pager">
+			    <li ng-click="loadPrevPage()"><a href="javascript:void(0)"><span aria-hidden="true">&larr;</span> 上一页</a></li>
 			    <li>
-			      <a href="#" aria-label="Previous">
-			        <span aria-hidden="true">&laquo;</span>
-			      </a>
+			    	<div class="col-xs-2">
+			    		<input class="number form-control" ng-change="loadPage()" ng-model="currentPage">
+			    	</div>
 			    </li>
-			    <li><a href="#">1</a></li>
-			    <li><a href="#">2</a></li>
-			    <li><a href="#">3</a></li>
-			    <li><a href="#">4</a></li>
-			    <li><a href="#">5</a></li>
-			    <li>
-			      <a href="#" aria-label="Next">
-			        <span aria-hidden="true">&raquo;</span>
-			      </a>
-			    </li>
+			    <li ng-click="loadNextPage()"><a href="javascript:void(0)">下一页 <span aria-hidden="true">&rarr;</span></a></li>
 			  </ul>
+			</nav>
 
 		</div>
 

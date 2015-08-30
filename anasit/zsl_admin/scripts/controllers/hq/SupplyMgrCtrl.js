@@ -5,12 +5,15 @@ angular.module('sbAdminApp')
 		$location.path('/login');
 	}
 
+	$scope.currentPage=1;
+
 	$scope.alertInfo=false;
 
-	Supplier.getAll($scope);
+	Supplier.getAll($scope,$scope.currentPage);
 
 	$scope.currentUid='';
 
+	
 	$scope.deleteSupplier=function(uid){
 
 		// var con=confirm("确定要删除吗?");
@@ -21,8 +24,24 @@ angular.module('sbAdminApp')
 
 	};
 
-	$scope.editSupplier=function(uid){
+	$scope.loadPage=function(){
+		Supplier.getAll($scope,$scope.currentPage);
+	};
 
+	$scope.loadPrevPage=function(){
+		$scope.currentPage--;
+		if($scope.currentPage<0){
+			$scope.currentPage=1;
+		}
+		Supplier.getAll($scope,$scope.currentPage);
+	};
+
+	$scope.loadNextPage=function(){
+		$scope.currentPage++;
+		Supplier.getAll($scope,$scope.currentPage);
+	};
+
+	$scope.editSupplier=function(uid){
 		$('.edit-supplier').modal('toggle');
 		$scope.currentUid=uid;
 

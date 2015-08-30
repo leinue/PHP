@@ -110,10 +110,7 @@ angular.module('sbAdminApp')
 			//http://service.zhangshanglv.cn/User/Info/getinfobypage
 			$http({
 				method:"get",
-				url:BASE_URL.url+'/User/Info/getinfobypage',
-				data:{
-					"page":page
-				}
+				url:BASE_URL.url+'/User/Info/getinfobypage?page='+page+'&size=10'
 			}).success(function(data){
 				console.log(data);
 				$scope.allSuppliersList=data;

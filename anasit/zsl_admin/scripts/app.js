@@ -39,46 +39,52 @@ angular
         $location.path('/login');
       }
 
-      console.log(localStorage.group);
+      console.log("localStorage.group="+localStorage.group);
 
       var currentGroup=localStorage.group;
 
-      console.log(currentGroup);
+      console.log("currentGroup="+currentGroup);
 
       // console.log(evt);
-      console.log(next);
-      console.log(curr);
+      console.log("netxt="+next);
+      console.log("current="+curr);
 
-      // if(next.indexOf('hq')!=-1){
-      //   //总部后台
-      //   if(currentGroup.indexOf('root')!=-1 || currentGroup.indexOf('admin')!=-1){
-      //     // $location.path(next);
-      //   }else{
-      //     alert('无权访问');
-      //     $location.path(curr);
-      //   }
-      // }
+      if(next.indexOf('hq')!=-1){
+        //总部后台
+        console.log('进入总部后台...即将验证权限');
+        if(currentGroup.indexOf('root')!=-1 || currentGroup.indexOf('admin')!=-1){
+          console.log('access approved');
+          // $location.path(next);
+        }else{
+          alert('无权访问');
+          $location.path(curr);
+        }
+      }
 
-      // if(next.indexOf('finance')!=-1){
-      //   //财务后台
-      //   if(currentGroup.indexOf('root')!=-1 || currentGroup.indexOf('admin')!=-1 || currentGroup.indexOf('finance')!=-1){
-      //     // $location.path(next);
-      //   }else{
-      //     alert('无权访问');
-      //     $location.path(curr);
-      //   }
+      if(next.indexOf('finance')!=-1){
+        //财务后台
+        console.log('进入财务后台...即将验证权限');
+        if(currentGroup.indexOf('root')!=-1 || currentGroup.indexOf('admin')!=-1 || currentGroup.indexOf('finance')!=-1){
+          // $location.path(next);
+          console.log('access approved');
+        }else{
+          alert('无权访问');
+          $location.path(curr);
+        }
 
-      // }
+      }
 
-      // if(next.indexOf('supply')!=-1){
-      //   //供应商后台
-      //   if(currentGroup.indexOf('supply')!=-1 || currentGroup.indexOf('root')!=-1 || currentGroup.indexOf('admin')!=-1){
-      //     // $location.path(next);
-      //   }else{
-      //     alert('无权访问');
-      //     $location.path(curr);
-      //   }
-      // }
+      if(next.indexOf('supply')!=-1){
+        //供应商后台
+        console.log('进入供应商后台...即将验证权限');
+        if(currentGroup.indexOf('supply')!=-1 || currentGroup.indexOf('root')!=-1 || currentGroup.indexOf('admin')!=-1){
+          // $location.path(next);
+          console.log('access approved');
+        }else{
+          alert('无权访问');
+          $location.path(curr);
+        }
+      }
 
 
     });

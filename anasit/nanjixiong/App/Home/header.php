@@ -123,6 +123,7 @@ function displayAvtive($current,$to){
 	        	if(empty($_SESSION['username'])){
 	        		echo '<li><a href="login.php">登录</a></li>';
 	        	}else{
+	        		echo "<li><a target=\"_blank\" href=\"http://www.nanjixiong.com/home.php?mod=spacecp&ac=pm\">私信</a></li>";
 	        		echo '<li><a href="index.php?action=logout">退出</a></li>';
 	        	}
 	        ?>

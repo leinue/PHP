@@ -24,7 +24,7 @@
 	}
 
 	$defaultImage=$userObj->getPhoto();
-	$defaultImage==='0'?'default.png':$defaultImage;
+	$defaultImage==='0'?'default.png':str_replace(DOMAIN, DOMAIN.'/Cores/', $userObj->getPhoto());
 
 ?>
 	<div class="row">

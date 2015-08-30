@@ -7,10 +7,10 @@ angular.module('sbAdminApp')
 	var d=$q.defer();
 	var promise=d.promise;
 
-	localStorage.isLogedIn=false;
-
+	localStorage.isLogedIn=localStorage.isLogedIn==undefined?false:localStorage.isLogedIn;
 
 	// var _user=$cookieStore.get('user');
+	var userInfo;
 
 	service.setUser=function(tel,password){
 
@@ -26,7 +26,7 @@ angular.module('sbAdminApp')
 				console.log(data);
 				localStorage.userMobile=tel;
 				localStorage.userPwd=password;
-				localStorage.isLogedIn=true;
+				localStorage.isLogedIn='true';
 				$location.path('/');
 			}else{
 				alert('登录失败,请检查用户名或密码');
@@ -39,12 +39,13 @@ angular.module('sbAdminApp')
 	}
 
 	service.isLoggedIn=function(){
+		console.log(localStorage.isLogedIn);
 		return localStorage.isLogedIn=='true';
-	}
+	};
 
 	service.getUser=function(){
 		return localStorage.userMobile;
-	}
+	};
 
 	service.logout=function(){
 
@@ -54,6 +55,8 @@ angular.module('sbAdminApp')
 		}).success(function(data){
 			if(data.status=='success'){
 				localStorage.isLogedIn="false";
+				localStorage.uid=null;
+				localStorage.group=null;
 				$location.path('/login');
 			}else{
 				alert('注销失败');
@@ -61,26 +64,99 @@ angular.module('sbAdminApp')
 		}).catch(function(reason){
 			$q.reject(reason);
 		});
-	}
+	};
 
 	service.getUid=function(){
-		return 173;
-	}
+		return localStorage.uid;
+	};
+
+	service.getGroup=function(){
+		return localStorage.group;
+	};
 
 	service.getThisInfo=function(){
 		$http({
 			method:"post",
 			url:BASE_URL.url+'/User/Info/getthisinfo'
 		}).success(function(data){
-
-			console.log(data);
-
+			userInfo=data;
+			console.log(userInfo.data);
+			localStorage.uid=userInfo.data.uid;
+			localStorage.group=userInfo.data.group;
+			// console.log(data);
 		}).catch(function(reason){
 			$q.reject(reason);
 		});
-	}
+	};
+
+	// service.checkAuth(current,to){
+
+	// }
+
+	service.isRoot=function(){
+		// return 
+	};
 
 	return service;
+
+
+})
+
+.factory('Supplier',function($q,$http,BASE_URL){
+
+	return {
+
+		getAll:function($scope,page=1){
+			//http://service.zhangshanglv.cn/User/Info/getinfobypage
+			$http({
+				method:"get",
+				url:BASE_URL.url+'/User/Info/getinfobypage',
+				data:{
+					"page":page
+				}
+			}).success(function(data){
+				console.log(data);
+				$scope.allSuppliersList=data;
+			}).catch(function(reason){
+				$q.reject(reason);
+			});
+		},
+
+		addGroup:function($scope,uid,group){
+			$http({
+				method:"POST",
+				url:BASE_URL.url+'/Admin/Auth/addgrouptouid',
+				data:{
+					"uid":uid,
+					"group":group
+				}
+			}).success(function(data){
+				console.log(data);
+				$scope.status=data;
+				alert(data.status);
+			}).catch(function(reason){
+				$q.reject(reason);
+			});
+		},
+
+		removeGroup:function($scope,uid,group){
+			$http({
+				method:"POST",
+				url:BASE_URL.url+'/Admin/Auth/delgroupfromuid',
+				data:{
+					"uid":uid,
+					"group":group
+				}
+			}).success(function(data){
+				console.log(data);
+				$scope.status=data;
+				alert(data.status);
+			}).catch(function(reason){
+				$q.reject(reason);
+			});
+		}
+
+	};
 
 })
 

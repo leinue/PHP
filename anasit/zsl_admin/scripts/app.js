@@ -24,12 +24,62 @@ angular
   .constant('BASE_URL',{
     url:'http://service.zhangshanglv.cn'
   })
+  .config(function ($httpProvider) {
+
+    $httpProvider.defaults.withCredentials = true;
+
+  })
   .run(function($rootScope,$location,User){
 
     $rootScope.$on('$locationChangeStart',function(evt,next,curr){
-      if(!User.isLoggedIn){
+      
+      console.log('route change start');
+
+      if(!User.isLoggedIn()){
         $location.path('/login');
       }
+
+      console.log(localStorage.group);
+
+      var currentGroup=localStorage.group;
+
+      console.log(currentGroup);
+
+      // console.log(evt);
+      console.log(next);
+      console.log(curr);
+
+      // if(next.indexOf('hq')!=-1){
+      //   //总部后台
+      //   if(currentGroup.indexOf('root')!=-1 || currentGroup.indexOf('admin')!=-1){
+      //     // $location.path(next);
+      //   }else{
+      //     alert('无权访问');
+      //     $location.path(curr);
+      //   }
+      // }
+
+      // if(next.indexOf('finance')!=-1){
+      //   //财务后台
+      //   if(currentGroup.indexOf('root')!=-1 || currentGroup.indexOf('admin')!=-1 || currentGroup.indexOf('finance')!=-1){
+      //     // $location.path(next);
+      //   }else{
+      //     alert('无权访问');
+      //     $location.path(curr);
+      //   }
+
+      // }
+
+      // if(next.indexOf('supply')!=-1){
+      //   //供应商后台
+      //   if(currentGroup.indexOf('supply')!=-1 || currentGroup.indexOf('root')!=-1 || currentGroup.indexOf('admin')!=-1){
+      //     // $location.path(next);
+      //   }else{
+      //     alert('无权访问');
+      //     $location.path(curr);
+      //   }
+      // }
+
 
     });
 

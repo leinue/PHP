@@ -51,10 +51,9 @@
 										</div>
 										
 										<div class="form-group">
-											<label>所属分类</label>
+											<label>所属分类</label>:{{category}}
 											<select ng-model="category" class="form-control">
-												<option selected="true" value="current">{{category}}</option>
-												<option value="{{x.id}}" ng-hide="x.name==category" ng-repeat="x in allCategories.data">{{x.name}}</option>
+												<option value="{{x.id}}" ng-repeat="x in allCategories.data">{{x.name}}</option>
 											</select>
 										</div>
 
@@ -100,7 +99,7 @@
 									            div.innerHTML = "<div id='divhead' style='width:"+rect.width+"px;height:"+rect.height+"px;margin-top:"+rect.top+"px;"+sFilter+src+"\"'></div>";
 									          }
 
-									          file.style.display='none';
+									          // file.style.display='none';
 									          document.getElementById('btn_confirm_img').style.display='block';
 
 									        }
@@ -136,26 +135,67 @@
 											</div>
 											<button class="btn btn-default" style="display:none" id="btn_confirm_img" ng-click="printBase()">确定</button>
 											<input type="file" ng-change="getBase64OfImg()" onchange="previewImage(this)" ng-model="img">
+											
+											<script>
+											
+											function uploadevent(status,picUrl,callbackdata){
+											    status += '';
+											     switch(status){
+											     case '1':
+													var time = new Date().getTime();
+													var filename162 = picUrl+'_162.jpg';
+													var filename48 = picUrl+'_48.jpg';
+													var filename20 = picUrl+"_20.jpg";
+
+													// document.getElementById('avatar_priview').innerHTML = "头像1 : <img src='"+filename162+"?" + time + "'/> <br/> 头像2: <img src='"+filename48+"?" + time + "'/><br/> 头像3: <img src='"+filename20+"?" + time + "'/>" ;
+													
+													alert(filename162);
+
+												break;
+											     case '-1':
+												  window.location.reload();
+											     break;
+											     default:
+											     window.location.reload();
+											    } 
+											   }
+
+											</script>
+											
+											<OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+											codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"
+											WIDTH="650" HEIGHT="450" id="myMovieName">
+												<PARAM NAME=movie VALUE="avatar.swf">
+												<PARAM NAME=quality VALUE=high>
+												<PARAM NAME=bgcolor VALUE=#FFFFFF>
+												<param name="flashvars" value="imgUrl=./default.png&uploadUrl=./upfile.php&uploadSrc=false" />
+												<EMBED src="avatar.swf" quality=high bgcolor=#FFFFFF WIDTH="650" HEIGHT="450" wmode="transparent" flashVars="imgUrl=./default.png&uploadUrl=./upfile.php&uploadSrc=false"
+												NAME="myMovieName" ALIGN="" TYPE="application/x-shockwave-flash" allowScriptAccess="always"
+												PLUGINSPAGE="http://www.macromedia.com/go/getflashplayer">
+												</EMBED>
+											</OBJECT>
 										</div>
 
 										<div class="form-group">
-											<label>出发城市</label>
+											<label>出发城市</label>:{{area_start}}
 											<select ng-model="area_start" class="form-control">
 												<option value="{{x.id}}" ng-repeat="x in allRoutes.data">{{x.title}}</option>
 											</select>
 										</div>
 
 										<div class="form-group">
-											<label>目的地城市</label>
+											<label>目的地城市</label>:{{area_end}}
 											<select ng-model="area_end" class="form-control">
-												<option value="{{x.id}}" ng-repeat="x in allRoutesEnd.data">{{x.title}}</option>
+												<option selected>{{end}}</option>
+												<option value="{{x.id}}" ng-hide="x.title==end" ng-repeat="x in allRoutesEnd.data">{{x.title}}</option>
 											</select>
 										</div>
 
 										<div class="form-group">
-											<label>上架属性</label>
+											<label>上架属性</label>:{{attr}}
 											<select ng-model="attr" class="form-control">
-												<option value="{{x.id}}" ng-repeat="x in allAttrs.data">{{x.title}}</option>
+												<option selected>{{attrname}}</option>
+												<option value="{{x.id}}" ng-hide="x.title==attrname" ng-repeat="x in allAttrs.data">{{x.title}}</option>
 											</select>
 										</div>
 
@@ -172,7 +212,7 @@
 										</div>
 
 										<div class="form-group">
-											<label>旅游合同</label>
+											<label>旅游合同</label>:{{constract}}
 											<select ng-model="constract" class="form-control">
 												<option value="{{x.id}}" ng-repeat="x in allConstract.data">{{x.title}}</option>
 											</select>

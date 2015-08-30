@@ -7,16 +7,20 @@ angular.module('sbAdminApp')
 
 .controller('RouteListMgr',function($scope,$location,User,TravelProducts){
 
-	TravelProducts.getAll($scope,User.getUid());
+	User.getThisInfo();
+
+	var uid=User.getUid();
+
+	TravelProducts.getAll($scope,uid);
 
 	$scope.deleteTravelRoute=function(pid){
 		TravelProducts.delete($scope,pid);
-		TravelProducts.getAll($scope,User.getUid());
+		TravelProducts.getAll($scope,uid);
 	};
 
 	$scope.approveThis=function(pid){
 		TravelProducts.approve($scope,pid);
-		TravelProducts.getAll($scope,User.getUid());
+		TravelProducts.getAll($scope,uid);
 	};
 
 	$scope.viewThis=function(pid){
@@ -32,7 +36,6 @@ angular.module('sbAdminApp')
 				$('.routesListNewCls').modal('toggle');				
 			}
 		});
-		// 
 	};
 
 })
@@ -42,6 +45,10 @@ angular.module('sbAdminApp')
 	$scope.modalTitle="新增线路列表";
 	$scope.editStatus='add';
 
+	$scope.dayPlanList=[];
+	$scope.currentDay;
+	$scope.plan_day_datas=[];
+
 	$('.routesListNewCls').on('show.bs.modal', function () {
 		if(localStorage.currentRoutePid!='false'){
 			$scope.modalTitle="编辑线路列表";
@@ -50,14 +57,29 @@ angular.module('sbAdminApp')
 
 			TravelProducts.view($scope,localStorage.currentRoutePid,function(data){
 
+				console.log(data);
+
 				data=data[localStorage.currentRoutePid];
 
-				console.log(data.price);
+				console.log(data.plan.length);
+				console.log(data.plan);
 				var price=data.price;
 
-				console.log(data.plan);
+				for (var i = 0; i < data.plan.length; i++) {
+					var currentPlan=data.plan[i];
+					$scope.dayPlanList[i]={};
+					$scope.dayPlanList[i].day=i+1;
+					$scope.dayPlanList[i].description=currentPlan.description;
+					$scope.dayPlanList[i].food=currentPlan.food;
+					$scope.dayPlanList[i].room=currentPlan.room;
+					$scope.dayPlanList[i].title=currentPlan.title;
+					$scope.plan_day_datas[i]=i+1;
+				};
 
-				$scope.ppid=data.pid;
+				console.log($scope.dayPlanList);
+				// $scope.plan_day_datas.push(i+1);
+
+				$scope.pid=data.pid;
 				$scope.plan_day=data.plan.length;
 			  	$scope.plan_title='';
 			  	$scope.plan_food='';
@@ -82,7 +104,7 @@ angular.module('sbAdminApp')
 				$scope.fee_noincluded=data.fee_noincluded;
 				$scope.trip_days=Math.ceil(data.trip_days);
 				$scope.order_index=data.order_index;
-				$scope.dayPlanList='';
+				// $scope.dayPlanList='';
 				$scope.num_limit=Math.ceil(data.num_limit);
 				$scope.share_score=Math.ceil(data.share_score);
 				$scope.content=data.content;
@@ -161,15 +183,13 @@ angular.module('sbAdminApp')
 
 	];
 
-	$scope.dayPlanList=[];
-	$scope.currentDay;
-
 	$scope.generatorPlan=function(){
 		$scope.currentDay=$scope.plan_day;
 		$scope.currentDay=$scope.currentDay.slice(1,$scope.currentDay.length-1);
 
-		if(typeof $scope.dayPlanList[$scope.currentDay]=='undefined'){
+		if(typeof $scope.dayPlanList[$scope.currentDay]=='undefined' || typeof $scope.dayPlanList[$scope.currentDay]=='object'){
 			$scope.dayPlanList[$scope.currentDay]={};
+			console.log($scope.currentDay);
 			$scope.dayPlanList[$scope.currentDay].food={
 				"早":$scope.plan_food_breakfast==undefined?'0':$scope.plan_food_breakfast,
 				"中":$scope.plan_food_lunch==undefined?'0':$scope.plan_food_lunch,
@@ -226,7 +246,6 @@ angular.module('sbAdminApp')
 	};
 
 	$scope.changePlanDays=function(){
-		$scope.plan_day_datas=[];
 		for (var i = 1; i <= $scope.trip_days; i++) {
 			console.log(i);
 			$scope.plan_day_datas.push(i);
@@ -235,8 +254,25 @@ angular.module('sbAdminApp')
 
 	$scope.addProduct=function(){
 
+		function uuid() {
+		    var s = [];
+		    var hexDigits = "0123456789";
+		    for (var i = 0; i < 36; i++) {
+		        s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+		    }
+		    s[14] = "4";  // bits 12-15 of the time_hi_and_version field to 0010
+		    s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1);  // bits 6-7 of the clock_seq_hi_and_reserved to 01
+		    s[8] = s[13] = s[18] = s[23] = "-";
+		 
+		    var uuid = s.join("");
+		    return uuid;
+		}
+
+		var ppid=localStorage.currentRoutePid==undefined || localStorage.currentRoutePid==false ? uuid():localStorage.currentRoutePid;
+
 		var data={
 			"uid":User.getUid(),
+			"pid":Math.ceil(ppid),
 			"title":$scope.title,
 			"area_start":$scope.area_start,
 			"area_end":$scope.area_end,

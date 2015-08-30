@@ -1,5 +1,5 @@
 angular.module('sbAdminApp')
-.controller('SupplyMgrCtrl',function($scope,$location,User,SupplierMgr){
+.controller('SupplyMgrCtrl',function($scope,$location,User,Supplier,BASE_URL){
 
 	if(!User.isLoggedIn){
 		$location.path('/login');
@@ -7,28 +7,49 @@ angular.module('sbAdminApp')
 
 	$scope.alertInfo=false;
 
-	SupplierMgr.getAll($scope);
+	Supplier.getAll($scope);
+
+	$scope.currentUid='';
 
 	$scope.deleteSupplier=function(uid){
 
-		var con=confirm("确定要删除吗?");
-		if(con){
-			SupplierMgr.delete(uid);
-			SupplierMgr.getAll($scope);
-		}
+		// var con=confirm("确定要删除吗?");
+		// if(con){
+		// 	Supplier.delete(uid);
+		// 	Supplier.getAll($scope);
+		// }
 
 	};
 
-	$scope.editSupplier=function(uid,username,password,tel,groupid,salt,status,name,image1,image2,image3,isapproved,type){
-		SupplierMgr.update(uid,username,password,tel,groupid,salt,status,name,image1,image2,image3,isapproved,type);
-		$scope.alertInfo=true;
-		SupplierMgr.getAll();
-};
+	$scope.editSupplier=function(uid){
 
-	$scope.addSupplier=function(username,password,tel,groupid,salt,status,name,joindate,joinip,lastvisit,lastip,create_time,update_time,image1,image2,image3,isapproved,type){
-		SupplierMgr.add(username,password,tel,groupid,salt,status,name,joindate,joinip,lastvisit,lastip,create_time,update_time,image1,image2,image3,isapproved,type);
-		$scope.alertInfo=true;
-		SupplierMgr.getAll();
+		$('.edit-supplier').modal('toggle');
+		$scope.currentUid=uid;
+
+	};
+
+	$scope.setRoot=function(){
+		Supplier.addGroup($scope,$scope.currentUid,'root');
+	};
+
+	$scope.unsetRoot=function(){
+		Supplier.removeGroup($scope,$scope.currentUid,'root');
+	};
+
+	$scope.setAdmin=function(){
+		Supplier.addGroup($scope,$scope.currentUid,'admin');
+	};
+
+	$scope.unsetAdmin=function(){
+		Supplier.removeGroup($scope,$scope.currentUid,'admin');
+	};
+
+	$scope.setSupply=function(){
+		Supplier.addGroup($scope,$scope.currentUid,'supply');
+	};
+
+	$scope.unsetSupply=function(){
+		Supplier.removeGroup($scope,$scope.currentUid,'supply');
 	};
 	
 });

@@ -1,131 +1,6 @@
 angular.module('sbAdminApp')
 .controller('RouteProductMgrCtrl',function($scope,$location,User,RouteStart,RouteEnd){
 
-	$scope.isEdit=false;
-	$scope.isAdd=false;
-	$scope.alertInfo=false;
-
-	$scope.statusMessage='';
-
-	$scope.editRoute={
-		title:'',
-		order:'',
-		id:''
-	};
-
-	$scope.addRoute={
-		title:'',
-		orderindex:''
-	};
-
-	$scope.editBefore=function(id,t,o){
-		if(!$scope.isEdit){
-			$scope.isEdit=true;
-		}
-		$scope.alertInfo=false;
-		$scope.isAdd=false;
-		$scope.editRoute.id=id;
-		$scope.editRoute.title=t;
-		$scope.editRoute.order=o;
-	};
-
-	$scope.editAfter=function(){
-		$scope.alertInfo=!$scope.alertInfo;
-		$scope.isEdit=!$scope.isEdit;
-	};
-
-	$scope.addBefore=function(){
-		$scope.isAdd=true;
-		$scope.alertInfo=false;
-		$scope.isEdit=false;
-	};
-
-	$scope.addAfter=function(){
-		$scope.alertInfo=true;
-		$scope.isAdd=false;
-	};
-
-	$scope.cancelToAddRoute=function(){
-		$scope.isAdd=false;
-	};
-
-	$scope.cancelToEditRoute=function(){
-		$scope.isEdit=false;
-	};
-
-	$scope.deleteAfter=function(){
-
-	};
-
-	/*****************************出发地******************************/
-
-	RouteStart.getAll($scope);
-
-	$scope.editRouteStart=function(id,t,o){
-		$scope.editBefore(id,t,o);
-	};
-
-	$scope.confirmToEditRouteStart=function(){
-		RouteStart.update($scope,$scope.editRoute.id,$scope.editRoute.title,$scope.editRoute.orderindex);
-		$scope.editAfter();
-		RouteStart.getAll($scope);
-	};
-
-	$scope.deleteRouteStart=function(id){
-		var con=confirm('确定要删除吗?');
-		$scope.alertInfo=true;
-		if(con){
-			$scope.result=RouteStart.delete($scope,id);
-			$scope.deleteAfter();
-			RouteStart.getAll($scope);
-		}
-	};
-
-	$scope.addRouteStart=function(){
-		$scope.addBefore();
-	};
-
-	$scope.confirmToAddRouteStart=function(){
-		console.log($scope.addRoute.title);
-		RouteStart.add($scope,$scope.addRoute.title,0);
-		$scope.addAfter();
-		RouteStart.getAll($scope);
-	};
-
-	/*****************************目的地******************************/
-
-	RouteEnd.getAll($scope);
-	
-
-	$scope.editRouteEnd=function(id,t,o){
-		$scope.editBefore(id,t,o);
-	};
-
-	$scope.deleteRouteEnd=function(id){
-		var con=confirm('确定要删除吗');
-		$scope.alertInfo=true;
-		if(con){
-			$scope.result=RouteEnd.delete($scope,id);
-			RouteEnd.getAll($scope);
-		}
-	};
-
-	$scope.addRouteEnd=function(){
-		$scope.addBefore();
-	};
-
-	$scope.confirmToAddRouteEnd=function(){
-		RouteEnd.add($scope,$scope.addRoute.title,0);
-		$scope.addAfter();
-		RouteEnd.getAll($scope);
-	};
-
-	$scope.confirmToEditRouteEnd=function(){
-		RouteEnd.update($scope,$scope.editRoute.id,$scope.editRoute.title,$scope.editRoute.orderindex);
-		$scope.editAfter();
-		RouteEnd.getAll($scope);
-	};
-
 })
 
 .controller('TravelProductConstract',function($scope,$location,User,TravelProductsConstract){
@@ -448,7 +323,9 @@ angular.module('sbAdminApp')
 		localStorage.currentRoutePid=pid;
 		$('.routesList').modal('toggle');
 		$('.routesList').on('hidden.bs.modal', function () {
-			$('.routesListNewCls').modal('toggle');
+			if(localStorage.currentRoutePid!='false'){
+				$('.routesListNewCls').modal('toggle');				
+			}
 		});
 		// 
 	};
@@ -460,28 +337,49 @@ angular.module('sbAdminApp')
 	$scope.modalTitle="新增线路列表";
 	$scope.editStatus='add';
 
+	$scope.dayPlanList=[];
+	$scope.currentDay;
+	$scope.plan_day_datas=[];
+
 	$('.routesListNewCls').on('show.bs.modal', function () {
 		if(localStorage.currentRoutePid!='false'){
 			$scope.modalTitle="编辑线路列表";
 			$scope.editStatus='edit';
 			console.log('edit');
-			console.log(localStorage.currentRoutePid);
 
 			TravelProducts.view($scope,localStorage.currentRoutePid,function(data){
 
 				data=data[localStorage.currentRoutePid];
 
-				console.log(data.price);
+				console.log(data);
+
+				// console.log(data.plan.length);
+				// console.log(data.plan);
 				var price=data.price;
+
+				for (var i = 0; i < data.plan.length; i++) {
+					var currentPlan=data.plan[i];
+					console.log(data.plan);
+					$scope.dayPlanList[i]={};
+					$scope.dayPlanList[i].day=i+1;
+					$scope.dayPlanList[i].description=currentPlan.description;
+					$scope.dayPlanList[i].food=currentPlan.food;
+					$scope.dayPlanList[i].room=currentPlan.room;
+					$scope.dayPlanList[i].title=currentPlan.title;
+					$scope.plan_day_datas[i]=i+1;
+					$scope.plan_title=currentPlan.title;
+				  	$scope.plan_food=currentPlan.food;
+				  	$scope.plan_room=currentPlan.room;
+				  	$scope.plan_description=currentPlan.description;
+				};
 
 				console.log(data.plan);
 
-				$scope.ppid=data.pid;
+				console.log($scope.dayPlanList);
+				// $scope.plan_day_datas.push(i+1);
+
+				$scope.pid=data.pid;
 				$scope.plan_day=data.plan.length;
-			  	$scope.plan_title='';
-			  	$scope.plan_food='';
-			  	$scope.plan_room='';
-			  	$scope.plan_description='';
 			  	$scope.title=data.title;
 				$scope.area_start=data.start;
 				$scope.area_end=data.end;
@@ -501,7 +399,7 @@ angular.module('sbAdminApp')
 				$scope.fee_noincluded=data.fee_noincluded;
 				$scope.trip_days=Math.ceil(data.trip_days);
 				$scope.order_index=data.order_index;
-				$scope.dayPlanList='';
+				// $scope.dayPlanList='';
 				$scope.num_limit=Math.ceil(data.num_limit);
 				$scope.share_score=Math.ceil(data.share_score);
 				$scope.content=data.content;
@@ -523,7 +421,7 @@ angular.module('sbAdminApp')
 
 	$('.routesListNewCls').on('hide.bs.modal', function () {
 	  	localStorage.currentRoutePid=false;
-	  	console.log('new route list modal hide '+localStorage.currentRoutePid);
+	  	console.log(localStorage.currentRoutePid);
 	  	$scope.modalTitle="新增线路列表";
 	  	$scope.plan_day='';
 	  	$scope.plan_title='';
@@ -561,7 +459,7 @@ angular.module('sbAdminApp')
 
 	TravelProductsCategory.getAll($scope);
 	RouteEnd.getAll($scope);
-	RouteEnd.getAll($scope);
+	RouteStart.getAll($scope);
 	TravelProductsAttr.getAll($scope);
 	TravelProductsConstract.getAll($scope);
 
@@ -580,15 +478,13 @@ angular.module('sbAdminApp')
 
 	];
 
-	$scope.dayPlanList=[];
-	$scope.currentDay;
-
 	$scope.generatorPlan=function(){
 		$scope.currentDay=$scope.plan_day;
 		$scope.currentDay=$scope.currentDay.slice(1,$scope.currentDay.length-1);
 
-		if(typeof $scope.dayPlanList[$scope.currentDay]=='undefined'){
+		if(typeof $scope.dayPlanList[$scope.currentDay]=='undefined' || typeof $scope.dayPlanList[$scope.currentDay]=='object'){
 			$scope.dayPlanList[$scope.currentDay]={};
+			console.log($scope.currentDay);
 			$scope.dayPlanList[$scope.currentDay].food={
 				"早":$scope.plan_food_breakfast==undefined?'0':$scope.plan_food_breakfast,
 				"中":$scope.plan_food_lunch==undefined?'0':$scope.plan_food_lunch,
@@ -644,9 +540,7 @@ angular.module('sbAdminApp')
 		console.log($scope.img);
 	};
 
-
 	$scope.changePlanDays=function(){
-		$scope.plan_day_datas=[];
 		for (var i = 1; i <= $scope.trip_days; i++) {
 			console.log(i);
 			$scope.plan_day_datas.push(i);
@@ -655,7 +549,25 @@ angular.module('sbAdminApp')
 
 	$scope.addProduct=function(){
 
+		function uuid() {
+		    var s = [];
+		    var hexDigits = "0123456789";
+		    for (var i = 0; i < 36; i++) {
+		        s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+		    }
+		    s[14] = "4";  // bits 12-15 of the time_hi_and_version field to 0010
+		    s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1);  // bits 6-7 of the clock_seq_hi_and_reserved to 01
+		    s[8] = s[13] = s[18] = s[23] = "-";
+		 
+		    var uuid = s.join("");
+		    return uuid;
+		}
+
+		var ppid=localStorage.currentRoutePid==undefined || localStorage.currentRoutePid==false ? uuid():localStorage.currentRoutePid;
+
 		var data={
+			"uid":User.getUid(),
+			"pid":Math.ceil(ppid),
 			"title":$scope.title,
 			"area_start":$scope.area_start,
 			"area_end":$scope.area_end,
@@ -696,7 +608,11 @@ angular.module('sbAdminApp')
 
 		console.log(data);
 
-		TravelProducts.add($scope,data);
+		if(localStorage.currentRoutePid!='false'){
+			TravelProducts.update($scope,data);
+		}else{
+			TravelProducts.add($scope,data);
+		}
 
 	};
 

@@ -31,16 +31,16 @@
 								</div>
 					     	</div>
 					    </div>
+					    <div class="modal-footer">
+					        <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">关闭</button>
+					    </div>
 					</div>
-					<div class="modal-footer">
-				        <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">关闭</button>
-				    </div>
 				</div>
 			</div>
 
 			<div class="col-lg-6">
 			    <div class="input-group">
-			      <input type="text" ng-model="searchCondition" class="form-control" placeholder="输入手机号搜索">
+			      <input type="text" ng-model="searchCondition" ng-change="searchConditionChange()" class="form-control" placeholder="输入手机号搜索">
 			      <span class="input-group-btn">
 			        <button ng-click="searchForSpecificUser()" class="btn btn-default" type="button">搜索</button>
 			      </span>

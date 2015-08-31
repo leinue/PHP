@@ -125,12 +125,13 @@ angular.module('sbAdminApp')
 	service.getInfo=function($scope,uid=null,mobile=null,nickname=null,group=null,callback=null){
 		$http({
 			method:'GET',
-			url:BASE_URL.url+'User/Info/getinfosbyinfo?uid='+uid+'&mobile='+mobile+'&nickname='+nickname+'&group='+group
+			url:BASE_URL.url+'/User/Info/getinfosbyinfo?uid='+uid+'&mobile='+mobile+'&nickname='+nickname+'&group='+group
 		}).success(function(data){
 			if(data.status===1){
+				$scope.allSuppliersList=data;
 				callback(data.data);
 			}else{
-				alert('查询失败')
+				alert('查询失败');
 			}
 		}).catch(function(reason){
 			$q.reject(reason);

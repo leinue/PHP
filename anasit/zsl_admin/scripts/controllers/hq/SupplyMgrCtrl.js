@@ -76,17 +76,23 @@ angular.module('sbAdminApp')
 		console.log(data);
 	};
 
+	$scope.searchConditionChange=function(data){
+		if($scope.searchCondition==''){
+			Supplier.getAll($scope,$scope.currentPage);
+		}
+	};
+
 	$scope.searchForSpecificUser=function(){
 		if($scope.searchCondition==''){
 			alert('搜索内容不能为空');
 		}else{
 			if(!isNaN($scope.searchCondition)){
 				if($scope.searchCondition<11){
-					User.getInfo($scope,null,$scope.searchCondition,null,null,function(data){
+					User.getInfo($scope,$scope.searchCondition,'','','',function(data){
 						searchCallback(data);
 					});
 				}else{
-					User.getInfo($scope,$scope.searchCondition,null,null,null,function(data){
+					User.getInfo($scope,'',$scope.searchCondition,'','',function(data){
 						searchCallback(data);
 					});
 				}

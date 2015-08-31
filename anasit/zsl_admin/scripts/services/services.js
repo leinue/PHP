@@ -12,7 +12,7 @@ angular.module('sbAdminApp')
 	// var _user=$cookieStore.get('user');
 	var userInfo;
 
-	service.setUser=function(tel,password){
+	service.setUser=function(tel,password,callback=null){
 
 		$http({
 			method:"POST",
@@ -22,12 +22,13 @@ angular.module('sbAdminApp')
 				"password":password
 			}
 		}).success(function(data){
-			if(data.status=='success'){
+			if(data.status===1){
 				console.log(data);
 				localStorage.userMobile=tel;
 				localStorage.userPwd=password;
 				localStorage.isLogedIn='true';
 				$location.path('/');
+				callback();
 			}else{
 				alert('登录失败,请检查用户名或密码');
 			}
@@ -53,7 +54,7 @@ angular.module('sbAdminApp')
 			method:"POST",
 			url:BASE_URL.url+'/User/Auth/logout'
 		}).success(function(data){
-			if(data.status=='success'){
+			if(data.status===1){
 				localStorage.isLogedIn="false";
 				localStorage.uid=null;
 				localStorage.group=null;
@@ -80,9 +81,13 @@ angular.module('sbAdminApp')
 			url:BASE_URL.url+'/User/Info/getthisinfo'
 		}).success(function(data){
 			userInfo=data;
-			console.log(userInfo.data);
-			localStorage.uid=userInfo.data.uid;
-			localStorage.group=userInfo.data.group;
+			if(userInfo.status===1){
+				console.log(userInfo.data);
+				localStorage.uid=userInfo.data.uid;
+				localStorage.group=userInfo.data.group;
+			}else{
+				alert(userInfo.message);
+			}
 			// console.log(data);
 		}).catch(function(reason){
 			$q.reject(reason);
@@ -96,6 +101,41 @@ angular.module('sbAdminApp')
 	service.isRoot=function(){
 		// return 
 	};
+
+	service.register=function(mobile,password,callback=null){
+		$http({
+			method:"POST",
+			url:BASE_URL.url+'/User/Auth/register',
+			data:{
+				"mobile":mobile,
+				"password":password
+			}
+		}).success(function(data){
+			console.log(data);
+			if(data.status===1){
+				callback();
+			}else{
+				alert('注册失败,请重试');
+			}
+		}).catch(function(reason){
+			$q.reject(reason);
+		});
+	};
+
+	service.getInfo=function($scope,uid=null,mobile=null,nickname=null,group=null,callback=null){
+		$http({
+			method:'GET',
+			url:BASE_URL.url+'User/Info/getinfosbyinfo?uid='+uid+'&mobile='+mobile+'&nickname='+nickname+'&group='+group
+		}).success(function(data){
+			if(data.status===1){
+				callback(data.data);
+			}else{
+				alert('查询失败')
+			}
+		}).catch(function(reason){
+			$q.reject(reason);
+		});
+	}
 
 	return service;
 

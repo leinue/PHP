@@ -31,6 +31,8 @@ angular
   })
   .run(function($rootScope,$location,User){
 
+    // User.getThisInfo();
+
     $rootScope.$on('$locationChangeStart',function(evt,next,curr){
       
       console.log('route change start');
@@ -45,7 +47,6 @@ angular
 
       console.log("currentGroup="+currentGroup);
 
-      // console.log(evt);
       console.log("netxt="+next);
       console.log("current="+curr);
 
@@ -54,7 +55,6 @@ angular
         console.log('进入总部后台...即将验证权限');
         if(currentGroup.indexOf('root')!=-1 || currentGroup.indexOf('admin')!=-1){
           console.log('access approved');
-          // $location.path(next);
         }else{
           alert('无权访问');
           $location.path(curr);
@@ -65,7 +65,6 @@ angular
         //财务后台
         console.log('进入财务后台...即将验证权限');
         if(currentGroup.indexOf('root')!=-1 || currentGroup.indexOf('admin')!=-1 || currentGroup.indexOf('finance')!=-1){
-          // $location.path(next);
           console.log('access approved');
         }else{
           alert('无权访问');
@@ -78,7 +77,6 @@ angular
         //供应商后台
         console.log('进入供应商后台...即将验证权限');
         if(currentGroup.indexOf('supply')!=-1 || currentGroup.indexOf('root')!=-1 || currentGroup.indexOf('admin')!=-1){
-          // $location.path(next);
           console.log('access approved');
         }else{
           alert('无权访问');

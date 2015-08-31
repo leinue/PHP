@@ -1,8 +1,6 @@
 angular.module('sbAdminApp')
 .controller('SupplyRouteMgrCtrl',function($scope,$location,User,RouteStart,RouteEnd){
 
-	User.getThisInfo();
-
 })
 
 .controller('RouteListMgr',function($scope,$location,User,TravelProducts){
@@ -88,12 +86,15 @@ angular.module('sbAdminApp')
 			  	$scope.title=data.title;
 				$scope.area_start=data.start;
 				$scope.area_end=data.end;
-				$scope.adult_pifa=Math.ceil(price[0].adult);
-				$scope.child_pifa=Math.ceil(price[0].child);
-				$scope.old_pifa=Math.ceil(price[0].old);
-				$scope.adult_basic=Math.ceil(price[1].adult);
-				$scope.child_basic=Math.ceil(price[1].child);
-				$scope.old_basic=Math.ceil(price[1].old);
+				$scope.adult_basic=Math.ceil(price[0].adult);
+				$scope.child_basic=Math.ceil(price[0].child);
+				$scope.old_basic=Math.ceil(price[0].old);
+				$scope.adult_sell=Math.ceil(price[1].adult);
+				$scope.child_sell=Math.ceil(price[1].child);
+				$scope.old_sell=Math.ceil(price[1].old);
+				$scope.adult_market=Math.ceil(price[2].adult);
+				$scope.child_market=Math.ceil(price[2].child);
+				$scope.old_market=Math.ceil(price[2].old);
 				$scope.category=data.categoryname;
 				$scope.img=data.img;
 				$scope.isapproved=data.isapproved;

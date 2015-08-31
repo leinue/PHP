@@ -13,6 +13,7 @@ angular.module('sbAdminApp')
 
 	$scope.currentUid='';
 
+	$scope.searchCondition='';
 	
 	$scope.deleteSupplier=function(uid){
 
@@ -69,6 +70,33 @@ angular.module('sbAdminApp')
 
 	$scope.unsetSupply=function(){
 		Supplier.removeGroup($scope,$scope.currentUid,'supply');
+	};
+
+	var searchCallback=function(data){
+		console.log(data);
+	};
+
+	$scope.searchForSpecificUser=function(){
+		if($scope.searchCondition==''){
+			alert('搜索内容不能为空');
+		}else{
+			if(!isNaN($scope.searchCondition)){
+				if($scope.searchCondition<11){
+					User.getInfo($scope,null,$scope.searchCondition,null,null,function(data){
+						searchCallback(data);
+					});
+				}else{
+					User.getInfo($scope,$scope.searchCondition,null,null,null,function(data){
+						searchCallback(data);
+					});
+				}
+			}else{
+				User.getInfo($scope,null,null,$scope.searchCondition,null,function(data){
+					searchCallback(data);
+				});
+			}
+			
+		}
 	};
 	
 });

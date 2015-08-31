@@ -1,5 +1,7 @@
 angular.module('sbAdminApp')
-.controller('RouteProductMgrCtrl',function($scope,$location,User,RouteStart,RouteEnd){
+.controller('RouteProductMgrCtrl',function($scope,$location,User,RouteStart,RouteEnd,TravelProducts){
+
+	TravelProducts.getAll($scope);
 
 })
 

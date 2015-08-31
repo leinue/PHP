@@ -42,34 +42,54 @@ angular.module('sbAdminApp')
 		Supplier.getAll($scope,$scope.currentPage);
 	};
 
+	$scope.afterOperateGroup=function(){
+		User.getInfoByUid($scope,$scope.currentUid,function(data){
+			var currentGroup=data.group;
+			$scope.UserGroups=currentGroup.split(',');
+			console.log($scope.UserGroups);
+		},true);
+	}
+
+	$scope.addGroup=function(group){
+		Supplier.addGroup($scope,$scope.currentUid,group,function(){
+			$scope.afterOperateGroup();
+		});
+	}
+
+	$scope.removeGroup=function(group){
+		Supplier.removeGroup($scope,$scope.currentUid,group,function(){
+			$scope.afterOperateGroup();
+		});
+	}
+
 	$scope.editSupplier=function(uid){
 		$('.edit-supplier').modal('toggle');
 		$scope.currentUid=uid;
-
+		$scope.afterOperateGroup();
 	};
 
 	$scope.setRoot=function(){
-		Supplier.addGroup($scope,$scope.currentUid,'root');
+		$scope.addGroup('root');
 	};
 
 	$scope.unsetRoot=function(){
-		Supplier.removeGroup($scope,$scope.currentUid,'root');
+		$scope.removeGroup('root');
 	};
 
 	$scope.setAdmin=function(){
-		Supplier.addGroup($scope,$scope.currentUid,'admin');
+		$scope.addGroup('admin');
 	};
 
 	$scope.unsetAdmin=function(){
-		Supplier.removeGroup($scope,$scope.currentUid,'admin');
+		$scope.removeGroup('admin');
 	};
 
 	$scope.setSupply=function(){
-		Supplier.addGroup($scope,$scope.currentUid,'supply');
+		$scope.addGroup('supply');
 	};
 
 	$scope.unsetSupply=function(){
-		Supplier.removeGroup($scope,$scope.currentUid,'supply');
+		$scope.removeGroup('supply');
 	};
 
 	var searchCallback=function(data){

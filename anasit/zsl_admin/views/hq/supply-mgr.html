@@ -19,17 +19,25 @@
 					        <h4 class="modal-title" id="gridSystemModalLabel">授权用户组</h4>
 					    </div>
 					    <div class="modal-body">
-							<div class="col-md-12">
-					     		<h3>授权用户组</h3>
-								<div class="form-group">
-									<button ng-click="setRoot()" class="btn btn-outline btn-default">设置超级管理员</button>
-									<button ng-click="unsetRoot()" class="btn btn-outline btn-default">取消超级管理员</button>
-									<button ng-click="setAdmin()" class="btn btn-outline btn-default">设置管理员</button>
-									<button ng-click="unsetAdmin()" class="btn btn-outline btn-default">取消管理员</button>
-									<button ng-click="setSupply()" class="btn btn-outline btn-default">设置供货商</button>
-									<button ng-click="unsetSupply()" class="btn btn-outline btn-default">取消供货商</button>
-								</div>
-					     	</div>
+					    	<h3>授权用户组</h3>
+					    	<div class="container-fluid">
+          						<div class="row">
+	          						<div class="col-md-12">
+										<div style="margin-bottom:15px">
+											<span>已有用户组</span>
+											<span style="margin-right:4px" ng-repeat="x in UserGroups" class="label label-info">{{x}}</span>
+										</div>
+										<div class="form-group">
+											<button ng-click="setRoot()" class="btn btn-outline btn-default">设置超级管理员</button>
+											<button ng-click="unsetRoot()" class="btn btn-outline btn-default">取消超级管理员</button>
+											<button ng-click="setAdmin()" class="btn btn-outline btn-default">设置管理员</button>
+											<button ng-click="unsetAdmin()" class="btn btn-outline btn-default">取消管理员</button>
+											<button ng-click="setSupply()" class="btn btn-outline btn-default">设置供货商</button>
+											<button ng-click="unsetSupply()" class="btn btn-outline btn-default">取消供货商</button>
+										</div>
+						     		</div>
+          						</div>
+          					</div>
 					    </div>
 					    <div class="modal-footer">
 					        <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">关闭</button>

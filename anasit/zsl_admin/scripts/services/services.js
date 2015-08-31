@@ -122,13 +122,17 @@ angular.module('sbAdminApp')
 		});
 	};
 
-	service.getInfo=function($scope,uid=null,mobile=null,nickname=null,group=null,callback=null){
+	service.getInfo=function($scope,uid=null,mobile=null,nickname=null,group=null,callback=null,single=false){
 		$http({
 			method:'GET',
 			url:BASE_URL.url+'/User/Info/getinfosbyinfo?uid='+uid+'&mobile='+mobile+'&nickname='+nickname+'&group='+group
 		}).success(function(data){
 			if(data.status===1){
-				$scope.allSuppliersList=data;
+				if(!single){
+					$scope.allSuppliersList=data;
+				}else{
+					$scope.singleUser=data;
+				}
 				callback(data.data);
 			}else{
 				alert('查询失败');
@@ -137,6 +141,22 @@ angular.module('sbAdminApp')
 			$q.reject(reason);
 		});
 	}
+
+	service.getInfoByUid=function($scope,uid,callback=null){
+		$http({
+			method:'GET',
+			url:BASE_URL.url+'/User/Info/getinfobyuid?uid='+uid
+		}).success(function(data){
+			if(data.status===1){
+				console.log(data);
+				callback(data.data);
+			}else{
+				alert('获取用户信息失败');
+			}
+		}).catch(function(reason){
+			$q.reject(reason);
+		});
+	};
 
 	return service;
 
@@ -160,7 +180,7 @@ angular.module('sbAdminApp')
 			});
 		},
 
-		addGroup:function($scope,uid,group){
+		addGroup:function($scope,uid,group,callback=null){
 			$http({
 				method:"POST",
 				url:BASE_URL.url+'/Admin/Auth/addgrouptouid',
@@ -171,13 +191,16 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.status=data;
-				alert(data.status);
+				callback(data);
+				if(data.status!==1){
+					alert('添加组失败');
+				}
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
 		},
 
-		removeGroup:function($scope,uid,group){
+		removeGroup:function($scope,uid,group,callback=null){
 			$http({
 				method:"POST",
 				url:BASE_URL.url+'/Admin/Auth/delgroupfromuid',
@@ -188,7 +211,10 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.status=data;
-				alert(data.status);
+				callback(data);
+				if(data.status!==1){
+					alert('移除组失败');
+				}
 			}).catch(function(reason){
 				$q.reject(reason);
 			});

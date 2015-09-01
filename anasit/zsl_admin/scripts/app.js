@@ -41,14 +41,9 @@ angular
         $location.path('/login');
       }
 
-      console.log("localStorage.group="+localStorage.group);
-
       var currentGroup=localStorage.group;
 
       console.log("currentGroup="+currentGroup);
-
-      console.log("netxt="+next);
-      console.log("current="+curr);
 
       if(next.indexOf('hq')!=-1){
         //总部后台

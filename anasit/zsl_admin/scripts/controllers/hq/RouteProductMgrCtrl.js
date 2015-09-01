@@ -1,8 +1,6 @@
 angular.module('sbAdminApp')
 .controller('RouteProductMgrCtrl',function($scope,$location,User,RouteStart,RouteEnd,TravelProducts){
 
-	TravelProducts.getAll($scope,'',function(){});
-
 })
 
 .controller('TravelProductConstract',function($scope,$location,User,TravelProductsConstract){
@@ -313,9 +311,9 @@ angular.module('sbAdminApp')
 
 })
 
-.controller('RouteListMgr',function($scope,$location,User,TravelProducts){
+.controller('HQRouteListMgr',function($scope,$location,User,TravelProducts){
 
-	TravelProducts.getAll($scope,function(){});
+	TravelProducts.getAll($scope,'',function(){});
 
 	$scope.deleteTravelRoute=function(pid){
 		TravelProducts.delete($scope,pid,function(data){
@@ -337,6 +335,7 @@ angular.module('sbAdminApp')
 		// localStorage.currentRoutePid=false;
 		console.log('edit clicked '+pid);
 		localStorage.currentRoutePid=pid;
+		localStorage.pidToEdit=pid;
 		$('.routesList').modal('toggle');
 		$('.routesList').on('hidden.bs.modal', function () {
 			if(localStorage.currentRoutePid!='false'){
@@ -345,6 +344,13 @@ angular.module('sbAdminApp')
 		});
 		// 
 	};
+
+	$('.routesList').on('show.bs.modal',function(){
+		console.log('载入线路列表...');
+		TravelProducts.getAll($scope,'',function(){
+			console.log('载入线路列表结束...');
+		});
+	});
 
 })
 
@@ -365,17 +371,22 @@ angular.module('sbAdminApp')
 
 			TravelProducts.view($scope,localStorage.currentRoutePid,function(data){
 
-				data=data[localStorage.currentRoutePid];
-
 				console.log(data);
 
-				// console.log(data.plan.length);
-				// console.log(data.plan);
+				console.log('callback enter');
+
+				console.log('localStorage.currentRoutePid='+localStorage.pidToEdit);
+
+				data=data[localStorage.pidToEdit];
+
+				console.log('get data');
+
+				console.log(data.plan.length);
+				console.log(data.plan);
 				var price=data.price;
 
 				for (var i = 0; i < data.plan.length; i++) {
 					var currentPlan=data.plan[i];
-					console.log(data.plan);
 					$scope.dayPlanList[i]={};
 					$scope.dayPlanList[i].day=i+1;
 					$scope.dayPlanList[i].description=currentPlan.description;
@@ -383,32 +394,33 @@ angular.module('sbAdminApp')
 					$scope.dayPlanList[i].room=currentPlan.room;
 					$scope.dayPlanList[i].title=currentPlan.title;
 					$scope.plan_day_datas[i]=i+1;
-					$scope.plan_title=currentPlan.title;
-				  	$scope.plan_food=currentPlan.food;
-				  	$scope.plan_room=currentPlan.room;
-				  	$scope.plan_description=currentPlan.description;
 				};
-
-				console.log(data.plan);
 
 				console.log($scope.dayPlanList);
 				// $scope.plan_day_datas.push(i+1);
 
 				$scope.pid=data.pid;
 				$scope.plan_day=data.plan.length;
+			  	$scope.plan_title='';
+			  	$scope.plan_food='';
+			  	$scope.plan_room='';
+			  	$scope.plan_description='';
 			  	$scope.title=data.title;
-				$scope.area_start=data.start;
-				$scope.area_end=data.end;
-				$scope.adult_pifa=Math.ceil(price[0].adult);
-				$scope.child_pifa=Math.ceil(price[0].child);
-				$scope.old_pifa=Math.ceil(price[0].old);
-				$scope.adult_basic=Math.ceil(price[1].adult);
-				$scope.child_basic=Math.ceil(price[1].child);
-				$scope.old_basic=Math.ceil(price[1].old);
-				$scope.category=data.categoryname;
+				$scope.area_start=data.area_start;
+				$scope.area_end=data.area_end;
+				$scope.adult_basic=Math.ceil(price[0].adult);
+				$scope.child_basic=Math.ceil(price[0].child);
+				$scope.old_basic=Math.ceil(price[0].old);
+				$scope.adult_sell=Math.ceil(price[1].adult);
+				$scope.child_sell=Math.ceil(price[1].child);
+				$scope.old_sell=Math.ceil(price[1].old);
+				$scope.adult_market=Math.ceil(price[2].adult);
+				$scope.child_market=Math.ceil(price[2].child);
+				$scope.old_market=Math.ceil(price[2].old);
+				$scope.category=data.category;
 				$scope.img=data.img;
 				$scope.isapproved=data.isapproved;
-				$scope.attr=data.attrname;
+				$scope.attr=data.attr;
 				$scope.num_rest=Math.ceil(data.num_rest);
 				$scope.tip=data.tip;
 				$scope.fee_included=data.fee_included;
@@ -421,10 +433,14 @@ angular.module('sbAdminApp')
 				$scope.content=data.content;
 				$scope.contract_add=data.contract_add;
 				$scope.mustknow=data.mustknow;
-				$scope.constract=data.constractname;
+				$scope.constract=data.constract;
 				$scope.is_insure=data.is_insure;
-				$scope.category_id=data.category;
-				console.log($scope.category_id);
+
+				$scope.categoryname=data.categoryname;
+				$scope.start_name=data.start;
+				$scope.end_name=data.end;
+				$scope.attr_name=data.attrname;
+				$scope.constract_name=data.constractname;
 
 			});
 
@@ -447,12 +463,17 @@ angular.module('sbAdminApp')
 	  	$scope.title='';
 		$scope.area_start='';
 		$scope.area_end='';
-		$scope.adult_pifa='';
-		$scope.child_pifa='';
-		$scope.old_pifa='';
+
+		$scope.adult_sell='';
+		$scope.child_sell='';
+		$scope.old_sell='';
 		$scope.adult_basic='';
 		$scope.child_basic='';
 		$scope.old_basic='';
+		$scope.old_market='';
+		$scope.adult_market='';
+		$scope.child_market='';
+
 		$scope.category='';
 		$scope.img='';
 		$scope.isapproved='';
@@ -496,7 +517,7 @@ angular.module('sbAdminApp')
 
 	$scope.generatorPlan=function(){
 		$scope.currentDay=$scope.plan_day;
-		$scope.currentDay=$scope.currentDay.slice(1,$scope.currentDay.length-1);
+		$scope.currentDay=$scope.currentDay.slice(1,$scope.currentDay.length-2);
 
 		if(typeof $scope.dayPlanList[$scope.currentDay]=='undefined' || typeof $scope.dayPlanList[$scope.currentDay]=='object'){
 			$scope.dayPlanList[$scope.currentDay]={};
@@ -544,18 +565,6 @@ angular.module('sbAdminApp')
 		console.log($scope.dayPlanList);
 	};
 
-	$scope.printBase=function(){
-		var preview=document.getElementById('imghead');
-		$scope.img=preview.getAttribute('src');
-		alert('确认成功');
-	};
-
-	$scope.getBase64OfImg=function(){
-		var preview=document.getElementById('imghead');
-		$scope.img=preview.getAttribute('src');
-		console.log($scope.img);
-	};
-
 	$scope.changePlanDays=function(){
 		for (var i = 1; i <= $scope.trip_days; i++) {
 			console.log(i);
@@ -579,7 +588,9 @@ angular.module('sbAdminApp')
 		    return uuid;
 		}
 
-		var ppid=localStorage.currentRoutePid==undefined || localStorage.currentRoutePid==false ? uuid():localStorage.currentRoutePid;
+		var ppid=localStorage.currentRoutePid==undefined || localStorage.currentRoutePid=='false' ? uuid():localStorage.currentRoutePid;
+
+		$scope.img=localStorage.currentImageUploadedURL;
 
 		var data={
 			"uid":User.getUid(),
@@ -589,19 +600,24 @@ angular.module('sbAdminApp')
 			"area_end":$scope.area_end,
 			"price":[
 				{
-					"adult":$scope.adult_pifa,
-					"child":$scope.child_pifa,
-					"old":$scope.old_pifa,
-					"type":1
+					"adult":$scope.adult_sell,
+					"child":$scope.child_sell,
+					"old":$scope.old_sell,
+					"type":2
 				},{
 					"adult":$scope.adult_basic,
 					"child":$scope.child_basic,
 					"old":$scope.old_basic,
-					"type":2
+					"type":1
+				},{
+					"adult":$scope.adult_market,
+					"child":$scope.adult_market,
+					"old":$scope.adult_market,
+					"type":3
 				}
 			],
 			"category":$scope.category,
-			"img":$scope.img,
+			"img":"http://"+$scope.img,
 			"isapproved":$scope.isapproved,
 			"attr":$scope.attr,
 			"num_rest":$scope.num_rest,
@@ -625,9 +641,13 @@ angular.module('sbAdminApp')
 		console.log(data);
 
 		if(localStorage.currentRoutePid!='false'){
-			TravelProducts.update($scope,data,function(){});
+			TravelProducts.update($scope,data,function(){
+				$('.routesListNewCls').modal('toggle');
+			});
 		}else{
-			TravelProducts.add($scope,data,function(){});
+			TravelProducts.add($scope,data,function(){
+				$('.routesListNewCls').modal('toggle');
+			});
 		}
 
 	};

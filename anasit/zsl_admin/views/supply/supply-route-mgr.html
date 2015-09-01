@@ -24,7 +24,7 @@
                     <!-- <h4>Outline Buttons</h4> -->
 
                     <p>
-                    	<button type="button" data-toggle="modal" data-target="#route_list_new" class="btn btn-outline btn-success btn-lg btn-block">新增线路</button>
+                    	<!-- <button type="button" data-toggle="modal" data-target="#route_list_new" class="btn btn-outline btn-success btn-lg btn-block">新增线路</button> -->
                     	<button type="button" data-toggle="modal" data-target="#route_list" class="btn btn-outline btn-success btn-lg btn-block">线路列表</button>
                     </p>
 
@@ -51,7 +51,7 @@
 										</div>
 										
 										<div class="form-group">
-											<label>所属分类</label>:{{category}}
+											<label>所属分类</label>:{{category}}:{{categoryname}}
 											<select ng-model="category" class="form-control">
 												<option value="{{x.id}}" ng-repeat="x in allCategories.data">{{x.name}}</option>
 											</select>
@@ -62,81 +62,10 @@
 											<input type="number" class="form-control" ng-change="changePlanDays()" ng-model="trip_days"  placeholder="行程天数">
 										</div>
 
-										<script type="text/javascript">
-
-									        function previewImage(file){
-									          var MAXWIDTH  = 260; 
-									          var MAXHEIGHT = 180;
-									          var div = document.getElementById('preview');
-
-									          if (file.files && file.files[0])
-									          {
-									              div.innerHTML ='<img id="imghead">';
-									              var img = document.getElementById('imghead');
-									              img.onload = function(){
-									                var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
-									                img.width  =  rect.width;
-									                img.height =  rect.height;
-									//                 img.style.marginLeft = rect.left+'px';
-									                img.style.marginTop = rect.top+'px';
-									              }
-									              var reader = new FileReader();
-									              reader.onload = function(evt){img.src = evt.target.result;}
-									              reader.readAsDataURL(file.files[0]);
-									          }
-
-									          else //兼容IE
-									          {
-
-									            var sFilter='filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
-									            file.select();
-									            var src = document.selection.createRange().text;
-									            div.innerHTML = '<img id="imghead">';
-									            var img = document.getElementById('imghead');
-									            img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
-									            var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
-									            status =('rect:'+rect.top+','+rect.left+','+rect.width+','+rect.height);
-									            div.innerHTML = "<div id='divhead' style='width:"+rect.width+"px;height:"+rect.height+"px;margin-top:"+rect.top+"px;"+sFilter+src+"\"'></div>";
-									          }
-
-									          // file.style.display='none';
-									          document.getElementById('btn_confirm_img').style.display='block';
-
-									        }
-									        function clacImgZoomParam( maxWidth, maxHeight, width, height ){
-									            var param = {top:0, left:0, width:width, height:height};
-									            if( width>maxWidth || height>maxHeight )
-									            {
-									                rateWidth = width / maxWidth;
-									                rateHeight = height / maxHeight;
-									                 
-									                if( rateWidth > rateHeight )
-									                {
-									                    param.width =  maxWidth;
-									                    param.height = Math.round(height / rateWidth);
-									                }else
-									                {
-									                    param.width = Math.round(width / rateHeight);
-									                    param.height = maxHeight;
-									                }
-									            }
-									             
-									            param.left = Math.round((maxWidth - param.width) / 2);
-									            param.top = Math.round((maxHeight - param.height) / 2);
-									            return param;
-									        }
-
-										</script>
-
 										<div class="form-group">
 											<label>上传封面</label>
-											<div style="margin-bottom:10px" id="preview">
-												<img id="imghead" width="100" height="50" src="https://cdn2.iconfinder.com/data/icons/app-types-in-grey/128/airplane_512pxGREY.png" ng-src="{{album}}">
-											</div>
-											<button class="btn btn-default" style="display:none" id="btn_confirm_img" ng-click="printBase()">确定</button>
-											<input type="file" ng-change="getBase64OfImg()" onchange="previewImage(this)" ng-model="img">
 											
-											<script>
+											<script type="text/javascript">
 											
 											function uploadevent(status,picUrl,callbackdata){
 											    status += '';
@@ -147,9 +76,7 @@
 													var filename48 = picUrl+'_48.jpg';
 													var filename20 = picUrl+"_20.jpg";
 
-													// document.getElementById('avatar_priview').innerHTML = "头像1 : <img src='"+filename162+"?" + time + "'/> <br/> 头像2: <img src='"+filename48+"?" + time + "'/><br/> 头像3: <img src='"+filename20+"?" + time + "'/>" ;
-													
-													alert(filename162);
+													localStorage.currentImageUploadedURL=filename162;
 
 												break;
 											     case '-1':
@@ -168,23 +95,33 @@
 												<PARAM NAME=movie VALUE="avatar.swf">
 												<PARAM NAME=quality VALUE=high>
 												<PARAM NAME=bgcolor VALUE=#FFFFFF>
-												<param name="flashvars" value="imgUrl=./default.png&uploadUrl=./upfile.php&uploadSrc=false" />
-												<EMBED src="avatar.swf" quality=high bgcolor=#FFFFFF WIDTH="650" HEIGHT="450" wmode="transparent" flashVars="imgUrl=./default.png&uploadUrl=./upfile.php&uploadSrc=false"
+												
+												<!-- <param ng-show="img==''" name="flashvars" value="imgUrl=./default.png&uploadUrl=./upfile.php&uploadSrc=false" /> -->
+												<param name="flashvars" value="imgUrl={{img}}&uploadUrl=./upfile.php&uploadSrc=false" />
+												
+												<EMBED ng-show="img==''" src="avatar.swf" quality=high bgcolor=#FFFFFF WIDTH="650" HEIGHT="450" wmode="transparent" flashVars="imgUrl=./default.png&uploadUrl=./upfile.php&uploadSrc=false"
 												NAME="myMovieName" ALIGN="" TYPE="application/x-shockwave-flash" allowScriptAccess="always"
 												PLUGINSPAGE="http://www.macromedia.com/go/getflashplayer">
 												</EMBED>
+
+												<EMBED ng-show="img!=''" src="avatar.swf" quality=high bgcolor=#FFFFFF WIDTH="650" HEIGHT="450" wmode="transparent" flashVars="imgUrl={{img}}&uploadUrl=./upfile.php&uploadSrc=false"
+												NAME="myMovieName" ALIGN="" TYPE="application/x-shockwave-flash" allowScriptAccess="always"
+												PLUGINSPAGE="http://www.macromedia.com/go/getflashplayer">
+												</EMBED>
+
 											</OBJECT>
+
 										</div>
 
 										<div class="form-group">
-											<label>出发城市</label>:{{area_start}}
+											<label>出发城市</label>:{{area_start}}:{{start_name}}
 											<select ng-model="area_start" class="form-control">
 												<option value="{{x.id}}" ng-repeat="x in allRoutes.data">{{x.title}}</option>
 											</select>
 										</div>
 
 										<div class="form-group">
-											<label>目的地城市</label>:{{area_end}}
+											<label>目的地城市</label>:{{area_end}}:{{end_name}}
 											<select ng-model="area_end" class="form-control">
 												<option selected>{{end}}</option>
 												<option value="{{x.id}}" ng-hide="x.title==end" ng-repeat="x in allRoutesEnd.data">{{x.title}}</option>
@@ -246,9 +183,9 @@
 								        <h4>行程安排</h4>
 								        
 								        <div class="form-group">
-								        	<label>行程安排</label>
+								        	<label>行程安排(默认显示第一天)</label>
 								        	<select ng-model="plan_day" ng-change="generatorPlan()" class="form-control">
-								        		<option ng-repeat="x in plan_day_datas">第{{x}}天</option>
+								        		<option ng-hide="$index==0" ng-repeat="x in plan_day_datas">第{{x}}天</option>
 								        	</select>
 								        </div>
 

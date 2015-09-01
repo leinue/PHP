@@ -87,14 +87,14 @@ angular.module('sbAdminApp')
 				localStorage.group=userInfo.data.group;
 				callback(data);
 			}else{
-				alert(userInfo.message);
 				var errorMsg=userInfo.message;
-				if(errorMsg.indexOf('未登录')!=-1){
+				if(errorMsg.indexOf('用户未登陆')!=-1){
 					localStorage.isLogedIn="false";
 					localStorage.uid=null;
 					localStorage.group=null;
 					$location.path('/login');
 				}
+				alert(userInfo.message);
 			}
 			// console.log(data);
 		}).catch(function(reason){
@@ -989,16 +989,27 @@ angular.module('sbAdminApp')
 			var d=$q.defer();
 			var promise=d.promise;
 
+			console.log('service uid='+id);
+
+			var request={
+				"uid":id
+			};
+
+			if(id=='' || id==null){
+				request={};
+			}
+
 			$http({
 				method:"post",
 				url:BASE_URL.url+'/Admin/TravelProduct/getTravelRoute',
-				data:{
-					"uid":id
-				}
+				data:request
 			}).success(function(data){
 				console.log(data);
 				$scope.allTravelRoutes=data;
-				callback();
+				if(status==="0"){
+					alert(data.message);
+				}
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
@@ -1035,10 +1046,11 @@ angular.module('sbAdminApp')
 				url:BASE_URL.url+'/Admin/TravelProduct/getProductById',
 				data:{"pid":pid}
 			}).success(function(data){
-				// console.log(data);
+				console.log(data);
 				$scope.status=data;
 				$scope.product=data;
 				// localStorage.singleProduct=JSON.stringify(data);
+				console.log('callback start');
 				callback(data);
 				// alert(data.message);
 			}).catch(function(reason){

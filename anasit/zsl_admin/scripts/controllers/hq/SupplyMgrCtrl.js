@@ -50,6 +50,14 @@ angular.module('sbAdminApp')
 		},true);
 	}
 
+	$scope.getUserGroup=function(uid){
+		var userGroup='';
+		User.getInfoByUid($scope,uid,function(data){
+			userGroup=data.group;
+		},true);
+		return userGroup;
+	};
+
 	$scope.addGroup=function(group){
 		Supplier.addGroup($scope,$scope.currentUid,group,function(){
 			$scope.afterOperateGroup();

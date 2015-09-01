@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">人员角色管理</h1>
+			<h1 class="page-header">角色管理</h1>
 		</div>
 		<!-- /.col-lg-12 -->
 
@@ -66,6 +66,7 @@
 		                <th>图二</th>
 		                <th>图三</th> -->
 		                <!-- <th>帐号是否可用</th> -->
+		                <!-- <th>用户组</th> -->
 		                <th>操作</th>
 		            </tr>
 		        </thead>
@@ -79,6 +80,7 @@
 		                <td>{{x.image2}}</td>
 		                <td>{{x.image3}}</td> -->
 		                <!-- <td>{{x.isapproved}}</td> -->
+		                <!-- <td>{{getUserGroup(x.uid)}}</td> -->
 		                <td>
 		                	<button ng-click="editSupplier(x.uid)" class="btn btn-outline btn-link">编辑</button>
 		                	<!-- <button ng-click="deleteSupplier(x.uid)" class="btn btn-outline btn-link">删除</button> -->

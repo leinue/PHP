@@ -9,7 +9,7 @@ angular.module('sbAdminApp')
 
 	$scope.alertInfo=false;
 
-	Supplier.getAll($scope,$scope.currentPage);
+	Supplier.getAll($scope,$scope.currentPage,function(){});
 
 	$scope.currentUid='';
 
@@ -26,7 +26,7 @@ angular.module('sbAdminApp')
 	};
 
 	$scope.loadPage=function(){
-		Supplier.getAll($scope,$scope.currentPage);
+		Supplier.getAll($scope,$scope.currentPage,function(){});
 	};
 
 	$scope.loadPrevPage=function(){
@@ -34,12 +34,12 @@ angular.module('sbAdminApp')
 		if($scope.currentPage<0){
 			$scope.currentPage=1;
 		}
-		Supplier.getAll($scope,$scope.currentPage);
+		Supplier.getAll($scope,$scope.currentPage,function(){});
 	};
 
 	$scope.loadNextPage=function(){
 		$scope.currentPage++;
-		Supplier.getAll($scope,$scope.currentPage);
+		Supplier.getAll($scope,$scope.currentPage,function(){});
 	};
 
 	$scope.afterOperateGroup=function(){
@@ -98,7 +98,7 @@ angular.module('sbAdminApp')
 
 	$scope.searchConditionChange=function(data){
 		if($scope.searchCondition==''){
-			Supplier.getAll($scope,$scope.currentPage);
+			Supplier.getAll($scope,$scope.currentPage,function(){});
 		}
 	};
 

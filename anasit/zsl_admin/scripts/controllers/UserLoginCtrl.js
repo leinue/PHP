@@ -49,7 +49,7 @@ angular.module('sbAdminApp')
 				$scope.disable=true;
 				localStorage.rememberMe=$scope.rememberMe;
 				User.setUser($scope.telnumber,$scope.password,function(){
-					User.getThisInfo();
+					User.getThisInfo(function(){});
 					$scope.disable=false;
 				});
 			}

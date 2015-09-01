@@ -12,7 +12,7 @@ angular.module('sbAdminApp')
 	// var _user=$cookieStore.get('user');
 	var userInfo;
 
-	service.setUser=function(tel,password,callback=null){
+	service.setUser=function(tel,password,callback){
 
 		$http({
 			method:"POST",
@@ -75,7 +75,7 @@ angular.module('sbAdminApp')
 		return localStorage.group;
 	};
 
-	service.getThisInfo=function(){
+	service.getThisInfo=function(callback){
 		$http({
 			method:"post",
 			url:BASE_URL.url+'/User/Info/getthisinfo'
@@ -85,8 +85,16 @@ angular.module('sbAdminApp')
 				console.log(userInfo.data);
 				localStorage.uid=userInfo.data.uid;
 				localStorage.group=userInfo.data.group;
+				callback(data);
 			}else{
 				alert(userInfo.message);
+				var errorMsg=userInfo.message;
+				if(errorMsg.indexOf('未登录')!=-1){
+					localStorage.isLogedIn="false";
+					localStorage.uid=null;
+					localStorage.group=null;
+					$location.path('/login');
+				}
 			}
 			// console.log(data);
 		}).catch(function(reason){
@@ -102,7 +110,7 @@ angular.module('sbAdminApp')
 		// return 
 	};
 
-	service.register=function(mobile,password,callback=null){
+	service.register=function(mobile,password,callback){
 		$http({
 			method:"POST",
 			url:BASE_URL.url+'/User/Auth/register',
@@ -122,7 +130,7 @@ angular.module('sbAdminApp')
 		});
 	};
 
-	service.getInfo=function($scope,uid=null,mobile=null,nickname=null,group=null,callback=null,single=false){
+	service.getInfo=function($scope,uid=null,mobile=null,nickname=null,group=null,callback,single=false){
 		$http({
 			method:'GET',
 			url:BASE_URL.url+'/User/Info/getinfosbyinfo?uid='+uid+'&mobile='+mobile+'&nickname='+nickname+'&group='+group
@@ -142,7 +150,7 @@ angular.module('sbAdminApp')
 		});
 	}
 
-	service.getInfoByUid=function($scope,uid,callback=null){
+	service.getInfoByUid=function($scope,uid,callback){
 		$http({
 			method:'GET',
 			url:BASE_URL.url+'/User/Info/getinfobyuid?uid='+uid
@@ -167,7 +175,7 @@ angular.module('sbAdminApp')
 
 	return {
 
-		getAll:function($scope,page=1){
+		getAll:function($scope,page=1,callback){
 			//http://service.zhangshanglv.cn/User/Info/getinfobypage
 			$http({
 				method:"get",
@@ -175,12 +183,13 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.allSuppliersList=data;
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
 		},
 
-		addGroup:function($scope,uid,group,callback=null){
+		addGroup:function($scope,uid,group,callback){
 			$http({
 				method:"POST",
 				url:BASE_URL.url+'/Admin/Auth/addgrouptouid',
@@ -200,7 +209,7 @@ angular.module('sbAdminApp')
 			});
 		},
 
-		removeGroup:function($scope,uid,group,callback=null){
+		removeGroup:function($scope,uid,group,callback){
 			$http({
 				method:"POST",
 				url:BASE_URL.url+'/Admin/Auth/delgroupfromuid',
@@ -227,7 +236,7 @@ angular.module('sbAdminApp')
 .factory('RouteStart',function($q,$http,BASE_URL){
 
 	return {
-		update:function($scope,id,title,orderindex){
+		update:function($scope,id,title,orderindex,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -243,13 +252,14 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.status=data;
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
 
 		},
 
-		delete:function($scope,id){
+		delete:function($scope,id,callback){
 			
 			var d=$q.defer();
 			var promise=d.promise;
@@ -263,13 +273,14 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.status=data;
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
 
 		},
 
-		add:function($scope,title,orderindex){
+		add:function($scope,title,orderindex,callback){
 			var d=$q.defer();
 			var promise=d.promise;
 
@@ -283,13 +294,14 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.status=data;
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
 
 		},
 
-		getAll:function($scope){
+		getAll:function($scope,callback){
 			var d=$q.defer();
 			var promise=d.promise;
 
@@ -299,6 +311,7 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.allRoutes=data;
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
@@ -312,7 +325,7 @@ angular.module('sbAdminApp')
 
 	return {
 
-		update:function($scope,id,title,orderindex){
+		update:function($scope,id,title,orderindex,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -328,13 +341,14 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.status=data;
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
 
 		},
 
-		delete:function($scope,id){
+		delete:function($scope,id,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -348,13 +362,14 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.status=data;
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
 
 		},
 
-		add:function($scope,title,orderindex){
+		add:function($scope,title,orderindex,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -369,13 +384,14 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.status=data;
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
 
 		},
 
-		getAll:function($scope){
+		getAll:function($scope,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -386,6 +402,7 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.allRoutesEnd=data;
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
@@ -402,7 +419,7 @@ angular.module('sbAdminApp')
 
 	return {
 
-		getAll:function($scope){
+		getAll:function($scope,callback){
 			
 			var d=$q.defer();
 			var promise=d.promise;
@@ -413,6 +430,7 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				$scope.supplierListResult=data.supplier.list.data;
 				console.log($scope.supplierListResult);
+				callback(data.supplier.list.data);
 			}).catch(function(reason){
 				$scope.supplierListResult=false;
 				$q.reject(reason);
@@ -420,7 +438,7 @@ angular.module('sbAdminApp')
 
 		},
 
-		delete:function(uid){
+		delete:function(uid,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -440,6 +458,7 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.status=data.supplier;
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
@@ -535,7 +554,7 @@ angular.module('sbAdminApp')
 
 	return {
 
-		update:function($scope,id,title,orderindex){
+		update:function($scope,id,title,orderindex,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -551,13 +570,14 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.status=data;
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
 
 		},
 
-		add:function($scope,title,orderindex){
+		add:function($scope,title,orderindex,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -572,13 +592,14 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.status=data;
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
 
 		},
 
-		delete:function($scope,id){
+		delete:function($scope,id,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -592,13 +613,14 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.status=data;
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
 
 		},
 
-		getAll:function($scope){
+		getAll:function($scope,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -609,6 +631,7 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.allConstract=data;
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
@@ -623,7 +646,7 @@ angular.module('sbAdminApp')
 
 	return {
 
-		update:function($scope,id,title,orderindex){
+		update:function($scope,id,title,orderindex,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -639,13 +662,14 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.status=data;
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
 
 		},
 
-		add:function($scope,title,orderindex){
+		add:function($scope,title,orderindex,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -660,13 +684,14 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.status=data;
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
 
 		},
 
-		delete:function($scope,id){
+		delete:function($scope,id,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -680,13 +705,14 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.status=data;
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
 
 		},
 
-		getAll:function($scope){
+		getAll:function($scope,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -697,6 +723,7 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.allCategories=data;
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
@@ -711,7 +738,7 @@ angular.module('sbAdminApp')
 
 	return {
 
-		update:function($scope,id,title,orderindex){
+		update:function($scope,id,title,orderindex,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -727,13 +754,14 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.status=data;
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
 
 		},
 
-		add:function($scope,title,orderindex){
+		add:function($scope,title,orderindex,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -748,13 +776,14 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.status=data;
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
 
 		},
 
-		delete:function($scope,id){
+		delete:function($scope,id,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -768,13 +797,14 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.status=data;
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
 
 		},
 
-		getAll:function($scope){
+		getAll:function($scope,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -785,6 +815,7 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.allAttrs=data;
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
@@ -799,7 +830,7 @@ angular.module('sbAdminApp')
 
 	return {
 
-		update:function($scope,id,title,orderindex){
+		update:function($scope,id,title,orderindex,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -815,13 +846,14 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.status=data;
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
 
 		},
 
-		add:function($scope,title,orderindex){
+		add:function($scope,title,orderindex,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -836,13 +868,14 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.status=data;
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
 
 		},
 
-		delete:function($scope,id){
+		delete:function($scope,id,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -856,13 +889,14 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.status=data;
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
 
 		},
 
-		getAll:function($scope){
+		getAll:function($scope,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -873,6 +907,7 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.allInsures=data;
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
@@ -887,7 +922,7 @@ angular.module('sbAdminApp')
 
 	return {
 
-		update:function($scope,data){
+		update:function($scope,data,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -900,13 +935,14 @@ angular.module('sbAdminApp')
 				console.log(data);
 				$scope.status=data;
 				alert(data.message);
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
 
 		},
 
-		add:function($scope,data){
+		add:function($scope,data,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -919,13 +955,14 @@ angular.module('sbAdminApp')
 				console.log(data);
 				$scope.status=data;
 				alert(data.message);
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
 
 		},
 
-		delete:function($scope,pid){
+		delete:function($scope,pid,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -940,13 +977,14 @@ angular.module('sbAdminApp')
 				console.log(data);
 				$scope.status=data;
 				alert(data.message);
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
 
 		},
 
-		getAll:function($scope,id=null){
+		getAll:function($scope,id=null,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -960,13 +998,14 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.allTravelRoutes=data;
+				callback();
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
 
 		},
 
-		approve:function($scope,pid){
+		approve:function($scope,pid,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -979,6 +1018,7 @@ angular.module('sbAdminApp')
 				console.log(data);
 				$scope.status=data;
 				alert(data.message);
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});

@@ -59,25 +59,27 @@ angular.module('sbAdminApp')
 
 	/*****************************出发地******************************/
 
-	RouteStart.getAll($scope);
+	RouteStart.getAll($scope,function(){});
 
 	$scope.editRouteStart=function(id,t,o){
 		$scope.editBefore(id,t,o);
 	};
 
 	$scope.confirmToEditRouteStart=function(){
-		RouteStart.update($scope,$scope.editRoute.id,$scope.editRoute.title,$scope.editRoute.orderindex);
+		RouteStart.update($scope,$scope.editRoute.id,$scope.editRoute.title,$scope.editRoute.orderindex,function(data){
+			RouteStart.getAll($scope,function(){});
+		});
 		$scope.editAfter();
-		RouteStart.getAll($scope);
 	};
 
 	$scope.deleteRouteStart=function(id){
 		var con=confirm('确定要删除吗?');
 		$scope.alertInfo=true;
 		if(con){
-			$scope.result=RouteStart.delete($scope,id);
+			$scope.result=RouteStart.delete($scope,id,function(){
+				RouteStart.getAll($scope,function(){});
+			});
 			$scope.deleteAfter();
-			RouteStart.getAll($scope);
 		}
 	};
 
@@ -87,14 +89,15 @@ angular.module('sbAdminApp')
 
 	$scope.confirmToAddRouteStart=function(){
 		console.log($scope.addRoute.title);
-		RouteStart.add($scope,$scope.addRoute.title,0);
+		RouteStart.add($scope,$scope.addRoute.title,0,function(){
+			RouteStart.getAll($scope,function(){});
+		});
 		$scope.addAfter();
-		RouteStart.getAll($scope);
 	};
 
 	/*****************************目的地******************************/
 
-	RouteEnd.getAll($scope);
+	RouteEnd.getAll($scope,function(){});
 	
 
 	$scope.editRouteEnd=function(id,t,o){
@@ -105,8 +108,9 @@ angular.module('sbAdminApp')
 		var con=confirm('确定要删除吗');
 		$scope.alertInfo=true;
 		if(con){
-			$scope.result=RouteEnd.delete($scope,id);
-			RouteEnd.getAll($scope);
+			$scope.result=RouteEnd.delete($scope,id,function(data){
+				RouteEnd.getAll($scope,function(){});
+			});
 		}
 	};
 
@@ -115,15 +119,17 @@ angular.module('sbAdminApp')
 	};
 
 	$scope.confirmToAddRouteEnd=function(){
-		RouteEnd.add($scope,$scope.addRoute.title,0);
+		RouteEnd.add($scope,$scope.addRoute.title,0,function(data){
+			RouteEnd.getAll($scope,function(){});
+		});
 		$scope.addAfter();
-		RouteEnd.getAll($scope);
 	};
 
 	$scope.confirmToEditRouteEnd=function(){
-		RouteEnd.update($scope,$scope.editRoute.id,$scope.editRoute.title,$scope.editRoute.orderindex);
+		RouteEnd.update($scope,$scope.editRoute.id,$scope.editRoute.title,$scope.editRoute.orderindex,function(data){
+			RouteEnd.getAll($scope,function(){});
+		});
 		$scope.editAfter();
-		RouteEnd.getAll($scope);
 	};
 
 });

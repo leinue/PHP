@@ -109,11 +109,11 @@ angular.module('sbAdminApp')
 		$scope.order_index='';
 	});
 
-	TravelProductsCategory.getAll($scope);
-	RouteEnd.getAll($scope);
-	RouteEnd.getAll($scope);
-	TravelProductsAttr.getAll($scope);
-	TravelProductsConstract.getAll($scope);
+	TravelProductsCategory.getAll($scope,function(){});
+	RouteEnd.getAll($scope,function(){});
+	RouteEnd.getAll($scope,function(){});
+	TravelProductsAttr.getAll($scope,function(){});
+	TravelProductsConstract.getAll($scope,function(){});
 
 	//行程天数默认值
 	$scope.plan_day=1;
@@ -247,7 +247,7 @@ angular.module('sbAdminApp')
 
 		console.log(data);
 
-		TravelProducts.add($scope,data);
+		TravelProducts.add($scope,data,function(){});
 
 	};
 

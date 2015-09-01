@@ -1,7 +1,7 @@
 angular.module('sbAdminApp')
 .controller('RouteProductMgrCtrl',function($scope,$location,User,RouteStart,RouteEnd,TravelProducts){
 
-	TravelProducts.getAll($scope);
+	TravelProducts.getAll($scope,'',function(){});
 
 })
 
@@ -22,7 +22,7 @@ angular.module('sbAdminApp')
 		orderindex:''
 	};
 
-	TravelProductsConstract.getAll($scope);
+	TravelProductsConstract.getAll($scope,function(){});
 
 	$scope.addItem=function(){
 		$scope.isAdd=true;
@@ -31,10 +31,11 @@ angular.module('sbAdminApp')
 
 	$scope.confirmToAddItem=function(){
 		if($scope.input.title!=''){
-			TravelProductsConstract.add($scope,$scope.input.title,$scope.input.orderindex);
+			TravelProductsConstract.add($scope,$scope.input.title,$scope.input.orderindex,function(data){
+				TravelProductsConstract.getAll($scope,function(){});
+			});
 			$scope.alertInfo=true;
 			$scope.isAdd=false;
-			TravelProductsConstract.getAll($scope);
 		}else{
 			alert('请不要留空');
 		}
@@ -43,9 +44,10 @@ angular.module('sbAdminApp')
 	$scope.deleteItem=function(id){
 		var con=confirm("确定要删除吗?");
 		if(con){
-			TravelProductsConstract.delete($scope,id);
+			TravelProductsConstract.delete($scope,id,function(data){
+				TravelProductsConstract.getAll($scope,function(){});
+			});
 			$scope.alertInfo=true;
-			TravelProductsConstract.getAll($scope);
 		}
 	};
 
@@ -60,10 +62,11 @@ angular.module('sbAdminApp')
 	$scope.confirmToEditItem=function(){
 		if($scope.inputExists.title!=''){
 			var oindex=$scope.inputExists.orderindex==''?0:$scope.inputExists.orderindex;
-			TravelProductsConstract.update($scope,$scope.inputExists.id,$scope.inputExists.title,oindex);
+			TravelProductsConstract.update($scope,$scope.inputExists.id,$scope.inputExists.title,oindex,function(data){
+				TravelProductsConstract.getAll($scope,function(){});
+			});
 			$scope.alertInfo=true;
 			$scope.isEdit=false;
-			TravelProductsConstract.getAll($scope);
 		}else{
 			alert('请不要留空');
 		}
@@ -96,7 +99,7 @@ angular.module('sbAdminApp')
 		orderindex:''
 	};
 
-	TravelProductsCategory.getAll($scope);
+	TravelProductsCategory.getAll($scope,function(){});
 
 	$scope.addItem=function(){
 		$scope.isAdd=true;
@@ -105,10 +108,11 @@ angular.module('sbAdminApp')
 
 	$scope.confirmToAddItem=function(){
 		if($scope.input.title!=''){
-			TravelProductsCategory.add($scope,$scope.input.title,$scope.input.orderindex);
+			TravelProductsCategory.add($scope,$scope.input.title,$scope.input.orderindex,function(data){
+				TravelProductsCategory.getAll($scope,function(){});
+			});
 			$scope.alertInfo=true;
 			$scope.isAdd=false;
-			TravelProductsCategory.getAll($scope);
 		}else{
 			alert('请不要留空');
 		}
@@ -117,9 +121,10 @@ angular.module('sbAdminApp')
 	$scope.deleteItem=function(id){
 		var con=confirm("确定要删除吗?");
 		if(con){
-			TravelProductsCategory.delete($scope,id);
+			TravelProductsCategory.delete($scope,id,function(data){
+				TravelProductsCategory.getAll($scope,function(){});
+			});
 			$scope.alertInfo=true;
-			TravelProductsCategory.getAll($scope);
 		}
 	};
 
@@ -134,10 +139,11 @@ angular.module('sbAdminApp')
 	$scope.confirmToEditItem=function(){
 		if($scope.inputExists.title!=''){
 			var oindex=$scope.inputExists.orderindex==''?0:$scope.inputExists.orderindex;
-			TravelProductsCategory.update($scope,$scope.inputExists.id,$scope.inputExists.title,oindex);
+			TravelProductsCategory.update($scope,$scope.inputExists.id,$scope.inputExists.title,oindex,function(data){
+				TravelProductsCategory.getAll($scope,function(){});
+			});
 			$scope.alertInfo=true;
 			$scope.isEdit=false;
-			TravelProductsCategory.getAll($scope);
 		}else{
 			alert('请不要留空');
 		}
@@ -170,7 +176,7 @@ angular.module('sbAdminApp')
 		orderindex:''
 	};
 
-	TravelProductsInsure.getAll($scope);
+	TravelProductsInsure.getAll($scope,function(){});
 
 	$scope.addItem=function(){
 		$scope.isAdd=true;
@@ -179,10 +185,11 @@ angular.module('sbAdminApp')
 
 	$scope.confirmToAddItem=function(){
 		if($scope.input.title!=''){
-			TravelProductsInsure.add($scope,$scope.input.title,$scope.input.orderindex);
+			TravelProductsInsure.add($scope,$scope.input.title,$scope.input.orderindex,function(data){
+				TravelProductsInsure.getAll($scope,function(){});
+			});
 			$scope.alertInfo=true;
 			$scope.isAdd=false;
-			TravelProductsInsure.getAll($scope);
 		}else{
 			alert('请不要留空');
 		}
@@ -191,9 +198,10 @@ angular.module('sbAdminApp')
 	$scope.deleteItem=function(id){
 		var con=confirm("确定要删除吗?");
 		if(con){
-			TravelProductsInsure.delete($scope,id);
+			TravelProductsInsure.delete($scope,id,function(data){
+				TravelProductsInsure.getAll($scope,function(){});
+			});
 			$scope.alertInfo=true;
-			TravelProductsInsure.getAll($scope);
 		}
 	};
 
@@ -208,10 +216,11 @@ angular.module('sbAdminApp')
 	$scope.confirmToEditItem=function(){
 		if($scope.inputExists.title!=''){
 			var oindex=$scope.inputExists.orderindex==''?0:$scope.inputExists.orderindex;
-			TravelProductsInsure.update($scope,$scope.inputExists.id,$scope.inputExists.title,oindex);
+			TravelProductsInsure.update($scope,$scope.inputExists.id,$scope.inputExists.title,oindex,function(data){
+				TravelProductsInsure.getAll($scope,function(){});
+			});
 			$scope.alertInfo=true;
 			$scope.isEdit=false;
-			TravelProductsInsure.getAll($scope);
 		}else{
 			alert('请不要留空');
 		}
@@ -244,7 +253,7 @@ angular.module('sbAdminApp')
 		orderindex:''
 	};
 
-	TravelProductsAttr.getAll($scope);
+	TravelProductsAttr.getAll($scope,function(){});
 
 	$scope.addItem=function(){
 		$scope.isAdd=true;
@@ -253,10 +262,11 @@ angular.module('sbAdminApp')
 
 	$scope.confirmToAddItem=function(){
 		if($scope.input.title!=''){
-			TravelProductsAttr.add($scope,$scope.input.title,$scope.input.orderindex);
+			TravelProductsAttr.add($scope,$scope.input.title,$scope.input.orderindex,function(data){
+				TravelProductsAttr.getAll($scope,function(){});
+			});
 			$scope.alertInfo=true;
 			$scope.isAdd=false;
-			TravelProductsAttr.getAll($scope);
 		}else{
 			alert('请不要留空');
 		}
@@ -265,9 +275,10 @@ angular.module('sbAdminApp')
 	$scope.deleteItem=function(id){
 		var con=confirm("确定要删除吗?");
 		if(con){
-			TravelProductsAttr.delete($scope,id);
+			TravelProductsAttr.delete($scope,id,function(data){
+				TravelProductsAttr.getAll($scope);
+			});
 			$scope.alertInfo=true;
-			TravelProductsAttr.getAll($scope);
 		}
 	};
 
@@ -282,10 +293,11 @@ angular.module('sbAdminApp')
 	$scope.confirmToEditItem=function(){
 		if($scope.inputExists.title!=''){
 			var oindex=$scope.inputExists.orderindex==''?0:$scope.inputExists.orderindex;
-			TravelProductsAttr.update($scope,$scope.inputExists.id,$scope.inputExists.title,oindex);
+			TravelProductsAttr.update($scope,$scope.inputExists.id,$scope.inputExists.title,oindex,function(data){
+				TravelProductsAttr.getAll($scope);
+			});
 			$scope.alertInfo=true;
 			$scope.isEdit=false;
-			TravelProductsAttr.getAll($scope);
 		}else{
 			alert('请不要留空');
 		}
@@ -303,16 +315,18 @@ angular.module('sbAdminApp')
 
 .controller('RouteListMgr',function($scope,$location,User,TravelProducts){
 
-	TravelProducts.getAll($scope);
+	TravelProducts.getAll($scope,function(){});
 
 	$scope.deleteTravelRoute=function(pid){
-		TravelProducts.delete($scope,pid);
-		TravelProducts.getAll($scope);
+		TravelProducts.delete($scope,pid,function(data){
+			TravelProducts.getAll($scope,'',function(){});
+		});
 	};
 
 	$scope.approveThis=function(pid){
-		TravelProducts.approve($scope,pid);
-		TravelProducts.getAll($scope);
+		TravelProducts.approve($scope,pid,function(data){
+			TravelProducts.getAll($scope,'',function(){});
+		});
 	};
 
 	$scope.viewThis=function(pid){
@@ -459,11 +473,11 @@ angular.module('sbAdminApp')
 		$scope.order_index='';
 	});
 
-	TravelProductsCategory.getAll($scope);
-	RouteEnd.getAll($scope);
-	RouteStart.getAll($scope);
-	TravelProductsAttr.getAll($scope);
-	TravelProductsConstract.getAll($scope);
+	TravelProductsCategory.getAll($scope,function(){});
+	RouteEnd.getAll($scope,function(){});
+	RouteStart.getAll($scope,function(){});
+	TravelProductsAttr.getAll($scope,function(){});
+	TravelProductsConstract.getAll($scope,function(){});
 
 	//行程天数默认值
 	$scope.plan_day=1;
@@ -611,9 +625,9 @@ angular.module('sbAdminApp')
 		console.log(data);
 
 		if(localStorage.currentRoutePid!='false'){
-			TravelProducts.update($scope,data);
+			TravelProducts.update($scope,data,function(){});
 		}else{
-			TravelProducts.add($scope,data);
+			TravelProducts.add($scope,data,function(){});
 		}
 
 	};

@@ -1,24 +1,27 @@
 angular.module('sbAdminApp')
-.controller('SupplyRouteMgrCtrl',function($scope,$location,User,RouteStart,RouteEnd){
+.controller('SupplyRouteMgrCtrl',function($scope,$location,User,TravelProducts,RouteStart,RouteEnd){
+
 
 })
 
 .controller('RouteListMgr',function($scope,$location,User,TravelProducts){
 
-	User.getThisInfo();
+	User.getThisInfo(function(){});
 
-	var uid=User.getUid();
+	var uid=User.getUid(function(){});	
 
-	TravelProducts.getAll($scope,uid);
+	// TravelProducts.getAll($scope,uid);
 
 	$scope.deleteTravelRoute=function(pid){
-		TravelProducts.delete($scope,pid);
-		TravelProducts.getAll($scope,uid);
+		TravelProducts.delete($scope,pid,function(data){
+			TravelProducts.getAll($scope,uid,function(){});
+		});
 	};
 
 	$scope.approveThis=function(pid){
-		TravelProducts.approve($scope,pid);
-		TravelProducts.getAll($scope,uid);
+		TravelProducts.approve($scope,pid,function(data){
+			TravelProducts.getAll($scope,uid,function(){});
+		});
 	};
 
 	$scope.viewThis=function(pid){
@@ -35,6 +38,12 @@ angular.module('sbAdminApp')
 			}
 		});
 	};
+
+	$('.routesListNewCls').on('show.bs.modal', function () {
+		var uid=User.getUid();
+		console.log('uid='+uid);
+		TravelProducts.getAll($scope,uid,function(){});
+	});
 
 })
 
@@ -137,12 +146,17 @@ angular.module('sbAdminApp')
 	  	$scope.title='';
 		$scope.area_start='';
 		$scope.area_end='';
-		$scope.adult_pifa='';
-		$scope.child_pifa='';
-		$scope.old_pifa='';
+
+		$scope.adult_sell='';
+		$scope.child_sell='';
+		$scope.old_sell='';
 		$scope.adult_basic='';
 		$scope.child_basic='';
 		$scope.old_basic='';
+		$scope.old_market='';
+		$scope.adult_market='';
+		$scope.child_market='';
+
 		$scope.category='';
 		$scope.img='';
 		$scope.isapproved='';
@@ -163,11 +177,11 @@ angular.module('sbAdminApp')
 		$scope.order_index='';
 	});
 
-	TravelProductsCategory.getAll($scope);
-	RouteEnd.getAll($scope);
-	RouteStart.getAll($scope);
-	TravelProductsAttr.getAll($scope);
-	TravelProductsConstract.getAll($scope);
+	TravelProductsCategory.getAll($scope,function(){});
+	RouteEnd.getAll($scope,function(){});
+	RouteStart.getAll($scope,function(){});
+	TravelProductsAttr.getAll($scope,function(){});
+	TravelProductsConstract.getAll($scope,function(){});
 
 	//行程天数默认值
 	$scope.plan_day=1;
@@ -279,15 +293,20 @@ angular.module('sbAdminApp')
 			"area_end":$scope.area_end,
 			"price":[
 				{
-					"adult":$scope.adult_pifa,
-					"child":$scope.child_pifa,
-					"old":$scope.old_pifa,
-					"type":1
+					"adult":$scope.adult_sell,
+					"child":$scope.child_sell,
+					"old":$scope.old_sell,
+					"type":2
 				},{
 					"adult":$scope.adult_basic,
 					"child":$scope.child_basic,
 					"old":$scope.old_basic,
-					"type":2
+					"type":1
+				},{
+					"adult":$scope.adult_market,
+					"child":$scope.adult_market,
+					"old":$scope.adult_market,
+					"type":3
 				}
 			],
 			"category":$scope.category,
@@ -315,9 +334,9 @@ angular.module('sbAdminApp')
 		console.log(data);
 
 		if(localStorage.currentRoutePid!='false'){
-			TravelProducts.update($scope,data);
+			TravelProducts.update($scope,data,function(){});
 		}else{
-			TravelProducts.add($scope,data);
+			TravelProducts.add($scope,data,function(){});
 		}
 
 	};

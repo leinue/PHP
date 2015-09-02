@@ -444,6 +444,10 @@ angular.module('sbAdminApp')
 			});
 		}
 
+		$scope.dayPlanList=[];
+		$scope.currentDay;
+		$scope.plan_day_datas=[];
+
 	};
 
 });

@@ -222,12 +222,14 @@ angular.module('sbAdminApp')
 	$scope.inputExists={
 		title:'',
 		order:'',
-		id:''
+		id:'',
+		insureDesc:''
 	};
 
 	$scope.input={
 		title:'',
-		orderindex:''
+		orderindex:'',
+		insureDesc:''
 	};
 
 	TravelProductsInsure.getAll($scope,function(){});
@@ -239,7 +241,7 @@ angular.module('sbAdminApp')
 
 	$scope.confirmToAddItem=function(){
 		if($scope.input.title!=''){
-			TravelProductsInsure.add($scope,$scope.input.title,$scope.input.orderindex,function(data){
+			TravelProductsInsure.add($scope,$scope.input.title,$scope.input.orderindex,$scope.input.insureDesc,function(data){
 				TravelProductsInsure.getAll($scope,function(){});
 			});
 			$scope.alertInfo=true;
@@ -270,7 +272,7 @@ angular.module('sbAdminApp')
 	$scope.confirmToEditItem=function(){
 		if($scope.inputExists.title!=''){
 			var oindex=$scope.inputExists.orderindex==''?0:$scope.inputExists.orderindex;
-			TravelProductsInsure.update($scope,$scope.inputExists.id,$scope.inputExists.title,oindex,function(data){
+			TravelProductsInsure.update($scope,$scope.inputExists.id,$scope.inputExists.title,oindex,$scope.inputExists.insureDesc,function(data){
 				TravelProductsInsure.getAll($scope,function(){});
 			});
 			$scope.alertInfo=true;

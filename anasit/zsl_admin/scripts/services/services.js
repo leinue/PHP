@@ -830,7 +830,7 @@ angular.module('sbAdminApp')
 
 	return {
 
-		update:function($scope,id,title,orderindex,callback){
+		update:function($scope,id,title,orderindex,desc,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -841,7 +841,8 @@ angular.module('sbAdminApp')
 				data:{
 					"id":id,
 					"title":title,
-					"orderindex":orderindex
+					"orderindex":orderindex,
+					'description':desc
 				}
 			}).success(function(data){
 				console.log(data);
@@ -853,7 +854,7 @@ angular.module('sbAdminApp')
 
 		},
 
-		add:function($scope,title,orderindex,callback){
+		add:function($scope,title,orderindex,desc,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -863,7 +864,8 @@ angular.module('sbAdminApp')
 				url:BASE_URL.url+'/Admin/TravelInsure/createTravelInsure',
 				data:{
 					"title":title,
-					"orderindex":orderindex
+					"orderindex":orderindex,
+					"description":desc
 				}
 			}).success(function(data){
 				console.log(data);
@@ -1053,6 +1055,32 @@ angular.module('sbAdminApp')
 				console.log('callback start');
 				callback(data);
 				// alert(data.message);
+			}).catch(function(reason){
+				$q.reject(reason);
+			});
+
+		}
+
+	};
+
+})
+
+.factory('TravelSupply',function($q,$http,BASE_URL){
+
+	return {
+
+		getAll:function($scope,page,callback){
+
+			var d=$q.defer();
+			var promise=d.promise;
+			
+			$http({
+				method:"get",
+				url:BASE_URL.url+'/Travel/Supply/getsuppliersbypage?page='+page
+			}).success(function(data){
+				console.log(data);
+				$scope.allTravelSupply=data;
+				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});

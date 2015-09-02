@@ -5,7 +5,7 @@
 		</div>
 		<!-- /.col-lg-12 -->
 		<div class="col-md-12">
-			<div class="col-lg-6">
+<!-- 			<div class="col-lg-6">
 			    <div class="input-group">
 			      <input type="text" ng-model="searchCondition" ng-change="searchConditionChange()" class="form-control" placeholder="输入手机号搜索">
 			      <span class="input-group-btn">
@@ -13,24 +13,39 @@
 			      </span>
 			    </div>
 			</div>
-
+ -->
 			<table class="table table-hover">
 		        <thead>
 		            <tr>
+		                <th>sbid</th>
 		                <th>uid</th>
-		                <th>联系方式</th>
-		                <th>姓名</th>
+		                <th>名称</th>
+		                <th>省</th>
+		                <th>市</th>
+		                <th>区</th>
+		                <th>街道</th>
+		                <th>状态</th>
+		                <th>图1</th>
+		                <th>图2</th>
+		                <th>图3</th>
 		                <th>操作</th>
 		            </tr>
 		        </thead>
 		        <tbody>
-		        	<tr ng-repeat="x in allSuppliersList.data">
-		        		<td>{{x.uid}}</td>
-		                <td>{{x.mobile}}</td>
-		                <td>{{x.nickname}}</td>
+		        	<tr ng-repeat="x in allTravelSupply.data">
+		        		<td>{{x.sbid}}</td>
+		                <td>{{x.uid}}</td>
+		                <td>{{x.sbname}}</td>
+		                <td>{{x.province}}</td>
+		                <td>{{x.city}}</td>
+		                <td>{{x.district}}</td>
+		                <td>{{x.street}}</td>
+		                <td>{{x.status}}</td>
+		                <td><img width="80" height="80" alt="{{x.sbname}}" src="{{x.image1}}"></td>
+		                <td><img width="80" height="80" alt="{{x.sbname}}" src="{{x.image2}}"></td>
+		                <td><img width="80" height="80" alt="{{x.sbname}}" src="{{x.image3}}"></td>
 		                <td>
-		                	<button ng-click="editSupplier(x.uid)" class="btn btn-outline btn-link">编辑</button>
-		                	<!-- <button ng-click="deleteSupplier(x.uid)" class="btn btn-outline btn-link">删除</button> -->
+		                	<button ng-click="approve(x.uid)" class="btn btn-outline btn-link">通过</button>
 		                </td>
 		        	</tr>
 		        </tbody>

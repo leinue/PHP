@@ -408,6 +408,7 @@
 		                                <th>编号</th>
 		                                <th>名称</th>
 		                                <th>排序</th>
+		                                <th>描述</th>
 		                                <th>操作</th>
 		                            </tr>
 		                        </thead>
@@ -416,6 +417,7 @@
 		                        		<td>{{x.id}}</td>
 		                                <td>{{x.title}}</td>
 		                                <td>{{x.orderindex}}</td>
+		                                <td>{{x.description}}</td>
 		                                <td>
 		                                	<button ng-click="editItem(x.id,x.title,x.orderindex)" class="btn btn-outline btn-link">编辑</button>
 		                                	<button ng-click="deleteItem(x.id)" class="btn btn-outline btn-link">删除</button>
@@ -613,6 +615,10 @@
 								    <label for="edit_orderindex">排序</label>
 								    <input type="number" ng-model="inputExists.orderindex" class="form-control" id="edit_orderindex" placeholder="排序" required>
 							  	</div>
+							  	<div class="form-group">
+							  		<label for="edit_insure_desc">描述</label>
+							  		<textarea class="form-control" ng-model="inputExists.insureDesc"></textarea>
+							  	</div>
 							  	<button type="submit" ng-click="cancelToEditItem()" class="btn btn-default">取消</button>
 							  	<button type="submit" ng-click="confirmToEditItem()" class="btn btn-default">修改</button>
 
@@ -628,6 +634,10 @@
 								    <label for="add_orderindex">排序</label>
 								    <input type="number" ng-model="input.order" class="form-control" id="add_orderindex" placeholder="排序" required>
 							  	</div>
+							  	<div class="form-group">
+							  		<label for="add_inputInsure">描述</label>
+							  		<textarea class="form-control" ng-model="input.insureDesc"></textarea>
+							  	</div>
 							  	<button type="submit" ng-click="cancelToAddItem()" class="btn btn-default">取消</button>
 							  	<button type="submit" ng-click="confirmToAddItem()" class="btn btn-default">添加</button>
 
@@ -639,6 +649,7 @@
 		                                <th>编号</th>
 		                                <th>名称</th>
 		                                <th>排序</th>
+		                                <th>描述</th>
 		                                <th>操作</th>
 		                            </tr>
 		                        </thead>
@@ -647,6 +658,7 @@
 		                        		<td>{{x.id}}</td>
 		                                <td>{{x.title}}</td>
 		                                <td>{{x.orderindex}}</td>
+		                                <td>{{x.description}}</td>
 		                                <td>
 		                                	<button ng-click="editItem(x.id,x.title,x.orderindex)" class="btn btn-outline btn-link">编辑</button>
 		                                	<button ng-click="deleteItem(x.id)" class="btn btn-outline btn-link">删除</button>

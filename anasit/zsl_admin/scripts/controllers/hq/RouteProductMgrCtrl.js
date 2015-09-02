@@ -1,6 +1,62 @@
 angular.module('sbAdminApp')
 .controller('RouteProductMgrCtrl',function($scope,$location,User,RouteStart,RouteEnd,TravelProducts){
 
+	window.KE = KindEditor;
+
+	window.SEcontent=KE.create('#g_edit_feature_introduction',{
+		width : '100%',
+		afterBlur: function(){
+			this.sync();
+			sessionStorage.feature_introduction=$('#g_edit_feature_introduction').val();
+			console.log(sessionStorage.feature_introduction);
+		}
+	});
+
+	window.SEcontract=KE.create('#g_edit_constract_plus',{
+		width : '100%',
+		afterBlur: function(){
+			this.sync();
+			sessionStorage.constract_plus=$('#g_edit_constract_plus').val();
+			console.log(sessionStorage.constract_plus);
+		}
+	});
+
+	window.SEnotice=KE.create('#g_edit_notice_reserve',{
+		width : '100%',
+		afterBlur: function(){
+			this.sync();
+			sessionStorage.notice_reserve=$('#g_edit_notice_reserve').val();
+			console.log(sessionStorage.notice_reserve);
+		}
+	});
+
+	window.SEtips=KE.create('#g_edit_tips',{
+		width : '100%',
+		afterBlur: function(){
+			this.sync();
+			sessionStorage.tips=$('#g_edit_tips').val();
+			console.log(sessionStorage.tips);
+		}
+	});
+
+	window.SEfee=KE.create('#g_edit_fee_included',{
+		width : '100%',
+		afterBlur: function(){
+			this.sync();
+			sessionStorage.fee_included=$('#g_edit_fee_included').val();
+			console.log(sessionStorage.fee_included);
+		}
+	});
+
+	window.SEnoFee=KE.create('#g_edit_fee_notincluded',{
+		width : '100%',
+		afterBlur: function(){
+			this.sync();
+			sessionStorage.fee_notincluded=$('#g_edit_fee_notincluded').val();
+			console.log(sessionStorage.fee_notincluded);
+		}
+	});
+
 })
 
 .controller('TravelProductConstract',function($scope,$location,User,TravelProductsConstract){
@@ -400,11 +456,15 @@ angular.module('sbAdminApp')
 				// $scope.plan_day_datas.push(i+1);
 
 				$scope.pid=data.pid;
-				$scope.plan_day=data.plan.length;
-			  	$scope.plan_title='';
-			  	$scope.plan_food='';
-			  	$scope.plan_room='';
-			  	$scope.plan_description='';
+				$scope.plan_day=1;
+
+			  	$scope.plan_title=$scope.dayPlanList[1].title;
+			  	$scope.plan_food_breakfast=$scope.dayPlanList[1]['早'];
+			  	$scope.plan_food_lunch=$scope.dayPlanList[1]['中'];
+			  	$scope.plan_food_dinner=$scope.dayPlanList[1]['晚'];
+			  	$scope.plan_room=$scope.dayPlanList[1].room;
+			  	$scope.plan_description=$scope.dayPlanList[1].description;
+
 			  	$scope.title=data.title;
 				$scope.area_start=data.area_start;
 				$scope.area_end=data.area_end;
@@ -441,6 +501,20 @@ angular.module('sbAdminApp')
 				$scope.end_name=data.end;
 				$scope.attr_name=data.attrname;
 				$scope.constract_name=data.constractname;
+
+				sessionStorage.fee_included=$scope.fee_included;
+				sessionStorage.fee_notincluded=$scope.fee_noincluded;
+				sessionStorage.constract_plus=$scope.contract_add;
+				sessionStorage.notice_reserve=$scope.mustknow;
+				sessionStorage.tips=$scope.tip;
+				sessionStorage.feature_introduction=$scope.content;
+
+				SEcontent.html(sessionStorage.feature_introduction);
+				SEfee.html(sessionStorage.fee_included);
+				SEnoFee.html(sessionStorage.fee_notincluded);
+				SEcontract.html(sessionStorage.constract_plus);
+				SEtips.html(sessionStorage.tips);
+				SEnotice.html(sessionStorage.notice_reserve);
 
 			});
 
@@ -520,8 +594,11 @@ angular.module('sbAdminApp')
 		$scope.currentDay=$scope.currentDay.slice(1,$scope.currentDay.length-2);
 
 		if(typeof $scope.dayPlanList[$scope.currentDay]=='undefined' || typeof $scope.dayPlanList[$scope.currentDay]=='object'){
-			$scope.dayPlanList[$scope.currentDay]={};
 			console.log($scope.currentDay);
+			if(typeof $scope.dayPlanList[$scope.currentDay]=='undefined'){
+				console.log('currentDay is undefined');
+				$scope.dayPlanList[$scope.currentDay]={};
+			}
 			$scope.dayPlanList[$scope.currentDay].food={
 				"早":$scope.plan_food_breakfast==undefined?'0':$scope.plan_food_breakfast,
 				"中":$scope.plan_food_lunch==undefined?'0':$scope.plan_food_lunch,
@@ -531,12 +608,12 @@ angular.module('sbAdminApp')
 
 		$scope.dayPlanList[$scope.currentDay].day=$scope.plan_day;
 
-		$scope.plan_title='';
-		$scope.plan_food_breakfast='';
-		$scope.plan_food_lunch='';
-		$scope.plan_food_dinner='';
-		$scope.plan_room='';
-		$scope.plan_description='';
+		$scope.plan_title=$scope.dayPlanList[$scope.currentDay].title;
+		$scope.plan_food_breakfast=$scope.dayPlanList[$scope.currentDay]['早'];
+		$scope.plan_food_lunch=$scope.dayPlanList[$scope.currentDay]['中'];
+		$scope.plan_food_dinner=$scope.dayPlanList[$scope.currentDay]['晚'];
+		$scope.plan_room=$scope.dayPlanList[$scope.currentDay].room;
+		$scope.plan_description=$scope.dayPlanList[$scope.currentDay].description;
 
 	};
 
@@ -591,6 +668,12 @@ angular.module('sbAdminApp')
 		var ppid=localStorage.currentRoutePid==undefined || localStorage.currentRoutePid=='false' ? uuid():localStorage.currentRoutePid;
 
 		$scope.img=localStorage.currentImageUploadedURL;
+		$scope.fee_included=sessionStorage.fee_included;
+		$scope.fee_noincluded=sessionStorage.fee_notincluded;
+		$scope.contract_add=sessionStorage.constract_plus;
+		$scope.mustknow=sessionStorage.notice_reserve;
+		$scope.tip=sessionStorage.tips;
+		$scope.content=sessionStorage.feature_introduction;
 
 		var data={
 			"uid":User.getUid(),
@@ -643,6 +726,12 @@ angular.module('sbAdminApp')
 		if(localStorage.currentRoutePid!='false'){
 			TravelProducts.update($scope,data,function(){
 				$('.routesListNewCls').modal('toggle');
+				sessionStorage.fee_included='';
+				sessionStorage.fee_notincluded='';
+				sessionStorage.constract_plus='';
+				sessionStorage.notice_reserve='';
+				sessionStorage.tips='';
+				sessionStorage.feature_introduction='';
 			});
 		}else{
 			TravelProducts.add($scope,data,function(){

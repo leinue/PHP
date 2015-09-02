@@ -36,7 +36,7 @@ angular.module('sbAdminApp')
             $scope.multiCollapseVar = y;
         };
 
-        var groups=User.getGroup();
+        $scope.groups=User.getGroup();
 
         $scope.sb_isAdmin=false;
         $scope.sb_isRoot=false;
@@ -44,19 +44,19 @@ angular.module('sbAdminApp')
         $scope.sb_isFinace=false;
         $scope.sb_isShop=false;
 
-        if(groups.indexOf('root')!=-1){
+        if($scope.groups.indexOf('root')!=-1){
           $scope.sb_isRoot=true;
         }
 
-        if(groups.indexOf('admin')!=-1){
+        if($scope.groups.indexOf('admin')!=-1){
           $scope.sb_isAdmin=true;
         }
 
-        if(groups.indexOf('supply')!=-1){
+        if($scope.groups.indexOf('supply')!=-1){
           $scope.sb_isSupply=true;
         }
 
-        if(groups.indexOf('shop')!=-1){
+        if($scope.groups.indexOf('shop')!=-1){
           $scope.sb_isShop=true;
         }
 

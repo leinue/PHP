@@ -29,6 +29,15 @@ angular
     $httpProvider.defaults.withCredentials = true;
 
   })
+  .filter('nullToVisual',function(){
+      return function(i){
+          if(i=='' || i==null){
+            return '无';
+          }else{
+            return i;
+          }
+      }
+  })
   .run(function($rootScope,$location,User){
 
     // User.getThisInfo();

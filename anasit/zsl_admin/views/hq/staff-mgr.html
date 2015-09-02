@@ -4,6 +4,45 @@
 			<h1 class="page-header">供货商管理</h1>
 		</div>
 		<!-- /.col-lg-12 -->
+		<div class="col-md-12">
+			<div class="col-lg-6">
+			    <div class="input-group">
+			      <input type="text" ng-model="searchCondition" ng-change="searchConditionChange()" class="form-control" placeholder="输入手机号搜索">
+			      <span class="input-group-btn">
+			        <button ng-click="searchForSpecificUser()" class="btn btn-default" type="button">搜索</button>
+			      </span>
+			    </div>
+			</div>
+
+			<table class="table table-hover">
+		        <thead>
+		            <tr>
+		                <th>uid</th>
+		                <th>联系方式</th>
+		                <th>姓名</th>
+		                <th>操作</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		        	<tr ng-repeat="x in allSuppliersList.data">
+		        		<td>{{x.uid}}</td>
+		                <td>{{x.mobile}}</td>
+		                <td>{{x.nickname}}</td>
+		                <td>
+		                	<button ng-click="editSupplier(x.uid)" class="btn btn-outline btn-link">编辑</button>
+		                	<!-- <button ng-click="deleteSupplier(x.uid)" class="btn btn-outline btn-link">删除</button> -->
+		                </td>
+		        	</tr>
+		        </tbody>
+		    </table>
+
+		    <nav style="background:rgb(255,255,255)!important">
+			  <ul class="pager">
+			    <li ng-click="loadPrevPage()"><a href="javascript:void(0)"><span aria-hidden="true">&larr;</span> 上一页</a></li>
+			    <li ng-click="loadNextPage()"><a href="javascript:void(0)">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+			  </ul>
+			</nav>
+		</div>
 	</div>
 	<!-- /.row -->
 </div>

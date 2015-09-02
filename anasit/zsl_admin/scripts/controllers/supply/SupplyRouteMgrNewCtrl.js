@@ -4,6 +4,62 @@ angular.module('sbAdminApp')
 
 	$('.routesListNewCls').modal('toggle');
 
+	window.KE = KindEditor;
+
+	KE.create('#feature_introduction',{
+		width : '100%',
+		afterBlur: function(){
+			this.sync();
+			sessionStorage.feature_introduction=$('#feature_introduction').val();
+			console.log(sessionStorage.feature_introduction);
+		}
+	});
+
+	KE.create('#constract_plus',{
+		width : '100%',
+		afterBlur: function(){
+			this.sync();
+			sessionStorage.constract_plus=$('#constract_plus').val();
+			console.log(sessionStorage.constract_plus);
+		}
+	});
+
+	KE.create('#notice_reserve',{
+		width : '100%',
+		afterBlur: function(){
+			this.sync();
+			sessionStorage.notice_reserve=$('#notice_reserve').val();
+			console.log(sessionStorage.notice_reserve);
+		}
+	});
+
+	KE.create('#tips',{
+		width : '100%',
+		afterBlur: function(){
+			this.sync();
+			sessionStorage.tips=$('#tips').val();
+			console.log(sessionStorage.tips);
+		}
+	});
+
+	KE.create('#fee_included',{
+		width : '100%',
+		afterBlur: function(){
+			this.sync();
+			sessionStorage.fee_included=$('#fee_included').val();
+			console.log(sessionStorage.fee_included);
+		}
+	});
+
+	KE.create('#fee_notincluded',{
+		width : '100%',
+		afterBlur: function(){
+			this.sync();
+			sessionStorage.fee_notincluded=$('#fee_notincluded').val();
+			console.log(sessionStorage.fee_notincluded);
+		}
+	});
+
 })
 
 .controller('RouteListNew',function($scope,$location,User,TravelProducts,TravelProductsCategory,RouteStart,RouteEnd,TravelProductsAttr,TravelProductsConstract){
@@ -216,6 +272,8 @@ angular.module('sbAdminApp')
 
 	$scope.addProduct=function(){
 
+		// KE.sync();
+
 		function uuid() {
 		    var s = [];
 		    var hexDigits = "0123456789";
@@ -233,6 +291,12 @@ angular.module('sbAdminApp')
 		var ppid=localStorage.currentRoutePid==undefined || localStorage.currentRoutePid==false ? uuid():localStorage.currentRoutePid;
 
 		$scope.img=localStorage.currentImageUploadedURL;
+		$scope.fee_included=sessionStorage.fee_included;
+		$scope.fee_noincluded=sessionStorage.fee_notincluded;
+		$scope.contract_add=sessionStorage.constract_plus;
+		$scope.mustknow=sessionStorage.notice_reserve;
+		$scope.tip=sessionStorage.tips;
+		$scope.content=sessionStorage.feature_introduction;
 
 		var data={
 			"uid":User.getUid(),
@@ -289,6 +353,12 @@ angular.module('sbAdminApp')
 		}else{
 			TravelProducts.add($scope,data,function(){
 				$('.routesListNewCls').modal('toggle');
+				sessionStorage.fee_included='';
+				sessionStorage.fee_notincluded='';
+				sessionStorage.constract_plus='';
+				sessionStorage.notice_reserve='';
+				sessionStorage.tips='';
+				sessionStorage.feature_introduction='';
 			});
 		}
 

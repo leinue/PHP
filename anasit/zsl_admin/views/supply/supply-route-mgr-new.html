@@ -139,7 +139,7 @@
 
 					<div class="form-group">
 						<label>特色介绍</label>
-						<textarea ng-model="content" class="form-control" row="5"></textarea>
+						<textarea ng-model="content" id="feature_introduction" class="form-control" row="5"></textarea>
 					</div>
 
 			        <h4>行程安排</h4>
@@ -176,34 +176,34 @@
 
 			        <div class="form-group">
 			        	<label>内容</label>
-			        	<textarea class="form-control" row="5" ng-change="changePlanDesc()" ng-model="plan_description"></textarea>
+			        	<textarea class="form-control" id="plan_content" row="5" ng-change="changePlanDesc()" ng-model="plan_description"></textarea>
 			        </div>
 
 			        <h4>其它内容</h4>
 
 			        <div class="form-group">
 			        	<label>补充协议</label>
-						<textarea class="form-control" rows="5" ng-model="contract_add"></textarea>
+						<textarea class="form-control" id="constract_plus" rows="5" ng-model="contract_add"></textarea>
 			        </div>
 
 			        <div class="form-group">
 			        	<label>预定须知</label>
-			        	<textarea class="form-control" rows="5" ng-model="mustknow"></textarea>
+			        	<textarea class="form-control" id="notice_reserve" rows="5" ng-model="mustknow"></textarea>
 			        </div>
 
 			        <div class="form-group">
 			        	<label>温馨提示</label>
-			        	<textarea class="form-control" rows="5" ng-model="tip"></textarea>
+			        	<textarea class="form-control" id="tips" rows="5" ng-model="tip"></textarea>
 			        </div>
 
 			        <div class="form-group">
 			        	<label>费用包含</label>
-			        	<textarea class="form-control" rows="5" ng-model="fee_included"></textarea>
+			        	<textarea class="form-control" id="fee_included" rows="5" ng-model="fee_included"></textarea>
 			        </div>
 
 			        <div class="form-group">
 			        	<label>费用不包含</label>
-			        	<textarea class="form-control" rows="5" ng-model="fee_noincluded"></textarea>
+			        	<textarea class="form-control" id="fee_notincluded" rows="5" ng-model="fee_noincluded"></textarea>
 			        </div>
 
 			        <h4>成本价格</h4>

@@ -1,6 +1,61 @@
 angular.module('sbAdminApp')
 .controller('SupplyRouteMgrCtrl',function($scope,$location,User,TravelProducts,RouteStart,RouteEnd){
 
+	window.KE = KindEditor;
+
+	window.SEcontent=KE.create('#s_edit_feature_introduction',{
+		width : '100%',
+		afterBlur: function(){
+			this.sync();
+			sessionStorage.feature_introduction=$('#s_edit_feature_introduction').val();
+			console.log(sessionStorage.feature_introduction);
+		}
+	});
+
+	window.SEcontract=KE.create('#s_edit_constract_plus',{
+		width : '100%',
+		afterBlur: function(){
+			this.sync();
+			sessionStorage.constract_plus=$('#s_edit_constract_plus').val();
+			console.log(sessionStorage.constract_plus);
+		}
+	});
+
+	window.SEnotice=KE.create('#s_edit_notice_reserve',{
+		width : '100%',
+		afterBlur: function(){
+			this.sync();
+			sessionStorage.notice_reserve=$('#s_edit_notice_reserve').val();
+			console.log(sessionStorage.notice_reserve);
+		}
+	});
+
+	window.SEtips=KE.create('#s_edit_tips',{
+		width : '100%',
+		afterBlur: function(){
+			this.sync();
+			sessionStorage.tips=$('#s_edit_tips').val();
+			console.log(sessionStorage.tips);
+		}
+	});
+
+	window.SEfee=KE.create('#s_edit_fee_included',{
+		width : '100%',
+		afterBlur: function(){
+			this.sync();
+			sessionStorage.fee_included=$('#s_edit_fee_included').val();
+			console.log(sessionStorage.fee_included);
+		}
+	});
+
+	window.SEnoFee=KE.create('#s_edit_fee_notincluded',{
+		width : '100%',
+		afterBlur: function(){
+			this.sync();
+			sessionStorage.fee_notincluded=$('#s_edit_fee_notincluded').val();
+			console.log(sessionStorage.fee_notincluded);
+		}
+	});
 
 })
 
@@ -142,6 +197,20 @@ angular.module('sbAdminApp')
 				$scope.end_name=data.end;
 				$scope.attr_name=data.attrname;
 				$scope.constract_name=data.constractname;
+
+				sessionStorage.fee_included=$scope.fee_included;
+				sessionStorage.fee_notincluded=$scope.fee_noincluded;
+				sessionStorage.constract_plus=$scope.contract_add;
+				sessionStorage.notice_reserve=$scope.mustknow;
+				sessionStorage.tips=$scope.tip;
+				sessionStorage.feature_introduction=$scope.content;
+
+				SEcontent.html(sessionStorage.feature_introduction);
+				SEfee.html(sessionStorage.fee_included);
+				SEnoFee.html(sessionStorage.fee_notincluded);
+				SEcontract.html(sessionStorage.constract_plus);
+				SEtips.html(sessionStorage.tips);
+				SEnotice.html(sessionStorage.notice_reserve);
 
 			});
 
@@ -299,6 +368,12 @@ angular.module('sbAdminApp')
 		var ppid=localStorage.currentRoutePid==undefined || localStorage.currentRoutePid=='false' ? uuid():localStorage.currentRoutePid;
 
 		$scope.img=localStorage.currentImageUploadedURL;
+		$scope.fee_included=sessionStorage.fee_included;
+		$scope.fee_noincluded=sessionStorage.fee_notincluded;
+		$scope.contract_add=sessionStorage.constract_plus;
+		$scope.mustknow=sessionStorage.notice_reserve;
+		$scope.tip=sessionStorage.tips;
+		$scope.content=sessionStorage.feature_introduction;
 
 		var data={
 			"uid":User.getUid(),
@@ -351,6 +426,12 @@ angular.module('sbAdminApp')
 		if(localStorage.currentRoutePid!='false'){
 			TravelProducts.update($scope,data,function(){
 				$('.routesListNewCls').modal('toggle');
+				sessionStorage.fee_included='';
+				sessionStorage.fee_notincluded='';
+				sessionStorage.constract_plus='';
+				sessionStorage.notice_reserve='';
+				sessionStorage.tips='';
+				sessionStorage.feature_introduction='';
 			});
 		}else{
 			TravelProducts.add($scope,data,function(){

@@ -554,7 +554,7 @@ angular.module('sbAdminApp')
 
 	return {
 
-		update:function($scope,id,title,orderindex,callback){
+		update:function($scope,id,title,orderindex,desc,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -565,7 +565,8 @@ angular.module('sbAdminApp')
 				data:{
 					"id":id,
 					"title":title,
-					"orderindex":orderindex
+					"orderindex":orderindex,
+					'description':desc
 				}
 			}).success(function(data){
 				console.log(data);
@@ -577,7 +578,7 @@ angular.module('sbAdminApp')
 
 		},
 
-		add:function($scope,title,orderindex,callback){
+		add:function($scope,title,orderindex,desc,callback){
 
 			var d=$q.defer();
 			var promise=d.promise;
@@ -587,7 +588,8 @@ angular.module('sbAdminApp')
 				url:BASE_URL.url+'/Admin/TravelConstract/addConstract',
 				data:{
 					"title":title,
-					"orderindex":orderindex
+					"orderindex":orderindex,
+					"description":desc
 				}
 			}).success(function(data){
 				console.log(data);
@@ -1085,6 +1087,10 @@ angular.module('sbAdminApp')
 				$q.reject(reason);
 			});
 
+		},
+
+		approve:function($scope,uid,callback){
+			
 		}
 
 	};

@@ -68,12 +68,14 @@ angular.module('sbAdminApp')
 	$scope.inputExists={
 		title:'',
 		order:'',
-		id:''
+		id:'',
+		insureDesc:''
 	};
 
 	$scope.input={
 		title:'',
-		orderindex:''
+		orderindex:'',
+		insureDesc:''
 	};
 
 	TravelProductsConstract.getAll($scope,function(){});
@@ -85,7 +87,7 @@ angular.module('sbAdminApp')
 
 	$scope.confirmToAddItem=function(){
 		if($scope.input.title!=''){
-			TravelProductsConstract.add($scope,$scope.input.title,$scope.input.orderindex,function(data){
+			TravelProductsConstract.add($scope,$scope.input.title,$scope.input.orderindex,$scope.input.insureDesc,function(data){
 				TravelProductsConstract.getAll($scope,function(){});
 			});
 			$scope.alertInfo=true;
@@ -116,7 +118,7 @@ angular.module('sbAdminApp')
 	$scope.confirmToEditItem=function(){
 		if($scope.inputExists.title!=''){
 			var oindex=$scope.inputExists.orderindex==''?0:$scope.inputExists.orderindex;
-			TravelProductsConstract.update($scope,$scope.inputExists.id,$scope.inputExists.title,oindex,function(data){
+			TravelProductsConstract.update($scope,$scope.inputExists.id,$scope.inputExists.title,oindex,$scope.inputExists.insureDesc,function(data){
 				TravelProductsConstract.getAll($scope,function(){});
 			});
 			$scope.alertInfo=true;

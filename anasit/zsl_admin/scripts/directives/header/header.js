@@ -18,6 +18,7 @@ angular.module('sbAdminApp')
 
 		$scope.unsetUser=function(){
 			User.logout();
+			localStorage.loginGroupFresh='';
 		};
 
 	});

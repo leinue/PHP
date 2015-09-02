@@ -68,9 +68,12 @@ angular.module('sbAdminApp')
 	// TravelProducts.getAll($scope,uid);
 
 	$scope.deleteTravelRoute=function(pid){
-		TravelProducts.delete($scope,pid,function(data){
-			TravelProducts.getAll($scope,uid,function(){});
-		});
+		var con=confirm('确认删除吗');
+		if(con){
+			TravelProducts.delete($scope,pid,function(data){
+				TravelProducts.getAll($scope,uid,function(){});
+			});
+		}
 	};
 
 	$scope.approveThis=function(pid){
@@ -138,25 +141,27 @@ angular.module('sbAdminApp')
 
 				for (var i = 0; i < data.plan.length; i++) {
 					var currentPlan=data.plan[i];
-					$scope.dayPlanList[i+1]={};
-					$scope.dayPlanList[i+1].day='第'+(i+1)+'天';
-					$scope.dayPlanList[i+1].description=currentPlan.description;
-					$scope.dayPlanList[i+1].food=JSON.parse(currentPlan.food);
-					$scope.dayPlanList[i+1].room=currentPlan.room;
-					$scope.dayPlanList[i+1].title=currentPlan.title;
-					$scope.dayPlanList[i+1].id=currentPlan.id;
-					$scope.plan_day_datas[i+1]=i+1;
+					if(typeof $scope.dayPlanList[i+1] != undefined){
+						$scope.dayPlanList[i+1]={};
+						$scope.dayPlanList[i+1].day='第'+(i+1)+'天';
+						$scope.dayPlanList[i+1].description=currentPlan.description;
+						$scope.dayPlanList[i+1].food=JSON.parse(currentPlan.food);
+						$scope.dayPlanList[i+1].room=currentPlan.room;
+						$scope.dayPlanList[i+1].title=currentPlan.title;
+						$scope.dayPlanList[i+1].id=currentPlan.id;
+						$scope.plan_day_datas[i+1]=i+1;
+					}
 				};
 
 				console.log($scope.dayPlanList);
 				// $scope.plan_day_datas.push(i+1);
 
 				$scope.pid=data.pid;
-
 				$scope.plan_day=1;
+
 			  	$scope.plan_title=$scope.dayPlanList[1].title;
 			  	$scope.plan_food_breakfast=$scope.dayPlanList[1]['早'];
-			  	$scope.plan_food_lunch=$scope.dayPlanList[1]['中'];
+		  		$scope.plan_food_lunch=$scope.dayPlanList[1]['中'];
 			  	$scope.plan_food_dinner=$scope.dayPlanList[1]['晚'];
 			  	$scope.plan_room=$scope.dayPlanList[1].room;
 			  	$scope.plan_description=$scope.dayPlanList[1].description;

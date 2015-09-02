@@ -28,8 +28,8 @@
 											<span style="margin-right:4px" ng-repeat="x in UserGroups" class="label label-info">{{x}}</span>
 										</div>
 										<div class="form-group">
-											<button ng-click="setRoot()" class="btn btn-outline btn-default">设置超级管理员</button>
-											<button ng-click="unsetRoot()" class="btn btn-outline btn-default">取消超级管理员</button>
+											<!-- <button ng-click="setRoot()" class="btn btn-outline btn-default">设置超级管理员</button> -->
+											<!-- <button ng-click="unsetRoot()" class="btn btn-outline btn-default">取消超级管理员</button> -->
 											<button ng-click="setAdmin()" class="btn btn-outline btn-default">设置管理员</button>
 											<button ng-click="unsetAdmin()" class="btn btn-outline btn-default">取消管理员</button>
 											<button ng-click="setSupply()" class="btn btn-outline btn-default">设置供货商</button>
@@ -73,8 +73,6 @@
 		                <td>{{x.group | nullToVisual}}</td>
 		                <td>
 		                	<button ng-click="editSupplier(x.uid)" class="btn btn-outline btn-link">编辑</button>
-		                	<button ng-click="approve(x.uid)" class="btn btn-outline btn-link">通过</button>
-		                	<button ng-click="reject(x.uid)" class="btn btn-outline btn-link">拒绝</button>
 		                </td>
 		        	</tr>
 		        </tbody>

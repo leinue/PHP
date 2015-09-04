@@ -41,8 +41,11 @@ class ItemsModel{
 			return false;
 		}
 
+		$maxOrder=$this->getMaxOrder();
+		$maxOrder=$maxOrder[0]['max_order'];
+
 		$iid=guid();
-		$order=$this->count()+1;
+		$order=$maxOrder+1;
 		$createTime=date('Y-m-d H:i:s',time());
 		$modifyTime=$createTime;
 		$isDeleted='0';
@@ -81,12 +84,7 @@ class ItemsModel{
 
 	}
 
-	function getMaxOrder($iid){
-
-		if($iid==null){
-			return false;
-		}
-
+	function getMaxOrder($iid=null){
 		return self::$model->getDatabase()->query("SELECT MAX(`order`) AS max_order,`iid` FROM `njx_items`");
 	}
 

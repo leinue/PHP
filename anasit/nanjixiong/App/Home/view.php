@@ -106,9 +106,21 @@ if(!empty($_GET['action'])){
 									// if($_GET['caid']==$value)
 
 									if($key!=count($itemCataList)-1){
-										$itemCata.=$value[2].',';
+										if(is_array($value[2])){
+											$cataObj=new Cores\Models\CataModel();
+											foreach ($value[2] as $cataKey => $cataVal) {
+												$tmp=$cataObj->selectOne($cataVal);
+												$itemCata.=$tmp[0]->getName().',';
+											}
+										}else{
+											$itemCata.=$value[2].',';
+										}
 									}else{
-										$itemCata.=$value[2];
+										if(is_array($value[2])){
+											$itemCata.=join(',',$value[2]);
+										}else{
+											$itemCata.=$value[2];
+										}
 									}
 								}
 							}

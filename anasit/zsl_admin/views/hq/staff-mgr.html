@@ -40,12 +40,13 @@
 		                <td>{{x.city}}</td>
 		                <td>{{x.district}}</td>
 		                <td>{{x.street}}</td>
-		                <td>{{x.status}}</td>
+		                <td>{{x.status | StaffMgrStatusToChar}}</td>
 		                <td><img width="80" height="80" alt="{{x.sbname}}" src="{{x.image1}}"></td>
 		                <td><img width="80" height="80" alt="{{x.sbname}}" src="{{x.image2}}"></td>
 		                <td><img width="80" height="80" alt="{{x.sbname}}" src="{{x.image3}}"></td>
 		                <td>
-		                	<button ng-click="approve(x.uid)" class="btn btn-outline btn-link">通过</button>
+		                	<button ng-show="x.status==0 || x.status==-1" ng-click="approve(x.sbid)" class="btn btn-outline btn-link">通过</button>
+		                	<button ng-show="x.status==1" ng-click="reject(x.sbid)" class="btn btn-outline btn-link">拒绝</button>
 		                </td>
 		        	</tr>
 		        </tbody>

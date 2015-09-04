@@ -38,6 +38,19 @@ angular
           }
       }
   })
+  .filter('StaffMgrStatusToChar',function(){
+      return function(i){
+          if(i==='0'){
+            return '审核中';
+          }else{
+            if(i==='1'){
+              return '已通过';
+            }else{
+              return '已拒绝';
+            }
+          }
+      }
+  })
   .run(function($rootScope,$location,User){
 
     // User.getThisInfo();

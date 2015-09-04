@@ -1089,8 +1089,42 @@ angular.module('sbAdminApp')
 
 		},
 
-		approve:function($scope,uid,callback){
+		approve:function($scope,sbid,callback){
+			var d=$q.defer();
+			var promise=d.promise;
 			
+			$http({
+				method:"post",
+				url:BASE_URL.url+'/Admin/Travel/approvesupplier',
+				data:{
+					"sbid":sbid,
+					"approve":1
+				}
+			}).success(function(data){
+				console.log(data);
+				callback(data);
+			}).catch(function(reason){
+				$q.reject(reason);
+			});
+		},
+
+		reject:function($scope,sbid,callback){
+			var d=$q.defer();
+			var promise=d.promise;
+			
+			$http({
+				method:"post",
+				url:BASE_URL.url+'/Admin/Travel/approvesupplier',
+				data:{
+					"sbid":sbid,
+					"approve":-1
+				}
+			}).success(function(data){
+				console.log(data);
+				callback(data);
+			}).catch(function(reason){
+				$q.reject(reason);
+			});
 		}
 
 	};

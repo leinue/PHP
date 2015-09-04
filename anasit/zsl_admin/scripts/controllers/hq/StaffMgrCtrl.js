@@ -18,8 +18,16 @@ angular.module('sbAdminApp')
 		TravelSupply.getAll($scope,$scope.page,function(data){});
 	};
 
-	$scope.approve=function(){
-
+	$scope.approve=function(uid){
+		TravelSupply.approve($scope,uid,function(data){
+			TravelSupply.getAll($scope,$scope.page,function(data){});
+		});
 	};
+
+	$scope.reject=function(uid){
+		TravelSupply.reject($scope,uid,function(data){
+			TravelSupply.getAll($scope,$scope.page,function(data){});
+		});
+	}
 
 });

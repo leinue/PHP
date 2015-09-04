@@ -169,15 +169,35 @@ angular.module('sbAdminApp')
 			  	$scope.title=data.title;
 				$scope.area_start=data.area_start;
 				$scope.area_end=data.area_end;
+
+				//******************************************************
+
 				$scope.adult_basic=Math.ceil(price[0].adult);
 				$scope.child_basic=Math.ceil(price[0].child);
 				$scope.old_basic=Math.ceil(price[0].old);
-				$scope.adult_sell=Math.ceil(price[1].adult);
-				$scope.child_sell=Math.ceil(price[1].child);
-				$scope.old_sell=Math.ceil(price[1].old);
-				$scope.adult_market=Math.ceil(price[2].adult);
-				$scope.child_market=Math.ceil(price[2].child);
-				$scope.old_market=Math.ceil(price[2].old);
+
+				$scope.adult_sell=Math.ceil(price[2].adult);
+				$scope.child_sell=Math.ceil(price[2].child);
+				$scope.old_sell=Math.ceil(price[2].old);
+
+				$scope.adult_market=Math.ceil(price[1].adult);
+				$scope.child_market=Math.ceil(price[1].child);
+				$scope.old_market=Math.ceil(price[1].old);
+
+				sessionStorage.adult_sell=$scope.adult_sell;
+				sessionStorage.child_sell=$scope.child_sell;
+				sessionStorage.old_sell=$scope.old_sell;
+
+				sessionStorage.adult_basic=$scope.adult_basic;
+				sessionStorage.child_basic=$scope.child_basic;
+				sessionStorage.old_basic=$scope.old_basic;
+
+				sessionStorage.adult_market=$scope.adult_market;
+				sessionStorage.child_market=$scope.child_market;
+				sessionStorage.old_market=$scope.old_market;
+
+				//******************************************************
+
 				$scope.category=data.category;
 				$scope.img=data.img;
 				$scope.isapproved=data.isapproved;
@@ -354,6 +374,46 @@ angular.module('sbAdminApp')
 		};
 	};
 
+	//**********************************************************************************
+
+	$scope.old_basic_change=function(){
+		sessionStorage.old_basic=$scope.old_basic;
+	};
+
+	$scope.adult_basic_change=function(){
+		sessionStorage.adult_basic=$scope.adult_basic;
+	};
+
+	$scope.child_basic_change=function(){
+		sessionStorage.child_basic=$scope.child_basic;
+	};
+
+	$scope.old_sell_change=function(){
+		sessionStorage.old_sell=$scope.old_sell;
+	};
+
+	$scope.adult_sell_change=function(){
+		sessionStorage.adult_sell=$scope.adult_sell;
+	};
+
+	$scope.child_sell_change=function(){
+		sessionStorage.child_sell=$scope.child_sell;
+	};
+
+	$scope.old_market_change=function(){
+		sessionStorage.old_market=$scope.old_market;
+	};
+
+	$scope.adult_market_change=function(){
+		sessionStorage.adult_market=$scope.adult_market;
+	};
+
+	$scope.child_market_change=function(){
+		sessionStorage.child_market=$scope.child_market;
+	};
+
+	//**********************************************************************************
+
 	$scope.addProduct=function(){
 
 		function uuid() {
@@ -380,6 +440,14 @@ angular.module('sbAdminApp')
 		$scope.tip=sessionStorage.tips;
 		$scope.content=sessionStorage.feature_introduction;
 
+		console.log('==============================');
+
+		console.log(sessionStorage.adult_sell);
+		console.log(sessionStorage.child_sell);
+		console.log(sessionStorage.old_sell);
+
+		console.log("==============================");
+
 		var data={
 			"uid":User.getUid(),
 			"pid":Math.ceil(ppid),
@@ -388,20 +456,23 @@ angular.module('sbAdminApp')
 			"area_end":$scope.area_end,
 			"price":[
 				{
-					"adult":$scope.adult_sell,
-					"child":$scope.child_sell,
-					"old":$scope.old_sell,
-					"type":2
+					"adult":sessionStorage.adult_sell,
+					"child":sessionStorage.child_sell,
+					"old":sessionStorage.old_sell,
+					"type":3,
+					"id":77
 				},{
-					"adult":$scope.adult_basic,
-					"child":$scope.child_basic,
-					"old":$scope.old_basic,
-					"type":1
+					"adult":sessionStorage.adult_basic,
+					"child":sessionStorage.child_basic,
+					"old":sessionStorage.old_basic,
+					"type":2,
+					"id":75
 				},{
-					"adult":$scope.adult_market,
-					"child":$scope.adult_market,
-					"old":$scope.adult_market,
-					"type":3
+					"adult":sessionStorage.adult_market,
+					"child":sessionStorage.child_market,
+					"old":sessionStorage.old_market,
+					"type":1,
+					"id":76
 				}
 			],
 			"category":$scope.category,
@@ -437,10 +508,12 @@ angular.module('sbAdminApp')
 				sessionStorage.notice_reserve='';
 				sessionStorage.tips='';
 				sessionStorage.feature_introduction='';
+				location.reload();
 			});
 		}else{
 			TravelProducts.add($scope,data,function(){
 				$('.routesListNewCls').modal('toggle');
+				location.reload();
 			});
 		}
 

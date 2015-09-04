@@ -203,7 +203,7 @@
                                 // $field=new Cores\Models\FieldsModel();
                                 $fieldList=$fieldOptions->selectAll();
                                 $suffix='_edit';
-                                $action='admin.php?v='.$_GET['v'].'&action=edit_item_confirm&iid='.$_GET['iid'];
+                                $action='index.php?v='.$_GET['v'].'&action=edit_item_confirm&iid='.$_GET['iid'].'&uid='.$_GET['uid'];
                                 generatorItemAddingForm($fieldList,$suffix,$action,true);
                             break;
                         default:

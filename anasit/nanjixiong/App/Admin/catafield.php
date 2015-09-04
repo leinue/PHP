@@ -46,6 +46,18 @@ if(!empty($_GET['set_front_visible'])){
     $tips=success('设置前台显示成功');
 }
 
+if(!empty($_GET['set_no_mChoice'])){
+    $cataObj=new Cores\Models\CataModel();
+    $cataObj->setMChoice($_GET['set_no_mChoice'],'0');
+    $tips=success('设置不可多选成功');
+}
+
+if(!empty($_GET['set_mChoice'])){
+    $cataObj=new Cores\Models\CataModel();
+    $cataObj->setMChoice($_GET['set_mChoice']);
+    $tips=success('设置可多选成功');
+}
+
 // alert($_POST['edit_cata_name']);
 
 if(!empty($_GET['action'])){
@@ -345,6 +357,9 @@ if(!empty($_GET['action'])){
                                                 $frontBtnName=$value['fvisible']==='1'?'前台不显示':'前台显示';
                                                 $frontBtnRequest=$value['fvisible']==='1'?'admin.php?v='.$view.'&set_front_no_visible='.$value['caid']:'admin.php?v='.$view.'&set_front_visible='.$value['caid'];
 
+                                                $mChoiceRequest=$value['mChoice']==='1'?'admin.php?v='.$view.'&set_no_mChoice='.$value['caid']:'admin.php?v='.$view.'&set_mChoice='.$value['caid'];
+                                                $mChoiceBtnName=$value['mChoice']==='1'?'不可多选':'可多选';
+
                                                 $parentName=$cataMgr->selectOne($value['parent']);
 
                                                 if(is_array($parentName)){
@@ -360,6 +375,7 @@ if(!empty($_GET['action'])){
                                                             <a href="admin.php?v='.$view.'&cata_to_down='.$value['caid'].'" class="btn btn-sm btn-primary">向下</a>
                                                             <a href="'.$btnRequest.'" class="btn btn-primary btn-sm">'.$btnName.'</a>
                                                             <a href="'.$frontBtnRequest.'" class="btn btn-primary btn-sm">'.$frontBtnName.'</a>
+                                                            <a href="'.$mChoiceRequest.'" class="btn btn-primary btn-sm">'.$mChoiceBtnName.'</a>
                                                             <a ref="admin.php?v='.$view.'&cata_to_view='.$value['caid'].'" class="btn btn-primary btn-sm view_cata" data-toggle="modal" data-whatever="'.$value['caid'].'=='.$value['name'].'" data-target=".modal-view-cata">详细</a>
                                                             <a href="admin.php?v='.$view.'&cata_to_del='.$value['caid'].'" class="btn btn-danger btn-sm">删除</a>
                                                         </td>

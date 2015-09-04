@@ -443,13 +443,18 @@ function textarea($name,$name_control,$id,$tips,$value=null){
             </div>';
 }
 
-function selector($name,$name_control,$id,$tips,$selectorCount,$value=""){
-    $tips=tips($tips);
-    return '<div class="form-group">
-                <label>'.$name.'</label>
-                <select class="form-control" placeholder='.$name.' id="'.$id.'" name="'.$name_control.'"">'.$selectorCount.'</select>
-                '.$tips.'
-            </div>';
+function selector($name,$name_control,$id,$tips,$selectorCount,$value="",$mChoice=false){
+    if($mChoice){
+
+    }else{
+        $tips=tips($tips);
+        return '<div class="form-group">
+                    <label>'.$name.'</label>
+                    <select class="form-control" placeholder='.$name.' id="'.$id.'" name="'.$name_control.'"">'.$selectorCount.'</select>
+                    '.$tips.'
+                </div>';
+    }
+    
 }
 
 function range_($name,$name_control,$id,$tips,$from,$to,$rangeUnit,$value=""){
@@ -495,22 +500,37 @@ function generatorItemAddingForm($fieldList,$suffix='_add',$action=null,$fill=fa
                 </select>
             </div>';
         if(is_array($secondList)){
+
 			foreach ($secondList as $key => $value) {
-				$list='';
-				$rdList=$cataObj->getCataChild($value['caid']);
-				if(is_array($rdList)){
-					foreach ($rdList as $childKey => $childValue) {
-						if($childValue['child']!='second'){
-							$list.='<option "'.$childValue['caid'].'"> '.$childValue['name'].'</option>';
-						}
-					}
-				}
-				echo '<div class="form-group">
-		                <label>'.$value['name'].'*</label>
-		                <select name="item_'.$value['name'].'_cata'.$suffix.'" class="form-control">
-		                    '.$list.'
-		                </select>
-		            </div>';
+
+                // $isMChoice=$cataObj->getMChoice($value['caid'])==='1'?true:false;
+                $mChoice=$value['mChoice'];
+
+                $list='';
+                $rdList=$cataObj->getCataChild($value['caid']);
+                if(is_array($rdList)){
+                    foreach ($rdList as $childKey => $childValue) {
+                        if($childValue['child']!='second' && $mChoice==='0'){
+                            $list.='<option "'.$childValue['caid'].'"> '.$childValue['name'].'</option>';
+                        }else{
+                            $list.=' <input name="item_'.$value['name'].'_cata'.$suffix.'[]" value="'.$childValue['caid'].'" type="checkbox"> '.$childValue['name'];
+                        }
+                    }
+                }
+                if($mChoice==='1'){
+                    echo '<div class="form-group">
+                        <label>'.$value['name'].'*</label>
+                        <p style="font-size:1em;margin-top:-10px">'.$list.'</p>
+                    </div>';
+                }else{
+                    echo '<div class="form-group">
+                        <label>'.$value['name'].'*</label>
+                        <select name="item_'.$value['name'].'_cata'.$suffix.'" class="form-control">
+                            '.$list.'
+                        </select>
+                    </div>';
+                }
+			
 			}
 		}
 

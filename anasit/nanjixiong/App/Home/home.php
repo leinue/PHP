@@ -237,7 +237,16 @@
 													$rdValue=$cataObj->selectOne($rdCaidValue[0]);
 													if($rdValue[0]->getFVisible()==='1'){
 														$secondFieldCount++;
-									          			$secondListField.='<td><p></p>'.$rdCaidValue[2].'</td>';
+														$cataString=$rdCaidValue[2];
+														if(is_array($rdCaidValue[2])){
+															$tmp=array();
+															foreach ($rdCaidValue[2] as $cataKey => $cataValue) {
+																$tmpCataValue=$cataObj->selectOne($cataValue);
+																array_push($tmp,$tmpCataValue[0]->getName());
+															}
+															$cataString=join(',', $tmp);
+														}
+									          			$secondListField.='<td><p></p>'.$cataString.'</td>';
 									          		}
 
 												}

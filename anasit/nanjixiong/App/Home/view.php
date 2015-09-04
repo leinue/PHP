@@ -224,6 +224,10 @@ if(!empty($_GET['action'])){
 						foreach ($filedList as $key => $value) {
 							$optionName=$fieldOptionsObj->selectOne($value['foid']);
 							if($optionName[0]->getType()=='textarea' && $optionName[0]->getVisible()==='1'){
+								if($value['value']=='' || $value['value']=='<p>				&nbsp; &nbsp;</p><p></p><p>
+				</p>'){
+									continue;
+								}
 								echo '<div class="panel panel-default">
 									 	<div class="panel-heading textarea-head"><strong class="textarea-title">'.$optionName[0]->getName().'</strong></div>
 										<div class="panel-body textarea-field">

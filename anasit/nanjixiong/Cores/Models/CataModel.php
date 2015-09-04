@@ -294,6 +294,23 @@ class CataModel{
 
 	}
 
+	function setMChoice($caid,$value='1'){
+
+		if($caid==null || $value==null){
+			return false;
+		}
+
+		return self::$model->getDatabase()->execute("UPDATE `njx_cata` SET `mChoice`=$value WHERE `caid`='$caid'");
+	}
+
+	function getMChoice($caid){
+		if($caid==null){
+			return false;
+		}
+
+		return self::$model->getDatabase()->query("SELECT `mChoice` FROM `njx_cata` WHERE `caid`='$caid'");
+	}
+
 }
 
 ?>

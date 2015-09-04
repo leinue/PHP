@@ -46,9 +46,14 @@
 	                        $rdList=$cataObj->getCataChild($value['caid']);
 	                        if(is_array($rdList)){
 	                            foreach ($rdList as $childKey => $childValue) {
-	                                if($childValue['child']!='second' && $childValue['name']==$_POST['item_'.$value['name'].'_cata_publish']){
+
+	                                if($childValue['child']!='second' && $childValue['name']==$_POST['item_'.$value['name'].'_cata_add']){
 	                                    array_push($rdValueList, $childValue['caid']);
 	                                    array_push($rdValueList, $childValue['name']);
+	                                }
+	                                
+	                                if(is_array($_POST['item_'.$value['name'].'_cata_add'])){
+	                                    array_push($rdValueList,$_POST['item_'.$value['name'].'_cata_add']);
 	                                }
 	                            }
 	                        }

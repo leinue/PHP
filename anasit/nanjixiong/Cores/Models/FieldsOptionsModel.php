@@ -14,7 +14,7 @@ class FieldsOptionsModel{
 	}
 
 	function selectAll(){
-		$cataObj=self::$model->getDatabase()->query("select * from njx_fields_options",[],'Cores\Models\FieldsOptions');
+		$cataObj=self::$model->getDatabase()->query("SELECT * FROM `njx_fields_options` ORDER BY `_order` DESC",[],'Cores\Models\FieldsOptions');
 		return $cataObj;
 	}
 
@@ -107,6 +107,44 @@ class FieldsOptionsModel{
 		}
 
 		return self::$model->getDatabase()->query("SELECT `name` from `njx_fields_options` WHERE `foid`=$foid");
+	}
+
+	function getMaxOrder(){
+		return self::$model->getDatabase()->query("SELECT MAX(`_order`) AS `max_order` FROM `njx_fields_options`");	
+	}
+
+	function upFields($foid){
+
+		if($foid==null){
+			return false;
+		}
+
+		$max=$this->getMaxOrder();
+		$max=$max[0]['max_order'];
+
+		$max++;
+
+		return self::$model->getDatabase()->execute("UPDATE `njx_fields_options` SET `_order`=$max WHERE `foid`='$foid'");
+
+	}
+
+	function downFields($foid){
+
+		if($foid==null){
+			return false;
+		}
+
+		$myOrder=$this->selectOne($foid);
+		$meOrder=$myOrder[0]->getOrder();
+
+		$meOrder-=2;
+
+		if($meOrder<0){
+			$meOrder=0;
+		}
+
+		return self::$model->getDatabase()->execute("UPDATE `njx_fields_options` SET `_order`=$meOrder WHERE `foid`='$foid'");
+
 	}
 
 }

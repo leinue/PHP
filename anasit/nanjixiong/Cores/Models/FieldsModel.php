@@ -25,7 +25,7 @@ class FieldsModel{
 		if($itemId==null){
 			return false;
 		}
-		return self::$model->getDatabase()->query("SELECT * FROM `njx_fields` WHERE `itemId`='$itemId'");
+		return self::$model->getDatabase()->query("SELECT * FROM `njx_fields` WHERE `itemId`='$itemId' ORDER BY `_order` DESC");
 	}
 
 	function add($foid,$value,$itemId){
@@ -35,7 +35,10 @@ class FieldsModel{
 		}
 
 		$oid=guid();
-		self::$model->getDatabase()->execute("INSERT INTO `njx_fields` SET `oid`=?,`foid`=?,`value`=?,`itemId`=?",array($oid,$foid,$value,$itemId));
+		$fieldOptionsModel=new FieldsOptionsModel();
+		$orderObj=$fieldOptionsModel->selectOne($foid);
+		$order=$orderObj[0]->getOrder();
+		self::$model->getDatabase()->execute("INSERT INTO `njx_fields` SET `oid`=?,`foid`=?,`value`=?,`itemId`=?,`_order`=?",array($oid,$foid,$value,$itemId,$order));
 		return $this->selectOne($oid);
 	}
 

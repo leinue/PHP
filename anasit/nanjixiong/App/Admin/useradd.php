@@ -121,6 +121,14 @@ if(!empty($_GET['action']) && !empty($_GET['foid'])){
             $filedOption->setAsFrontRegion($foid);
             $prompt=success('设为前台显示URL成功,请点击左侧菜单栏重新载入');
             break;
+        case 'up_fields':
+            $filedOption->upFields($foid);
+            $prompt=success('提升排序成功');
+            break;
+        case 'down_fields':
+            $filedOption->downFields($foid);
+            $prompt=success('降低排序成功');
+            break;
         default:
             break;
     }
@@ -232,6 +240,8 @@ if(!empty($_GET['action'])){
                                                                         '.$frontPhotoBtn.'
                                                                         '.$frontDescBtn.'
                                                                         '.$frontRegionBtn.'
+                                                                        <a href="admin.php?v='.$_GET['v'].'&action=up_fields&foid='.$value->getFoid().'" class="btn btn-sm btn-primary">向上</a>
+                                                                        <a href="admin.php?v='.$_GET['v'].'&action=down_fields&foid='.$value->getFoid().'" class="btn btn-sm btn-primary">向下</a>
                                                                         <a href="admin.php?v='.$_GET['v'].'&action=delete_field&foid='.$value->getFoid().'" class="btn btn-sm btn-danger">删除</a>
                                                                     </td>
                                                                 </tr>';

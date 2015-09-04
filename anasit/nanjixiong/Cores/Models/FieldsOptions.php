@@ -16,6 +16,7 @@ class FieldsOptions{
 	protected $isPhoto;
 	protected $isDesc;
 	protected $isRegion;
+	protected $_order;
 
 	function getFoid(){return $this->foid;}
 	function getName(){return $this->name;}
@@ -29,6 +30,7 @@ class FieldsOptions{
 	function isPhoto(){return $this->isPhoto;}
 	function isDesc(){return $this->isDesc;}
 	function isRegion(){return $this->isRegion;}
+	function getOrder(){return $this->_order;}
 
 }
 

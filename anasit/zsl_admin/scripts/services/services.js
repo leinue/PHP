@@ -1067,7 +1067,7 @@ angular.module('sbAdminApp')
 
 })
 
-.factory('TravelSupply',function($q,$http,BASE_URL){
+.factory('TravelSupply',function($q,$http,BASE_URL,User){
 
 	return {
 
@@ -1075,13 +1075,28 @@ angular.module('sbAdminApp')
 
 			var d=$q.defer();
 			var promise=d.promise;
+
+			var myurl=page==''?BASE_URL.url+'/Travel/Supply/getsuppliersbypage':BASE_URL.url+'/Travel/Supply/getsuppliersbypage?page='+page;
 			
 			$http({
 				method:"get",
-				url:BASE_URL.url+'/Travel/Supply/getsuppliersbypage?page='+page
+				url:myurl
 			}).success(function(data){
 				console.log(data);
-				$scope.allTravelSupply=data;
+				if(page==''){
+					for (var i = 0; i < data.data.length; i++) {
+						var current=data.data[i];
+						console.log(current);
+						if(current.uid==User.getUid()){
+							$scope.allTravelSupply={
+								data:{current}
+							};
+							break;
+						}
+					};
+				}else{
+					$scope.allTravelSupply=data;
+				}
 				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);

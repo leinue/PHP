@@ -4,9 +4,47 @@
 			<h1 class="page-header">基本资料</h1>
 		</div>
 		<!-- /.col-lg-12 -->
+		<div class="col-md-12">
+			<table class="table table-hover">
+		        <thead>
+		            <tr>
+		                <th>uid</th>
+		                <th>名称</th>
+		                <th>省</th>
+		                <th>市</th>
+		                <th>区</th>
+		                <th>街道</th>
+		                <th>状态</th>
+		                <th>图1</th>
+		                <th>图2</th>
+		                <th>图3</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		        	<tr ng-repeat="x in allTravelSupply.data">
+		                <td>{{x.uid}}</td>
+		                <td>{{x.sbname}}</td>
+		                <td>{{x.province}}</td>
+		                <td>{{x.city}}</td>
+		                <td>{{x.district}}</td>
+		                <td>{{x.street}}</td>
+		                <td>{{x.status | StaffMgrStatusToChar}}</td>
+		                <td><img width="80" height="80" alt="{{x.sbname}}" src="{{x.image1}}"></td>
+		                <td><img width="80" height="80" alt="{{x.sbname}}" src="{{x.image2}}"></td>
+		                <td><img width="80" height="80" alt="{{x.sbname}}" src="{{x.image3}}"></td>
+		        	</tr>
+		        </tbody>
+		    </table>
 
-		
-
+			<ul class="list-group">
+			  	<li class="list-group-item">uid:{{singleUser.data[0].uid | nullToVisual}}</li>
+			  	<li class="list-group-item">手机:{{singleUser.data[0].mobile | nullToVisual}}</li>
+			  	<li class="list-group-item">邮箱:{{singleUser.data[0].email | nullToVisual}}</li>
+			  	<li class="list-group-item">qq:{{singleUser.data[0].qq | nullToVisual}}</li>
+			  	<li class="list-group-item">group:{{singleUser.data[0].group | nullToVisual}}</li>
+			</ul>
+			
+		</div>
 	</div>
 	<!-- /.row -->
 </div>

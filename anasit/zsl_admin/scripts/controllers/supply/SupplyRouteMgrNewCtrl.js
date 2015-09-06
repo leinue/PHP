@@ -298,7 +298,11 @@ angular.module('sbAdminApp')
 		$scope.tip=sessionStorage.tips;
 		$scope.content=sessionStorage.feature_introduction;
 
-		var tripDateJSON=JSON.parse(sessionStorage.tripDateList);
+		if(sessionStorage.tripDateList!=''){
+			var tripDateJSON=JSON.parse(sessionStorage.tripDateList);
+		}else{
+			var tripDateJSON='';
+		}
 
 		console.log('final trip date json:');
 		console.log(tripDateJSON);

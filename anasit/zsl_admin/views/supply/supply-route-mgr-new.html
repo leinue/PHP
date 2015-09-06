@@ -242,6 +242,7 @@
 									sessionStorage.tripDateList=JSON.stringify(tripJSON);
 									console.log('after delete one');
 									console.log(sessionStorage.tripDateList);
+									alert('删除成功');
 								}
 							}
 						}
@@ -281,7 +282,8 @@
 
 							$(obj).attr('flag','1');
 							$(obj).attr('date',date);
-							$(obj).attr('money',money)
+							$(obj).attr('money',money);
+							alert('确认成功');
 						}
 
 						function edieThisDate(obj,tmpJSON,key,value,new_key,new_value){
@@ -289,6 +291,7 @@
 							tmpJSON[new_key]=new_value;
 							sessionStorage.tripDateList=JSON.stringify(tmpJSON);
 							console.log('after edit:'+sessionStorage.tripDateList);
+							alert('编辑成功');
 						}
 			        
 			        </script>

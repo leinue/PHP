@@ -532,6 +532,8 @@ angular.module('sbAdminApp')
 				$scope.attr_name=data.attrname;
 				$scope.constract_name=data.constractname;
 
+				sessionStorage.tripDateList=data.trip_date;
+
 				sessionStorage.fee_included=$scope.fee_included;
 				sessionStorage.fee_notincluded=$scope.fee_noincluded;
 				sessionStorage.constract_plus=$scope.contract_add;
@@ -545,6 +547,39 @@ angular.module('sbAdminApp')
 				SEcontract.html(sessionStorage.constract_plus);
 				SEtips.html(sessionStorage.tips);
 				SEnotice.html(sessionStorage.notice_reserve);
+
+				//******************************************************************************
+
+				//生成日期选择区域
+
+				if(sessionStorage.tripDateList!='null'){
+					var editTripDateJSON=JSON.parse(sessionStorage.tripDateList);
+					console.log(editTripDateJSON);
+					for(dateKey in editTripDateJSON){
+          				if(editTripDateJSON.hasOwnProperty(dateKey)){
+          					var money=Math.ceil(editTripDateJSON[dateKey]);
+          					var date=dateKey;
+          					var html='<div><div style="margin-top:15px" class="col-lg-6">';
+							html+='<div class="form-group">';
+							html+='<input type="date" value='+date+' class="form-control" placeholder="请选择时间">';
+							html+='</div>';
+							html+='</div>';
+							html+='<div class="col-lg-3">';
+							html+='<div class="form-group">';
+							html+='<input type="number" value='+money+' class="form-control" placeholder="请输入价格">';
+							html+='</div>';
+							html+='</div>';
+							html+='<div style="border-bottom:1px solid rgb(204,204,204);padding-bottom:15px" class="col-lg-3">';
+							html+='<div class="form-group"><a class="btn btn-sm btn-default" date="'+date+'" money="'+money+'" flag="1" onclick="confirmTripDate(this)">确认</a>';
+							html+='<a onclick="deleteThisDate(this)" class="btn btn-sm btn-default btn_remove_date">删除此时间</a>';
+							html+='</div>';
+							html+='</div></div>';
+							$('#trip_date_edit_area').append(html);
+          				}
+					}
+				}
+
+				//******************************************************************************
 
 			});
 
@@ -596,6 +631,8 @@ angular.module('sbAdminApp')
 		$scope.constract='';
 		$scope.is_insure='';
 		$scope.order_index='';
+
+		location.reload();
 	});
 
 	TravelProductsCategory.getAll($scope,function(){});
@@ -747,6 +784,12 @@ angular.module('sbAdminApp')
 
 		var scopeImg=$scope.img.indexOf('http://')!=-1?$scope.img:'http://'+$scope.img;
 
+		if(sessionStorage.tripDateList!=''){
+			var tripDateJSON=JSON.parse(sessionStorage.tripDateList);
+		}else{
+			var tripDateJSON='';
+		}
+
 		var data={
 			"uid":User.getUid(),
 			"pid":Math.ceil(ppid),
@@ -793,7 +836,8 @@ angular.module('sbAdminApp')
 			"mustknow":$scope.mustknow,
 			"constract":$scope.constract,
 			"is_insure":$scope.is_insure,
-			"order_index":$scope.order_index
+			"order_index":$scope.order_index,
+			"trip_date":tripDateJSON
 		};
 
 		console.log(data);

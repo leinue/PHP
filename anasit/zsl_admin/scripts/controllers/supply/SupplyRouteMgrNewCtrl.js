@@ -214,12 +214,16 @@ angular.module('sbAdminApp')
 	];
 
 	$scope.generatorPlan=function(){
+
 		$scope.currentDay=$scope.plan_day;
 		$scope.currentDay=$scope.currentDay.slice(1,$scope.currentDay.length-2);
 
 		if(typeof $scope.dayPlanList[$scope.currentDay]=='undefined' || typeof $scope.dayPlanList[$scope.currentDay]=='object'){
-			$scope.dayPlanList[$scope.currentDay]={};
-			console.log("current day="+$scope.currentDay);
+			console.log($scope.currentDay);
+			if(typeof $scope.dayPlanList[$scope.currentDay]=='undefined'){
+				console.log('currentDay is undefined');
+				$scope.dayPlanList[$scope.currentDay]={};
+			}
 			$scope.dayPlanList[$scope.currentDay].food={
 				"早":$scope.plan_food_breakfast==undefined?'0':$scope.plan_food_breakfast,
 				"中":$scope.plan_food_lunch==undefined?'0':$scope.plan_food_lunch,
@@ -229,12 +233,12 @@ angular.module('sbAdminApp')
 
 		$scope.dayPlanList[$scope.currentDay].day=$scope.plan_day;
 
-		$scope.plan_title='';
-		$scope.plan_food_breakfast='';
-		$scope.plan_food_lunch='';
-		$scope.plan_food_dinner='';
-		$scope.plan_room='';
-		$scope.plan_description='';
+		$scope.plan_title=$scope.dayPlanList[$scope.currentDay].title;
+		$scope.plan_food_breakfast=$scope.dayPlanList[$scope.currentDay]['早'];
+		$scope.plan_food_lunch=$scope.dayPlanList[$scope.currentDay]['中'];
+		$scope.plan_food_dinner=$scope.dayPlanList[$scope.currentDay]['晚'];
+		$scope.plan_room=$scope.dayPlanList[$scope.currentDay].room;
+		$scope.plan_description=$scope.dayPlanList[$scope.currentDay].description;
 
 	};
 

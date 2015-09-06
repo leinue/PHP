@@ -148,7 +148,7 @@ angular.module('sbAdminApp')
 		}).catch(function(reason){
 			$q.reject(reason);
 		});
-	}
+	};
 
 	service.getInfoByUid=function($scope,uid,callback){
 		$http({

@@ -51,6 +51,16 @@ angular
           }
       }
   })
+  .filter('groupToVisual',function(){
+      return function(groups){
+          var groupName;
+          groupName=groups.replace('root','超级管理员');
+          groupName=groupName.replace('admin','管理员');
+          groupName=groupName.replace('supply','供货商');
+          groupName=groupName.replace('shop','shop');
+          return groupName;
+      }
+  })
   .run(function($rootScope,$location,User){
 
     // User.getThisInfo();

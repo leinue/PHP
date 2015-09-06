@@ -14,7 +14,7 @@
 		                <th>市</th>
 		                <th>区</th>
 		                <th>街道</th>
-		                <th>状态</th>
+		                <th>供货商审核</th>
 		                <th>图1</th>
 		                <th>图2</th>
 		                <th>图3</th>
@@ -36,13 +36,15 @@
 		        </tbody>
 		    </table>
 
-			<ul class="list-group">
-			  	<li class="list-group-item">uid:{{singleUser.data[0].uid | nullToVisual}}</li>
-			  	<li class="list-group-item">手机:{{singleUser.data[0].mobile | nullToVisual}}</li>
-			  	<li class="list-group-item">邮箱:{{singleUser.data[0].email | nullToVisual}}</li>
-			  	<li class="list-group-item">qq:{{singleUser.data[0].qq | nullToVisual}}</li>
-			  	<li class="list-group-item">group:{{singleUser.data[0].group | nullToVisual}}</li>
-			</ul>
+		    <div class="col-md-6">
+				<ul class="list-group">
+				  	<li class="list-group-item">uid:{{singleUser.data[0].uid | nullToVisual}}</li>
+				  	<li class="list-group-item">手机:{{singleUser.data[0].mobile | nullToVisual}}</li>
+				  	<li class="list-group-item">邮箱:{{singleUser.data[0].email | nullToVisual}}</li>
+				  	<li class="list-group-item">qq:{{singleUser.data[0].qq | nullToVisual}}</li>
+				  	<li class="list-group-item">用户组:{{singleUser.data[0].group | groupToVisual}}</li>
+				</ul>		    	
+		    </div>
 			
 		</div>
 	</div>

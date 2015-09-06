@@ -298,6 +298,11 @@ angular.module('sbAdminApp')
 		$scope.tip=sessionStorage.tips;
 		$scope.content=sessionStorage.feature_introduction;
 
+		var tripDateJSON=JSON.parse(sessionStorage.tripDateList);
+
+		console.log('final trip date json:');
+		console.log(tripDateJSON);
+
 		var data={
 			"uid":User.getUid(),
 			"pid":Math.ceil(ppid),
@@ -341,7 +346,8 @@ angular.module('sbAdminApp')
 			"mustknow":$scope.mustknow,
 			"constract":$scope.constract,
 			"is_insure":$scope.is_insure,
-			"order_index":$scope.order_index
+			"order_index":$scope.order_index,
+			"trip_date":tripDateJSON
 		};
 
 		console.log(data);
@@ -359,6 +365,7 @@ angular.module('sbAdminApp')
 				sessionStorage.notice_reserve='';
 				sessionStorage.tips='';
 				sessionStorage.feature_introduction='';
+				sessionStorage.tripDateList='';
 			});
 		}
 

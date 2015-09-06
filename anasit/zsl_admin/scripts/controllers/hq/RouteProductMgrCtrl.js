@@ -745,6 +745,8 @@ angular.module('sbAdminApp')
 		$scope.tip=sessionStorage.tips;
 		$scope.content=sessionStorage.feature_introduction;
 
+		var scopeImg=$scope.img.indexOf('http://')!=-1?$scope.img:'http://'+$scope.img;
+
 		var data={
 			"uid":User.getUid(),
 			"pid":Math.ceil(ppid),

@@ -278,6 +278,8 @@ angular.module('sbAdminApp')
 
 		// KE.sync();
 
+		$scope.$apply();
+
 		function uuid() {
 		    var s = [];
 		    var hexDigits = "0123456789";
@@ -302,6 +304,16 @@ angular.module('sbAdminApp')
 		$scope.tip=sessionStorage.tips;
 		$scope.content=sessionStorage.feature_introduction;
 
+		if(sessionStorage.cityStartList!=''){
+			$scope.area_start=JSON.parse(sessionStorage.cityStartList);
+			console.log($scope.area_start);
+		}
+
+		if(sessionStorage.cityEndList!=''){
+			$scope.area_end=JSON.parse(sessionStorage.cityEndList);
+			console.log($scope.area_end);
+		}
+
 		if(sessionStorage.tripDateList!=''){
 			var tripDateJSON=JSON.parse(sessionStorage.tripDateList);
 		}else{
@@ -310,6 +322,9 @@ angular.module('sbAdminApp')
 
 		console.log('final trip date json:');
 		console.log(tripDateJSON);
+
+		console.log('scope.title=');
+		console.log($scope.title);
 
 		var data={
 			"uid":User.getUid(),
@@ -365,15 +380,20 @@ angular.module('sbAdminApp')
 				$('.routesListNewCls').modal('toggle');
 			});
 		}else{
-			TravelProducts.add($scope,data,function(){
-				$('.routesListNewCls').modal('toggle');
-				sessionStorage.fee_included='';
-				sessionStorage.fee_notincluded='';
-				sessionStorage.constract_plus='';
-				sessionStorage.notice_reserve='';
-				sessionStorage.tips='';
-				sessionStorage.feature_introduction='';
-				sessionStorage.tripDateList='';
+			console.log('ssssdsd');
+			TravelProducts.add($scope,data,function(data){
+				console.log('add done');
+				if(data.status==='1'){
+					$('.routesListNewCls').modal('toggle');
+					sessionStorage.fee_included='';
+					sessionStorage.fee_notincluded='';
+					sessionStorage.constract_plus='';
+					sessionStorage.notice_reserve='';
+					sessionStorage.tips='';
+					sessionStorage.feature_introduction='';
+					sessionStorage.tripDateList='';
+				}
+				
 			});
 		}
 

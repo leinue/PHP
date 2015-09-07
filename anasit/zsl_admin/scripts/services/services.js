@@ -951,12 +951,15 @@ angular.module('sbAdminApp')
 			var d=$q.defer();
 			var promise=d.promise;
 
+			console.log(data);
+
 			$http({
 				method:"post",
 				url:BASE_URL.url+'/Admin/TravelProduct/addTravelProduct',
 				data:data
 			}).success(function(data){
 				console.log(data);
+				console.log(JSON.stringify(data));
 				$scope.status=data;
 				alert(data.message);
 				callback(data);
@@ -970,6 +973,8 @@ angular.module('sbAdminApp')
 
 			var d=$q.defer();
 			var promise=d.promise;
+
+			console.log(pid);
 
 			$http({
 				method:"post",

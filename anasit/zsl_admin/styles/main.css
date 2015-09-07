@@ -136,3 +136,13 @@ background-color: #eee;
 .navbar-top-links li{
   cursor: pointer;
 }
+
+.city_area{
+  border-bottom:1px solid rgb(204,204,204);
+  padding-bottom:15px;
+  margin-bottom:15px;
+}
+
+.city_area:nth-child(even){
+  margin-bottom: 10px; 
+}

@@ -83,7 +83,7 @@
 
 						<a id="btn_city_start_add" style="margin-bottom:15px" class="btn btn-sm btn-default">新增出发城市</a>
 
-						<a class="btn btn-sm btn-default" onclick="confirmCityStartList()">确定出发城市</a>
+						<a class="btn btn-sm btn-primary" style="margin-bottom:15px" onclick="confirmCityStartList()">确定出发城市</a>
 
 					</div>
 
@@ -116,7 +116,7 @@
 							html+='<select onchange="changeProvince(this,1,this.value,'+cityStartId+')" style="margin-bottom:10px" class="form-control prov"></select>';
 							html+='<select onchange="changeCity(this,1,this.value,'+cityStartId+')" style="margin-bottom:10px" class="form-control city" disabled="disabled"></select>';							
 							html+='<select onchange="changeDistrict(this,1,this.value,'+cityStartId+')" style="margin-bottom:10px" class="form-control dist" disabled="disabled"></select>';
-							html+='<input style="margin-bottom:10px" type="number" onchange="changePrice(this,1,this.value,'+cityStartId+')" class="form-control" value="0" placehoder="请输入价格"><a onclick="removeThisCity(this,'+cityStartId+')" class="btn btn-sm btn-default">删除此城市</a></div>';
+							html+='<input style="margin-bottom:10px" type="number" onchange="changePrice(this,1,this.value,'+cityStartId+')" class="form-control" value="0" placehoder="请输入价格"><a onclick="removeThisCity(this,'+cityStartId+')" class="btn btn-sm btn-danger">删除此城市</a></div>';
 
 							$('#city_start_area').append(html);
 
@@ -191,7 +191,7 @@
 							<option value="{{x.id}}" ng-hide="x.title==end" ng-repeat="x in allRoutesEnd.data">{{x.title}}</option>
 						</select>
 						<a id="btn_city_end_add" style="margin-bottom:15px" class="btn btn-sm btn-default">新增目的地城市</a>
-						<a class="btn btn-sm btn-default" onclick="confirmCityEndList()">确定目的地城市</a>
+						<a class="btn btn-sm btn-primary" style="margin-bottom:15px" onclick="confirmCityEndList()">确定目的地城市</a>
 					</div>
 
 					<script type="text/javascript">
@@ -223,7 +223,7 @@
 								html+='<option value="'+value+'">'+$(currentOption).html()+'</option>';
 							}
 							html+='</select>';
-							html+='<a style="margin-top:15px" onclick="removeThisEndCity(this,'+cityEndId+')" class="btn btn-sm btn-default">删除此目的地城市</a>';
+							html+='<a style="margin-top:15px" onclick="removeThisEndCity(this,'+cityEndId+')" class="btn btn-sm btn-danger">删除此目的地城市</a>';
 							html+='</div>';
 
 							$('#city_end_area').append(html);

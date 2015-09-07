@@ -476,8 +476,78 @@ angular.module('sbAdminApp')
 			  	$scope.plan_description=$scope.dayPlanList[1].description;
 
 			  	$scope.title=data.title;
-				$scope.area_start=data.area_start;
-				$scope.area_end=data.area_end;
+
+
+			  	//////////////////////////////出发地起始地////////////////////////////
+
+				$scope.area_start=data.start;
+				$scope.area_end=data.end;
+
+				sessionStorage.cityStartList=JSON.stringify(data.start);
+				sessionStorage.cityEndList=JSON.stringify(data.end);
+
+				sessionStorage.currentCityStartCount=data.start.length;
+				sessionStorage.currentCityEndCount=data.end.length;
+
+				for (var i = 0; i < data.start.length; i++) {
+					var currentAreaStart=data.start[i];
+					
+					var cityStartId=i;
+
+					var id="city_start_"+cityStartId;
+
+					var html='';
+					html+='<div id="'+id+'" class="city_area city_start_area_form">';
+					html+='<select onchange="changeProvince(this,1,this.value,'+cityStartId+')" style="margin-bottom:10px" class="form-control prov"></select>';
+					html+='<select onchange="changeCity(this,1,this.value,'+cityStartId+')" style="margin-bottom:10px" class="form-control city" disabled="disabled"></select>';							
+					html+='<select onchange="changeDistrict(this,1,this.value,'+cityStartId+')" style="margin-bottom:10px" class="form-control dist" disabled="disabled"></select>';
+					html+='<input style="margin-bottom:10px" type="number" value="'+currentAreaStart.price+'" onchange="changePrice(this,1,this.value,'+cityStartId+')" class="form-control" value="0" placehoder="请输入价格"><a onclick="removeThisCity(this,'+cityStartId+')" class="btn btn-sm btn-default">删除此城市</a></div>';
+
+					$('#city_start_area').append(html);
+
+					$('#'+id).citySelect({
+						required:false,
+						nodata:"none",
+						prov:currentAreaStart.province,
+					    city:currentAreaStart.city,
+					    dist:currentAreaStart.district
+					});
+
+				}
+
+				for (var i = 0; i < data.end.length; i++) {
+					var currentAreaEnd=data.end[i];
+
+					var cityEndId=i;
+
+					var id="city_end_"+cityEndId;
+					var html='';
+
+					html+='<div style="border-bottom:1px solid rgb(204,204,204);padding-bottom:15px;margin-bottom:15px;"><select onchange="changeAreaEnd(this,this.value,'+cityEndId+')" class="form-control">';
+					var option=$('#area_end_area').find('option');
+					for (var i = 0; i < option.length; i++) {
+						var currentOption=option[i];
+						var value=$(currentOption).attr('value');
+						console.log(value);
+						console.log($(currentOption).html());
+						if(isNaN(value)){
+							continue;
+						}
+						var selected='';
+						if(currentAreaEnd.endid==value){
+							selected='selected';
+						}
+						html+='<option '+selected+' value="'+value+'">'+$(currentOption).html()+'</option>';
+					}
+					html+='</select>';
+					html+='<a style="margin-top:15px" onclick="removeThisEndCity(this,'+cityEndId+')" class="btn btn-sm btn-danger">删除此目的地城市</a>';
+					html+='</div>';
+
+					$('#city_end_area').append(html);
+
+				};
+
+				//////////////////////////////出发地起始地////////////////////////////
 
 				//******************************************************
 
@@ -562,11 +632,11 @@ angular.module('sbAdminApp')
 							var html='<div>';
 							html+='<div style="margin-top:15px" class="col-md-12">';
 							html+='<div class="form-group">';
-							html+='<input type="date" style="display:none" value="'+date+'" class="form-control" placeholder="请选择时间">';
-							html+='<div class="input-append date" id="datetimepicker" data-date="12-02-2012" data-date-format="dd-mm-yyyy">';
-							html+='<input class="form_datetime form-control" value="'+date+'" onchange="updateRealDateCtrl(this)" size="16" type="text" placeholder="请选择时间">';
-							html+='<span class="add-on"><i class="icon-th"></i></span>';
-							html+='</div>';
+							html+='<input type="date" value="'+date+'" class="form-control" placeholder="请选择时间">';
+							// html+='<div class="input-append date" id="datetimepicker" data-date="12-02-2012" data-date-format="dd-mm-yyyy">';
+							// html+='<input class="form_datetime form-control" value="'+date+'" onchange="updateRealDateCtrl(this)" size="16" type="text" placeholder="请选择时间">';
+							// html+='<span class="add-on"><i class="icon-th"></i></span>';
+							// html+='</div>';
 							html+='</div>';
 							html+='</div>';
 							html+='<div class="col-md-12">';
@@ -791,6 +861,16 @@ angular.module('sbAdminApp')
 		$scope.content=sessionStorage.feature_introduction;
 
 		var scopeImg=$scope.img.indexOf('http://')!=-1?$scope.img:'http://'+$scope.img;
+
+		if(sessionStorage.cityStartList!=''){
+			$scope.area_start=JSON.parse(sessionStorage.cityStartList);
+			console.log($scope.area_start);
+		}
+
+		if(sessionStorage.cityEndList!=''){
+			$scope.area_end=JSON.parse(sessionStorage.cityEndList);
+			console.log($scope.area_end);
+		}
 
 		if(sessionStorage.tripDateList!=''){
 			var tripDateJSON=JSON.parse(sessionStorage.tripDateList);

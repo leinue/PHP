@@ -64,7 +64,7 @@ angular.module('sbAdminApp')
 .controller('TravelProductConstract',function($scope,$location,User,TravelProductsConstract){
 
 	window.KE = KindEditor;
-	window.SEcontent=KE.create('#edit_contract_description',{
+	window.SEedit_contract_description=KE.create('#edit_contract_description',{
 		width : '100%',
 		afterBlur: function(){
 			this.sync();
@@ -73,7 +73,7 @@ angular.module('sbAdminApp')
 		}
 	});
 
-	window.SEcontent=KE.create('#add_contract_description',{
+	window.SEadd_contract_description=KE.create('#add_contract_description',{
 		width : '100%',
 		afterBlur: function(){
 			this.sync();
@@ -88,7 +88,7 @@ angular.module('sbAdminApp')
 
 	$scope.inputExists={
 		title:'',
-		order:'',
+		orderindex:'',
 		id:'',
 		insureDesc:''
 	};
@@ -129,12 +129,13 @@ angular.module('sbAdminApp')
 		}
 	};
 
-	$scope.editItem=function(i,t,o){
+	$scope.editItem=function(i,t,o,d){
 		$scope.isEdit=true;
 		$scope.isAdd=false;
 		$scope.inputExists.id=i;
 		$scope.inputExists.title=t;
 		$scope.inputExists.orderindex=o;
+		SEedit_contract_description.html(d);
 	};
 
 	$scope.confirmToEditItem=function(){
@@ -241,7 +242,7 @@ angular.module('sbAdminApp')
 .controller('TravelProductInsure',function($scope,$location,User,TravelProductsInsure){
 
 	window.KE = KindEditor;
-	window.SEcontent=KE.create('#edit_insure_description',{
+	window.SEedit_insure_description=KE.create('#edit_insure_description',{
 		width : '100%',
 		afterBlur: function(){
 			this.sync();
@@ -250,7 +251,7 @@ angular.module('sbAdminApp')
 		}
 	});
 
-	window.SEcontent=KE.create('#add_insure_description',{
+	window.SEadd_insure_description=KE.create('#add_insure_description',{
 		width : '100%',
 		afterBlur: function(){
 			this.sync();
@@ -265,7 +266,7 @@ angular.module('sbAdminApp')
 
 	$scope.inputExists={
 		title:'',
-		order:'',
+		orderindex:'',
 		id:'',
 		insureDesc:''
 	};
@@ -306,12 +307,13 @@ angular.module('sbAdminApp')
 		}
 	};
 
-	$scope.editItem=function(i,t,o){
+	$scope.editItem=function(i,t,o,d){
 		$scope.isEdit=true;
 		$scope.isAdd=false;
 		$scope.inputExists.id=i;
 		$scope.inputExists.title=t;
 		$scope.inputExists.orderindex=o;
+		SEedit_insure_description.html(d);
 	};
 
 	$scope.confirmToEditItem=function(){
@@ -492,19 +494,25 @@ angular.module('sbAdminApp')
 				console.log(data.plan);
 				var price=data.price;
 
-				for (var i = 0; i < data.plan.length; i++) {
-					var currentPlan=data.plan[i];
-					if(typeof $scope.dayPlanList[i+1] != undefined){
-						$scope.dayPlanList[i+1]={};
-						$scope.dayPlanList[i+1].day='第'+(i+1)+'天';
-						$scope.dayPlanList[i+1].description=currentPlan.description;
-						$scope.dayPlanList[i+1].food=JSON.parse(currentPlan.food);
-						$scope.dayPlanList[i+1].room=currentPlan.room;
-						$scope.dayPlanList[i+1].title=currentPlan.title;
-						$scope.dayPlanList[i+1].id=currentPlan.id;
-						$scope.plan_day_datas[i+1]=i+1;
-					}
-				};
+				if(data.plan.length!=0){
+					for (var i = 0; i < data.plan.length; i++) {
+						var currentPlan=data.plan[i];
+						if(typeof $scope.dayPlanList[i+1] != undefined){
+							$scope.dayPlanList[i+1]={};
+							$scope.dayPlanList[i+1].day='第'+(i+1)+'天';
+							$scope.dayPlanList[i+1].description=currentPlan.description;
+							if(currentPlan.food!=''){
+								$scope.dayPlanList[i+1].food=JSON.parse(currentPlan.food);
+							}else{
+								$scope.dayPlanList[i+1].food={};
+							}
+							$scope.dayPlanList[i+1].room=currentPlan.room;
+							$scope.dayPlanList[i+1].title=currentPlan.title;
+							$scope.dayPlanList[i+1].id=currentPlan.id;
+							$scope.plan_day_datas[i+1]=i+1;
+						}
+					};
+				}
 
 				console.log($scope.dayPlanList);
 				// $scope.plan_day_datas.push(i+1);
@@ -855,6 +863,10 @@ angular.module('sbAdminApp')
 
 		var inputPlanDays=$scope.trip_days;
 
+		if(currentPlanDays==inputPlanDays){
+			currentPlanDays=currentPlanDays-1;
+		}
+
 		console.log('input plan days='+inputPlanDays);
 		console.log('current plan days='+currentPlanDays);
 
@@ -879,13 +891,16 @@ angular.module('sbAdminApp')
 					if(currentPlanDays>inputPlanDays){
 						//删除(当前数量-当前输入数量)个元素
 						console.log('>');
-						for(var i=0;i<(currentPlanDays-inputPlanDays);i++){
+						for(var i=0;i<(currentPlanDays-inputPlanDays)-1;i++){
 							$scope.plan_day_datas.pop();
 							$scope.dayPlanList.pop();
 							$scope.plan_title='';
 						  	$scope.plan_food='';
 						  	$scope.plan_room='';
 						  	$scope.plan_description='';
+						  	$scope.plan_food_breakfast='';
+						  	$scope.plan_food_dinner='';
+						  	$scope.plan_food_lunch='';
 							console.log($scope.dayPlanList);
 						}
 					}

@@ -316,6 +316,9 @@ angular.module('sbAdminApp')
 						  	$scope.plan_food='';
 						  	$scope.plan_room='';
 						  	$scope.plan_description='';
+						  	$scope.plan_food_breakfast='';
+						  	$scope.plan_food_dinner='';
+						  	$scope.plan_food_lunch='';
 							console.log($scope.dayPlanList);
 						}
 					}

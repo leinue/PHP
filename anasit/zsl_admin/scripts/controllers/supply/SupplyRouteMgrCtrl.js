@@ -506,6 +506,10 @@ angular.module('sbAdminApp')
 
 		var inputPlanDays=$scope.trip_days;
 
+		if(currentPlanDays==inputPlanDays){
+			currentPlanDays=currentPlanDays-1;
+		}
+
 		console.log('input plan days='+inputPlanDays);
 		console.log('current plan days='+currentPlanDays);
 
@@ -530,13 +534,16 @@ angular.module('sbAdminApp')
 					if(currentPlanDays>inputPlanDays){
 						//删除(当前数量-当前输入数量)个元素
 						console.log('>');
-						for(var i=0;i<(currentPlanDays-inputPlanDays);i++){
+						for(var i=0;i<(currentPlanDays-inputPlanDays)-1;i++){
 							$scope.plan_day_datas.pop();
 							$scope.dayPlanList.pop();
 							$scope.plan_title='';
 						  	$scope.plan_food='';
 						  	$scope.plan_room='';
 						  	$scope.plan_description='';
+						  	$scope.plan_food_breakfast='';
+						  	$scope.plan_food_dinner='';
+						  	$scope.plan_food_lunch='';
 							console.log($scope.dayPlanList);
 						}
 					}
@@ -649,19 +656,19 @@ angular.module('sbAdminApp')
 					"child":sessionStorage.child_sell,
 					"old":sessionStorage.old_sell,
 					"type":3,
-					"id":77
+					"id":sessionStorage.sell_id
 				},{
 					"adult":sessionStorage.adult_basic,
 					"child":sessionStorage.child_basic,
 					"old":sessionStorage.old_basic,
 					"type":2,
-					"id":75
+					"id":sessionStorage.basic_id
 				},{
 					"adult":sessionStorage.adult_market,
 					"child":sessionStorage.child_market,
 					"old":sessionStorage.old_market,
 					"type":1,
-					"id":76
+					"id":sessionStorage.market_id
 				}
 			],
 			"category":$scope.category,

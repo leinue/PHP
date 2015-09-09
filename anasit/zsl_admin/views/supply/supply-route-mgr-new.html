@@ -1,6 +1,6 @@
 
 
-<div class="modal fade routesListNewCls" ng-controller="RouteListNew" id="route_list_new" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal fade routesListNewCls" data-backdrop="false" data-keyboard="false" ng-controller="RouteListNew" id="route_list_new" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 	  <div class="modal-dialog modal-lg">
 	    <div class="modal-content">
 	      <div class="modal-header">
@@ -341,8 +341,86 @@
 			        	<textarea class="form-control" id="plan_content" row="5" ng-change="changePlanDesc()" ng-model="plan_description"></textarea>
 			        </div>
 
+			        <h4>其它内容</h4>
+
 			        <div class="form-group">
-			        	<label>日期选择</label>
+			        	<label>补充协议</label>
+						<textarea class="form-control" id="constract_plus" rows="5" ng-model="contract_add"></textarea>
+			        </div>
+
+			        <div class="form-group">
+			        	<label>预定须知</label>
+			        	<textarea class="form-control" id="notice_reserve" rows="5" ng-model="mustknow"></textarea>
+			        </div>
+
+			        <div class="form-group">
+			        	<label>温馨提示</label>
+			        	<textarea class="form-control" id="tips" rows="5" ng-model="tip"></textarea>
+			        </div>
+
+			        <div class="form-group">
+			        	<label>费用包含</label>
+			        	<textarea class="form-control" id="fee_included" rows="5" ng-model="fee_included"></textarea>
+			        </div>
+
+			        <div class="form-group">
+			        	<label>费用不包含</label>
+			        	<textarea class="form-control" id="fee_notincluded" rows="5" ng-model="fee_noincluded"></textarea>
+			        </div>
+
+			        <h4>成本价格</h4>
+			        
+			        <div class="form-group">
+			        	<label>老人价</label>
+			        	<input type="number" class="form-control" plcaeholder="请输入数字" ng-model="old_basic">
+			        </div>
+
+			        <div class="form-group">
+			        	<label>成人价格</label>
+			        	<input type="number" class="form-control" plcaeholder="请输入数字" ng-model="adult_basic">
+			        </div>
+
+			        <div class="form-group">
+			        	<label>儿童价</label>
+			        	<input type="number" class="form-control" plcaeholder="请输入数字" ng-model="child_basic">
+			        </div>
+
+					<h4>销售价格</h4>
+
+					<div class="form-group">
+						<label>老人价</label>
+						<input type="number" class="form-control" plcaeholder="请输入数字" ng-model="old_sell">
+					</div>
+
+					<div class="form-group">
+						<label>成人价</label>
+						<input type="number" class="form-control" plcaeholder="请输入数字" ng-model="adult_sell">
+					</div>
+
+					<div class="form-group">
+						<label>儿童价</label>
+						<input type="number" class="form-control" plcaeholder="请输入数字" ng-model="child_sell">
+					</div>
+
+					<h4>市场价格</h4>
+
+					<div class="form-group">
+						<label>老人价</label>
+						<input type="number" class="form-control" plcaeholder="请输入数字" ng-model="old_market">
+					</div>
+
+					<div class="form-group">
+						<label>成人价</label>
+						<input type="number" class="form-control" plcaeholder="请输入数字" ng-model="adult_market">
+					</div>
+
+					<div class="form-group">
+						<label>儿童价</label>
+						<input type="number" class="form-control" plcaeholder="请输入数字" ng-model="child_market">
+					</div>
+
+					<div class="form-group">
+			        	<label>日期加价</label>
 						<div class="btn-group" role="group" aria-label="...">
 						  	<button type="button" id="btn_add_date" ng-click="add_new_time()" class="btn btn-default">新增时间</button>
 						</div>
@@ -356,7 +434,7 @@
 							var html='<div>';
 							html+='<div style="margin-top:15px" class="col-md-12">';
 							html+='<div class="form-group">';
-							html+='<input type="date" class="form-control" placeholder="请选择时间">';
+							html+='<input type="date" class="form-control" placeholder="请选择时间,格式为XXXX-XX-XX,例如:2015-08-12">';
 							// html+='<div class="input-append date" id="datetimepicker" data-date="12-02-2012" data-date-format="dd-mm-yyyy">';
 							// html+='<input class="form_datetime form-control" onchange="updateRealDateCtrl(this)" size="16" type="text" placeholder="请选择时间">';
 							// html+='<span class="add-on"><i class="icon-th"></i></span>';
@@ -451,84 +529,6 @@
 						}
 			        
 			        </script>
-
-			        <h4>其它内容</h4>
-
-			        <div class="form-group">
-			        	<label>补充协议</label>
-						<textarea class="form-control" id="constract_plus" rows="5" ng-model="contract_add"></textarea>
-			        </div>
-
-			        <div class="form-group">
-			        	<label>预定须知</label>
-			        	<textarea class="form-control" id="notice_reserve" rows="5" ng-model="mustknow"></textarea>
-			        </div>
-
-			        <div class="form-group">
-			        	<label>温馨提示</label>
-			        	<textarea class="form-control" id="tips" rows="5" ng-model="tip"></textarea>
-			        </div>
-
-			        <div class="form-group">
-			        	<label>费用包含</label>
-			        	<textarea class="form-control" id="fee_included" rows="5" ng-model="fee_included"></textarea>
-			        </div>
-
-			        <div class="form-group">
-			        	<label>费用不包含</label>
-			        	<textarea class="form-control" id="fee_notincluded" rows="5" ng-model="fee_noincluded"></textarea>
-			        </div>
-
-			        <h4>成本价格</h4>
-			        
-			        <div class="form-group">
-			        	<label>老人价</label>
-			        	<input type="number" class="form-control" plcaeholder="请输入数字" ng-model="old_basic">
-			        </div>
-
-			        <div class="form-group">
-			        	<label>成人价格</label>
-			        	<input type="number" class="form-control" plcaeholder="请输入数字" ng-model="adult_basic">
-			        </div>
-
-			        <div class="form-group">
-			        	<label>儿童价</label>
-			        	<input type="number" class="form-control" plcaeholder="请输入数字" ng-model="child_basic">
-			        </div>
-
-					<h4>销售价格</h4>
-
-					<div class="form-group">
-						<label>老人价</label>
-						<input type="number" class="form-control" plcaeholder="请输入数字" ng-model="old_sell">
-					</div>
-
-					<div class="form-group">
-						<label>成人价</label>
-						<input type="number" class="form-control" plcaeholder="请输入数字" ng-model="adult_sell">
-					</div>
-
-					<div class="form-group">
-						<label>儿童价</label>
-						<input type="number" class="form-control" plcaeholder="请输入数字" ng-model="child_sell">
-					</div>
-
-					<h4>市场价格</h4>
-
-					<div class="form-group">
-						<label>老人价</label>
-						<input type="number" class="form-control" plcaeholder="请输入数字" ng-model="old_market">
-					</div>
-
-					<div class="form-group">
-						<label>成人价</label>
-						<input type="number" class="form-control" plcaeholder="请输入数字" ng-model="adult_market">
-					</div>
-
-					<div class="form-group">
-						<label>儿童价</label>
-						<input type="number" class="form-control" plcaeholder="请输入数字" ng-model="child_market">
-					</div>
 
             </div>
 	      </div>

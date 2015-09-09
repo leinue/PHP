@@ -29,7 +29,7 @@
 					<button type="button" data-toggle="modal" data-target="#route_insure"  class="btn btn-outline btn-primary btn-lg btn-block">旅游保险</button>
 				</p>
 
-				<div class="modal fade routesListNewCls" ng-controller="RouteListNew" id="route_list_new" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+				<div class="modal fade routesListNewCls" data-backdrop="false" data-keyboard="false" ng-controller="RouteListNew" id="route_list_new" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 				  <div class="modal-dialog modal-lg">
 				    <div class="modal-content">
 				      <div class="modal-header">
@@ -123,7 +123,6 @@
 									<a id="btn_city_start_add" style="margin-bottom:15px" class="btn btn-sm btn-default">新增出发城市</a>
 
 									<a class="btn btn-sm btn-primary" style="margin-bottom:15px" onclick="confirmCityStartList()">确定出发城市</a>
-
 								</div>
 
 								<script type="text/javascript">
@@ -131,13 +130,25 @@
 									// sessionStorage.currentCityStartCount=0;
 									// sessionStorage.cityStartList='';
 									// sessionStorage.cityEndList='';
-									var areaObj
-									if(typeof sessionStorage.cityStartList!='undefined' || sessionStorage.cityStartList!=''){
-										// areaObj=JSON.parse(sessionStorage.confirmCityStartList);
-									}else{
-										areaObj=[];
-									}
 
+									var areaObj=[];
+
+									var cityStartLoaded=false;
+
+									function loadCityStarList(){
+										if(!cityStartLoaded){
+											if((typeof sessionStorage.cityStartList!='undefined' || sessionStorage.cityStartList!='') && areaObj.length==0 ){
+												console.log('parse json');
+												areaObj=JSON.parse(sessionStorage.cityStartList);
+												console.log(areaObj);
+												console.log(sessionStorage.cityStartList);
+											}else{
+												areaObj=[];
+											}
+										}
+										cityStartLoaded=true;
+									}
+									
 									var realArea={};
 
 									$(".city_start_area_form").citySelect({
@@ -146,6 +157,8 @@
 									});
 
 									$('#btn_city_start_add').click(function(){
+
+										loadCityStarList();
 
 										sessionStorage.currentCityStartCount=Math.ceil(sessionStorage.currentCityStartCount)+1;
 
@@ -160,7 +173,7 @@
 										html+='<select onchange="changeProvince(this,1,this.value,'+cityStartId+')" style="margin-bottom:10px" class="form-control prov"></select>';
 										html+='<select onchange="changeCity(this,1,this.value,'+cityStartId+')" style="margin-bottom:10px" class="form-control city" disabled="disabled"></select>';							
 										html+='<select onchange="changeDistrict(this,1,this.value,'+cityStartId+')" style="margin-bottom:10px" class="form-control dist" disabled="disabled"></select>';
-										html+='<input style="margin-bottom:10px" type="number" onchange="changePrice(this,1,this.value,'+cityStartId+')" class="form-control" value="0" placehoder="请输入价格"><a onclick="removeThisCity(this,'+cityStartId+')" class="btn btn-sm btn-default">删除此城市</a></div>';
+										html+='<input style="margin-bottom:10px" type="number" onchange="changePrice(this,1,this.value,'+cityStartId+')" class="form-control" value="0" placehoder="请输入价格"><a onclick="removeThisCity(this,'+cityStartId+')" class="btn btn-sm btn-danger">删除此城市</a></div>';
 
 										$('#city_start_area').append(html);
 
@@ -177,6 +190,7 @@
 									});
 
 									function changeProvince(obj,type,val,index){
+										loadCityStarList();
 										index-=1;
 										realArea.province=val;
 										console.log('change province,index='+index);
@@ -184,7 +198,15 @@
 										console.log(areaObj);
 									}
 
+									function changeProvinceInDatabase(obj,type,val,index,id){
+										loadCityStarList();
+										realArea.province=val;
+										realArea.id=id;
+										areaObj[index]=realArea;
+									}
+
 									function changeCity(obj,type,val,index){
+										loadCityStarList();
 										index-=1;
 										realArea.city=val;
 										console.log('change city,index='+index);
@@ -192,7 +214,15 @@
 										console.log(areaObj);
 									}
 
+									function changeCityInDatabase(obj,type,val,index,id){
+										loadCityStarList();
+										realArea.city=val;
+										realArea.id=id;
+										areaObj[index]=realArea;
+									}
+
 									function changeDistrict(obj,type,val,index){
+										loadCityStarList();
 										index-=1;
 										realArea.district=val;
 										console.log('change district,index='+index);
@@ -200,7 +230,15 @@
 										console.log(areaObj);
 									}
 
+									function changeDistrictInDatabase(obj,type,val,index,id){
+										loadCityStarList();
+										realArea.district=val;
+										realArea.id=id;
+										areaObj[index]=realArea;
+									}
+
 									function changePrice(obj,type,val,index){
+										loadCityStarList();
 										index-=1;
 										realArea.price=val;
 										console.log('change price,index='+index);
@@ -210,7 +248,15 @@
 										console.log(realArea);
 									}
 
+									function changePriceInDatabase(obj,type,val,index,id){
+										loadCityStarList();
+										realArea.price=val;
+										realArea.id=id;
+										areaObj[index]=realArea;
+									}
+
 									function removeThisCity(obj,index){
+										loadCityStarList();
 										index-=1;
 										console.log('remove city,index='+index);
 										delete areaObj[index];
@@ -222,9 +268,21 @@
 									}
 
 									function confirmCityStartList(){
+										loadCityStarList();
 										sessionStorage.cityStartList=JSON.stringify(areaObj);
 										alert('确认成功');
 										console.log(sessionStorage.cityStartList);
+									}
+
+									function removeThisCityInDatabase(obj,index){
+										// loadCityEndList();
+										// index-=1;
+										loadCityStarList();
+										areaObj[index].status_='delete';
+										$(obj).parent().remove();
+										sessionStorage.currentCityStartCount=Math.ceil(sessionStorage.currentCityStartCount)-1;
+										alert('删除成功');
+										console.log(areaObj);
 									}
 
 								</script>
@@ -241,17 +299,32 @@
 
 								<script type="text/javascript">
 
-									// sessionStorage.curerntCityEndCount=0;
 									var endObj=[];
-									if(typeof sessionStorage.cityEndList!='undefined' || sessionStorage.cityEndList!=''){
-										// var endObj=JSON.parse(sessionStorage.cityEndList);
-									}else{
-										endObj=[];
+									var realEnd={};
+									var endObjPid='';
+
+									var cityEndLoaded=false;
+
+									function loadCityEndList(){
+										if(!cityEndLoaded){
+											if(typeof sessionStorage.cityEndList!='undefined' || sessionStorage.cityEndList!=''){
+												endObj=JSON.parse(sessionStorage.cityEndList);
+												endObjPid=endObj[0].pid;
+												sessionStorage.curerntCityEndCount=endObj.length;
+											}else{
+												endObj=[];
+											}
+											if(endObj.length==0){
+												endObj=JSON.parse(sessionStorage.cityEndList);
+											}
+										}
+
+										cityEndLoaded=true;
 									}
 
-									var realEnd={};
-
 									$('#btn_city_end_add').click(function(){
+
+										loadCityEndList();
 
 										sessionStorage.curerntCityEndCount=Math.ceil(sessionStorage.curerntCityEndCount)+1;
 
@@ -265,8 +338,6 @@
 										for (var i = 0; i < option.length; i++) {
 											var currentOption=option[i];
 											var value=$(currentOption).attr('value');
-											console.log(value);
-											console.log($(currentOption).html());
 											if(isNaN(value)){
 												continue;
 											}
@@ -278,27 +349,62 @@
 
 										$('#city_end_area').append(html);
 
+										console.log('append end');
+
+										console.log('=====start insert into array=====');
+
+										console.log(cityEndId);
+										console.log(endObj);
+
+										endObj[cityEndId-1]={};
+
+										console.log(endObj);
+										console.log(endObj[cityEndId]);
+
+										console.log('=====end insert into array=====');
+
 									});
 
 									function removeThisEndCity(obj,index){
+										loadCityEndList();
 										index-=1;
 										delete endObj[index];
 										$(obj).parent().remove();
+										sessionStorage.curerntCityEndCount=Math.ceil(sessionStorage.curerntCityEndCount)-1;
 										alert('删除成功');
 										console.log(endObj);
 									}
 
 									function changeAreaEnd(obj,val,index){
-										index-=1;
+										loadCityEndList();
+										console.log(index);
 										console.log('change area end start');
-										endObj[index]=val;
+										endObj[index-1].endid=val;
 										console.log(endObj);
 									}
 
-									function confirmCityEndList(){							
+									function changeAreaEndInDatabase(obj,val,index){
+										loadCityEndList();
+										endObj[index].endid=val;
+									}
+
+									function confirmCityEndList(){
+										loadCityEndList();				
+										console.log('confirm city end list:');
+										console.log(endObj);
 										sessionStorage.cityEndList=JSON.stringify(endObj);
 										alert('确认成功');
 										console.log(sessionStorage.cityEndList);
+									}
+
+									function removeThisEndCityInDatabase(obj,index){
+										loadCityEndList();
+										console.log('remove this end city,index='+index);
+										endObj[index].status_='delete';
+										sessionStorage.curerntCityEndCount=Math.ceil(sessionStorage.curerntCityEndCount)-1;
+										$(obj).parent().remove();
+										alert('删除成功');
+										console.log(endObj);
 									}
 
 								</script>
@@ -392,8 +498,86 @@
 						        	<textarea class="form-control" row="5" ng-change="changePlanDesc()" ng-model="plan_description"></textarea>
 						        </div>
 
-				      			<div class="form-group" id="trip_date_edit_area">
-						        	<label>日期选择</label>
+						        <h4>其它内容</h4>
+
+						        <div class="form-group">
+						        	<label>补充协议</label>
+									<textarea class="form-control" id="g_edit_constract_plus" rows="5" ng-model="contract_add"></textarea>
+						        </div>
+
+						        <div class="form-group">
+						        	<label>预定须知</label>
+						        	<textarea class="form-control" id="g_edit_notice_reserve" rows="5" ng-model="mustknow"></textarea>
+						        </div>
+
+						        <div class="form-group">
+						        	<label>温馨提示</label>
+						        	<textarea class="form-control" id="g_edit_tips" rows="5" ng-model="tip"></textarea>
+						        </div>
+
+						        <div class="form-group">
+						        	<label>费用包含</label>
+						        	<textarea class="form-control" id="g_edit_fee_included" rows="5" ng-model="fee_included"></textarea>
+						        </div>
+
+						        <div class="form-group">
+						        	<label>费用不包含</label>
+						        	<textarea class="form-control" id="g_edit_fee_notincluded" rows="5" ng-model="fee_noincluded"></textarea>
+						        </div>
+
+						        <h4>成本价格</h4>
+								        
+						        <div class="form-group">
+						        	<label>老人价</label>
+						        	<input type="number" ng-change="old_basic_change()" class="form-control" plcaeholder="请输入数字" ng-model="old_basic">
+						        </div>
+
+						        <div class="form-group">
+						        	<label>成人价</label>
+						        	<input type="number" ng-change="adult_basic_change()" class="form-control" plcaeholder="请输入数字" ng-model="adult_basic">
+						        </div>
+
+						        <div class="form-group">
+						        	<label>儿童价</label>
+						        	<input type="number" ng-change="child_basic_change()" class="form-control" plcaeholder="请输入数字" ng-model="child_basic">
+						        </div>
+
+								<h4>销售价格</h4>
+
+								<div class="form-group">
+									<label>老人价</label>
+									<input type="number" ng-change="old_sell_change()" class="form-control" plcaeholder="请输入数字" ng-model="old_sell">
+								</div>
+
+								<div class="form-group">
+									<label>成人价</label>
+									<input type="number" ng-change="adult_sell_change()" class="form-control" plcaeholder="请输入数字" ng-model="adult_sell">
+								</div>
+
+								<div class="form-group">
+									<label>儿童价</label>
+									<input type="number" ng-change="child_sell_change()" class="form-control" plcaeholder="请输入数字" ng-model="child_sell">
+								</div>
+
+								<h4>市场价格</h4>
+
+								<div class="form-group">
+									<label>老人价</label>
+									<input type="number" ng-change="old_market_change()" class="form-control" plcaeholder="请输入数字" ng-model="old_market">
+								</div>
+
+								<div class="form-group">
+									<label>成人价</label>
+									<input type="number" ng-change="adult_market_change()" class="form-control" plcaeholder="请输入数字" ng-model="adult_market">
+								</div>
+
+								<div class="form-group">
+									<label>儿童价</label>
+									<input type="number" ng-change="child_market_change()" class="form-control" plcaeholder="请输入数字" ng-model="child_market">
+								</div>
+
+								<div class="form-group" id="trip_date_edit_area">
+						        	<label>日期加价</label>
 									<div class="btn-group" role="group" aria-label="...">
 									  	<button type="button" id="btn_add_date" class="btn btn-default">新增时间</button>
 									</div>
@@ -405,7 +589,7 @@
 										var html='<div>';
 										html+='<div style="margin-top:15px" class="col-md-12">';
 										html+='<div class="form-group">';
-										html+='<input type="date" class="form-control" placeholder="请选择时间">';
+										html+='<input type="date" class="form-control" placeholder="请选择时间,格式为XXXX-XX-XX,例如:2015-08-12">';
 										// html+='<div class="input-append date" id="datetimepicker" data-date="12-02-2012" data-date-format="dd-mm-yyyy">';
 										// html+='<input class="form_datetime form-control" onchange="updateRealDateCtrl(this)" size="16" type="text" placeholder="请选择时间">';
 										// html+='<span class="add-on"><i class="icon-th"></i></span>';
@@ -504,84 +688,6 @@
 						        
 						        </script>
 
-						        <h4>其它内容</h4>
-
-						        <div class="form-group">
-						        	<label>补充协议</label>
-									<textarea class="form-control" id="g_edit_constract_plus" rows="5" ng-model="contract_add"></textarea>
-						        </div>
-
-						        <div class="form-group">
-						        	<label>预定须知</label>
-						        	<textarea class="form-control" id="g_edit_notice_reserve" rows="5" ng-model="mustknow"></textarea>
-						        </div>
-
-						        <div class="form-group">
-						        	<label>温馨提示</label>
-						        	<textarea class="form-control" id="g_edit_tips" rows="5" ng-model="tip"></textarea>
-						        </div>
-
-						        <div class="form-group">
-						        	<label>费用包含</label>
-						        	<textarea class="form-control" id="g_edit_fee_included" rows="5" ng-model="fee_included"></textarea>
-						        </div>
-
-						        <div class="form-group">
-						        	<label>费用不包含</label>
-						        	<textarea class="form-control" id="g_edit_fee_notincluded" rows="5" ng-model="fee_noincluded"></textarea>
-						        </div>
-
-						        <h4>成本价格</h4>
-								        
-						        <div class="form-group">
-						        	<label>老人价</label>
-						        	<input type="number" ng-change="old_basic_change()" class="form-control" plcaeholder="请输入数字" ng-model="old_basic">
-						        </div>
-
-						        <div class="form-group">
-						        	<label>成人价</label>
-						        	<input type="number" ng-change="adult_basic_change()" class="form-control" plcaeholder="请输入数字" ng-model="adult_basic">
-						        </div>
-
-						        <div class="form-group">
-						        	<label>儿童价</label>
-						        	<input type="number" ng-change="child_basic_change()" class="form-control" plcaeholder="请输入数字" ng-model="child_basic">
-						        </div>
-
-								<h4>销售价格</h4>
-
-								<div class="form-group">
-									<label>老人价</label>
-									<input type="number" ng-change="old_sell_change()" class="form-control" plcaeholder="请输入数字" ng-model="old_sell">
-								</div>
-
-								<div class="form-group">
-									<label>成人价</label>
-									<input type="number" ng-change="adult_sell_change()" class="form-control" plcaeholder="请输入数字" ng-model="adult_sell">
-								</div>
-
-								<div class="form-group">
-									<label>儿童价</label>
-									<input type="number" ng-change="child_sell_change()" class="form-control" plcaeholder="请输入数字" ng-model="child_sell">
-								</div>
-
-								<h4>市场价格</h4>
-
-								<div class="form-group">
-									<label>老人价</label>
-									<input type="number" ng-change="old_market_change()" class="form-control" plcaeholder="请输入数字" ng-model="old_market">
-								</div>
-
-								<div class="form-group">
-									<label>成人价</label>
-									<input type="number" ng-change="adult_market_change()" class="form-control" plcaeholder="请输入数字" ng-model="adult_market">
-								</div>
-
-								<div class="form-group">
-									<label>儿童价</label>
-									<input type="number" ng-change="child_market_change()" class="form-control" plcaeholder="请输入数字" ng-model="child_market">
-								</div>
-
 		                </div>
 				      </div>
 				      <div class="modal-footer">
@@ -592,7 +698,7 @@
 				  </div>
 				</div>
 
-            	<div class="modal fade routesList" ng-controller="HQRouteListMgr" id="route_list" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            	<div class="modal fade routesList" data-backdrop="false" data-keyboard="false" ng-controller="HQRouteListMgr" id="route_list" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 				  <div class="modal-dialog modal-lg">
 				    <div class="modal-content">
 				      <div class="modal-header">
@@ -680,7 +786,7 @@
 							  	</div>
 							  	<div class="form-group">
 							  		<label>描述</label>
-							  		<textarea class="form-control" ng-model="inputExists.insureDesc"></textarea>
+							  		<textarea class="form-control" id="edit_contract_description" rows="5" ng-model="inputExists.insureDesc"></textarea>
 							  	</div>
 							  	<button type="submit" ng-click="cancelToEditItem()" class="btn btn-default">取消</button>
 							  	<button type="submit" ng-click="confirmToEditItem()" class="btn btn-default">修改</button>
@@ -699,7 +805,7 @@
 							  	</div>
 							  	<div class="form-group">
 							  		<label>描述</label>
-							  		<textarea class="form-control" ng-model="input.insureDesc"></textarea>
+							  		<textarea class="form-control" id="add_contract_description" rows="5" ng-model="input.insureDesc"></textarea>
 							  	</div>
 							  	<button type="submit" ng-click="cancelToAddItem()" class="btn btn-default">取消</button>
 							  	<button type="submit" ng-click="confirmToAddItem()" class="btn btn-default">添加</button>
@@ -921,7 +1027,7 @@
 							  	</div>
 							  	<div class="form-group">
 							  		<label for="edit_insure_desc">描述</label>
-							  		<textarea class="form-control" ng-model="inputExists.insureDesc"></textarea>
+							  		<textarea class="form-control" id="edit_insure_description" rows="5" ng-model="inputExists.insureDesc"></textarea>
 							  	</div>
 							  	<button type="submit" ng-click="cancelToEditItem()" class="btn btn-default">取消</button>
 							  	<button type="submit" ng-click="confirmToEditItem()" class="btn btn-default">修改</button>
@@ -940,7 +1046,7 @@
 							  	</div>
 							  	<div class="form-group">
 							  		<label for="add_inputInsure">描述</label>
-							  		<textarea class="form-control" ng-model="input.insureDesc"></textarea>
+							  		<textarea class="form-control" id="add_insure_description" rows="5" ng-model="input.insureDesc"></textarea>
 							  	</div>
 							  	<button type="submit" ng-click="cancelToAddItem()" class="btn btn-default">取消</button>
 							  	<button type="submit" ng-click="confirmToAddItem()" class="btn btn-default">添加</button>

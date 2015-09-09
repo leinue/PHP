@@ -57,9 +57,30 @@ angular.module('sbAdminApp')
 		}
 	});
 
+	// $('.routesList').modal({backdrop: 'static', keyboard: false});
+	// $('.routesListNewCls').modal({backdrop: 'static', keyboard: false});
 })
 
 .controller('TravelProductConstract',function($scope,$location,User,TravelProductsConstract){
+
+	window.KE = KindEditor;
+	window.SEcontent=KE.create('#edit_contract_description',{
+		width : '100%',
+		afterBlur: function(){
+			this.sync();
+			sessionStorage.editinsureDesc=$('#edit_contract_description').val();
+			console.log(sessionStorage.editinsureDesc);
+		}
+	});
+
+	window.SEcontent=KE.create('#add_contract_description',{
+		width : '100%',
+		afterBlur: function(){
+			this.sync();
+			sessionStorage.addinsureDesc=$('#add_contract_description').val();
+			console.log(sessionStorage.addinsureDesc);
+		}
+	});
 
 	$scope.alertInfo=false;
 	$scope.isEdit=false;
@@ -87,6 +108,7 @@ angular.module('sbAdminApp')
 
 	$scope.confirmToAddItem=function(){
 		if($scope.input.title!=''){
+			$scope.input.insureDesc=sessionStorage.addinsureDesc;
 			TravelProductsConstract.add($scope,$scope.input.title,$scope.input.orderindex,$scope.input.insureDesc,function(data){
 				TravelProductsConstract.getAll($scope,function(){});
 			});
@@ -117,6 +139,7 @@ angular.module('sbAdminApp')
 
 	$scope.confirmToEditItem=function(){
 		if($scope.inputExists.title!=''){
+			$scope.inputExists.insureDesc=sessionStorage.editinsureDesc;
 			var oindex=$scope.inputExists.orderindex==''?0:$scope.inputExists.orderindex;
 			TravelProductsConstract.update($scope,$scope.inputExists.id,$scope.inputExists.title,oindex,$scope.inputExists.insureDesc,function(data){
 				TravelProductsConstract.getAll($scope,function(){});
@@ -217,6 +240,25 @@ angular.module('sbAdminApp')
 
 .controller('TravelProductInsure',function($scope,$location,User,TravelProductsInsure){
 
+	window.KE = KindEditor;
+	window.SEcontent=KE.create('#edit_insure_description',{
+		width : '100%',
+		afterBlur: function(){
+			this.sync();
+			sessionStorage.editinsureDesc=$('#edit_insure_description').val();
+			console.log(sessionStorage.editinsureDesc);
+		}
+	});
+
+	window.SEcontent=KE.create('#add_insure_description',{
+		width : '100%',
+		afterBlur: function(){
+			this.sync();
+			sessionStorage.addinsureDesc=$('#add_insure_description').val();
+			console.log(sessionStorage.addinsureDesc);
+		}
+	});
+
 	$scope.alertInfo=false;
 	$scope.isEdit=false;
 	$scope.isAdd=false;
@@ -243,6 +285,7 @@ angular.module('sbAdminApp')
 
 	$scope.confirmToAddItem=function(){
 		if($scope.input.title!=''){
+			$scope.input.insureDesc=sessionStorage.addinsureDesc;
 			TravelProductsInsure.add($scope,$scope.input.title,$scope.input.orderindex,$scope.input.insureDesc,function(data){
 				TravelProductsInsure.getAll($scope,function(){});
 			});
@@ -273,6 +316,7 @@ angular.module('sbAdminApp')
 
 	$scope.confirmToEditItem=function(){
 		if($scope.inputExists.title!=''){
+			$scope.inputExists.insureDesc=sessionStorage.editinsureDesc;
 			var oindex=$scope.inputExists.orderindex==''?0:$scope.inputExists.orderindex;
 			TravelProductsInsure.update($scope,$scope.inputExists.id,$scope.inputExists.title,oindex,$scope.inputExists.insureDesc,function(data){
 				TravelProductsInsure.getAll($scope,function(){});
@@ -486,8 +530,17 @@ angular.module('sbAdminApp')
 				sessionStorage.cityStartList=JSON.stringify(data.start);
 				sessionStorage.cityEndList=JSON.stringify(data.end);
 
+				console.log('cityStartList:');
+				console.log(sessionStorage.cityStartList);
+				console.log('cityEndList:');
+				console.log(sessionStorage.cityEndList);
+
 				sessionStorage.currentCityStartCount=data.start.length;
+				console.log('currentCityStartCount:');
+				console.log(sessionStorage.currentCityStartCount);
 				sessionStorage.currentCityEndCount=data.end.length;
+				console.log('currentCityEndCount');
+				console.log(sessionStorage.currentCityEndCount);
 
 				for (var i = 0; i < data.start.length; i++) {
 					var currentAreaStart=data.start[i];
@@ -496,12 +549,14 @@ angular.module('sbAdminApp')
 
 					var id="city_start_"+cityStartId;
 
+					var currentId=currentAreaStart.reid;
+
 					var html='';
 					html+='<div id="'+id+'" class="city_area city_start_area_form">';
-					html+='<select onchange="changeProvince(this,1,this.value,'+cityStartId+')" style="margin-bottom:10px" class="form-control prov"></select>';
-					html+='<select onchange="changeCity(this,1,this.value,'+cityStartId+')" style="margin-bottom:10px" class="form-control city" disabled="disabled"></select>';							
-					html+='<select onchange="changeDistrict(this,1,this.value,'+cityStartId+')" style="margin-bottom:10px" class="form-control dist" disabled="disabled"></select>';
-					html+='<input style="margin-bottom:10px" type="number" value="'+currentAreaStart.price+'" onchange="changePrice(this,1,this.value,'+cityStartId+')" class="form-control" value="0" placehoder="请输入价格"><a onclick="removeThisCity(this,'+cityStartId+')" class="btn btn-sm btn-default">删除此城市</a></div>';
+					html+='<select onchange="changeProvinceInDatabase(this,1,this.value,'+cityStartId+','+currentId+')" style="margin-bottom:10px" class="form-control prov"></select>';
+					html+='<select onchange="changeCityInDatabase(this,1,this.value,'+cityStartId+','+currentId+')" style="margin-bottom:10px" class="form-control city" disabled="disabled"></select>';							
+					html+='<select onchange="changeDistrictInDatabase(this,1,this.value,'+cityStartId+','+currentId+')" style="margin-bottom:10px" class="form-control dist" disabled="disabled"></select>';
+					html+='<input style="margin-bottom:10px" type="number" value="'+currentAreaStart.price+'" onchange="changePriceInDatabase(this,1,this.value,'+cityStartId+','+currentId+')" class="form-control" value="0" placehoder="请输入价格"><a onclick="removeThisCityInDatabase(this,'+cityStartId+')" class="btn btn-sm btn-danger">删除此城市</a></div>';
 
 					$('#city_start_area').append(html);
 
@@ -515,6 +570,8 @@ angular.module('sbAdminApp')
 
 				}
 
+				// console.log(data.end);
+
 				for (var i = 0; i < data.end.length; i++) {
 					var currentAreaEnd=data.end[i];
 
@@ -523,16 +580,11 @@ angular.module('sbAdminApp')
 					var id="city_end_"+cityEndId;
 					var html='';
 
-					html+='<div style="border-bottom:1px solid rgb(204,204,204);padding-bottom:15px;margin-bottom:15px;"><select onchange="changeAreaEnd(this,this.value,'+cityEndId+')" class="form-control">';
+					html+='<div style="border-bottom:1px solid rgb(204,204,204);padding-bottom:15px;margin-bottom:15px;"><select onchange="changeAreaEndInDatabase(this,this.value,'+cityEndId+')" class="form-control">';
 					var option=$('#area_end_area').find('option');
-					for (var i = 0; i < option.length; i++) {
-						var currentOption=option[i];
+					for (var j = 0; j < option.length; j++) {
+						var currentOption=option[j];
 						var value=$(currentOption).attr('value');
-						console.log(value);
-						console.log($(currentOption).html());
-						if(isNaN(value)){
-							continue;
-						}
 						var selected='';
 						if(currentAreaEnd.endid==value){
 							selected='selected';
@@ -540,7 +592,7 @@ angular.module('sbAdminApp')
 						html+='<option '+selected+' value="'+value+'">'+$(currentOption).html()+'</option>';
 					}
 					html+='</select>';
-					html+='<a style="margin-top:15px" onclick="removeThisEndCity(this,'+cityEndId+')" class="btn btn-sm btn-danger">删除此目的地城市</a>';
+					html+='<a style="margin-top:15px" onclick="removeThisEndCityInDatabase(this,'+cityEndId+')" class="btn btn-sm btn-danger">删除此目的地城市</a>';
 					html+='</div>';
 
 					$('#city_end_area').append(html);
@@ -566,14 +618,17 @@ angular.module('sbAdminApp')
 				sessionStorage.adult_sell=$scope.adult_sell;
 				sessionStorage.child_sell=$scope.child_sell;
 				sessionStorage.old_sell=$scope.old_sell;
+				sessionStorage.sell_id=price[2].id;
 
 				sessionStorage.adult_basic=$scope.adult_basic;
 				sessionStorage.child_basic=$scope.child_basic;
 				sessionStorage.old_basic=$scope.old_basic;
+				sessionStorage.basic_id=price[0].id;
 
 				sessionStorage.adult_market=$scope.adult_market;
 				sessionStorage.child_market=$scope.child_market;
 				sessionStorage.old_market=$scope.old_market;
+				sessionStorage.market_id=price[1].id;
 
 				//******************************************************
 
@@ -668,6 +723,8 @@ angular.module('sbAdminApp')
 		}
 	});
 
+	$scope.isSubmitSuccess=true;
+
 	$('.routesListNewCls').on('hide.bs.modal', function () {
 	  	localStorage.currentRoutePid=false;
 	  	console.log(localStorage.currentRoutePid);
@@ -711,6 +768,7 @@ angular.module('sbAdminApp')
 		$scope.order_index='';
 
 		location.reload();
+
 	});
 
 	TravelProductsCategory.getAll($scope,function(){});
@@ -740,23 +798,28 @@ angular.module('sbAdminApp')
 
 		if(typeof $scope.dayPlanList[$scope.currentDay]=='undefined' || typeof $scope.dayPlanList[$scope.currentDay]=='object'){
 			console.log($scope.currentDay);
+			
 			if(typeof $scope.dayPlanList[$scope.currentDay]=='undefined'){
 				console.log('currentDay is undefined');
 				$scope.dayPlanList[$scope.currentDay]={};
 			}
-			$scope.dayPlanList[$scope.currentDay].food={
-				"早":$scope.plan_food_breakfast==undefined?'0':$scope.plan_food_breakfast,
-				"中":$scope.plan_food_lunch==undefined?'0':$scope.plan_food_lunch,
-				"晚":$scope.plan_food_dinner==undefined?'0':$scope.plan_food_dinner
-			};
+
+			if(typeof $scope.dayPlanList[$scope.currentDay].food=='undefined'){
+				$scope.dayPlanList[$scope.currentDay].food={
+					"早":$scope.plan_food_breakfast==undefined?'0':$scope.plan_food_breakfast,
+					"中":$scope.plan_food_lunch==undefined?'0':$scope.plan_food_lunch,
+					"晚":$scope.plan_food_dinner==undefined?'0':$scope.plan_food_dinner
+				};
+			}
+			
 		}
 
 		$scope.dayPlanList[$scope.currentDay].day=$scope.plan_day;
 
 		$scope.plan_title=$scope.dayPlanList[$scope.currentDay].title;
-		$scope.plan_food_breakfast=$scope.dayPlanList[$scope.currentDay]['早'];
-		$scope.plan_food_lunch=$scope.dayPlanList[$scope.currentDay]['中'];
-		$scope.plan_food_dinner=$scope.dayPlanList[$scope.currentDay]['晚'];
+		$scope.plan_food_breakfast=$scope.dayPlanList[$scope.currentDay].food['早'];
+		$scope.plan_food_lunch=$scope.dayPlanList[$scope.currentDay].food['中'];
+		$scope.plan_food_dinner=$scope.dayPlanList[$scope.currentDay].food['晚'];
 		$scope.plan_room=$scope.dayPlanList[$scope.currentDay].room;
 		$scope.plan_description=$scope.dayPlanList[$scope.currentDay].description;
 
@@ -788,10 +851,47 @@ angular.module('sbAdminApp')
 	};
 
 	$scope.changePlanDays=function(){
-		for (var i = 1; i <= $scope.trip_days; i++) {
-			console.log(i);
-			$scope.plan_day_datas.push(i);
-		};
+		var currentPlanDays=$scope.plan_day_datas.length;
+
+		var inputPlanDays=$scope.trip_days;
+
+		console.log('input plan days='+inputPlanDays);
+		console.log('current plan days='+currentPlanDays);
+
+		if($scope.plan_day_datas.length==0){
+			console.log('scope.plan_day_datas=0');
+			for (var i = 1; i <= $scope.trip_days; i++) {
+				console.log(i);
+				$scope.plan_day_datas.push(i);
+			};
+		}else{
+			console.log('scope.plan_day_datas!=0');
+			if(inputPlanDays!=''){
+				if(currentPlanDays<inputPlanDays){
+					//继续push(当前数量-当前输入数量)个元素
+					console.log('<');
+					console.log('currentPlanDays-inputPlanDays='+(inputPlanDays-currentPlanDays));
+					for(var i=currentPlanDays+1;i<=inputPlanDays;i++){
+						console.log('push i='+i);
+						$scope.plan_day_datas.push(i);
+					}
+				}else{
+					if(currentPlanDays>inputPlanDays){
+						//删除(当前数量-当前输入数量)个元素
+						console.log('>');
+						for(var i=0;i<(currentPlanDays-inputPlanDays);i++){
+							$scope.plan_day_datas.pop();
+							$scope.dayPlanList.pop();
+							$scope.plan_title='';
+						  	$scope.plan_food='';
+						  	$scope.plan_room='';
+						  	$scope.plan_description='';
+							console.log($scope.dayPlanList);
+						}
+					}
+				}
+			}
+		}
 	};
 
 	//**********************************************************************************
@@ -860,7 +960,9 @@ angular.module('sbAdminApp')
 		$scope.tip=sessionStorage.tips;
 		$scope.content=sessionStorage.feature_introduction;
 
-		var scopeImg=$scope.img.indexOf('http://')!=-1?$scope.img:'http://'+$scope.img;
+		var scopeimg=$scope.img;
+
+		var scopeImg=scopeimg.indexOf('http://')!=-1?$scope.img:'http://'+$scope.img;
 
 		if(sessionStorage.cityStartList!=''){
 			$scope.area_start=JSON.parse(sessionStorage.cityStartList);
@@ -890,23 +992,23 @@ angular.module('sbAdminApp')
 					"child":sessionStorage.child_sell,
 					"old":sessionStorage.old_sell,
 					"type":3,
-					"id":77
+					"id":sessionStorage.sell_id
 				},{
 					"adult":sessionStorage.adult_basic,
 					"child":sessionStorage.child_basic,
 					"old":sessionStorage.old_basic,
 					"type":2,
-					"id":75
+					"id":sessionStorage.basic_id
 				},{
 					"adult":sessionStorage.adult_market,
 					"child":sessionStorage.child_market,
 					"old":sessionStorage.old_market,
 					"type":1,
-					"id":76
+					"id":sessionStorage.market_id
 				}
 			],
 			"category":$scope.category,
-			"img":"http://"+$scope.img,
+			"img":scopeImg,
 			"isapproved":$scope.isapproved,
 			"attr":$scope.attr,
 			"num_rest":$scope.num_rest,
@@ -931,15 +1033,19 @@ angular.module('sbAdminApp')
 		console.log(data);
 
 		if(localStorage.currentRoutePid!='false'){
-			TravelProducts.update($scope,data,function(){
-				$('.routesListNewCls').modal('toggle');
+			TravelProducts.update($scope,data,function(data){
 				sessionStorage.fee_included='';
 				sessionStorage.fee_notincluded='';
 				sessionStorage.constract_plus='';
 				sessionStorage.notice_reserve='';
 				sessionStorage.tips='';
 				sessionStorage.feature_introduction='';
-				location.reload();
+				console.log(data);
+				if(data.status!='1'){
+					// console.log(data);
+				}else{
+					$('.routesListNewCls').modal('toggle');				
+				}
 			});
 		}else{
 			TravelProducts.add($scope,data,function(){

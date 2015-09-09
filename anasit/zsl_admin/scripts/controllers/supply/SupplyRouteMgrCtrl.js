@@ -57,6 +57,9 @@ angular.module('sbAdminApp')
 		}
 	});
 
+	// $('.routesList').modal({backdrop: 'static', keyboard: false});
+	// $('.routesListNewCls').modal({backdrop: 'static', keyboard: false});
+
 })
 
 .controller('RouteListMgr',function($scope,$location,User,TravelProducts){
@@ -167,8 +170,85 @@ angular.module('sbAdminApp')
 			  	$scope.plan_description=$scope.dayPlanList[1].description;
 
 			  	$scope.title=data.title;
-				$scope.area_start=data.area_start;
-				$scope.area_end=data.area_end;
+
+			  	//////////////////////////////出发地起始地////////////////////////////
+
+				$scope.area_start=data.start;
+				$scope.area_end=data.end;
+
+				sessionStorage.cityStartList=JSON.stringify(data.start);
+				sessionStorage.cityEndList=JSON.stringify(data.end);
+
+				console.log('cityStartList:');
+				console.log(sessionStorage.cityStartList);
+				console.log('cityEndList:');
+				console.log(sessionStorage.cityEndList);
+
+				sessionStorage.currentCityStartCount=data.start.length;
+				console.log('currentCityStartCount:');
+				console.log(sessionStorage.currentCityStartCount);
+				sessionStorage.currentCityEndCount=data.end.length;
+				console.log('currentCityEndCount');
+				console.log(sessionStorage.currentCityEndCount);
+
+				for (var i = 0; i < data.start.length; i++) {
+					var currentAreaStart=data.start[i];
+					
+					var cityStartId=i;
+
+					var id="city_start_"+cityStartId;
+
+					var currentId=currentAreaStart.reid;
+
+					var html='';
+					html+='<div id="'+id+'" class="city_area city_start_area_form">';
+					html+='<select onchange="changeProvinceInDatabase(this,1,this.value,'+cityStartId+','+currentId+')" style="margin-bottom:10px" class="form-control prov"></select>';
+					html+='<select onchange="changeCityInDatabase(this,1,this.value,'+cityStartId+','+currentId+')" style="margin-bottom:10px" class="form-control city" disabled="disabled"></select>';							
+					html+='<select onchange="changeDistrictInDatabase(this,1,this.value,'+cityStartId+','+currentId+')" style="margin-bottom:10px" class="form-control dist" disabled="disabled"></select>';
+					html+='<input style="margin-bottom:10px" type="number" value="'+currentAreaStart.price+'" onchange="changePriceInDatabase(this,1,this.value,'+cityStartId+','+currentId+')" class="form-control" value="0" placehoder="请输入价格"><a onclick="removeThisCityInDatabase(this,'+cityStartId+')" class="btn btn-sm btn-danger">删除此城市</a></div>';
+
+					$('#city_start_area').append(html);
+
+					$('#'+id).citySelect({
+						required:false,
+						nodata:"none",
+						prov:currentAreaStart.province,
+					    city:currentAreaStart.city,
+					    dist:currentAreaStart.district
+					});
+
+				}
+
+				// console.log(data.end);
+
+				for (var i = 0; i < data.end.length; i++) {
+					var currentAreaEnd=data.end[i];
+
+					var cityEndId=i;
+
+					var id="city_end_"+cityEndId;
+					var html='';
+
+					html+='<div style="border-bottom:1px solid rgb(204,204,204);padding-bottom:15px;margin-bottom:15px;"><select onchange="changeAreaEndInDatabase(this,this.value,'+cityEndId+')" class="form-control">';
+					var option=$('#area_end_area').find('option');
+					for (var j = 0; j < option.length; j++) {
+						var currentOption=option[j];
+						var value=$(currentOption).attr('value');
+						var selected='';
+						if(currentAreaEnd.endid==value){
+							selected='selected';
+						}
+						html+='<option '+selected+' value="'+value+'">'+$(currentOption).html()+'</option>';
+					}
+					html+='</select>';
+					html+='<a style="margin-top:15px" onclick="removeThisEndCityInDatabase(this,'+cityEndId+')" class="btn btn-sm btn-danger">删除此目的地城市</a>';
+					html+='</div>';
+
+					$('#city_end_area').append(html);
+
+				};
+
+				//////////////////////////////出发地起始地////////////////////////////
 
 				//******************************************************
 
@@ -187,19 +267,25 @@ angular.module('sbAdminApp')
 				sessionStorage.adult_sell=$scope.adult_sell;
 				sessionStorage.child_sell=$scope.child_sell;
 				sessionStorage.old_sell=$scope.old_sell;
+				sessionStorage.sell_id=price[2].id;
 
 				sessionStorage.adult_basic=$scope.adult_basic;
 				sessionStorage.child_basic=$scope.child_basic;
 				sessionStorage.old_basic=$scope.old_basic;
+				sessionStorage.basic_id=price[0].id;
 
 				sessionStorage.adult_market=$scope.adult_market;
 				sessionStorage.child_market=$scope.child_market;
 				sessionStorage.old_market=$scope.old_market;
+				sessionStorage.market_id=price[1].id;
 
 				//******************************************************
 
 				$scope.category=data.category;
 				$scope.img=data.img;
+
+				var scopeImg=$scope.img.indexOf('http://')!=-1?$scope.img:'http://'+$scope.img;
+
 				$scope.isapproved=data.isapproved;
 				$scope.attr=data.attr;
 				$scope.num_rest=Math.ceil(data.num_rest);
@@ -370,19 +456,21 @@ angular.module('sbAdminApp')
 			console.log('currentDay is defined');
 			console.log('after {}');
 			console.log($scope.dayPlanList);
-			$scope.dayPlanList[$scope.currentDay].food={
-				"早":$scope.plan_food_breakfast==undefined?'0':$scope.plan_food_breakfast,
-				"中":$scope.plan_food_lunch==undefined?'0':$scope.plan_food_lunch,
-				"晚":$scope.plan_food_dinner==undefined?'0':$scope.plan_food_dinner
-			};
+			if(typeof $scope.dayPlanList[$scope.currentDay].food=='undefined'){
+				$scope.dayPlanList[$scope.currentDay].food={
+					"早":$scope.plan_food_breakfast==undefined?'0':$scope.plan_food_breakfast,
+					"中":$scope.plan_food_lunch==undefined?'0':$scope.plan_food_lunch,
+					"晚":$scope.plan_food_dinner==undefined?'0':$scope.plan_food_dinner
+				};
+			}
 		}
 
 		$scope.dayPlanList[$scope.currentDay].day=$scope.plan_day;
 
 		$scope.plan_title=$scope.dayPlanList[$scope.currentDay].title;
-		$scope.plan_food_breakfast=$scope.dayPlanList[$scope.currentDay]['早'];
-		$scope.plan_food_lunch=$scope.dayPlanList[$scope.currentDay]['中'];
-		$scope.plan_food_dinner=$scope.dayPlanList[$scope.currentDay]['晚'];
+		$scope.plan_food_breakfast=$scope.dayPlanList[$scope.currentDay].food['早'];
+		$scope.plan_food_lunch=$scope.dayPlanList[$scope.currentDay].food['中'];
+		$scope.plan_food_dinner=$scope.dayPlanList[$scope.currentDay].food['晚'];
 		$scope.plan_room=$scope.dayPlanList[$scope.currentDay].room;
 		$scope.plan_description=$scope.dayPlanList[$scope.currentDay].description;
 
@@ -414,10 +502,47 @@ angular.module('sbAdminApp')
 	};
 
 	$scope.changePlanDays=function(){
-		for (var i = 1; i <= $scope.trip_days; i++) {
-			console.log(i);
-			$scope.plan_day_datas.push(i);
-		};
+		var currentPlanDays=$scope.plan_day_datas.length;
+
+		var inputPlanDays=$scope.trip_days;
+
+		console.log('input plan days='+inputPlanDays);
+		console.log('current plan days='+currentPlanDays);
+
+		if($scope.plan_day_datas.length==0){
+			console.log('scope.plan_day_datas=0');
+			for (var i = 1; i <= $scope.trip_days; i++) {
+				console.log(i);
+				$scope.plan_day_datas.push(i);
+			};
+		}else{
+			console.log('scope.plan_day_datas!=0');
+			if(inputPlanDays!=''){
+				if(currentPlanDays<inputPlanDays){
+					//继续push(当前数量-当前输入数量)个元素
+					console.log('<');
+					console.log('currentPlanDays-inputPlanDays='+(inputPlanDays-currentPlanDays));
+					for(var i=currentPlanDays+1;i<=inputPlanDays;i++){
+						console.log('push i='+i);
+						$scope.plan_day_datas.push(i);
+					}
+				}else{
+					if(currentPlanDays>inputPlanDays){
+						//删除(当前数量-当前输入数量)个元素
+						console.log('>');
+						for(var i=0;i<(currentPlanDays-inputPlanDays);i++){
+							$scope.plan_day_datas.pop();
+							$scope.dayPlanList.pop();
+							$scope.plan_title='';
+						  	$scope.plan_food='';
+						  	$scope.plan_room='';
+						  	$scope.plan_description='';
+							console.log($scope.dayPlanList);
+						}
+					}
+				}
+			}
+		}
 	};
 
 	//**********************************************************************************
@@ -494,6 +619,18 @@ angular.module('sbAdminApp')
 
 		console.log("==============================");
 
+		var scopeImg=$scope.img.indexOf('http://')!=-1?$scope.img:'http://'+$scope.img;
+
+		if(sessionStorage.cityStartList!=''){
+			$scope.area_start=JSON.parse(sessionStorage.cityStartList);
+			console.log($scope.area_start);
+		}
+
+		if(sessionStorage.cityEndList!=''){
+			$scope.area_end=JSON.parse(sessionStorage.cityEndList);
+			console.log($scope.area_end);
+		}
+
 		if(sessionStorage.tripDateList!=''){
 			var tripDateJSON=JSON.parse(sessionStorage.tripDateList);
 		}else{
@@ -528,7 +665,7 @@ angular.module('sbAdminApp')
 				}
 			],
 			"category":$scope.category,
-			"img":"http://"+$scope.img,
+			"img":scopeImg,
 			"isapproved":$scope.isapproved,
 			"attr":$scope.attr,
 			"num_rest":$scope.num_rest,
@@ -540,7 +677,7 @@ angular.module('sbAdminApp')
 				$scope.dayPlanList
 			],
 			"num_limit":$scope.num_limit,
-			"share_score":$scope.share_score,
+			// "share_score":$scope.share_score,
 			"content":$scope.content,
 			"contract_add":$scope.contract_add,
 			"mustknow":$scope.mustknow,
@@ -554,14 +691,18 @@ angular.module('sbAdminApp')
 
 		if(localStorage.currentRoutePid!='false'){
 			TravelProducts.update($scope,data,function(){
-				$('.routesListNewCls').modal('toggle');
 				sessionStorage.fee_included='';
 				sessionStorage.fee_notincluded='';
 				sessionStorage.constract_plus='';
 				sessionStorage.notice_reserve='';
 				sessionStorage.tips='';
 				sessionStorage.feature_introduction='';
-				location.reload();
+				console.log(data);
+				if(data.status!='1'){
+					// console.log(data);
+				}else{
+					$('.routesListNewCls').modal('toggle');				
+				}
 			});
 		}else{
 			TravelProducts.add($scope,data,function(){

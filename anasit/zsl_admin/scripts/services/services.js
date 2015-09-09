@@ -922,7 +922,7 @@ angular.module('sbAdminApp')
 
 })
 
-.factory('TravelProducts',function($q,$http,BASE_URL){
+.factory('TravelProducts',function($q,$http,BASE_URL,User){
 
 	return {
 
@@ -1015,8 +1015,11 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.allTravelRoutes=data;
-				if(status==="0"){
+				if(data.status==="0"){
 					alert(data.message);
+					if(data.message=='没有权限'){
+						User.logout();
+					}
 				}
 				callback(data);
 			}).catch(function(reason){

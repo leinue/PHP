@@ -60,6 +60,8 @@ angular.module('sbAdminApp')
 		}
 	});
 
+	// $('.routesListNewCls').modal({backdrop: 'static', keyboard: false});
+
 })
 
 .controller('RouteListNew',function($scope,$location,User,TravelProducts,TravelProductsCategory,RouteStart,RouteEnd,TravelProductsAttr,TravelProductsConstract){
@@ -70,6 +72,8 @@ angular.module('sbAdminApp')
 	$scope.dayPlanList=[];
 	$scope.currentDay;
 	$scope.plan_day_datas=[];
+
+	$scope.prevPlanDays=0;
 
 	$('.routesListNewCls').on('show.bs.modal', function () {
 		if(localStorage.currentRoutePid!='false'){
@@ -224,19 +228,28 @@ angular.module('sbAdminApp')
 				console.log('currentDay is undefined');
 				$scope.dayPlanList[$scope.currentDay]={};
 			}
-			$scope.dayPlanList[$scope.currentDay].food={
-				"早":$scope.plan_food_breakfast==undefined?'0':$scope.plan_food_breakfast,
-				"中":$scope.plan_food_lunch==undefined?'0':$scope.plan_food_lunch,
-				"晚":$scope.plan_food_dinner==undefined?'0':$scope.plan_food_dinner
-			};
+
+			console.log($scope.dayPlanList[$scope.currentDay]);
+			console.log($scope.plan_food_breakfast);
+
+			if(typeof $scope.dayPlanList[$scope.currentDay].food=='undefined'){
+				$scope.dayPlanList[$scope.currentDay].food={
+					"早":$scope.plan_food_breakfast==undefined?'0':$scope.plan_food_breakfast,
+					"中":$scope.plan_food_lunch==undefined?'0':$scope.plan_food_lunch,
+					"晚":$scope.plan_food_dinner==undefined?'0':$scope.plan_food_dinner
+				};
+			}
+			
 		}
 
 		$scope.dayPlanList[$scope.currentDay].day=$scope.plan_day;
 
+		console.log($scope.dayPlanList[$scope.currentDay]);
+
 		$scope.plan_title=$scope.dayPlanList[$scope.currentDay].title;
-		$scope.plan_food_breakfast=$scope.dayPlanList[$scope.currentDay]['早'];
-		$scope.plan_food_lunch=$scope.dayPlanList[$scope.currentDay]['中'];
-		$scope.plan_food_dinner=$scope.dayPlanList[$scope.currentDay]['晚'];
+		$scope.plan_food_breakfast=$scope.dayPlanList[$scope.currentDay].food['早'];
+		$scope.plan_food_lunch=$scope.dayPlanList[$scope.currentDay].food['中'];
+		$scope.plan_food_dinner=$scope.dayPlanList[$scope.currentDay].food['晚'];
 		$scope.plan_room=$scope.dayPlanList[$scope.currentDay].room;
 		$scope.plan_description=$scope.dayPlanList[$scope.currentDay].description;
 
@@ -268,10 +281,48 @@ angular.module('sbAdminApp')
 	};
 
 	$scope.changePlanDays=function(){
-		for (var i = 1; i <= $scope.trip_days; i++) {
-			console.log(i);
-			$scope.plan_day_datas.push(i);
-		};
+		var currentPlanDays=$scope.plan_day_datas.length;
+
+		var inputPlanDays=$scope.trip_days;
+
+		console.log('input plan days='+inputPlanDays);
+		console.log('current plan days='+currentPlanDays);
+
+		if($scope.plan_day_datas.length==0){
+			console.log('scope.plan_day_datas=0');
+			for (var i = 1; i <= $scope.trip_days; i++) {
+				console.log(i);
+				$scope.plan_day_datas.push(i);
+			};
+		}else{
+			console.log('scope.plan_day_datas!=0');
+			if(inputPlanDays!=''){
+				if(currentPlanDays<inputPlanDays){
+					//继续push(当前数量-当前输入数量)个元素
+					console.log('<');
+					console.log('currentPlanDays-inputPlanDays='+(inputPlanDays-currentPlanDays));
+					for(var i=currentPlanDays+1;i<=inputPlanDays;i++){
+						console.log('push i='+i);
+						$scope.plan_day_datas.push(i);
+					}
+				}else{
+					if(currentPlanDays>inputPlanDays){
+						//删除(当前数量-当前输入数量)个元素
+						console.log('>');
+						for(var i=0;i<(currentPlanDays-inputPlanDays);i++){
+							$scope.plan_day_datas.pop();
+							$scope.dayPlanList.pop();
+							$scope.plan_title='';
+						  	$scope.plan_food='';
+						  	$scope.plan_room='';
+						  	$scope.plan_description='';
+							console.log($scope.dayPlanList);
+						}
+					}
+				}
+			}
+		}
+
 	};
 
 	$scope.addProduct=function(){
@@ -334,19 +385,19 @@ angular.module('sbAdminApp')
 			"area_end":$scope.area_end,
 			"price":[
 				{
-					"adult":$scope.adult_sell,
-					"child":$scope.child_sell,
-					"old":$scope.old_sell,
-					"type":2
-				},{
+					"old":$scope.old_basic,
 					"adult":$scope.adult_basic,
 					"child":$scope.child_basic,
-					"old":$scope.old_basic,
 					"type":1
 				},{
+					"old":$scope.old_sell,
+					"adult":$scope.adult_sell,
+					"child":$scope.child_sell,
+					"type":2
+				},{
+					"old":$scope.old_market,
 					"adult":$scope.adult_market,
-					"child":$scope.adult_market,
-					"old":$scope.adult_market,
+					"child":$scope.child_market,
 					"type":3
 				}
 			],

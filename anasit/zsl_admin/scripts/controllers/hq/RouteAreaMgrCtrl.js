@@ -89,7 +89,7 @@ angular.module('sbAdminApp')
 
 	$scope.confirmToAddRouteStart=function(){
 		console.log($scope.addRoute.title);
-		RouteStart.add($scope,$scope.addRoute.title,0,function(){
+		RouteStart.add($scope,$scope.addRoute.title,$scope.addRoute.orderindex,function(){
 			RouteStart.getAll($scope,function(){});
 		});
 		$scope.addAfter();
@@ -119,7 +119,7 @@ angular.module('sbAdminApp')
 	};
 
 	$scope.confirmToAddRouteEnd=function(){
-		RouteEnd.add($scope,$scope.addRoute.title,0,function(data){
+		RouteEnd.add($scope,$scope.addRoute.title,$scope.addRoute.orderindex,function(data){
 			RouteEnd.getAll($scope,function(){});
 		});
 		$scope.addAfter();

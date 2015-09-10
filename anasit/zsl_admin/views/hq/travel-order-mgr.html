@@ -4,6 +4,66 @@
 			<h1 class="page-header">旅游订单管理</h1>
 		</div>
 		<!-- /.col-lg-12 -->
+		<div class="col-md-12">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>订单号</th>
+						<th>消费者</th>
+						<th>保险号</th>
+						<th>产品号</th>
+						<th>支付类型</th>
+						<th>旅游状态</th>
+						<th>支付状态</th>
+						<th>总价</th>
+						<th>老人数</th>
+						<th>成人数</th>
+						<th>儿童数</th>
+						<th>订单价</th>
+						<th>备注</th>
+						<th>分公司名</th>
+						<th>邀请人名</th>
+						<th>添加人</th>
+						<th>添加人手机</th>
+						<th>出发地id</th>
+						<th>状态</th>
+						<th colspan="2">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="x in allTravelOrder.data">
+					<td>{{x.orderid}}</td>
+					<td>{{x.consumeid}}</td>
+					<td>{{x.insureid}}</td>
+					<td>{{x.productid}}</td>
+					<td>{{x.paytype}}</td>
+					<td>{{x.travelstatus}}</td>
+					<td>{{x.paystatus}}</td>
+					<td>{{x.totalcost}}</td>
+					<td>{{x.oldnum}}</td>
+					<td>{{x.adultnum}}</td>
+					<td>{{x.childnum}}</td>
+					<td>{{x.orderprice}}</td>
+					<td>{{x.remark}}</td>
+					<td>{{x.branchid}}</td>
+					<td>{{x.inviteid}}</td>
+					<td>{{x.addcname}}</td>
+					<td>{{x.addctele}}</td>
+					<td>{{x.startid}}</td>
+					<td>{{x.status}}</td>
+					<button class="btn btn-outline btn-link" ng-click="editorder()">编辑</button>
+					<button class="btn btn-outline btn-link" ng-click="delorder()">删除</button>
+					</tr>
+				</tbody>
+			</table>
+
+			<nav style="background:rgb(255,255,255)!important">
+			  <ul class="pager">
+			    <li ng-click="loadPrevPage()"><a href="javascript:void(0)"><span aria-hidden="true">&larr;</span> 上一页</a></li>
+			    <li ng-click="loadNextPage()"><a href="javascript:void(0)">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+			  </ul>
+			</nav>
+		</div>
 	</div>
 	<!-- /.row -->
 </div>

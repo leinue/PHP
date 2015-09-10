@@ -1152,4 +1152,57 @@ angular.module('sbAdminApp')
 
 	};
 
+})
+
+.factory('TravelOrder',function($q,$http,BASE_URL,User){
+
+	return {
+
+		getAll:function($scope,page,callback){
+
+			var d=$q.defer();
+			var promise=d.promise;
+
+			var myurl=page==''?BASE_URL.url+'/Travel/Order/getAll':BASE_URL.url+'/Travel/Order/getAll?page='+page;
+			
+			$http({
+				method:"get",
+				url:myurl
+			}).success(function(data){
+				console.log(data);
+				$scope.allOrders=data;
+				callback(data);
+			}).catch(function(reason){
+				$q.reject(reason);
+			});
+
+		},
+
+		update:function(){},
+
+		getOne:function($scope,uid,callback){
+
+			var d=$q.defer();
+			var promise=d.promise;
+
+			console.log(uid);
+
+			if(uid==null){
+				alert('缺少参数');
+				return false;
+			}			
+			
+			$http({
+				method:"get",
+				url:BASE_URL.url+'/Travel/Order/getOne?uid='+uid
+			}).success(function(data){
+				console.log(data);
+				$scope.userOrdersList=data;
+				callback(data);
+			}).catch(function(reason){
+				$q.reject(reason);
+			});
+
+		}
+	};
 });

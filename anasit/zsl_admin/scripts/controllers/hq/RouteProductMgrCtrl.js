@@ -134,7 +134,7 @@ angular.module('sbAdminApp')
 		$scope.isAdd=false;
 		$scope.inputExists.id=i;
 		$scope.inputExists.title=t;
-		$scope.inputExists.orderindex=o;
+		$scope.inputExists.orderindex=Math.ceil(o);
 		SEedit_contract_description.html(d);
 	};
 
@@ -170,7 +170,7 @@ angular.module('sbAdminApp')
 
 	$scope.inputExists={
 		title:'',
-		order:'',
+		orderindex:'',
 		id:''
 	};
 
@@ -213,7 +213,7 @@ angular.module('sbAdminApp')
 		$scope.isAdd=false;
 		$scope.inputExists.id=i;
 		$scope.inputExists.title=t;
-		$scope.inputExists.orderindex=o;
+		$scope.inputExists.orderindex=Math.ceil(o);
 	};
 
 	$scope.confirmToEditItem=function(){
@@ -312,7 +312,7 @@ angular.module('sbAdminApp')
 		$scope.isAdd=false;
 		$scope.inputExists.id=i;
 		$scope.inputExists.title=t;
-		$scope.inputExists.orderindex=o;
+		$scope.inputExists.orderindex=Math.ceil(o);
 		SEedit_insure_description.html(d);
 	};
 
@@ -348,7 +348,7 @@ angular.module('sbAdminApp')
 
 	$scope.inputExists={
 		title:'',
-		order:'',
+		orderindex:'',
 		id:''
 	};
 
@@ -391,7 +391,7 @@ angular.module('sbAdminApp')
 		$scope.isAdd=false;
 		$scope.inputExists.id=i;
 		$scope.inputExists.title=t;
-		$scope.inputExists.orderindex=o;
+		$scope.inputExists.orderindex=Math.ceil(o);
 	};
 
 	$scope.confirmToEditItem=function(){

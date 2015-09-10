@@ -447,6 +447,10 @@ angular.module('sbAdminApp')
 					sessionStorage.feature_introduction='';
 					sessionStorage.tripDateList='';
 				}
+
+				if(data.message.indexOf('成功')!=-1){
+					$('.routesListNewCls').modal('toggle');
+				}
 				
 			});
 		}

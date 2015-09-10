@@ -4,6 +4,65 @@
 			<h1 class="page-header">旅游订单管理</h1>
 		</div>
 		<!-- /.col-lg-12 -->
+		<div class="col-md-12">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>订单号</th>
+						<th>消费者</th>
+						<th>保险名</th>
+						<th>产品名</th>
+						<th>支付类型</th>
+						<th>旅游状态</th>
+						<th>支付状态</th>
+						<th>总价</th>
+<!-- 						<th>老人数</th>
+						<th>成人数</th>
+						<th>儿童数</th>
+						<th>订单价</th>
+ -->						<th>备注</th>
+						<!-- <th>分公司名</th> -->
+<!-- 						<th>邀请人名</th>
+						<th>添加人</th>
+						<th>添加人手机</th>
+ -->						<!--<th>出发地</th>-->
+						<th>状态</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="x in userOrdersList.data">
+					<td>{{x.orderid | nullToVisual}}</td>
+					<td uid="{{x.consumeid}}">{{x.consume_name | nullToVisual}}</td>
+					<td>{{x.insure_title | nullToVisual}}</td>
+					<td>{{x.product_title | nullToVisual}}</td>
+					<td>{{x.paytype | nullToVisual}}</td>
+					<td>{{x.travelstatus | nullToVisual}}</td>
+					<td>{{x.paystatus | nullToVisual}}</td>
+					<td>{{x.totalcost | nullToVisual}}</td>
+<!-- 					<td>{{x.oldnum | nullToVisual}}</td>
+					<td>{{x.adultnum | nullToVisual}}</td>
+					<td>{{x.childnum | nullToVisual}}</td>
+					<td>{{x.orderprice | nullToVisual}}</td>
+ -->					<td>{{x.remark | nullToVisual}}</td>
+					<!-- <td>{{x.branchid | nullToVisual}}</td> -->
+<!-- 					<td>{{x.inviteid | nullToVisual}}</td>
+					<td>{{x.addcname | nullToVisual}}</td>
+					<td>{{x.addctele | nullToVisual}}</td> -->
+					<!--<td>{{x.start_title.province}},{{x.start_title.district}},{{x.start_title.city}}</td>-->
+					<td>{{x.status | nullToVisual}}</td>
+					<td><a class="btn btn-default">详细</a></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<nav style="background:rgb(255,255,255)!important">
+			  <ul class="pager">
+			    <li ng-click="loadPrevPage()"><a href="javascript:void(0)"><span aria-hidden="true">&larr;</span> 上一页</a></li>
+			    <li ng-click="loadNextPage()"><a href="javascript:void(0)">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+			  </ul>
+			</nav>
+		</div>
 	</div>
 	<!-- /.row -->
 </div>

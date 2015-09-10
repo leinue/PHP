@@ -4,55 +4,99 @@
 			<h1 class="page-header">旅游订单管理</h1>
 		</div>
 		<!-- /.col-lg-12 -->
+	
+		<div class="modal fade edit-orders" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+				   	<div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="gridSystemModalLabel">查看详细信息</h4>
+				    </div>
+				    <div class="modal-body">
+						<div class="row">
+							<div class="col-md-6">
+								<ul class="list-group">
+								  <li class="list-group-item list-group-item-success">订单ID:{{singleOrderList.orderid | nullToVisual}}</li>
+								  <li class="list-group-item list-group-item-danger">产品名:{{singleOrderList.product_title | nullToVisual}}</li>
+								  <li class="list-group-item list-group-item-info">下单人:{{singleOrderList.consume_name | nullToVisual}}</li>
+								  <li class="list-group-item list-group-item-warning">保险名:{{singleOrderList.insure_title | nullToVisual}}</li>
+								  <li class="list-group-item list-group-item-danger">产品名:{{singleOrderList.product_title | nullToVisual}}</li>
+								  <li class="list-group-item list-group-item-success">老人数:{{singleOrderList.oldnum | nullToVisual}}</li>
+								  <li class="list-group-item list-group-item-info">儿童数:{{singleOrderList.childnum | nullToVisual}}</li>
+								  <li class="list-group-item list-group-item-warning">成人数:{{singleOrderList.adultnum | nullToVisual}}</li>
+								</ul>
+							</div>
+
+							<div class="col-md-6">
+								<ul class="list-group">
+								  <li class="list-group-item list-group-item-success">支付类型:{{singleOrderList.paytype | nullToVisual}}</li>
+								  <li class="list-group-item list-group-item-info">旅行状态:{{singleOrderList.travelstatus | nullToVisual}}</li>
+								  <li class="list-group-item list-group-item-warning">支付状态:{{singleOrderList.paystatus | nullToVisual}}</li>
+								  <li class="list-group-item list-group-item-danger">总花费:{{singleOrderList.totalcost | nullToVisual}}</li>
+								  <li class="list-group-item list-group-item-success">旅行日期:{{singleOrderList.tripdate | nullToVisual}}</li>
+								  <li class="list-group-item list-group-item-info">状态:{{singleOrderList.status | nullToVisual}}</li>
+								  <li class="list-group-item list-group-item-warning">出发城市:{{singleOrderList.start_title.province | nullToVisual}},{{singleOrderList.start_title.city | nullToVisual}},{{singleOrderList.start_title.district | nullToVisual}}</li>
+								</ul>
+							</div>
+						</div>
+				    </div>
+				    <div class="modal-footer">
+				        <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">关闭</button>
+				    </div>
+				</div>
+			</div>
+		</div>
+
 		<div class="col-md-12">
 			<table class="table table-hover">
 				<thead>
 					<tr>
 						<th>订单号</th>
 						<th>消费者</th>
-						<th>保险号</th>
-						<th>产品号</th>
+						<th>保险名</th>
+						<th>产品名</th>
 						<th>支付类型</th>
 						<th>旅游状态</th>
 						<th>支付状态</th>
 						<th>总价</th>
-						<th>老人数</th>
+<!-- 						<th>老人数</th>
 						<th>成人数</th>
 						<th>儿童数</th>
 						<th>订单价</th>
-						<th>备注</th>
-						<th>分公司名</th>
-						<th>邀请人名</th>
+ -->						<th>备注</th>
+						<!-- <th>分公司名</th> -->
+<!-- 						<th>邀请人名</th>
 						<th>添加人</th>
 						<th>添加人手机</th>
-						<th>出发地id</th>
+ -->						<!--<th>出发地</th>-->
 						<th>状态</th>
-						<th colspan="2">操作</th>
+						<th>操作</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="x in allTravelOrder.data">
-					<td>{{x.orderid}}</td>
-					<td>{{x.consumeid}}</td>
-					<td>{{x.insureid}}</td>
-					<td>{{x.productid}}</td>
-					<td>{{x.paytype}}</td>
-					<td>{{x.travelstatus}}</td>
-					<td>{{x.paystatus}}</td>
-					<td>{{x.totalcost}}</td>
-					<td>{{x.oldnum}}</td>
-					<td>{{x.adultnum}}</td>
-					<td>{{x.childnum}}</td>
-					<td>{{x.orderprice}}</td>
-					<td>{{x.remark}}</td>
-					<td>{{x.branchid}}</td>
-					<td>{{x.inviteid}}</td>
-					<td>{{x.addcname}}</td>
-					<td>{{x.addctele}}</td>
-					<td>{{x.startid}}</td>
-					<td>{{x.status}}</td>
-					<button class="btn btn-outline btn-link" ng-click="editorder()">编辑</button>
-					<button class="btn btn-outline btn-link" ng-click="delorder()">删除</button>
+					<tr ng-repeat="x in allOrders">
+					<td>{{x.orderid | nullToVisual}}</td>
+					<td uid="{{x.consumeid}}">{{x.consume_name | nullToVisual}}</td>
+					<td>{{x.insure_title | nullToVisual}}</td>
+					<td>{{x.product_title | nullToVisual}}</td>
+					<td>{{x.paytype | nullToVisual}}</td>
+					<td>{{x.travelstatus | nullToVisual}}</td>
+					<td>{{x.paystatus | nullToVisual}}</td>
+					<td>{{x.totalcost | nullToVisual}}</td>
+<!-- 					<td>{{x.oldnum | nullToVisual}}</td>
+					<td>{{x.adultnum | nullToVisual}}</td>
+					<td>{{x.childnum | nullToVisual}}</td>
+					<td>{{x.orderprice | nullToVisual}}</td>
+ -->					<td>{{x.remark | nullToVisual}}</td>
+					<!-- <td>{{x.branchid | nullToVisual}}</td> -->
+<!-- 					<td>{{x.inviteid | nullToVisual}}</td>
+					<td>{{x.addcname | nullToVisual}}</td>
+					<td>{{x.addctele | nullToVisual}}</td> -->
+					<!--<td>{{x.start_title.province}},{{x.start_title.district}},{{x.start_title.city}}</td>-->
+					<td>{{x.status | nullToVisual}}</td>
+					<td>
+						<button class="btn btn-outline btn-link" ng-click="editorder(x.orderid)">详细</button>
+					</td>
 					</tr>
 				</tbody>
 			</table>

@@ -1185,8 +1185,6 @@ angular.module('sbAdminApp')
 			var d=$q.defer();
 			var promise=d.promise;
 
-			console.log(uid);
-
 			if(uid==null){
 				alert('缺少参数');
 				return false;
@@ -1198,11 +1196,39 @@ angular.module('sbAdminApp')
 			}).success(function(data){
 				console.log(data);
 				$scope.userOrdersList=data;
+				if(data.status=='0'){
+					alert('没有数据或查询失败');
+				}
 				callback(data);
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
 
+		},
+
+		getByOrderid:function($scope,orderid,callback){
+
+			var d=$q.defer();
+			var promise=d.promise;
+
+			if(orderid==null){
+				alert('缺少参数');
+				return false;
+			}			
+			
+			$http({
+				method:"get",
+				url:BASE_URL.url+'/Travel/Order/getByOrderid?orderid='+orderid
+			}).success(function(data){
+				console.log(data);
+				$scope.singleOrderList=data[0];
+				if(typeof data.status!='undefined' && data.status=='0'){
+					alert('没有数据或查询失败');
+				}
+				callback(data);
+			}).catch(function(reason){
+				$q.reject(reason);
+			});
 		}
 	};
 });

@@ -17,11 +17,11 @@ angular.module('sbAdminApp')
 		TravelOrder.getAll($scope,$scope.page,function(data){});
 	};
 
-	$scope.editorder=function(){
-
+	$scope.editorder=function(orderid){
+		$('.edit-orders').modal('toggle');
+		TravelOrder.getByOrderid($scope,orderid,function(data){
+			//singleOrderList
+		});
 	};
 
-	$scope.delorder=function(){
-
-	};
 });

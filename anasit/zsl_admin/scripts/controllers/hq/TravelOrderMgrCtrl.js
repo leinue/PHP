@@ -22,6 +22,27 @@ angular.module('sbAdminApp')
 		TravelOrder.getByOrderid($scope,orderid,function(data){
 			//singleOrderList
 		});
+		$scope.isShow1=true;
+		$scope.isShow2=false;
+	};
+
+	$scope.startEdit=function(){
+		$scope.isShow1=false;
+		$scope.isShow2=true;
+	};
+
+	$scope.cancelEdit=function(){
+		$scope.isShow1=true;
+		$scope.isShow2=false;
+	};
+
+	$scope.comfirmEdit=function(){
+		$scope.singleOrderList.oldnum=$scope.newoldnum;
+		$scope.singleOrderList.adultnum=$scope.newadultnum;
+		$scope.singleOrderList.childnum=$scope.newchildnum;
+		$scope.singleOrderList.remark=$scope.remark;
+
+		TravelOrder.update();
 	};
 
 });

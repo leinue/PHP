@@ -16,27 +16,70 @@
 						<div class="row">
 							<div class="col-md-6">
 								<ul class="list-group">
-								  <li class="list-group-item list-group-item-success">订单ID:{{singleOrderList.orderid | nullToVisual}}</li>
-								  <li class="list-group-item list-group-item-danger">产品名:{{singleOrderList.product_title | nullToVisual}}</li>
-								  <li class="list-group-item list-group-item-info">下单人:{{singleOrderList.consume_name | nullToVisual}}</li>
-								  <li class="list-group-item list-group-item-warning">保险名:{{singleOrderList.insure_title | nullToVisual}}</li>
-								  <li class="list-group-item list-group-item-danger">产品名:{{singleOrderList.product_title | nullToVisual}}</li>
-								  <li class="list-group-item list-group-item-success">老人数:{{singleOrderList.oldnum | nullToVisual}}</li>
-								  <li class="list-group-item list-group-item-info">儿童数:{{singleOrderList.childnum | nullToVisual}}</li>
-								  <li class="list-group-item list-group-item-warning">成人数:{{singleOrderList.adultnum | nullToVisual}}</li>
+								  <li class="list-group-item">
+								  订单ID:{{singleOrderList.orderid | nullToVisual}}</li>
+								  <li class="list-group-item">
+								  产品名:{{singleOrderList.product_title | nullToVisual}}</li>
+								  <li class="list-group-item">
+								  下单人:{{singleOrderList.consume_name | nullToVisual}}</li>
+								  <li class="list-group-item">
+								  保险名:{{singleOrderList.insure_title | nullToVisual}}</li>
+								  <li class="list-group-item">
+								  产品名:{{singleOrderList.product_title | nullToVisual}}</li>
+								  <li class="list-group-item">
+								  老人数:{{singleOrderList.oldnum | nullToVisual}} 
+								  <input class="pull-right form-control" type="number" ng-show="isShow2" ng-model="newoldnum" placeholder="{{singleOrderList.oldnum | nullToVisual}}" min="0" style="margin-top:-6px; width:160px"></li>
+								  <li class="list-group-item">
+								  成人数:{{singleOrderList.adultnum | nullToVisual}} 
+								  <input class="pull-right form-control" type="number" ng-show="isShow2" ng-model="newadultnum" placeholder="{{singleOrderList.adultnum | nullToVisual}}" min="0" style="margin-top:-6px; width:160px"></li>
+								  <li class="list-group-item">
+								  儿童数:{{singleOrderList.childnum | nullToVisual}} 
+								  <input class="pull-right form-control" type="number" ng-show="isShow2" ng-model="newchildnum" placeholder="{{singleOrderList.childnum | nullToVisual}}" min="0" style="margin-top: -6px; width: 160px"></li>
 								</ul>
 							</div>
 
 							<div class="col-md-6">
 								<ul class="list-group">
-								  <li class="list-group-item list-group-item-success">支付类型:{{singleOrderList.paytype | nullToVisual}}</li>
-								  <li class="list-group-item list-group-item-info">旅行状态:{{singleOrderList.travelstatus | nullToVisual}}</li>
-								  <li class="list-group-item list-group-item-warning">支付状态:{{singleOrderList.paystatus | nullToVisual}}</li>
-								  <li class="list-group-item list-group-item-danger">总花费:{{singleOrderList.totalcost | nullToVisual}}</li>
-								  <li class="list-group-item list-group-item-success">旅行日期:{{singleOrderList.tripdate | nullToVisual}}</li>
-								  <li class="list-group-item list-group-item-info">状态:{{singleOrderList.status | nullToVisual}}</li>
-								  <li class="list-group-item list-group-item-warning">出发城市:{{singleOrderList.start_title.province | nullToVisual}},{{singleOrderList.start_title.city | nullToVisual}},{{singleOrderList.start_title.district | nullToVisual}}</li>
+								  <li class="list-group-item">
+								  支付类型:{{singleOrderList.paytype | nullToVisual}}</li>
+								  <li class="list-group-item">
+								  旅行状态:{{singleOrderList.travelstatus | nullToVisual}}</li>
+								  <li class="list-group-item">
+								  支付状态:{{singleOrderList.paystatus | nullToVisual}}</li>
+								  <li class="list-group-item">
+								  总花费:{{singleOrderList.totalcost | nullToVisual}}</li>
+								  <li class="list-group-item">
+								  旅行日期:{{singleOrderList.tripdate | nullToVisual}}</li>
+								  <li class="list-group-item">
+								  状态:{{singleOrderList.status | nullToVisual}}</li>
+								  <li class="list-group-item">
+								  出发城市:{{singleOrderList.start_title.province | nullToVisual}},{{singleOrderList.start_title.city | nullToVisual}},{{singleOrderList.start_title.district | nullToVisual}}</li>
+								  <li class="list-group-item">
+								  订单价:{{singleOrderList.orderprice | nullToVisual}}</li>
 								</ul>
+							</div>
+						</div>
+						<div style="margin-bottom:25px;">
+							<label>备注</label>
+							<textarea class="form-control" name="remark" id="remark" rows="4" ng-model="remark"></textarea>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<button class="btn btn-primary" ng-show="isShow1" ng-click="startEdit()">
+									修改订单
+								</button>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<button class="btn btn-success" ng-show="isShow2" ng-click="confirmEdit()">
+									确认修改
+								</button>
+							</div>
+							<div class="col-md-4">
+								<button class="btn btn-primary" ng-show="isShow2" ng-click="cancelEdit()">
+									取消
+								</button>
 							</div>
 						</div>
 				    </div>

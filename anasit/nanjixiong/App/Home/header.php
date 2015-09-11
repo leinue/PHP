@@ -43,9 +43,11 @@ function displayAvtive($current,$to){
 	<link href="<?php echo DOMAIN; ?>/Cores/widgets/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
     <script src="<?php echo DOMAIN; ?>/App/Home/js/jquery.js"></script>
     <script type="text/javascript" src="<?php echo DOMAIN; ?>/Cores/widgets/third-party/jquery.min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="<?php echo DOMAIN; ?>/Cores/widgets/umeditor.config.js"></script>
+    <!--<script type="text/javascript" charset="utf-8" src="<?php echo DOMAIN; ?>/Cores/widgets/umeditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="<?php echo DOMAIN; ?>/Cores/widgets/umeditor.min.js"></script>
-    <script type="text/javascript" src="<?php echo DOMAIN; ?>/Cores/widgets/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript" src="<?php echo DOMAIN; ?>/Cores/widgets/lang/zh-cn/zh-cn.js"></script>-->
+    <script type="text/javascript" src="<?php echo DOMAIN; ?>/Cores/widgets/kindeditor/kindeditor-min.js"></script>
+    <script type="text/javascript" src="<?php echo DOMAIN; ?>/Cores/widgets/kindeditor/lang/zh_CN.js"></script>
 </head>
 <body>
 
@@ -76,7 +78,7 @@ function displayAvtive($current,$to){
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand" href="#"><img alt="<?php echo $settingObj->get('site_title'); ?>"  src="<?php echo $settingObj->get('site_logo');  ?>"></a>
+	      <a class="navbar-brand" href="#"><img width="60" height="60" alt="<?php echo $settingObj->get('site_title'); ?>"  src="<?php echo $settingObj->get('site_logo');  ?>"></a>
 	    </div>
 
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

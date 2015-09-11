@@ -394,6 +394,10 @@ function uploadImages($filenameControl){
 
 }
 
+function my_nl2br($s){  
+  return str_replace("\n",'<br>',str_replace("\r",'<br>',str_replace("\r\n",'<br>',$s)));  
+}
+
 function tips($tips){
     return $tips==null?'':'<p class="help-block">'.$tips.'</p>';
 }
@@ -426,20 +430,35 @@ function textarea($name,$name_control,$id,$tips,$value=null){
     $tips=tips($tips);
     $ueid=md5($id);
     // alert($ueid);
+    // return '<div class="form-group">
+    //             <label>'.$name.'</label>
+    //             <!--<textarea style="display:none" class="form-control" placeholder='.$name.' id="'.$id.'" name="'.$name_control.'" value="'.$value.'"></textarea>-->
+    //             '.$tips.'
+    //             <script type="text/plain" id="'.$ueid.'" name="'.$name_control.'" style="width:100%;height:240px;">
+				//     <p>'.$value.'</p>
+				// </script>
+				// <script>
+				// 	var um = UM.getEditor(\''.$ueid.'\');
+				// 	um.addListener(\'onkeyup\',function(){
+				//         alert(\'ddd\');
+				//         console.log("dssdsd	");
+				//     });
+				// </script>
+    //         </div>';
     return '<div class="form-group">
                 <label>'.$name.'</label>
-                <!--<textarea style="display:none" class="form-control" placeholder='.$name.' id="'.$id.'" name="'.$name_control.'" value="'.$value.'"></textarea>-->
+                <textarea id="id_'.$ueid.'" name="'.$name_control.'"></textarea>
                 '.$tips.'
-                <script type="text/plain" id="'.$ueid.'" name="'.$name_control.'" style="width:100%;height:240px;">
-				    <p>'.$value.'</p>
-				</script>
-				<script>
-					var um = UM.getEditor(\''.$ueid.'\');
-					um.addListener(\'onkeyup\',function(){
-				        alert(\'ddd\');
-				        console.log("dssdsd	");
-				    });
-				</script>
+                <script type="text/javascript">
+                    window.KE = KindEditor;
+
+                    window.id_'.$ueid.'=KE.create("#id_'.$ueid.'",{
+                        width : "100%",
+                        height : "240px"
+                    });
+                
+                    window.id_'.$ueid.'.html("'.my_nl2br($value).'");
+                </script>
             </div>';
 }
 
@@ -513,7 +532,22 @@ function generatorItemAddingForm($fieldList,$suffix='_add',$action=null,$fill=fa
                         if($childValue['child']!='second' && $mChoice==='0'){
                             $list.='<option "'.$childValue['caid'].'"> '.$childValue['name'].'</option>';
                         }else{
-                            $list.=' <input name="item_'.$value['name'].'_cata'.$suffix.'[]" value="'.$childValue['caid'].'" type="checkbox"> '.$childValue['name'];
+                            if($fill){
+
+                                $isChecked='';
+                                $items=new Cores\Models\ItemsModel();
+                                $currentItem=$items->selectOne($_GET['iid']);
+
+                                $currentItemCaidList=$currentItem[0]->getCaid();
+
+                                $caidIsExists=stripos($currentItemCaidList,$childValue['caid']);
+
+                                $isChecked=$caidIsExists!=false?'checked':'';
+
+                                $list.=' <input name="item_'.$value['name'].'_cata'.$suffix.'[]" value="'.$childValue['caid'].'" type="checkbox" '.$isChecked.'> '.$childValue['name'];
+                            }else{
+                                $list.=' <input name="item_'.$value['name'].'_cata'.$suffix.'[]" value="'.$childValue['caid'].'" type="checkbox"> '.$childValue['name'];
+                            }
                         }
                     }
                 }
@@ -539,8 +573,6 @@ function generatorItemAddingForm($fieldList,$suffix='_add',$action=null,$fill=fa
 		$itemTitle='';
 		if($fill){
 			$fields=new Cores\Models\FieldsModel();
-			$items=new Cores\Models\ItemsModel();
-			$currentItem=$items->selectOne($_GET['iid']);
 			$itemTitle=$currentItem[0]->getTitle();
 		}
         echo '<div class="form-group">

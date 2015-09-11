@@ -84,6 +84,9 @@
 		                                array_push($rdValueList, $childValue['caid']);
 		                                array_push($rdValueList, $childValue['name']);
 		                            }
+		                            if(is_array($_POST['item_'.$value['name'].'_cata_edit'])){
+	                                    array_push($rdValueList,$_POST['item_'.$value['name'].'_cata_edit']);
+	                                }
 		                        }
 		                    }
 		                    array_push($caidList, $rdValueList);

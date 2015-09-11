@@ -47,13 +47,13 @@
 	                        if(is_array($rdList)){
 	                            foreach ($rdList as $childKey => $childValue) {
 
-	                                if($childValue['child']!='second' && $childValue['name']==$_POST['item_'.$value['name'].'_cata_add']){
+	                                if($childValue['child']!='second' && $childValue['name']==$_POST['item_'.$value['name'].'_cata_publish']){
 	                                    array_push($rdValueList, $childValue['caid']);
 	                                    array_push($rdValueList, $childValue['name']);
 	                                }
 	                                
-	                                if(is_array($_POST['item_'.$value['name'].'_cata_add'])){
-	                                    array_push($rdValueList,$_POST['item_'.$value['name'].'_cata_add']);
+	                                if(is_array($_POST['item_'.$value['name'].'_cata_publish'])){
+	                                    array_push($rdValueList,$_POST['item_'.$value['name'].'_cata_publish']);
 	                                }
 	                            }
 	                        }
@@ -85,7 +85,6 @@
 	                }
 
             	}
-                
 
                 break;
             default:
@@ -94,6 +93,7 @@
     }
 
 ?>
+
 	<div class="row">
 
 	  	<div class="col-md-10 col-md-offset-1">

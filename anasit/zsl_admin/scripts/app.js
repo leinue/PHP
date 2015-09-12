@@ -52,6 +52,17 @@ angular
 
     };
   })
+  .filter('payStatus',function(){
+    return function(i){
+      if(i==='0'){
+        return '未支付';
+      }
+
+      if(i==='1'){
+        return '已支付';
+      }
+    };
+  })
   .filter('StaffMgrStatusToChar',function(){
       return function(i){
           if(i==='0'){

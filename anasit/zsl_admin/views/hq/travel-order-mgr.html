@@ -124,7 +124,7 @@
 					<td>{{x.product_title | nullToVisual}}</td>
 					<td>{{x.paytype | payType}}</td>
 					<td>{{x.travelstatus | nullToVisual}}</td>
-					<td>{{x.paystatus | nullToVisual}}</td>
+					<td>{{x.paystatus | payStatus}}</td>
 					<td>{{x.totalcost | nullToVisual}}</td>
 <!-- 					<td>{{x.oldnum | nullToVisual}}</td>
 					<td>{{x.adultnum | nullToVisual}}</td>
@@ -139,7 +139,7 @@
 					<td>{{x.status | nullToVisual}}</td>
 					<td>
 						<button class="btn btn-outline btn-link" ng-click="editorder(x.orderid)">详细</button>
-						<button class="btn btn-outline btn-link" ng-show="x.paytype==2">确认支付</button>
+						<button class="btn btn-outline btn-link" ng-show="x.paystatus==0 && x.paytype==2" ng-click="confirmOrder(x.orderid)">确认支付</button>
 					</td>
 					</tr>
 				</tbody>

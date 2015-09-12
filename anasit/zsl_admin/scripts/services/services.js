@@ -1206,6 +1206,32 @@ angular.module('sbAdminApp')
 
 		},
 
+		confirmPayment:function($scope,orderid,callback){
+			//confirmPayment
+			var d=$q.defer();
+			var promise=d.promise;
+
+			if(orderid==null){
+				alert('缺少参数');
+				return false;
+			}			
+			
+			$http({
+				method:"post",
+				url:BASE_URL.url+'/Travel/Order/confirmPayment',
+				data:{'orderid':orderid}
+			}).success(function(data){
+				console.log(data);
+				$scope.userOrdersList=data;
+				if(data.status=='0'){
+					alert('没有数据或查询失败');
+				}
+				callback(data);
+			}).catch(function(reason){
+				$q.reject(reason);
+			});
+		},
+
 		getOne:function($scope,uid,callback){
 
 			var d=$q.defer();

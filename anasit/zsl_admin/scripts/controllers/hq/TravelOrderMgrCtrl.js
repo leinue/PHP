@@ -60,10 +60,31 @@ angular.module('sbAdminApp')
 		var orderprice=$scope.new_orderprice;
 		var totalcost=$scope.new_totalcost;
 
+		console.log(orderid,oldnum,adultnum,childnum,modifyrecord,orderprice,totalcost);
+
 		TravelOrder.update($scope,orderid,oldnum,adultnum,childnum,modifyrecord,orderprice,totalcost,function(data){
-			TravelOrder.getByOrderid($scope,orderid,function(data){});
-			$scope.cancelEdit();
+			if(data.status=='1'){
+				alert(data.message);
+				TravelOrder.getByOrderid($scope,orderid,function(data){});
+				$scope.cancelEdit();
+			}else{
+				alert(data.message);
+			}
+			
 		})
+	};
+
+	$scope.confirmOrder=function(orderid){
+		console.log(orderid);
+		TravelOrder.confirmPayment($scope,orderid,function(data){
+			if(data.status=='1'){
+				alert(data.message);
+				TravelOrder.getAll($scope,$scope.page,function(data){});
+			}else{
+				alert(data.message);
+			}
+		});
+
 	};
 
 });

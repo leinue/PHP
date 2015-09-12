@@ -38,6 +38,20 @@ angular
           }
       }
   })
+  .filter('payType',function(){
+    return function(i){
+
+      switch(i){
+        case '1':
+          return '微信支付';
+        case '0':
+          return '未支付';
+        case '2':
+          return '手动支付';
+      }
+
+    };
+  })
   .filter('StaffMgrStatusToChar',function(){
       return function(i){
           if(i==='0'){

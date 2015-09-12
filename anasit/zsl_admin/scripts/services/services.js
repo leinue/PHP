@@ -1178,7 +1178,33 @@ angular.module('sbAdminApp')
 
 		},
 
-		update:function(){},
+		update:function($scope,orderid,oldnum,adultnum,childnum,modifyrecord,orderprice,totalcost,callback){
+
+			var d=$q.defer();
+			var promise=d.promise;
+			
+			$http({
+				method:"post",
+				url:BASE_URL.url+'/Travel/Order/modifyOrder',
+				data:{
+					'uid':localStorage.uid,
+					'orderid':orderid,
+					'oldnum':oldnum,
+					'adultnum':adultnum,
+					'childnum':childnum,
+					'modifyrecord':modifyrecord,
+					'orderprice':orderprice,
+					'totalcost':totalcost
+				}
+			}).success(function(data){
+				console.log(data);
+				$scope.orderModifyResult=data;
+				callback(data);
+			}).catch(function(reason){
+				$q.reject(reason);
+			});
+
+		},
 
 		getOne:function($scope,uid,callback){
 

@@ -28,26 +28,27 @@
 								  产品名:{{singleOrderList.product_title | nullToVisual}}</li>
 								  <li class="list-group-item">
 								  老人数:{{singleOrderList.oldnum | nullToVisual}} 
-								  <input class="pull-right form-control" type="number" ng-show="isShow2" ng-model="newoldnum" placeholder="{{singleOrderList.oldnum | nullToVisual}}" min="0" style="margin-top:-6px; width:160px"></li>
+								  <input class="pull-right form-control" type="number" ng-show="inputIsShow" ng-model="new_oldnum" placeholder="{{singleOrderList.oldnum | nullToVisual}}" min="0" style="margin-top:-6px; width:160px"></li>
 								  <li class="list-group-item">
 								  成人数:{{singleOrderList.adultnum | nullToVisual}} 
-								  <input class="pull-right form-control" type="number" ng-show="isShow2" ng-model="newadultnum" placeholder="{{singleOrderList.adultnum | nullToVisual}}" min="0" style="margin-top:-6px; width:160px"></li>
+								  <input class="pull-right form-control" type="number" ng-show="inputIsShow" ng-model="new_adultnum" placeholder="{{singleOrderList.adultnum | nullToVisual}}" min="0" style="margin-top:-6px; width:160px"></li>
 								  <li class="list-group-item">
 								  儿童数:{{singleOrderList.childnum | nullToVisual}} 
-								  <input class="pull-right form-control" type="number" ng-show="isShow2" ng-model="newchildnum" placeholder="{{singleOrderList.childnum | nullToVisual}}" min="0" style="margin-top: -6px; width: 160px"></li>
+								  <input class="pull-right form-control" type="number" ng-show="inputIsShow" ng-model="new_childnum" placeholder="{{singleOrderList.childnum | nullToVisual}}" min="0" style="margin-top:-6px; width:160px"></li>
 								</ul>
 							</div>
 
 							<div class="col-md-6">
 								<ul class="list-group">
 								  <li class="list-group-item">
-								  支付类型:{{singleOrderList.paytype | nullToVisual}}</li>
+								  支付类型:{{singleOrderList.paytype | payType}}</li>
 								  <li class="list-group-item">
 								  旅行状态:{{singleOrderList.travelstatus | nullToVisual}}</li>
 								  <li class="list-group-item">
 								  支付状态:{{singleOrderList.paystatus | nullToVisual}}</li>
 								  <li class="list-group-item">
-								  总花费:{{singleOrderList.totalcost | nullToVisual}}</li>
+								  总成本:{{singleOrderList.totalcost | nullToVisual}}
+								  <input class="pull-right form-control" type="number" ng-show="inputIsShow" ng-model="new_totalcost" placeholder="{{singleOrderList.totalcost | nullToVisual}}" min="0" style="margin-top: -6px; width: 160px"></li>
 								  <li class="list-group-item">
 								  旅行日期:{{singleOrderList.tripdate | nullToVisual}}</li>
 								  <li class="list-group-item">
@@ -55,29 +56,28 @@
 								  <li class="list-group-item">
 								  出发城市:{{singleOrderList.start_title.province | nullToVisual}},{{singleOrderList.start_title.city | nullToVisual}},{{singleOrderList.start_title.district | nullToVisual}}</li>
 								  <li class="list-group-item">
-								  订单价:{{singleOrderList.orderprice | nullToVisual}}</li>
+								  订单价:{{singleOrderList.orderprice | nullToVisual}}
+								  <input class="pull-right form-control" type="number" ng-show="inputIsShow" ng-model="new_orderprice" placeholder="{{singleOrderList.orderprice | nullToVisual}}" min="0" style="margin-top: -6px; width: 160px"></li>
 								</ul>
 							</div>
 						</div>
 						<div style="margin-bottom:25px;">
 							<label>备注</label>
-							<textarea class="form-control" name="remark" id="remark" rows="4" ng-model="remark"></textarea>
+							<textarea class="form-control" name="remark" id="remark" rows="4" placeholder="{{singleOrderList.modifyrecord}}" ng-model="remark"></textarea>
 						</div>
 						<div class="row">
 							<div class="col-md-4">
-								<button class="btn btn-primary" ng-show="isShow1" ng-click="startEdit()">
+								<button class="btn btn-primary" ng-show="editBtnIsShow" ng-click="startEdit(singleOrderList.oldnum,singleOrderList.adultnum,singleOrderList.childnum,singleOrderList.totalcost,singleOrderList.orderprice,singleOrderList.modifyrecord,singleOrderList.orderid)">
 									修改订单
 								</button>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-4">
-								<button class="btn btn-success" ng-show="isShow2" ng-click="confirmEdit()">
+								<button style="margin-top:15px" class="btn btn-success" ng-show="inputIsShow" ng-click="confirmEdit()">
 									确认修改
 								</button>
-							</div>
-							<div class="col-md-4">
-								<button class="btn btn-primary" ng-show="isShow2" ng-click="cancelEdit()">
+								<button style="margin-left:15px;margin-top:15px" class="btn btn-primary" ng-show="inputIsShow" ng-click="cancelEdit()">
 									取消
 								</button>
 							</div>
@@ -106,7 +106,7 @@
 						<th>成人数</th>
 						<th>儿童数</th>
 						<th>订单价</th>
- -->						<th>备注</th>
+ 						<th>备注</th>
 						<!-- <th>分公司名</th> -->
 <!-- 						<th>邀请人名</th>
 						<th>添加人</th>
@@ -122,7 +122,7 @@
 					<td uid="{{x.consumeid}}">{{x.consume_name | nullToVisual}}</td>
 					<td>{{x.insure_title | nullToVisual}}</td>
 					<td>{{x.product_title | nullToVisual}}</td>
-					<td>{{x.paytype | nullToVisual}}</td>
+					<td>{{x.paytype | payType}}</td>
 					<td>{{x.travelstatus | nullToVisual}}</td>
 					<td>{{x.paystatus | nullToVisual}}</td>
 					<td>{{x.totalcost | nullToVisual}}</td>
@@ -130,8 +130,8 @@
 					<td>{{x.adultnum | nullToVisual}}</td>
 					<td>{{x.childnum | nullToVisual}}</td>
 					<td>{{x.orderprice | nullToVisual}}</td>
- -->					<td>{{x.remark | nullToVisual}}</td>
-					<!-- <td>{{x.branchid | nullToVisual}}</td> -->
+					<td>{{x.remark | nullToVisual}}</td>
+					<td>{{x.branchid | nullToVisual}}</td> -->
 <!-- 					<td>{{x.inviteid | nullToVisual}}</td>
 					<td>{{x.addcname | nullToVisual}}</td>
 					<td>{{x.addctele | nullToVisual}}</td> -->
@@ -139,6 +139,7 @@
 					<td>{{x.status | nullToVisual}}</td>
 					<td>
 						<button class="btn btn-outline btn-link" ng-click="editorder(x.orderid)">详细</button>
+						<button class="btn btn-outline btn-link" ng-show="x.paytype==2">确认支付</button>
 					</td>
 					</tr>
 				</tbody>

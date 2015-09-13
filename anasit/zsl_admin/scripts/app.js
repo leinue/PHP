@@ -45,7 +45,7 @@ angular
         case '1':
           return '微信支付';
         case '0':
-          return '未支付';
+          return '/';
         case '2':
           return '手动支付';
       }
@@ -60,6 +60,19 @@ angular
 
       if(i==='1'){
         return '已支付';
+      }
+    };
+  })
+  .filter('travelStatus',function(){
+    return function(i){
+      if(i==='0'){
+        return '待安排';
+      }else{
+        if(i==='1'){
+          return '已安排';
+        }else{
+          return '已确认';
+        }
       }
     };
   })

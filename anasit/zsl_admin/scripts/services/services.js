@@ -1224,7 +1224,7 @@ angular.module('sbAdminApp')
 				console.log(data);
 				$scope.userOrdersList=data;
 				if(data.status=='0'){
-					alert('没有数据或查询失败');
+					alert(data.message);
 				}
 				callback(data);
 			}).catch(function(reason){
@@ -1266,7 +1266,7 @@ angular.module('sbAdminApp')
 			if(orderid==null){
 				alert('缺少参数');
 				return false;
-			}			
+			}
 			
 			$http({
 				method:"get",
@@ -1281,6 +1281,33 @@ angular.module('sbAdminApp')
 			}).catch(function(reason){
 				$q.reject(reason);
 			});
+		},
+
+		confrimTravelStatus:function($scope,orderid,callback){
+
+			var d=$q.defer();
+			var promise=d.promise;
+
+			if(orderid==null){
+				alert('缺少参数');
+				return false;
+			}
+
+			$http({
+				method:"post",
+				url:BASE_URL.url+'/Travel/Order/confirmTravelStatus',
+				data:{'orderid':orderid}
+			}).success(function(data){
+				console.log(data);
+				$scope.userOrdersList=data;
+				if(data.status=='0'){
+					alert(data.message);
+				}
+				callback(data);
+			}).catch(function(reason){
+				$q.reject(reason);
+			});
+
 		}
 	};
 });

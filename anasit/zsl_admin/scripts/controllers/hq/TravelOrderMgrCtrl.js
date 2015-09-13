@@ -75,7 +75,7 @@ angular.module('sbAdminApp')
 	};
 
 	$scope.confirmOrder=function(orderid){
-		console.log(orderid);
+
 		TravelOrder.confirmPayment($scope,orderid,function(data){
 			if(data.status=='1'){
 				alert(data.message);
@@ -85,6 +85,19 @@ angular.module('sbAdminApp')
 			}
 		});
 
+	};
+
+	$scope.confirmTravelStatus=function(orderid){
+
+		TravelOrder.confrimTravelStatus($scope,orderid,function(data){
+			if(data.status=='1'){
+				alert(data.message);
+				TravelOrder.getAll($scope,$scope.page,function(data){});
+			}else{
+				alert(data.message);
+			}
+		});
+		
 	};
 
 });

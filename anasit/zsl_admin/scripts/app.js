@@ -65,13 +65,17 @@ angular
   })
   .filter('travelStatus',function(){
     return function(i){
-      if(i==='0'){
-        return '待安排';
+      if(i==='2'){
+        return '已确认';
       }else{
         if(i==='1'){
           return '已安排';
         }else{
-          return '已确认';
+          if(i==='3'){
+            return '已核准';
+          }else{
+            return '待安排';
+          }
         }
       }
     };

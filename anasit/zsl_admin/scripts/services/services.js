@@ -1295,7 +1295,7 @@ angular.module('sbAdminApp')
 
 			$http({
 				method:"post",
-				url:BASE_URL.url+'/Travel/Order/confirmTravelStatus',
+				url:BASE_URL.url+'/Travel/Order/approveOrder',
 				data:{'orderid':orderid}
 			}).success(function(data){
 				console.log(data);

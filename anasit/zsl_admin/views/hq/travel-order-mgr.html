@@ -128,7 +128,7 @@
 					<td>{{x.totalcost | nullToVisual}}</td>
 <!-- 					<td>{{x.oldnum | nullToVisual}}</td>
 					<td>{{x.adultnum | nullToVisual}}</td>
-					<td>{{x.childnum | nullToVisual}}</td>
+					<td>{{x.childnum | nullToVisual}}</td>		
 					<td>{{x.orderprice | nullToVisual}}</td>
 					<td>{{x.remark | nullToVisual}}</td>
 					<td>{{x.branchid | nullToVisual}}</td> -->
@@ -140,7 +140,7 @@
 					<td>
 						<button class="btn btn-outline btn-link" ng-click="editorder(x.orderid)">详细</button>
 						<button class="btn btn-outline btn-link" ng-show="x.paystatus==0 && x.paytype==2" ng-click="confirmOrder(x.orderid)">确认支付</button>
-						<button class="btn btn-outline btn-link" ng-click="confirmTravelStatus(x.orderid)" ng-show="x.travelstatus==0">核准旅游订单</button>
+						<button class="btn btn-outline btn-link" ng-click="confirmTravelStatus(x.orderid)" ng-show="x.travelstatus==2">核准旅游订单</button>
 					</td>
 					</tr>
 				</tbody>

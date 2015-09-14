@@ -146,3 +146,9 @@ background-color: #eee;
 .city_area:nth-child(even){
   margin-bottom: 10px; 
 }
+
+.ul_pics{
+  list-style: none;
+  margin-left: -40px;
+  margin-top: 20px;
+}

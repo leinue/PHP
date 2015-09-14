@@ -67,29 +67,29 @@
 											
 											<script type="text/javascript">
 											
-											function uploadevent(status,picUrl,callbackdata){
-											    status += '';
-											     switch(status){
-											     case '1':
-													var time = new Date().getTime();
-													var filename162 = picUrl+'_162.jpg';
-													var filename48 = picUrl+'_48.jpg';
-													var filename20 = picUrl+"_20.jpg";
+											// function uploadevent(status,picUrl,callbackdata){
+											//     status += '';
+											//      switch(status){
+											//      case '1':
+											// 		var time = new Date().getTime();
+											// 		var filename162 = picUrl+'_162.jpg';
+											// 		var filename48 = picUrl+'_48.jpg';
+											// 		var filename20 = picUrl+"_20.jpg";
 
-													localStorage.currentImageUploadedURL=filename162;
+											// 		localStorage.currentImageUploadedURL=filename162;
 
-												break;
-											     case '-1':
-												  window.location.reload();
-											     break;
-											     default:
-											     window.location.reload();
-											    } 
-											   }
+											// 	break;
+											//      case '-1':
+											// 	  window.location.reload();
+											//      break;
+											//      default:
+											//      window.location.reload();
+											//     } 
+											// }
 
 											</script>
 											
-											<OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+											<!-- <OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
 											codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"
 											WIDTH="650" HEIGHT="450" id="myMovieName">
 												<PARAM NAME=movie VALUE="avatar.swf">
@@ -97,7 +97,7 @@
 												<PARAM NAME=bgcolor VALUE=#FFFFFF>
 												
 												<!-- <param ng-show="img==''" name="flashvars" value="imgUrl=./default.png&uploadUrl=./upfile.php&uploadSrc=false" /> -->
-												<param name="flashvars" value="imgUrl={{img}}&uploadUrl=./upfile.php&uploadSrc=false" />
+												<!-- <param name="flashvars" value="imgUrl={{img}}&uploadUrl=./upfile.php&uploadSrc=false" />
 												
 												<EMBED ng-show="img==''" src="avatar.swf" quality=high bgcolor=#FFFFFF WIDTH="650" HEIGHT="450" wmode="transparent" flashVars="imgUrl=./default.png&uploadUrl=./upfile.php&uploadSrc=false"
 												NAME="myMovieName" ALIGN="" TYPE="application/x-shockwave-flash" allowScriptAccess="always"
@@ -107,12 +107,16 @@
 												<EMBED ng-show="img!=''" src="avatar.swf" quality=high bgcolor=#FFFFFF WIDTH="650" HEIGHT="450" wmode="transparent" flashVars="imgUrl={{img}}&uploadUrl=./upfile.php&uploadSrc=false"
 												NAME="myMovieName" ALIGN="" TYPE="application/x-shockwave-flash" allowScriptAccess="always"
 												PLUGINSPAGE="http://www.macromedia.com/go/getflashplayer">
-												</EMBED>
+												</EMBED> -->
 
-											</OBJECT>
+											<!--</OBJECT> -->
 
 											<a class="btn btn-sm btn-primary" id="uploadimg_btn">上传图片</a> 最大1024kb，支持jpg，gif，png，bmp格式。推荐大小：720x400
-					                		<ul id="ul_pics" class="ul_pics clearfix"></ul>
+					                		<ul id="ul_pics" class="ul_pics clearfix">
+					                			<div class="img-default">
+					                				<img width="720" height="400" src="">
+					                			</div>
+					                		</ul>
 											
 											<script type="text/javascript">
 
@@ -158,7 +162,8 @@
 												            FileUploaded: function(up, file, info) { //文件上传成功的时候触发 
 												                var data = JSON.parse(info.response );
 												                $("input[name='thumb']").val(data.file.savepath+data.file.savename);
-												                $("#" + file.id).html("<div class='img'><img src='http://service.zhangshanglv.cn/Uploads/" + data.file.savepath  + data.file.savename + "'/></div>");
+												                $('.ul_pics .img-default').hide();
+												                $("#" + file.id).html("<div class='img'><img width='720' height='400' src='http://service.zhangshanglv.cn/Uploads/" + data.file.savepath  + data.file.savename + "'/></div>");
 
 												                localStorage.currentImageUploadedURL="service.zhangshanglv.cn/Uploads/" + data.file.savepath  + data.file.savename;
 

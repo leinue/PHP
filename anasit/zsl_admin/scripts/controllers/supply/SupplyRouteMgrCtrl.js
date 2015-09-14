@@ -284,6 +284,10 @@ angular.module('sbAdminApp')
 				$scope.category=data.category;
 				$scope.img=data.img;
 
+				localStorage.currentImageUploadedURL=$scope.img;
+
+				$('.img-default').find('img').attr('src',localStorage.currentImageUploadedURL);
+
 				var scopeImg=$scope.img.indexOf('http://')!=-1?$scope.img:'http://'+$scope.img;
 
 				$scope.isapproved=data.isapproved;
@@ -417,6 +421,7 @@ angular.module('sbAdminApp')
 		$scope.is_insure='';
 		$scope.order_index='';
 		$scope.plan_day_datas='';
+		localStorage.currentImageUploadedURL='';
 
 		location.reload();
 	});

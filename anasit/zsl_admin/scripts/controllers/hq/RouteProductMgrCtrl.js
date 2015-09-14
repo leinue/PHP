@@ -977,6 +977,10 @@ angular.module('sbAdminApp')
 
 		var scopeimg=$scope.img;
 
+		localStorage.currentImageUploadedURL=$scope.img;
+
+		$('.img-default').find('img').attr('src',localStorage.currentImageUploadedURL);
+
 		var scopeImg=scopeimg.indexOf('http://')!=-1?$scope.img:'http://'+$scope.img;
 
 		if(sessionStorage.cityStartList!=''){

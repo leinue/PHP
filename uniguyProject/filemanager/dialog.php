@@ -33,7 +33,7 @@ $userPrivilege=$userPrivilege['privilege'];
 
 if($userPrivilege==='0' || !$userPrivilege){
 	$delete_files		= FALSE;
-	$create_folders		= TRUE;
+	$create_folders		= FALSE;
 	$delete_folders		= FALSE;
 
 	$rename_files		= FALSE;
@@ -44,6 +44,8 @@ if($userPrivilege==='0' || !$userPrivilege){
 
 	$preview_text_files	= TRUE; // eg.: txt, log etc.
 	$edit_text_files 	= FALSE; // eg.: txt, log etc.
+
+	$upload_files		= FALSE;
 
 	$_SESSION['user_privilege']=0;
 }else if($userPrivilege==='1'){
@@ -59,6 +61,8 @@ if($userPrivilege==='0' || !$userPrivilege){
 
 	$preview_text_files	= TRUE; // eg.: txt, log etc.
 	$edit_text_files 	= TRUE; // eg.: txt, log etc.
+
+	$upload_files		= TRUE;
 
 	$_SESSION['user_privilege']=1;
 }
@@ -846,7 +850,7 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 						    <button class="tip btn upload-btn" title="<?php echo  lang_Upload_file; ?>"><i class="rficon-upload"></i></button> 
 			    <?php } ?>
 			    <?php if($create_text_files){ ?>
-						    <button class="tip btn create-file-btn" title="<?php echo  lang_New_File; ?>"><i class="icon-plus"></i><i class="icon-file"></i></button> 
+						    <!-- <button class="tip btn create-file-btn" title="<?php echo  lang_New_File; ?>"><i class="icon-plus"></i><i class="icon-file"></i></button>  -->
 			    <?php } ?>
 			    <?php if($create_folders){ ?>
 						    <button class="tip btn new-folder" title="<?php echo  lang_New_Folder?>"><i class="icon-plus"></i><i class="icon-folder-open"></i></button> 
@@ -882,6 +886,7 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 			     <label id="ff-item-type-all" title="<?php echo lang_All; ?>" <?php if($_GET['type']==1 || $_GET['type']==3){ ?>style="visibility: hidden;" <?php } ?> data-item="ff-item-type-all" for="select-type-all" style="margin-rigth:0px;" class="tip btn btn-inverse ff-label-type-all"><i class="icon-align-justify icon-white"></i></label>
 			    
 			</div>-->
+			<div style="position:absolute;top:6px;font-size:13px;left:100px;color:rgb(119,119,119)"><a href="">滚动条消失?请点这里</a></div>
 			<div style="position:absolute;right:-6px;top:6px;"><span>本文献仅限于学习交流</span></div>
 		    </div>
 		</div>
@@ -1285,7 +1290,8 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 	    	if($_SESSION['RF']["subfolder"]='328eb3c3-d632-11e4-9a8c-00163e002b11' && $_SESSION['RF']['view_type']==0){
 				
 			}else{
-				echo "<div class=\"load-more-div load-more-select\"><select id=\"page-nav\">";
+				echo "<div class=\"load-more-div load-more-prev\">上一页</div>";
+				echo "<div class=\"load-more-div load-more-select\"><select style=\"width:80px\" id=\"page-nav\">";
 				$AllPages=getDirFileCount($current_path.$rfm_subfolder.$subdir);
 				$AllPages=ceil($AllPages/20);
 				if($AllPages>1){
@@ -1294,13 +1300,22 @@ $files=array_merge(array($prev_folder),array($current_folder),$sorted);
 					}
 				}
 				echo "</select></div>";
-				// echo "<div class=\"load-more-div load-more-next\">下一页</div>";
+				echo "<div class=\"load-more-div load-more-next\">下一页</div>";
 			}
 	    ?>
 	    <script type="text/javascript">
 	    	
 	    	$('.load-more-next').click(function(){
-	    		$.get('ajax/addfileloadcount.php',function(){
+	    		var current=$('.load-more-select option:selected').val();
+	    		$.get('ajax/addfileloadcount.php?page='+(parseInt(current)+1),function(){
+	    			localStorage.fromLoadMore="true";
+	    			location.reload();
+	    		});
+	    	});
+
+	    	$('.load-more-prev').click(function(){
+	    		var current=$('.load-more-select option:selected').val();
+	    		$.get('ajax/addfileloadcount.php?page='+(parseInt(current)-1),function(){
 	    			localStorage.fromLoadMore="true";
 	    			location.reload();
 	    		});

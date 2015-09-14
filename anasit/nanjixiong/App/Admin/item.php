@@ -88,7 +88,7 @@ if(!empty($_GET['action']) && !empty($_GET['iid'])){
             if(is_array($secondList)){
                 foreach ($secondList as $key => $value) {
                     $list='';
-                    array_push($rdValueList, $value['caid']);
+                array_push($rdValueList, $value['caid']);
                     $rdList=$cataObj->getCataChild($value['caid']);
                     if(is_array($rdList)){
                         foreach ($rdList as $childKey => $childValue) {

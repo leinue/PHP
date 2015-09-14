@@ -6,9 +6,15 @@ include_once './uc_client/client.php';
 
 $usernames = $_GET["username"];
 $passwords = $_GET["password"];
+$isuid = 0;
 
+if(!empty($_GET['isuid'])){
+	if(is_numeric($_GET['isuid'])){
+		$isuid=$_GET['isuid'];
+	}
+}
 
-list($uid, $username, $password, $email) = uc_user_login($usernames, $passwords);
+list($uid, $username, $password, $email) = uc_user_login($usernames, $passwords,$isuid);
 
 if($uid > 0) {
         echo uc_user_synlogin($uid);

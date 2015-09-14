@@ -86,7 +86,7 @@ if ((int)(ini_get('post_max_size')) < $MaxSizeUpload){
 	$MaxSizeUpload = (int)(ini_get('post_max_size'));
 }
 
-$default_language 	= "zh_CN"; //default language file name
+$default_language 	= "en"; //default language file name
 $icon_theme 		= "ico"; //ico or ico_dark you can cusatomize just putting a folder inside filemanager/img
 $show_folder_size	= TRUE; //Show or not show folder size in list view feature in filemanager (is possible, if there is a large folder, to greatly increase the calculations)
 $show_sorting_bar	= TRUE; //Show or not show sorting feature in filemanager

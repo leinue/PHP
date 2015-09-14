@@ -62,6 +62,9 @@ session_start();
 
 	<?php
 
+		$username='';
+		$userpw='';
+
 		if(!empty($_GET['action'])){
 			if($_GET['action']=='login'){
 
@@ -72,8 +75,14 @@ session_start();
 					echo "<script>alert('请完整填写信息')</script>";
 				}else{
 
-					
-				    $ch = curl_init('http://www.nanjixiong.com/login.php?username='.$username.'&password='.$userpw);
+					$isuid = 0;
+
+					$regex = '/^[a-z0-9!#$%&\'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+\/=?^_`{|}~-]+)*@(?:[-_a-z0-9][-_a-z0-9]*\.)*(?:[a-z0-9][-a-z0-9]{0,62})\.(?:(?:[a-z]{2}\.)?[a-z]{2,})$/i';
+					if (preg_match($regex, $username)) {
+					    $isuid = 2;
+					}
+
+				    $ch = curl_init('http://www.nanjixiong.com/login.php?username='.$username.'&password='.$userpw.'&isuid='.$isuid);
 				    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 				    curl_setopt($ch, CURLOPT_BINARYTRANSFER, true);  
 				    $output = curl_exec($ch);
@@ -126,10 +135,10 @@ session_start();
 		                    <form role="form" method="post" action="login.php?action=login">
 		                        <fieldset>
 		                            <div class="form-group">
-		                                <input class="form-control" placeholder="用户名" name="username" type="text" autofocus>
+		                                <input class="form-control" placeholder="用户名" name="username" type="text" value="<?php echo $username; ?>" autofocus>
 		                            </div>
 		                            <div class="form-group">
-		                                <input class="form-control" placeholder="密码" name="userpw" type="password" value="">
+		                                <input class="form-control" placeholder="密码" name="userpw" type="password" value="<?php echo $userpw; ?>">
 		                            </div>
 		                            <div class="checkbox">
 		                                <label>

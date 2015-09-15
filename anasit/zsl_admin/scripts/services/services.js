@@ -398,7 +398,7 @@ angular.module('sbAdminApp')
 
 			$http({
 				method:"post",
-				url:BASE_URL.url+'/Admin/TravelArea/listEnd'
+				url:BASE_URL.url+'/Admin/TravelAre/listEnda'
 			}).success(function(data){
 				console.log(data);
 				$scope.allRoutesEnd=data;

@@ -520,13 +520,16 @@ angular.module('sbAdminApp')
 				$scope.pid=data.pid;
 				$scope.plan_day=1;
 
-			  	$scope.plan_title=$scope.dayPlanList[1].title;
-			  	$scope.plan_food_breakfast=$scope.dayPlanList[1]['早'];
-			  	$scope.plan_food_lunch=$scope.dayPlanList[1]['中'];
-			  	$scope.plan_food_dinner=$scope.dayPlanList[1]['晚'];
-			  	$scope.plan_room=$scope.dayPlanList[1].room;
-			  	$scope.plan_description=$scope.dayPlanList[1].description;
+				if(typeof $scope.dayPlanList[1] != 'undefined'){
+					$scope.plan_title=$scope.dayPlanList[1].title;
+				  	$scope.plan_food_breakfast=$scope.dayPlanList[1]['早'];
+				  	$scope.plan_food_lunch=$scope.dayPlanList[1]['中'];
+				  	$scope.plan_food_dinner=$scope.dayPlanList[1]['晚'];
+				  	$scope.plan_room=$scope.dayPlanList[1].room;
+				  	$scope.plan_description=$scope.dayPlanList[1].description;
+				}
 
+			  	
 			  	$scope.title=data.title;
 
 
@@ -642,6 +645,15 @@ angular.module('sbAdminApp')
 
 				$scope.category=data.category;
 				$scope.img=data.img;
+
+				localStorage.currentImageUploadedURL=$scope.img;
+
+				$('.img-default').find('img').attr('src',localStorage.currentImageUploadedURL);
+
+				console.log(localStorage.currentImageUploadedURL);
+
+				var scopeImg=$scope.img.indexOf('http://')!=-1?$scope.img:'http://'+$scope.img;
+
 				$scope.isapproved=data.isapproved;
 				$scope.attr=data.attr;
 				$scope.num_rest=Math.ceil(data.num_rest);
@@ -802,7 +814,12 @@ angular.module('sbAdminApp')
 
 	$scope.generatorPlan=function(){
 		$scope.currentDay=$scope.plan_day;
-		$scope.currentDay=$scope.currentDay.slice(1,$scope.currentDay.length-2);
+
+		$scope.currentDay=$scope.currentDay.slice(1,$scope.currentDay.length-1);
+
+		if($scope.currentDay==''){
+			$scope.currentDay=$scope.currentDay.slice(1,$scope.currentDay.length-2);
+		}
 
 		if(typeof $scope.dayPlanList[$scope.currentDay]=='undefined' || typeof $scope.dayPlanList[$scope.currentDay]=='object'){
 			console.log($scope.currentDay);
@@ -977,10 +994,6 @@ angular.module('sbAdminApp')
 
 		var scopeimg=$scope.img;
 
-		localStorage.currentImageUploadedURL=$scope.img;
-
-		$('.img-default').find('img').attr('src',localStorage.currentImageUploadedURL);
-
 		var scopeImg=scopeimg.indexOf('http://')!=-1?$scope.img:'http://'+$scope.img;
 
 		if(sessionStorage.cityStartList!=''){
@@ -1063,12 +1076,12 @@ angular.module('sbAdminApp')
 				if(data.status!='1'){
 					// console.log(data);
 				}else{
-					$('.routesListNewCls').modal('toggle');				
+					$('.routesListNewCls').modal('hide');				
 				}
 			});
 		}else{
 			TravelProducts.add($scope,data,function(){
-				$('.routesListNewCls').modal('toggle');
+				$('.routesListNewCls').modal('hide');
 				location.reload();
 			});
 		}

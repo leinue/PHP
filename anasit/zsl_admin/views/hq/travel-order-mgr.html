@@ -43,9 +43,9 @@
 								  <li class="list-group-item">
 								  支付类型:{{singleOrderList.paytype | payType}}</li>
 								  <li class="list-group-item">
-								  旅行状态:{{singleOrderList.travelstatus | nullToVisual}}</li>
+								  旅行状态:{{singleOrderList.travelstatus | travelStatus}}</li>
 								  <li class="list-group-item">
-								  支付状态:{{singleOrderList.paystatus | nullToVisual}}</li>
+								  支付状态:{{singleOrderList.paystatus | payStatus}}</li>
 								  <li class="list-group-item">
 								  总成本:{{singleOrderList.totalcost | nullToVisual}}
 								  <input class="pull-right form-control" type="number" ng-show="inputIsShow" ng-model="new_totalcost" placeholder="{{singleOrderList.totalcost | nullToVisual}}" min="0" style="margin-top: -6px; width: 160px"></li>
@@ -67,7 +67,7 @@
 						</div>
 						<div class="row">
 							<div class="col-md-4">
-								<button class="btn btn-primary" ng-show="editBtnIsShow" ng-click="startEdit(singleOrderList.oldnum,singleOrderList.adultnum,singleOrderList.childnum,singleOrderList.totalcost,singleOrderList.orderprice,singleOrderList.modifyrecord,singleOrderList.orderid)">
+								<button class="btn btn-primary" ng-show="editBtnIsShow && singleOrderList.travelstatus!=3" ng-click="startEdit(singleOrderList.oldnum,singleOrderList.adultnum,singleOrderList.childnum,singleOrderList.totalcost,singleOrderList.orderprice,singleOrderList.modifyrecord,singleOrderList.orderid)">
 									修改订单
 								</button>
 							</div>

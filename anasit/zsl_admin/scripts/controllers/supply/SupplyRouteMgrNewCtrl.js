@@ -187,7 +187,7 @@ angular.module('sbAdminApp')
 		$scope.trip_days='';
 		$scope.dayPlanList='';
 		$scope.num_limit='';
-		$scope.share_score='';
+		$scope.share_score=0;
 		$scope.content='';
 		$scope.contract_add='';
 		$scope.mustknow='';
@@ -220,7 +220,12 @@ angular.module('sbAdminApp')
 	$scope.generatorPlan=function(){
 
 		$scope.currentDay=$scope.plan_day;
-		$scope.currentDay=$scope.currentDay.slice(1,$scope.currentDay.length-2);
+
+		$scope.currentDay=$scope.currentDay.slice(1,$scope.currentDay.length-1);
+
+		if($scope.currentDay==''){
+			$scope.currentDay=$scope.currentDay.slice(1,$scope.currentDay.length-2);
+		}
 
 		if(typeof $scope.dayPlanList[$scope.currentDay]=='undefined' || typeof $scope.dayPlanList[$scope.currentDay]=='object'){
 			console.log($scope.currentDay);
@@ -253,10 +258,19 @@ angular.module('sbAdminApp')
 		$scope.plan_room=$scope.dayPlanList[$scope.currentDay].room;
 		$scope.plan_description=$scope.dayPlanList[$scope.currentDay].description;
 
+		console.log('********************');
+		console.log($scope.plan_title,$scope.plan_room);
+		console.log('********************');
+
 	};
 
 	$scope.changePlanTitle=function(){
 		$scope.dayPlanList[$scope.currentDay].title=$scope.plan_title;
+		console.log('==========================================');
+		console.log($scope.dayPlanList);
+		console.log($scope.currentDay);
+		console.log($scope.plan_title);
+		console.log('==========================================');
 	};
 
 	$scope.changePlanBreakfast=function(){
@@ -417,7 +431,7 @@ angular.module('sbAdminApp')
 				$scope.dayPlanList
 			],
 			"num_limit":$scope.num_limit,
-			"share_score":$scope.share_score,
+			"share_score":0,
 			"content":$scope.content,
 			"contract_add":$scope.contract_add,
 			"mustknow":$scope.mustknow,
@@ -438,7 +452,7 @@ angular.module('sbAdminApp')
 			TravelProducts.add($scope,data,function(data){
 				console.log('add done');
 				if(data.status==='1'){
-					$('.routesListNewCls').modal('toggle');
+					$('.routesListNewCls').modal('hide');
 					sessionStorage.fee_included='';
 					sessionStorage.fee_notincluded='';
 					sessionStorage.constract_plus='';

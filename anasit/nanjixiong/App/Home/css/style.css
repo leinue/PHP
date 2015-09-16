@@ -284,3 +284,20 @@ table thead{
     background: transparent url("circult1.png") no-repeat scroll 50% 50%;
     color: #B4B4B4;
 }
+
+.textarea-field img{
+	width: 200px;
+	height: 200px;
+}
+
+.textarea-field img:hover{
+	cursor: pointer;
+}
+
+.img-preview{
+	position: fixed;
+	text-align: center;
+	top: 44px;
+	z-index: 2000;
+	display: none;
+}

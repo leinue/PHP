@@ -176,6 +176,7 @@
 			        <tr>
 			          <th>项目资料</th>
 			          <?php
+
 			          	$fieldsCount=0;
 
 			          	if(is_array($secondList)){
@@ -263,6 +264,8 @@
 
 												$frontPhotoSrc='';
 												$frontDescContent='';
+
+												// print_r($allFields);
 
 												foreach ($allFields as $fKey => $fValue) {
 													if($fValue['foid']==$frontPhoto[0]['foid']){

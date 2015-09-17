@@ -109,6 +109,7 @@
 		                        $oid=$value['oid'];
 		                        $name=$fieldOptions->getNameByFoid($value['foid']);
 		                        $v=$_POST['item_'.$name[0]['name'].'_edit'];
+		                        alert($name[0]['name'].$_POST['item_'.$name[0]['name'].'_edit']);
 		                        $field->modify($oid,$v);
 		                    }
 		                    $prompt=success('修改成功');

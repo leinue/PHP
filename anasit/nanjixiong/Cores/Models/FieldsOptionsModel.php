@@ -72,6 +72,7 @@ class FieldsOptionsModel{
 	}
 
 	function modifyFieldFrontDesc($foid,$value){
+		self::$model->getDatabase()->execute('UPDATE `njx_fields_options` SET `isDesc`=0 WHERE `isDesc`=1');
 		return self::$model->getDatabase()->execute("UPDATE `njx_fields_options` SET `isDesc`=? WHERE `foid`=?",array($value,$foid));
 	}
 

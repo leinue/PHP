@@ -469,34 +469,12 @@ if(!empty($_GET['action'])){
 	<script type="text/javascript">
 		
 		$('.textarea-field img').click(function(){
-
-			// var _w = parseInt($(window).width());//获取浏览器的宽度
-			// var realWidth;//真实的宽度
-			// var realHeight;//真实的高度
-			// //这里做下说明，$("<img/>")这里是创建一个临时的img标签，类似js创建一个new Image()对象！
-			// $("<img/>").attr("src", $(img).attr("src")).load(function() {
-				
-			// 	如果要获取图片的真实的宽度和高度有三点必须注意
-			// 	1、需要创建一个image对象：如这里的$("<img/>")
-			// 	2、指定图片的src路径
-			// 	3、一定要在图片加载完成后执行如.load()函数里执行
-				
-			// 	realWidth = this.width;
-			// 	realHeight = this.height;
-			// 	//如果真实的宽度大于浏览器的宽度就按照100%显示
-			// 	if(realWidth>=_w){
-			// 	$(img).css("width","100%").css("height","auto");
-			// 	}
-			// 	else{//如果小于浏览器的宽度按照原尺寸显示
-			// 	$(img).css("width",realWidth+'px').css("height",realHeight+'px');
-			// 	}
-			// });
 			
 			$('.img-preview').find('img').attr('src','http://xm.nanjixiong.com'+$(this).attr('src'));
 			$('.img-preview').find('a').attr('href','http://xm.nanjixiong.com'+$(this).attr('src'));
 			console.log('http://xm.nanjixiong.com'+$(this).attr('src'));
 			$('.img-preview').css({
-				'left':'30%'
+				'left':($(document).width()-$('.img-preview').width())/2
 			});
 			$('.img-preview').toggle();
 		});

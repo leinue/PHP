@@ -1308,6 +1308,36 @@ angular.module('sbAdminApp')
 				$q.reject(reason);
 			});
 
+		},
+
+		arrangeRoute:function($scope,orderid,precost,callback){	
+
+			var d=$q.defer();
+			var promise=d.promise;
+
+			if(orderid==null){
+				alert('缺少参数');
+				return false;
+			}
+
+			$http({
+				method:"post",
+				url:BASE_URL.url+'/Travel/Order/arrangeRoute',
+				data:{
+					'orderid':orderid,
+					'precost':precost
+				}
+			}).success(function(data){
+				console.log(data);
+				$scope.arrangeRouteResult=data;
+				if(data.status=='0'){
+					alert(data.message);
+				}
+				callback(data);
+			}).catch(function(reason){
+				$q.reject(reason);
+			});
+
 		}
 	};
 });

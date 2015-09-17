@@ -90,6 +90,31 @@
 			</div>
 		</div>
 
+		<div class="modal fade arrange-route-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+				   	<div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="gridSystemModalLabel">安排线路</h4>
+				    </div>
+				    <div class="modal-body">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="order-money">
+									<input type="number" class="form-control" ng-model='orderMoney' placeholder="请输入订金,为空为不需要订金">
+									<button style="margin-top:10px" class="btn btn-ouline btn-default" ng-click="confirmOrderMoney()">确定</button>
+									<button style="margin-top:10px" class="btn btn-outline btn-default" ng-click="confirmOrderMoney()">取消</button>
+								</div>
+							</div>
+						</div>
+				    </div>
+				    <div class="modal-footer">
+				        <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">关闭</button>
+				    </div>
+				</div>
+			</div>
+		</div>
+
 		<div class="col-md-12">
 			<table class="table table-hover">
 				<thead>
@@ -136,11 +161,12 @@
 					<td>{{x.addcname | nullToVisual}}</td>
 					<td>{{x.addctele | nullToVisual}}</td> -->
 					<!--<td>{{x.start_title.province}},{{x.start_title.district}},{{x.start_title.city}}</td>-->
-					<td>{{x.status | nullToVisual}}</td>
+					<td>{{x.status | isDeletedStatus}}</td>
 					<td>
 						<button class="btn btn-outline btn-link" ng-click="editorder(x.orderid)">详细</button>
 						<button class="btn btn-outline btn-link" ng-show="x.paystatus==0 && x.paytype==2" ng-click="confirmOrder(x.orderid)">确认支付</button>
 						<button class="btn btn-outline btn-link" ng-click="confirmTravelStatus(x.orderid)" ng-show="x.travelstatus==2">核准旅游订单</button>
+						<button class="btn btn-outline btn-link" ng-show="x.paystatus==1 && x.travelstatus==0" ng-click="arrangeRoute(x.orderid)">安排线路</button>
 					</td>
 					</tr>
 				</tbody>

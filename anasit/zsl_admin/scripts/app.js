@@ -63,6 +63,11 @@ angular
       }
     };
   })
+  .filter('isDeletedStatus',function(){
+    return function(i){
+      return i=='0'?'未取消':'已取消';
+    };
+  })
   .filter('travelStatus',function(){
     return function(i){
       if(i==='2'){

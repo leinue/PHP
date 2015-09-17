@@ -100,4 +100,36 @@ angular.module('sbAdminApp')
 		
 	};
 
+	$scope.orderMoney='0.0';
+	$scope.orderMoneyId='';
+
+	$scope.arrangeRoute=function(orderid){
+		$('.arrange-route-modal').modal('toggle');
+		$scope.orderMoneyId=orderid;
+	};
+
+	$scope.confirmOrderMoney=function(){
+		console.log($scope.orderMoney);
+		if($scope.orderMoneyId==''){
+			alert('缺少参数');
+		}else{
+			if($scope.orderMoney==''){
+				TravelOrder.arrangeRoute($scope,$scope.orderMoneyId,$scope.orderMoney,function(data){
+					alert(data.message);
+					if(data.status==='1'){
+						TravelOrder.getAll($scope,$scope.page,function(data){});
+					}
+				});
+			}else{
+				TravelOrder.arrangeRoute($scope,$scope.orderMoneyId,$scope.orderMoney,function(data){
+					alert(data.message);
+					if(data.status==='1'){
+						TravelOrder.getAll($scope,$scope.page,function(data){});
+					}
+				});
+			}
+		}
+		$('.arrange-route-modal').modal('toggle');
+	};
+
 });

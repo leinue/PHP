@@ -84,6 +84,7 @@ class Databases{
 		}
 		if(is_null($whereSQL)){
 			$this->sql.='';
+
 		}else{
 			$this->sql.=' where '." $whereSQL";
 		}

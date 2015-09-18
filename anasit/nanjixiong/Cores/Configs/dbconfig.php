@@ -4,8 +4,8 @@ $configs=array(
 	"dbtype"=>"PDO",
 	"host"=>"localhost",
 	"user"=>"root",
-	"password"=>"xieyang",
-	"dbname"=>"ncu",
+	"password"=>"nanjixiong",
+	"dbname"=>"nanjixiong",
 	'dbprefix'=>'njx_'
 );
 

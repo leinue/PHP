@@ -88,7 +88,7 @@ if(!empty($_GET['action']) && !empty($_GET['iid'])){
             if(is_array($secondList)){
                 foreach ($secondList as $key => $value) {
                     $list='';
-                array_push($rdValueList, $value['caid']);
+                    array_push($rdValueList, $value['caid']);
                     $rdList=$cataObj->getCataChild($value['caid']);
                     if(is_array($rdList)){
                         foreach ($rdList as $childKey => $childValue) {
@@ -118,13 +118,20 @@ if(!empty($_GET['action']) && !empty($_GET['iid'])){
                 alert('修改投稿失败,请重试!');
             }else{
                 if(is_array($fieldList)){
-                    foreach ($fieldList as $key => $value) {
-                        $oid=$value['oid'];
-                        $name=$fieldOptions->getNameByFoid($value['foid']);
-                        $v=$_POST['item_'.$name[0]['name'].'_edit'];
-                        $field->modify($oid,$v);
-                    }
-                    $prompt=success('修改成功');
+	            foreach ($fieldList as $key => $value) {
+		    	$oid=$value['oid'];
+                    	$name=$fieldOptions->getNameByFoid($value['foid']);
+		   	 $v=$_POST['item_'.$name[0]['name'].'_edit'];
+		   	 $v2='{{no data}}';
+		   	 if(count($name)>=2){
+				$v2=$_POST['item_'.$name[1]['name'].'_edit'];	
+		   	 }
+		   	 $field->modify($oid,$v);
+		   	 if($v2!='{{no data}}'){
+				$field->modify($oid,$v2);
+		    	}
+		    }
+		    $prompt=success('修改成功');
                 }else{
                     alert('字段值为空');
                 }

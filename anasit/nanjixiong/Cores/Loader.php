@@ -5,17 +5,21 @@ namespace Cores;
 date_default_timezone_set("Asia/Shanghai");
 
 $requestURI=explode("/", $_SERVER['REQUEST_URI']);
+
+
 $requestURI=$requestURI[1];
 
-define('DOMAIN','http://'.$_SERVER['HTTP_HOST'].'/'.$requestURI);
+
+define('DOMAIN','http://'.$_SERVER['HTTP_HOST']);
+
+
 
 class Loader{
 
-	static function autoload($class){
-
-		// echo BASEDIR.'\\'.str_replace('\\', '/', $class).'.php'.'<br>';
-
-        require BASEDIR.'\\'.str_replace('\\', '/', $class).'.php';
+	static function autoload($class){	
+		$class=str_replace("\\",'/',$class.'.php');
+		$prefix= BASEDIR.'/'.$class;
+        	include $prefix;
 	}
 
 }

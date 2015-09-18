@@ -457,7 +457,7 @@ function textarea($name,$name_control,$id,$tips,$value=null){
                         height : "240px"
                     });
                 
-                    window.id_'.$ueid.'.html("'.my_nl2br($value).'");
+                    window.id_'.$ueid.'.html(\''.my_nl2br($value).'\');
                 </script>
             </div>';
 }

@@ -78,7 +78,8 @@ function displayAvtive($current,$to){
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand" href="#"><img width="60" height="60" alt="<?php echo $settingObj->get('site_title'); ?>"  src="<?php echo $settingObj->get('site_logo');  ?>"></a>
+
+	      <a class="navbar-brand" href="#"><img style="width:60px!important;height:60px!important;"  alt="<?php echo $settingObj->get('site_title'); ?>"  src="<?php echo $settingObj->get('site_logo');  ?>"></a>
 	    </div>
 
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

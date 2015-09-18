@@ -1,12 +1,12 @@
 <?php
 
-$tmp=explode('\\', __DIR__);
+$tmp=explode('/', __DIR__);
 array_pop($tmp);
 array_pop($tmp);
 array_pop($tmp);
 $basedir='';
 foreach ($tmp as $key => $value) {
-	$basedir.=$value.'\\';
+	$basedir.=$value.'/';
 }
 define('BASEDIR',$basedir);
 

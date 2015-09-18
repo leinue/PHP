@@ -7,6 +7,10 @@ require(BASEDIR.'/Cores/Loader.php');
 
 session_start();
 
+if(empty($_SESSION['username'])){
+	redirectTo('login.php');
+}
+
 if(!$_SESSION['privilege']==='0'){
 	alert('您没有权限访问');
 	redirectTo('index.php');

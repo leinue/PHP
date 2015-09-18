@@ -1,16 +1,17 @@
 
 <?php
 
-	$tmp=explode('\\', __DIR__);
+	ini_set('display_errors',1);
+	
+	$tmp=explode('/', __DIR__);
 	array_pop($tmp);
 	array_pop($tmp);
 	array_pop($tmp);
 	$basedir='';
 	
 	foreach ($tmp as $key => $value) {
-		$basedir.=$value.'\\';
+		$basedir.=$value.'/';
 	}
-	
 	define('BASEDIR',$basedir);
 
 	require(BASEDIR.'/Cores/Loader.php');
@@ -20,7 +21,7 @@
 		switch ($_GET['action']) {
 			case 'add_remark':
 
-			// alert($_GET['level']);
+			alert($_GET['level']);
 				
 				if(empty($_GET['level']) || empty($_GET['iid'])){
 					echo "-1";

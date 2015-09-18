@@ -358,7 +358,7 @@ if(!empty($_GET['action'])){
                                                 $frontBtnRequest=$value['fvisible']==='1'?'admin.php?v='.$view.'&set_front_no_visible='.$value['caid']:'admin.php?v='.$view.'&set_front_visible='.$value['caid'];
 
                                                 $mChoiceRequest=$value['mChoice']==='1'?'admin.php?v='.$view.'&set_no_mChoice='.$value['caid']:'admin.php?v='.$view.'&set_mChoice='.$value['caid'];
-                                                $mChoiceBtnName=$value['mChoice']==='1'?'不可多选':'可多选';
+                                                $mChoiceBtnName=$value['mChoice']==='1'?'设不可多选':'设可多选';
 
                                                 $parentName=$cataMgr->selectOne($value['parent']);
 

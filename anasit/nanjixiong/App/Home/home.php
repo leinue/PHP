@@ -58,10 +58,8 @@
 		$cataToViewArr=json_decode($cataToView,true);
 		
 		if($caidParent!='no'){
-			if(is_array($cataToViewArr)){
-				$cataParentKey=array_search($caidParent,$cataToViewArr);
-				array_splice($cataToViewArr,$cataParentKey,1);
-			}
+			$cataParentKey=array_search($caidParent,$cataToViewArr);
+			array_splice($cataToViewArr,$cataParentKey,1);
 		}
 
 		$searchResult=array();
@@ -176,7 +174,6 @@
 			        <tr>
 			          <th>项目资料</th>
 			          <?php
-
 			          	$fieldsCount=0;
 
 			          	if(is_array($secondList)){
@@ -264,8 +261,6 @@
 
 												$frontPhotoSrc='';
 												$frontDescContent='';
-
-												// print_r($allFields);
 
 												foreach ($allFields as $fKey => $fValue) {
 													if($fValue['foid']==$frontPhoto[0]['foid']){
@@ -447,7 +442,7 @@
 					<nav style="box-shadow:none;text-align: center;">
 					  <ul class="pagination">
 					    <li>
-					      <a href="index.php?v=home&caid=<?php echo $_GET['caid']; ?>&view_type_id=<?php echo $_GET['view_type_id']; ?>&clicked=<?php echo $paramClicked; ?>&page=<?php echo $prevPage; ?>&parent=<?php echo $_GET['parent']; ?>" aria-label="Previous">
+					      <a href="index.php?v=home&caid=<?php echo $_GET['caid']; ?>&view_type_id=<?php echo $_GET['view_type_id']; ?>&clicked=<?php echo $paramClicked; ?>&page=<?php echo $prevPage; ?>&parent=<?php echo $_GET['parent'] ?>" aria-label="Previous">
 					        <span aria-hidden="true">上一页</span>
 					      </a>
 					    </li>
@@ -458,13 +453,13 @@
 					    		if($i==$page){
 					    			$pageActive='active';
 					    		}
-					    		echo '<li class="'.$pageActive.'"><a href="index.php?v=home&caid='.$_GET['caid'].'&view_type_id='.$_GET['view_type_id'].'&page='.$i.'">'.$i.'</a></li>';
+					    		echo '<li class="'.$pageActive.'"><a href="index.php?v=home&caid='.$_GET['caid'].'&view_type_id='.$_GET['view_type_id'].'&page='.$page.'">'.$i.'</a></li>';
 					    		$pageActive='';
 					    	}
-
+					 
 					    ?>
 					    <li>
-					      <a href="index.php?v=home&caid=<?php echo $_GET['caid']; ?>&view_type_id=<?php echo $_GET['view_type_id']; ?>&clicked=<?php echo $_GET['clicked']; ?>&page=<?php echo $nextPage; ?>&parent=<?php echo $_GET['parent']; ?>" aria-label="Next">
+					      <a href="index.php?v=home&caid=<?php echo $_GET['caid']; ?>&view_type_id=<?php echo $_GET['view_type_id']; ?>&clicked=<?php echo $paramClicked; ?>&page=<?php echo $nextPage; ?>&parent=<?php echo $_GET['parent'] ?>" aria-label="Next">
 					        <span aria-hidden="true">下一页</span>
 					      </a>
 					    </li>

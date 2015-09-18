@@ -1,11 +1,11 @@
 <?php
 	$basedir=__DIR__;
-	$basedir=explode("\\", $basedir);
+	$basedir=explode("/", $basedir);
 	array_pop($basedir);
 	array_pop($basedir);
 	$tmpBasedir='';
 	foreach ($basedir as $key => $value) {
-		$tmpBasedir.=$value.'\\';
+		$tmpBasedir.=$value.'/';
 	}
 	define('BASEDIR',$tmpBasedir);
 	require(BASEDIR.'/Cores/Loader.php');

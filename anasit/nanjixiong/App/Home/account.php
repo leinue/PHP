@@ -86,6 +86,7 @@
 		                            }
 		                            if(is_array($_POST['item_'.$value['name'].'_cata_edit'])){
 	                                    array_push($rdValueList,$_POST['item_'.$value['name'].'_cata_edit']);
+
 	                                }
 		                        }
 		                    }
@@ -109,8 +110,15 @@
 		                        $oid=$value['oid'];
 		                        $name=$fieldOptions->getNameByFoid($value['foid']);
 		                        $v=$_POST['item_'.$name[0]['name'].'_edit'];
-		                        alert($name[0]['name'].$_POST['item_'.$name[0]['name'].'_edit']);
+					$v2='{{no data}}';
+					if(count($name)>=2){
+						$v2=$_POST['item_'.$name[1]['name'].'_edit'];	
+					}
+					//alert($name[0]['name'].$_POST['item_'.$name[0]['name'].'_edit']);
 		                        $field->modify($oid,$v);
+					if($v2!='{{no data}}'){
+						$field->modify($oid,$v2);
+					}
 		                    }
 		                    $prompt=success('修改成功');
 		                }else{

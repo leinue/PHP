@@ -4,8 +4,8 @@
 			<div class="col-md-10 col-md-offset-1">
 				<div class="footer-main">
 					<div style="padding-left:0" class="col-md-6">
-						<p>Powerd By <a target="_blank" href="http://anasit.com">AnasIT</a> Team</p>
-						<p>Developed By <a target="_blank" href="http://ivydom.com">Xieyang</a></p>
+						<p>北京海淀中关村 保福寺桥</p><p>010-53350708,3d@nanjixiong.com</p>
+						<p></p>
 					</div>
 					<div style="padding-right:0;text-align:right" class="col-md-6">
 						<?php

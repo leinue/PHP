@@ -1,18 +1,25 @@
 <?php
+// require('App/Admin/header.php');
+// require('App/Admin/sidebar.php');
 
-//error_reporting(E_ALL & ~E_NOTICE);
+define('BASEDIR_HOME',BASEDIR.'/App/Home/');
+define('DOMAIN_HOME',DOMAIN.'/App/Home/');
 
+$view=$_GET['v'];
+if(empty($view)){
+    redirectTo('index.php?v=home');
+}
 
-//ini_set('display_errors',1);
+if($view=='404'){
+    redirectTo(DOMAIN_HOME.'404.php');
+}
 
-define('BASEDIR',__DIR__);
-require(BASEDIR."/Cores/Loader.php");
+$tplURI=BASEDIR_HOME.$view.'.php';
 
-
-session_start();;
-
-require('./App/Home/header.php');
-require('./App/Home/index.php');
-require('./App/Home/footer.php');
+if(file_exists($tplURI)){
+    require $tplURI;
+}else{
+    redirectTo('index.php?v=404');
+}
 
 ?>

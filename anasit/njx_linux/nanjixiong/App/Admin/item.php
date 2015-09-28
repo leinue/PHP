@@ -60,7 +60,8 @@ if(!empty($_GET['action']) && !empty($_GET['iid'])){
         case 'edit_item_confirm':
             $fieldOptions=new Cores\Models\FieldsOptionsModel();
             $field=new Cores\Models\FieldsModel();
-            $fieldList=$field->getByItemId($_GET['iid']);
+           // $fieldList=$field->getByItemId($_GET['iid']);
+	    $fieldList = $fieldOptions -> selectAll(true);
             $itemObj=new Cores\Models\ItemsModel();
             $cataObj=new Cores\Models\CataModel();
             $uid=$_SESSION['uid'];
@@ -119,17 +120,25 @@ if(!empty($_GET['action']) && !empty($_GET['iid'])){
             }else{
                 if(is_array($fieldList)){
 	            foreach ($fieldList as $key => $value) {
-		    	$oid=$value['oid'];
-                    	$name=$fieldOptions->getNameByFoid($value['foid']);
-		   	 $v=$_POST['item_'.$name[0]['name'].'_edit'];
-		   	 $v2='{{no data}}';
-		   	 if(count($name)>=2){
+			$oid = $field->getOidByItemIDAndFoid($_GET['iid'],$value['foid']);
+			$oid = $oid[0]['oid'];
+		        $name=$fieldOptions->getNameByFoid($value['foid']);
+	                $v=$_POST['item_'.$name[0]['name'].'_edit'];
+			$v2='{{no data}}';
+			if(count($name)>=2){
 				$v2=$_POST['item_'.$name[1]['name'].'_edit'];	
-		   	 }
-		   	 $field->modify($oid,$v);
-		   	 if($v2!='{{no data}}'){
-				$field->modify($oid,$v2);
-		    	}
+			}
+					
+			if($oid != ''){
+
+	                     	$field->modify($oid,$v);
+				if($v2!='{{no data}}'){
+					$field->modify($oid,$v2);
+				}
+
+				}else{
+					$field->add($value['foid'],$v,$_GET['iid']);
+			}
 		    }
 		    $prompt=success('修改成功');
                 }else{

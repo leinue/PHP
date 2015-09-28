@@ -13,7 +13,13 @@ class FieldsOptionsModel{
 		self::$model=D('njx_fields_options');
 	}
 
-	function selectAll(){
+	function selectAll($arr=false){
+		
+		if($arr){
+			$cataObj = self::$model->getDatabase()->query('SELECT * FROM `njx_fields_options` ORDER BY `_order` DESC');
+			return $cataObj;
+		}
+	
 		$cataObj=self::$model->getDatabase()->query("SELECT * FROM `njx_fields_options` ORDER BY `_order` DESC",[],'Cores\Models\FieldsOptions');
 		return $cataObj;
 	}

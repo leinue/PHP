@@ -64,6 +64,15 @@ class FieldsModel{
 		return $result;
 	}
 
+	function getOidByItemIDAndFoid($itemId,$foid){
+		
+		if($itemId == null || $foid == null){
+			return false;	
+		}
+
+		return self::$model->getDatabase()->query("SELECT `oid` FROM `njx_fields` WHERE `itemId` = '$itemId' AND `foid`='$foid'");
+	}
+	
 }
 
 ?>

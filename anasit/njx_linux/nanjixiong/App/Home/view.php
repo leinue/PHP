@@ -90,7 +90,7 @@ if(!empty($_GET['action'])){
 						}
 
 						$itemCataList=generatorCataList($_GET['iid']);
-
+								
 					?>
 
 					<div style="padding-top:0px;" class="col-md-6">
@@ -232,6 +232,7 @@ if(!empty($_GET['action'])){
 				<?php
 
 					if(is_array($filedList)){
+
 
 						foreach ($filedList as $key => $value) {
 							$optionName=$fieldOptionsObj->selectOne($value['foid']);

@@ -1,0 +1,27 @@
+<md-card style="padding:0;margin:0">
+    <md-card-content>
+        <div class="content-padded">
+            <h2 class="md-title">位置信息监控</h2>
+        </div>
+        <md-divider></md-divider>
+        <div layout layout-sm="column" flex>
+            <md-input-container flex>
+                <label>地区</label>
+                <md-select class="md-select-form" ng-model="vm.user.favouriteColor" placeholder="地区">
+                    <md-option ng-value="sex" ng-repeat="sex in ['男', '女']">{{sex}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container flex>
+                <label>地区</label>
+                <md-select class="md-select-form" ng-model="vm.user.favouriteColor" placeholder="地区">
+                    <md-option ng-value="yesorno" ng-repeat="yesorno in ['是', '否']">{{yesorno}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container flex>
+                <label>搜索</label>
+                <input type="text">
+            </md-input-container>
+        </div>
+        <amap-directive lng="lng" lat="lat" path="getPath()" timeout="2000"></amap-directive>
+    </md-card-content>
+</md-card>

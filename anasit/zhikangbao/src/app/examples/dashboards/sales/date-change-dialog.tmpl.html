@@ -1,0 +1,49 @@
+<md-dialog flex="60" flex-sm="100">
+    <md-toolbar class="toolbar-default">
+        <div class="md-toolbar-tools">
+            <h2 flex translate>DASHBOARDS.SALES.DATE-CHANGE.TITLE</h2>
+            <md-button class="md-icon-button" ng-click="vm.cancelClick()" aria-label="cancel">
+                <md-icon md-font-icon="zmdi zmdi-close"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content class="sticky-container">
+        <div layout="row" layout-padding>
+            <div flex>
+                <h2 translate>DASHBOARDS.SALES.DATE-CHANGE.START-DATE</h2>
+                <div layout="row" layout-align="start center">
+                    <md-select flex class="padding-right-10" placeholder="{{'DASHBOARDS.SALES.DATE-CHANGE.YEAR-PICK' | translate}}" ng-model="vm.start.year">
+                        <md-option ng-repeat="year in vm.dateSelectOptions.years" ng-value="year">{{::year}}</md-option>
+                    </md-select>
+                    <md-select flex class="padding-right-10" placeholder="{{'DASHBOARDS.SALES.DATE-CHANGE.MONTH-PICK' | translate}}" ng-model="vm.start.month">
+                        <md-option ng-repeat="month in vm.dateSelectOptions.months" ng-value="$index" translate>{{::month}}</md-option>
+                    </md-select>
+                    <md-select flex class="padding-right-10" placeholder="{{'DASHBOARDS.SALES.DATE-CHANGE.DATE-PICK' | translate}}" ng-model="vm.start.date">
+                        <md-option ng-repeat="date in vm.dateSelectOptions.dates" ng-value="date">{{::date}}</md-option>
+                    </md-select>
+                </div>
+            </div>
+            <div flex>
+                <h2 translate>DASHBOARDS.SALES.DATE-CHANGE.END-DATE</h2>
+                <div layout="row" layout-align="start center">
+                    <md-select flex class="padding-right-10" placeholder="{{'DASHBOARDS.SALES.DATE-CHANGE.YEAR-PICK' | translate}}" ng-model="vm.end.year">
+                        <md-option ng-repeat="year in vm.dateSelectOptions.years" ng-value="year">{{::year}}</md-option>
+                    </md-select>
+                    <md-select flex class="padding-right-10" placeholder="{{'DASHBOARDS.SALES.DATE-CHANGE.MONTH-PICK' | translate}}" ng-model="vm.end.month">
+                        <md-option ng-repeat="month in vm.dateSelectOptions.months" ng-value="$index" translate>{{::month}}</md-option>
+                    </md-select>
+                    <md-select flex class="padding-right-10" placeholder="{{'DASHBOARDS.SALES.DATE-CHANGE.DATE-PICK' | translate}}" ng-model="vm.end.date">
+                        <md-option ng-repeat="date in vm.dateSelectOptions.dates" ng-value="date">{{::date}}</md-option>
+                    </md-select>
+                </div>
+            </div>
+        </div>
+    </md-dialog-content>
+
+    <div class="md-actions" layout="row">
+        <span flex></span>
+        <md-button ng-click="vm.cancelClick()" aria-label="{{'GENERAL.CANCEL' | translate}}" translate="GENERAL.CANCEL"></md-button>
+        <md-button ng-click="vm.okClick()" class="md-primary" aria-label="{{GENERAL.OK | translate}}" translate="GENERAL.OK"></md-button>
+    </div>
+</md-dialog>

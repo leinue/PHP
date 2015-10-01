@@ -1,0 +1,33 @@
+<md-card style="padding:0;margin:0;padding-bottom:100px;">
+	<md-card-content>
+		<div class="content-padded">
+            <h2 class="md-title">新增志愿者</h2>
+        </div>
+		<md-input-container>
+		    <label>姓名(最好是全名)</label>
+		    <input type="text">
+		</md-input-container>
+		<md-input-container>
+			<label>性别</label>
+            <md-select class="md-select-form" ng-model="vm.user.favouriteColor" placeholder="性别">
+                <md-option ng-value="sex" ng-repeat="sex in ['男', '女']">{{sex}}</md-option>
+            </md-select>
+        </md-input-container>
+		<md-input-container>
+		    <label>设备号</label>
+		    <input type="tel">
+		</md-input-container>
+		<md-input-container>
+		    <label>家庭住址</label>
+		    <textarea></textarea>
+		</md-input-container>
+		<md-input-container>
+		    <label>联系电话</label>
+		    <input type="tel">
+		</md-input-container>
+		<div layout="row" layout-align="end center">
+		    <md-button ng-click="returnToList()" class="md-primary md-raised">返回</md-button>
+		    <md-button class="md-primary md-raised">确认</md-button>
+		</div>
+	</md-card-content>
+</md-card>

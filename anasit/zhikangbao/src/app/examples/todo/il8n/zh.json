@@ -1,0 +1,21 @@
+{
+    "MENU": {
+        "TODO": {
+            "TITLE": "待办事项",
+            "HEADER": "待办清单",
+            "NOTE": "笔记",
+            "REMOVEMSG": "删除的项目清单的swipping的权利",
+            "DIALOG": {
+                "NEW": "增加新任务",
+                "DESC": "任务名称",
+                "HIGH": "高",
+                "MEDIUM": "中",
+                "LOW": "低",
+                "PRIORITY": "优先级",
+                "TASKFORM": {
+                    "PLEASE_ENTER": "请输入任务名称"
+                }
+            }
+        }
+    }
+}

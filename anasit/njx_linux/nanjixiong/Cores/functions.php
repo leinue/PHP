@@ -529,18 +529,30 @@ function generatorItemAddingForm($fieldList,$suffix='_add',$action=null,$fill=fa
                 $rdList=$cataObj->getCataChild($value['caid']);
                 if(is_array($rdList)){
                     foreach ($rdList as $childKey => $childValue) {
+				$items=new Cores\Models\ItemsModel();
+                                $currentItem=$items->selectOne($_GET['iid']);
+
+                                $currentItemCaidList=$currentItem[0]->getCaid();
+                                $caidIsExists=stripos($currentItemCaidList,$childValue['caid']);
+
+                                $isChecked=$caidIsExists!=false?'checked':'';
+
+
                         if($childValue['child']!='second' && $mChoice==='0'){
-                            $list.='<option "'.$childValue['caid'].'"> '.$childValue['name'].'</option>';
+				$optionSelected = '';
+				if($caidIsExists){
+					$optionSelected = 'selected';
+				}
+                            $list.='<option '.$optionSelected.' value= "'.$childValue['caid'].'"> '.$childValue['name'].'</option>';
                         }else{
                             if($fill){
 
                                 $isChecked='';
-                                $items=new Cores\Models\ItemsModel();
-                                $currentItem=$items->selectOne($_GET['iid']);
+                                //$items=new Cores\Models\ItemsModel();
+                                //$currentItem=$items->selectOne($_GET['iid']);
 
-                                $currentItemCaidList=$currentItem[0]->getCaid();
-
-                                $caidIsExists=stripos($currentItemCaidList,$childValue['caid']);
+                               // $currentItemCaidList=$currentItem[0]->getCaid();
+                                //$caidIsExists=stripos($currentItemCaidList,$childValue['caid']);
 
                                 $isChecked=$caidIsExists!=false?'checked':'';
 

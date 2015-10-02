@@ -121,7 +121,7 @@ if(!empty($_GET['action']) && !empty($_GET['remarkId'])){
                                 
                                 <div>
 
-                                  <ul class="nav nav-tabs" role="tablist">
+                                  <ul class="nav nav-tabs" role="tablist" id="mytabs">
                                     <li role="presentation" class="active"><a href="#comments" aria-controls="comments" role="tab" data-toggle="tab">评论管理</a></li>
                                     <li role="presentation"><a href="#points" aria-controls="points" role="tab" data-toggle="tab">评分管理</a></li>
                                   </ul>
@@ -208,26 +208,35 @@ if(!empty($_GET['action']) && !empty($_GET['remarkId'])){
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                        $result=$remarksObj->selectAll($remarksPage);
+                                                        $result=$remarksObj->selectAll($remarksPage+1);
                                                         $itemObj=new Cores\Models\ItemsModel();
                                                         $j=$remarksPage>1?($remarksPage*5)+1:0;
                                                         if(is_array($result)){
                                                             foreach ($result as $key => $value) {
                                                                 $j++;
                                                                 $itemName=$itemObj->selectOne($value->getItemId());
+								if(!is_array($itemName)){
+									continue;
+								}
                                                                 $itemName=$itemName[0]->getTitle();
                                                                 echo '  <tr>
                                                                             <td>'.$j.'</td>
                                                                             <td>'.$itemName.'</td>
                                                                             <td>'.$value->getPoints().'</td>
                                                                             <td>
-                                                                                <a href="admin.php?v='.$_GET['v'].'&action=view_reamrks&remarkId='.$value->getRemarkId().'&remarksPage='.$remarksPage.'" class="btn btn-primary btn-sm">查看</a>
                                                                                 <a href="admin.php?v='.$_GET['v'].'&action=edit_remarks&remarkId='.$value->getRemarkId().'&remarksPage='.$remarksPage.'" class="btn btn-primary btn-sm">修改</a>
                                                                                 <a href="admin.php?v='.$_GET['v'].'&action=delete_remarks&remarkId='.$value->getRemarkId().'&remarksPage='.$remarksPage.'" class="btn btn-danger btn-sm">删除</a>
                                                                             </td>
                                                                         </tr>';
                                                             }
                                                         }                                              
+							if(isset($_GET['remarksPage'])){
+								echo "<script>
+									$(function(){
+										$('#mytabs li a:last-child').tab('show');
+									});
+									</script>";
+							}
                                                     ?>
                                                 </tbody>
                                             </table>

@@ -258,16 +258,28 @@ if(!empty($_GET['action'])){
 					<div class="panel-body">
 						
 						<?php
+							$remarksObj = new Cores\Models\RemarksModel();
+							$res = $remarksObj->getRemarksByUid($_GET['uid'],$_GET['iid']);
 
 							if(!empty($_SESSION['username'])){
 						?>
 							<div style="padding-bottom:15px;padding-top:0;" id="comments_publish" class="comments">
+							<?php
+								
+								if($res){
+									echo "您已评分:".$res[0]['points'].'分';
+								}else{
+
+							?>
 								<br>评分：
 									<span style="color:rgb(253,108,97)" class="glyphicon glyphicon-star"></span>
 									<span style="color:rgb(253,108,97)" class="glyphicon glyphicon-star"></span>
 									<span style="color:rgb(253,108,97)" class="glyphicon glyphicon-star"></span>
 									<span style="color:rgb(253,108,97)" class="glyphicon glyphicon-star"></span>
 									<span style="color:rgb(253,108,97)" class="glyphicon glyphicon-star"></span>
+							<?php
+								}
+							?>
 							</div>
 						<?php
 							}else{

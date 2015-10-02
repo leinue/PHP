@@ -70,7 +70,7 @@
 		$searchResult=array();
 		// foreach ($cataToView as $key => $value) {
 			$search=$cataObj->searchItemListByCaid($_GET['clicked'],$_GET['caid'],$page);
-			$allPages=ceil(count($search)/10);
+			$allPages=ceil(count($search)/10)-1;
 			// if(!$search){
 			// 	continue;
 			// }
@@ -279,6 +279,8 @@
 													}
 												}
 
+												$topTip = $itemValue->getTop()==='10'?'[置顶]':'';
+										
 												echo '<tr>
 											          <td>
 														<div class="media">
@@ -288,7 +290,7 @@
 														    </a>
 														  </div>
 														  <div class="media-body">
-														    <h4 class="media-heading"><a href="index.php?v=view&&caid='.$_GET['caid'].'&iid='.$itemValue->getIid().'&uid='.$itemValue->getuid().'">'.$itemValue->getTitle().'</a></h4>
+														    <h4 class="media-heading"><a href="index.php?v=view&&caid='.$_GET['caid'].'&iid='.$itemValue->getIid().'&uid='.$itemValue->getuid().'">'.$topTip.$itemValue->getTitle().'</a></h4>
 														    '.$frontDescContent.'</div>
 														</div>
 											          </td>
@@ -355,7 +357,16 @@
 												$rdValue=$cataObj->selectOne($rdCaidValue[0]);
 												if($rdValue[0]->getFVisible()==='1'){
 													$secondFieldCount++;
-								          			$secondListField.='<td><p></p>'.$rdCaidValue[2].'</td>';
+														$cataString=$rdCaidValue[2];
+														if(is_array($rdCaidValue[2])){
+															$tmp=array();
+															foreach ($rdCaidValue[2] as $cataKey => $cataValue) {
+																$tmpCataValue=$cataObj->selectOne($cataValue);
+																array_push($tmp,$tmpCataValue[0]->getName());
+															}
+															$cataString=join(',', $tmp);
+														}
+								          			$secondListField.='<td><p></p>'.$cataString.'</td>';
 								          		}
 
 											}
@@ -380,6 +391,8 @@
 												}
 											}
 
+											$topTip = $itemVlaue['_top']==='10'?'[置顶]':'';
+
 											echo '<tr>
 										          <td>
 													<div class="media">
@@ -389,7 +402,7 @@
 													    </a>
 													  </div>
 													  <div class="media-body">
-													    <h4 class="media-heading"><a href="index.php?v=view&&caid='.$_GET['caid'].'&iid='.$itemValue['iid'].'&uid='.$itemValue['uid'].'">'.$itemValue['title'].'</a></h4>
+													    <h4 class="media-heading"><a href="index.php?v=view&&caid='.$_GET['caid'].'&iid='.$itemValue['iid'].'&uid='.$itemValue['uid'].'">'.$topTip.$itemValue['title'].'</a></h4>
 													    '.$frontDescContent.'</div>
 													</div>
 										          </td>

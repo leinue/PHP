@@ -14,6 +14,7 @@ class Items{
 	protected $status;
 	protected $openComments;
 	protected $title;
+	protected $_top;
 
 	function getIid(){return $this->iid;}
 	function getUid(){return $this->uid;}
@@ -26,6 +27,7 @@ class Items{
 	function getStatus(){return $this->status;}
 	function openComments(){return $this->openComments;}
 	function getTitle(){return $this->title;}
+	function getTop(){return $this->_top;}
 }
 
 ?>

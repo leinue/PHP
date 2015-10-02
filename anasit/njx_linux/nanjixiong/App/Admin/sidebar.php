@@ -26,7 +26,7 @@
                         <a class="<?php echo displayAvtive($view,"catafield"); ?>" href="admin.php?v=catafield"><i class="fa fa-list"></i> 筛选字段管理</a>
                     </li>
 					<li>
-                        <a class="<?php echo displayAvtive($view,"item"); ?>" href="admin.php?v=item"><i class="fa fa-edit"></i> 投稿管理</a>
+                        <a class="<?php echo displayAvtive($view,"item"); ?>" href="admin.php?v=item&page=1"><i class="fa fa-edit"></i> 投稿管理</a>
                     </li>
                     <li>
                         <a class="<?php echo displayAvtive($view,"itemadd"); ?>" href="admin.php?v=itemadd"><i class="fa fa-plus"></i> &nbsp;添加投稿</a>

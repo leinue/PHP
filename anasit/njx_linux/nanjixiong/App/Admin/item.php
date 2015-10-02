@@ -1,7 +1,7 @@
 <?php
 
 $page=1;
-if(!empty($_GET['[page'])){
+if(empty($_GET['[page'])){
     $page=$_GET['page'];
 }
 
@@ -47,6 +47,14 @@ if(!empty($_GET['action']) && !empty($_GET['iid'])){
             $result=$itemsObj->downOrder($iid);
             $prompt=success('降级成功');
             break;
+	case 'set_top':
+		$result=$itemsObj->setTop($iid);
+		$prompt=success('设置置顶成功');
+		break;
+	case 'set_untop':
+		$result=$itemsObj->setUnTop($iid);
+		$prompt=success('取消置顶成功');
+		break;
         case  'delete_item':
             $tips='该操作不可恢复,确定要执行吗?';
             $request='admin.php?v='.$_GET['v'].'&action=delete_item_confirm&iid='.$iid;
@@ -152,12 +160,14 @@ if(!empty($_GET['action']) && !empty($_GET['iid'])){
 }
 
 function printItems($itemsObj,$status,$page){
-    $allItemObj=$itemsObj->selectAll($page);
+    $allItemObj=$itemsObj->selectAll($page,false,true);
+	if($status == '0'){
+		$allItemObj = $itemsObj -> selectAllUnApproved($page);
+	}
     if(is_array($allItemObj)){
         $j=$page>1?($page*5+1):0;
         foreach ($allItemObj as $key => $value) {
             if($value['status']===$status){
-                $j++;
                 $cataObj=new Cores\Models\CataModel();
                 $userObj=new Cores\Models\UsersModel();
                 $singleCaid=json_decode($value['caid']);
@@ -185,13 +195,16 @@ function printItems($itemsObj,$status,$page){
                             <a href="admin.php?v='.$_GET['v'].'&action=view_comments&iid='.$value['iid'].'&page='.$page.'" class="btn btn-primary btn-sm">评论列表</a>
                             <a href="admin.php?v='.$_GET['v'].'&action=up_order&iid='.$value['iid'].'&page='.$page.'" class="btn btn-primary btn-sm">向上</a>
                             <a href="admin.php?v='.$_GET['v'].'&action=down_order&iid='.$value['iid'].'&page='.$page.'" class="btn btn-primary btn-sm">向下</a>':'';
+		$setTopBtn = $value['_top'] === '10'?'取消置顶':'置顶';
+		$topBtnReq = $value['_top'] === '10'?'admin.php?v='.$_GET['v'].'&page='.$_GET['page'].'&action=set_untop&iid='.$value['iid']:'admin.php?v='.$_GET['v'].'&page='.$_GET['page'].'&action=set_top&iid='.$value['iid'];
                 echo '<tr>
-                        <td>'.$j.'</td>
+                        <td></td>
                         <td>'.$value['title'].'</td>
                         <td>'.$cataString.'</td>
                         <td>'.$publisher.'</td>
                         <td>'.$value['createTime'].'</td>
                         <td>
+			    <a href="'.$topBtnReq.'" class="btn btn-sm btn-primary">'.$setTopBtn.'</a>
                             <a href="admin.php?v='.$_GET['v'].'&action=edit_item&iid='.$value['iid'].'" class="btn btn-sm btn-primary">编辑</a>
                             <a target="_blank" href="index.php?v=view&iid='.$value['iid'].'&uid='.$value['uid'].'" class="btn btn-primary btn-sm">查看</a>
                             <a href="'.$action.'" class="btn btn-primary btn-sm">'.$btnName.'</a>

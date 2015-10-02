@@ -27,7 +27,7 @@ class RemarksModel{
 	}
 
 	function getRemarksByUid($uid,$iid){
-	return self::$model->getDatabase()->query("SELECT `points` FROM `njx_remarks` WHERE `uid`='$uid' and `itemId`='$iid'");
+		return self::$model->getDatabase()->query("SELECT `points` FROM `njx_remarks` WHERE `uid`='$uid' and `itemId`='$iid'");
 	}
 
 	function add($points,$itemId,$uid){

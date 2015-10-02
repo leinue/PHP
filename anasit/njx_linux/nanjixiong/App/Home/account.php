@@ -152,6 +152,10 @@
 	    $page=$_GET['page'];
 	}
 
+//	if(isset($_GET['page'])){
+//	    echo "<script>$('#myTabs a:last').tab('show');</script>";
+//	}
+
 	$itemsObj=new Cores\Models\ItemsModel();
 	$pageCount=count($itemsObj->selectAll());
 	$allPages=ceil($pageCount/20);
@@ -167,7 +171,7 @@
 	}
 
 	function printItems($itemsObj,$status,$page){
-	    $allItemObj=$itemsObj->selectAll($page);
+	    $allItemObj=$itemsObj->getUserItem($_GET['uid'],$page);
 	    if(is_array($allItemObj)){
 	        $j=$page>1?($page*5+1):0;
 	        foreach ($allItemObj as $key => $value) {
@@ -194,7 +198,6 @@
 	                }
 
 			$isApproved = $value['status']==='0'?'未通过':'已通过';
-
 	                echo '<tr>
 	                        <td>'.$j.'</td>
 	                        <td>'.$value['title'].'</td>
@@ -248,8 +251,7 @@
 				<div class="panel-body">
 
 					<div>
-
-					  <ul class="nav nav-tabs" role="tablist">
+					  <ul class="nav nav-tabs" id="myTabs" role="tablist">
 					    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">基本信息</a></li>
 					    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">项目列表</a></li>
 					  </ul>
@@ -313,15 +315,18 @@
                                     </li>
                                     <?php
                                         $classActive='';
+					$tmp=$itemsObj->getUserItem($_GET['uid'],false);
+					$allPages = $tmp[0]['c'];
+					$allPages = ceil($allPages/10);
                                         for ($i=1; $i <= $allPages; $i++) {
                                             if($i==$page){
                                                 $classActive='class="active"';
                                             }
-                                            echo '<li><a '.$classActive.' href="admin.php?v='.$_GET['v'].'&page='.$i.'">'.$i.'</a></li>';
+                                            echo '<li><a '.$classActive.' href="index.php?v='.$_GET['v'].'&page='.$i.'&uid='.$_GET['uid'].'">'.$i.'</a></li>';
                                         }
                                     ?>
                                     <li>
-                                      <a href="index.php?v=<?php echo $_GET['v'] ?>&page=<?php echo $nextPage; ?>&uid=<?php echo $_GET['uid']; ?>" aria-label="Next">
+                                      <a href="index.php?v=<?php echo $_GET['v'] ?>&page=<?php echo $nextPage; ?>&uid=<?php echo $_GET['uid']; ?>&iid=<?php echo $_GET['uid'] ?>" aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>
                                       </a>
                                     </li>
@@ -339,3 +344,14 @@
 		</div>
 
 	</div>
+<?php
+
+	if(isset($_GET['page'])){
+	    echo "<script>
+			$(function(){
+				$('#myTabs li a:last-child').tab('show');
+			});
+		</script>";
+	}
+
+?>

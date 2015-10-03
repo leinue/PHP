@@ -1,12 +1,44 @@
-<md-content class="padded-content-page">
-    <div layout="row" layout-align="center center">
-        <h2 class="md-display-3" translate>SEED.TITLE</h2>
-    </div>
-    <div class="margin-20" layout="row" layout-align="center center">
-        <ul class="seed-list">
-            <li class="md-headline" ng-repeat="test in vm.testData">
-                {{test}}
-            </li>
-        </ul>
-    </div>
-</md-content>
+<md-card style="padding:0;margin:0">
+    <md-card-content>
+        <div class="content-padded">
+            <h2 class="md-title">
+                {{vm.posStatus.title}}
+                <md-button ng-click="vm.posStatus.backToWhole()" id="returnRoWholeBtn" class="md-raised md-primary">返回</md-button>
+            </h2>
+        </div>
+        <md-divider></md-divider>
+        <div layout layout-sm="column" flex>
+            <md-input-container flex>
+                <label>地区</label>
+                <md-select class="md-select-form" ng-model="vm.user.favouriteColor" placeholder="地区">
+                    <md-option ng-value="sex" ng-repeat="sex in ['男', '女']">{{sex}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container flex>
+                <label>地区</label>
+                <md-select class="md-select-form" ng-model="vm.user.favouriteColor" placeholder="地区">
+                    <md-option ng-value="yesorno" ng-repeat="yesorno in ['是', '否']">{{yesorno}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container flex>
+                <label>根据设备序列号或手机号回车搜索</label>
+                <input ng-keyup="vm.startSearch($event)" ng-model="vm.search.content" type="text">
+            </md-input-container>
+        </div>
+        
+        <style type="text/css">
+    
+            #amap-container {
+                width: 100%;
+                height: 400px;
+            }
+
+        </style>
+
+        <div id="amap-container"></div>
+
+        <button ng-click="startAnimation()">start</button>
+        <button ng-click="stopAnimation()">stop</button>
+    
+    </md-card-content>
+</md-card>

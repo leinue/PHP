@@ -64,6 +64,18 @@
             templateUrl: 'app/cores/basic/layouts/commericial/new-commericial.tmpl.html',
             controller: 'BasicNewCommericialController',
             controllerAs: 'vm'
+        })
+        .state('triangular.admin-default.device-mgr',{
+            url: '/device-mgr',
+            templateUrl: 'app/cores/basic/layouts/device/device.tmpl.html',
+            controller: 'BasicDeviceController',
+            controllerAs: 'vm'
+        })
+        .state('triangular.admin-default.org-mgr',{
+            url: '/org-mgr',
+            templateUrl: 'app/cores/basic/layouts/org/org.tmpl.html',
+            controller: 'BasicOrgController',
+            controllerAs: 'vm'
         });
 
         triMenuProvider.addMenu({
@@ -90,6 +102,16 @@
             {
                 name: '商户管理',
                 state: 'triangular.admin-default.basic-commericial',
+                type: 'link'
+            },
+            {
+                name: '设备管理',
+                state: 'triangular.admin-default.device-mgr',
+                type: 'link'
+            },
+            {
+                name: '组织管理',
+                state: 'triangular.admin-default.org-mgr',
                 type: 'link'
             },
             {

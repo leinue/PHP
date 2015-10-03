@@ -6,7 +6,7 @@
         .controller('LoginController', LoginController);
 
     /* @ngInject */
-    function LoginController($state, triSettings) {
+    function LoginController($state, triSettings, LoginService) {
         var vm = this;
         vm.loginClick = loginClick;
         vm.socialLogins = [{
@@ -29,14 +29,16 @@
         vm.triSettings = triSettings;
         // create blank user variable for login form
         vm.user = {
-            email: '',
-            password: ''
+            mobile: '',
+            password: '',
+            rememberMe: false
         };
 
         ////////////////
 
         function loginClick() {
-            $state.go('triangular.admin-default.introduction');
+            var result = LoginService.login(vm.user.mobile,vm.user.password);
+            $state.go('triangular.admin-default.basic-page');
         }
     }
 })();

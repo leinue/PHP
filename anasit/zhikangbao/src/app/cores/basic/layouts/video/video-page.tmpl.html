@@ -1,12 +1,27 @@
-<md-content class="padded-content-page">
-    <div layout="row" layout-align="center center">
-        <h2 class="md-display-3" translate>SEED.TITLE</h2>
-    </div>
-    <div class="margin-20" layout="row" layout-align="center center">
-        <ul class="seed-list">
-            <li class="md-headline" ng-repeat="test in vm.testData">
-                {{test}}
-            </li>
-        </ul>
-    </div>
-</md-content>
+<md-card style="padding:0;margin:0;">
+    <md-ontent>
+        <object id="basicVideo" type='application/x-vlc-plugin' pluginspage="http://www.videolan.org/" events='false' width="100%" height="410">
+            <param name='mrl' value='rtsp://admin:ZhouXinyi@192.168.1.64:554/h264/ch1/main/av_stream' />
+            <param name='volume' value='50' />
+            <param name='autoplay' value='true' />
+            <param name='loop' value='false' />
+            <param name='fullscreen' value='false' />
+            <param name='controls' value='false' />
+        </object>
+    </md-content>
+</md-card>
+
+<script>
+
+    $(function(){
+
+        var footerHeight = $('#footer').height();
+        var headerHeight = $('.md-toolbar-tools').height();
+        var docHeight = $('html').height();
+
+        var bodyHeight = docHeight - (headerHeight * 2) - 10;
+
+        $('#basicVideo').attr('height', bodyHeight);
+    });
+
+</script>

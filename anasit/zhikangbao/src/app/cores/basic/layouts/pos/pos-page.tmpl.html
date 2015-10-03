@@ -22,6 +22,20 @@
                 <input type="text">
             </md-input-container>
         </div>
-        <amap-directive lng="lng" lat="lat" path="getPath()" timeout="2000"></amap-directive>
+        
+        <style type="text/css">
+    
+            #amap-container {
+                width: 100%;
+                height: 400px;
+            }
+
+        </style>
+
+        <div id="amap-container"></div>
+
+        <button ng-click="startAnimation()">start</button>
+        <button ng-click="stopAnimation()">stop</button>
+    
     </md-card-content>
 </md-card>

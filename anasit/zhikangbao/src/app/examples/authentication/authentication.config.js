@@ -45,12 +45,8 @@
             controllerAs: 'vm'
         });
 
-        triMenuProvider.addMenu({
-            name: 'MENU.AUTH.AUTH',
-            icon: 'zmdi zmdi-account',
-            type: 'dropdown',
-            priority: 4.1,
-            children: [{
+        /*
+            {
                 name: 'MENU.AUTH.LOGIN',
                 state: 'authentication.login',
                 type: 'link'
@@ -62,13 +58,21 @@
                 name: 'MENU.AUTH.FORGOT',
                 state: 'authentication.forgot',
                 type: 'link'
+            },
+        */
+
+        triMenuProvider.addMenu({
+            name: 'MENU.AUTH.AUTH',
+            icon: 'zmdi zmdi-account',
+            type: 'dropdown',
+            priority: 4.1,
+            children: [{
+                name: 'MENU.AUTH.PROFILE',
+                state: 'triangular.admin-default.profile',
+                type: 'link'
             },{
                 name: 'MENU.AUTH.LOCK',
                 state: 'authentication.lock',
-                type: 'link'
-            },{
-                name: 'MENU.AUTH.PROFILE',
-                state: 'triangular.admin-default.profile',
                 type: 'link'
             }]
         });

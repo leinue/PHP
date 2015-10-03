@@ -11,11 +11,11 @@
             <md-content class="md-padding">
                 <form name="login">
                     <md-input-container>
-                        <label for="email" translate>LOGIN.EMAIL.LABEL</label>
-                        <input id="email" label="email" name="email" type="email" ng-model="vm.user.email" required/>
-                        <div ng-messages="login.email.$error" ng-if="login.email.$dirty">
+                        <label for="mobile" translate>LOGIN.EMAIL.LABEL</label>
+                        <input id="mobile" label="mobile" name="mobile" type="mobile" ng-model="vm.user.mobile"mobile required/>
+                        <div ng-messages="login.mobile.$error" ng-if="login.mobile.$dirty">
                             <div ng-message when="required"><span translate>LOGIN.EMAIL.PLEASE_ENTER</span></div>
-                            <div ng-message when="email"><span translate>LOGIN.EMAIL.PLEASE_VALID</span></div>
+                            <div ng-message when="mobile"><span translate>LOGIN.EMAIL.PLEASE_VALID</span></div>
                         </div>
                     </md-input-container>
                     <md-input-container>
@@ -33,16 +33,16 @@
                             </md-checkbox>
                         </md-input-container>
 
-                        <md-input-container>
+                        <!-- <md-input-container>
                             <md-button flex class="md-primary" href="#/forgot" translate="LOGIN.FORGOT" aria-label="{{'LOGIN.FORGOT' | translate}}"></md-button>
-                        </md-input-container>
+                        </md-input-container> -->
                     </div>
 
                     <md-button class="md-raised md-primary full-width margin-left-0 margin-right-0 margin-top-10 margin-bottom-10"  ng-click="vm.loginClick()" ng-disabled="login.$invalid" translate="LOGIN.BUTTON" aria-label="{{'LOGIN.BUTTON' | translate}}"></md-button>
 
                     <md-button class="md-primary full-width margin-left-0 margin-right-0 margin-top-10 margin-bottom-10" href="#/signup" translate="LOGIN.SIGNUP_LINK" aria-label="{{'LOGIN.SIGNUP_LINK' | translate}}"></md-button>
 
-                    <div class="social-login">
+                    <!-- <div class="social-login">
                         <md-divider></md-divider>
 
                         <div class="text-center margin-20" translate>LOGIN.SOCIAL.OR</div>
@@ -52,7 +52,7 @@
                                 <md-icon md-font-icon="{{::social.icon}}"></md-icon>
                             </md-button>
                         </div>
-                    </div>
+                    </div> -->
                 </form>
             </md-content>
         </md-card>

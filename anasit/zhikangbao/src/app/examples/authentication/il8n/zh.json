@@ -1,23 +1,23 @@
 {
     "MENU": {
         "AUTH": {
-            "AUTH": "认证",
+            "AUTH": "帐户信息",
             "LOGIN": "登录",
             "SIGN_UP": "注册",
             "FORGOT": "忘记密码",
-            "LOCK": "锁住本页",
+            "LOCK": "离开",
             "PROFILE": "资料"
         }
     },
     "HEADER": {
-        "HEADING": "三角"
+        "HEADING": "智康宝"
     },
     "LOGIN": {
         "TITLE": "登录",
         "EMAIL": {
-            "LABEL": "电子邮件",
-            "PLEASE_ENTER": "请输入你的电子邮件地址。",
-            "PLEASE_VALID": "请输入的一个有效的电邮地址。"
+            "LABEL": "手机号",
+            "PLEASE_ENTER": "请输入新的手机号。",
+            "PLEASE_VALID": "请输入的一个有效的手机号。"
         },
         "PASSWORD": {
             "LABEL": "密码",
@@ -26,7 +26,7 @@
         "REMEMBER": "记住登录",
         "FORGOT": "忘记密码?",
         "BUTTON": "登录",
-        "SIGNUP_LINK": "没有一个账户? 现在去注册",
+        "SIGNUP_LINK": "没有账户? 现在去注册",
         "SOCIAL": {
             "OR": "或者登录于"
         },
@@ -41,15 +41,15 @@
             "PLEASE_ENTER": "请输入你的名字"
         },
         "EMAIL": {
-            "LABEL": "电子邮件",
-            "PLEASE_ENTER": "请输入你的电子邮件地址",
-            "PLEASE_VALID": "请输入的一个有效的电邮地址"
+            "LABEL": "手机号",
+            "PLEASE_ENTER": "请输入您的手机号",
+            "PLEASE_VALID": "请输入的一个有效的手机号"
         },
         "PASSWORD": {
             "LABEL": "密码",
             "PLEASE_ENTER": "请输入密码",
             "MIN_LENGTH": "你的密码必须超过8个字符",
-            "SAME_PASSWORD": "您必须输入密码"
+            "SAME_PASSWORD": "您必须输入相同的密码"
         },
         "PASSWORD_CONFIRM": {
             "LABEL": "再输入一次密码"
@@ -58,8 +58,8 @@
         "HAVE_LOGIN": "已经有一个帐户了吗？去登录",
         "MESSAGES": {
             "CONFIRM_SENT": "确认发送给",
-            "LOGIN_NOW": "登录",
-            "NO_SIGNUP": "能不签，多用户来"
+            "LOGIN_NOW": "注册成功,现在去登录",
+            "NO_SIGNUP": "注册失败"
         }
     },
     "LOCK": {
@@ -77,11 +77,11 @@
     },
     "FORGOT": {
         "TITLE": "忘了你的密码?",
-        "ENTER_EMAIL": "请输入你的电子邮件",
+        "ENTER_EMAIL": "请输入你的手机号",
         "EMAIL": {
-            "LABEL": "电子邮件",
-            "PLEASE_ENTER": "请输入你的电子邮件地址。",
-            "PLEASE_VALID": "请输入的一个有效的电邮地址。"
+            "LABEL": "手机号",
+            "PLEASE_ENTER": "请输入你的手机号。",
+            "PLEASE_VALID": "请输入的一个有效的手机号。"
         },
         "RESET": "重新设置",
         "LOGIN": "记得吗? 登录在这里",
@@ -98,9 +98,9 @@
             "PLEASE_ENTER": "请输入你的名字"
         },
         "EMAIL": {
-            "LABEL": "电子邮件",
-            "PLEASE_ENTER": "请输入你的电子邮件地址",
-            "PLEASE_VALID": "请输入的一个有效的电邮地址"
+            "LABEL": "手机号",
+            "PLEASE_ENTER": "请输入你的手机号",
+            "PLEASE_VALID": "请输入的一个有效的手机号"
         },
         "LOCATION": {
             "LABEL": "地点"

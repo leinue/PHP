@@ -6,7 +6,7 @@
         .controller('DefaultToolbarController', DefaultToolbarController);
 
     /* @ngInject */
-    function DefaultToolbarController($scope, $mdMedia, $translate, $state, $element, $filter, $mdUtil, $mdSidenav, $mdToast, $timeout, triBreadcrumbsService, triSettings, triLayout) {
+    function DefaultToolbarController($scope, $mdMedia, $translate, $state, $element, $filter, $mdUtil, $mdSidenav, $mdToast, $timeout, triBreadcrumbsService, triSettings, triLayout, LoginService) {
         var vm = this;
         vm.breadcrumbs = triBreadcrumbsService.breadcrumbs;
         vm.emailNew = false;
@@ -15,6 +15,18 @@
         vm.hideMenuButton = hideMenuButton;
         vm.switchLanguage = switchLanguage;
         vm.toggleNotificationsTab = toggleNotificationsTab;
+
+        // vm.menuUser = {
+        //     username: localStorage.username;
+        // }
+
+        $scope.currentUser = {
+            username: localStorage.username
+        };
+
+        $scope.logout = function() {
+            LoginService.logout();
+        };
 
         // initToolbar();
 

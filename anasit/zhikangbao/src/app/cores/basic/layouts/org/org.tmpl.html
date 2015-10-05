@@ -5,7 +5,7 @@
         </div>
         <md-divider></md-divider>
         <div class="button-toolbar" layout="row" layout-align="start center">
-            <md-button ng-click="addNew()" class="md-raised md-primary">新增</md-button>
+            <md-button ng-click="addNewOrg()" class="md-raised md-primary">新增</md-button>
             <md-button class="md-raised md-warn">删除</md-button>
         </div>
     </md-card-content>
@@ -55,13 +55,49 @@
                     <td>{{::user.id}}</td>
                     <td>{{::user.id}}</td>
                     <td>
-                        <md-button ng-click="" class="md-primary">新增</md-button>
+                        <md-button ng-click="editThisItem()" class="md-primary">编辑</md-button>
                         <md-button ng-click="deleteThisItem()" class="md-warn">删除</md-button>
                     </td>
                 </tr>
             </tbody>
         </table>
     </md-data-table-container>
+
+    <!-- Modal -->
+    <div class="modal fade" id="new-org" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">{{orgTitle}}</h4>
+          </div>
+          <div class="modal-body" style="font-size: 1.3em;">
+            <div layout="column" flex>
+                <md-input-container flex>
+                    <label translate>用户ID</label>
+                    <input ng-model="insertHealthArchiveInfo.realname | nullToVisual" type="text" required>
+                </md-input-container>
+                <md-input-container>
+                    <label translate>设备SN号</label>
+                    <input ng-model="insertHealthArchiveInfo.blood_type | nullToVisual" type="text">
+                </md-input-container>
+                <md-input-container>
+                    <label translate>设备IMEI号</label>
+                    <input ng-model="insertHealthArchiveInfo.nation | nullToVisual" type="text">
+                </md-input-container>
+                <md-input-container>
+                    <label translate>描述</label>
+                    <textarea></textarea>
+                </md-input-container>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            <button type="button" class="btn btn-default" ng-click="saveNewOrg()" data-dismiss="modal">保存</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <md-data-table-pagination md-limit="vm.query.limit" md-page="vm.query.page" md-total="{{vm.users.total_count}}" md-trigger="vm.getUsers"></md-data-table-pagination>
 </div>

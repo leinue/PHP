@@ -58,14 +58,14 @@
                     <td>{{user.address | nullToVisual}}</td>
                     <td>{{user.create_time | nullToVisual}}</td>
                     <td>
-                        <md-button ng-click="viewThisArchive(user.user_id)" class="md-primary">档案管理</md-button>
+                        <md-button ng-click="viewThisArchive(user.user_id,user.username)" class="md-primary">档案管理</md-button>
                     </td>
                 </tr>
             </tbody>
         </table>
 
         <table md-data-table ng-show="isArchive == true" class="md-primary md-data-table" md-row-select="vm.selected" md-progress="vm.deferred">
-            <thead md-order="voldInfoItemList.user_id" md-trigger="">
+            <thead md-order="healthInfoList.user_id" md-trigger="">
                 <tr>
                     <th name="编号"></th>
                     <th name="姓名"></th>
@@ -75,34 +75,34 @@
                     <th name="血红蛋白"></th>
                     <th name="体温"></th>
                     <th name="血氧饱和度"></th>
-                    <th name="测量时间"></th>
                     <th name="登记时间"></th>
                     <th name="备注"></th>
                     <th name="操作"></th>
-                    <!-- <th order-by="id" name="ID"></th> -->
                 </tr>
             </thead>
             <tbody>
-                <tr md-auto-select ng-repeat="user in oldInfoItemList">
-                    <td>{{user.user_id | nullToVisual}}</td>
+                <tr md-auto-select ng-repeat="user in healthInfoList">
+                    <td>{{user.id | nullToVisual}}</td>
                     <td>{{user.username | nullToVisual}}</td>
-                    <td>{{user.idcard | nullToVisual}}</td>
-                    <td>{{user.address | nullToVisual}}</td>
-                    <td>{{user.create_time | nullToVisual}}</td>
-                    <td>{{user.create_time | nullToVisual}}</td>
-                    <td>{{user.create_time | nullToVisual}}</td>
-                    <td>{{user.create_time | nullToVisual}}</td>
-                    <td>{{user.create_time | nullToVisual}}</td>
-                    <td>{{user.create_time | nullToVisual}}</td>
-                    <td>{{user.create_time | nullToVisual}}</td>
+                    <td>{{user.blood_pressure | nullToVisual}}</td>
+                    <td>{{user.blood_sugar | nullToVisual}}</td>
+                    <td>{{user.pulse_rate | nullToVisual}}</td>
+                    <td>{{user.blood_hb | nullToVisual}}</td>
+                    <td>{{user.temper | nullToVisual}}</td>
+                    <td>{{user.blood_spo | nullToVisual}}</td>
+                    <td>{{user.last_time | date:'yyyy-MM-dd'}}</td>
+                    <td>{{user.description | nullToVisual}}</td>
                     <td>
-                        <md-button ng-click="editThisArchive(user.user_id)" class="md-primary">编辑</md-button>
-                        <md-button ng-click="removeThis(user.user_id)" class="md-primary">删除</md-button>
+                    <md-button ng-click="editThisArchive(user.id)" class="md-primary">编辑</md-button>
+                        <md-button ng-click="removeThis(user.id)" class="md-primary">删除</md-button>
                     </td>
                 </tr>
             </tbody>
         </table>
     </md-data-table-container>
+
+    <md-data-table-pagination md-limit="vm.query.limit" md-page="vm.query.page" md-total="{{vm.users.total_count}}" md-trigger="vm.getUsers"></md-data-table-pagination>
+</div>
 
     <!-- Modal -->
     <div class="modal fade" id="new-health-archive" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -116,31 +116,35 @@
             <div layout="column" flex>
                 <md-input-container flex>
                     <label translate>血压</label>
-                    <input ng-model="insertHealthArchiveInfo.realname | nullToVisual" type="text" required>
+                    <input ng-model="insertHealthArchiveInfo.blood_pressure" type="text" required>
                 </md-input-container>
                 <md-input-container>
                     <label translate>血糖</label>
-                    <input ng-model="insertHealthArchiveInfo.blood_type | nullToVisual" type="text">
+                    <input ng-model="insertHealthArchiveInfo.blood_sugar" type="text">
                 </md-input-container>
                 <md-input-container>
                     <label translate>脉率</label>
-                    <input ng-model="insertHealthArchiveInfo.nation | nullToVisual" type="text">
+                    <input ng-model="insertHealthArchiveInfo.pulse_rate" type="text">
                 </md-input-container>
                 <md-input-container>
                     <label translate>血红蛋白</label>
-                    <input ng-model="insertHealthArchiveInfo.sex | nullToVisual" type="text">
+                    <input ng-model="insertHealthArchiveInfo.blood_hb" type="text">
                 </md-input-container>
                 <md-input-container>
                     <label translate>体温</label>
-                    <input ng-model="insertHealthArchiveInfo.device_id | nullToVisual" type="text">
+                    <input ng-model="insertHealthArchiveInfo.temper" type="text">
                 </md-input-container>
                 <md-input-container>
                     <label translate>血氧饱和度</label>
-                    <input ng-model="insertHealthArchiveInfo.device_id | nullToVisual" type="text">
+                    <input ng-model="insertHealthArchiveInfo.blood_spo" type="text">
                 </md-input-container>
                 <md-input-container>
                     <label translate>测量时间</label>
-                    <input ng-model="insertHealthArchiveInfo.device_id | nullToVisual" type="text">
+                    <input ng-model="insertHealthArchiveInfo.last_time" type="text">
+                </md-input-container>
+                <md-input-container>
+                    <label translate>其它描述</label>
+                    <textarea ng-model="insertHealthArchiveInfo.description"></textarea>
                 </md-input-container>
             </div>
           </div>
@@ -151,6 +155,3 @@
         </div>
       </div>
     </div>
-
-    <md-data-table-pagination md-limit="vm.query.limit" md-page="vm.query.page" md-total="{{vm.users.total_count}}" md-trigger="vm.getUsers"></md-data-table-pagination>
-</div>

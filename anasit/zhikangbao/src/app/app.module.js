@@ -30,13 +30,35 @@
         .constant('API_CONFIG', {
             'url':  'http://api.zkkj168.com:81/'
         })
+        .directive('dateformat', ['$filter',function($filter) {  
+            var dateFilter = $filter('date');  
+            return {  
+                require: 'ngModel',  
+                link: function(scope, elm, attrs, ctrl) {  
+          
+                    function formatter(value) {  
+                        return dateFilter(value, 'yyyy-MM-dd'); //format  
+                    }  
+          
+                    function parser() {  
+                        return ctrl.$modelValue;  
+                    }  
+          
+                    ctrl.$formatters.push(formatter);  
+                    ctrl.$parsers.unshift(parser);  
+          
+                }  
+            };  
+        }])
         .filter('nullToVisual',function(){
             return function(i){
+              if(typeof i != 'undefined') {
                 if(i=='' || i==null){
                   return '无';
                 }else{
                   return i;
                 }
+              }
             }
         })
         .run(function($rootScope, $location, $http, $state, LoginService, CheckStatus, $mdDialog){
@@ -129,7 +151,7 @@
                 'Content-Type': 'application/json',
             });
             RestangularProvider.setDefaultHttpFields({
-                'cache': true,
+                'cache': false,
                 'withCredentials': true
             });
             RestangularProvider.setMethodOverriders(["put", "patch"]);
@@ -247,7 +269,7 @@
             },
 
             remove: function(uid) {
-              return Restangular.one('/profile/old/delete' + uid).get();
+              return Restangular.one('/profile/old/delete/' + uid).get();
             },
 
             one: function(uid) {
@@ -301,12 +323,43 @@
             },
 
             remove: function(uid) {
-              return Restangular.one('/profile/device/delete' + uid).get();
+              return Restangular.one('/profile/device/delete/' + uid).get();
             }
 
           };
 
-        }]);
+        }])
+        .factory('HealthService', function(Restangular){
+
+          return  {
+
+            index: function() {
+              return Restangular.all('/healths/old').get();
+            },
+
+            update: function(data) {
+              return Restangular.all('/healths/old/edit').post(data);
+            },
+
+            insert: function(data) {
+              return Restangular.all('/healths/old/add').post(data);
+            },
+
+            remove: function(id) {
+              return Restangular.one('/healths/old/remove/' + id).get();
+            },
+
+            one: function(id) {
+              return Restangular.one('/healths/old/' + id).get();
+            },
+
+            singleOne: function(id) {
+              return Restangular.one('/healths/old/singleOne/' + id).get();
+            }
+
+          };
+
+        });
 
         // .factory('DeviceHistoryService',['Restangular', function(Restangular) {
 

@@ -59,11 +59,11 @@
                 state: 'triangular.admin-default.services-page',
                 type: 'link'
             },
-            {
-                name: '健康档案',
-                state: 'triangular.admin-default.health-archives',
-                type: 'link'
-            },
+            // {
+            //     name: '健康档案',
+            //     state: 'triangular.admin-default.health-archives',
+            //     type: 'link'
+            // },
             {
                 name: '位置监控',
                 state: 'triangular.admin-default.services-pos',

@@ -21,6 +21,13 @@
                     </md-input-container>
 
                     <md-input-container>
+                        <label>所属机构</label>
+                        <md-select class="md-select-form" ng-model="vm.user.orgid" placeholder="所属机构">
+                            <md-option ng-value="department.id" ng-repeat="department in vm.orgList">{{department.full_name}}</md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <md-input-container>
                         <label for="tel" translate>SIGNUP.EMAIL.LABEL</label>
                         <input id="tel" label="tel" name="tel" type="tel" ng-model="vm.user.mobile" required/>
                         <div ng-messages="signup.tel.$error" ng-if="signup.tel.$dirty">
@@ -54,7 +61,7 @@
 
                     <md-input-container>
                         <label for="password" translate>SIGNUP.PASSWORD_CONFIRM.LABEL</label>
-                        <input id="confirm" label="confirm" name="confirm" type="password" ng-model="vm.user.confirm" tri-same-password="signup.password" ng-minlength="8" required/>
+                        <input id="confirm" label="confirm" name="confirm" type="password" ng-model="vm.userconfirm.confirm" tri-same-password="signup.password" ng-minlength="8" required/>
                         <ng-messages for="signup.confirm.$error" ng-include="'app/examples/authentication/signup/password.messages.html'" ng-if="signup.confirm.$dirty"></ng-messages>
                     </md-input-container>
 

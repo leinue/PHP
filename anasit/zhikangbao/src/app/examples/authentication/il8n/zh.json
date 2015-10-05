@@ -15,7 +15,7 @@
     "LOGIN": {
         "TITLE": "登录",
         "EMAIL": {
-            "LABEL": "手机号",
+            "LABEL": "手机号或用户名",
             "PLEASE_ENTER": "请输入新的手机号。",
             "PLEASE_VALID": "请输入的一个有效的手机号。"
         },
@@ -37,8 +37,8 @@
     "SIGNUP": {
         "TITLE": "注册",
         "NAME": {
-            "LABEL": "昵称",
-            "PLEASE_ENTER": "请输入你的名字"
+            "LABEL": "用户名",
+            "PLEASE_ENTER": "请输入你的用户名"
         },
         "EMAIL": {
             "LABEL": "手机号",

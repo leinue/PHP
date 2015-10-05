@@ -14,6 +14,8 @@
 <div ng-controller="TablesAdvancedController as vm">
     <md-data-table-toolbar ng-hide="vm.selected.length || vm.filter.show">
         <h2 class="md-title">档案列表</h2>
+        <md-button ng-show="isArchive == true" ng-click="showNewArchiveDialog()" class="md-raised md-primary">新增</md-button>
+        <md-button ng-show="isArchive == true" ng-click="returnToOldList()" class="md-raised md-primary">返回</md-button>
         <div flex></div>
         <md-button class="md-icon-button" ng-click="vm.filter.show = true">
             <!-- <i class="material-icons md-dark">filter_list</i> -->
@@ -36,8 +38,8 @@
     </md-data-table-toolbar>
 
     <md-data-table-container>
-        <table md-data-table class="md-primary md-data-table" md-row-select="vm.selected" md-progress="vm.deferred">
-            <thead md-order="vm.query.order" md-trigger="vm.getUsers">
+        <table md-data-table ng-show="isArchive == false" class="md-primary md-data-table"  md-progress="vm.deferred">
+            <thead md-order="voldInfoItemList.user_id" md-trigger="">
                 <tr>
                     <th name="编号"></th>
                     <th name="姓名"></th>
@@ -45,23 +47,110 @@
                     <th name="老人家庭住址"></th>
                     <th name="添加时间"></th>
                     <th name="操作"></th>
+                    <!-- <th order-by="id" name="ID"></th> -->
                 </tr>
             </thead>
             <tbody>
-                <tr md-auto-select ng-repeat="user in vm.users.items">
-                    <td><a href="{{::user.html_url}}"><img ng-src="{{::user.avatar_url}}"/></a></td>
-                    <td>{{::user.login}}</td>
-                    <td>{{::user.id}}</td>
-                    <td>{{::user.id}}</td>
-                    <td>{{::user.id}}</td>
+                <tr md-auto-select ng-repeat="user in oldInfoItemList">
+                    <td>{{user.user_id | nullToVisual}}</td>
+                    <td>{{user.username | nullToVisual}}</td>
+                    <td>{{user.idcard | nullToVisual}}</td>
+                    <td>{{user.address | nullToVisual}}</td>
+                    <td>{{user.create_time | nullToVisual}}</td>
                     <td>
-                        <md-button ng-click="" class="md-primary">新增</md-button>
-                        <md-button ng-click="deleteThisItem()" class="md-warn">删除</md-button>
+                        <md-button ng-click="viewThisArchive(user.user_id)" class="md-primary">档案管理</md-button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table md-data-table ng-show="isArchive == true" class="md-primary md-data-table" md-row-select="vm.selected" md-progress="vm.deferred">
+            <thead md-order="voldInfoItemList.user_id" md-trigger="">
+                <tr>
+                    <th name="编号"></th>
+                    <th name="姓名"></th>
+                    <th name="血压"></th>
+                    <th name="血糖"></th>
+                    <th name="脉率"></th>
+                    <th name="血红蛋白"></th>
+                    <th name="体温"></th>
+                    <th name="血氧饱和度"></th>
+                    <th name="测量时间"></th>
+                    <th name="登记时间"></th>
+                    <th name="备注"></th>
+                    <th name="操作"></th>
+                    <!-- <th order-by="id" name="ID"></th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr md-auto-select ng-repeat="user in oldInfoItemList">
+                    <td>{{user.user_id | nullToVisual}}</td>
+                    <td>{{user.username | nullToVisual}}</td>
+                    <td>{{user.idcard | nullToVisual}}</td>
+                    <td>{{user.address | nullToVisual}}</td>
+                    <td>{{user.create_time | nullToVisual}}</td>
+                    <td>{{user.create_time | nullToVisual}}</td>
+                    <td>{{user.create_time | nullToVisual}}</td>
+                    <td>{{user.create_time | nullToVisual}}</td>
+                    <td>{{user.create_time | nullToVisual}}</td>
+                    <td>{{user.create_time | nullToVisual}}</td>
+                    <td>{{user.create_time | nullToVisual}}</td>
+                    <td>
+                        <md-button ng-click="editThisArchive(user.user_id)" class="md-primary">编辑</md-button>
+                        <md-button ng-click="removeThis(user.user_id)" class="md-primary">删除</md-button>
                     </td>
                 </tr>
             </tbody>
         </table>
     </md-data-table-container>
+
+    <!-- Modal -->
+    <div class="modal fade" id="new-health-archive" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">{{healthArichiveTitle}}</h4>
+          </div>
+          <div class="modal-body" style="font-size: 1.3em;">
+            <div layout="column" flex>
+                <md-input-container flex>
+                    <label translate>血压</label>
+                    <input ng-model="insertHealthArchiveInfo.realname | nullToVisual" type="text" required>
+                </md-input-container>
+                <md-input-container>
+                    <label translate>血糖</label>
+                    <input ng-model="insertHealthArchiveInfo.blood_type | nullToVisual" type="text">
+                </md-input-container>
+                <md-input-container>
+                    <label translate>脉率</label>
+                    <input ng-model="insertHealthArchiveInfo.nation | nullToVisual" type="text">
+                </md-input-container>
+                <md-input-container>
+                    <label translate>血红蛋白</label>
+                    <input ng-model="insertHealthArchiveInfo.sex | nullToVisual" type="text">
+                </md-input-container>
+                <md-input-container>
+                    <label translate>体温</label>
+                    <input ng-model="insertHealthArchiveInfo.device_id | nullToVisual" type="text">
+                </md-input-container>
+                <md-input-container>
+                    <label translate>血氧饱和度</label>
+                    <input ng-model="insertHealthArchiveInfo.device_id | nullToVisual" type="text">
+                </md-input-container>
+                <md-input-container>
+                    <label translate>测量时间</label>
+                    <input ng-model="insertHealthArchiveInfo.device_id | nullToVisual" type="text">
+                </md-input-container>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            <button type="button" class="btn btn-default" ng-click="saveNewHealthArchive()" data-dismiss="modal">保存</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <md-data-table-pagination md-limit="vm.query.limit" md-page="vm.query.page" md-total="{{vm.users.total_count}}" md-trigger="vm.getUsers"></md-data-table-pagination>
 </div>

@@ -28,24 +28,130 @@
         }])
         // set a constant for the API we are connecting to
         .constant('API_CONFIG', {
-            'url':  'http://api.zkkj168.com/'
+            'url':  'http://api.zkkj168.com:81/'
         })
+        .filter('nullToVisual',function(){
+            return function(i){
+                if(i=='' || i==null){
+                  return '无';
+                }else{
+                  return i;
+                }
+            }
+        })
+        .run(function($rootScope, $location, $http, $state, LoginService, CheckStatus, $mdDialog){
+
+            // User.getThisInfo();
+
+            $rootScope.$on('$locationChangeStart',function(evt,next,curr){
+              
+              console.log('route change start');
+
+              var userIsLoginIn = localStorage.id;
+
+              if(next.indexOf('login')==-1){
+                //进入登录页面,登录页面不需要判断是否登录
+                CheckStatus.checkAuth().then(function(data) {
+                    var userIsLoggedIn = data;
+                    if(userIsLoggedIn === 'false' || userIsLoggedIn === false) {
+                      var alert = $mdDialog.alert({
+                          title: '登录超时或未登录',
+                          content:'请重新登录',
+                          ok: '确定'
+                      });
+                      $mdDialog.show(alert);
+                      $state.go('authentication.login');
+                    }
+                 });
+              }
+
+              
+
+              // if(!User.isLoggedIn() ||){
+              //   $location.path('/login');
+              // }
+
+              // var currentGroup=localStorage.group;
+
+              // console.log("currentGroup="+currentGroup);
+
+              // if(next.indexOf('hq')!=-1){
+              //   //总部后台
+              //   console.log('进入总部后台...即将验证权限');
+              //   if(currentGroup.indexOf('root')!=-1 || currentGroup.indexOf('admin')!=-1){
+              //     console.log('access approved');
+              //   }else{
+              //     alert('无权访问');
+              //     $location.path(curr);
+              //   }
+              // }
+
+              // if(next.indexOf('finance')!=-1){
+              //   //财务后台
+              //   console.log('进入财务后台...即将验证权限');
+              //   if(currentGroup.indexOf('root')!=-1 || currentGroup.indexOf('admin')!=-1 || currentGroup.indexOf('finance')!=-1){
+              //     console.log('access approved');
+              //   }else{
+              //     alert('无权访问');
+              //     $location.path(curr);
+              //   }
+
+              // }
+
+              // if(next.indexOf('supply')!=-1){
+              //   //供应商后台
+              //   console.log('进入供应商后台...即将验证权限');
+              //   if(currentGroup.indexOf('supply')!=-1 || currentGroup.indexOf('root')!=-1 || currentGroup.indexOf('admin')!=-1){
+              //     console.log('access approved');
+              //   }else{
+              //     alert('无权访问');
+              //     $location.path(curr);
+              //   }
+              // }
+
+            });
+
+          })
 
         .config(function ($httpProvider) {
 
             //允许跨源
             $httpProvider.defaults.withCredentials = true;
 
+            $httpProvider.defaults.useXDomain=true;
+            delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
         })
         //配置restangular
         .config(function(RestangularProvider) {
-            RestangularProvider.setBaseUrl('http://api.zkkj168.com/');
+            RestangularProvider.setBaseUrl('http://api.zkkj168.com:81/');
                 RestangularProvider.setDefaultHeaders({
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             });
-            RestangularProvider.setDefaultHttpFields({cache: true});
+            RestangularProvider.setDefaultHttpFields({
+                'cache': true,
+                'withCredentials': true
+            });
             RestangularProvider.setMethodOverriders(["put", "patch"]);
         })
+        .factory('CheckStatus',['Restangular', '$http', 'API_CONFIG', function(Restangular, $http, API_CONFIG){
+
+            return {
+                check: function(status) {
+                    return status === '201' || status === '200';
+                },
+                checkAuth: function(http) {
+                    http = http == null ? false : true;
+                    if(http) {
+                        return $http.get(API_CONFIG.url + 'auth/check');
+                    }else{
+                      console.log('restangular');
+                       return Restangular.one('auth/check').get();
+                    }
+                }
+            };
+
+        }])
         // create services that will use
         .factory('SignupService',['Restangular', function(Restangular){
 
@@ -56,13 +162,173 @@
             };
 
         }])
-        .factory('LoginService',['Restangular', function(Restangular){
+        .factory('LoginService',['Restangular', '$http', 'API_CONFIG', function(Restangular, $http, API_CONFIG){
 
             return {
-                login: function(m,p) {
-                    return Restangular.one('/auth/login/'+m+'/'+p).get();
+                login: function(login_user,http) {
+                    http = http == null ? false : true;
+                   if(http) {
+                        return $http.post(API_CONFIG.url + 'auth/login',login_user);
+                   }else{
+                       return Restangular.all('/auth/login/').post(login_user);
+                   }
+                   
+                },
+                
+                logout: function() {
+                    return Restangular.one('/auth/logout').get().then(function(data) {
+                        localStorage.id = '';
+                        localStorage.username = '';
+                        localStorage.roles = '';
+                        localStorage.mobile = '';
+                        $state.go('authentication.login');
+                    });
                 }
             };
 
+        }])
+        .factory('UserService',['Restangular', function(Restangular) {
+
+            return {
+
+                getUserInfo: function () {
+                    return {
+                        id: localStorage.id,
+                        username: localStorage.username,
+                        mobile: localStorage.mobile,
+                        roles: localStorage.roles
+                    };
+                },
+
+                isUserOffline: function() {
+                    return localStorage.id === '' || typeof localStorage.id === 'undefined';
+                }
+
+            };
+
+        }])
+        .factory('OrgService', ['Restangular', function(Restangular){
+
+            return {
+
+                index: function() {
+                    return Restangular.one('/profile/org/index').get();
+                },
+
+                update: function(data) {
+                    return Restangular.all('/profile/org/update').post(data);
+                },
+
+                insert: function(data) {
+                    return Restangular.all('/profile/org/insert').post(data);
+                },
+
+                remove: function(org_id) {
+                    return Restangular.one('/profile/org/delete' + org_id).get(); 
+                }
+
+            };
+
+        }])
+        .factory('OldInfoService',['Restangular', function(Restangular) {
+
+          return {
+
+            index: function() {
+              return Restangular.one('/profile/old/index').get();
+            },
+
+            update:function(data) {
+              return Restangular.all('/profile/old/update').post(data);
+            },
+
+            insert: function(data) {
+              return Restangular.all('/profile/old/insert').post(data);
+            },
+
+            remove: function(uid) {
+              return Restangular.one('/profile/old/delete' + uid).get();
+            },
+
+            one: function(uid) {
+              return Restangular.one('/profile/old/one/' + uid).get();
+            }
+
+          };
+
+        }])
+        .factory('OrgInfoService',['Restangular', function(Restangular) {
+
+          return {
+
+            index: function() {
+              return Restangular.one('/profile/org_cate/index').get();
+            },
+
+            update:function(data) {
+              return Restangular.all('/profile/org_cate/update').post(data);
+            },
+
+            insert: function(data) {
+              return Restangular.all('/profile/org_cate/insert').post(data);
+            },
+
+            remove: function(uid) {
+              return Restangular.one('/profile/org_cate/delete' + uid).get();
+            },
+
+            one: function(uid) {
+              return Restangular.one('/profile/org_cate/one' + uid).get();
+            }
+
+          };
+
+        }])
+        .factory('DeviceService',['Restangular', function(Restangular) {
+
+          return {
+
+            index: function() {
+              return Restangular.one('/profile/device/index').get();
+            },
+
+            update:function(data) {
+              return Restangular.all('/profile/device/update').post(data);
+            },
+
+            insert: function(data) {
+              return Restangular.all('/profile/device/insert').post(data);
+            },
+
+            remove: function(uid) {
+              return Restangular.one('/profile/device/delete' + uid).get();
+            }
+
+          };
+
         }]);
+
+        // .factory('DeviceHistoryService',['Restangular', function(Restangular) {
+
+        //   return {
+
+        //     index: function() {
+        //       return Restangular.one('/profile/device_history/index').get();
+        //     },
+
+        //     update:function(data) {
+        //       return Restangular.all('/profile/device_history/update').post(data);
+        //     },
+
+        //     insert: function(data) {
+        //       return Restangular.all('/profile/device_history/insert').post(data);
+        //     },
+
+        //     remove: function(uid) {
+        //       return Restangular.one('/profile/device_history/delete' + uid).get();
+        //     }
+
+        //   };
+
+        // }]);
 })();

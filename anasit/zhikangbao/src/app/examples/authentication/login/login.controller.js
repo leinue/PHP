@@ -6,7 +6,7 @@
         .controller('LoginController', LoginController);
 
     /* @ngInject */
-    function LoginController($state, triSettings, LoginService) {
+    function LoginController($state, triSettings, LoginService, CheckStatus, $mdToast, $filter) {
         var vm = this;
         vm.loginClick = loginClick;
         vm.socialLogins = [{
@@ -29,7 +29,7 @@
         vm.triSettings = triSettings;
         // create blank user variable for login form
         vm.user = {
-            mobile: '',
+            login_user: '',
             password: '',
             rememberMe: false
         };
@@ -37,8 +37,44 @@
         ////////////////
 
         function loginClick() {
-            var result = LoginService.login(vm.user.mobile,vm.user.password);
-            $state.go('triangular.admin-default.basic-page');
+            LoginService.login(vm.user)
+            .then(function(data){
+
+                console.log(data);
+
+                var status  = data.status;
+                var realData = data.Schema;
+
+                $mdToast.show(
+                        $mdToast.simple()
+                        .action($filter('translate')(realData.properties.message))
+                        .position('bottom right')
+                        .highlightAction(true)
+                        .hideDelay(0)
+                );
+
+                if(CheckStatus.check(status)) {
+
+                    var info = realData.properties;
+
+                    localStorage.id = info.id;
+                    localStorage.username = info.username;
+                    localStorage.mobile = info.mobile;
+
+                    var roleList = [];
+
+                    for (var i = 0; i < info.roles.length; i++) {
+                        var role = info.roles[i];
+                        roleList.push(role.code);
+                    };
+
+                    localStorage.roles = JSON.stringify(roleList);
+
+                    $state.go('triangular.admin-default.basic-page');
+                }
+
+            });
+            
         }
     }
 })();

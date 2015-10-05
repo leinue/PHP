@@ -6,9 +6,11 @@
         .controller('BasicDeviceController', BasicDeviceController);
 
     /* @ngInject */
-    function BasicDeviceController($scope, $state) {
+    function BasicDeviceController($scope, $state, DeviceService) {
         var vm = this;
-
+        DeviceService.index().then(function(response) {
+            $scope.devices = response.Schema.properties;   
+        })
         $scope.addNew = function() {
         };
     }

@@ -11,11 +11,11 @@
             <md-content class="md-padding">
                 <form name="login">
                     <md-input-container>
-                        <label for="mobile" translate>LOGIN.EMAIL.LABEL</label>
-                        <input id="mobile" label="mobile" name="mobile" type="mobile" ng-model="vm.user.mobile"mobile required/>
-                        <div ng-messages="login.mobile.$error" ng-if="login.mobile.$dirty">
+                    <label for="login_user" translate>LOGIN.EMAIL.LABEL</label>
+                        <input id="login_user" label="login_user" name="login_user" type="text" ng-model="vm.user.login_user"mobile required/>
+                        <div ng-messages="login.login_user.$error" ng-if="login.login_user.$dirty">
                             <div ng-message when="required"><span translate>LOGIN.EMAIL.PLEASE_ENTER</span></div>
-                            <div ng-message when="mobile"><span translate>LOGIN.EMAIL.PLEASE_VALID</span></div>
+                            <div ng-message when="login_user"><span translate>LOGIN.EMAIL.PLEASE_VALID</span></div>
                         </div>
                     </md-input-container>
                     <md-input-container>

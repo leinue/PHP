@@ -40,22 +40,22 @@
             <thead md-order="vm.query.order" md-trigger="vm.getUsers">
                 <tr>
                     <th name="编号"></th>
-                    <th name="姓名"></th>
-                    <th name="身份证号"></th>
-                    <th name="老人家庭住址"></th>
+                    <th name="用户"></th>
+                    <th name="注册码"></th>
+                    <th name="IMEI"></th>
                     <th name="添加时间"></th>
                     <th name="操作"></th>
                 </tr>
             </thead>
             <tbody>
-                <tr md-auto-select ng-repeat="user in vm.users.items">
+                <tr md-auto-select ng-repeat="device in devices">
                     <td><a href="{{::user.html_url}}"><img ng-src="{{::user.avatar_url}}"/></a></td>
-                    <td>{{::user.login}}</td>
-                    <td>{{::user.id}}</td>
-                    <td>{{::user.id}}</td>
-                    <td>{{::user.id}}</td>
+                    <td></td>
+                    <td>{{::device.device_sn}}</td>
+                    <td>{{::device.device_imei}}</td>
+                    <td>{{::device.create_time}}</td>
                     <td>
-                        <md-button ng-click="" class="md-primary">新增</md-button>
+                        <md-button ng-click="" class="md-primary">详情</md-button>
                         <md-button ng-click="deleteThisItem()" class="md-warn">删除</md-button>
                     </td>
                 </tr>

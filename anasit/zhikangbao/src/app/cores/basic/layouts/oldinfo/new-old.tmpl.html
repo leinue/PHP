@@ -1,7 +1,7 @@
 <div layout="column" layout-align="center center" style="background: rgb(255,255,255)!important" class="full-image-background mb-bg-fb-01 overlay-40">
 
     <div style="width: 100%;background: rgb(255, 255, 255) none repeat scroll 0% 0%;color: rgb(80, 80, 80) !important;" layout="row" layout-align="center center">
-        <p flex="150" style="color:rgb(80,80,80)"  flex-sm="90" class="md-headline font-weight-300 text-center text-light" translate>新增老人信息</p>
+        <p flex="150" style="color:rgb(80,80,80)"  flex-sm="90" class="md-headline font-weight-300 text-center text-light" translate>{{thisTitle}}</p>
     </div>
 
     <div flex layout="row" style="background: rgb(255,255,255)!important;" layout-align="center center" layout-fill>
@@ -25,7 +25,7 @@
                                	 	<div layout layout-sm="column" flex>
 	                                    <md-input-container flex>
 	                                        <label translate>老人姓名(最好是全名)</label>
-	                                        <input type="text" required>
+	                                        <input ng-model="inserOldInfo.realname" type="text" required>
 	                                        <div ng-messages="accountForm.username.$error">
 	                                            <div ng-message when="required">
 	                                                <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
@@ -34,7 +34,7 @@
 	                                    </md-input-container>
 	                                    <md-input-container flex>
 	                                        <label translate>血型</label>
-	                                        <input type="text">
+	                                        <input ng-model="inserOldInfo.blood_type" type="text">
 	                                        <div ng-messages="accountForm.username.$error">
 	                                            <div ng-message when="required">
 	                                                <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
@@ -43,7 +43,7 @@
 	                                    </md-input-container>
 	                                    <md-input-container flex>
 	                                        <label translate>民族</label>
-	                                        <input type="text">
+	                                        <input ng-model="inserOldInfo.nation" type="text">
 	                                        <div ng-messages="accountForm.username.$error">
 	                                            <div ng-message when="required">
 	                                                <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
@@ -54,7 +54,7 @@
                                     <div layout layout-sm="column" flex>
 	                                    <md-input-container flex>
 	                                        <label>年龄</label>
-	                                        <input type="tel" required>
+	                                        <input ng-model="inserOldInfo.sex" type="tel" required>
 	                                        <div ng-messages="accountForm.email.$error">
 	                                            <div ng-message when="required">
 	                                                <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
@@ -66,27 +66,21 @@
 	                                    </md-input-container>
 	                                    <md-input-container flex>
 											<label>性别</label>
-								            <md-select class="md-select-form" ng-model="vm.user.favouriteColor" placeholder="性别">
+								            <md-select class="md-select-form" ng-model="inserOldInfo.sex" placeholder="性别">
 								                <md-option ng-value="sex" ng-repeat="sex in ['男', '女']">{{sex}}</md-option>
 								            </md-select>
 								        </md-input-container>
 								        <md-input-container flex>
 											<label>机构</label>
-								            <md-select class="md-select-form" ng-model="vm.user.favouriteColor" placeholder="机构">
-								                <md-option ng-value="sex" ng-repeat="sex in ['男', '女']">{{sex}}</md-option>
-								            </md-select>
-								        </md-input-container>
-								        <md-input-container flex>
-											<label>小区</label>
-								            <md-select class="md-select-form" ng-model="vm.user.favouriteColor" placeholder="小区">
-								                <md-option ng-value="sex" ng-repeat="sex in ['男', '女']">{{sex}}</md-option>
+								            <md-select class="md-select-form" ng-model="inserOldInfo.org_id" placeholder="机构">
+								                <md-option ng-value="department.id" ng-show="department.code == 'community' || department.code == 'orcodegnizat'" ng-repeat="department in ordList">{{department.name}}</md-option>
 								            </md-select>
 								        </md-input-container>
                                     </div>
                                     <div layout layout-sm="column" flex>
                                         <md-input-container flex>
                                             <label translate>身份证号</label>
-                                            <input type="tel" required>
+                                            <input ng-model="inserOldInfo.idcard" type="tel" required>
                                             <div ng-messages="accountForm.password.$error">
                                                 <div ng-message when="required">
                                                     <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
@@ -95,7 +89,7 @@
                                         </md-input-container>
                                         <md-input-container flex>
                                             <label translate>联系电话</label>
-                                            <input type="tel" required>
+                                            <input type="tel" ng-model="inserOldInfo.mobile" required>
                                             <div ng-messages="accountForm.passwordConfirm.$error">
                                                 <div ng-message when="required">
                                                     <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
@@ -106,7 +100,7 @@
                                     <div layout layout-sm="column" flex>
 	                                    <md-input-container flex>
 	                                        <label translate>家庭住址(请填写详细住址)</label>
-	                                        <input type="text" required>
+	                                        <input ng-model="inserOldInfo.address" type="text" required>
 	                                        <div ng-messages="accountForm.username.$error">
 	                                            <div ng-message when="required">
 	                                                <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
@@ -115,7 +109,7 @@
 	                                    </md-input-container>
 	                                    <md-input-container flex>
 	                                        <label translate>经济来源</label>
-	                                        <input type="text">
+	                                        <input ng-model="inserOldInfo.finance" type="text">
 	                                        <div ng-messages="accountForm.username.$error">
 	                                            <div ng-message when="required">
 	                                                <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
@@ -124,7 +118,7 @@
 	                                    </md-input-container>
 	                                    <md-input-container flex>
 	                                        <label translate>身份特征</label>
-	                                        <input type="text">
+	                                        <input ng-model="inserOldInfo.feature" type="text">
 	                                        <div ng-messages="accountForm.username.$error">
 	                                            <div ng-message when="required">
 	                                                <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
@@ -149,7 +143,7 @@
                                     <div layout layout-sm="column" flex>
                                         <md-input-container flex>
                                             <label translate>亲属姓名</label>
-                                            <input name="firstName" required>
+                                            <input ng-model="inserOldInfo.relation_name" required>
                                             <div ng-messages="addressForm.firstName.$error">
                                                 <div ng-message when="required">
                                                     <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
@@ -158,7 +152,7 @@
                                         </md-input-container>
                                         <md-input-container flex>
                                             <label translate>家庭关系</label>
-                                            <input name="lastName" required>
+                                            <input ng-model="inserOldInfo.relationship" required>
                                             <div ng-messages="addressForm.lastName.$error">
                                                 <div ng-message when="required">
                                                     <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
@@ -168,30 +162,18 @@
                                     </div>
                                     <md-input-container>
                                         <label translate>家属联系电话</label>
-                                        <input name="address1" required>
+                                        <input ng-model="inserOldInfo.relation_phone" name="address1" required>
                                         <div ng-messages="addressForm.address1.$error">
                                             <div ng-message when="required">
                                                 <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
                                             </div>
                                         </div>
                                     </md-input-container>
-                                    <md-input-container>
-                                        <label translate>亲属家庭住址</label>
-                                        <input type="text">
-                                    </md-input-container>
                                 </div>
                                 <div layout layout-sm="column" flex>
                                     <md-input-container flex>
-										<label>亲属性别</label>
-							            <md-select class="md-select-form" ng-model="vm.user.favouriteColor" placeholder="亲属性别">
-							                <md-option ng-value="sex" ng-repeat="sex in ['男', '女']">{{sex}}</md-option>
-							            </md-select>
-							        </md-input-container>
-							        <md-input-container flex>
-										<label>是否监护人</label>
-							            <md-select class="md-select-form" ng-model="vm.user.favouriteColor" placeholder="是否监护人">
-							                <md-option ng-value="yesorno" ng-repeat="yesorno in ['是', '否']">{{yesorno}}</md-option>
-							            </md-select>
+										<label>其它描述</label>
+							            <textarea ng-model="inserOldInfo.description"></textarea>
 							        </md-input-container>
                                 </div>
                             </form>
@@ -203,7 +185,7 @@
             	<md-button class="md-primary md-raised" ng-click="returnToOldmanList()">返回</md-button>
                 <md-button class="md-primary md-raised" ng-click="triWizard.prevStep()" ng-hide="triWizard.currentStep > 2" ng-disabled="triWizard.prevStepDisabled()" translate="上一层"></md-button>
                 <md-button class="md-primary md-raised" ng-click="triWizard.nextStep()" ng-hide="triWizard.progress == 100 && triWizard.currentStep > 1" ng-disabled="triWizard.nextStepDisabled()" translate="继续"></md-button>
-                <md-button class="md-accent md-raised" ng-click="triWizard.currentStep = 3" ng-show="triWizard.progress == 100 && triWizard.currentStep < 3" translate="提交"></md-button>
+                <md-button ng-click="submitInfo()" class="md-accent md-raised" ng-click="triWizard.currentStep = 3" ng-show="triWizard.progress == 100 && triWizard.currentStep < 3" translate="提交"></md-button>
             </div>
         </div>
     </div>

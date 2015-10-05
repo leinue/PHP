@@ -47,6 +47,12 @@
             controller: 'BasicNewOldManController',
             controllerAs: 'vm'
         })
+        .state('triangular.admin-default.edit-oldman', {
+            url: '/basic/edit/{id}',
+            templateUrl: 'app/cores/basic/layouts/oldinfo/new-old.tmpl.html',
+            controller: 'BasicNewOldManController',
+            controllerAs: 'vm'
+        })
         .state('triangular.admin-default.new-archive', {
             url: '/archives/new',
             templateUrl: 'app/cores/basic/layouts/archives/new-archive.tmpl.html',
@@ -125,5 +131,17 @@
                 type: 'link'
             }]
         });
+
+        // triMenuProvider.addMenu({
+        //     name: 'ffffff',
+        //     icon: 'zmdi zmdi-check',
+        //     type: 'dropdown',
+        //     priority: 5.1,
+        //     children: [{
+        //         name: 'ffffffff',
+        //         state: 'triangular.admin-default.basic-page',
+        //         type: 'link'
+        //     }]
+        // )};
     }
 })();

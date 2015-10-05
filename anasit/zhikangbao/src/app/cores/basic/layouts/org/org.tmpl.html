@@ -40,23 +40,26 @@
             <thead md-order="vm.query.order" md-trigger="vm.getUsers">
                 <tr>
                     <th name="编号"></th>
-                    <th name="姓名"></th>
-                    <th name="身份证号"></th>
-                    <th name="老人家庭住址"></th>
+                    <th name="机构名"></th>
+                    <th name="父机构"></th>
+                    <th name="是否开启"></th>
+                    <th name="营业执照"></th>
                     <th name="添加时间"></th>
                     <th name="操作"></th>
                 </tr>
             </thead>
             <tbody>
-                <tr md-auto-select ng-repeat="user in vm.users.items">
-                    <td><a href="{{::user.html_url}}"><img ng-src="{{::user.avatar_url}}"/></a></td>
-                    <td>{{::user.login}}</td>
-                    <td>{{::user.id}}</td>
-                    <td>{{::user.id}}</td>
-                    <td>{{::user.id}}</td>
+                <tr md-auto-select ng-repeat="item in orgList">
+                <td>{{item.id}}</td>
+                    <td>{{item.code}}</td>
+                    <td>{{item.pid}}</td>
+                    <td>{{item.enabled}}</td>
+                    <td>{{item.org_code}}</td>
+                    <td>{{item.create_time}}</td>
                     <td>
-                        <md-button ng-click="editThisItem()" class="md-primary">编辑</md-button>
-                        <md-button ng-click="deleteThisItem()" class="md-warn">删除</md-button>
+                        <md-button ng-click="viewThisOrg(item.id)" class="md-primary">详情</md-button>
+                        <md-button ng-click="editThisItem(item.id)" class="md-primary">编辑</md-button>
+                        <md-button ng-click="deleteThisItem(item.id)" class="md-warn">删除</md-button>
                     </td>
                 </tr>
             </tbody>
@@ -74,21 +77,49 @@
           <div class="modal-body" style="font-size: 1.3em;">
             <div layout="column" flex>
                 <md-input-container flex>
-                    <label translate>用户ID</label>
-                    <input ng-model="insertHealthArchiveInfo.realname | nullToVisual" type="text" required>
+                    <label translate>所属分类</label>
+                    <input ng-model="insertOrgList.code" type="text" required>
                 </md-input-container>
-                <md-input-container>
-                    <label translate>设备SN号</label>
-                    <input ng-model="insertHealthArchiveInfo.blood_type | nullToVisual" type="text">
+                <md-input-container flex>
+                    <label translate>全称</label>
+                    <input ng-model="insertOrgList.full_name" type="text">
+                </md-input-container flex>
+                <md-input-container flex>
+                    <label translate>简称</label>
+                    <input ng-model="insertOrgList.short_name" type="text">
                 </md-input-container>
-                <md-input-container>
-                    <label translate>设备IMEI号</label>
-                    <input ng-model="insertHealthArchiveInfo.nation | nullToVisual" type="text">
+                <md-input-container flex>
+                    <label translate>是否开启</label>
+                    <input ng-model="insertOrgList.enabled" type="text">
                 </md-input-container>
-                <md-input-container>
-                    <label translate>描述</label>
-                    <textarea></textarea>
+            </div>
+            <div layout="column" flex>
+                <md-input-container flex>
+                    <label translate>营业执照</label>
+                    <input ng-model="insertOrgList.org_code" type="text" required>
                 </md-input-container>
+                <md-input-container flex>
+                    <label translate>省</label>
+                    <input ng-model="insertOrgList.province" type="text">
+                </md-input-container flex>
+                <md-input-container flex>
+                    <label translate>市</label>
+                    <input ng-model="insertOrgList.city" type="text">
+                </md-input-container>
+                <md-input-container flex>
+                    <label translate>地址</label>
+                    <input ng-model="insertOrgList.address" type="text">
+                </md-input-container>
+            </div>
+            <div layout="column" flex>
+                <md-input-container flex>
+                    <label translate>其它介绍</label>
+                    <input ng-model="insertOrgList.org_code" type="text" required>
+                </md-input-container>
+                <md-input-container flex>
+                    <label translate>创建时间</label>
+                    <input ng-model="insertOrgList.create_time" type="text">
+                </md-input-container flex>
             </div>
           </div>
           <div class="modal-footer">
@@ -99,5 +130,5 @@
       </div>
     </div>
 
-    <md-data-table-pagination md-limit="vm.query.limit" md-page="vm.query.page" md-total="{{vm.users.total_count}}" md-trigger="vm.getUsers"></md-data-table-pagination>
+    <md-data-table-pagination md-limit="vm.query.limit" md-page="vm.query.page" md-total="{{}}" md-trigger=""></md-data-table-pagination>
 </div>

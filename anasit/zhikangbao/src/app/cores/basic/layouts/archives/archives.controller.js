@@ -150,6 +150,7 @@
                         content: realData.properties.message,
                         ok: '确定'
                     });
+                    $mdDialog.show(alert);
                 }else{
                     $scope.insertHealthArchiveInfo = realData.properties;
                 }

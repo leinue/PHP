@@ -71,7 +71,7 @@
 
               var userIsLoginIn = localStorage.id;
 
-              if(next.indexOf('login')==-1){
+              if(next.indexOf('login')==-1 || next.indexOf('signup')==-1){
                 //进入登录页面,登录页面不需要判断是否登录
                 CheckStatus.checkAuth().then(function(data) {
                     var userIsLoggedIn = data;
@@ -246,7 +246,11 @@
                 },
 
                 remove: function(org_id) {
-                    return Restangular.one('/profile/org/delete' + org_id).get(); 
+                    return Restangular.one('/profile/org/delete/' + org_id).get(); 
+                },
+
+                one: function(id) {
+                  return Restangular.one('/profile/org/one/' + id).get();
                 }
 
             };

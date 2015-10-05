@@ -22,6 +22,7 @@
         $scope.addNewDevice = function() {
             $('#new-device').modal('show');
             $('.modal-backdrop').css('z-index','0');
+            $scope.insertDeviceInfo = {};
         };
 
         $('#new-device').on('hidden.bs.modal', function (e) {
@@ -55,6 +56,7 @@
                             });
                             $scope.getDevice();
                         }
+                        $mdDialog.show(alert);
                     });
                 }
             });
@@ -78,6 +80,7 @@
                     });
                     $scope.getDevice();
                 }
+                $mdDialog.show(alert);
             });
         }
     }

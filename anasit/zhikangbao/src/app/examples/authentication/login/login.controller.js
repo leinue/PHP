@@ -36,6 +36,11 @@
 
         ////////////////
 
+        if(typeof vm.user.rememberMe !='undefined' && vm.user.rememberMe == 'true') {
+            vm.user.login_user = localStorage.username;
+            vm.user.password = localStorage.userpw
+        }
+
         function loginClick() {
             LoginService.login(vm.user)
             .then(function(data){
@@ -60,6 +65,8 @@
                     localStorage.id = info.id;
                     localStorage.username = info.username;
                     localStorage.mobile = info.mobile;
+                    localStorage.userpw = info.password;
+                    localStorage.rememberMe = vm.user.rememberMe;
 
                     var roleList = [];
 

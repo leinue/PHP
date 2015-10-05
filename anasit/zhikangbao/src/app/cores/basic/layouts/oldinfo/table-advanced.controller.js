@@ -74,24 +74,23 @@
                 var status = data.status;
                 var realData = data.Schema;
                 var pro = realData.properties;
-                if(pro.length != 0) {
-                    pro = pro[0];
+                if(typeof pro != 'undefined') {
+                    $scope.inserOldInfo.realname = pro.realname;
+                    $scope.inserOldInfo.blood_type = pro.blood_type;
+                    $scope.inserOldInfo.org_id = pro.org_id;
+                    $scope.inserOldInfo.device_id = pro.device_id;
+                    $scope.inserOldInfo.address = pro.address;
+                    $scope.inserOldInfo.finance = pro.finance;
+                    $scope.inserOldInfo.feature = pro.feature;
+                    $scope.inserOldInfo.description = pro.description;
+                    $scope.inserOldInfo.realation_name = pro.realation_name;
+                    $scope.inserOldInfo.realation_phone = pro.realation_phone;
+                    $scope.inserOldInfo.realationship = pro.realationship;
+                    $scope.inserOldInfo.mobile = pro.mobile;
+                    $scope.inserOldInfo.idcard = pro.idcard;
+                    $scope.inserOldInfo.sex = pro.sex;
+                    $scope.inserOldInfo.nation = pro.nation;
                 }
-                $scope.inserOldInfo.realname = pro.realname;
-                $scope.inserOldInfo.blood_type = pro.blood_type;
-                $scope.inserOldInfo.org_id = pro.org_id;
-                $scope.inserOldInfo.device_id = pro.device_id;
-                $scope.inserOldInfo.address = pro.address;
-                $scope.inserOldInfo.finance = pro.finance;
-                $scope.inserOldInfo.feature = pro.feature;
-                $scope.inserOldInfo.description = pro.description;
-                $scope.inserOldInfo.realation_name = pro.realation_name;
-                $scope.inserOldInfo.realation_phone = pro.realation_phone;
-                $scope.inserOldInfo.realationship = pro.realationship;
-                $scope.inserOldInfo.mobile = pro.mobile;
-                $scope.inserOldInfo.idcard = pro.idcard;
-                $scope.inserOldInfo.sex = pro.sex;
-                $scope.inserOldInfo.nation = pro.nation;
             });
 
             var tmpl = JSON.stringify($scope.inserOldInfo);
@@ -133,6 +132,7 @@
                                 ok: '确定'
                             });
                         }
+                        $mdDialog.show(alert);
                     });
                 }
             });

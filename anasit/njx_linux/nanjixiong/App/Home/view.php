@@ -73,7 +73,7 @@ if(!empty($_GET['action'])){
 						foreach ($filedList as $key => $value) {
 							$optionName=$fieldOptionsObj->selectOne($value['foid']);
 							if($optionName[0]->getType()!='textarea' && $optionName[0]->getVisible()==='1'){
-								$citePost=$optionName[0]->getType()=='img'?'<div style="margin-bottom:15px;" class="col-md-2"><img width="80" height="80" src="'.DOMAIN.'/Cores/'.$value['value'].'" alt="'.$value['value'].'" class="img-rounded"></div>':'';
+								$citePost=$optionName[0]->getType()=='img'?'<div style="margin-bottom:0px;" class="col-md-2"><img width="120" height="120" src="'.DOMAIN.'/Cores/'.$value['value'].'" alt="'.$value['value'].'" class="img-rounded"></div>':'';
 								echo $citePost;
 							}
 							if($optionName[0]->isDesc()==='1'){

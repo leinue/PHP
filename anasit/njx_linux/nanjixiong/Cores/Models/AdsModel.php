@@ -15,7 +15,7 @@ class AdsModel{
 			$cataObj=self::$model->getDatabase()->query("select * from `njx_ads`",[],'Cores\Models\Ads');
 			return $cataObj;
 		}else{
-			return self::$model->getDatabase()->query("SELECT * FROM `njx_ads` LIMIT ".(($page-1)*10).','.($page*10),[],'Cores\Models\Ads');
+			return self::$model->getDatabase()->query("SELECT * FROM `njx_ads` LIMIT ".(($page-1)*10).',10',[],'Cores\Models\Ads');
 		}
 	}
 

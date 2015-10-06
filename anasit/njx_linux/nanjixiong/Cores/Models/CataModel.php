@@ -29,6 +29,10 @@ class CataModel{
 		}
 	}
 
+	function select1stLevelCata(){
+		return self::$model->getDatabase()->query("SELECT * FROM `njx_cata` WHERE `parent`='0'");
+	}
+
 	function getFieldChild($caid){
 		$tmp=self::$model->query("SELECT `child` FROM `njx_cata` WHERE `caid`='$caid' ORDER BY `order` DESC");
 		return $tmp[0]['child'];
@@ -132,7 +136,7 @@ class CataModel{
 			return false;
 		}
 
-		return self::$model->getDatabase()->query("SELECT * FROM  `njx_items` WHERE `caid` LIKE '%$caid%' AND `caid` LIKE '%$parent%' ORDER BY `order` DESC LIMIT ".(($page-1)*10).",".($page*10));
+		return self::$model->getDatabase()->query("SELECT * FROM  `njx_items` WHERE `caid` LIKE '%$caid%' AND `caid` LIKE '%$parent%' ORDER BY `order` DESC LIMIT ".(($page-1)*10).",10");
 	}
 
 

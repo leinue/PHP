@@ -15,7 +15,7 @@ class SettingModel{
 			$cataObj=self::$model->getDatabase()->query("SELECT * FROM `njx_setting`",[],'Cores\Models\Setting');
 			return $cataObj;
 		}else{
-			return self::$model->getDatabase()->query("SELECT * FROM `njx_setting` LIMIT ".(($page-1)*10).','.($page*10),[],'Cores\Models\Setting');
+			return self::$model->getDatabase()->query("SELECT * FROM `njx_setting` LIMIT ".(($page-1)*10).',10',[],'Cores\Models\Setting');
 		}
 	}
 

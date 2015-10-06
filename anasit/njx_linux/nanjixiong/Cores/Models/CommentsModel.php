@@ -17,7 +17,7 @@ class CommentsModel{
 		if($page==null){
 			return self::$model->getDatabase()->query("SELECT * from njx_comments",[],'Cores\Models\Comments');
 		}else{
-			return self::$model->getDatabase()->query("SELECT * FROM `njx_comments` LIMIT ".(($page-1)*10).','.($page*10));
+			return self::$model->getDatabase()->query("SELECT * FROM `njx_comments` LIMIT ".(($page-1)*10).',10');
 		}
 	}
 

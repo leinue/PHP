@@ -279,13 +279,15 @@
 													}
 												}
 
+												$frontDescContent = cutOutStr($frontDescContent);
+
 												$topTip = $itemValue->getTop()==='10'?'[置顶]':'';
 										
 												echo '<tr>
 											          <td>
 														<div class="media">
 														  <div class="media-left">
-														    <a href="#">
+														    <a href="index.php?v=view&caid='.$_GET['caid'].'&iid='.$itemValue->getIid().'&uid='.$itemValue->getuid().'">
 														      <img width="60" height="60" class="media-object" src="'.$frontPhotoSrc.'" alt="'.$itemValue->getTitle().'">
 														    </a>
 														  </div>
@@ -390,6 +392,8 @@
 													$frontDescContent=$fValue['value'];
 												}
 											}
+											
+											$frontDescContent = cutOutStr($frontDescContent);
 
 											$topTip = $itemVlaue['_top']==='10'?'[置顶]':'';
 
@@ -397,7 +401,7 @@
 										          <td>
 													<div class="media">
 													  <div class="media-left">
-													    <a href="#">
+													    <a href="index.php?v=view&&caid='.$_GET['caid'].'&iid='.$itemValue['iid'].'&uid='.$itemValue['uid'].'">
 													      <img width="60" height="60" class="media-object" src="'.$frontPhotoSrc.'" alt="'.$itemValue['title'].'">
 													    </a>
 													  </div>
@@ -459,7 +463,7 @@
 
 				?>
 
-				<div class="col-md-6 col-md-offset-3">
+				<div class="col-md-10 col-md-offset-1">
 					<nav style="box-shadow:none;text-align: center;">
 					  <ul class="pagination">
 					    <li>
@@ -477,6 +481,8 @@
 					    		echo '<li class="'.$pageActive.'"><a href="index.php?v=home&caid='.$_GET['caid'].'&view_type_id='.$_GET['view_type_id'].'&page='.$i.'">'.$i.'</a></li>';
 					    		$pageActive='';
 					    	}
+						
+						$finalURL = "index.php?v=home&caid=".$_GET['caid']."&view_type_id=".$_GET['view_type_id']."&page=";
 
 					    ?>
 					    <li>
@@ -495,3 +501,46 @@
 	  	</div>
 
 	</div>
+	<script>
+	
+		$(function(){
+			
+		//	 createPage(10, 8, <?php echo $allPages*10; ?>);
+    
+   			 function createPage(pageSize, buttons, total) {
+       				 $(".pagination").jBootstrapPage({
+           				pageSize : pageSize,
+            				total : total,
+            				maxPageButton:buttons,
+            				onPageClicked: function(obj, pageIndex) {
+						console.log(obj);
+						console.log(pageIndex);
+						//window.location.href=<?php echo "'".$finalURL."'"; ?>+(pageIndex+1);
+            				}
+        			});
+    			}			
+		//	$('.pagination li.active').removeClass('active');	
+		//	$('.pagination li:nth-child(<?php echo $page+2; ?>)').addClass('active');
+			
+		$('.pagination').jqPaginator({
+			
+			totalPages: <?php echo $allPages; ?>,
+			visiblePages: 10,
+			currentPage: <?php echo $page; ?>,
+			first: '<li class="first"><a href="javascript:void(0);">首页<\/a><\/li>',
+           		prev: '<li class="prev"><a href="javascript:void(0);"><i class="arrow arrow2"><\/i>上一页<\/a><\/li>',
+            		next: '<li class="next"><a href="javascript:void(0);">下一页<i class="arrow arrow3"><\/i><\/a><\/li>',
+            		last: '<li class="last"><a href="javascript:void(0);">末页<\/a><\/li>',
+           		 page: '<li class="page"><a href="javascript:void(0);">{{page}}<\/a><\/li>',
+			onPageChange: function(num,type){
+				console.log(num);
+				if(num != <?php echo $page; ?>){
+					window.location.href=<?php echo "'".$finalURL."'"; ?>+num;
+				}
+			}		
+
+		});
+
+		});	
+	
+	</script>

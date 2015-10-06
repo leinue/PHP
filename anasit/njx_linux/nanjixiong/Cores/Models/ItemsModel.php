@@ -22,9 +22,9 @@ class ItemsModel{
 			return $cataObj;
 		}else{
 			if(!$arr){
-				return $cataObj=self::$model->getDatabase()->query("SELECT * FROM `njx_items` ORDER BY `_top` DESC, `order` DESC LIMIT ".(($page-1)*10).",".($page*10));
+				return $cataObj=self::$model->getDatabase()->query("SELECT * FROM `njx_items` ORDER BY `_top` DESC, `order` DESC LIMIT ".(($page-1)*10).",10");
 			}else{
-				return $cataObj=self::$model->getDatabase()->query("SELECT * FROM `njx_items` ORDER BY `_top` DESC ,`order` DESC LIMIT ".(($page-1)*10).",".($page*10),[],'Cores\Models\Items');
+				return $cataObj=self::$model->getDatabase()->query("SELECT * FROM `njx_items` ORDER BY `_top` DESC ,`order` DESC LIMIT ".(($page-1)*10).",10",[],'Cores\Models\Items');
 			}
 			
 		}
@@ -38,7 +38,7 @@ class ItemsModel{
 		return count($this->selectAll());
 	}
 
-	function selectOne($iid){
+	function selectOne($iid=null){
 		return self::$model->getDatabase()->query("SELECT * FROM `njx_items` WHERE `iid`='$iid'",[],'Cores\Models\Items');
 	}
 
@@ -118,7 +118,7 @@ class ItemsModel{
 		if(!$page){
 			return self::$model->getDatabase()->query("SELECT count(*) AS c FROM `njx_items` WHERE `uid`='$uid'");
 		}
-		return self::$model->getDatabase()->query("SELECT * FROM `njx_items` ORDER BY `_top` DESC ,`order` DESC LIMIT ".(($page-1)*10).",".($page*10)." WHERE `uid` = '$uid'");
+		return self::$model->getDatabase()->query("SELECT * FROM `njx_items` WHERE `uid` = '$uid' ORDER BY `_top` DESC ,`order` DESC LIMIT ".(($page-1)*10).",10");
 	}
 
 	function upOrder($iid){

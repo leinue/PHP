@@ -34,7 +34,15 @@
 	                    alert('项目类别或项目主题不能为空');
 	                    redirectTo('admin.php?v='.$_GET['v']);
 	                }
-
+			
+			$fstCata = $cataObj->select1stLevelCata();
+			for($f = 0;$f<count($fstCata); $f++){
+				if($fstCata[$f]['name'] === $caid){
+					$caid = $fstCata[$f]['caid'];
+					break;
+				}	
+			}
+			
 	                array_push($caidList,$caid);
 
 	                $secondList=$cataObj->getSecond();
@@ -46,8 +54,7 @@
 	                        $rdList=$cataObj->getCataChild($value['caid']);
 	                        if(is_array($rdList)){
 	                            foreach ($rdList as $childKey => $childValue) {
-
-	                                if($childValue['child']!='second' && $childValue['name']==$_POST['item_'.$value['name'].'_cata_publish']){
+	                                if($childValue['child']!='second' && $childValue['caid']==$_POST['item_'.$value['name'].'_cata_publish']){
 	                                    array_push($rdValueList, $childValue['caid']);
 	                                    array_push($rdValueList, $childValue['name']);
 	                                }
@@ -63,7 +70,6 @@
 	                }
 
 	                $caidJSON='';
-
 	                $caidJSON=json_encode($caidList);
 
 	                $itemAdded=$itemObj->add($uid,$caidJSON,$title);

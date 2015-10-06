@@ -168,7 +168,7 @@ function arrayToObject($arr){
 }
 
 function cutOutStr($str,$count=20){
-	$s=mb_substr($str , 0 , $count);
+	$s=mb_substr($str , 0 , $count, 'utf-8');
 	return strlen($str)>20?$s.'[...]':$s;
 }
 
@@ -426,6 +426,29 @@ function img_($name,$name_control,$id,$tips=null,$value=null){
             <a href="javascript:var a=window.open(\''.DOMAIN.'/Cores/widgets/image_uploader.php\',\'_blank\',\'height=500px,width=750px,menubar=no,titlebar=no,scrollbar=no,toolbar=no,status=no,location=no,resizable=no\');" class="btn btn-sm btn-default">上传图片</a>';
 }
 
+/**
+ * Returns string with newline formatting converted into HTML paragraphs.
+ *
+ * @param string $string String to be formatted.
+ * @param boolean $line_breaks When true, single-line line-breaks will be converted to HTML break tags.
+ * @param boolean $xml When true, an XML self-closing tag will be applied to break tags (<br />).
+ * @return string
+ */
+function nl2p($string, $line_breaks = true, $xml = true)
+{
+    // Remove existing HTML formatting to avoid double-wrapping things
+    $string = str_replace(array('<p>', '</p>', '<br>', '<br />'), '', $string);
+    
+    // It is conceivable that people might still want single line-breaks
+    // without breaking into a new paragraph.
+    if ($line_breaks == true)
+        return '<p>'.preg_replace(array("/([\n]{2,})/i", "/([^>])\n([^<])/i"), array("</p>\n<p>", '<br'.($xml == true ? ' /' : '').'>'), trim($string)).'</p>';
+    else 
+        return '<p>'.preg_replace("/([\n]{1,})/i", "</p>\n<p>", trim($string)).'</p>';
+}
+
+
+
 function textarea($name,$name_control,$id,$tips,$value=null){
     $tips=tips($tips);
     $ueid=md5($id);
@@ -447,7 +470,7 @@ function textarea($name,$name_control,$id,$tips,$value=null){
     //         </div>';
     return '<div class="form-group">
                 <label>'.$name.'</label>
-                <textarea id="id_'.$ueid.'" name="'.$name_control.'"></textarea>
+                <textarea id="id_'.$ueid.'" name="'.$name_control.'">'.$value.'</textarea>
                 '.$tips.'
                 <script type="text/javascript">
                     window.KE = KindEditor;
@@ -457,7 +480,7 @@ function textarea($name,$name_control,$id,$tips,$value=null){
                         height : "240px"
                     });
                 
-                    window.id_'.$ueid.'.html(\''.my_nl2br($value).'\');
+                   // window.id_'.$ueid.'.html(\''.(my_nl2br($value)).'\');
                 </script>
             </div>';
 }
@@ -530,9 +553,17 @@ function generatorItemAddingForm($fieldList,$suffix='_add',$action=null,$fill=fa
                 if(is_array($rdList)){
                     foreach ($rdList as $childKey => $childValue) {
 				$items=new Cores\Models\ItemsModel();
-                                $currentItem=$items->selectOne($_GET['iid']);
+				if(isset($_GET['iid'])){
+					$currentItem = $items->selectOne($_GET['iid']);
+				}else{
+					$currentItem = $items->selectOne();
+				}
 
-                                $currentItemCaidList=$currentItem[0]->getCaid();
+				if(!is_object($currentItem[0])){
+					$currentItemCaidList = $currentItem[0]['caid'];
+				}else{
+					$currentItemCaidList = $currentItem[0]->getCaid();
+				}
                                 $caidIsExists=stripos($currentItemCaidList,$childValue['caid']);
 
                                 $isChecked=$caidIsExists!=false?'checked':'';

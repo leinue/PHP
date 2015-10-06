@@ -48,6 +48,7 @@ function displayAvtive($current,$to){
     <script type="text/javascript" src="<?php echo DOMAIN; ?>/Cores/widgets/lang/zh-cn/zh-cn.js"></script>-->
     <script type="text/javascript" src="<?php echo DOMAIN; ?>/Cores/widgets/kindeditor/kindeditor-min.js"></script>
     <script type="text/javascript" src="<?php echo DOMAIN; ?>/Cores/widgets/kindeditor/lang/zh_CN.js"></script>
+    <script type="text/javascript" src="<?php echo DOMAIN; ?>/Cores/widgets/jqp/jqPaginator.js"></script>
 </head>
 <body>
 
@@ -66,9 +67,28 @@ function displayAvtive($current,$to){
 			height:60px;
 		}
 
+		.navbar-default .navbar-brand {
+			overflow:hidden;
+			height:70px;		
+
+		}
+
+		
+		.block-hide{
+			
+			position: absolute;
+			width: 151px;
+			height: 27px;
+			background: rgb(238,238,238);
+			margin-left: 100px;
+			margin-top: -32px;
+			z-index: 2000;
+		
+		}
+
 
 	</style>
-
+		
 	<nav class="navbar navbar-default navbar-fixed-top">
 	  <div class="container container-fluid">
 	    <div class="navbar-header">
@@ -79,7 +99,7 @@ function displayAvtive($current,$to){
 	        <span class="icon-bar"></span>
 	      </button>
 
-	      <a class="navbar-brand" href="#"><img style="width:60px!important;height:60px!important;"  alt="<?php echo $settingObj->get('site_title'); ?>"  src="<?php echo $settingObj->get('site_logo');  ?>"></a>
+	      <a class="navbar-brand" href="#"><img style="height:130px;margin-top:-35px"  alt="<?php echo $settingObj->get('site_title'); ?>"  src="<?php echo $settingObj->get('site_logo');  ?>"></a>
 	    </div>
 
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

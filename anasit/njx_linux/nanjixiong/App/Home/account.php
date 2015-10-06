@@ -69,7 +69,16 @@
 		                alert('项目类别或项目主题不能为空');
 		                redirectTo('admin.php?v='.$_GET['v']);
 		            }
+			
+			$fstCata = $cataObj->select1stLevelCata();
+			for($f = 0;$f<count($fstCata); $f++){
+				if($fstCata[$f]['name'] === $caid){
+					$caid = $fstCata[$f]['caid'];
+					break;
+				}	
+			}
 
+	
 		            array_push($caidList,$caid);
 
 		            $secondList=$cataObj->getSecond();
@@ -81,7 +90,7 @@
 		                    $rdList=$cataObj->getCataChild($value['caid']);
 		                    if(is_array($rdList)){
 		                        foreach ($rdList as $childKey => $childValue) {
-		                            if($childValue['child']!='second' && $childValue['name']==$_POST['item_'.$value['name'].'_cata_edit']){
+		                            if($childValue['child']!='second' && $childValue['caid']==$_POST['item_'.$value['name'].'_cata_edit']){
 		                                array_push($rdValueList, $childValue['caid']);
 		                                array_push($rdValueList, $childValue['name']);
 		                            }
@@ -148,9 +157,11 @@
 	$defaultImage=DOMAIN.'/Cores/../'.$defaultImage;
 
 	$page=1;
-	if(!empty($_GET['[page'])){
+	if(isset($_GET['page'])){
 	    $page=$_GET['page'];
 	}
+
+	$realPage = $page;
 
 //	if(isset($_GET['page'])){
 //	    echo "<script>$('#myTabs a:last').tab('show');</script>";
@@ -169,11 +180,10 @@
 	if($nextPage>$allPages){
 	    $nextPage=$allPages;
 	}
-
 	function printItems($itemsObj,$status,$page){
 	    $allItemObj=$itemsObj->getUserItem($_GET['uid'],$page);
 	    if(is_array($allItemObj)){
-	        $j=$page>1?($page*5+1):0;
+	        $j=$page>1?($page*10)-10:0;
 	        foreach ($allItemObj as $key => $value) {
 	           // if($value['status']===$status){
 	                $j++;
@@ -322,8 +332,11 @@
                                             if($i==$page){
                                                 $classActive='class="active"';
                                             }
-                                            echo '<li><a '.$classActive.' href="index.php?v='.$_GET['v'].'&page='.$i.'&uid='.$_GET['uid'].'">'.$i.'</a></li>';
+                                            echo '<li '.$classActive.'><a '.$classActive.' href="index.php?v='.$_GET['v'].'&page='.$i.'&uid='.$_GET['uid'].'">'.$i.'</a></li>';
                                         }
+					
+					$finalURL = "index.php?v=".$_GET['v'].'&uid='.$_GET['uid'].'&page=';			
+
                                     ?>
                                     <li>
                                       <a href="index.php?v=<?php echo $_GET['v'] ?>&page=<?php echo $nextPage; ?>&uid=<?php echo $_GET['uid']; ?>&iid=<?php echo $_GET['uid'] ?>" aria-label="Next">
@@ -355,3 +368,27 @@
 	}
 
 ?>
+
+<script>
+
+	$('.pagination').jqPaginator({
+			
+			totalPages: <?php echo $allPages; ?>,
+			visiblePages: 10,
+			currentPage: <?php echo $page; ?>,
+			first: '<li class="first"><a href="javascript:void(0);">首页<\/a><\/li>',
+           		prev: '<li class="prev"><a href="javascript:void(0);"><i class="arrow arrow2"><\/i>上一页<\/a><\/li>',
+            		next: '<li class="next"><a href="javascript:void(0);">下一页<i class="arrow arrow3"><\/i><\/a><\/li>',
+            		last: '<li class="last"><a href="javascript:void(0);">末页<\/a><\/li>',
+           		 page: '<li class="page"><a href="javascript:void(0);">{{page}}<\/a><\/li>',
+			onPageChange: function(num,type){
+				console.log(num);
+				if(num != <?php echo $page; ?>){
+					window.location.href=<?php echo "'".$finalURL."'"; ?>+num;
+				}
+			}		
+
+		});
+
+
+</script>

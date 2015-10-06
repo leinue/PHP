@@ -18,7 +18,7 @@ class RemarksModel{
 			$cataObj=self::$model->getDatabase()->query("select * from `njx_remarks`",[],'Cores\Models\Remarks');
 			return $cataObj;
 		}else{
-			return self::$model->getDatabase()->query("SELECT * FROM `njx_remarks` LIMIT ".(($page-1)*10).','.($page*10),[],'Cores\Models\Remarks');
+			return self::$model->getDatabase()->query("SELECT * FROM `njx_remarks` LIMIT ".(($page-1)*10).',10',[],'Cores\Models\Remarks');
 		}
 	}
 

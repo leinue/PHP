@@ -18,7 +18,7 @@ class UsersModel{
 			$cataObj=self::$model->getDatabase()->query("SELECT * FROM njx_users",[],'Cores\Models\Users');
 			return $cataObj;
 		}else{
-			return self::$model->getDatabase()->query("SELECT * FROM `njx_users` ORDER BY `privilege` LIMIT ".(($page-1)*10).','.($page*10));
+			return self::$model->getDatabase()->query("SELECT * FROM `njx_users` ORDER BY `privilege` LIMIT ".(($page-1)*10).',10');
 		}
 	}
 

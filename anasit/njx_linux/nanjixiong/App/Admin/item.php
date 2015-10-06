@@ -57,7 +57,10 @@ if(!empty($_GET['action']) && !empty($_GET['iid'])){
 		break;
         case  'delete_item':
             $tips='该操作不可恢复,确定要执行吗?';
-            $request='admin.php?v='.$_GET['v'].'&action=delete_item_confirm&iid='.$iid;
+		if(isset($_GET['fucku'])){
+			$caonimabi_nanjixiong = '&fucku=v';
+		}
+            $request='admin.php?v='.$_GET['v'].'&action=delete_item_confirm&iid='.$iid.$caonimabi_nanjixiong;
             $btnValue='确定执行';
             $prompt=confirm($tips,$request,$btnValue);
             break;
@@ -89,6 +92,13 @@ if(!empty($_GET['action']) && !empty($_GET['iid'])){
                 alert('项目类别或项目主题不能为空');
                 redirectTo('admin.php?v='.$_GET['v']);
             }
+			$fstCata = $cataObj->select1stLevelCata();
+			for($f = 0;$f<count($fstCata); $f++){
+				if($fstCata[$f]['name'] === $caid){
+					$caid = $fstCata[$f]['caid'];
+					break;
+				}	
+			}
 
             array_push($caidList,$caid);
 
@@ -101,7 +111,7 @@ if(!empty($_GET['action']) && !empty($_GET['iid'])){
                     $rdList=$cataObj->getCataChild($value['caid']);
                     if(is_array($rdList)){
                         foreach ($rdList as $childKey => $childValue) {
-                            if($childValue['child']!='second' && $childValue['name']==$_POST['item_'.$value['name'].'_cata_edit']){
+                            if($childValue['child']!='second' && $childValue['caid']==$_POST['item_'.$value['name'].'_cata_edit']){
                                 array_push($rdValueList, $childValue['caid']);
                                 array_push($rdValueList, $childValue['name']);
                             }
@@ -163,6 +173,7 @@ function printItems($itemsObj,$status,$page){
     $allItemObj=$itemsObj->selectAll($page,false,true);
 	if($status == '0'){
 		$allItemObj = $itemsObj -> selectAllUnApproved($page);
+		$method = '&fucku=v';
 	}
     if(is_array($allItemObj)){
         $j=$page>1?($page*5+1):0;
@@ -190,13 +201,13 @@ function printItems($itemsObj,$status,$page){
                 }
 
                 $btnName=$status=='1'?'拒绝':'通过';
-                $action=$status=='1'?'admin.php?v='.$_GET['v'].'&action=reject_item&iid='.$value['iid'].'&page='.$page:'admin.php?v='.$_GET['v'].'&action=approve_item&iid='.$value['iid'].'&page='.$page;
+                $action=$status=='1'?'admin.php?v='.$_GET['v'].'&action=reject_item&iid='.$value['iid'].'&page='.$page:'admin.php?v='.$_GET['v'].'&action=approve_item&iid='.$value['iid'].'&page='.$page.$method;
                 $order=$status=='1'?'
-                            <a href="admin.php?v='.$_GET['v'].'&action=view_comments&iid='.$value['iid'].'&page='.$page.'" class="btn btn-primary btn-sm">评论列表</a>
-                            <a href="admin.php?v='.$_GET['v'].'&action=up_order&iid='.$value['iid'].'&page='.$page.'" class="btn btn-primary btn-sm">向上</a>
-                            <a href="admin.php?v='.$_GET['v'].'&action=down_order&iid='.$value['iid'].'&page='.$page.'" class="btn btn-primary btn-sm">向下</a>':'';
+                            <a href="admin.php?v='.$_GET['v'].'&action=view_comments&iid='.$value['iid'].'&page='.$page.$method.'" class="btn btn-primary btn-sm">评论列表</a>
+                            <a href="admin.php?v='.$_GET['v'].'&action=up_order&iid='.$value['iid'].'&page='.$page.$method.'" class="btn btn-primary btn-sm">向上</a>
+                            <a href="admin.php?v='.$_GET['v'].'&action=down_order&iid='.$value['iid'].'&page='.$page.$method.'" class="btn btn-primary btn-sm">向下</a>':'';
 		$setTopBtn = $value['_top'] === '10'?'取消置顶':'置顶';
-		$topBtnReq = $value['_top'] === '10'?'admin.php?v='.$_GET['v'].'&page='.$_GET['page'].'&action=set_untop&iid='.$value['iid']:'admin.php?v='.$_GET['v'].'&page='.$_GET['page'].'&action=set_top&iid='.$value['iid'];
+		$topBtnReq = $value['_top'] === '10'?'admin.php?v='.$_GET['v'].'&page='.$_GET['page'].'&action=set_untop&iid='.$value['iid'].$method:'admin.php?v='.$_GET['v'].'&page='.$_GET['page'].'&action=set_top&iid='.$value['iid'].$method;
                 echo '<tr>
                         <td></td>
                         <td>'.$value['title'].'</td>
@@ -205,11 +216,11 @@ function printItems($itemsObj,$status,$page){
                         <td>'.$value['createTime'].'</td>
                         <td>
 			    <a href="'.$topBtnReq.'" class="btn btn-sm btn-primary">'.$setTopBtn.'</a>
-                            <a href="admin.php?v='.$_GET['v'].'&action=edit_item&iid='.$value['iid'].'" class="btn btn-sm btn-primary">编辑</a>
+                            <a href="admin.php?v='.$_GET['v'].'&action=edit_item&iid='.$value['iid'].$method.'" class="btn btn-sm btn-primary">编辑</a>
                             <a target="_blank" href="index.php?v=view&iid='.$value['iid'].'&uid='.$value['uid'].'" class="btn btn-primary btn-sm">查看</a>
                             <a href="'.$action.'" class="btn btn-primary btn-sm">'.$btnName.'</a>
                             '.$order.'
-                            <a href="admin.php?v='.$_GET['v'].'&action=delete_item&iid='.$value['iid'].'&page='.$page.'" class="btn btn-danger btn-sm">删除</a>
+                            <a href="admin.php?v='.$_GET['v'].'&action=delete_item&iid='.$value['iid'].'&page='.$page.$method.'" class="btn btn-danger btn-sm">删除</a>
                         </td>
                     </tr>';
                 $cataString='';
@@ -267,7 +278,7 @@ function printItems($itemsObj,$status,$page){
                             <div class="panel-body">
                                 <div>
 
-                                  <ul class="nav nav-tabs" role="tablist">
+                                  <ul class="nav nav-tabs" id="mytabs" role="tablist">
                                     <li role="presentation" class="active"><a href="#approved" aria-controls="approved" role="tab" data-toggle="tab">已通过</a></li>
                                     <li role="presentation"><a href="#rejected" aria-controls="rejected" role="tab" data-toggle="tab">待审核</a></li>
                                   </ul>
@@ -308,6 +319,16 @@ function printItems($itemsObj,$status,$page){
                                                           </a>
                                                         </li>
                                                         <?php
+								if(isset($_GET['fucku'])){
+									echo "
+										<script>
+										$(function(){
+											$('#mytabs li a:last-child').tab('show');
+										});
+										</script>
+										";
+								}
+				
                                                             $classActive='';
                                                             for ($i=1; $i <= $allPages; $i++) {
                                                                 if($i==$page){

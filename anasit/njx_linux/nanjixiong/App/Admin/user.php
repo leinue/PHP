@@ -188,6 +188,7 @@ if(!empty($_GET['action']) && !empty($_GET['uid'])){
                                                 }
                                                 echo '<li><a '.$classActive.' href="admin.php?v='.$_GET['v'].'&page='.$i.'">'.$i.'</a></li>';
                                             }
+						$finalURL = 'admin.php?v='.$_GET['v'].'&page=';
                                         ?>
                                         <li>
                                           <a href="admin.php?v=<?php echo $_GET['v'] ?>&page=<?php echo $nextPage; ?>" aria-label="Next">
@@ -201,3 +202,26 @@ if(!empty($_GET['action']) && !empty($_GET['uid'])){
                         </div>
                     </div>
                 </div>
+		
+		<script>
+			
+		$('.pagination').jqPaginator({
+			
+			totalPages: <?php echo $allPages; ?>,
+			visiblePages: 10,
+			currentPage: <?php echo $page; ?>,
+			first: '<li class="first"><a href="javascript:void(0);">首页<\/a><\/li>',
+           		prev: '<li class="prev"><a href="javascript:void(0);"><i class="arrow arrow2"><\/i>上一页<\/a><\/li>',
+            		next: '<li class="next"><a href="javascript:void(0);">下一页<i class="arrow arrow3"><\/i><\/a><\/li>',
+            		last: '<li class="last"><a href="javascript:void(0);">末页<\/a><\/li>',
+           		 page: '<li class="page"><a href="javascript:void(0);">{{page}}<\/a><\/li>',
+			onPageChange: function(num,type){
+				console.log(num);
+				if(num != <?php echo $page; ?>){
+					window.location.href=<?php echo "'".$finalURL."'"; ?>+num;
+				}
+			}		
+
+		});	
+		
+		</script>

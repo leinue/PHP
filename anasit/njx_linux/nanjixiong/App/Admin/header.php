@@ -26,6 +26,7 @@ $settingObj=new Cores\Models\SettingModel();
     <script type="text/javascript" src="<?php echo DOMAIN; ?>/Cores/widgets/lang/zh-cn/zh-cn.js"></script>-->
     <script type="text/javascript" src="<?php echo DOMAIN; ?>/Cores/widgets/kindeditor/kindeditor-min.js"></script>
     <script type="text/javascript" src="<?php echo DOMAIN; ?>/Cores/widgets/kindeditor/lang/zh_CN.js"></script>
+    <script type="text/javascript" src="<?php echo DOMAIN; ?>/Cores/widgets/jqp/jqPaginator.js"></script>
 </head>
 
 <body style="padding: 0;">

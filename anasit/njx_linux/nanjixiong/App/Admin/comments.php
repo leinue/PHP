@@ -172,7 +172,7 @@ if(!empty($_GET['action']) && !empty($_GET['remarkId'])){
                                         </div>
                                         <div class="text-right">
                                             <nav>
-                                              <ul class="pagination">
+                                              <ul class="pagination" id="commentp">
                                                 <li>
                                                   <a href="admin.php?v=<?php echo $_GET['v'] ?>&page=<?php echo $prevPage; ?>" aria-label="Previous">
                                                     <span aria-hidden="true">&laquo;</span>
@@ -186,6 +186,7 @@ if(!empty($_GET['action']) && !empty($_GET['remarkId'])){
                                                         }
                                                         echo '<li><a '.$classActive.' href="admin.php?v='.$_GET['v'].'&page='.$i.'">'.$i.'</a></li>';
                                                     }
+							$cfinalURL = 'admin.php?v='.$_GET['v'].'&page=';
                                                 ?>
                                                 <li>
                                                   <a href="admin.php?v=<?php echo $_GET['v'] ?>&page=<?php echo $nextPage; ?>" aria-label="Next">
@@ -243,7 +244,7 @@ if(!empty($_GET['action']) && !empty($_GET['remarkId'])){
                                         </div>
                                         <div class="text-right">
                                             <nav>
-                                              <ul class="pagination">
+                                              <ul class="pagination" id="remarksp">
                                                 <li>
                                                   <a href="admin.php?v=<?php echo $_GET['v'] ?>&remarksPage=<?php echo $remarksPrevPage; ?>" aria-label="Previous">
                                                     <span aria-hidden="true">&laquo;</span>
@@ -257,6 +258,7 @@ if(!empty($_GET['action']) && !empty($_GET['remarkId'])){
                                                         }
                                                         echo '<li><a '.$classActive.' href="admin.php?v='.$_GET['v'].'&remarksPage='.$i.'">'.$i.'</a></li>';
                                                     }
+							$rfinalURL = 'admin.php?v='.$_GET['v'].'&remarksPage=';
                                                 ?>
                                                 <li>
                                                   <a href="admin.php?v=<?php echo $_GET['v'] ?>&remarksPage=<?php echo $remarksNextPage; ?>" aria-label="Next">
@@ -276,3 +278,48 @@ if(!empty($_GET['action']) && !empty($_GET['remarkId'])){
                         </div>
                     </div>
                 </div>
+	<script>
+			
+		$('#commentp').jqPaginator({
+			
+			totalPages: <?php echo $allPages; ?>,
+			visiblePages: 10,
+			currentPage: <?php echo $page; ?>,
+			first: '<li class="first"><a href="javascript:void(0);">首页<\/a><\/li>',
+           		prev: '<li class="prev"><a href="javascript:void(0);"><i class="arrow arrow2"><\/i>上一页<\/a><\/li>',
+            		next: '<li class="next"><a href="javascript:void(0);">下一页<i class="arrow arrow3"><\/i><\/a><\/li>',
+            		last: '<li class="last"><a href="javascript:void(0);">末页<\/a><\/li>',
+           		 page: '<li class="page"><a href="javascript:void(0);">{{page}}<\/a><\/li>',
+			onPageChange: function(num,type){
+				console.log(num);
+				if(num != <?php echo $page; ?>){
+					window.location.href=<?php echo "'".$cfinalURL."'"; ?>+num;
+				}
+			}		
+
+		});	
+		
+	</script>
+
+	<script>
+			
+		$('#remarksp').jqPaginator({
+			
+			totalPages: <?php echo $allRemarksPages; ?>,
+			visiblePages: 10,
+			currentPage: <?php echo $remarksPage; ?>,
+			first: '<li class="first"><a href="javascript:void(0);">首页<\/a><\/li>',
+           		prev: '<li class="prev"><a href="javascript:void(0);"><i class="arrow arrow2"><\/i>上一页<\/a><\/li>',
+            		next: '<li class="next"><a href="javascript:void(0);">下一页<i class="arrow arrow3"><\/i><\/a><\/li>',
+            		last: '<li class="last"><a href="javascript:void(0);">末页<\/a><\/li>',
+           		 page: '<li class="page"><a href="javascript:void(0);">{{page}}<\/a><\/li>',
+			onPageChange: function(num,type){
+				console.log(num);
+				if(num != <?php echo $remarksPage; ?>){
+					window.location.href=<?php echo "'".$rfinalURL."'"; ?>+num;
+				}
+			}		
+
+		});	
+		
+		</script>

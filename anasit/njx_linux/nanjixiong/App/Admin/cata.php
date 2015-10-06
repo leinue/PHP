@@ -263,7 +263,7 @@ if(!empty($_GET['cata_to_edit'])){
 
                                         $count=ceil(count($allCataObj)/10);
 
-                                        if($count>0){
+                                       /* if($count>0){
                                             echo '<li>
                                                   <a href="#" aria-label="Previous">
                                                     <span aria-hidden="true">&laquo;</span>
@@ -279,7 +279,7 @@ if(!empty($_GET['cata_to_edit'])){
                                                     <span aria-hidden="true">&raquo;</span>
                                                   </a>
                                                 </li>';
-                                        }
+                                        }*/
 
                                       ?>
                                       </ul>

@@ -167,9 +167,9 @@ function arrayToObject($arr){
     }
 }
 
-function cutOutStr($str,$count=20){
+function cutOutStr($str,$count=40){
 	$s=mb_substr($str , 0 , $count, 'utf-8');
-	return strlen($str)>20?$s.'[...]':$s;
+	return strlen($str)>$count?$s.'[...]':$s;
 }
 
 function in_array_i($x,$arr){

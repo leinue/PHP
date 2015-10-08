@@ -139,6 +139,13 @@ class CataModel{
 		return self::$model->getDatabase()->query("SELECT * FROM  `njx_items` WHERE `caid` LIKE '%$caid%' AND `caid` LIKE '%$parent%' ORDER BY `order` DESC LIMIT ".(($page-1)*10).",10");
 	}
 
+	function getSearchCount($caid,$parent){
+
+		if($caid == null){return false;}
+		
+		return self::$model->getDatabase()->query("SELECT COUNT(*) FROM `njx_items` WHERE `caid` LIKE '%$caid%' AND `caid` LIKE '%$parent%'");
+
+	}
 
 	function addChild($name,$parent=null,$child=null,$arr=false){
 

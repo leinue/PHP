@@ -70,7 +70,9 @@
 		$searchResult=array();
 		// foreach ($cataToView as $key => $value) {
 			$search=$cataObj->searchItemListByCaid($_GET['clicked'],$_GET['caid'],$page);
-			$allPages=ceil(count($search)/10)-1;
+			$searchCount = $cataObj -> getSearchCount($_GET['clicked'],$_GET['caid']);
+			$searchCount = $searchCount[0]['COUNT(*)'];
+			$allPages=ceil($searchCount/10)-1;
 			// if(!$search){
 			// 	continue;
 			// }
@@ -481,8 +483,11 @@
 					    		echo '<li class="'.$pageActive.'"><a href="index.php?v=home&caid='.$_GET['caid'].'&view_type_id='.$_GET['view_type_id'].'&page='.$i.'">'.$i.'</a></li>';
 					    		$pageActive='';
 					    	}
-						
-						$finalURL = "index.php?v=home&caid=".$_GET['caid']."&view_type_id=".$_GET['view_type_id']."&page=";
+						if(isset($_GET['clicked'])) {
+							$finalURL = "index.php?v=home&caid=".$_GET['caid']."&parent=".$_GET['parent']."&view_type_id=".$_GET['view_type_id']."&clicked=".$_GET['clicked']."&page=";
+						}else{
+							$finalURL = "index.php?v=home&caid=".$_GET['caid']."&view_type_id=".$_GET['view_type_id']."&page=";
+						}	
 
 					    ?>
 					    <li>

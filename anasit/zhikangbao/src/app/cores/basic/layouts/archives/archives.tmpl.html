@@ -56,7 +56,7 @@
                     <td>{{user.username | nullToVisual}}</td>
                     <td>{{user.idcard | nullToVisual}}</td>
                     <td>{{user.address | nullToVisual}}</td>
-                    <td>{{user.create_time | nullToVisual}}</td>
+                    <td>{{user.create_time | date:'yyyy-MM-dd'}}</td>
                     <td>
                         <md-button ng-click="viewThisArchive(user.user_id,user.username)" class="md-primary">档案管理</md-button>
                     </td>

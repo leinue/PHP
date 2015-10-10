@@ -11,7 +11,7 @@
 
         $stateProvider
         .state('triangular.admin-default.services-page', {
-            url: '/services',
+            url: '/services/{oldman_id}',
             templateUrl: 'app/cores/services/layouts/family-member/services-page.tmpl.html',
             // set the controller to load for this page
             controller: 'BasicServicesController',
@@ -36,7 +36,7 @@
             controllerAs: 'vm'
         })
         .state('triangular.admin-default.new-family', {
-            url: '/services/new',
+            url: '/services/new/{user_id}',
             templateUrl: 'app/cores/services/layouts/family-member/new-member.tmpl.html',
             controller: 'BasicServicesNewMemberController',
             controllerAs: 'vm'
@@ -54,11 +54,11 @@
             type: 'dropdown',
             priority: 2.1,
             children: [
-            {
-                name: '家庭成员',
-                state: 'triangular.admin-default.services-page',
-                type: 'link'
-            },
+            // {
+            //     name: '家庭成员',
+            //     state: 'triangular.admin-default.services-page',
+            //     type: 'link'
+            // },
             // {
             //     name: '健康档案',
             //     state: 'triangular.admin-default.health-archives',

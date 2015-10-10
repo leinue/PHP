@@ -75,21 +75,7 @@
                 var realData = data.Schema;
                 var pro = realData.properties;
                 if(typeof pro != 'undefined') {
-                    $scope.inserOldInfo.realname = pro.realname;
-                    $scope.inserOldInfo.blood_type = pro.blood_type;
-                    $scope.inserOldInfo.org_id = pro.org_id;
-                    $scope.inserOldInfo.device_id = pro.device_id;
-                    $scope.inserOldInfo.address = pro.address;
-                    $scope.inserOldInfo.finance = pro.finance;
-                    $scope.inserOldInfo.feature = pro.feature;
-                    $scope.inserOldInfo.description = pro.description;
-                    $scope.inserOldInfo.realation_name = pro.realation_name;
-                    $scope.inserOldInfo.realation_phone = pro.realation_phone;
-                    $scope.inserOldInfo.realationship = pro.realationship;
-                    $scope.inserOldInfo.mobile = pro.mobile;
-                    $scope.inserOldInfo.idcard = pro.idcard;
-                    $scope.inserOldInfo.sex = pro.sex;
-                    $scope.inserOldInfo.nation = pro.nation;
+                    $scope.inserOldInfo = pro;
                 }
             });
 
@@ -133,6 +119,7 @@
                             });
                         }
                         $mdDialog.show(alert);
+                        $scope.getOldInfo();
                     });
                 }
             });
@@ -149,6 +136,15 @@
         }
 
         $scope.getOldInfo();
+
+        $scope.addNewMember = function(id) {
+            // $state.go('triangular.admin-default.new-family');
+            $location.path('/services/new/' + id);
+        }
+
+        $scope.viewMyMember = function(user_id) {
+            $location.path('/services/' + user_id);
+        }
 
     }
 })();

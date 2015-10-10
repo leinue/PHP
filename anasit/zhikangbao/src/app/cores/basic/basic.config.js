@@ -106,11 +106,6 @@
                 type: 'link'
             },
             {
-                name: '商户管理',
-                state: 'triangular.admin-default.basic-commericial',
-                type: 'link'
-            },
-            {
                 name: '设备管理',
                 state: 'triangular.admin-default.device-mgr',
                 type: 'link'

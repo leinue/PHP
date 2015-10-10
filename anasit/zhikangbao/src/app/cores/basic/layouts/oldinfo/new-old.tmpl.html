@@ -22,6 +22,8 @@
                         <md-content class="md-padding">
                             <form name="accountForm" tri-wizard-form novalidate>
                                 <div layout="column" flex>
+                                <input type="hidden" ng-model="inserOldInfo.relation_id" >
+                                <input type="hidden" ng-model="inserOldInfo.user_id_other">
                                	 	<div layout layout-sm="column" flex>
 	                                    <md-input-container flex>
 	                                        <label translate>老人姓名(最好是全名)</label>
@@ -54,7 +56,7 @@
                                     <div layout layout-sm="column" flex>
 	                                    <md-input-container flex>
 	                                        <label>年龄</label>
-	                                        <input ng-model="inserOldInfo.sex" type="tel" required>
+	                                        <input ng-model="inserOldInfo.age" type="tel" required>
 	                                        <div ng-messages="accountForm.email.$error">
 	                                            <div ng-message when="required">
 	                                                <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
@@ -73,7 +75,7 @@
 								        <md-input-container flex>
 											<label>机构</label>
 								            <md-select class="md-select-form" ng-model="inserOldInfo.org_id" placeholder="机构">
-								                <md-option ng-value="department.id" ng-show="department.code == 'community' || department.code == 'orcodegnizat'" ng-repeat="department in ordList">{{department.name}}</md-option>
+								                <md-option ng-value="department.id" ng-repeat="department in ordList">{{department.full_name}}</md-option>
 								            </md-select>
 								        </md-input-container>
                                     </div>
@@ -143,7 +145,7 @@
                                     <div layout layout-sm="column" flex>
                                         <md-input-container flex>
                                             <label translate>亲属姓名</label>
-                                            <input ng-model="inserOldInfo.relation_name" required>
+                                            <input ng-model="inserOldInfo.relation_realname" required>
                                             <div ng-messages="addressForm.firstName.$error">
                                                 <div ng-message when="required">
                                                     <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
@@ -152,7 +154,7 @@
                                         </md-input-container>
                                         <md-input-container flex>
                                             <label translate>家庭关系</label>
-                                            <input ng-model="inserOldInfo.relationship" required>
+                                            <input ng-model="inserOldInfo.relation" required>
                                             <div ng-messages="addressForm.lastName.$error">
                                                 <div ng-message when="required">
                                                     <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
@@ -160,15 +162,26 @@
                                             </div>
                                         </md-input-container>
                                     </div>
-                                    <md-input-container>
-                                        <label translate>家属联系电话</label>
-                                        <input ng-model="inserOldInfo.relation_phone" name="address1" required>
-                                        <div ng-messages="addressForm.address1.$error">
-                                            <div ng-message when="required">
-                                                <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
+                                    <div layout layout-sm="column" flex>
+                                        <md-input-container flex>
+                                            <label translate>家属联系电话</label>
+                                            <input ng-model="inserOldInfo.relation_mobile" name="address1" required>
+                                            <div ng-messages="addressForm.address1.$error">
+                                                <div ng-message when="required">
+                                                    <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </md-input-container>
+                                        </md-input-container>
+                                        <md-input-container flex>
+                                            <label translate>家属身份证号</label>
+                                            <input ng-model="inserOldInfo.relation_idcard" name="address1" required>
+                                            <div ng-messages="addressForm.address1.$error">
+                                                <div ng-message when="required">
+                                                    <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
+                                                </div>
+                                            </div>
+                                        </md-input-container>
+                                    </div>
                                 </div>
                                 <div layout layout-sm="column" flex>
                                     <md-input-container flex>

@@ -15,6 +15,35 @@
         $scope.orgList = {};
         $scope.insertOrgList = {};
 
+        $scope.orgCateList = {};
+
+        $scope.orgEnabled = {
+            0: {
+                id: '1',
+                name: '是'
+            },
+            1: {
+                id: '0',
+                name: '否'
+            }
+        };
+
+        OrgInfoService.index().then(function(data) {
+            var status = data.status;
+            var realData = data.Schema;
+
+            if(status != '200') {
+                var alert = $mdDialog.alert({
+                    title: '读取组织结构信息失败,请重试',
+                    content: realData.properties.message,
+                    ok: '确定'
+                });
+               $mdDialog.show(alert);
+            }else{
+                $scope.orgCateList = realData.properties;
+            }
+        });
+
         $scope.getAllOrgInfo = function() {
             OrgService.index().then(function(data) {
                 console.log(data);
@@ -69,6 +98,7 @@
                             ok: '确定'
                         });
                         $scope.getAllOrgInfo();
+                        $('#new-org').modal('hide');
                     }
                     $mdDialog.show(alert);
                 });
@@ -90,8 +120,9 @@
                             ok: '确定'
                         });
                         $scope.getAllOrgInfo();
+                        $('#new-org').modal('hide');
                     }
-                        $mdDialog.show(alert);
+                    $mdDialog.show(alert);
                 });
             }
         }

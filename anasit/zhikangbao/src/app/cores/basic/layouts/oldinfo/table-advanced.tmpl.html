@@ -47,8 +47,10 @@
                     <td>{{user.address | nullToVisual}}</td>
                     <td>{{user.relation_name | nullToVisual}}</td>
                     <td>{{user.relation_phone | nullToVisual}}</td>
-                    <td>{{user.create_time | nullToVisual}}</td>
+                    <td>{{user.create_time | date:'yyyy-MM-dd'}}</td>
                     <td>
+                        <md-button ng-click="addNewMember(user.user_id)" class="md-primary">新增家庭成员</md-button>
+                        <md-button ng-click="viewMyMember(user.user_id)" class="md-primary">查看家庭成员</md-button>
                         <md-button ng-click="viewThis(user.user_id)" class="md-primary">详情</md-button>
                         <md-button ng-click="editThis(user.user_id)" class="md-primary">编辑</md-button>
                         <md-button ng-click="deleteThis(user.user_id)" class="md-warn">删除</md-button>
@@ -111,19 +113,19 @@
                 <div layout layout-sm="column" flex>
                     <md-input-container flex>
                         <label translate>身份特征</label>
-                        <input disabled ng-model="inserOldInfo.feture" type="text" required>
+                        <input disabled ng-model="inserOldInfo.feature" type="text" required>
                     </md-input-container>
                     <md-input-container flex>
                         <label translate>亲属姓名</label>
-                        <input disabled ng-model="inserOldInfo.relation_name" type="text">
+                        <input disabled ng-model="inserOldInfo.relation_realname" type="text">
                     </md-input-container>
                     <md-input-container flex>
                         <label translate>亲属电话</label>
-                        <input disabled ng-model="inserOldInfo.relation_phone" type="text">
+                        <input disabled ng-model="inserOldInfo.relation_mobile" type="text">
                     </md-input-container>
                     <md-input-container flex>
                         <label translate>亲属关系</label>
-                        <input disabled ng-model="inserOldInfo.realationship" type="text">
+                        <input disabled ng-model="inserOldInfo.realtion" type="text">
                     </md-input-container>
                 </div>
                 <div layout layout-sm="column" flex>

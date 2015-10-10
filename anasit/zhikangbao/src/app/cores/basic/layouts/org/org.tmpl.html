@@ -41,7 +41,7 @@
                 <tr>
                     <th name="编号"></th>
                     <th name="机构名"></th>
-                    <th name="父机构"></th>
+                    <th name="所属分类"></th>
                     <th name="是否开启"></th>
                     <th name="营业执照"></th>
                     <th name="添加时间"></th>
@@ -51,11 +51,11 @@
             <tbody>
                 <tr md-auto-select ng-repeat="item in orgList">
                 <td>{{item.id}}</td>
-                    <td>{{item.code}}</td>
-                    <td>{{item.pid}}</td>
-                    <td>{{item.enabled}}</td>
+                    <td>{{item.full_name}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.enabled | orgIsEnabled}}</td>
                     <td>{{item.org_code}}</td>
-                    <td>{{item.create_time}}</td>
+                    <td>{{item.create_time | date:'yyyy-MM-dd'}}</td>
                     <td>
                         <md-button ng-click="viewThisOrg(item.id)" class="md-primary">详情</md-button>
                         <md-button ng-click="editThisItem(item.id)" class="md-primary">编辑</md-button>
@@ -76,9 +76,11 @@
           </div>
           <div class="modal-body" style="font-size: 1.3em;">
             <div layout="column" flex>
-                <md-input-container flex>
-                    <label translate>所属分类</label>
-                    <input ng-model="insertOrgList.code" type="text" required>
+            <md-input-container flex>
+                    <label>所属分类</label>
+                    <md-select class="md-select-form" ng-model="insertOrgList.code" placeholder="机构">
+                        <md-option ng-value="department.id" ng-repeat="department in orgCateList">{{department.name}}</md-option>
+                    </md-select>
                 </md-input-container>
                 <md-input-container flex>
                     <label translate>全称</label>
@@ -90,7 +92,9 @@
                 </md-input-container>
                 <md-input-container flex>
                     <label translate>是否开启</label>
-                    <input ng-model="insertOrgList.enabled" type="text">
+                    <md-select class="md-select-form" ng-model="insertOrgList.enabled" placeholder="是否开启">
+                        <md-option ng-value="enable.id" ng-repeat="enable in orgEnabled">{{enable.name}}</md-option>
+                    </md-select>
                 </md-input-container>
             </div>
             <div layout="column" flex>
@@ -114,17 +118,13 @@
             <div layout="column" flex>
                 <md-input-container flex>
                     <label translate>其它介绍</label>
-                    <input ng-model="insertOrgList.org_code" type="text" required>
+                    <input ng-model="insertOrgList.description" type="text" required>
                 </md-input-container>
-                <md-input-container flex>
-                    <label translate>创建时间</label>
-                    <input ng-model="insertOrgList.create_time" type="text">
-                </md-input-container flex>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-            <button type="button" class="btn btn-default" ng-click="saveNewOrg()" data-dismiss="modal">保存</button>
+            <button type="button" class="btn btn-default" ng-click="saveNewOrg()">保存</button>
           </div>
         </div>
       </div>

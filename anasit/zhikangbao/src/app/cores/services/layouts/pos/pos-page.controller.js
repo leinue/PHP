@@ -6,7 +6,7 @@
         .controller('BasicServicesPosController', BasicServicesPosController);
 
     /* @ngInject */
-    function BasicServicesPosController($mdDialog) {
+    function BasicServicesPosController($mdDialog, $state) {
         var vm = this;
 
         vm.search = {
@@ -20,7 +20,19 @@
         vm.posStatus = {
         	status: 0,
         	backToWhole: function() {
-        		vm.posStatus.status = 1;
+        		vm.posStatus.status = 0;
+        		$state.go('triangular.admin-default.services-pos');
+        		$('#returnRoWholeBtn').hide();
+        		for(var i= 0,marker;i<lnglats.length;i++){
+			        var marker=new AMap.Marker({
+			           	position:lnglats[i],
+			            map:map
+			        });
+			        marker.content='<strong>姓名:</strong><br><strong>IMEI:</strong><br><strong>定位时间:</strong><br><strong>状态:</strong><br><a href="javascript:followUp('+i+')">实时跟踪</a>&nbsp;&nbsp;<a href="">历史记录</a>';
+			        marker.on('click',markerClick);
+			        // marker.emit('click',{target:marker});
+			        markerStack.push(marker);
+			    }
         	},
         	title: '位置信息监控'
         };
@@ -70,10 +82,10 @@
 	    window.infoWindow = new AMap.InfoWindow({offset:new AMap.Pixel(0,-30)});
 	    
 	    for(var i= 0,marker;i<lnglats.length;i++){
-	          var marker=new AMap.Marker({
-	              position:lnglats[i],
-	              map:map
-	          });
+	        var marker=new AMap.Marker({
+	           	position:lnglats[i],
+	            map:map
+	        });
 	        marker.content='<strong>姓名:</strong><br><strong>IMEI:</strong><br><strong>定位时间:</strong><br><strong>状态:</strong><br><a href="javascript:followUp('+i+')">实时跟踪</a>&nbsp;&nbsp;<a href="">历史记录</a>';
 	        marker.on('click',markerClick);
 	        // marker.emit('click',{target:marker});
@@ -90,23 +102,5 @@
 	    map.setFitView();
 
     }
-})();
 
-var followUp = function(mobile) {
-	if(mobile == null) {
-		alert('参数错误');
-	}
-	for(key in window.markerList) {
-		console.log(key);
-		var markerListCurrentMarker = windows.markerList[key]['marker'];
-	}
-	for (var i = markerStack.length - 1; i >= 0; i--) {
-		if(markerStack[i].Rd.position === currentMarker.target.Rd.position){
-			continue;
-		}
-		markerStack[i].setMap();
-	};
-	infoWindow.setContent('');
-	$('#returnRoWholeBtn').show();
-	ServicesPosVM.posStatus.title = "位置追踪";
-}
+})();

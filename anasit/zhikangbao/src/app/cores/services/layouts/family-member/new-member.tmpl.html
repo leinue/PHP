@@ -3,21 +3,25 @@
 		<div class="content-padded">
             <h2 class="md-title">新增家庭成员</h2>
         </div>
+        <md-input-container>
+		    <label>亲属姓名</label>
+		    <input ng-model="newMemberList.relation_realname" readonly type="tel">
+		</md-input-container>
 		<md-input-container>
 		    <label>身份证号</label>
-		    <input type="tel">
+		    <input ng-model="newMemberList.relation_idcard" type="tel">
 		</md-input-container>
 		<md-input-container>
 		    <label>联系电话</label>
-		    <input type="tel">
+		    <input ng-model="newMemberList.relation_mobile" type="tel">
 		</md-input-container>
 		<md-input-container>
 		    <label>家庭关系</label>
-		    <input type="text">
+		    <input ng-model="newMemberList.relation" type="text">
 		</md-input-container>
 		<div layout="row" layout-align="end center">
 		    <md-button ng-click="returnToList()" class="md-primary md-raised">返回</md-button>
-		    <md-button class="md-primary md-raised">确认</md-button>
+		    <md-button ng-click="saveNewFamilyMember()" class="md-primary md-raised">确认</md-button>
 		</div>
 	</md-card-content>
 </md-card>

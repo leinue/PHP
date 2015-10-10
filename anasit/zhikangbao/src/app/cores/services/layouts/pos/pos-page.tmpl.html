@@ -33,6 +33,10 @@
                 height: 400px;
             }
 
+            #returnRoWholeBtn {
+                display: none;
+            }
+
         </style>
 
         <div id="amap-container"></div>
@@ -42,3 +46,26 @@
     
     </md-card-content>
 </md-card>
+
+<script type="text/javascript">
+    
+    var followUp = function(mobile) {
+        if(mobile == null) {
+            alert('参数错误');
+        }
+        for(key in markerList) {
+            console.log(key);
+            var markerListCurrentMarker = markerList[key]['marker'];
+        }
+        for (var i = markerStack.length - 1; i >= 0; i--) {
+            if(markerStack[i].Rd.position === currentMarker.target.Rd.position){
+                continue;
+            }
+            markerStack[i].setMap();
+        };
+        infoWindow.setContent('');
+        $('#returnRoWholeBtn').show();
+        ServicesPosVM.posStatus.title = "位置信息追踪";
+    }
+
+</script>

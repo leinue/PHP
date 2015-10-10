@@ -6,7 +6,7 @@
             'triangular',
             'ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngMaterial',
             'ui.router', 'pascalprecht.translate', 'LocalStorageModule', 'googlechart', 'chart.js', 'linkify', 'ui.calendar', 'angularMoment', 'textAngular', 'uiGmapgoogle-maps', 'hljs', 'md.data.table', angularDragula(angular),
-            'restangular' ,
+            'restangular' , 
             //'seed-module',
             // uncomment above to activate the example seed module
             'app.examples',
@@ -50,7 +50,7 @@
                 }  
             };  
         }])
-        .filter('nullToVisual',function(){
+        .filter('nullToVisual', function(){
             return function(i){
               if(typeof i != 'undefined') {
                 if(i=='' || i==null){
@@ -60,6 +60,11 @@
                 }
               }
             }
+        })
+        .filter('orgIsEnabled', function() {
+          return function(i) {
+            return i==='1' ? '已开启' : '已关闭';
+          };
         })
         .run(function($rootScope, $location, $http, $state, LoginService, CheckStatus, $mdDialog){
 
@@ -190,9 +195,9 @@
                 login: function(login_user,http) {
                     http = http == null ? false : true;
                    if(http) {
-                        return $http.post(API_CONFIG.url + 'auth/login',login_user);
+                      return $http.post(API_CONFIG.url + 'auth/login',login_user);
                    }else{
-                       return Restangular.all('/auth/login/').post(login_user);
+                      return Restangular.all('/auth/login/').post(login_user);
                    }
                    
                 },
@@ -333,7 +338,7 @@
           };
 
         }])
-        .factory('HealthService', function(Restangular){
+        .factory('HealthService', ['Restangular', function(Restangular){
 
           return  {
 
@@ -363,7 +368,35 @@
 
           };
 
-        });
+        }])
+        .factory('FamilyMemberService', ['Restangular', '$http', 'API_CONFIG', function(Restangular, $http, API_CONFIG) {
+
+          return {
+
+            index: function(id) {
+              // return Restangular.all('/relation/all').get();
+              return $http.get(API_CONFIG.url + 'relation/one/' + id);
+            },
+
+            update: function(data) { 
+              return Restangular.all('/relation/edit').post(data);
+            },
+
+            insert: function(data) {
+              return Restangular.all('/relation/add').post(data);
+            },
+
+            remove: function(id) {
+              return Restangular.one('/relation/delete/' + id).get();
+            },
+
+            one: function(id) {
+              return Restangular.one('/relation/single/' + id).get();
+            }
+
+          };
+
+        }]);
 
         // .factory('DeviceHistoryService',['Restangular', function(Restangular) {
 

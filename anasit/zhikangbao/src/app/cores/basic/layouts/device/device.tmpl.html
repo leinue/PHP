@@ -53,7 +53,7 @@
                     <td>{{::device.user_id | nullToVisual}}</td>
                     <td>{{::device.device_sn | nullToVisual}}</td>
                     <td>{{::device.device_imei | nullToVisual}}</td>
-                    <td>{{::device.create_time | nullToVisual}}</td>
+                    <td>{{::device.create_time | date:'yyyy-MM-dd'}}</td>
                     <td>
                         <!-- <md-button ng-click="viewThisItem(device.device_id)" class="md-primary">详情</md-button> -->
                         <md-button ng-click="deleteThisItem(device.device_id)" class="md-warn">删除</md-button>

@@ -110,7 +110,7 @@
 
         triMenuProvider.addMenu({
             name: '总部后台系统',
-            icon: 'zmdi zmdi-check',
+            icon: 'fa fa-heartbeat',
             type: 'dropdown',
             priority: 2.1,
             children: [
@@ -173,7 +173,7 @@
                 type: 'dropdown',
                 children: [{
                     name: '实时定位',
-                    state: 'triangular.admin-default.basic-pos',
+                    state: 'triangular.admin-default.services-pos',
                     type: 'link'
                 },{
                     name: '设备管理',

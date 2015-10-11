@@ -49,8 +49,8 @@
         });
 
         triMenuProvider.addMenu({
-            name: '服务管理',
-            icon: 'zmdi zmdi-check',
+            name: '客服后台系统',
+            icon: 'fa fa-user-md',
             type: 'dropdown',
             priority: 2.1,
             children: [
@@ -64,13 +64,23 @@
             //     state: 'triangular.admin-default.health-archives',
             //     type: 'link'
             // },
+            // {
+            //     name: '位置监控',
+            //     state: 'triangular.admin-default.services-pos',
+            //     type: 'link'
+            // },
             {
-                name: '位置监控',
-                state: 'triangular.admin-default.services-pos',
+                name: '求助服务受理',
+                state: 'triangular.admin-default.services-video',
                 type: 'link'
             },
             {
-                name: '视频监控',
+                name: '求救呼叫处理',
+                state: 'triangular.admin-default.services-video',
+                type: 'link'
+            },
+            {
+                name: '消息群发系统',
                 state: 'triangular.admin-default.services-video',
                 type: 'link'
             }]

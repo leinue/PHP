@@ -7,8 +7,8 @@
             'app.cores.services'
             //'app.cores.master-system'
             //'app.cores.custom-service',
-            //'app.cores.org-system',
-            //'app.cores.community-system'
+            'app.cores.org-system',
+            'app.cores.community-system'
         ]);
 
 })();

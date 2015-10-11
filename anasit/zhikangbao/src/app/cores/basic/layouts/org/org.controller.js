@@ -28,6 +28,25 @@
             }
         };
 
+        var currentState = $state.current.name;
+
+        $scope.insertOrgList.code = -1;
+
+        if(currentState.indexOf('department') != -1) {
+            //机构管理
+            $scope.insertOrgList.code = 2;
+        }
+
+        if(currentState.indexOf('community') != -1) {
+            //社区管理
+            $scope.insertOrgList.code = 1;
+        }
+
+        if(currentState.indexOf('shop') != -1) {
+            //服务商家管理
+            $scope.insertOrgList.code = 3;
+        }
+
         OrgInfoService.index().then(function(data) {
             var status = data.status;
             var realData = data.Schema;

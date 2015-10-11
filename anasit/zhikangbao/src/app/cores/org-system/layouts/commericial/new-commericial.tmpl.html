@@ -1,0 +1,50 @@
+<md-card style="padding:0;margin:0;padding-bottom:100px;">
+	<md-card-content>
+		<div class="content-padded">
+            <h2 class="md-title">新增商户</h2>
+        </div>
+		<md-input-container>
+		    <label>商户名称(最好是全名)</label>
+		    <input type="text">
+		</md-input-container>
+		<md-input-container>
+			<label>所属机构(所属机构)</label>
+            <md-select class="md-select-form" ng-model="vm.user.favouriteColor" placeholder="所属机构">
+                <md-option ng-value="color" ng-repeat="color in ['蛤', '蛤蛤', '蛤蛤蛤']">{{color}}</md-option>
+            </md-select>
+        </md-input-container>
+		<md-input-container>
+		    <label>所属行业(所属行业)</label>
+		    <input type="text">
+		</md-input-container>
+		<md-input-container>
+		    <label>营业执照注册号(营业执照注册号)</label>
+		    <input type="text">
+		</md-input-container>
+		<md-input-container>
+		    <label>法人代表(法人代表)</label>
+		    <input type="text">
+		</md-input-container>
+		<md-input-container>
+		    <label>详细地址(请填写详细地址)</label>
+		    <input type="text">
+		</md-input-container>
+		<md-input-container>
+		    <label>联系电话(联系电话)</label>
+		    <input type="text">
+		</md-input-container>
+		<md-input-container>
+		    <label>公司办公电话(公司办公电话)</label>
+		    <input type="text">
+		</md-input-container>
+		<md-input-container>
+		    <label>描述(请填写描述)</label>
+		    <textarea></textarea>
+		</md-input-container>
+		</md-input-container>
+		<div layout="row" layout-align="end center">
+		    <md-button ng-click="returnToList()" class="md-primary md-raised">返回</md-button>
+		    <md-button class="md-primary md-raised">确认</md-button>
+		</div>
+	</md-card-content>
+</md-card>

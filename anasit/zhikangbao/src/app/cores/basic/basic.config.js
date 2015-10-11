@@ -77,7 +77,31 @@
             controller: 'BasicDeviceController',
             controllerAs: 'vm'
         })
+        .state('triangular.admin-default.monitor-mgr',{
+            url: '/monitor-mgr',
+            templateUrl: 'app/cores/basic/layouts/device/device.tmpl.html',
+            controller: 'BasicDeviceController',
+            controllerAs: 'vm'
+        })
         .state('triangular.admin-default.org-mgr',{
+            url: '/org-mgr',
+            templateUrl: 'app/cores/basic/layouts/org/org.tmpl.html',
+            controller: 'BasicOrgController',
+            controllerAs: 'vm'
+        })
+        .state('triangular.admin-default.department-mgr',{
+            url: '/org-mgr',
+            templateUrl: 'app/cores/basic/layouts/org/org.tmpl.html',
+            controller: 'BasicOrgController',
+            controllerAs: 'vm'
+        })
+        .state('triangular.admin-default.community-mgr',{
+            url: '/org-mgr',
+            templateUrl: 'app/cores/basic/layouts/org/org.tmpl.html',
+            controller: 'BasicOrgController',
+            controllerAs: 'vm'
+        })
+        .state('triangular.admin-default.shop-mgr',{
             url: '/org-mgr',
             templateUrl: 'app/cores/basic/layouts/org/org.tmpl.html',
             controller: 'BasicOrgController',
@@ -85,44 +109,81 @@
         });
 
         triMenuProvider.addMenu({
-            name: '基础管理',
+            name: '总部后台系统',
             icon: 'zmdi zmdi-check',
             type: 'dropdown',
             priority: 2.1,
             children: [
             {
-                name: '老人信息',
+                name: '档案管理系统',
                 state: 'triangular.admin-default.basic-page',
+                type: 'dropdown',
+                children: [{
+                    name: '老人档案管理',
+                    state: 'triangular.admin-default.basic-page',
+                    type: 'link'
+                },{
+                    name: '健康档案管理',
+                    state: 'triangular.admin-default.basic-archives',
+                    type: 'link'
+                }]
+            },
+            // {
+            //     name: '档案管理',
+            //     state: 'triangular.admin-default.basic-archives',
+            //     type: 'link'
+            // },
+            // {
+            //     name: '设备管理',
+            //     state: 'triangular.admin-default.device-mgr',
+            //     type: 'link'
+            // },
+            {
+                name: '机构管理',
+                state: 'triangular.admin-default.department-mgr',
                 type: 'link'
             },
             {
-                name: '档案管理',
-                state: 'triangular.admin-default.basic-archives',
+                name: '社区管理',
+                state: 'triangular.admin-default.community-mgr',
                 type: 'link'
+            },
+            {
+                name: '服务商家管理',
+                state: 'triangular.admin-default.shop-mgr',
+                type: 'link'
+            },
+            {
+                name: '视频关爱系统',
+                state: 'triangular.admin-default.basic-video',
+                type: 'dropdown',
+                children: [{
+                    name: '视频关爱',
+                    state: 'triangular.admin-default.basic-video',
+                    type: 'link'
+                },{
+                    name: '设备管理',
+                    state: 'triangular.admin-default.monitor-mgr',
+                    type: 'link'
+                }]
+            },
+            {
+                name: '实时定位系统',
+                state: 'triangular.admin-default.basic-pos',
+                type: 'dropdown',
+                children: [{
+                    name: '实时定位',
+                    state: 'triangular.admin-default.basic-pos',
+                    type: 'link'
+                },{
+                    name: '设备管理',
+                    state: 'triangular.admin-default.device-mgr',
+                    type: 'link'
+                }]
             },
             {
                 name: '志愿者管理',
                 state: 'triangular.admin-default.basic-volunteer',
-                type: 'link'
-            },
-            {
-                name: '设备管理',
-                state: 'triangular.admin-default.device-mgr',
-                type: 'link'
-            },
-            {
-                name: '组织管理',
-                state: 'triangular.admin-default.org-mgr',
-                type: 'link'
-            },
-            {
-                name: '位置监控',
-                state: 'triangular.admin-default.basic-pos',
-                type: 'link'
-            },
-            {
-                name: '视频监控',
-                state: 'triangular.admin-default.basic-video',
                 type: 'link'
             }]
         });

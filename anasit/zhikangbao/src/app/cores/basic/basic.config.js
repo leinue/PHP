@@ -106,6 +106,12 @@
             templateUrl: 'app/cores/basic/layouts/org/org.tmpl.html',
             controller: 'BasicOrgController',
             controllerAs: 'vm'
+        })
+        .state('triangular.admin-default.master-admin',{
+            url: '/master/admin',
+            templateUrl: 'app/cores/basic/layouts/admin/admin.tmpl.html',
+            controller: 'BasicAdminController',
+            controllerAs: 'vm'
         });
 
         triMenuProvider.addMenu({
@@ -184,6 +190,11 @@
             {
                 name: '志愿者管理',
                 state: 'triangular.admin-default.basic-volunteer',
+                type: 'link'
+            },
+            {
+                name: '系统管理员设置',
+                state: 'triangular.admin-default.master-admin',
                 type: 'link'
             }]
         });

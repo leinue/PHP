@@ -396,6 +396,20 @@
 
           };
 
+        }])
+        .factory('UserMgrService', ['Restangular', '$http', 'API_CONFIG', function(Restangular, $http, API_CONFIG) {
+          
+            return {
+          
+                index: function() {
+                  return Restangular.one('/user/list').get();
+                },
+
+                setAdmin: function() {
+                  return Restangular.one('/user/manage').get();
+                }
+
+            };
         }]);
 
         // .factory('DeviceHistoryService',['Restangular', function(Restangular) {

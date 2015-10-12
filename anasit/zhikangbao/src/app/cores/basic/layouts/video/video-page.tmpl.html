@@ -1,4 +1,24 @@
 <md-card style="padding:0;margin:0;">
+    <md-card-content>
+        <div class="content-padded">
+            <h2 class="md-title">视频关爱系统</h2>
+        </div>
+        <md-divider></md-divider>
+        <div layout layout-sm="column" flex>
+            <md-input-container flex>
+                <label>机构/社区/组织</label>
+                <md-select class="md-select-form" ng-model="currentOrg" ng-change="getMonitorList()" placeholder="机构/社区/组织列表">
+                    <md-option ng-value="org.id" ng-repeat="org in orgList">{{org.full_name}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container flex>
+                <label>监控器列表</label>
+                <md-select class="md-select-form" ng-model="currentMonitor" placeholder="监控器列表">
+                    <md-option ng-value="monitor" ng-repeat="monitor in monitorList">{{monitor}}</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+    </md-card-content>
     <md-ontent>
         <object id="basicVideo" type='application/x-vlc-plugin' pluginspage="http://www.videolan.org/" events='false' width="100%" height="410">
             <param name='mrl' value='rtsp://admin:a1234567@192.168.1.64:554/h264/ch1/main/av_stream' />

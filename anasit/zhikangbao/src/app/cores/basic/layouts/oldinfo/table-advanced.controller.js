@@ -146,5 +146,34 @@
             $location.path('/services/' + user_id);
         }
 
+        $scope.startSearch = function($event) {
+            var keyCode = $event.keyCode;
+
+            if($event && keyCode == 13) {
+                OldInfoService.search(vm.query.filter).then(function(data) {
+                    var status = data.status;
+                    var realData = data.properties;
+
+                    if(status != '200') {
+
+                        var alert = $mdDialog.alert({
+                            title: '网络传输失败',
+                            content: realData.properties.message,
+                            ok: '确定'
+                        });
+
+                    }else {
+                        $scope.oldInfoItemList = realData.properties;
+                    }
+                });
+            }
+
+        }
+
+        $scope.getAllOldList = function() {
+            if(vm.query.filter == '') {
+                $scope.getOldInfo();
+            }
+        }
     }
 })();

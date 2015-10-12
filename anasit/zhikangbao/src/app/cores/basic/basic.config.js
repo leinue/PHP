@@ -79,8 +79,8 @@
         })
         .state('triangular.admin-default.monitor-mgr',{
             url: '/monitor-mgr',
-            templateUrl: 'app/cores/basic/layouts/device/device.tmpl.html',
-            controller: 'BasicDeviceController',
+            templateUrl: 'app/cores/basic/layouts/device/monitor.tmpl.html',
+            controller: 'BasicMonitorController',
             controllerAs: 'vm'
         })
         .state('triangular.admin-default.org-mgr',{
@@ -168,7 +168,7 @@
                     state: 'triangular.admin-default.basic-video',
                     type: 'link'
                 },{
-                    name: '设备管理',
+                    name: '监控器设备管理',
                     state: 'triangular.admin-default.monitor-mgr',
                     type: 'link'
                 }]
@@ -182,7 +182,7 @@
                     state: 'triangular.admin-default.services-pos',
                     type: 'link'
                 },{
-                    name: '设备管理',
+                    name: '老人机设备管理',
                     state: 'triangular.admin-default.device-mgr',
                     type: 'link'
                 }]

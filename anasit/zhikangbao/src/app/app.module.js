@@ -283,6 +283,10 @@
 
             one: function(uid) {
               return Restangular.one('/profile/old/one/' + uid).get();
+            },
+
+            search: function(keywords) {
+              return Restangular.one('/profile/old/search/' + keywords).get();
             }
 
           };
@@ -408,6 +412,31 @@
                 setAdmin: function() {
                   return Restangular.one('/user/manage').get();
                 }
+
+            };
+        }])
+        .factory('MonitorService', ['Restangular', '$http', 'API_CONFIG', function(Restangular, $http, API_CONFIG) {
+            return {
+          
+              index: function() {
+                return Restangular.one('/monitor/list').get();
+              },
+
+              udpate: function() {
+                return Restangular.all('/monitor/update').post(data);
+              },
+
+              remove: function(id) {
+                return Restangular.one('/monitor/remove/' + id).get();
+              },
+
+              insert: function(data) {
+                return Restangular.all('/monitor/insert').post(data);
+              },
+
+              getByOrg: function(id) {
+                return Restangular.one('/monitor/one/' + id).get();
+              }
 
             };
         }]);

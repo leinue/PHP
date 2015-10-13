@@ -58,18 +58,18 @@
                 controller: 'InboxController',
                 controllerAs: 'vm',
                 resolve: {
-                    emails: function($http, API_CONFIG) {
-                        return $http({
-                            method: 'GET',
-                            url: API_CONFIG.url + 'email/inbox'
-                        });
-                    },
-                    contacts: function($http, API_CONFIG) {
-                        return $http({
-                            method: 'GET',
-                            url: API_CONFIG.url + 'email/contacts'
-                        });
-                    }
+                    // emails: function($http, API_CONFIG) {
+                    //     return $http({
+                    //         method: 'GET',
+                    //         url: API_CONFIG.url + 'email/inbox'
+                    //     });
+                    // },
+                    // contacts: function($http, API_CONFIG) {
+                    //     return $http({
+                    //         method: 'GET',
+                    //         url: API_CONFIG.url + 'email/contacts'
+                    //     });
+                    // }
                 }
             });
         });

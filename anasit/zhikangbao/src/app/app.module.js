@@ -194,11 +194,11 @@
             return {
                 login: function(login_user,http) {
                     http = http == null ? false : true;
-                   if(http) {
-                      return $http.post(API_CONFIG.url + 'auth/login',login_user);
-                   }else{
-                      return Restangular.all('/auth/login/').post(login_user);
-                   }
+                    if(http) {
+                        return $http.post(API_CONFIG.url + 'auth/login',login_user);
+                    }else{
+                        return Restangular.all('/auth/login/').post(login_user);
+                    }
                    
                 },
                 
@@ -314,6 +314,10 @@
 
             one: function(uid) {
               return Restangular.one('/profile/org_cate/one' + uid).get();
+            },
+
+            getByOrgCate: function(id) {
+              return Restangular.one('/video/getorg/' + id).get();
             }
 
           };
@@ -368,6 +372,10 @@
 
             singleOne: function(id) {
               return Restangular.one('/healths/old/singleOne/' + id).get();
+            },
+
+            search: function(keywords) {
+              return Restangular.one('/healths/old/search/' + keywords).get();
             }
 
           };
@@ -419,23 +427,27 @@
             return {
           
               index: function() {
-                return Restangular.one('/monitor/list').get();
+                return Restangular.one('/monitor/all').get();
               },
 
-              udpate: function() {
-                return Restangular.all('/monitor/update').post(data);
+              update: function(data) {
+                return Restangular.all('/monitor/edit').post(data);
               },
 
               remove: function(id) {
-                return Restangular.one('/monitor/remove/' + id).get();
+                return Restangular.one('/monitor/delete/' + id).get();
               },
 
               insert: function(data) {
-                return Restangular.all('/monitor/insert').post(data);
+                return Restangular.all('/monitor/add').post(data);
+              },
+
+              one: function(id) {
+                return Restangular.one('/monitor/one/' + id).get();
               },
 
               getByOrg: function(id) {
-                return Restangular.one('/monitor/one/' + id).get();
+                return Restangular.one('/video/getmonitor/' + id).get();
               }
 
             };

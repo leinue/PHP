@@ -10,6 +10,10 @@
         var vm = this;
         vm.selected = '';
 
+        $scope.query = {
+            keywords: ''
+        }
+
         $scope.healthArichiveTitle = '新增老人健康档案';
         $scope.edit = false;
         $scope.currentId = '';
@@ -169,7 +173,7 @@
                     HealthService.remove(id).then(function(data) {
                         var status = data.status;
                         var realData = data.Schema;
-                        if(status === '400') {
+                        if(status != '200') {
                             var alert = $mdDialog.alert({
                                 title: '删除失败',
                                 content: realData.properties.message,
@@ -188,5 +192,49 @@
                 }
             });
         }
+
+        $scope.startSearchHealth = function($event) {
+            var keywords = $scope.query.keywords;
+            if($event.keyCode == 13) {
+                $scope.oldInfoItemList = {};
+                console.log($scope.oldInfoItemList);
+                if(keywords == '') {
+                    $scope.getOldInfo();
+                }else {
+                    HealthService.search(keywords).then(function(data) {
+                        var status = data.status;
+                        var realData = data.Schema;
+
+                        if(status != '200') {
+                            var alert = $mdDialog.alert({
+                                title: '搜索失败',
+                                content: realData.properties.message,
+                                ok: '确定'
+                            });
+                            $mdDialog.show(alert);
+                        }else {
+                            $scope.oldInfoItemList = realData.properties;
+                            console.log($scope.oldInfoItemList);
+                        }
+                        
+                    }); 
+                }
+            }
+        }
+
+        $scope.backToAllList = function() {
+            if($scope.query.keywords == '') {
+                $scope.getOldInfo();
+            }
+        }
+
+        var watch = $scope.$watch('oldInfoItemList',function(newValue,oldValue, scope){
+
+                console.log(newValue);
+
+                console.log(oldValue);
+
+        });
+
     }
 })();

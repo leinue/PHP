@@ -7,15 +7,15 @@
             <md-divider></md-divider>
             <div layout layout-sm="column" flex>
                 <md-input-container flex>
-                    <label>地区</label>
-                    <md-select class="md-select-form" ng-model="vm.user.favouriteColor" placeholder="地区">
-                        <md-option ng-value="sex" ng-repeat="sex in ['男', '女']">{{sex}}</md-option>
+                    <label>组织类型</label>
+                    <md-select class="md-select-form" ng-model="currentOrgCate" ng-change="getOrgList()" placeholder="组织类型">
+                        <md-option ng-value="org.id" ng-repeat="org in orgCateList">{{org.name}}</md-option>
                     </md-select>
                 </md-input-container>
                 <md-input-container flex>
-                    <label>地区</label>
-                    <md-select class="md-select-form" ng-model="vm.user.favouriteColor" placeholder="地区">
-                        <md-option ng-value="yesorno" ng-repeat="yesorno in ['是', '否']">{{yesorno}}</md-option>
+                    <label>机构/社区/组织</label>
+                    <md-select class="md-select-form" ng-model="currentOrg" ng-change="getMonitorList()" placeholder="机构/社区/组织列表">
+                        <md-option ng-value="org.id" ng-repeat="org in orgList">{{org.full_name}}</md-option>
                     </md-select>
                 </md-input-container>
                 <md-input-container flex>
@@ -40,5 +40,3 @@
         
         </md-card-content>
     </md-card>
-
-'app/cores/basic/layouts/device/device.tmpl.html'

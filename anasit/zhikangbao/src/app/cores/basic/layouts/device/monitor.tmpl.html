@@ -40,23 +40,27 @@
             <thead md-order="vm.query.order" md-trigger="vm.getUsers">
                 <tr>
                     <th name="编号"></th>
-                    <th name="用户"></th>
-                    <th name="注册码"></th>
-                    <th name="IMEI"></th>
-                    <th name="添加时间"></th>
+                    <th name="设备名"></th>
+                    <th name="所属机构"></th>
+                    <th name="设备帐号"></th>
+                    <th name="设备密码"></th>
+                    <th name="设备IP"></th>
+                    <th name="设备域名"></th>
                     <th name="操作"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr md-auto-select ng-repeat="device in devices">
-                    <td>{{::device.device_id | nullToVisual}}</td>
-                    <td>{{::device.user_id | nullToVisual}}</td>
-                    <td>{{::device.device_sn | nullToVisual}}</td>
-                    <td>{{::device.device_imei | nullToVisual}}</td>
-                    <td>{{::device.create_time | date:'yyyy-MM-dd'}}</td>
+                    <td>{{::device.monitor_id | nullToVisual}}</td>
+                    <td>{{::device.monitor_name | nullToVisual}}</td>
+                    <td>{{::device.organization.full_name | nullToVisual}}</td>
+                    <td>{{::device.username | nullToVisual}}</td>
+                    <td>{{::device.password | nullToVisual}}</td>
+                    <td>{{::device.ip | nullToVisual}}</td>
+                    <td>{{::device.domain | nullToVisual}}</td>
                     <td>
-                        <!-- <md-button ng-click="viewThisItem(device.device_id)" class="md-primary">详情</md-button> -->
-                        <md-button ng-click="deleteThisItem(device.device_id)" class="md-warn">删除</md-button>
+                        <md-button ng-click="viewThisItem(device.monitor_id)" class="md-primary">详情/编辑</md-button>
+                        <md-button ng-click="deleteThisItem(device.monitor_id)" class="md-warn">删除</md-button>
                     </td>
                 </tr>
             </tbody>
@@ -74,22 +78,56 @@
           <div class="modal-body" style="font-size: 1.3em;">
             <div layout="column" flex>
                 <md-input-container flex>
-                    <label translate>用户ID</label>
-                    <input ng-model="insertDeviceInfo.user_id" type="text" required>
+                    <label translate>所属机构</label>
+                    <md-select class="md-select-form" ng-model="insertDeviceInfo.org_id" placeholder="所属机构">
+                        <md-option ng-value="org.id" ng-repeat="org in orgList">{{org.full_name}}</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container>
+                    <label translate>设备名</label>
+                    <textarea ng-model="insertDeviceInfo.monitor_name"></textarea>
+                </md-input-container>
+                <md-input-container>
+                    <label translate>设备帐号</label>
+                    <textarea ng-model="insertDeviceInfo.username"></textarea>
+                </md-input-container>
+                <md-input-container>
+                    <label translate>设备密码</label>
+                    <textarea ng-model="insertDeviceInfo.password"></textarea>
+                </md-input-container>
+                <md-input-container>
+                    <label translate>设备域名</label>
+                    <textarea ng-model="insertDeviceInfo.domain"></textarea>
+                </md-input-container>
+                <md-input-container>
+                    <label translate>设备IP</label>
+                    <textarea ng-model="insertDeviceInfo.ip"></textarea>
+                </md-input-container>
+                <md-input-container>
+                    <label translate>设备默认流</label>
+                    <textarea ng-model="insertDeviceInfo.default_stream"></textarea>
                 </md-input-container>
                 <md-input-container>
                     <label translate>设备SN号</label>
-                    <input ng-model="insertDeviceInfo.device_sn" type="text">
+                    <input ng-model="insertDeviceInfo.monitor_sn" type="text">
                 </md-input-container>
                 <md-input-container>
                     <label translate>设备IMEI号</label>
-                    <input ng-model="insertDeviceInfo.device_imei" type="text">
+                    <input ng-model="insertDeviceInfo.monitor_imei" type="text">
                 </md-input-container>
                 <md-input-container>
                     <label translate>描述</label>
                     <textarea ng-model="insertDeviceInfo.description"></textarea>
                 </md-input-container>
-            </div>
+                <md-input-container>
+                    <label translate>类型</label>
+                    <textarea ng-model="insertDeviceInfo.type"></textarea>
+                </md-input-container>
+                <md-input-container>
+                    <label translate>状态</label>
+                    <textarea ng-model="insertDeviceInfo.status"></textarea>
+                </md-input-container>
+           </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>

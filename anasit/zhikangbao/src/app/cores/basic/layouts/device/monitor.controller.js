@@ -6,16 +6,20 @@
         .controller('BasicMonitorController', BasicMonitorController);
 
     /* @ngInject */
-    function BasicMonitorController($scope, $state, MonitorService, $mdDialog) {
+    function BasicMonitorController($scope, $state, MonitorService, $mdDialog, OrgService) {
         var vm = this;
+
+        $scope.isEdit = false;
 
         $scope.getDevice = function() {
             MonitorService.index().then(function(response) {
-                $scope.devices = response.Schema.properties;   
+                $scope.devices = response.Schema.properties;
+                console.log($scope.devices);
             })
         }
 
         $scope.insertDeviceInfo = {};
+        $scope.orgList = {};
 
         $scope.getDevice();
 
@@ -23,6 +27,7 @@
             $('#new-device').modal('show');
             $('.modal-backdrop').css('z-index','0');
             $scope.insertDeviceInfo = {};
+            $scope.isEdit = false;
         };
 
         $('#new-device').on('hidden.bs.modal', function (e) {
@@ -63,25 +68,94 @@
         }
 
         $scope.saveNewDevice = function() {
-            MonitorService.insert($scope.insertDeviceInfo).then(function(data) {
+            if(!$scope.isEdit) {
+                MonitorService.insert($scope.insertDeviceInfo).then(function(data) {
+                    var status = data.status;
+                    var realData = data.Schema;
+                    if(status != '200') {
+                        var alert = $mdDialog.alert({
+                            title: '添加失败',
+                            content: realData.properties.message,
+                            ok: '确定'
+                        });
+                    }else {
+                        var alert = $mdDialog.alert({
+                            title: '添加成功',
+                            content: '',
+                            ok: '确定'
+                        });
+                        $scope.getDevice();
+                    }
+                    $mdDialog.show(alert);
+                });
+            }else {
+                MonitorService.update($scope.insertDeviceInfo).then(function(data) {
+                    var status = data.status;
+                    var realData = data.Schema;
+                    if(status != '200') {
+                        var alert = $mdDialog.alert({
+                            title: '编辑失败',
+                            content: realData.properties.message,
+                            ok: '确定'
+                        });
+                    }else {
+                        var alert = $mdDialog.alert({
+                            title: '编辑成功',
+                            content: '',
+                            ok: '确定'
+                        });
+                        $scope.getDevice();
+                    }
+                    $mdDialog.show(alert);
+                });
+            }
+            
+        }
+
+        OrgService.index().then(function(data) {
+
+            var status = data.status;
+            var realData = data.Schema;
+
+            if(status != '200') {
+                var alert = $mdDialog.alert({
+                    title: '网络传输失败',
+                    content: realData.properties.message,
+                    ok: '确定'
+                });
+                $mdDialog.show(alert);
+            }else {
+                $scope.orgList = realData.properties;
+            }
+
+        });
+
+        $scope.viewThisItem = function(id) {
+
+            $scope.addNewDevice();
+
+            $scope.isEdit = true;
+
+            MonitorService.one(id).then(function(data) {
+
                 var status = data.status;
                 var realData = data.Schema;
+
                 if(status != '200') {
                     var alert = $mdDialog.alert({
-                        title: '添加失败',
+                        title: '网络传输失败',
                         content: realData.properties.message,
                         ok: '确定'
                     });
+                    $mdDialog.show(alert);
                 }else {
-                    var alert = $mdDialog.alert({
-                        title: '添加成功',
-                        content: '',
-                        ok: '确定'
-                    });
-                    $scope.getDevice();
+                    $scope.insertDeviceInfo = realData.properties;
                 }
-                $mdDialog.show(alert);
+
             });
+
         }
+
+
     }
 })();

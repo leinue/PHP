@@ -33,7 +33,7 @@
                     <th name="老人家庭住址"></th>
                     <th name="亲属姓名"></th>
                     <th name="亲属电话"></th>
-                    <th name="添加时间"></th>
+                    <!-- <th name="添加时间"></th> -->
                     <th name="操作"></th>
                     <!-- <th order-by="id" name="ID"></th> -->
                 </tr>
@@ -41,13 +41,13 @@
             <tbody>
                 <tr md-auto-select ng-repeat="user in oldInfoItemList">
                     <td>{{user.user_id | nullToVisual}}</td>
-                    <td>{{user.username | nullToVisual}}</td>
+                    <td>{{user.realname | nullToVisual}}</td>
                     <td>{{user.sex | nullToVisual}}</td>
                     <td>{{user.idcard | nullToVisual}}</td>
                     <td>{{user.address | nullToVisual}}</td>
                     <td>{{user.relation_name | nullToVisual}}</td>
                     <td>{{user.relation_phone | nullToVisual}}</td>
-                    <td>{{user.create_time | date:'yyyy-MM-dd'}}</td>
+                    <!-- <td>{{user.create_time | date:'yyyy-MM-dd'}}</td> -->
                     <td>
                         <md-button ng-click="addNewMember(user.user_id)" class="md-primary">新增家庭成员</md-button>
                         <md-button ng-click="viewMyMember(user.user_id)" class="md-primary">查看家庭成员</md-button>

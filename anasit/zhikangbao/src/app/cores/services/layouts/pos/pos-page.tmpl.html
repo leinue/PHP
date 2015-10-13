@@ -9,15 +9,15 @@
         <md-divider></md-divider>
         <div layout layout-sm="column" flex>
             <md-input-container flex>
-                <label>地区</label>
-                <md-select class="md-select-form" ng-model="vm.user.favouriteColor" placeholder="地区">
-                    <md-option ng-value="sex" ng-repeat="sex in ['男', '女']">{{sex}}</md-option>
+                <label>组织类型</label>
+                <md-select class="md-select-form" ng-model="currentOrgCate" ng-change="getOrgList()" placeholder="组织类型">
+                    <md-option ng-value="org.id" ng-repeat="org in orgCateList">{{org.name}}</md-option>
                 </md-select>
             </md-input-container>
             <md-input-container flex>
-                <label>地区</label>
-                <md-select class="md-select-form" ng-model="vm.user.favouriteColor" placeholder="地区">
-                    <md-option ng-value="yesorno" ng-repeat="yesorno in ['是', '否']">{{yesorno}}</md-option>
+                <label>机构/社区/组织</label>
+                <md-select class="md-select-form" ng-model="currentOrg" ng-change="getOldManTrip()" placeholder="机构/社区/组织列表">
+                    <md-option ng-value="org.id" ng-repeat="org in orgList">{{org.full_name}}</md-option>
                 </md-select>
             </md-input-container>
             <md-input-container flex>
@@ -41,9 +41,9 @@
 
         <div id="amap-container"></div>
 
-        <button ng-click="startAnimation()">start</button>
+<!--         <button ng-click="startAnimation()">start</button>
         <button ng-click="stopAnimation()">stop</button>
-    
+ -->    
     </md-card-content>
 </md-card>
 
@@ -63,9 +63,56 @@
             }
             markerStack[i].setMap();
         };
-        infoWindow.setContent('');
+        infoWindow.j.visible = false;
         $('#returnRoWholeBtn').show();
         ServicesPosVM.posStatus.title = "位置信息追踪";
+    }
+
+    function clearMap() {
+        for (var i = markerStack.length - 1; i >= 0; i--) {
+            markerStack[i].setMap();
+        };
+    }
+
+    var followHistory = function() {
+
+        var lineArr = [];
+
+        var lngX = 111.47;
+        var latY = 27.25;
+        var lineArr = [];
+        lineArr.push([lngX, latY]);
+
+        for (var i = 1; i < 100; i++) {
+          lngX = lngX + Math.random() * 0.05;
+          if (i % 2) {
+            latY = latY + Math.random() * 0.0001;
+          } else {
+            latY = latY + Math.random() * 0.06;
+          }
+          lineArr.push([lngX, latY]);
+        }
+
+        var polyline = new AMap.Polyline({
+            map: map,
+            path: lineArr,
+            strokeColor: "#00A",  //线颜色
+            strokeOpacity: 1,     //线透明度
+            strokeWeight: 3,      //线宽
+            strokeStyle: "solid"  //线样式
+        });
+
+        map.setFitView();
+
+        var markerPerson = new AMap.Marker({
+            map: map,
+            position: [111.47, 27.25],
+            icon: "https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman2-48.png",
+            offset: new AMap.Pixel(-26, -13),
+            autoRotation: true
+        });
+
+        markerPerson.moveAlong(lineArr, 500);//开始动画
     }
 
 </script>

@@ -6,7 +6,7 @@
         .controller('BasicPosController', BasicPosController)
 
     /* @ngInject */
-    function BasicPosController($scope) {
+    function BasicPosController($scope, OrgService, OrgInfoService) {
         var vm = this;
 
         $scope.lng = 116.397428;
@@ -165,6 +165,55 @@
 	        offset:new AMap.Pixel(0,-28)
 	    });
 	    info.open($scope.mapObj,marker.getPosition());
+
+	    ////////////////////////////////////////////////////////////////////
+
+	    $scope.getOrgList = function() {
+
+        	$scope.orgList = {};
+        	$scope.MonitorList = {};
+
+        	var id = $scope.currentOrgCate;
+        	OrgInfoService.getByOrgCate(id).then(function(data) {
+
+        		var status = data.status;
+        		var realData = data.Schema;
+
+        		if(status != '200') {
+	        		var alert = $mdDialog.alert({
+	                    title: '网络传输失败',
+	                    content: realData.properties.message,
+	                    ok: '确定'
+	                });
+	                $mdDialog.show(alert);
+	        	}else {
+	        		$scope.orgList = realData.properties;
+	        		// console.log($scope.MonitorList);
+	        	}
+
+        	});
+        }
+
+        $scope.getOrgCateList = function() {
+        	OrgInfoService.index().then(function(data) {
+	        	var status = data.status;
+	        	var realData = data.Schema;
+
+	        	if(status != '200') {
+	        		var alert = $mdDialog.alert({
+	                    title: '网络传输失败',
+	                    content: realData.properties.message,
+	                    ok: '确定'
+	                });
+	                $mdDialog.show(alert);
+	        	}else {
+	        		$scope.orgCateList = realData.properties;
+	        		console.log($scope.orgCateList);
+	        	}
+	        });
+        }
+
+        $scope.getOrgCateList();
 
     }
 })();

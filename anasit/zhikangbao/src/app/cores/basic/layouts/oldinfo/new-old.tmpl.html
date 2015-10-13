@@ -45,7 +45,7 @@
 	                                    </md-input-container>
 	                                    <md-input-container flex>
 	                                        <label translate>民族</label>
-	                                        <input ng-model="inserOldInfo.nation" type="text">
+	                                        <input ng-model="inserOldInfo.nation" type="text" required>
 	                                        <div ng-messages="accountForm.username.$error">
 	                                            <div ng-message when="required">
 	                                                <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
@@ -56,7 +56,7 @@
                                     <div layout layout-sm="column" flex>
 	                                    <md-input-container flex>
 	                                        <label>年龄</label>
-	                                        <input ng-model="inserOldInfo.age" type="tel" required>
+	                                        <input ng-model="inserOldInfo.age" type="tel">
 	                                        <div ng-messages="accountForm.email.$error">
 	                                            <div ng-message when="required">
 	                                                <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
@@ -68,13 +68,13 @@
 	                                    </md-input-container>
 	                                    <md-input-container flex>
 											<label>性别</label>
-								            <md-select class="md-select-form" ng-model="inserOldInfo.sex" placeholder="性别">
+								            <md-select class="md-select-form" ng-model="inserOldInfo.sex" placeholder="性别" required>
 								                <md-option ng-value="sex" ng-repeat="sex in ['男', '女']">{{sex}}</md-option>
 								            </md-select>
 								        </md-input-container>
 								        <md-input-container flex>
 											<label>机构</label>
-								            <md-select class="md-select-form" ng-model="inserOldInfo.org_id" placeholder="机构">
+								            <md-select class="md-select-form" ng-model="inserOldInfo.org_id" placeholder="机构" required>
 								                <md-option ng-value="department.id" ng-repeat="department in ordList">{{department.full_name}}</md-option>
 								            </md-select>
 								        </md-input-container>
@@ -91,7 +91,7 @@
                                         </md-input-container>
                                         <md-input-container flex>
                                             <label translate>联系电话</label>
-                                            <input type="tel" ng-model="inserOldInfo.mobile" required>
+                                            <input type="tel" ng-model="inserOldInfo.mobile">
                                             <div ng-messages="accountForm.passwordConfirm.$error">
                                                 <div ng-message when="required">
                                                     <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
@@ -154,7 +154,7 @@
                                         </md-input-container>
                                         <md-input-container flex>
                                             <label translate>家庭关系</label>
-                                            <input ng-model="inserOldInfo.relation" required>
+                                            <input ng-model="inserOldInfo.relation">
                                             <div ng-messages="addressForm.lastName.$error">
                                                 <div ng-message when="required">
                                                     <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
@@ -174,7 +174,7 @@
                                         </md-input-container>
                                         <md-input-container flex>
                                             <label translate>家属身份证号</label>
-                                            <input ng-model="inserOldInfo.relation_idcard" name="address1" required>
+                                            <input ng-model="inserOldInfo.relation_idcard" name="address1" require>
                                             <div ng-messages="addressForm.address1.$error">
                                                 <div ng-message when="required">
                                                     <span translate>FORMS.WIZARD.PLEASE-ENTER</span>

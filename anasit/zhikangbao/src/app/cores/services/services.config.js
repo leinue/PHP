@@ -29,8 +29,20 @@
             controller: 'BasicServicesPosController',
             controllerAs: 'vm'
         })
-        .state('triangular.admin-default.services-video', {
-            url: '/services-video',
+        .state('triangular.admin-default.services-help', {
+            url: '/services/help',
+            templateUrl: 'app/cores/services/layouts/video/video-page.tmpl.html',
+            controller: 'BasicServicesVideoController',
+            controllerAs: 'vm'
+        })
+        .state('triangular.admin-default.services-yulp', {
+            url: '/services/yulp',
+            templateUrl: 'app/cores/services/layouts/video/video-page.tmpl.html',
+            controller: 'BasicServicesVideoController',
+            controllerAs: 'vm'
+        })
+        .state('triangular.admin-default.services-message', {
+            url: '/services/message',
             templateUrl: 'app/cores/services/layouts/video/video-page.tmpl.html',
             controller: 'BasicServicesVideoController',
             controllerAs: 'vm'
@@ -71,17 +83,17 @@
             // },
             {
                 name: '求助服务受理',
-                state: 'triangular.admin-default.services-video',
+                state: 'triangular.admin-default.services-help',
                 type: 'link'
             },
             {
                 name: '求救呼叫处理',
-                state: 'triangular.admin-default.services-video',
+                state: 'triangular.admin-default.services-yulp',
                 type: 'link'
             },
             {
                 name: '消息群发系统',
-                state: 'triangular.admin-default.services-video',
+                state: 'triangular.admin-default.services-message',
                 type: 'link'
             }]
         });

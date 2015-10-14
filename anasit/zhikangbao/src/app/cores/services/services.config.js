@@ -31,20 +31,20 @@
         })
         .state('triangular.admin-default.services-help', {
             url: '/services/help',
-            templateUrl: 'app/cores/services/layouts/video/video-page.tmpl.html',
-            controller: 'BasicServicesVideoController',
+            templateUrl: 'app/cores/services/layouts/help/help.tmpl.html',
+            controller: 'BasicServicesHelpController',
             controllerAs: 'vm'
         })
         .state('triangular.admin-default.services-yulp', {
             url: '/services/yulp',
-            templateUrl: 'app/cores/services/layouts/video/video-page.tmpl.html',
-            controller: 'BasicServicesVideoController',
+            templateUrl: 'app/cores/services/layouts/call/call.tmpl.html',
+            controller: 'BasicServicesCallController',
             controllerAs: 'vm'
         })
         .state('triangular.admin-default.services-message', {
             url: '/services/message',
-            templateUrl: 'app/cores/services/layouts/video/video-page.tmpl.html',
-            controller: 'BasicServicesVideoController',
+            templateUrl: 'app/cores/services/layouts/jpush/jpush.tmpl.html',
+            controller: 'BasicServicesJpushController',
             controllerAs: 'vm'
         })
         .state('triangular.admin-default.new-family', {

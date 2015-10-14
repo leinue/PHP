@@ -457,11 +457,30 @@
           return {
 
             index: function() {
-              return Restangular.one('/help/all').get();
+              return Restangular.one('/help/get').get();
             },
 
             setDeal: function(id) {
               return Restangular.one('/help/setDeal/' + id).get();
+            }
+
+          };
+
+        }])
+        .factory('YulpService', ['Restangular', '$http', 'API_CONFIG', function (Restangular, $http, API_CONFIG) {
+
+          return {
+            
+            index: function() {
+              return Restangular.one('/sos/all').get();
+            },
+
+            detail: function(id) {
+              return Restangular.one('/sos/detail/' + id).get();
+            },
+
+            family: function(id) {
+              return Restangular.one('/sos/family/' + id).get();
             }
 
           };

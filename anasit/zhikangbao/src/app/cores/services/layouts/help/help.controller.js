@@ -18,7 +18,7 @@
         		var status = data.status;
         		var realData = data.Schema;
 
-        		if(status != '200') 
+        		if(status != '200') {
 
         			var alert=$mdDialog.alert({
         				title: '获取求助列表失败',
@@ -36,6 +36,7 @@
 
         };
 
+        $scope.getHelpList();
 
         $scope.confirmDeal = function(id) {
 

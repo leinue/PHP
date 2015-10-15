@@ -81,7 +81,10 @@
 
               var userIsLoginIn = localStorage.id;
 
-              if(next.indexOf('login')==-1 || next.indexOf('signup')==-1){
+              console.log(next);
+
+              if(next.indexOf('login') === -1 && next.indexOf('signup') === -1){
+                console.log(next.indexOf('login'));
                 //进入登录页面,登录页面不需要判断是否登录
                 CheckStatus.checkAuth().then(function(data) {
                     var userIsLoggedIn = data;
@@ -194,7 +197,7 @@
             };
 
         }])
-        .factory('LoginService',['Restangular', '$http', 'API_CONFIG', function(Restangular, $http, API_CONFIG){
+        .factory('LoginService',['Restangular', '$http', 'API_CONFIG', '$state', function(Restangular, $http, API_CONFIG, $state){
 
             return {
                 login: function(login_user,http) {
@@ -496,7 +499,15 @@
           return {
             
             send: function(data) {
-              return Restangular.all('/sms/send').post(data);
+              return Restangular.all('/message/jpush/send').post(data);
+            },
+
+            sendBySms: function(data) {
+              return Restangular.all('/message/sms/send').post(data);
+            },
+
+            sendByEmail: function(data) {
+              return Restangular.all('/message/email/send').post(data);
             }
 
           };

@@ -1,17 +1,18 @@
 <md-card style="padding:0;margin:0">
     <md-card-content>
         <div class="content-padded">
-            <h2 class="md-title">求助信息管理</h2>
+            <h2 class="md-title">消息群发系统</h2>
         </div>
         <md-divider></md-divider>
         <div class="button-toolbar" layout="row" layout-align="start center">
+            <md-button class="md-raised md-primary" ng-click="sendMessage()">发送消息</md-button>
         </div>
     </md-card-content>
 </md-card>
 
 <div ng-controller="TablesAdvancedController as vm">
     <md-data-table-toolbar ng-hide="vm.selected.length || vm.filter.show">
-        <h2 class="md-title">求助信息列表</h2>
+        <h2 class="md-title">已发送的消息列表</h2>
         <div flex></div>
         <md-button class="md-icon-button" ng-click="vm.filter.show = true">
             <!-- <i class="material-icons md-dark">filter_list</i> -->
@@ -66,3 +67,32 @@
 
     <md-data-table-pagination md-limit="vm.query.limit" md-page="vm.query.page" md-total="{{vm.users.total_count}}" md-trigger=""></md-data-table-pagination>
 </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="send-message" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">发送消息</h4>
+          </div>
+          <div class="modal-body" style="font-size: 1.3em;">
+            <div layout="column" flex>
+                <md-input-container>
+                    <label translate>手机号</label>
+                    <input type="tel" ng-model="sms.mobile">
+                </md-input-container>
+                <md-input-container>
+                    <label>发送内容</label>
+                    <textarea ng-model="sms.content"></textarea>
+                </md-input-container>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            <button type="button" class="btn btn-default" ng-click="smsCtrl.sendMessage()">发送</button>
+          </div>
+        </div>
+      </div>
+    </div>

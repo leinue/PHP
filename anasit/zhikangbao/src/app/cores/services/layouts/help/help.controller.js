@@ -29,6 +29,7 @@
         			$mdDialog.show(alert);
 
         		}else {
+        			console.log(realData.properties);
         			$scope.helpList = realData.properties;
         		}
 
@@ -44,8 +45,11 @@
         		return false;
         	}
 
+        	var data = {
+        		id: id
+        	}
 
-        	HelpService.setDeal(id).then(function(data) {
+        	HelpService.setDeal(data).then(function(data) {
 
         		var status = data.status;
         		var realData  = data.Schema;

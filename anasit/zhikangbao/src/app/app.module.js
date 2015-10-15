@@ -66,6 +66,11 @@
             return i==='1' ? '已开启' : '已关闭';
           };
         })
+        .filter('isDeal', function() {
+          return function(i) {
+            return i==='1' ? '已受理' : '未受理';
+          };
+        })
         .run(function($rootScope, $location, $http, $state, LoginService, CheckStatus, $mdDialog){
 
             // User.getThisInfo();
@@ -461,7 +466,7 @@
             },
 
             setDeal: function(id) {
-              return Restangular.one('/help/setDeal/' + id).get();
+              return Restangular.all('/help/update').post(id);
             }
 
           };
@@ -481,6 +486,17 @@
 
             family: function(id) {
               return Restangular.one('/sos/family/' + id).get();
+            }
+
+          };
+
+        }])
+        .factory('SmsService', ['Restangular', '$http', 'API_CONFIG', function (Restangular, $http, API_CONFIG {
+
+          return {
+            
+            send: function(data) {
+              return Restangular.all('/sms/send').post(data);
             }
 
           };

@@ -93,7 +93,15 @@
         				$scope.member_name_id = $scope.familyList[0].id;
         				$scope.member_mobile_id = $scope.familyList[0].id;
         				$scope.member_relation_id = $scope.familyList[0].id;
+        			}else {
+        				$scope.familyList = [];
+        				$scope.familyList[0] = {};
+        				$scope.familyList[0].realname = '暂无';
+        				$scope.familyList[0].mobile = '暂无';
+        				$scope.familyList[0].relation = '暂无';
         			}
+
+        			console.log($scope.familyList);
         			$('#old-family-member').modal('show');
         			$('.modal-backdrop').css('z-index','0');
         		}

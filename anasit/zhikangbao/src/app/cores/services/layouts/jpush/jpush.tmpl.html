@@ -87,6 +87,24 @@
                     <label>发送内容</label>
                     <textarea ng-model="sms.content"></textarea>
                 </md-input-container>
+                <md-input-container>
+                    <label>选择发送平台</label>
+                </md-input-container>
+                <md-input-container flex>
+                    <md-checkbox ng-model="checkboxes.email" aria-label="Default Checkbox">
+                        邮箱
+                    </md-checkbox>
+                </md-input-container>
+                <md-input-container flex>
+                    <md-checkbox class="md-primary" ng-model="checkboxes.app" aria-label="Primary Checkbox">
+                        APP端
+                    </md-checkbox>
+                </md-input-container>
+                <md-input-container flex>
+                    <md-checkbox class="md-warn" ng-model="checkboxes.sms" aria-label="Warn Checkbox">
+                        手机短信
+                    </md-checkbox>
+                </md-input-container>
             </div>
           </div>
           <div class="modal-footer">

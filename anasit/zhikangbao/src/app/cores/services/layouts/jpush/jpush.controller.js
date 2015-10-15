@@ -9,6 +9,12 @@
     function BasicServicesJpushController($mdDialog, $state, $scope, OrgInfoService, SmsService) {
         var vm = this;
 
+        $scope.checkboxes = {
+        	email: true,
+        	app: true,
+        	sms: true
+        }
+
         $scope.sendMessage = function() {
 
         	$('#send-message').modal('show');
@@ -37,6 +43,15 @@
         			});
         			$mdDialog.show(alert);
         			return false;
+        		}
+
+        		if($scope.checkboxes.email == false || $scope.checkboxes.app == false || $scope.checkboxes.sms == false) {
+        			var alert = $mdDialog.alert({
+        				title: '非法数据',
+        				content: '请至少选择一个平台',
+        				ok: '确定'
+        			});
+        			$mdDialog.show(alert);
         		}
 
         		SmsService.send($scope.sms).then(function(data) {

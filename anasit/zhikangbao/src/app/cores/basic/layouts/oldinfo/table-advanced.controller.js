@@ -175,5 +175,31 @@
                 $scope.getOldInfo();
             }
         }
+
+        $scope.opt_name = '';
+
+        $scope.actionStart = function(id) {
+            console.log($scope.opt_name);
+            console.log(id);
+            switch($scope.opt_name) {
+                case '新增家庭成员':
+                    $scope.addNewMember(id);
+                    break;
+                case '查看家庭成员':
+                    $scope.viewMyMember(id);
+                    break;
+                case '详情':
+                    $scope.viewThis(id);
+                    break;
+                case '编辑':
+                    $scope.editThis(id);
+                    break;
+                case '删除':
+                    $scope.deleteThis(id);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 })();

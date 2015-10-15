@@ -80,31 +80,40 @@
           <div class="modal-body" style="font-size: 1.3em;">
             <div layout="column" flex>
                 <md-input-container>
-                    <label translate>手机号</label>
-                    <input type="tel" ng-model="sms.mobile">
+                    <label translate>{{sendType}}</label>
+                    <input type="text" ng-model="sms.title">
                 </md-input-container>
                 <md-input-container>
                     <label>发送内容</label>
-                    <textarea ng-model="sms.content"></textarea>
+                    <textarea ng-model="sms.message"></textarea>
                 </md-input-container>
-                <md-input-container>
+                <md-input-container ng-show="sendType == '邮箱帐号'">
+                    <label>收件人</label>
+                    <input type="email" ng-model="emailSend.to">
+                </md-input-container>
+                <md-radio-group ng-change="changeType(checkboxes._default)" ng-model="checkboxes._default" ng-init="checkboxes._default = 'app'">
+                    <md-radio-button value="app">app</md-radio-button>
+                    <md-radio-button value="sms">手机短信</md-radio-button>
+                    <md-radio-button value="email">邮箱</md-radio-button>
+                </md-radio-group>
+                <!-- <md-input-container>
                     <label>选择发送平台</label>
-                </md-input-container>
-                <md-input-container flex>
+                </md-input-container> -->
+                <!-- <md-input-container flex>
                     <md-checkbox ng-model="checkboxes.email" aria-label="Default Checkbox">
                         邮箱
                     </md-checkbox>
-                </md-input-container>
-                <md-input-container flex>
+                </md-input-container> -->
+                <!-- <md-input-container flex>
                     <md-checkbox class="md-primary" ng-model="checkboxes.app" aria-label="Primary Checkbox">
                         APP端
                     </md-checkbox>
-                </md-input-container>
-                <md-input-container flex>
+                </md-input-container> -->
+                <!-- <md-input-container flex>
                     <md-checkbox class="md-warn" ng-model="checkboxes.sms" aria-label="Warn Checkbox">
                         手机短信
                     </md-checkbox>
-                </md-input-container>
+                </md-input-container> -->
             </div>
           </div>
           <div class="modal-footer">

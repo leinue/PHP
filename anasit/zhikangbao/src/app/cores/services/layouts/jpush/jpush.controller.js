@@ -12,8 +12,11 @@
         $scope.checkboxes = {
         	email: true,
         	app: true,
-        	sms: true
+        	sms: true,
+        	_default: 'app'
         }
+
+        $scope.sendType = "标题";
 
         $scope.sendMessage = function() {
 
@@ -28,51 +31,133 @@
 
 
         $scope.sms = {
-        	content: '',
-        	mobile: '',
+        	title: '',
+        	message: '',
         };
+
+        $scope.realSms = {
+        	mobile: '',
+        	text: ''
+        };
+
+        $scope.emailSend = {
+        	to: '',
+        	title: '',
+        	content: ''
+        };
+
+        $scope.changeType = function() {
+        	switch($scope.checkboxes._default) {
+        		case 'app':
+        			$scope.sendType = '标题';
+        			break;
+        		case 'sms':
+        			$scope.sendType = '手机号(多个请用逗号分割)';
+        			break;
+        		case 'email':
+        			$scope.sendType = '邮箱帐号';
+        			break
+        		default:
+        			break;
+        	}
+        }
 
         $scope.smsCtrl = {
         	sendMessage: function() {
         		
-        		if($scope.sms.content == '' || $scope.sms.mobile == '') {
+        		if($scope.sms.title == '' || $scope.sms.message == '') {
         			var alert = $mdDialog.alert({
         				title: '非法数据',
-        				content: '手机号或发送内容不能为空',
+        				content: '数据缺少,请完整填写',
         				ok: '确定'
         			});
         			$mdDialog.show(alert);
         			return false;
         		}
 
-        		if($scope.checkboxes.email == false || $scope.checkboxes.app == false || $scope.checkboxes.sms == false) {
-        			var alert = $mdDialog.alert({
-        				title: '非法数据',
-        				content: '请至少选择一个平台',
-        				ok: '确定'
-        			});
-        			$mdDialog.show(alert);
-        		}
+        		// if($scope.checkboxes.email == false || $scope.checkboxes.app == false || $scope.checkboxes.sms == false) {
+        		// 	var alert = $mdDialog.alert({
+        		// 		title: '非法数据',
+        		// 		content: '请至少选择一个平台',
+        		// 		ok: '确定'
+        		// 	});
+        		// 	$mdDialog.show(alert);
+        		// }
 
-        		SmsService.send($scope.sms).then(function(data) {
-        			var status = data.status;
-        			var realData = data.Schema;
-        			if(status != '200') {
-        				var alert = $mdDialog.alert({
-        					title: '发送失败',
-        					content: '发送数据失败,请重试',
-        					ok: '确定'
+        		var method = {
+
+        			app: function() {
+        				SmsService.send($scope.sms).then(function(data) {
+		        			var status = data.msg_id;
+		        			if(status.length === 0) {
+		        				var alert = $mdDialog.alert({
+		        					title: '发送失败',
+		        					content: '发送数据失败,请重试',
+		        					ok: '确定'
+		        				});
+		        			}else {
+		        				var alert = $mdDialog.alert({
+		        					title: '发送成功',
+		        					content: '发送成功',
+		        					ok: '确定'
+		        				});
+		        			}
+
+		        			$mdDialog.show(alert);
+		        		});
+        			},
+
+        			sms: function() {
+        				$scope.realSms.mobile = $scope.sms.title;
+        				$scope.realSms.text = $scope.sms.message;
+        				SmsService.sendBySms($scope.realSms).then(function(data) {
+        					var status = data.msg;
+		        			if(status != 'OK') {
+		        				var alert = $mdDialog.alert({
+		        					title: '发送失败',
+		        					content: status,
+		        					ok: '确定'
+		        				});
+		        			}else {
+		        				var alert = $mdDialog.alert({
+		        					title: '发送成功',
+		        					content: '发送成功',
+		        					ok: '确定'
+		        				});
+		        			}
+
+		        			$mdDialog.show(alert);
         				});
-        			}else {
-        				var alert = $mdDialog.alert({
-        					title: '发送成功',
-        					content: '发送成功',
-        					ok: '确定'
+        			},
+
+        			email: function() {
+        				$scope.emailSend.title = $scope.sms.title;
+        				$scope.emailSend.content = $scope.sms.message;
+        				SmsService.sendByEmail($scope.emailSend).then(function(data) {
+        					var status = data.msg;
+		        			if(status != 'OK') {
+		        				var alert = $mdDialog.alert({
+		        					title: '发送失败',
+		        					content: status,
+		        					ok: '确定'
+		        				});
+		        			}else {
+		        				var alert = $mdDialog.alert({
+		        					title: '发送成功',
+		        					content: '发送成功',
+		        					ok: '确定'
+		        				});
+		        			}
+
+		        			$mdDialog.show(alert);
+
         				});
+
         			}
 
-        			$mdDialog.show(alert);
-        		});
+        		};
+
+        		method[$scope.checkboxes._default]();
 
         	}
         }

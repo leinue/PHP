@@ -10,7 +10,7 @@
         var vm = this;
 
         $scope.returnToList = function() {
-        	$state.go('triangular.admin-default.services-page');
+        	$state.go('triangular.admin-default.basic-page');
         }
 
         $scope.newMemberList = {};

@@ -34,11 +34,12 @@
             rememberMe: false
         };
 
-        ////////////////
+        ///////////////////////////////////////////////////////
 
-        if(typeof vm.user.rememberMe !='undefined' && vm.user.rememberMe == 'true') {
+        if(typeof localStorage.username != 'undefined') {
             vm.user.login_user = localStorage.username;
-            vm.user.password = localStorage.userpw
+            vm.user.password = localStorage.userpw;
+            vm.user.rememberMe = Boolean(localStorage.rememberMe);
         }
 
         function loginClick() {

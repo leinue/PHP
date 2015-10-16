@@ -21,7 +21,7 @@
         $scope.currentCodec = 'h264';
         $scope.currentSubtype = 'main'
 
-        $scope.videoValue = 'rtsp://admin:a1234567@192.168.1.64:554/h264/ch1/main/av_stream';
+        $scope.videoValue = 'rtsp://admin:a1234567@192.168.1.64:1554/h264/ch1/main/av_stream';
 
         // OrgService.index().then(function(data) {
         // 	var status = data.status;
@@ -111,7 +111,11 @@
         $scope.getVideo = function() {
         	var monitor = $scope.currentMonitor;
         	var name = monitor.username, pw = monitor.password, ip = monitor.ip, domain = monitor.domain;
-        	$scope.videoValue = 'rtsp://'+name+':'+pw+'@'+ip+':554/'+$scope.currentCodec+'/ch1/'+$scope.currentSubtype+'/av_stream';
+        	var port = monitor.monitor_port;
+        	if(port == '') {
+        		port = '1554';
+        	}
+        	$scope.videoValue = 'rtsp://'+name+':'+pw+'@'+ip+':'+port+'/'+$scope.currentCodec+'/ch1/'+$scope.currentSubtype+'/av_stream';
         	console.log($scope.videoValue);
         	var videoHTML = '<object id="basicVideo" type="application/x-vlc-plugin" pluginspage="http://www.videolan.org/" events="false" width="100%" height="510">\
             <param name="mrl" value="'+$scope.videoValue+'" />\

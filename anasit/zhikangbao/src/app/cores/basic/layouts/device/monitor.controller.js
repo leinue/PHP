@@ -19,6 +19,8 @@
         }
 
         $scope.insertDeviceInfo = {};
+        $scope.insertDeviceInfo.monitor_port = 1554;
+
         $scope.orgList = {};
 
         $scope.getDevice();
@@ -27,6 +29,7 @@
             $('#new-device').modal('show');
             $('.modal-backdrop').css('z-index','0');
             $scope.insertDeviceInfo = {};
+            $scope.insertDeviceInfo.monitor_port = 1554;
             $scope.isEdit = false;
         };
 

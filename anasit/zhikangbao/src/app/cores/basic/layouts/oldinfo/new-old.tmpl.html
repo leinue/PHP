@@ -198,7 +198,7 @@
             	<md-button class="md-primary md-raised" ng-click="returnToOldmanList()">返回</md-button>
                 <md-button class="md-primary md-raised" ng-click="triWizard.prevStep()" ng-hide="triWizard.currentStep > 2" ng-disabled="triWizard.prevStepDisabled()" translate="上一层"></md-button>
                 <md-button class="md-primary md-raised" ng-click="triWizard.nextStep()" ng-hide="triWizard.progress == 100 && triWizard.currentStep > 1" ng-disabled="triWizard.nextStepDisabled()" translate="继续"></md-button>
-                <md-button ng-click="submitInfo()" class="md-accent md-raised" ng-click="triWizard.currentStep = 3" ng-show="triWizard.progress == 100 && triWizard.currentStep < 3" translate="提交"></md-button>
+                <md-button ng-click="submitInfo()" class="md-accent md-raised" ng-click="triWizard.currentStep = 3" ng-show="edit || (triWizard.progress == 100 && triWizard.currentStep < 3)" translate="提交"></md-button>
             </div>
         </div>
     </div>

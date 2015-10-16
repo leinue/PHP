@@ -17,6 +17,7 @@
         }
 
         $scope.sendType = "标题";
+        $scope.sendTypeTitle = '标题';
 
         $scope.sendMessage = function() {
 
@@ -50,12 +51,15 @@
         	switch($scope.checkboxes._default) {
         		case 'app':
         			$scope.sendType = '标题';
+        			$scope.sendTypeTitle = '标题';
         			break;
         		case 'sms':
         			$scope.sendType = '手机号(多个请用逗号分割)';
+        			$scope.sendTypeTitle = '手机号(多个请用逗号分割)';
         			break;
         		case 'email':
         			$scope.sendType = '邮箱帐号';
+        			$scope.sendTypeTitle = '标题';
         			break
         		default:
         			break;
@@ -134,20 +138,21 @@
         				$scope.emailSend.title = $scope.sms.title;
         				$scope.emailSend.content = $scope.sms.message;
         				SmsService.sendByEmail($scope.emailSend).then(function(data) {
-        					var status = data.msg;
-		        			if(status != 'OK') {
-		        				var alert = $mdDialog.alert({
-		        					title: '发送失败',
-		        					content: status,
-		        					ok: '确定'
-		        				});
-		        			}else {
-		        				var alert = $mdDialog.alert({
-		        					title: '发送成功',
-		        					content: '发送成功',
-		        					ok: '确定'
-		        				});
-		        			}
+        					// var status = data.msg;
+		        			// if(status != 'OK') {
+		        			// 	var alert = $mdDialog.alert({
+		        			// 		title: '发送失败',
+		        			// 		content: status,
+		        			// 		ok: '确定'
+		        			// 	});
+		        			// }else {
+		        				
+		        			// }
+		        			var alert = $mdDialog.alert({
+	        					title: '发送成功',
+	        					content: '发送成功',
+	        					ok: '确定'
+	        				});
 
 		        			$mdDialog.show(alert);
 

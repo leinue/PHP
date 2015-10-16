@@ -39,7 +39,7 @@
 
     <md-data-table-container>
         <table md-data-table ng-show="isArchive == false" class="md-primary md-data-table"  md-progress="vm.deferred">
-            <thead md-order="voldInfoItemList.user_id" md-trigger="">
+            <thead md-order="oldArchiveInfoItemList.user_id" md-trigger="">
                 <tr>
                     <th name="编号"></th>
                     <th name="姓名"></th>
@@ -51,7 +51,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr md-auto-select ng-repeat="user in oldInfoItemList">
+                <tr md-auto-select ng-repeat="user in oldArchiveInfoItemList">
                     <td>{{user.user_id | nullToVisual}}</td>
                     <td>{{user.realname | nullToVisual}}</td>
                     <td>{{user.idcard | nullToVisual}}</td>

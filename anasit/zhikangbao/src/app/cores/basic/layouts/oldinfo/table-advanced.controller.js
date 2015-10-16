@@ -151,8 +151,9 @@
 
             if($event && keyCode == 13) {
                 OldInfoService.search(vm.query.filter).then(function(data) {
+                    console.log(data);
                     var status = data.status;
-                    var realData = data.properties;
+                    var realData = data.Schema;
 
                     if(status != '200') {
 

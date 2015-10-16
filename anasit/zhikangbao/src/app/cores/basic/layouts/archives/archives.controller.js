@@ -42,13 +42,13 @@
         	$scope.addNew();
         }
 
-        $scope.oldInfoItemList = {};
+        $scope.oldArchiveInfoItemList = {};
 
         $scope.getOldInfo = function() {
             OldInfoService.index().then(function(data) {
                 var status = data.status;
                 var realData = data.Schema;
-                $scope.oldInfoItemList = realData.properties;                
+                $scope.oldArchiveInfoItemList = realData.properties;                
             });
         }
 
@@ -196,12 +196,14 @@
         $scope.startSearchHealth = function($event) {
             var keywords = $scope.query.keywords;
             if($event.keyCode == 13) {
-                $scope.oldInfoItemList = {};
-                console.log($scope.oldInfoItemList);
+                $scope.oldArchiveInfoItemList = {};
                 if(keywords == '') {
                     $scope.getOldInfo();
                 }else {
                     HealthService.search(keywords).then(function(data) {
+
+                        console.log(data);
+
                         var status = data.status;
                         var realData = data.Schema;
 
@@ -213,8 +215,8 @@
                             });
                             $mdDialog.show(alert);
                         }else {
-                            $scope.oldInfoItemList = realData.properties;
-                            console.log($scope.oldInfoItemList);
+                            $scope.oldArchiveInfoItemList = realData.properties;
+                            console.log($scope.oldArchiveInfoItemList);
                         }
                         
                     }); 
@@ -228,13 +230,15 @@
             }
         }
 
-        var watch = $scope.$watch('oldInfoItemList',function(newValue,oldValue, scope){
+        // var watch = $scope.$watch('oldInfoItemList',function(newValue,oldValue, scope){
 
-                console.log(newValue);
+        //         console.log(newValue);
 
-                console.log(oldValue);
+        //         $scope.oldInfoItemList = newValue;
 
-        });
+        //         console.log(oldValue);
+
+        // });
 
     }
 })();

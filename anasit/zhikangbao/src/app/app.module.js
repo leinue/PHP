@@ -295,7 +295,7 @@
             },
 
             search: function(keywords) {
-              return Restangular.one('/profile/old/search/' + keywords).get();
+              return Restangular.one('/healths/old/search/' + keywords).get();
             }
 
           };
@@ -508,7 +508,7 @@
             },
 
             sendByEmail: function(data) {
-              return Restangular.all('/message/email/send').post(data);
+              return Restangular.one('/PHPMailer/examples/smtp.php?title=' + data.title + '&content=' + data.content + '&to=' + data.to).get();
             }
 
           };

@@ -43,11 +43,11 @@
                 state: 'triangular.admin-default.community-info',
                 type: 'link'
             },
-            {
-                name: '社区管理员指派',
-                state: 'triangular.admin-default.community-assign',
-                type: 'link'
-            },
+            // {
+            //     name: '社区管理员指派',
+            //     state: 'triangular.admin-default.community-assign',
+            //     type: 'link'
+            // },
             {
                 name: '老人档案管理',
                 state: 'triangular.admin-default.community-archive',

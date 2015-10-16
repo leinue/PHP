@@ -176,10 +176,14 @@
             }
         }
 
+        $scope.optionsName = ['新增家庭成员', '查看家庭成员', '详情', '编辑', '删除'];
+
         $scope.opt_name = '';
 
-        $scope.actionStart = function(id) {
+        $scope.actionStart = function(id,i) {
+            console.log($scope);
             console.log($scope.opt_name);
+            console.log(i);
             console.log(id);
             switch($scope.opt_name) {
                 case '新增家庭成员':

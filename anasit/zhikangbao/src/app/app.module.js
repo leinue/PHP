@@ -77,15 +77,16 @@
 
             $rootScope.$on('$locationChangeStart',function(evt,next,curr){
               
-              console.log('route change start');
-
               var userIsLoginIn = localStorage.id;
 
-              console.log(next);
-
               if(next.indexOf('login') === -1 && next.indexOf('signup') === -1){
-                console.log(next.indexOf('login'));
+                
                 //进入登录页面,登录页面不需要判断是否登录
+                if(typeof localStorage.username == 'undefined' || localStorage.username == '') {
+                  //本地未存储用户数据时不用判断是否登录
+                  return false;
+                }
+
                 CheckStatus.checkAuth().then(function(data) {
                     var userIsLoggedIn = data;
                     if(userIsLoggedIn === 'false' || userIsLoggedIn === false) {

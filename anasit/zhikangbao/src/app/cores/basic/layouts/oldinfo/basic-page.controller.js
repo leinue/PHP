@@ -12,6 +12,7 @@
         $scope.addNew = function() {
             $state.go('triangular.admin-default.new-oldman');
         }
+
     }
 
 })();

@@ -101,6 +101,8 @@
                  });
               }
 
+
+
               
 
               // if(!User.isLoggedIn() ||){
@@ -157,6 +159,14 @@
             $httpProvider.defaults.useXDomain=true;
             delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
+            // $mdToast.show(
+            //   $mdToast.simple()
+            //   .action($filter('translate')('message'))
+            //   .position('bottom right')
+            //   .highlightAction(true)
+            //   .hideDelay(0)
+            // );
+
         })
         //配置restangular
         .config(function(RestangularProvider) {
@@ -169,7 +179,7 @@
                 'withCredentials': true
             });
             RestangularProvider.setMethodOverriders(["put", "patch"]);
-        })
+        })        
         .factory('CheckStatus',['Restangular', '$http', 'API_CONFIG', function(Restangular, $http, API_CONFIG){
 
             return {
@@ -490,6 +500,14 @@
 
             family: function(id) {
               return Restangular.one('/sos/family/' + id).get();
+            },
+
+            count: function() {
+              return Restangular.one('/sos/count').get();
+            },
+
+            latest: function(count) {
+              return Restangular.one('/sos/new/' + count).get();
             }
 
           };
@@ -538,4 +556,5 @@
         //   };
 
         // }]);
+
 })();

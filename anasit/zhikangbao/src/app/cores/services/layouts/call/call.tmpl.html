@@ -51,7 +51,7 @@
                     <td>{{user.sos_title}}</td>
                     <td>{{user.sos_mobile}}</td>
                     <td>{{user.sos_address}}</td>
-                    <td>{{user.sos_time | date:'yyyy-MM-dd'}}</td>
+                    <td>{{user.sos_time*1000 | date:'yyyy-MM-dd'}}</td>
                     <td>
                         <md-button ng-click="viewThisYulp(user.sos_id)" class="md-warn">详细</md-button>
                     <md-button ng-click="viewThisFamily(user.id)" class="md-warn">亲人信息</md-button>

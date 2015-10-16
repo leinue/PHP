@@ -55,7 +55,7 @@
                     <td>{{item.name}}</td>
                     <td>{{item.enabled | orgIsEnabled}}</td>
                     <td>{{item.org_code}}</td>
-                    <td>{{item.create_time | date:'yyyy-MM-dd'}}</td>
+                    <td>{{item.create_time*1000 | date:'yyyy-MM-dd'}}</td>
                     <td>
                         <md-button ng-click="viewThisOrg(item.id)" class="md-primary">详情</md-button>
                         <md-button ng-click="editThisItem(item.id)" class="md-primary">编辑</md-button>

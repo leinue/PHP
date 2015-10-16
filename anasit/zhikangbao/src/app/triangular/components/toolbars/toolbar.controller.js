@@ -16,6 +16,8 @@
         vm.switchLanguage = switchLanguage;
         vm.toggleNotificationsTab = toggleNotificationsTab;
 
+        $scope.tabClosed = true;
+
         // vm.menuUser = {
         //     username: localStorage.username;
         // }
@@ -27,6 +29,17 @@
         $scope.logout = function() {
             LoginService.logout();
         };
+
+        $scope.currentMsg = {
+            count : 0
+        };
+
+        // var int = setInterval(function() {
+        //     $scope.currentMsg.count = parseInt(localStorage.currentSosCount) - parseInt(localStorage.SosCount);
+        //     if($scope.currentMsg.count > 0) {
+        //         return false;
+        //     }
+        // },1000);
 
         // initToolbar();
 
@@ -57,6 +70,16 @@
         function toggleNotificationsTab(tab) {
             $scope.$parent.$broadcast('triSwitchNotificationTab', tab);
             vm.openSideNav('notifications');
+            // $scope.tabClosed = !$scope.tabClosed;
+            // if($scope.tabClosed) {
+            //     $scope.currentMsg.count = 0;
+            //     var int = setInterval(function() {
+            //         $scope.currentMsg.count = parseInt(localStorage.currentSosCount) - parseInt(localStorage.SosCount);
+            //         if($scope.currentMsg.count > 0) {
+            //             return false;
+            //         }
+            //     },1000);
+            // }
         }
 
         $scope.$on('newMailNotification', function(){

@@ -1,6 +1,6 @@
 <md-content flex layout class="admin-notifications">
     <md-tabs flex layout-fill md-stretch-tabs="always" md-selected="vm.currentTab">
-        <md-tab>
+        <!-- <md-tab>
             <md-tab-label>
                 <md-icon md-font-icon="zmdi zmdi-email"></md-icon>
             </md-tab-label>
@@ -21,7 +21,7 @@
                     </md-list>
                 </md-content>
             </md-tab-body>
-        </md-tab>
+        </md-tab> -->
         <md-tab>
             <md-tab-label>
                 <md-icon md-font-icon="fa fa-bell-o"></md-icon>
@@ -29,19 +29,29 @@
             <md-tab-body>
                 <md-content>
                     <md-list>
-                        <div ng-repeat="group in ::vm.notificationGroups">
-                            <md-subheader class="md-primary">{{::group.name}}</md-subheader>
-                            <md-list-item ng-repeat="notification in ::group.notifications" layout="row" layout-align="space-between center">
-                                <md-icon md-font-icon="{{::notification.icon}}" ng-style="{ color: notification.iconColor }"></md-icon>
-                                <p>{{::notification.title}}</p>
-                                <span class="md-caption" am-time-ago="::notification.date"></span>
+                        <div ng-repeat="group in vm.notificationGroups">
+                            <md-subheader class="md-primary">{{group.sos_name}}</md-subheader>
+                            <md-list-item layout="row" layout-align="space-between center">
+                                <md-icon md-font-icon="fa fa-map-marker" ng-style="rgb(76, 175, 80)"></md-icon>
+                                <p>{{group.sos_address}}</p>
+                                <span class="md-caption"></span>
+                            </md-list-item>
+                            <md-list-item layout="row" layout-align="space-between center">
+                                <md-icon md-font-icon="fa fa-mobile" ng-style="rgb(76, 175, 80)"></md-icon>
+                                <p>{{group.sos_mobile}}</p>
+                                <span class="md-caption"></span>
+                            </md-list-item>
+                            <md-list-item layout="row" layout-align="space-between center">
+                                <md-icon md-font-icon="fa fa-user" ng-style="rgb(76, 175, 80)"></md-icon>
+                                <p>{{group.sos_title}}</p>
+                                <span class="md-caption" am-time-ago="group.sos_time/1000"></span>
                             </md-list-item>
                         </div>
                     </md-list>
                 </md-content>
             </md-tab-body>
         </md-tab>
-        <md-tab>
+        <!-- <md-tab>
             <md-tab-label>
                 <md-icon md-font-icon="zmdi zmdi-account"></md-icon>
             </md-tab-label>
@@ -66,6 +76,6 @@
                     </md-list>
                 </md-content>
             </md-tab-body>
-        </md-tab>
+        </md-tab> -->
     </md-tabs>
 </md-content>

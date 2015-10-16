@@ -42,5 +42,4 @@
 
         // always goto 404 if route not found
         $urlRouterProvider.otherwise('/404');
-    }
 })();

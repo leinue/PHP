@@ -275,6 +275,10 @@
 
                 one: function(id) {
                   return Restangular.one('/profile/org/one/' + id).get();
+                },
+
+                search: function(keywords) {
+                  return Restangular.one('/organization/search/' + keywords).get();
                 }
 
             };
@@ -360,6 +364,10 @@
 
             remove: function(uid) {
               return Restangular.one('/profile/device/delete/' + uid).get();
+            },
+
+            search: function(keywords) {
+              return Restangular.one('/device/search/' + keywords).get();
             }
 
           };
@@ -467,6 +475,10 @@
 
               getByOrg: function(id) {
                 return Restangular.one('/video/getmonitor/' + id).get();
+              },
+
+              search: function(keywords) {
+                return Restangular.one('/monitor/search/' + keywords).get();
               }
 
             };

@@ -9,6 +9,10 @@
     function BasicOrgController($scope, $state, $mdDialog, OrgInfoService, OrgService) {
         var vm = this;
 
+        $scope.query = {
+            keywords: ''
+        };
+
         $scope.orgTitle = '新增组织信息';
         $scope.edit = false;
 
@@ -182,6 +186,44 @@
         $scope.viewThisOrg = function(id) {
             $scope.editThisItem(id);
         };
+
+        $scope.startSearchCommunity = function($event) {
+
+            var keyCode = $event.keyCode;
+
+            if($event && keyCode == 13) {
+                if($scope.query.keywords == '') {
+                    alert('搜索内容不能为空');
+                    return false;
+                }
+
+                OrgService.search($scope.query.keywords).then(function(data) {
+                    var status = data.status;
+                    var realData = data.Schema;
+
+                    if(status != '200') {
+                        var alert = $mdDialog.alert({
+                            title: '删除失败',
+                            content: realData.properties.message,
+                            ok: '确定'
+                        });
+                        $mdDialog.show(alert);
+                    }else {
+                        $scope.orgList = realData.properties;
+                    }
+
+                });
+            }
+
+        }
+
+        $scope.gerAllCommunityList = function() {
+
+            if($scope.query.keywords ==  '') {
+                $scope.getAllOrgInfo();
+            }
+
+        }
 
     }
 })();

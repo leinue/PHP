@@ -11,6 +11,10 @@
 
         $scope.isEdit = false;
 
+        $scope.query = {
+            keywords: ''
+        }
+
         $scope.getDevice = function() {
             MonitorService.index().then(function(response) {
                 $scope.devices = response.Schema.properties;
@@ -159,6 +163,39 @@
 
         }
 
+        $scope.getAllMonitor = function() {
+
+            if($scope.query.keywords == '') {
+                $scope.getDevice();
+            }
+
+        }
+
+        $scope.startSearchMonitor = function($event) {
+
+            var keyCode = $event.keyCode;
+
+            if($event && keyCode == 13) {
+                if($scope.query.keywords == '') {
+                    alert('搜索内容不能为空');
+                    return false;
+                }
+
+                MonitorService.search($scope.query.keywords).then(function(data) {
+
+                    var status = data.status;
+                    var realData = data.Schema;
+
+                    if(status != '200') {
+                        alert('网络请求失败');
+                    }else {
+                        $scope.devices = realData.properties;
+                    }
+
+                });
+            }
+            
+        }
 
     }
 })();

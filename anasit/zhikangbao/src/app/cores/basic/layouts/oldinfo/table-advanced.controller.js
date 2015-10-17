@@ -6,31 +6,39 @@
         .controller('TablesAdvancedController', Controller);
 
     /* @ngInject */
-    function Controller($scope, $timeout, $q, OldInfoService, $mdDialog, $state, $location, $sce) {
+    function Controller($scope, $timeout, $q, OldInfoService, $mdDialog, $state, $location, $sce, $stateParams) {
         var vm = this;
-        vm.query = {
+
+        $scope.query = {
             filter: '',
             limit: '10',
             order: '-id',
             page: 1
         };
+
+        vm.query = {
+            filter: ''
+        };
+
+        $scope.users = {
+            total_count: 0
+        };
+
         vm.selected = [];
+
         vm.filter = {
             options: {
                 debounce: 500
             }
         };
-        vm.getUsers = $scope.getOldInfo;
+
+        vm.getUsers = $scope.getOldInfoBasic;
         vm.removeFilter = removeFilter;
 
-        activate();
+        $scope.total_pages = [1];
+        $scope.currentPage = 1;
 
         $scope.currentId = '';
-
-        ////////////////
-
-        function activate() {
-        }
 
         function removeFilter() {
             vm.filter.show = false;
@@ -45,7 +53,16 @@
             // OldInfoService.update(id);
             $scope.currentId = id;
             // $location.path('triangular.admin-default.edit-oldman');
-            $location.path('/basic/edit/' + id);
+            console.log($state);
+
+            var name = $state.current.name;
+            if(name.indexOf('org-system-org') != -1 ) {
+                $location.path('/department/edit/' + id);
+            }else if(name.indexOf('community') != -1) {
+                $location.path('/community/edit/' + id);
+            }else {
+                $location.path('/basic/edit/' + id);
+            }
         };
 
         $scope.inserOldInfo = {
@@ -119,7 +136,7 @@
                             });
                         }
                         $mdDialog.show(alert);
-                        $scope.getOldInfo();
+                        $scope.getOldInfoBasic();
                     });
                 }
             });
@@ -127,15 +144,20 @@
 
         $scope.oldInfoItemList = {};
 
-        $scope.getOldInfo = function() {
-            OldInfoService.index().then(function(data) {
+        $scope.getOldInfoBasic = function() {
+            OldInfoService.index($scope.query.page,$scope.query.limit).then(function(data) {
                 var status = data.status;
                 var realData = data.Schema;
-                $scope.oldInfoItemList = realData.properties;                
+                $scope.oldInfoItemList = realData.properties.detail;
+                $scope.users.total_count = Math.ceil(realData.properties.count/$scope.query.limit);
+                $scope.total_pages = [];
+                for (var i = 1; i <= $scope.users.total_count; i++) {
+                    $scope.total_pages.push(i);
+                };
             });
         }
 
-        $scope.getOldInfo();
+        $scope.getOldInfoBasic();
 
         $scope.addNewMember = function(id) {
             // $state.go('triangular.admin-default.new-family');
@@ -165,6 +187,7 @@
 
                     }else {
                         $scope.oldInfoItemList = realData.properties;
+                        // vm.users.total_count = realData.properties.count;
                     }
                 });
             }
@@ -173,8 +196,13 @@
 
         $scope.getAllOldList = function() {
             if(vm.query.filter == '') {
-                $scope.getOldInfo();
+                $scope.getOldInfoBasic();
             }
+        }
+
+        $scope.loadNextPage = function() {
+            // $scope.query.page ++;
+            $scope.getOldInfoBasic();
         }
 
         $scope.optionsName = ['新增家庭成员', '查看家庭成员', '详情', '编辑', '删除'];

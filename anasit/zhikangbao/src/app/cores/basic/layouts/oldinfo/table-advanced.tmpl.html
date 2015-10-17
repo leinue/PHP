@@ -8,7 +8,7 @@
         </md-button>
     </md-data-table-toolbar>
 
-    <md-data-table-toolbar ng-show="vm.filter.show && !vm.selected.length" class="md-data-table-toolbar">
+    <md-data-table-toolbar ng-show="vm.filter.show && !vm.selected.length || 1" class="md-data-table-toolbar">
         <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
         <form flex="" name="vm.filter.form">
             <input type="text" ng-model="vm.query.filter" ng-model-options="vm.filter.options" placeholder="搜索" ng-keyup="startSearch($event)" ng-change="getAllOldList()">
@@ -23,7 +23,8 @@
     </md-data-table-toolbar>
 
     <md-data-table-container>
-        <table md-data-table class="md-primary md-data-table" md-row-select="vm.selected" md-progress="vm.deferred">
+    <!-- md-row-select="vm.selected" -->
+        <table md-data-table class="md-primary md-data-table" md-progress="vm.deferred">
             <thead md-order="oldInfoItemList.user_id" md-trigger="">
                 <tr>
                     <th order-by="user.user_id" name="编号"></th>
@@ -169,5 +170,13 @@
       </div>
     </div>
 
-    <md-data-table-pagination md-limit="vm.query.limit" md-page="vm.query.page" md-total="{{vm.users.total_count}}" md-trigger="vm.getUsers"></md-data-table-pagination>
+    <div layout layout-sm="column" style="padding-left:70%" flex>
+        <md-input-container flex>
+            <label>选择页数</label>
+            <md-select class="md-select-form" ng-change="loadNextPage()" ng-model="currentPage" placeholder="选择页数" required>
+                <md-option ng-value="pageB" ng-repeat="pageB in total_pages">{{pageB}}</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+
 </div>

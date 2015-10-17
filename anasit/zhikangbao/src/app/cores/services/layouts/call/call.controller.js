@@ -17,9 +17,14 @@
             keywords: ''
         };
 
+        $scope.call_total_pages = [];
+        $scope.call_currentPage = 1;
+
         $scope.getHelpList = function() {
 
-        	YulpService.index().then(function(data) {
+            $scope.call_total_pages = [];
+
+        	YulpService.index($scope.call_currentPage,10).then(function(data) {
 
         		var status = data.status;
         		var realData = data.Schema;
@@ -37,12 +42,20 @@
         			$mdDialog.show(alert);
 
         		}else {
-        			$scope.helpList = realData.properties;
+        			$scope.helpList = realData.properties.detail;
+                    var count = Math.ceil(realData.properties.count/10);
+                    for (var i = 1; i <= count; i++) {
+                        $scope.call_total_pages.push(i);
+                    };
         		}
 
         	});
 
         };
+
+        $scope.loadNextCallPage = function() {
+            $scope.getHelpList();
+        }
 
         $scope.getHelpList();
 

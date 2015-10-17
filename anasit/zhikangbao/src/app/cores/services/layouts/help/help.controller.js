@@ -15,9 +15,14 @@
             keywords: ''
         };
 
+        $scope.help_total_pages = [];
+        $scope.help_currentPage = 1;
+
         $scope.getHelpList = function() {
 
-        	HelpService.index().then(function(data) {
+            $scope.call_total_pages = [];
+
+        	HelpService.index($scope.help_currentPage,10).then(function(data) {
 
         		var status = data.status;
         		var realData = data.Schema;
@@ -33,8 +38,12 @@
         			$mdDialog.show(alert);
 
         		}else {
-        			console.log(realData.properties);
-        			$scope.helpList = realData.properties;
+        			$scope.helpList = realData.properties.detail;
+                    console.log(realData.properties);
+                    var count = Math.ceil(realData.properties.total/10);
+                    for (var i = 1; i <= count; i++) {
+                        $scope.help_total_pages.push(i);
+                    };
         		}
 
         	});
@@ -118,6 +127,10 @@
             if($scope.query.keywords == '') {
                 $scope.getHelpList();
             }
+        }
+
+        $scope.loadNextHelpPage = function() {
+            $scope.getHelpList();
         }
 
     }

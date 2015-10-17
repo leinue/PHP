@@ -9,10 +9,24 @@
     function BasicDeviceController($scope, $state, DeviceService, $mdDialog) {
         var vm = this;
 
+        $scope.device_currentPage = 1;
+        $scope.device_total_pages = [];
+
         $scope.getDevice = function() {
-            DeviceService.index().then(function(response) {
-                $scope.devices = response.Schema.properties;   
+            $scope.call_total_pages = [];
+            DeviceService.index($scope.device_currentPage,10).then(function(response) {
+                $scope.devices = response.Schema.properties.detail;   
+                var count = Math.ceil(response.Schema.properties.count/10);
+                for (var i = 1; i <= count; i++) {
+                    $scope.device_total_pages.push(i);
+                };
             })
+        }
+
+        //////////////////////////
+
+        $scope.loadNextDevicePage = function() {
+            $scope.getDevice();
         }
 
         $scope.query = {

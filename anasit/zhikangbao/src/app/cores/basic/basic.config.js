@@ -47,8 +47,32 @@
             controller: 'BasicNewOldManController',
             controllerAs: 'vm'
         })
+        .state('triangular.admin-default.department-new-oldman', {
+            url: '/department/new',
+            templateUrl: 'app/cores/basic/layouts/oldinfo/new-old.tmpl.html',
+            controller: 'BasicNewOldManController',
+            controllerAs: 'vm'
+        })
+        .state('triangular.admin-default.community-new-oldman', {
+            url: '/comnunity/new',
+            templateUrl: 'app/cores/basic/layouts/oldinfo/new-old.tmpl.html',
+            controller: 'BasicNewOldManController',
+            controllerAs: 'vm'
+        })
         .state('triangular.admin-default.edit-oldman', {
             url: '/basic/edit/{id}',
+            templateUrl: 'app/cores/basic/layouts/oldinfo/new-old.tmpl.html',
+            controller: 'BasicNewOldManController',
+            controllerAs: 'vm'
+        })
+        .state('triangular.admin-default.community-edit-oldman', {
+            url: '/community/edit/{id}',
+            templateUrl: 'app/cores/basic/layouts/oldinfo/new-old.tmpl.html',
+            controller: 'BasicNewOldManController',
+            controllerAs: 'vm'
+        })
+        .state('triangular.admin-default.departemnt-edit-oldman', {
+            url: '/department/edit/{id}',
             templateUrl: 'app/cores/basic/layouts/oldinfo/new-old.tmpl.html',
             controller: 'BasicNewOldManController',
             controllerAs: 'vm'

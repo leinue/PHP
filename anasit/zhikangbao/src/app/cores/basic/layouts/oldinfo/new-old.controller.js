@@ -6,7 +6,7 @@
         .controller('BasicNewOldManController', BasicNewOldManController);
 
     /* @ngInject */
-    function BasicNewOldManController($scope, $state, OldInfoService, $mdDialog, OrgInfoService, $stateParams, OrgService) {
+    function BasicNewOldManController($scope, $state, OldInfoService, $mdDialog, OrgInfoService, $stateParams, OrgService, $location) {
         var vm = this;
 
         $scope.edit = false;
@@ -57,8 +57,19 @@
             console.log($scope.ordList);
         });
 
+        console.log($state);
+
         $scope.returnToOldmanList = function() {
-            $state.go('triangular.admin-default.basic-page');
+            var name = $state.current.name;
+            if(name.indexOf('departemnt-edit-oldman') != -1) {
+                $location.path('/org/archive');
+            }else if(name.indexOf('community') != -1) {
+                $location.path('/community/archive');
+            }else if (name.indexOf('department-new-oldman') != -1) {
+                $location.path('/org/archive');
+            }else {
+                $location.path('/basic');
+            }
         };
 
         $scope.submitInfo = function() {
@@ -74,6 +85,9 @@
                         });
                     $mdDialog.show(alert);
                 });
+                if(status == '200' || status == '201') {
+                    $scope.returnToOldmanList();
+                }
             }else {
                 console.log($scope.inserOldInfo);
                 OldInfoService.update($scope.inserOldInfo).then(function(data) {
@@ -86,6 +100,9 @@
                             ok: '确定'
                         });
                     $mdDialog.show(alert);
+                    if(status == '200' || status == '201') {
+                        $scope.returnToOldmanList();
+                    }
                 });
             }
             

@@ -288,8 +288,10 @@
 
           return {
 
-            index: function() {
-              return Restangular.one('/profile/old/index').get();
+            index: function(page,count) {
+              page = page == null ? 1 : page;
+              count = count == null ? 10 : count;
+              return Restangular.one('/profile/old/index/' + page + '/' + count).get();
             },
 
             update:function(data) {
@@ -309,7 +311,7 @@
             },
 
             search: function(keywords) {
-              return Restangular.one('/healths/old/search/' + keywords).get();
+              return Restangular.one('/healths/search/' + keywords).get();
             }
 
           };
@@ -350,8 +352,10 @@
 
           return {
 
-            index: function() {
-              return Restangular.one('/profile/device/index').get();
+            index: function(page,limit) {
+              var page = page == null ? 1 : page;
+              var limit = limit == null ? 10 :limit;
+              return Restangular.one('/profile/device/index/' + page + '/' + limit).get();
             },
 
             update:function(data) {
@@ -402,7 +406,7 @@
             },
 
             search: function(keywords) {
-              return Restangular.one('/healths/old/search/' + keywords).get();
+              return Restangular.one('/healths/search/' + keywords).get();
             }
 
           };
@@ -453,8 +457,10 @@
         .factory('MonitorService', ['Restangular', '$http', 'API_CONFIG', function(Restangular, $http, API_CONFIG) {
             return {
           
-              index: function() {
-                return Restangular.one('/monitor/all').get();
+              index: function(page,limit) {
+                var page = page == null ? 1 : page;
+                var limit = limit == null ? 10 : limit;
+                return Restangular.one('/monitor/all/' + page + '/' + limit).get();
               },
 
               update: function(data) {
@@ -487,8 +493,10 @@
           
           return {
 
-            index: function() {
-              return Restangular.one('/help/get').get();
+            index: function(page,limit) {
+              page = page == null ? 1 : page;
+              limit = limit == null ? 10 : limit;
+              return Restangular.one('/help/get/' + page + '/' + limit).get();
             },
 
             setDeal: function(id) {
@@ -506,8 +514,10 @@
 
           return {
             
-            index: function() {
-              return Restangular.one('/sos/all').get();
+            index: function(page,limit) {
+              page = page == null ? 1 : page;
+              limit = limit == null ? 10 : limit;
+              return Restangular.one('/sos/all/' + page + '/' + limit).get();
             },
 
             detail: function(id) {

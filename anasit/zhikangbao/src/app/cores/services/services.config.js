@@ -82,7 +82,7 @@
             //     type: 'link'
             // },
             {
-                name: '求助服务受理',
+                name: '咨询服务受理',
                 state: 'triangular.admin-default.services-help',
                 type: 'link'
             },

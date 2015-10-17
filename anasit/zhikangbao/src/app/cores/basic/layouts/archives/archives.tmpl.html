@@ -23,7 +23,7 @@
         </md-button>
     </md-data-table-toolbar>
 
-    <md-data-table-toolbar ng-show="vm.filter.show && !vm.selected.length" class="md-data-table-toolbar">
+    <md-data-table-toolbar ng-show="vm.filter.show && !vm.selected.length || 1" class="md-data-table-toolbar">
         <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
         <form flex="" name="vm.filter.form">
             <input type="text" ng-model="query.keywords" ng-keyup="startSearchHealth($event)" ng-change="backToAllList()" placeholder="搜索">
@@ -68,6 +68,7 @@
             <thead md-order="healthInfoList.user_id" md-trigger="">
                 <tr>
                     <th name="编号"></th>
+                    <th name="登记时间"></th>
                     <th name="姓名"></th>
                     <th name="血压"></th>
                     <th name="血糖"></th>
@@ -75,7 +76,6 @@
                     <th name="血红蛋白"></th>
                     <th name="体温"></th>
                     <th name="血氧饱和度"></th>
-                    <th name="登记时间"></th>
                     <th name="备注"></th>
                     <th name="操作"></th>
                 </tr>
@@ -83,6 +83,7 @@
             <tbody>
                 <tr md-auto-select ng-repeat="user in healthInfoList">
                     <td>{{user.id | nullToVisual}}</td>
+                    <td>{{user.last_time*1000 | date:'yyyy-MM-dd'}}</td>
                     <td>{{user.username | nullToVisual}}</td>
                     <td>{{user.blood_pressure | nullToVisual}}</td>
                     <td>{{user.blood_sugar | nullToVisual}}</td>
@@ -90,7 +91,6 @@
                     <td>{{user.blood_hb | nullToVisual}}</td>
                     <td>{{user.temper | nullToVisual}}</td>
                     <td>{{user.blood_spo | nullToVisual}}</td>
-                    <td>{{user.last_time*1000 | date:'yyyy-MM-dd'}}</td>
                     <td>{{user.description | nullToVisual}}</td>
                     <td>
                     <md-button ng-click="editThisArchive(user.id)" class="md-primary">编辑</md-button>
@@ -100,8 +100,23 @@
             </tbody>
         </table>
     </md-data-table-container>
+    
+    <div layout layout-sm="column" style="padding-left:70%" flex>
+        <!-- <md-input-container style="margin-top: 13px;" flex>
+            <md-button class="md-raised">上一页</md-button>
+        </md-input-container> -->
+        <md-input-container flex>
+            <label>选择页数</label>
+            <md-select class="md-select-form" ng-change="loadNextPage()" ng-model="currentPage" placeholder="选择页数" required>
+                <md-option ng-value="pageA" ng-repeat="pageA in total_pages">{{pageA}}</md-option>
+            </md-select>
+        </md-input-container>
+        <!-- <md-input-container style="margin-top: 13px;" flex>
+            <md-button class="md-raised">下一页</md-button>
+        </md-input-container> -->
+    </div>
 
-    <md-data-table-pagination md-limit="vm.query.limit" md-page="vm.query.page" md-total="{{vm.users.total_count}}" md-trigger="vm.getUsers"></md-data-table-pagination>
+    <!-- <md-data-table-pagination md-limit="query.limit" md-page="query.page" md-total="{{users.total_count}}" md-trigger="loadNextPage()"></md-data-table-pagination> -->
 </div>
 
     <!-- Modal -->
@@ -114,6 +129,10 @@
           </div>
           <div class="modal-body" style="font-size: 1.3em;">
             <div layout="column" flex>
+                <md-input-container>
+                    <label translate>测量时间</label>
+                    <input ng-model="insertHealthArchiveInfo.last_time" type="text">
+                </md-input-container>
                 <md-input-container flex>
                     <label translate>血压</label>
                     <input ng-model="insertHealthArchiveInfo.blood_pressure" type="text" required>
@@ -137,10 +156,6 @@
                 <md-input-container>
                     <label translate>血氧饱和度</label>
                     <input ng-model="insertHealthArchiveInfo.blood_spo" type="text">
-                </md-input-container>
-                <md-input-container>
-                    <label translate>测量时间</label>
-                    <input ng-model="insertHealthArchiveInfo.last_time" type="text">
                 </md-input-container>
                 <md-input-container>
                     <label translate>其它描述</label>

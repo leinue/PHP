@@ -21,7 +21,7 @@
         </md-button>
     </md-data-table-toolbar>
 
-    <md-data-table-toolbar ng-show="vm.filter.show && !vm.selected.length" class="md-data-table-toolbar">
+    <md-data-table-toolbar ng-show="vm.filter.show && !vm.selected.length  || 1" class="md-data-table-toolbar">
         <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
         <form flex="" name="vm.filter.form">
             <input type="text" ng-model="query.keywords" ng-keyup="startSearchCommunity($event)" ng-change="gerAllCommunityList()" placeholder="搜索">
@@ -50,7 +50,7 @@
             </thead>
             <tbody>
                 <tr md-auto-select ng-show="insertOrgList.code == item.code || inserOrgList.code == -1" ng-repeat="item in orgList">
-                <td>{{item.id}}</td>
+                    <td>{{item.id}}</td>
                     <td>{{item.full_name}}</td>
                     <td>{{item.name}}</td>
                     <td>{{item.enabled | orgIsEnabled}}</td>

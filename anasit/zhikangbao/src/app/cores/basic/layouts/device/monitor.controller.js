@@ -15,10 +15,17 @@
             keywords: ''
         }
 
+        $scope.monitor_currentPage = 1;
+        $scope.monitor_total_pages = [];
+
         $scope.getDevice = function() {
-            MonitorService.index().then(function(response) {
-                $scope.devices = response.Schema.properties;
-                console.log($scope.devices);
+            $scope.call_total_pages = [];
+            MonitorService.index($scope.monitor_currentPage,10).then(function(response) {
+                $scope.devices = response.Schema.properties.detail;
+                var count = Math.ceil(response.Schema.properties.count/10);
+                for (var i = 1; i <= count; i++) {
+                    $scope.monitor_total_pages.push(i);
+                };
             })
         }
 
@@ -195,6 +202,10 @@
                 });
             }
             
+        }
+
+        $scope.loadNextMonitorPage = function() {
+            $scope.getDevice();
         }
 
     }

@@ -126,6 +126,7 @@
             <param name="controls" value="false" />\
         </object>';
         	$('#monitor-area').html(videoHTML);
+            $scope.selectVideoArea();
         };
 
         $scope.selectArea = false;

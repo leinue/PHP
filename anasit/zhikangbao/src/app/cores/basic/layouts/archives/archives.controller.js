@@ -11,8 +11,18 @@
         vm.selected = '';
 
         $scope.query = {
-            keywords: ''
+            keywords: '',
+            limit: '10',
+            page: 1
         }
+
+        $scope.total_pages = [1];
+
+        $scope.currentPage = 2;
+
+        $scope.users = {
+            total_count: ''
+        };
 
         $scope.healthArichiveTitle = '新增老人健康档案';
         $scope.edit = false;
@@ -45,14 +55,21 @@
         $scope.oldArchiveInfoItemList = {};
 
         $scope.getOldInfo = function() {
-            OldInfoService.index().then(function(data) {
+            OldInfoService.index($scope.query.page,$scope.query.limit).then(function(data) {
                 var status = data.status;
                 var realData = data.Schema;
-                $scope.oldArchiveInfoItemList = realData.properties;                
+                $scope.oldArchiveInfoItemList = realData.properties.detail;
+                $scope.users.total_count = Math.ceil(realData.properties.count/$scope.query.limit);
+                $scope.total_pages = [];
+                for (var i = 1; i < $scope.users.total_count + 1; i++) {
+                    $scope.total_pages.push(i);
+                };
             });
         }
 
         $scope.getOldInfo();
+
+        // $scope.query.total_pages = [1,2,3];
 
         $scope.viewThisArchive = function(uid,username) {
             $scope.isArchive = true;
@@ -239,6 +256,11 @@
         //         console.log(oldValue);
 
         // });
+    
+        $scope.loadNextPage = function() {
+            console.log($scope.currentPage);
+            $scope.getOldInfo();
+        }
 
     }
 })();

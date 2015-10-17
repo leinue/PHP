@@ -12,6 +12,8 @@
         $scope.returnToArchiveList = function() {
             $state.go('triangular.admin-default.basic-archive');
         };
+
+        /////////////////////
     }
 
 })();

@@ -21,7 +21,7 @@
         </md-button>
     </md-data-table-toolbar>
 
-    <md-data-table-toolbar ng-show="vm.filter.show && !vm.selected.length" class="md-data-table-toolbar">
+    <md-data-table-toolbar ng-show="vm.filter.show && !vm.selected.length  || 1" class="md-data-table-toolbar">
         <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
         <form flex="" name="vm.filter.form">
             <input type="text" ng-model="vm.query.filter" ng-model-options="vm.filter.options" placeholder="search">

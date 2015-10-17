@@ -19,19 +19,19 @@
         </md-button>
     </md-data-table-toolbar>
 
-    <md-data-table-toolbar ng-show="vm.filter.show && !vm.selected.length" class="md-data-table-toolbar">
+    <md-data-table-toolbar ng-show="vm.filter.show && !vm.selected.length || 1" class="md-data-table-toolbar">
         <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
         <form flex="" name="vm.filter.form">
-            <input type="text" ng-model="query.keywords" ng-keyup="startSearchHelp()" ng-change="backToAllHelpList()" placeholder="搜索">
+            <input type="text" ng-model="query.keywords" ng-keyup="startSearchHelp($event)" ng-change="backToAllHelpList()" placeholder="搜索">
         </form>
         <md-button class="md-icon-button" ng-click="vm.removeFilter()">
             <md-icon md-font-icon="zmdi zmdi-close"></md-icon>
         </md-button>
     </md-data-table-toolbar>
 
-    <md-data-table-toolbar class="alternate" ng-show="vm.selected.length" layout-align="space-between">
+    <!-- <md-data-table-toolbar class="alternate" ng-show="vm.selected.length" layout-align="space-between">
       <div>选择了 {{vm.selected.length}} 个用户</div>
-    </md-data-table-toolbar>
+    </md-data-table-toolbar> -->
 
     <md-data-table-container>
         <table md-data-table class="md-primary md-data-table" md-row-select="" md-progress="vm.deferred">
@@ -64,5 +64,12 @@
         </table>
     </md-data-table-container>
 
-    <md-data-table-pagination md-limit="vm.query.limit" md-page="vm.query.page" md-total="{{vm.users.total_count}}" md-trigger=""></md-data-table-pagination>
+    <div layout layout-sm="column" style="padding-left:70%" flex>
+        <md-input-container flex>
+            <label>选择页数</label>
+            <md-select class="md-select-form" ng-change="loadNextHelpPage()" ng-model="help_currentPage" placeholder="选择页数" required>
+                <md-option ng-value="pageB" ng-repeat="pageB in help_total_pages">{{pageB}}</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
 </div>

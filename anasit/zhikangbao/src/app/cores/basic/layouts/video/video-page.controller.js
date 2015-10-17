@@ -128,5 +128,21 @@
         	$('#monitor-area').html(videoHTML);
         };
 
+        $scope.selectArea = false;
+        $scope.selectTitle = '选择视频监控区域'
+
+        $scope.selectVideoArea = function() {
+            if($scope.selectArea) {
+                $scope.selectArea = false;
+                $('#basicVideo').show();
+                $scope.selectTitle = '选择视频监控区域';
+            }else {
+                $scope.selectArea = true;
+                $('#basicVideo').hide();
+                $scope.selectTitle = '完成选择';
+            }
+
+        };
+
     }
 })();

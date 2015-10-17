@@ -11,6 +11,10 @@
 
         $scope.helpList = {};
 
+        $scope.query = {
+            keywords: ''
+        };
+
         $scope.getHelpList = function() {
 
         	HelpService.index().then(function(data) {
@@ -78,6 +82,42 @@
 
         	});
 
+        }
+
+        $scope.startSearchHelp = function($event) {
+            var keywords = $scope.query.keywords;
+            if($event.keyCode == 13) {
+                $scope.oldArchiveInfoItemList = {};
+                if(keywords == '') {
+                    $scope.getHelpList();
+                }else {
+                    HelpService.search(keywords).then(function(data) {
+
+                        console.log(data);
+
+                        var status = data.status;
+                        var realData = data.Schema;
+
+                        if(status != '200') {
+                            var alert = $mdDialog.alert({
+                                title: '搜索失败',
+                                content: realData.properties.message,
+                                ok: '确定'
+                            });
+                            $mdDialog.show(alert);
+                        }else {
+                            $scope.helpList = realData.properties;
+                        }
+                        
+                    }); 
+                }
+            }
+        }
+
+        $scope.backToAllHelpList = function() {
+            if($scope.query.keywords == '') {
+                $scope.getHelpList();
+            }
         }
 
     }

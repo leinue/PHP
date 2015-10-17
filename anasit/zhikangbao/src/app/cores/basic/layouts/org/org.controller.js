@@ -215,6 +215,8 @@
                 });
             }
 
+            
+
         }
 
         $scope.gerAllCommunityList = function() {

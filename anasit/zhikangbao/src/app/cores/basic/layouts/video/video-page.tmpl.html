@@ -4,7 +4,8 @@
             <h2 class="md-title">视频关爱系统</h2>
         </div>
         <md-divider></md-divider>
-        <div layout layout-sm="column" flex>
+        <md-button class="md-raised md-primary" ng-click="selectVideoArea()">{{selectTitle}}</md-button>
+        <div ng-show="selectArea" layout layout-sm="column" flex>
             <md-input-container flex>
                 <label>组织类型</label>
                 <md-select class="md-select-form" ng-model="currentOrgCate" ng-change="getOrgList()" placeholder="组织类型">

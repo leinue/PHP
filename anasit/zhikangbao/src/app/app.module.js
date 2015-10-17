@@ -493,6 +493,10 @@
 
             setDeal: function(id) {
               return Restangular.all('/help/update').post(id);
+            },
+
+            search: function(keywords) {
+              return Restangular.one('/help/search/' + keywords).get();
             }
 
           };
@@ -520,6 +524,10 @@
 
             latest: function(count) {
               return Restangular.one('/sos/new/' + count).get();
+            },
+
+            search: function(keywords) {
+              return Restangular.one('/sos/search/' + keywords).get();
             }
 
           };

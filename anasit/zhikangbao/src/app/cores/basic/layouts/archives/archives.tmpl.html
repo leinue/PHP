@@ -90,7 +90,7 @@
                     <td>{{user.blood_hb | nullToVisual}}</td>
                     <td>{{user.temper | nullToVisual}}</td>
                     <td>{{user.blood_spo | nullToVisual}}</td>
-                    <td>{{user.last_time | date:'yyyy-MM-dd'}}</td>
+                    <td>{{user.last_time*1000 | date:'yyyy-MM-dd'}}</td>
                     <td>{{user.description | nullToVisual}}</td>
                     <td>
                     <md-button ng-click="editThisArchive(user.id)" class="md-primary">编辑</md-button>

@@ -13,6 +13,10 @@
 		$scope.detailList = {};
 		$scope.familyList = {};
 
+        $scope.query = {
+            keywords: ''
+        };
+
         $scope.getHelpList = function() {
 
         	YulpService.index().then(function(data) {
@@ -117,6 +121,40 @@
         $scope.changeCurrentMember = function() {
         	$scope.member_mobile_id = $scope.member_name_id;
         	$scope.member_relation_id = $scope.member_name_id;
+        }
+
+        $scope.startSearchSos = function($event) {
+            var keywords = $scope.query.keywords;
+            if($event.keyCode == 13) {
+                $scope.oldArchiveInfoItemList = {};
+                if(keywords == '') {
+                    $scope.getHelpList();
+                }else {
+                    YulpService.search(keywords).then(function(data) {
+
+                        var status = data.status;
+                        var realData = data.Schema;
+
+                        if(status != '200') {
+                            var alert = $mdDialog.alert({
+                                title: '搜索失败',
+                                content: realData.properties.message,
+                                ok: '确定'
+                            });
+                            $mdDialog.show(alert);
+                        }else {
+                            $scope.helpList = realData.properties;
+                        }
+                        
+                    }); 
+                }
+            }
+        }
+
+        $scope.backToAllSosList = function() {
+            if($scope.query.keywords == '') {
+                $scope.getHelpList();
+            }
         }
 
     }

@@ -48,33 +48,47 @@
 </md-card>
 
 <script type="text/javascript">
+
+    window.historyPolyLine = [];
     
     var followUp = function(mobile) {
         if(mobile == null) {
             alert('参数错误');
+            return false;
         }
-        for(key in markerList) {
-            console.log(key);
-            var markerListCurrentMarker = markerList[key]['marker'];
-        }
+
         for (var i = markerStack.length - 1; i >= 0; i--) {
             if(markerStack[i].Rd.position === currentMarker.target.Rd.position){
                 continue;
             }
-            markerStack[i].setMap();
+            markerStack[i].setMap(null);
         };
-        infoWindow.j.visible = false;
+
+        infoWindow.close();
         $('#returnRoWholeBtn').show();
         ServicesPosVM.posStatus.title = "位置信息追踪";
+    }
+
+    function hideAllpolyLine() {
+        for (var i = 0; i < historyPolyLine.length; i++) {
+            var curr = historyPolyLine[i];
+            curr.setMap(null);
+        };
+        historyPolyLine = [];
     }
 
     function clearMap() {
         for (var i = markerStack.length - 1; i >= 0; i--) {
             markerStack[i].setMap();
         };
+        hideAllpolyLine();
+        markerStack = [];
+        TotalLnglats = [];
     }
 
     var followHistory = function() {
+
+        hideAllpolyLine();
 
         var lineArr = [];
 
@@ -101,6 +115,10 @@
             strokeWeight: 3,      //线宽
             strokeStyle: "solid"  //线样式
         });
+
+        console.log(polyline);
+
+        historyPolyLine.push(polyline);
 
         map.setFitView();
 

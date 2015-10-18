@@ -27,34 +27,14 @@
         		vm.posStatus.status = 0;
         		$state.go('triangular.admin-default.services-pos');
         		$('#returnRoWholeBtn').hide();
-        		console.log(TotalLnglats);
-        		for(var i= 0,marker;i<TotalLnglats.length;i++){
-			        var marker=new AMap.Marker({
-			           	position:TotalLnglats[i],
-			            map:map
-			        });
-			        marker.content='<strong>姓名:</strong><br><strong>IMEI:</strong><br><strong>定位时间:</strong><br><strong>状态:</strong><br><a href="javascript:followUp('+i+')">实时跟踪</a>&nbsp;&nbsp;<a href="">历史记录</a>';
-			        marker.on('click',markerClick);
-			        // marker.emit('click',{target:marker});
-			        markerStack.push(marker);
-			    }
+
+        		$scope.getOldManTrip();
         	},
         	title: '位置信息监控'
         };
 
-        window.markerList = {
-        	'18000179176': {
-        		marker: ''
-        	},
-
-        	'18115992267': {
-        		marker: ''
-        	},
-
-        	'18700000000': {
-        		marker: ''
-        	}
-        };
+        //存储marker以及marker所属的老人信息,用于搜索
+        window.markerList = [];
 
         vm.startSearch = function(e) {
         	var keyCode = window.event ? e.keyCode : e.which;
@@ -108,8 +88,6 @@
 	        [111.478258,27.254600]
 	    ];
 
-	    var nameList = ['方滨兴', '李华', '佟霏', '吕少勇', '熊焰', '朱银', '李善学', '李淑婷'];
-
 	    window.infoWindow = new AMap.InfoWindow({offset:new AMap.Pixel(0,-30)});
 	    
 	    var pushMark = function (lnglats,manInfo) {
@@ -121,20 +99,28 @@
 
 		        var currentMan = manInfo[i];
 
-		        var name = currentMan.name;
-		        var imei = currentMan.imei;
+		        var name = currentMan.realname;
+		        var imei = currentMan.device_imei;
 		        var time = $filter('date')(currentMan.last_time*1000,'yyyy-MM-dd hh:mm:ss');
+		        var mobile = currentMan.mobile;
+
 
 		        marker.content='<strong>姓名:</strong>'+name+'<br><strong>IMEI:</strong>'+imei+'<br><strong>定位时间:</strong>'+time+'<br><a href="javascript:followUp('+i+')">实时跟踪</a>&nbsp;&nbsp;<a href="javascript:followHistory()">历史记录</a>';
 		        marker.on('click',markerClick);
+
+		        marker.mobile = mobile;
+		        marker.name = name;
+		        marker.idcard = currentMan.idcard;
+
 		        // marker.emit('click',{target:marker});
+
 		        markerStack.push(marker);
 		        TotalLnglats.push(lnglats[i]);
-		        markerList['18700000000'].marker = marker;
+		        // markerList[mobile] = marker;
 		    }
-	    }
 
-	    pushMark(lnglats,nameList);
+		    console.log(markerStack);
+	    }
 
 	    function markerClick(e){
 	        infoWindow.setContent(e.target.content);
@@ -230,9 +216,7 @@
         			lnglats.push(tmp);
 
         			var oldTmp = {};
-        			oldTmp.name = curr.realname;
-        			oldTmp.imei = curr.device_imei;
-        			oldTmp.last_time = curr.last_time;
+        			oldTmp = curr;
         			oldMan.push(oldTmp);
         		};
 

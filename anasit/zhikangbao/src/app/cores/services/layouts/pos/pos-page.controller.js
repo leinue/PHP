@@ -27,19 +27,31 @@
         		vm.posStatus.status = 0;
         		$state.go('triangular.admin-default.services-pos');
         		$('#returnRoWholeBtn').hide();
-
+        		$('#history-pos-console ul').html('');
         		$scope.getOldManTrip();
+        		this.title = "位置信息监控";
         	},
-        	title: '位置信息监控'
+        	title: '位置信息监控',
+        	openConsole: function() {
+        		console.log($('#history-pos-console'));
+        		$('#history-pos-console').slideToggle();
+        	}
         };
-
-        //存储marker以及marker所属的老人信息,用于搜索
-        window.markerList = [];
 
         vm.startSearch = function(e) {
         	var keyCode = window.event ? e.keyCode : e.which;
         	if(keyCode == 13) {
 
+        		if(markerStack.length == 0) {
+        			var alert = $mdDialog.confirm({
+		                title: '请先选择社区',
+		                content:'请先选择社区',
+		                ok: '确定'
+		            });
+		            $mdDialog.show(alert);
+        			return false;
+        		}
+        		
         		if(vm.search.content == '') {
         			var alert = $mdDialog.confirm({
 		                title: '搜索内容不能为空',
@@ -50,14 +62,24 @@
 		            return false;
         		}
 
-        		if (typeof markerList[vm.search.content] == 'undefined') {
-        			return false;
-        			alert('无此信息');
-        		}
+        		var keywords = vm.search.content;
 
-        		var currentMarker = markerList[vm.search.content].marker;
+        		var currentMarker;
 
-        		console.log(currentMarker);
+        		for (var i = 0; i < markerStack.length; i++) {
+        			var curr = markerStack[i];
+        			if(curr.imei == keywords || curr.idcard == keywords || curr.mobile == keywords) {
+        				var currentMarker = curr;
+        				break;
+        			}else {
+        				var alert = $mdDialog.confirm({
+			                title: '搜索失败',
+			                content:'无此信息',
+			                ok: '确定'
+			            });
+			            $mdDialog.show(alert);
+        			}
+        		};
 
         		currentMarker.emit('click',{target:currentMarker});
 
@@ -104,22 +126,19 @@
 		        var time = $filter('date')(currentMan.last_time*1000,'yyyy-MM-dd hh:mm:ss');
 		        var mobile = currentMan.mobile;
 
-
-		        marker.content='<strong>姓名:</strong>'+name+'<br><strong>IMEI:</strong>'+imei+'<br><strong>定位时间:</strong>'+time+'<br><a href="javascript:followUp('+i+')">实时跟踪</a>&nbsp;&nbsp;<a href="javascript:followHistory()">历史记录</a>';
+		        marker.content='<strong>姓名:</strong>'+name+'<br><strong>IMEI:</strong>'+imei+'<br><strong>定位时间:</strong>'+time+'<br><a href="javascript:followUp('+i+')">实时跟踪</a>&nbsp;&nbsp;<a href="javascript:followHistory('+currentMan.user_id+')">历史记录</a>';
 		        marker.on('click',markerClick);
 
 		        marker.mobile = mobile;
 		        marker.name = name;
 		        marker.idcard = currentMan.idcard;
+		        marker.imei = imei;
 
 		        // marker.emit('click',{target:marker});
 
 		        markerStack.push(marker);
 		        TotalLnglats.push(lnglats[i]);
-		        // markerList[mobile] = marker;
 		    }
-
-		    console.log(markerStack);
 	    }
 
 	    function markerClick(e){
@@ -201,8 +220,6 @@
         		}
 
         		realData = realData.properties;
-
-        		console.log(realData);
 
         		var lnglats = [];
         		var oldMan = [];

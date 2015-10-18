@@ -4,6 +4,9 @@
             <h2 class="md-title">
                 {{vm.posStatus.title}}
                 <md-button ng-click="vm.posStatus.backToWhole()" id="returnRoWholeBtn" class="md-raised md-primary">返回</md-button>
+                <md-button class="md-fab md-primary md-fab-top-right" ng-click="vm.posStatus.openConsole()" title="打开历史记录面板" aria-label="top right toast">
+                    <md-icon md-font-icon="zmdi zmdi-comment-dots"></md-icon>
+                </md-button>
             </h2>
         </div>
         <md-divider></md-divider>
@@ -47,9 +50,38 @@
     </md-card-content>
 </md-card>
 
+<style>
+
+    #history-pos-console {
+        background: rgba(0,0,0,0.8);
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        padding: 15px;
+        color: rgb(255,255,255);
+        border-radius: 4px;
+        display: none;
+    }
+
+    #history-pos-console ul {
+        list-style: none;
+    }
+
+</style>
+
+<div id="history-pos-console">
+    <ul>
+    </ul>
+</div>
+
 <script type="text/javascript">
 
+    $('#history-pos-console').click(function() {
+        $(this).slideUp();
+    });
+
     window.historyPolyLine = [];
+    window.historyPerson = [];
     
     var followUp = function(mobile) {
         if(mobile == null) {
@@ -84,53 +116,86 @@
         hideAllpolyLine();
         markerStack = [];
         TotalLnglats = [];
+        infoWindow.close();
+        if(typeof historyPerson.cg != 'undefined') {
+            historyPerson.stopMove();
+            historyPerson.setMap(null);
+        }
     }
 
-    var followHistory = function() {
+    var followHistory = function(id) {
 
         hideAllpolyLine();
 
         var lineArr = [];
 
-        var lngX = 111.47;
-        var latY = 27.25;
-        var lineArr = [];
-        lineArr.push([lngX, latY]);
+        var realData = [];
 
-        for (var i = 1; i < 100; i++) {
-          lngX = lngX + Math.random() * 0.05;
-          if (i % 2) {
-            latY = latY + Math.random() * 0.0001;
-          } else {
-            latY = latY + Math.random() * 0.06;
-          }
-          lineArr.push([lngX, latY]);
-        }
+        $.ajax({  
+            type: "get",
+            contentType: "application/x-www-form-urlencoded",
+            dataType: "json",
+            url: "http://api.zkkj168.com:81/device/device_history/" + id,  //这里是网址
+            success:function(data){
+                realData = data.Schema.properties;
 
-        var polyline = new AMap.Polyline({
-            map: map,
-            path: lineArr,
-            strokeColor: "#00A",  //线颜色
-            strokeOpacity: 1,     //线透明度
-            strokeWeight: 3,      //线宽
-            strokeStyle: "solid"  //线样式
+                console.log(realData);
+
+                for (var i = 0; i < realData.length; i++) {
+                    var curr = realData[i];
+
+                    var tmp = [];
+                    tmp[0] = curr.lng;
+                    tmp[1] = curr.lat;
+                    lineArr.push(tmp);
+
+                    var _time = curr.last_time;
+                    _time = new Date(parseInt(_time) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
+
+                    console.log(curr.location, _time);
+
+                    $('#history-pos-console ul').append('<li>' + curr.location + ' : ' + _time + '</li>');
+                };
+
+                $('#history-pos-console').slideDown();
+
+                console.log(lineArr);
+
+                var polyline = new AMap.Polyline({
+                    map: map,
+                    path: lineArr,
+                    strokeColor: "#00A",  //线颜色
+                    strokeOpacity: 1,     //线透明度
+                    strokeWeight: 3,      //线宽
+                    strokeStyle: "solid"  //线样式
+                });
+
+                console.log(polyline);
+
+                historyPolyLine.push(polyline);
+
+                map.setFitView();
+
+                historyPerson = new AMap.Marker({
+                    map: map,
+                    position: [111.47, 27.25],
+                    icon: "https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman2-48.png",
+                    offset: new AMap.Pixel(-26, -13),
+                    autoRotation: true
+                });
+
+                historyPerson.moveAlong(lineArr, 500);//开始动画
+
+            },
+            timeout:30000, 
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert(errorThrown);
+            }
         });
 
-        console.log(polyline);
+        $('#returnRoWholeBtn').show();
+        ServicesPosVM.posStatus.title = "历史位置信息";
 
-        historyPolyLine.push(polyline);
-
-        map.setFitView();
-
-        var markerPerson = new AMap.Marker({
-            map: map,
-            position: [111.47, 27.25],
-            icon: "https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman2-48.png",
-            offset: new AMap.Pixel(-26, -13),
-            autoRotation: true
-        });
-
-        markerPerson.moveAlong(lineArr, 500);//开始动画
     }
 
 </script>

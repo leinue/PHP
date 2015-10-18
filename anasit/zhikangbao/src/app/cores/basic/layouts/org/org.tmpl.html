@@ -24,7 +24,7 @@
     <md-data-table-toolbar ng-show="vm.filter.show && !vm.selected.length  || 1" class="md-data-table-toolbar">
         <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
         <form flex="" name="vm.filter.form">
-            <input type="text" ng-model="query.keywords" ng-keyup="startSearchCommunity($event)" ng-change="gerAllCommunityList()" placeholder="搜索">
+            <input type="text" ng-model="query.keywords" id="org-search-input" ng-keyup="startSearchCommunity($event)" ng-change="gerAllCommunityList()" placeholder="搜索">
         </form>
         <md-button class="md-icon-button" ng-click="vm.removeFilter()">
             <md-icon md-font-icon="zmdi zmdi-close"></md-icon>

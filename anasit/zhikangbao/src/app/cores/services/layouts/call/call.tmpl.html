@@ -22,7 +22,7 @@
     <md-data-table-toolbar ng-show="vm.filter.show && !vm.selected.length  || 1" class="md-data-table-toolbar">
         <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
         <form flex="" name="vm.filter.form">
-            <input type="text" ng-model="query.keywords" ng-keyup="startSearchSos($event)" ng-change="backToAllSosList()" ng-model-options="vm.filter.options" placeholder="search">
+            <input type="text" ng-model="query.keywords" id="sos-search-input" ng-keyup="startSearchSos($event)" ng-change="backToAllSosList()" ng-model-options="vm.filter.options" placeholder="search">
         </form>
         <md-button class="md-icon-button" ng-click="vm.removeFilter()">
             <md-icon md-font-icon="zmdi zmdi-close"></md-icon>
@@ -64,7 +64,7 @@
     <div layout layout-sm="column" style="padding-left:70%" flex>
         <md-input-container flex>
             <label>选择页数</label>
-            <md-select class="md-select-form" ng-change="loadNextCallPage()" ng-model="call_currentPage" placeholder="选择页数" required>
+            <md-select class="md-select-form" ng-change="loadNextCallPage(call_currentPage)" ng-model="call_currentPage" placeholder="选择页数" required>
                 <md-option ng-value="pageB" ng-repeat="pageB in call_total_pages">{{pageB}}</md-option>
             </md-select>
         </md-input-container>

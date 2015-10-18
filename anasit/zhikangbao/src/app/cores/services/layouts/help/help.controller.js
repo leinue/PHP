@@ -60,7 +60,7 @@
 
         	var data = {
         		id: id
-        	}
+        	};
 
         	HelpService.setDeal(data).then(function(data) {
 
@@ -85,7 +85,6 @@
 
         		}
 
-
         		$mdDialog.show(alert);
         		$scope.getHelpList();
 
@@ -94,9 +93,10 @@
         }
 
         $scope.startSearchHelp = function($event) {
+            $scope.query.keywords = $('#help-search-input').val();
+            console.log($scope.query.keywords);
             var keywords = $scope.query.keywords;
-            if($event.keyCode == 13) {
-                $scope.oldArchiveInfoItemList = {};
+            if($event.keyCode == 13 && $event) {
                 if(keywords == '') {
                     $scope.getHelpList();
                 }else {
@@ -129,7 +129,8 @@
             }
         }
 
-        $scope.loadNextHelpPage = function() {
+        $scope.loadNextHelpPage = function(page) {
+            $scope.help_currentPage = page;
             $scope.getHelpList();
         }
 

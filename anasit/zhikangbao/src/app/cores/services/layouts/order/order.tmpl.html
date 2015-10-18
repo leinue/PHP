@@ -75,7 +75,7 @@
     <div layout layout-sm="column" style="padding-left:70%" flex>
         <md-input-container flex>
             <label>选择页数</label>
-            <md-select class="md-select-form" ng-change="loadNextOrderPage()" ng-model="order_currentPage" placeholder="选择页数" required>
+            <md-select class="md-select-form" ng-change="loadNextOrderPage(order_currentPage)" ng-model="order_currentPage" placeholder="选择页数" required>
                 <md-option ng-value="pageB" ng-repeat="pageB in order_total_pages">{{pageB}}</md-option>
             </md-select>
         </md-input-container>

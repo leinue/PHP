@@ -180,6 +180,8 @@
 
         $scope.startSearchMonitor = function($event) {
 
+            $scope.query.keywords = $('#device-search-input').val();
+
             var keyCode = $event.keyCode;
 
             if($event && keyCode == 13) {
@@ -204,7 +206,8 @@
             
         }
 
-        $scope.loadNextMonitorPage = function() {
+        $scope.loadNextMonitorPage = function(page) {
+            $scope.monitor_currentPage = page;
             $scope.getDevice();
         }
 

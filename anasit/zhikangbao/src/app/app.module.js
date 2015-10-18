@@ -560,7 +560,7 @@
             },
 
             search: function(keywords) {
-              return Restangular.one('/sos/search/' + keywords).get();
+              return Restangular.one('/sos/searcha/' + keywords).get();
             }
 
           };

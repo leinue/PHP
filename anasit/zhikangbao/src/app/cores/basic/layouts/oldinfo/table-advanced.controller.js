@@ -36,7 +36,7 @@
         vm.removeFilter = removeFilter;
 
         $scope.total_pages = [1];
-        $scope.currentPage = 1;
+        $scope.currentPageAB = 1;
 
         $scope.currentId = '';
 
@@ -145,6 +145,7 @@
         $scope.oldInfoItemList = {};
 
         $scope.getOldInfoBasic = function() {
+            $scope.query.page = $scope.currentPageAB;
             OldInfoService.index($scope.query.page,$scope.query.limit).then(function(data) {
                 var status = data.status;
                 var realData = data.Schema;
@@ -200,8 +201,9 @@
             }
         }
 
-        $scope.loadNextPage = function() {
-            // $scope.query.page ++;
+        $scope.loadNextPage = function(page) {
+            $scope.currentPageAB = page;
+            console.log($scope.currentPageAB);
             $scope.getOldInfoBasic();
         }
 

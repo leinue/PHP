@@ -24,7 +24,7 @@
     <md-data-table-toolbar ng-show="vm.filter.show && !vm.selected.length  || 1" class="md-data-table-toolbar">
         <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
         <form flex="" name="vm.filter.form">
-            <input type="text" ng-model="query.keywords" ng-change="getAllMonitor()" ng-keyup="startSearchMonitor($event)" placeholder="search">
+            <input type="text" ng-model="query.keywords" id="device-search-input" ng-change="getAllMonitor()" ng-keyup="startSearchMonitor($event)" placeholder="search">
         </form>
         <md-button class="md-icon-button" ng-click="vm.removeFilter()">
             <md-icon md-font-icon="zmdi zmdi-close"></md-icon>
@@ -157,7 +157,7 @@
     <div layout layout-sm="column" style="padding-left:70%" flex>
         <md-input-container flex>
             <label>选择页数</label>
-            <md-select class="md-select-form" ng-change="loadNextMonitorPage()" ng-model="monitor_currentPage" placeholder="选择页数" required>
+            <md-select class="md-select-form" ng-change="loadNextMonitorPage(monitor_currentPage)" ng-model="monitor_currentPage" placeholder="选择页数" required>
                 <md-option ng-value="pageB" ng-repeat="pageB in monitor_total_pages">{{pageB}}</md-option>
             </md-select>
         </md-input-container>

@@ -25,7 +25,8 @@
 
         //////////////////////////
 
-        $scope.loadNextDevicePage = function() {
+        $scope.loadNextDevicePage = function(page) {
+            $scope.device_currentPage = page;
             $scope.getDevice();
         }
 
@@ -112,6 +113,8 @@
 
         $scope.startSearchDevice = function($event) {
 
+            $scope.query.keywords = $('#device-search-input').val();
+
             var keyCode = $event.keyCode;
 
             if($event && keyCode == 13) {
@@ -135,8 +138,6 @@
                 });
 
             }
-
-            
             
         }
     }

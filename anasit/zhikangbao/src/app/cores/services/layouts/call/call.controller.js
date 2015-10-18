@@ -53,7 +53,9 @@
 
         };
 
-        $scope.loadNextCallPage = function() {
+        $scope.loadNextCallPage = function(page) {
+            // console.log();
+            $scope.call_currentPage = page;
             $scope.getHelpList();
         }
 
@@ -135,9 +137,9 @@
         }
 
         $scope.startSearchSos = function($event) {
+            $scope.query.keywords = $('#sos-search-input').val();
             var keywords = $scope.query.keywords;
-            if($event.keyCode == 13) {
-                $scope.oldArchiveInfoItemList = {};
+            if($event.keyCode == 13 && $event) {
                 if(keywords == '') {
                     $scope.getHelpList();
                 }else {

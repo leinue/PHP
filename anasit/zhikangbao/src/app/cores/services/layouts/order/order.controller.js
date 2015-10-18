@@ -87,7 +87,8 @@
             }
         };
 
-       	$scope.loadNextOrderPage = function() {
+       	$scope.loadNextOrderPage = function(page) {
+            $scope.order_curentPage = page;
             $scope.getAllOrder();
        	};
 

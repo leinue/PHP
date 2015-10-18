@@ -189,6 +189,8 @@
 
         $scope.startSearchCommunity = function($event) {
 
+            $scope.query.keywords = $('#org-search-input').val();
+
             var keyCode = $event.keyCode;
 
             if($event && keyCode == 13) {

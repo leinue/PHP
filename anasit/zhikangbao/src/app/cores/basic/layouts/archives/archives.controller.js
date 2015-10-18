@@ -18,7 +18,7 @@
 
         $scope.total_pages = [1];
 
-        $scope.currentPage = 2;
+        $scope.currentPage = 1;
 
         $scope.users = {
             total_count: ''
@@ -55,6 +55,7 @@
         $scope.oldArchiveInfoItemList = {};
 
         $scope.getOldInfo = function() {
+            $scope.query.page = $scope.currentPage;
             OldInfoService.index($scope.query.page,$scope.query.limit).then(function(data) {
                 var status = data.status;
                 var realData = data.Schema;
@@ -211,6 +212,7 @@
         }
 
         $scope.startSearchHealth = function($event) {
+            $scope.query.keywords = $('#health-search-input').val();
             var keywords = $scope.query.keywords;
             if($event.keyCode == 13) {
                 $scope.oldArchiveInfoItemList = {};
@@ -257,8 +259,8 @@
 
         // });
     
-        $scope.loadNextPage = function() {
-            console.log($scope.currentPage);
+        $scope.loadNextPage = function(page) {
+            $scope.currentPage = page;
             $scope.getOldInfo();
         }
 

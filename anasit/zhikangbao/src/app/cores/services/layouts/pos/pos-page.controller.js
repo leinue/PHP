@@ -6,7 +6,7 @@
         .controller('BasicServicesPosController', BasicServicesPosController);
 
     /* @ngInject */
-    function BasicServicesPosController($mdDialog, $state, $scope, OrgInfoService) {
+    function BasicServicesPosController($mdDialog, $state, $scope, OrgInfoService, DeviceService, $filter) {
         var vm = this;
 
         vm.search = {
@@ -112,13 +112,20 @@
 
 	    window.infoWindow = new AMap.InfoWindow({offset:new AMap.Pixel(0,-30)});
 	    
-	    var pushMark = function (lnglats) {
+	    var pushMark = function (lnglats,manInfo) {
 	    	for(var i= 0,marker;i<lnglats.length;i++){
 		        var marker=new AMap.Marker({
 		           	position:lnglats[i],
 		            map:map
 		        });
-		        marker.content='<strong>姓名:</strong>'+nameList[i]+'<br><strong>IMEI:</strong><br><strong>定位时间:</strong><br><a href="javascript:followUp('+i+')">实时跟踪</a>&nbsp;&nbsp;<a href="javascript:followHistory()">历史记录</a>';
+
+		        var currentMan = manInfo[i];
+
+		        var name = currentMan.name;
+		        var imei = currentMan.imei;
+		        var time = $filter('date')(currentMan.last_time*1000,'yyyy-MM-dd hh:mm:ss');
+
+		        marker.content='<strong>姓名:</strong>'+name+'<br><strong>IMEI:</strong>'+imei+'<br><strong>定位时间:</strong>'+time+'<br><a href="javascript:followUp('+i+')">实时跟踪</a>&nbsp;&nbsp;<a href="javascript:followHistory()">历史记录</a>';
 		        marker.on('click',markerClick);
 		        // marker.emit('click',{target:marker});
 		        markerStack.push(marker);
@@ -127,7 +134,7 @@
 		    }
 	    }
 
-	    pushMark(lnglats);
+	    pushMark(lnglats,nameList);
 
 	    function markerClick(e){
 	        infoWindow.setContent(e.target.content);
@@ -192,27 +199,47 @@
 
         	TotalLnglats = [];
 
-        	var id = $scope.currentOrg;
+        	DeviceService.getDeviceAndOldByOrgId($scope.currentOrg).then(function(data) {
 
-        	id = id / 100;
+        		var status = data.status;
+        		var realData = data.Schema;
 
-        	var extra  = Math.random();
-        	extra = extra / 100;
+        		if(status != '200') {
+        			var alert = $mdDialog.alert({
+	                    title: '网络传输失败',
+	                    content: realData.properties.message,
+	                    ok: '确定'
+	                });
+	                $mdDialog.show(alert);
+	                return false;
+        		}
 
-        	var extraTmp = Math.random();
-        	extraTmp = extraTmp / 1000;
+        		realData = realData.properties;
 
-        	var lnglats=[
-		        [111.488905 + id,27.23421 + extra + extraTmp],
-		        [111.4821226 + id,27.222506 + extra + extraTmp],
-		        [111.482714 + id,27.24605+ extra + extraTmp],
-		        [111.4832512 + id,27.256172 + extra + extraTmp],
-		        [111.4855082 + id,27.214837 + extra + extraTmp],
-		        [111.4862762 + id,27.221274 + extra + extraTmp]
-		    ];
+        		console.log(realData);
 
-		    pushMark(lnglats);
-		    map.setCenter(lnglats[0]);
+        		var lnglats = [];
+        		var oldMan = [];
+
+        		for (var i = 0; i < realData.length; i++) {
+        			var curr = realData[i];
+
+        			var tmp = [];
+        			tmp[0] = curr.lng;
+        			tmp[1] = curr.lat;
+        			lnglats.push(tmp);
+
+        			var oldTmp = {};
+        			oldTmp.name = curr.realname;
+        			oldTmp.imei = curr.device_imei;
+        			oldTmp.last_time = curr.last_time;
+        			oldMan.push(oldTmp);
+        		};
+
+        		pushMark(lnglats,oldMan);
+		    	map.setCenter(lnglats[0]);
+
+        	});
 
         }
 

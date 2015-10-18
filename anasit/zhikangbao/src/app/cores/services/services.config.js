@@ -58,6 +58,18 @@
             templateUrl: 'app/cores/services/layouts/health-archives/new-health.tmpl.html',
             controller: 'BasicServicesNewHealthController',
             controllerAs: 'vm'
+        })
+        .state('triangular.admin-default.services-work', {
+            url: '/services/work',
+            templateUrl: 'app/cores/services/layouts/order/order.tmpl.html',
+            controller: 'BasicServicesOrderController',
+            controllerAs: 'vm'
+        })
+        .state('triangular.admin-default.service-new-work-order', {
+            url: '/services/order/new',
+            templateUrl: 'app/cores/services/layouts/order/new-order.tmpl.html',
+            controller: 'BasicServicesNewOrderController_',
+            controllerAs: 'vm'
         });
 
         triMenuProvider.addMenu({
@@ -84,6 +96,11 @@
             {
                 name: '咨询服务受理',
                 state: 'triangular.admin-default.services-help',
+                type: 'link'
+            },
+            {
+                name: '求助服务受理',
+                state: 'triangular.admin-default.services-work',
                 type: 'link'
             },
             {

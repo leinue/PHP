@@ -1,17 +1,18 @@
 <md-card style="padding:0;margin:0">
     <md-card-content>
         <div class="content-padded">
-            <h2 class="md-title">咨询服务管理</h2>
+            <h2 class="md-title">求助服务工单管理</h2>
         </div>
         <md-divider></md-divider>
         <div class="button-toolbar" layout="row" layout-align="start center">
+            <md-button class="md-raised md-primary" ng-click="newOrder()">新增工单</md-button>
         </div>
     </md-card-content>
 </md-card>
 
 <div ng-controller="TablesAdvancedController as vm">
     <md-data-table-toolbar ng-hide="vm.selected.length || vm.filter.show">
-        <h2 class="md-title">咨询服务列表</h2>
+        <h2 class="md-title">服务工单列表</h2>
         <div flex></div>
         <md-button class="md-icon-button" ng-click="vm.filter.show = true">
             <!-- <i class="material-icons md-dark">filter_list</i> -->
@@ -22,7 +23,7 @@
     <md-data-table-toolbar ng-show="vm.filter.show && !vm.selected.length || 1" class="md-data-table-toolbar">
         <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
         <form flex="" name="vm.filter.form">
-            <input type="text" ng-model="query.keywords" ng-keyup="startSearchHelp($event)" ng-change="backToAllHelpList()" placeholder="搜索">
+            <input type="text" ng-model="query.orderKeywords" id="order-search" ng-keyup="startSearchOrder($event)" ng-change="backToAllOrderList()" placeholder="搜索">
         </form>
         <md-button class="md-icon-button" ng-click="vm.removeFilter()">
             <md-icon md-font-icon="zmdi zmdi-close"></md-icon>
@@ -38,28 +39,31 @@
             <thead md-order="vm.query.order" md-trigger="vm.getUsers">
                 <tr>
                     <th name="老人姓名"></th>
-                    <!-- <th name="联系方式"></th> -->
-                    <th name="求助标题"></th>
-                    <th name="求助内容"></th>
-                    <th name="求助时间"></th>
-                    <th name="是否受理"></th>
-                    <th name="操作员"></th>
-                    <th name="操作"></th>
+                    <th name="性别"></th>
+                    <th name="年龄"></th>
+                    <th name="详细住址"></th>
+                    <th name="电话号码"></th>
+                    <th name="受理时间"></th>
+                    <th name="服务类别"></th>
+                    <th name="具体内容"></th>
+                    <!-- <th name="操作"></th> -->
                 </tr>
             </thead>
             <tbody>
-                <tr md-auto-select ng-repeat="user in helpList">
-                    <td>{{user.realname | nullToVisual}}</td>
-                    <!-- <td>{{user.mobile}}</td> -->
-                    <td>{{user.help_title}}</td>
-                    <td>{{user.help_content}}</td>
-                    <td>{{user.create_time*1000 | date:'yyyy-MM-dd'}}</td>
-                    <td>{{user.isdeal | isDeal}}</td>
-                    <td>{{user.operator}}</td>
-                    <td>
-                        <md-button ng-click="confirmDeal(user.id)" ng-show="user.isdeal == 0" class="md-warn">确认受理</md-button>
-                    </td>
-                </tr>
+                <tr md-auto-select ng-repeat="user in orderList">
+                    <td>{{user.old_realname | nullToVisual}}</td>
+                    <td>{{user.old_sex}}</td>
+                    <td>{{user.old_age}}</td>
+                    <td>{{user.address}}</td>
+                    <td>{{user.old_mobile}}</td>
+                    <td>{{user.time*1000 | date:'yyyy-MM-dd'}}</td>
+                    <td>{{user.service_type | nullToVisual}}</td>
+                    <td>{{user.content}}</td>
+                    <!--<td>
+                        <md-button ng-click="editThis()" class="md-warn">查看/修改</md-button>
+                        <md-button class="md-warn" ng-click="deleteThisOrder()">删除</md-button>
+                    </td>-->
+                 </tr>
             </tbody>
         </table>
     </md-data-table-container>
@@ -67,8 +71,8 @@
     <div layout layout-sm="column" style="padding-left:70%" flex>
         <md-input-container flex>
             <label>选择页数</label>
-            <md-select class="md-select-form" ng-change="loadNextHelpPage()" ng-model="help_currentPage" placeholder="选择页数" required>
-                <md-option ng-value="pageB" ng-repeat="pageB in help_total_pages">{{pageB}}</md-option>
+            <md-select class="md-select-form" ng-change="loadNextOrderPage()" ng-model="order_currentPage" placeholder="选择页数" required>
+                <md-option ng-value="pageB" ng-repeat="pageB in order_total_pages">{{pageB}}</md-option>
             </md-select>
         </md-input-container>
     </div>

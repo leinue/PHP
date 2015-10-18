@@ -372,6 +372,22 @@
 
             search: function(keywords) {
               return Restangular.one('/device/search/' + keywords).get();
+            },
+
+            getDeviceAndOldByOrgId: function(id) {
+              return Restangular.one('/device/org/' + id).get();
+            },
+
+            getOldHistoryByUid: function(uid) {
+              return Restangular.one('/device/device_history/' + uid).get();
+            },
+
+            getRuntimePositionByUid: function(uid) {
+              return Restangular.one('/device/device_info/' + uid).get();
+            },
+
+            getSingleOldByKeyWords: function(key) {
+              return Restangular.one('/device/search_pos/' + key).get();
             }
 
           };
@@ -543,7 +559,7 @@
           };
 
         }])
-        .factory('SmsService', ['Restangular', '$http', 'API_CONFIG', function (Restangular, $http, API_CONFIG {
+        .factory('SmsService', ['Restangular', '$http', 'API_CONFIG', function (Restangular, $http, API_CONFIG) {
 
           return {
             
@@ -557,6 +573,27 @@
 
             sendByEmail: function(data) {
               return Restangular.one('/PHPMailer/examples/smtp.php?title=' + data.title + '&content=' + data.content + '&to=' + data.to).get();
+            }
+
+          };
+
+        }])
+        .factory('OrderService', ['Restangular', '$http', 'API_CONFIG', function (Restangular, $http, API_CONFIG) {
+
+          return {
+            
+            index: function(page,limit) {
+              page = page == null ? 1 : page;
+              limit = limit == null ? 10 : limit;
+              return Restangular.one('/work/get/' + page + '/' + limit).get();
+            },
+
+            insert: function(data) {
+              return Restangular.all('/work/add').post(data);
+            },
+
+            search: function(data) {
+              return Restangular.one('/work/search/' + data).get();
             }
 
           };

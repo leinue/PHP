@@ -15,6 +15,10 @@
 
         $scope.currentUserId = $stateParams.oldman_id;
 
+        console.log($scope.currentUserId);
+
+        console.log('triangular.admin-default.services-' + $scope.currentUserId);
+
         //解决左侧菜单需要点击两次才能加载数据的bug
         if(isNaN($scope.currentUserId)) {
             $state.go('triangular.admin-default.services-' + $scope.currentUserId);

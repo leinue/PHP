@@ -28,6 +28,9 @@
             </md-tab-label>
             <md-tab-body>
                 <md-content>
+                <video id="myvideo" onplay="videoStartfn()" onended="videoEnd()" style="display:none" src="http://jsdx.sc.chinaz.com/Files/DownLoad/sound1/201510/6464.mp3"  controls="controls">
+                    Your browser does not support the audio element.
+                </video>
                     <md-list>
                         <div ng-repeat="group in vm.notificationGroups">
                             <md-subheader class="md-primary">{{group.sos_name}}</md-subheader>
@@ -79,3 +82,19 @@
         </md-tab> -->
     </md-tabs>
 </md-content>
+
+        <script type="text/javascript">
+
+            window.videoStart = false;
+
+            window.myvideo = document.getElementById('myvideo');
+
+            function videoStartfn() {
+                window.videoStart = true;
+            }
+
+            function videoEnd() {
+                window.videoStart = false;
+            }
+
+        </script>

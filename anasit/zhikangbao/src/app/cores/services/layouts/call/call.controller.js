@@ -81,8 +81,6 @@
         			$('#old-info').modal('show');
         			$('.modal-backdrop').css('z-index','0');
         		}
-
-
         	});
 
         }

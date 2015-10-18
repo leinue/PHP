@@ -13,25 +13,6 @@
 
         $scope.inserOldInfo = {};
 
-        /*
-            user_id: localStorage.id,
-            realname: '',
-            blood_type: '',
-            org_id: '',
-            device_id: '',
-            address: '',
-            finance: '',
-            feature: '',
-            description: '',
-            realation_name: '',
-            realation_phone: '',
-            realationship: '',
-            mobile: '',
-            idcard: '',
-            sex: '',
-            nation: ''
-        */
-
         $scope.thisTitle = '新增老人信息';
 
         if(typeof $stateParams.id !='undefined') {
@@ -54,10 +35,7 @@
             var status = data.status;
             var realData = data.Schema.properties;
             $scope.ordList = realData;
-            console.log($scope.ordList);
         });
-
-        console.log($state);
 
         $scope.returnToOldmanList = function() {
             var name = $state.current.name;

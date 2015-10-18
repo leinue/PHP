@@ -71,9 +71,20 @@
             return i==='1' ? '已受理' : '未受理';
           };
         })
+        .filter('orderStatus', function() {
+          return function(i) {
+            return i==='1' ? '已受理' : '未受理';
+          };
+        })
         .run(function($rootScope, $location, $http, $state, LoginService, CheckStatus, $mdDialog){
 
             // User.getThisInfo();
+
+            window.clearInterval(window.runtimePosInterval);
+            window.clearInterval(window.singleRuntimePosInterval);
+
+            window.runtimePosInterval = '';
+            window.singleRuntimePosInterval = '';
 
             $rootScope.$on('$locationChangeStart',function(evt,next,curr){
               
@@ -82,7 +93,7 @@
               if(next.indexOf('login') === -1 && next.indexOf('signup') === -1){
                 
                 //进入登录页面,登录页面不需要判断是否登录
-                if(typeof localStorage.username == 'undefined' || localStorage.username == '') {
+                if(typeof localStorage.username_ == 'undefined' || localStorage.username_ == '') {
                   //本地未存储用户数据时不用判断是否登录
                   return false;
                 }
@@ -100,10 +111,6 @@
                     }
                  });
               }
-
-
-
-              
 
               // if(!User.isLoggedIn() ||){
               //   $location.path('/login');
@@ -594,6 +601,10 @@
 
             search: function(data) {
               return Restangular.one('/work/search/' + data).get();
+            },
+
+            confirm: function(id) {
+              return Restangular.one('work/deal/' + id).get();
             }
 
           };

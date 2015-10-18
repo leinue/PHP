@@ -19,6 +19,8 @@
 
         $scope.currentOrg = '';
 
+        window.runtimePosInterval = '';
+
         //定义位置的查看状态0表示全体1表示追踪
         //默认为0
         vm.posStatus = {
@@ -30,6 +32,9 @@
         		$('#history-pos-console ul').html('');
         		$scope.getOldManTrip();
         		this.title = "位置信息监控";
+        		window.clearInterval(window.singleRuntimePosInterval);
+        		window.singleRuntimePosInterval = '';
+        		$('#history-pos-console').slideUp();
         	},
         	title: '位置信息监控',
         	openConsole: function() {
@@ -133,6 +138,7 @@
 		        marker.name = name;
 		        marker.idcard = currentMan.idcard;
 		        marker.imei = imei;
+		        marker.uid = currentMan.user_id;
 
 		        // marker.emit('click',{target:marker});
 
@@ -239,6 +245,16 @@
 
         		pushMark(lnglats,oldMan);
 		    	map.setCenter(lnglats[0]);
+
+		    	var allRuntime = 10;
+		    	if(window.runtimePosInterval == '') {
+		    		window.runtimePosInterval = setInterval(function() {
+		    			$('#pos-time').slideDown();
+		    			$('#pos-time').html(allRuntime + ' 秒后刷新位置');
+                        allRuntime --;
+			    		$scope.getOldManTrip();
+			    	},10000);
+		    	}
 
         	});
 

@@ -36,8 +36,8 @@
 
         ///////////////////////////////////////////////////////
 
-        if(typeof localStorage.username != 'undefined') {
-            vm.user.login_user = localStorage.username;
+        if(typeof localStorage.username_ != 'undefined') {
+            vm.user.login_user = localStorage.username_;
             vm.user.password = localStorage.userpw;
             vm.user.rememberMe = Boolean(localStorage.rememberMe);
         }
@@ -64,9 +64,9 @@
                     var info = realData.properties;
 
                     localStorage.id = info.id;
-                    localStorage.username = info.username;
+                    localStorage.username_ = vm.user.login_user;
                     localStorage.mobile = info.mobile;
-                    localStorage.userpw = info.password;
+                    localStorage.userpw = vm.user.password;
                     localStorage.rememberMe = vm.user.rememberMe;
 
                     var roleList = [];

@@ -96,6 +96,15 @@
                                                 <md-option ng-value="type" ng-repeat="type in ['老人辅具', '日化用品', '健康食材', '家政服务']">{{type}}</md-option>
                                             </md-select>
                                         </md-input-container>
+                                        <md-input-container flex>
+                                            <label translate>处理人</label>
+                                            <input type="text" ng-model="insertOrderInfo.operator" require>
+                                            <div ng-messages="accountForm.passwordConfirm.$error">
+                                                <div ng-message when="required">
+                                                    <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
+                                                </div>
+                                            </div>
+                                        </md-input-container>
                                     </div>
                                 </div>
                                 <div layout layout-sm="column" flex>

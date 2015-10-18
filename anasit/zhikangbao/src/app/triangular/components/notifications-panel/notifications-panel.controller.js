@@ -37,6 +37,12 @@
 
                   vm.notificationGroups = realData;
 
+                  if(!window.videoStart) {
+                    window.myvideo.play();
+                  }
+
+                  console.log(realData);
+
                   for (var i = 0; i < realData.length; i++) {
                         var curr = realData[i];
 
@@ -48,7 +54,8 @@
                                 .highlightAction(true)
                                 .hideDelay(0)
                         ).then(function() {
-                            
+                            window.myvideo.pause();
+                            window.videoStart = false;
                         });
                   };
 

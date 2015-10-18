@@ -67,12 +67,25 @@
         list-style: none;
     }
 
+    #pos-time {
+        background: rgba(0,0,0,0.8);
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        padding: 15px;
+        color: rgb(255,255,255);
+        border-radius: 4px;
+        display: none;
+    }
+
 </style>
 
 <div id="history-pos-console">
     <ul>
     </ul>
 </div>
+
+<div id="pos-time"></div>
 
 <script type="text/javascript">
 
@@ -82,6 +95,8 @@
 
     window.historyPolyLine = [];
     window.historyPerson = [];
+
+    window.singleRuntimePosInterval = '';
     
     var followUp = function(mobile) {
         if(mobile == null) {
@@ -89,12 +104,43 @@
             return false;
         }
 
+        var currentMarkerA = '';
+
         for (var i = markerStack.length - 1; i >= 0; i--) {
             if(markerStack[i].Rd.position === currentMarker.target.Rd.position){
+                currentMarkerA = markerStack[i];
                 continue;
             }
             markerStack[i].setMap(null);
         };
+
+        $.ajax({  
+            type: "get",
+            contentType: "application/x-www-form-urlencoded",
+            dataType: "json",
+            url: "http://api.zkkj168.com:81/device/device_info/" + currentMarkerA.uid,  //这里是网址
+            success:function(data){
+                realData = data.Schema.properties;
+                $('#history-pos-console ul').html('目前位置 : ' + realData.location);
+                $('#history-pos-console').slideDown();
+
+                currentMarkerA.setPosition([realData.lng,realData.lat]);
+                var singleRuntime = 10;
+                if(window.singleRuntimePosInterval == '') {
+                    window.singleRuntimePosInterval = setInterval(function() {
+                        $('#pos-time').slideDown();
+                        $('#pos-time').html(singleRuntime + ' 秒后刷新位置');
+                        singleRuntime --;
+                        followUp(mobile);
+                    },10000);
+                }
+
+            },
+            timeout:30000, 
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert(errorThrown);
+            }
+        });
 
         infoWindow.close();
         $('#returnRoWholeBtn').show();
@@ -124,6 +170,12 @@
     }
 
     var followHistory = function(id) {
+
+        window.clearInterval(window.runtimePosInterval);
+        window.clearInterval(window.singleRuntimePosInterval);
+
+        window.runtimePosInterval = '';
+        window.singleRuntimePosInterval = '';
 
         hideAllpolyLine();
 

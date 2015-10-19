@@ -39,7 +39,7 @@
 
         $scope.setUserAdmin = function (id) {
 
-            UserMgrService.setAdmin().then(function(data) {
+            UserMgrService.setAdmin(id).then(function(data) {
 
                 var status = data.status;
                 var realData = data.Schema;

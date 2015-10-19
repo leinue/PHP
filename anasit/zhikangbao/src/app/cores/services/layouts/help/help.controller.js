@@ -6,7 +6,7 @@
         .controller('BasicServicesHelpController', BasicServicesHelpController);
 
     /* @ngInject */
-    function BasicServicesHelpController($mdDialog, $state, $scope, HelpService) {
+    function BasicServicesHelpController($mdDialog, $state, $scope, HelpService, $stateParams) {
         var vm = this;
 
         $scope.helpList = {};

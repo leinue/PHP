@@ -6,7 +6,7 @@
         .controller('BasicOrgController', BasicOrgController);
 
     /* @ngInject */
-    function BasicOrgController($scope, $state, $mdDialog, OrgInfoService, OrgService) {
+    function BasicOrgController($scope, $state, $mdDialog, OrgInfoService, OrgService, $stateParams) {
         var vm = this;
 
         $scope.query = {
@@ -36,6 +36,8 @@
         };
 
         var currentState = $state.current.name;
+
+        $state.go(currentState);
 
         $scope.insertOrgList.code = -1;
 

@@ -366,7 +366,7 @@
               return Restangular.one('/profile/device/index/' + page + '/' + limit).get();
             },
 
-            update:function(data) {
+            update: function(data) {
               return Restangular.all('/profile/device/update').post(data);
             },
 
@@ -469,11 +469,11 @@
             return {
           
                 index: function() {
-                  return Restangular.one('/user/list').get();
+                  return Restangular.one('/user/unactive').get();
                 },
 
-                setAdmin: function() {
-                  return Restangular.one('/user/manage').get();
+                setAdmin: function(id) {
+                  return Restangular.one('/user/active/' + id).get();
                 }
 
             };

@@ -46,10 +46,10 @@
             </thead>
             <tbody>
                 <tr md-auto-select ng-repeat="user in userWithoutRightsList">
-                    <td>{{::user.user_id}}</td>
+                    <td>{{::user.id}}</td>
                     <td>{{::user.username}}</td>
                     <td>
-                        <md-button ng-click="setUserAdmin(user.user_id)" class="md-primary">设为管理员</md-button>
+                        <md-button ng-click="setUserAdmin(user.id)" class="md-primary">设为管理员</md-button>
                     </td>
                 </tr>
             </tbody>

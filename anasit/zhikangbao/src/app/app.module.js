@@ -91,6 +91,8 @@
             window.runtimePosInterval = '';
             window.singleRuntimePosInterval = '';
 
+            console.log(localStorage.roles);
+
             $rootScope.$on('$locationChangeStart',function(evt,next,curr){
               
               var userIsLoginIn = localStorage.id;
@@ -104,7 +106,6 @@
                 }
 
                 CheckStatus.checkAuth().then(function(data) {
-                  console.log(data);
                     var userIsLoggedIn = data;
                     if(userIsLoggedIn === 'false' || userIsLoggedIn === false) {
                       var alert = $mdDialog.alert({
@@ -204,7 +205,6 @@
                     if(http) {
                         return $http.get(API_CONFIG.url + 'auth/check');
                     }else{
-                      console.log('restangular');
                        return Restangular.one('auth/check').get();
                     }
                 }

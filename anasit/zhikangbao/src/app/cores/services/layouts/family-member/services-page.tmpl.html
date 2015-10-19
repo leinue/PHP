@@ -21,7 +21,7 @@
         </md-button>
     </md-data-table-toolbar>
 
-    <md-data-table-toolbar ng-show="vm.filter.show && !vm.selected.length  || 1" class="md-data-table-toolbar">
+<!--     <md-data-table-toolbar ng-show="vm.filter.show && !vm.selected.length  || 1" class="md-data-table-toolbar">
         <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
         <form flex="" name="vm.filter.form">
             <input type="text" ng-model="vm.query.filter" ng-model-options="vm.filter.options" placeholder="search">
@@ -29,7 +29,7 @@
         <md-button class="md-icon-button" ng-click="vm.removeFilter()">
             <md-icon md-font-icon="zmdi zmdi-close"></md-icon>
         </md-button>
-    </md-data-table-toolbar>
+    </md-data-table-toolbar> -->
 
     <md-data-table-toolbar class="alternate" ng-show="vm.selected.length" layout-align="space-between">
       <div>选择了 {{vm.selected.length}} 个用户</div>
@@ -53,7 +53,7 @@
                     <td>{{user.relation_id}}</td>
                     <td>{{user.realname}}</td>
                     <td>{{user.relation_realname}}</td>
-                    <td>{{user.mobile}}</td>
+                    <td>{{user.relation_mobile}}</td>
                     <td>{{user.relation_idcard}}</td>
                     <td>{{user.relation}}</td>
                     <td>
@@ -65,7 +65,7 @@
         </table>
     </md-data-table-container>
 
-    <md-data-table-pagination md-limit="vm.query.limit" md-page="vm.query.page" md-total="{{vm.users.total_count}}" md-trigger=""></md-data-table-pagination>
+    <!-- <md-data-table-pagination md-limit="vm.query.limit" md-page="vm.query.page" md-total="{{vm.users.total_count}}" md-trigger=""></md-data-table-pagination> -->
 </div>
 
     <!-- Modal -->

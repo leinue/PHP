@@ -94,11 +94,12 @@
                 
                 //进入登录页面,登录页面不需要判断是否登录
                 if(typeof localStorage.username_ == 'undefined' || localStorage.username_ == '') {
-                  //本地未存储用户数据时不用判断是否登录
-                  return false;
+                  //本地未存储用户数据时不用判断是否登录,直接认定为未登录
+                  $state.go('authentication.login');
                 }
 
                 CheckStatus.checkAuth().then(function(data) {
+                  console.log(data);
                     var userIsLoggedIn = data;
                     if(userIsLoggedIn === 'false' || userIsLoggedIn === false) {
                       var alert = $mdDialog.alert({

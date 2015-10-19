@@ -136,6 +136,7 @@
                         ok: '确定'
                     });
                     $scope.getAllMembers();
+                    $('#edit-family-member').modal('hide');
                 }
                 $mdDialog.show(alert);
             });

@@ -60,6 +60,7 @@
                 var status = data.status;
                 var realData = data.Schema;
                 $scope.oldArchiveInfoItemList = realData.properties.detail;
+                console.log($scope.oldArchiveInfoItemList);
                 $scope.users.total_count = Math.ceil(realData.properties.count/$scope.query.limit);
                 $scope.total_pages = [];
                 for (var i = 1; i < $scope.users.total_count + 1; i++) {

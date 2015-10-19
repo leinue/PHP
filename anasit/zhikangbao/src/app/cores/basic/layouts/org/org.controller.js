@@ -19,6 +19,9 @@
         $scope.orgList = {};
         $scope.insertOrgList = {};
 
+        $scope.insertOrgList.code1 = -1;
+        $scope.insertOrgList.code2 = -1;
+
         $scope.orgCateList = {};
 
         $scope.orgEnabled = {
@@ -49,6 +52,8 @@
         if(currentState.indexOf('shop') != -1) {
             //服务商家管理
             $scope.insertOrgList.code = 3;
+            $scope.insertOrgList.code1 = 4;
+            $scope.insertOrgList.code2 = 5;
         }
 
         OrgInfoService.index().then(function(data) {
@@ -127,6 +132,12 @@
                 });
             }else{
                 //新增组织信息
+
+                if($scope.insertOrgList.address == '' || $scope.insertOrgList.city == '' || $scope.insertOrgList.province == '' || $scope.insertOrgList.org_code == '' || $scope.insertOrgList.enabled == '' || $scope.insertOrgList.short_name == '' || $scope.insertOrgList.full_name == '' || $scope.insertOrgList.code == '') {
+                    alert('请完整填写信息');
+                    return false;
+                }
+
                 OrgService.insert($scope.insertOrgList).then(function(data) {
                     var status = data.status;
                     var realData = data.Schema;

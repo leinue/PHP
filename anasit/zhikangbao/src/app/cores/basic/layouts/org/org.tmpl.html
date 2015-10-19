@@ -49,7 +49,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr md-auto-select ng-show="insertOrgList.code == item.code || inserOrgList.code == -1" ng-repeat="item in orgList">
+                <tr md-auto-select ng-show="insertOrgList.code == item.code || inserOrgList.code == -1 || insertOrgList.code1 == item.code || insertOrgList.code2 == item.code" ng-repeat="item in orgList">
                     <td>{{item.id}}</td>
                     <td>{{item.full_name}}</td>
                     <td>{{item.name}}</td>

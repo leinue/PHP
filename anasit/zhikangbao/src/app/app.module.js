@@ -76,6 +76,11 @@
             return i==='1' ? '已受理' : '未受理';
           };
         })
+        .filter('userGroupFilter', function() {
+          return function(i) {
+            return i == null ? '普通用户' : '管理员';
+          }
+        })
         .run(function($rootScope, $location, $http, $state, LoginService, CheckStatus, $mdDialog){
 
             // User.getThisInfo();

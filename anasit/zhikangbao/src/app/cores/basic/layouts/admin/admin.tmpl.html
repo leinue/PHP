@@ -1,7 +1,7 @@
 <md-card style="padding:0;margin:0">
     <md-card-content>
         <div class="content-padded">
-            <h2 class="md-title">系统管理员设置(这里读取的是所有无权限用户)</h2>
+            <h2 class="md-title">系统管理员设置</h2>
         </div>
         <md-divider></md-divider>
         <div class="button-toolbar" layout="row" layout-align="start center">
@@ -41,6 +41,7 @@
                 <tr>
                     <th name="编号"></th>
                     <th name="用户名"></th>
+                    <th name="用户组"></th>
                     <th name="操作"></th>
                 </tr>
             </thead>
@@ -48,8 +49,9 @@
                 <tr md-auto-select ng-repeat="user in userWithoutRightsList">
                     <td>{{::user.id}}</td>
                     <td>{{::user.username}}</td>
+                    <td>{{::user.id | userGroupFilter}}</td>
                     <td>
-                        <md-button ng-click="setUserAdmin(user.id)" class="md-primary">设为管理员</md-button>
+                        <md-button ng-show="user.id == null" ng-click="setUserAdmin(user.id)" class="md-primary">设为管理员</md-button>
                     </td>
                 </tr>
             </tbody>

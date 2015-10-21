@@ -23,7 +23,7 @@
         // }
 
         $scope.currentUser = {
-            username: localStorage.username
+            username: localStorage.username_
         };
 
         $scope.logout = function() {

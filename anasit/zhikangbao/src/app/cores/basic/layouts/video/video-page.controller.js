@@ -21,7 +21,7 @@
         $scope.currentCodec = 'h264';
         $scope.currentSubtype = 'main'
 
-        $scope.videoValue = 'rtsp://admin:a1234567@192.168.1.64:1554/h264/ch1/main/av_stream';
+        $scope.videoValue = 'rtsp://admin:zkmoni777@192.168.1.55:1554/h264/ch1/main/av_stream';
 
         // OrgService.index().then(function(data) {
         // 	var status = data.status;
@@ -117,15 +117,30 @@
         	}
         	$scope.videoValue = 'rtsp://'+name+':'+pw+'@'+ip+':'+port+'/'+$scope.currentCodec+'/ch1/'+$scope.currentSubtype+'/av_stream';
         	console.log($scope.videoValue);
-        	var videoHTML = '<object id="basicVideo" type="application/x-vlc-plugin" pluginspage="http://www.videolan.org/" events="false" width="100%" height="510">\
-            <param name="mrl" value="'+$scope.videoValue+'" />\
-            <param name="volume" value="50" />\
-            <param name="autoplay" value="true" />\
-            <param name="loop" value="false" />\
-            <param name="fullscreen" value="false" />\
-            <param name="controls" value="false" />\
-        </object>';
-        	$('#monitor-area').html(videoHTML);
+        	var videoHTML = "<!--[if IE]>"+
+"   <object type=\'application/x-vlc-plugin\' id=\'basicVideo\' events=\'True\'"+
+"       classid=\'clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921\' codebase=\"http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab\" width=\"100%\" height=\"410\">"+
+"          <param name=\'mrl\' value=\""+$scope.videoValue+"\" />"+
+"          <param name=\'volume\' value=\'50\' />"+
+"          <param name=\'autoplay\' value=\'true\' />"+
+"          <param name=\'loop\' value=\'false\' />"+
+"          <param name=\'fullscreen\' value=\'false\' />"+
+"          <param name=\'controls\' value=\'false\' />"+
+"    </object>"+
+"<![endif]-->"+
+"<!--[if !IE]><!-->"+
+"    <object type=\'application/x-vlc-plugin\' id=\'basicVideo\' events=\'True\' width=\"100%\" height=\"410\" pluginspage=\"http://www.videolan.org\" codebase=\"http://downloads.videolan.org/pub/videolan/vlc-webplugins/2.0.6/npapi-vlc-2.0.6.tar.xz\">"+
+"        <param name=\'mrl\' value=\""+$scope.videoValue+"\" />"+
+"        <param name=\'volume\' value=\'50\' />"+
+"        <param name=\'autoplay\' value=\'true\' />"+
+"        <param name=\'loop\' value=\'false\' />"+
+"        <param name=\'fullscreen\' value=\'false\' />"+
+"        <param name=\'controls\' value=\'false\' />"+
+"    </object>"+
+"<!--<![endif]-->";
+
+	
+	$('#monitor-area').html(videoHTML);
             $scope.selectVideoArea();
         };
 

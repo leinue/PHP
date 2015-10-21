@@ -2,5 +2,5 @@
     'use strict';
 
     angular
-        .module('app.cores.basic',[]);
+        .module('app.cores.community-system',[]);
 })();

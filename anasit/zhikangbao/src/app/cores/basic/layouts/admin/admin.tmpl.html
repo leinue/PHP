@@ -48,7 +48,7 @@
             <tbody>
                 <tr md-auto-select ng-repeat="user in userWithoutRightsList">
                     <td>{{::user.id}}</td>
-                    <td>{{::user.username}}</td>
+                    <td>{{::user.nickname}}</td>
                     <td>{{::user.id | userGroupFilter}}</td>
                     <td>
                         <md-button ng-show="user.id == null" ng-click="setUserAdmin(user.id)" class="md-primary">设为管理员</md-button>

@@ -431,7 +431,7 @@
             },
 
             singleOne: function(id) {
-              return Restangular.one('/healths/old/singleOne/' + id).get();
+              return Restangular.one('/healths/old/singleOne/A/' + id).get();
             },
 
             search: function(keywords) {

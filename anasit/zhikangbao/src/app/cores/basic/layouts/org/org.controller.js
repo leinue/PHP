@@ -37,8 +37,6 @@
 
         var currentState = $state.current.name;
 
-        $state.go(currentState);
-
         $scope.insertOrgList.code = -1;
 
         if(currentState.indexOf('department') != -1) {
@@ -57,6 +55,8 @@
             $scope.insertOrgList.code1 = 4;
             $scope.insertOrgList.code2 = 5;
         }
+
+        $state.go(currentState, {orgId: $scope.insertOrgList.code});
 
         OrgInfoService.index().then(function(data) {
             var status = data.status;

@@ -51,7 +51,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr md-auto-select ng-repeat="device in devices">
+                <tr ng-show="device.organization.length != 0" md-auto-select ng-repeat="device in devices">
                     <!-- <td>{{::device.monitor_id | nullToVisual}}</td> -->
                     <td>{{::device.monitor_name | nullToVisual}}</td>
                     <td>{{::device.organization.full_name | nullToVisual}}</td>

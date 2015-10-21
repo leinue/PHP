@@ -114,19 +114,19 @@
             controllerAs: 'vm'
         })
         .state('triangular.admin-default.department-mgr',{
-            url: '/org-mgr',
+            url: '/org-mgr/2',
             templateUrl: 'app/cores/basic/layouts/org/org.tmpl.html',
             controller: 'BasicOrgController',
             controllerAs: 'vm'
         })
         .state('triangular.admin-default.community-mgr',{
-            url: '/org-mgr',
+            url: '/org-mgr/1',
             templateUrl: 'app/cores/basic/layouts/org/org.tmpl.html',
             controller: 'BasicOrgController',
             controllerAs: 'vm'
         })
         .state('triangular.admin-default.shop-mgr',{
-            url: '/org-mgr',
+            url: '/org-mgr/3',
             templateUrl: 'app/cores/basic/layouts/org/org.tmpl.html',
             controller: 'BasicOrgController',
             controllerAs: 'vm'
@@ -158,30 +158,25 @@
                     type: 'link'
                 }]
             },
-            // {
-            //     name: '档案管理',
-            //     state: 'triangular.admin-default.basic-archives',
-            //     type: 'link'
-            // },
-            // {
-            //     name: '设备管理',
-            //     state: 'triangular.admin-default.device-mgr',
-            //     type: 'link'
-            // },
             {
-                name: '机构管理',
+                name: '组织管理系统',
                 state: 'triangular.admin-default.department-mgr',
-                type: 'link'
-            },
-            {
-                name: '社区管理',
-                state: 'triangular.admin-default.community-mgr',
-                type: 'link'
-            },
-            {
-                name: '服务商家管理',
-                state: 'triangular.admin-default.shop-mgr',
-                type: 'link'
+                type: 'dropdown',
+                children: [{
+                    name: '机构管理',
+                    state: 'triangular.admin-default.department-mgr',
+                    type: 'link'
+                },
+                {
+                    name: '社区管理',
+                    state: 'triangular.admin-default.community-mgr',
+                    type: 'link'
+                },
+                {
+                    name: '服务商家管理',
+                    state: 'triangular.admin-default.shop-mgr',
+                    type: 'link'
+                },]
             },
             {
                 name: '视频关爱系统',

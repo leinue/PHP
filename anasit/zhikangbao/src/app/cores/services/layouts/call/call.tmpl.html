@@ -54,7 +54,7 @@
                     <td>{{user.sos_time*1000 | date:'yyyy-MM-dd'}}</td>
                     <td>
                         <md-button ng-click="viewThisYulp(user.sos_id)" class="md-warn">详细</md-button>
-                    <md-button ng-click="viewThisFamily(user.id)" class="md-warn">亲人信息</md-button>
+                    <md-button ng-click="viewThisFamily(user.sos_id)" class="md-warn">亲人信息</md-button>
                     </td>
                 </tr>
             </tbody>
@@ -83,7 +83,7 @@
             <div layout="column" flex>
                 <md-input-container>
                     <label translate>真实姓名</label>
-                    <input ng-model="detailList.old.realname" readonly type="text">
+                    <input ng-model="detailList.sos_name" readonly type="text">
                 </md-input-container>
                 <md-input-container>
                     <label translate>手机号</label>

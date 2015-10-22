@@ -5,29 +5,62 @@
         </div>
 		<md-input-container>
 		    <label>姓名(最好是全名)</label>
-		    <input type="text">
+		    <input type="text" ng-model="volunteerInsertInfo.realname" required>
+		    <div ng-messages for="volunteerInsertInfo.realname.$error" ng-if="volunteerInsertInfo.realname.$dirty">
+	            <div ng-message when="required">该项为必填项目</div>
+	        </div>
 		</md-input-container>
 		<md-input-container>
 			<label>性别</label>
-            <md-select class="md-select-form" ng-model="vm.user.favouriteColor" placeholder="性别">
+            <md-select class="md-select-form" ng-model="volunteerInsertInfo.sex" placeholder="性别" required>
+                <md-option ng-value="sex" ng-repeat="sex in ['男', '女']">{{sex}}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container>
+        	<label>年龄</label>
+        	<input type="tel" ng-model="volunteerInsertInfo.age" required>
+        </md-input-container>
+		<md-input-container>
+		    <label>设备号</label>
+		    <input type="tel" ng-model="volunteerInsertInfo.device_number" required>
+		</md-input-container>
+		<md-input-container>
+			<label>省</label>
+            <md-select class="md-select-form" ng-model="volunteerInsertInfo.province" placeholder="省" required>
+                <md-option ng-value="sex" ng-repeat="sex in ['男', '女']">{{sex}}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container>
+			<label>市</label>
+            <md-select class="md-select-form" ng-model="volunteerInsertInfo.city" placeholder="市" required>
+                <md-option ng-value="sex" ng-repeat="sex in ['男', '女']">{{sex}}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container>
+			<label>区</label>
+            <md-select class="md-select-form" ng-model="volunteerInsertInfo.district" placeholder="区" required>
                 <md-option ng-value="sex" ng-repeat="sex in ['男', '女']">{{sex}}</md-option>
             </md-select>
         </md-input-container>
 		<md-input-container>
-		    <label>设备号</label>
-		    <input type="tel">
-		</md-input-container>
-		<md-input-container>
-		    <label>家庭住址</label>
-		    <textarea></textarea>
+		    <label>街道</label>
+		    <textarea ng-model="volunteerInsertInfo.street" required></textarea>
 		</md-input-container>
 		<md-input-container>
 		    <label>联系电话</label>
-		    <input type="tel">
+		    <input type="tel" ng-model="volunteerInsertInfo.mobile" required>
+		</md-input-container>
+		<md-input-container>
+		    <label>身份证号</label>
+		    <input type="tel" ng-model="volunteerInsertInfo.idcard" required>
+		</md-input-container>
+		<md-input-container>
+		    <label>备注</label>
+		    <textarea ng-model="volunteerInsertInfo.remarks" required></textarea>
 		</md-input-container>
 		<div layout="row" layout-align="end center">
 		    <md-button ng-click="returnToList()" class="md-primary md-raised">返回</md-button>
-		    <md-button class="md-primary md-raised">确认</md-button>
+		    <md-button class="md-primary md-raised" ng-click="confirmVolunteerInfo()">确认</md-button>
 		</div>
 	</md-card-content>
 </md-card>

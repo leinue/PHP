@@ -57,6 +57,7 @@
         $scope.getOldInfo = function() {
             $scope.query.page = $scope.currentPage;
             OldInfoService.index($scope.query.page,$scope.query.limit).then(function(data) {
+                console.log('dddd');
                 var status = data.status;
                 var realData = data.Schema;
                 $scope.oldArchiveInfoItemList = realData.properties.detail;
@@ -260,7 +261,7 @@
 
         // });
     
-        $scope.loadNextPage = function(page) {
+        $scope.loadNextPageArchive = function(page) {
             $scope.currentPage = page;
             $scope.getOldInfo();
         }

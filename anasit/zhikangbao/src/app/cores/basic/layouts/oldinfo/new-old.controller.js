@@ -63,9 +63,10 @@
                         });
                     $mdDialog.show(alert);
                 });
-                if(status == '200' || status == '201') {
-                    $scope.returnToOldmanList();
-                }
+                // if(status == '200' || status == '201') {
+                //     $scope.returnToOldmanList();
+                // }
+                $scope.inserOldInfo = {};
             }else {
                 console.log($scope.inserOldInfo);
                 OldInfoService.update($scope.inserOldInfo).then(function(data) {

@@ -57,9 +57,20 @@
                     <td>{{item.org_code}}</td>
                     <td>{{item.create_time*1000 | date:'yyyy-MM-dd'}}</td>
                     <td>
-                        <md-button ng-click="viewThisOrg(item.id)" class="md-primary">详情</md-button>
-                        <md-button ng-click="editThisItem(item.id)" class="md-primary">编辑</md-button>
-                        <md-button ng-click="deleteThisItem(item.id)" class="md-warn">删除</md-button>
+                        <!-- <md-button ng-click="viewThisOrg(item.id)" class="md-primary"></md-button> -->
+                        <md-menu>
+                            <md-button class="md-icon-button" aria-label="open menu" ng-click="$mdOpenMenu()">
+                                <md-icon md-font-icon="zmdi zmdi-more-vert"></md-icon>
+                            </md-button>
+                            <md-menu-content width="3">
+                                <md-menu-item>
+                                    <md-button ng-click="editThisItem(item.id)" class="md-primary">详情/编辑</md-button>
+                                </md-menu-item>
+                                <md-menu-item>
+                                    <md-button ng-click="deleteThisItem(item.id)" class="md-warn">删除</md-button>
+                                </md-menu-item>
+                            </md-menu-content>
+                        </md-menu>                        
                     </td>
                 </tr>
             </tbody>
@@ -78,7 +89,7 @@
             <div layout="column" flex>
             <md-input-container flex>
                     <label>所属分类</label>
-                    <md-select class="md-select-form" ng-model="insertOrgList.code" placeholder="机构">
+                    <md-select class="md-select-form" ng-change="divideOrgCate()" ng-model="insertOrgList.code" placeholder="机构">
                         <md-option ng-value="department.id" ng-repeat="department in orgCateList">{{department.name}}</md-option>
                     </md-select>
                 </md-input-container>
@@ -104,11 +115,17 @@
                 </md-input-container>
                 <md-input-container flex>
                     <label translate>省</label>
-                    <input ng-model="insertOrgList.province" type="text">
+                    <!-- <input ng-model="insertOrgList.province" type="text"> -->
+                    <md-select class="md-select-form" ng-change="changeCity()" ng-model="insertOrgList.province" placeholder="省">
+                        <md-option ng-value="province.name" ng-repeat="province in provinceList">{{province.name}}</md-option>
+                    </md-select>
                 </md-input-container flex>
                 <md-input-container flex>
                     <label translate>市</label>
-                    <input ng-model="insertOrgList.city" type="text">
+                    <!-- <input ng-model="insertOrgList.city" type="text"> -->
+                    <md-select class="md-select-form" ng-model="insertOrgList.city" placeholder="市">
+                        <md-option ng-value="city.name" ng-repeat="city in cityList">{{city.name}}</md-option>
+                    </md-select>
                 </md-input-container>
                 <md-input-container flex>
                     <label translate>地址</label>

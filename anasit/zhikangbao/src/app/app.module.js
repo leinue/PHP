@@ -615,6 +615,35 @@
 
           };
 
+        }])
+        .factory('VolunteerService', ['Restangular', '$http', 'API_CONFIG', function (Restangular, $http, API_CONFIG) {
+
+          return  {
+
+            index: function(page, limit) {
+              page = page == null ? 1 : page;
+              limit = limit == null ? 10 : limit;
+              return Restangular.one('/volunteer/all/' + page + '/' + limit).get();
+            },
+
+            insert: function(data) {
+              return Restangular.all('/volunteer/add').post(data);
+            },
+
+            update: function(data) {
+              return Restangular.all('/volunteer/edit/').post(data);
+            },
+
+            remove: function(id) {
+              return Restangular.one('/volunteer/delete/' + id).get();
+            },
+
+            search: function(keywords) {
+              return Restangular.one('/work/get/' + keywords).get();
+            }
+
+          };
+
         }]);
 
         // .factory('DeviceHistoryService',['Restangular', function(Restangular) {

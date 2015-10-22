@@ -93,6 +93,10 @@
                 var pro = realData.properties;
                 if(typeof pro != 'undefined') {
                     $scope.inserOldInfo = pro;
+                    $scope.inserOldInfo.create_time = new Date(parseInt($scope.inserOldInfo.create_time) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
+                    if($scope.inserOldInfo.update_time != null) {
+                        $scope.inserOldInfo.update_time = new Date(parseInt($scope.inserOldInfo.update_time) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
+                    }
                 }
             });
 
@@ -203,7 +207,6 @@
 
         $scope.loadNextPage = function(page) {
             $scope.currentPageAB = page;
-            console.log($scope.currentPageAB);
             $scope.getOldInfoBasic();
         }
 
@@ -212,10 +215,6 @@
         $scope.opt_name = '';
 
         $scope.actionStart = function(id,i) {
-            console.log($scope);
-            console.log($scope.opt_name);
-            console.log(i);
-            console.log(id);
             switch($scope.opt_name) {
                 case '新增家庭成员':
                     $scope.addNewMember(id);

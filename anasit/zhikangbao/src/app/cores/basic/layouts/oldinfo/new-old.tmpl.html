@@ -154,7 +154,7 @@
                                         </md-input-container>
                                         <md-input-container flex>
                                             <label translate>家庭关系</label>
-                                            <input ng-model="inserOldInfo.relation">
+                                            <input ng-model="inserOldInfo.relation" required>
                                             <div ng-messages="addressForm.lastName.$error">
                                                 <div ng-message when="required">
                                                     <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
@@ -174,7 +174,7 @@
                                         </md-input-container>
                                         <md-input-container flex>
                                             <label translate>家属身份证号</label>
-                                            <input ng-model="inserOldInfo.relation_idcard" name="address1" require>
+                                            <input ng-model="inserOldInfo.relation_idcard" name="address1" required>
                                             <div ng-messages="addressForm.address1.$error">
                                                 <div ng-message when="required">
                                                     <span translate>FORMS.WIZARD.PLEASE-ENTER</span>

@@ -107,7 +107,7 @@
         </md-input-container> -->
         <md-input-container flex>
             <label>选择页数</label>
-            <md-select class="md-select-form" ng-change="loadNextPage(currentPage)" ng-model="currentPage" placeholder="选择页数" required>
+            <md-select class="md-select-form" ng-change="loadNextPageArchive(currentPage)" ng-model="currentPage" placeholder="选择页数" required>
                 <md-option ng-value="pageA" ng-repeat="pageA in total_pages">{{pageA}}</md-option>
             </md-select>
         </md-input-container>

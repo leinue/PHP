@@ -261,6 +261,10 @@
 
                 isUserOffline: function() {
                     return localStorage.id === '' || typeof localStorage.id === 'undefined';
+                },
+
+                changePassword: function(data) {
+                  return Restangular.all('/auth/user/change').post(data);
                 }
 
             };

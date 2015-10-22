@@ -165,108 +165,108 @@
             templateUrl: 'app/examples/elements/cards.tmpl.html'
         });
 
-        triMenuProvider.addMenu({
-            name: 'MENU.ELEMENTS.ELEMENTS',
-            icon: 'zmdi zmdi-graduation-cap',
-            type: 'dropdown',
-            priority: 3.1,
-            children: [{
-                name: 'MENU.ELEMENTS.BUTTONS',
-                type: 'link',
-                state: 'triangular.admin-default.elements-buttons'
-            },{
-                name: 'MENU.ELEMENTS.CARDS',
-                type: 'link',
-                state: 'triangular.admin-default.elements-cards'
-            },{
-                name: 'MENU.ELEMENTS.CHECKBOXES',
-                type: 'link',
-                state: 'triangular.admin-default.elements-checkboxes'
-            },{
-                name: 'MENU.ELEMENTS.CHIPS',
-                type: 'link',
-                state: 'triangular.admin-default.elements-chips'
-            },{
-                name: 'MENU.ELEMENTS.DIALOGS',
-                type: 'link',
-                state: 'triangular.admin-default.elements-dialogs'
-            },{
-                name: 'MENU.ELEMENTS.FAB-SPEED',
-                type: 'link',
-                state: 'triangular.admin-default.fab-speed'
-            },{
-                name: 'MENU.ELEMENTS.FAB-TOOLBAR',
-                type: 'link',
-                state: 'triangular.admin-default.fab-toolbar'
-            },{
-                name: 'MENU.ELEMENTS.GRIDS',
-                type: 'link',
-                state: 'triangular.admin-default.elements-grids'
-            },{
-                name: 'MENU.ELEMENTS.ICONS',
-                type: 'link',
-                state: 'triangular.admin-default.elements-icons'
-            },{
-                name: 'MENU.ELEMENTS.LISTS',
-                type: 'link',
-                state: 'triangular.admin-default.elements-lists'
-            },{
-                name: 'MENU.ELEMENTS.MENUS',
-                type: 'link',
-                state: 'triangular.admin-default.menus'
-            },{
-                name: 'MENU.ELEMENTS.PROGRESS',
-                type: 'link',
-                state: 'triangular.admin-default.elements-progress'
-            },{
-                name: 'MENU.ELEMENTS.RADIOS',
-                type: 'link',
-                state: 'triangular.admin-default.elements-radios'
-            },{
-                name: 'MENU.ELEMENTS.SELECTS',
-                type: 'link',
-                state: 'triangular.admin-default.elements-selects'
-            },{
-                name: 'MENU.ELEMENTS.SIDEBARS',
-                type: 'link',
-                state: 'triangular.admin-default.elements-sidebars'
-            },{
-                name: 'MENU.ELEMENTS.SLIDERS',
-                type: 'link',
-                state: 'triangular.admin-default.elements-sliders'
-            },{
-                name: 'MENU.ELEMENTS.SWITCHES',
-                type: 'link',
-                state: 'triangular.admin-default.elements-switches'
-            },{
-                name: 'MENU.ELEMENTS.TABLES',
-                type: 'link',
-                state: 'triangular.admin-default.elements-tables'
-            },{
-                name: 'MENU.ELEMENTS.TABS',
-                type: 'link',
-                state: 'triangular.admin-default.elements-tabs'
-            },{
-                name: 'MENU.ELEMENTS.TEXTANGULAR',
-                type: 'link',
-                state: 'triangular.admin-default.elements-textangular'
-            },{
-                name: 'MENU.ELEMENTS.TOASTS',
-                type: 'link',
-                state: 'triangular.admin-default.elements-toasts'
-            },{
-                name: 'MENU.ELEMENTS.TOOLBARS',
-                type: 'link',
-                state: 'triangular.admin-default.elements-toolbars'
-            },{
-                name: 'MENU.ELEMENTS.TOOLTIPS',
-                type: 'link',
-                state: 'triangular.admin-default.elements-tooltips'
-            },{
-                name: 'MENU.ELEMENTS.WHITEFRAMES',
-                type: 'link',
-                state: 'triangular.admin-default.elements-whiteframes'
-            }]
-        });
+        // triMenuProvider.addMenu({
+        //     name: 'MENU.ELEMENTS.ELEMENTS',
+        //     icon: 'zmdi zmdi-graduation-cap',
+        //     type: 'dropdown',
+        //     priority: 3.1,
+        //     children: [{
+        //         name: 'MENU.ELEMENTS.BUTTONS',
+        //         type: 'link',
+        //         state: 'triangular.admin-default.elements-buttons'
+        //     },{
+        //         name: 'MENU.ELEMENTS.CARDS',
+        //         type: 'link',
+        //         state: 'triangular.admin-default.elements-cards'
+        //     },{
+        //         name: 'MENU.ELEMENTS.CHECKBOXES',
+        //         type: 'link',
+        //         state: 'triangular.admin-default.elements-checkboxes'
+        //     },{
+        //         name: 'MENU.ELEMENTS.CHIPS',
+        //         type: 'link',
+        //         state: 'triangular.admin-default.elements-chips'
+        //     },{
+        //         name: 'MENU.ELEMENTS.DIALOGS',
+        //         type: 'link',
+        //         state: 'triangular.admin-default.elements-dialogs'
+        //     },{
+        //         name: 'MENU.ELEMENTS.FAB-SPEED',
+        //         type: 'link',
+        //         state: 'triangular.admin-default.fab-speed'
+        //     },{
+        //         name: 'MENU.ELEMENTS.FAB-TOOLBAR',
+        //         type: 'link',
+        //         state: 'triangular.admin-default.fab-toolbar'
+        //     },{
+        //         name: 'MENU.ELEMENTS.GRIDS',
+        //         type: 'link',
+        //         state: 'triangular.admin-default.elements-grids'
+        //     },{
+        //         name: 'MENU.ELEMENTS.ICONS',
+        //         type: 'link',
+        //         state: 'triangular.admin-default.elements-icons'
+        //     },{
+        //         name: 'MENU.ELEMENTS.LISTS',
+        //         type: 'link',
+        //         state: 'triangular.admin-default.elements-lists'
+        //     },{
+        //         name: 'MENU.ELEMENTS.MENUS',
+        //         type: 'link',
+        //         state: 'triangular.admin-default.menus'
+        //     },{
+        //         name: 'MENU.ELEMENTS.PROGRESS',
+        //         type: 'link',
+        //         state: 'triangular.admin-default.elements-progress'
+        //     },{
+        //         name: 'MENU.ELEMENTS.RADIOS',
+        //         type: 'link',
+        //         state: 'triangular.admin-default.elements-radios'
+        //     },{
+        //         name: 'MENU.ELEMENTS.SELECTS',
+        //         type: 'link',
+        //         state: 'triangular.admin-default.elements-selects'
+        //     },{
+        //         name: 'MENU.ELEMENTS.SIDEBARS',
+        //         type: 'link',
+        //         state: 'triangular.admin-default.elements-sidebars'
+        //     },{
+        //         name: 'MENU.ELEMENTS.SLIDERS',
+        //         type: 'link',
+        //         state: 'triangular.admin-default.elements-sliders'
+        //     },{
+        //         name: 'MENU.ELEMENTS.SWITCHES',
+        //         type: 'link',
+        //         state: 'triangular.admin-default.elements-switches'
+        //     },{
+        //         name: 'MENU.ELEMENTS.TABLES',
+        //         type: 'link',
+        //         state: 'triangular.admin-default.elements-tables'
+        //     },{
+        //         name: 'MENU.ELEMENTS.TABS',
+        //         type: 'link',
+        //         state: 'triangular.admin-default.elements-tabs'
+        //     },{
+        //         name: 'MENU.ELEMENTS.TEXTANGULAR',
+        //         type: 'link',
+        //         state: 'triangular.admin-default.elements-textangular'
+        //     },{
+        //         name: 'MENU.ELEMENTS.TOASTS',
+        //         type: 'link',
+        //         state: 'triangular.admin-default.elements-toasts'
+        //     },{
+        //         name: 'MENU.ELEMENTS.TOOLBARS',
+        //         type: 'link',
+        //         state: 'triangular.admin-default.elements-toolbars'
+        //     },{
+        //         name: 'MENU.ELEMENTS.TOOLTIPS',
+        //         type: 'link',
+        //         state: 'triangular.admin-default.elements-tooltips'
+        //     },{
+        //         name: 'MENU.ELEMENTS.WHITEFRAMES',
+        //         type: 'link',
+        //         state: 'triangular.admin-default.elements-whiteframes'
+        //     }]
+        // });
     }
 })();

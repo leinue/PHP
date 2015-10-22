@@ -63,22 +63,22 @@
                     <form name="password">
                         <md-input-container>
                             <label for="old-password" translate>PROFILE.PASSWORD.CURRENT</label>
-                            <input id="old-password" label="old-password" name="old-password" type="text" ng-model="vm.user.current"/>
+                            <input id="old-password" label="old-password" name="old-password" type="password" ng-model="old_password"/>
                         </md-input-container>
 
                         <md-input-container>
                             <label for="password" translate>PROFILE.PASSWORD.LABEL</label>
-                            <input id="password" label="password" name="password" type="password" ng-model="vm.user.password" tri-same-password="password.confirm" ng-minlength="8" required/>
+                            <input id="password" label="password" name="password" type="password" ng-model="new_password" tri-same-password="password.confirm" ng-minlength="6" required/>
                             <ng-messages for="password.password.$error" ng-include="'app/examples/authentication/signup/password.messages.html'"></ng-messages>
                         </md-input-container>
 
                         <md-input-container>
                             <label for="confirm" translate>PROFILE.PASSWORD_CONFIRM.LABEL</label>
-                            <input id="confirm" label="confirm" name="confirm" type="password" ng-model="vm.user.confirm" tri-same-password="password.password" ng-minlength="8" required/>
+                            <input id="confirm" label="confirm" name="confirm" type="password" ng-model="confirm_password" tri-same-password="password.password" ng-minlength="6" required/>
                             <ng-messages for="password.confirm.$error" ng-include="'app/examples/authentication/signup/password.messages.html'"></ng-messages>
                         </md-input-container>
 
-                        <md-button class="md-raised md-primary margin-left-0" ng-disabled="profile.$invalid" translate="PROFILE.BUTTON"></md-button>
+                        <md-button class="md-raised md-primary margin-left-0" ng-disabled="profile.$invalid" translate="PROFILE.BUTTON" ng-click="changeMyPassword()"></md-button>
 
                     </form>
                 </md-content>

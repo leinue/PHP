@@ -70,11 +70,11 @@
                 name: 'MENU.AUTH.PROFILE',
                 state: 'triangular.admin-default.profile',
                 type: 'link'
-            },{
+            }/*,{
                 name: 'MENU.AUTH.LOCK',
                 state: 'authentication.lock',
                 type: 'link'
-            }]
+            }*/]
         });
     }
 })();

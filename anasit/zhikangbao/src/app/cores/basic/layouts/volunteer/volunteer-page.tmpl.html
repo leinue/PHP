@@ -111,20 +111,20 @@
                     </md-input-container>
                     <md-input-container>
                         <label>省</label>
-                        <md-select class="md-select-form" ng-model="volunteerUpdateInfo.province" placeholder="省" required>
-                            <md-option ng-value="sex" ng-repeat="sex in ['男', '女']">{{sex}}</md-option>
+                        <md-select class="md-select-form" ng-model="volunteerUpdateInfo.province" placeholder="省" ng-change="changeCity()" required>
+                            <md-option ng-value="province.name" ng-repeat="province in provinceList">{{province.name}}</md-option>
                         </md-select>
                     </md-input-container>
                     <md-input-container>
                         <label>市</label>
-                        <md-select class="md-select-form" ng-model="volunteerUpdateInfo.city" placeholder="市" required>
-                            <md-option ng-value="sex" ng-repeat="sex in ['男', '女']">{{sex}}</md-option>
+                        <md-select class="md-select-form" ng-model="volunteerUpdateInfo.city" placeholder="市" required ng-change="changeDistrict()">
+                            <md-option ng-value="city.name" ng-repeat="city in cityList">{{city.name}}</md-option>
                         </md-select>
                     </md-input-container>
                     <md-input-container>
                         <label>区</label>
                         <md-select class="md-select-form" ng-model="volunteerUpdateInfo.district" placeholder="区" required>
-                            <md-option ng-value="sex" ng-repeat="sex in ['男', '女']">{{sex}}</md-option>
+                            <md-option ng-value="district" ng-repeat="district in districtList">{{district}}</md-option>
                         </md-select>
                     </md-input-container>
                     <md-input-container>

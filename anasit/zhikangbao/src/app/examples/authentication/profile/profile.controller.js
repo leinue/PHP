@@ -6,7 +6,7 @@
         .controller('ProfileController', ProfileController);
 
     /* @ngInject */
-    function ProfileController() {
+    function ProfileController($scope, $mdDialog, $state, UserService) {
         var vm = this;
         vm.settingsGroups = [{
             name: 'ADMIN.NOTIFICATIONS.ACCOUNT_SETTINGS',
@@ -50,5 +50,52 @@
             password: '',
             confirm: ''
         };
+
+        $scope.new_password = '';
+        $scope.old_password = '';
+        $scope.confirm_password = '';
+
+        $scope.changeMyPassword = function() {
+
+            if($scope.new_password == null || $scope.old_password == null || $scope.confirm_password == null) {
+                alert('请完整填写信息');
+                return false;
+            }
+
+
+            if($scope.confirm_password != $scope.new_password) {
+                alert('确认密码不一致');
+            }else {
+
+                UserService.changePassword({
+                    new_password: $scope.new_password,
+                    old_password: $scope.old_password
+                }).then(function(data) {
+
+                    var status = data.status;
+                    var realData = data.Schema;
+
+                    if(status != '200') {
+                        var alert = $mdDialog.alert({
+                            title: '修改失败',
+                            content: realData.properties.message,
+                            ok: '确定'
+                        });
+                    }else {
+                        var alert = $mdDialog.alert({
+                            title: '修改成功',
+                            content: realData.properties.message,
+                            ok: '确定'
+                        });
+                        $state.go('authentication.login');
+                    }
+
+                    $mdDialog.show(alert);
+
+                });
+
+            }
+
+        }
     }
 })();

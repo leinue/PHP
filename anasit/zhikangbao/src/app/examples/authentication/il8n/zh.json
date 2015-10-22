@@ -116,13 +116,13 @@
         },
         "PASSWORD": {
             "LABEL": "新密码",
-            "CURRENT": "目前的",
+            "CURRENT": "旧密码",
             "PLEASE_ENTER": "请输入密码",
-            "MIN_LENGTH": "你的密码必须超过8个字符长",
+            "MIN_LENGTH": "你的密码必须超过6个字符长",
             "SAME_PASSWORD": "你得输入密码"
         },
         "PASSWORD_CONFIRM": {
-            "LABEL": "确认密码"
+            "LABEL": "确认新密码"
         },
         "BUTTON": "更新环境"
     }

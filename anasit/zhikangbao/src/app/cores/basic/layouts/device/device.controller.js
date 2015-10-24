@@ -145,7 +145,7 @@
 
         $scope.triggerDeviceSeaech = function() {
             if($scope.query.keywords == '') {
-                    alert('搜索内容不能为空');
+                    $scope.getDevice();
                     return false;
                 }
 

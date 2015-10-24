@@ -192,22 +192,22 @@
 
         $scope.triggerMonitorSearch = function() {
             if($scope.query.keywords == '') {
-                    alert('搜索内容不能为空');
-                    return false;
+                $scope.getDevice();
+                return false;
+            }
+
+            MonitorService.search($scope.query.keywords).then(function(data) {
+
+                var status = data.status;
+                var realData = data.Schema;
+
+                if(status != '200') {
+                    alert('网络请求失败');
+                }else {
+                    $scope.devices = realData.properties;
                 }
 
-                MonitorService.search($scope.query.keywords).then(function(data) {
-
-                    var status = data.status;
-                    var realData = data.Schema;
-
-                    if(status != '200') {
-                        alert('网络请求失败');
-                    }else {
-                        $scope.devices = realData.properties;
-                    }
-
-                });
+            });
         }
 
         $scope.loadNextMonitorPage = function(page) {

@@ -136,33 +136,34 @@
         	$scope.member_relation_id = $scope.member_name_id;
         }
 
-        $scope.triggerCallSearch = function(keywords) {
-                if(keywords == '') {
-                    $scope.getHelpList();
-                }else {
-                    YulpService.search(keywords).then(function(data) {
+        $scope.triggerCallSearch = function() {
+            $scope.call_total_pages = [];
+            $scope.query.keywords = $('#sos-search-input').val();
+            var keywords = $scope.query.keywords;
+            if(keywords == '') {
+                $scope.getHelpList();
+            }else {
+                YulpService.search(keywords).then(function(data) {
 
-                        var status = data.status;
-                        var realData = data.Schema;
+                    var status = data.status;
+                    var realData = data.Schema;
 
-                        if(status != '200') {
-                            var alert = $mdDialog.alert({
-                                title: '搜索失败',
-                                content: realData.properties.message,
-                                ok: '确定'
-                            });
-                            $mdDialog.show(alert);
-                        }else {
-                            $scope.helpList = realData.properties;
-                        }
-                        
-                    }); 
-                }
+                    if(status != '200') {
+                        var alert = $mdDialog.alert({
+                            title: '搜索失败',
+                            content: realData.properties.message,
+                            ok: '确定'
+                        });
+                        $mdDialog.show(alert);
+                    }else {
+                        $scope.helpList = realData.properties;
+                    }
+                    
+                }); 
+            }
         }
 
         $scope.startSearchSos = function($event) {
-            $scope.query.keywords = $('#sos-search-input').val();
-            var keywords = $scope.query.keywords;
             if($event.keyCode == 13 && $event) {
                 $scope.triggerCallSearch();
             }

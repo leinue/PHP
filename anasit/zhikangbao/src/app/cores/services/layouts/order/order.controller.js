@@ -50,33 +50,33 @@
         };
 
         $scope.triggerOrderSearch = function(keywords) {
-                if(keywords == '') {
-                    $scope.getAllOrder();
-                }else {
-                    OrderService.search(keywords).then(function(data) {
+            var keywords = $('#order-search').val();
+            if(keywords == '') {
+                $scope.getAllOrder();
+            }else {
+                OrderService.search(keywords).then(function(data) {
 
-                        console.log(data);
+                    console.log(data);
 
-                        var status = data.status;
-                        var realData = data.Schema;
+                    var status = data.status;
+                    var realData = data.Schema;
 
-                        if(status != '200') {
-                            var alert = $mdDialog.alert({
-                                title: '搜索失败',
-                                content: realData.properties.message,
-                                ok: '确定'
-                            });
-                            $mdDialog.show(alert);
-                        }else {
-                            $scope.orderList = realData.properties;
-                        }
-                        
-                    }); 
-                }
+                    if(status != '200') {
+                        var alert = $mdDialog.alert({
+                            title: '搜索失败',
+                            content: realData.properties.message,
+                            ok: '确定'
+                        });
+                        $mdDialog.show(alert);
+                    }else {
+                        $scope.orderList = realData.properties;
+                    }
+                    
+                }); 
+            }
         };
 
         $scope.startSearchOrder = function($event) {
-            var keywords = $('#order-search').val();
             if($event.keyCode == 13 && $event) {
                 $scope.triggerOrderSearch();  
             }

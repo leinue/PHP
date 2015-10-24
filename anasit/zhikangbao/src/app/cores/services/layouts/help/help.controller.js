@@ -93,15 +93,14 @@
         }
 
         $scope.startSearchHelp = function($event) {
-            $scope.query.keywords = $('#help-search-input').val();
-            console.log($scope.query.keywords);
-            var keywords = $scope.query.keywords;
             if($event.keyCode == 13 && $event) {
-                $scope.triggerHelpSearch(keywords);   
+                $scope.triggerHelpSearch();   
             }
         }
 
-        $scope.triggerHelpSearch = function(keywords) {
+        $scope.triggerHelpSearch = function() {
+            $scope.query.keywords = $('#help-search-input').val();
+            var keywords = $scope.query.keywords;
             if(keywords == '') {
                     $scope.getHelpList();
                 }else {

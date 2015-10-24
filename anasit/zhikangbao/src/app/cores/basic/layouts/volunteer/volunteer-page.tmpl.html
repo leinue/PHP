@@ -26,8 +26,9 @@
         <form flex="" name="vm.filter.form">
             <input type="text" ng-model="vm.query.filter" ng-model-options="vm.filter.options" placeholder="search">
         </form>
-        <md-button class="md-icon-button" ng-click="vm.removeFilter()">
-            <md-icon md-font-icon="zmdi zmdi-close"></md-icon>
+        <md-button class="md-icon-button md-raised" ng-click="triggerVolunteerSearch()">
+            <!-- <md-icon md-font-icon="zmdi zmdi-close"></md-icon> -->
+            搜索
         </md-button>
     </md-data-table-toolbar>
 
@@ -39,21 +40,23 @@
         <table md-data-table class="md-primary md-data-table">
             <thead md-order="vm.query.order" md-trigger="vm.getUsers">
                 <tr>
-                    <th name="编号"></th>
+                    <!-- <th name="编号"></th> -->
                     <th name="姓名"></th>
                     <th name="性别"></th>
                     <th name="年龄"></th>
                     <th name="身份证号"></th>
+                    <th name="技能备注"></th>
                     <th name="操作"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr md-auto-select ng-repeat="user in AllVolunteerInfo">
-                    <td>{{::user.vid}}</td>
+                    <!-- <td>{{::user.vid}}</td> -->
                     <td>{{::user.realname}}</td>
                     <td>{{::user.sex}}</td>
                     <td>{{::user.age}}</td>
                     <td>{{::user.idcard}}</td>
+                    <td>{{::user.remarks}}</td>
                     <td>
                         <md-button ng-click="viewThisVolunteer(user)" class="md-primary">编辑/详细</md-button>
                         <md-button ng-click="deleteThisVolunteer(user.vid)" class="md-warn">删除</md-button>

@@ -49,11 +49,7 @@
             $state.go('triangular.admin-default.service-new-work-order');
         };
 
-        $scope.startSearchOrder = function($event) {
-            var keywords = $('#order-search').val();
-            if($event.keyCode == 13 && $event) {
-                console.log($event.keyCode);
-                console.log(keywords);
+        $scope.triggerOrderSearch = function(keywords) {
                 if(keywords == '') {
                     $scope.getAllOrder();
                 }else {
@@ -77,6 +73,12 @@
                         
                     }); 
                 }
+        };
+
+        $scope.startSearchOrder = function($event) {
+            var keywords = $('#order-search').val();
+            if($event.keyCode == 13 && $event) {
+                $scope.triggerOrderSearch();  
             }
         };
 

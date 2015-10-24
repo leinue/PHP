@@ -213,11 +213,8 @@
             });
         }
 
-        $scope.startSearchHealth = function($event) {
-            $scope.query.keywords = $('#health-search-input').val();
-            var keywords = $scope.query.keywords;
-            if($event.keyCode == 13) {
-                $scope.oldArchiveInfoItemList = {};
+        $scope.triggerHealthSearch = function(keywords) {
+            $scope.oldArchiveInfoItemList = {};
                 if(keywords == '') {
                     $scope.getOldInfo();
                 }else {
@@ -242,6 +239,13 @@
                         
                     }); 
                 }
+        }
+
+        $scope.startSearchHealth = function($event) {
+            $scope.query.keywords = $('#health-search-input').val();
+            var keywords = $scope.query.keywords;
+            if($event.keyCode == 13) {
+                $scope.triggerHealthSearch(keywords);
             }
         }
 

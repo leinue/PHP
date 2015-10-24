@@ -26,8 +26,9 @@
         <form flex="" name="vm.filter.form">
             <input type="text" ng-model="query.keywords" id="device-search-input" ng-change="getAllDevice()" ng-keyup="startSearchDevice($event)" placeholder="搜索">
         </form>
-        <md-button class="md-icon-button" ng-click="vm.removeFilter()">
-            <md-icon md-font-icon="zmdi zmdi-close"></md-icon>
+        <md-button class="md-icon-button md-raised" ng-click="triggerDeviceSeaech()">
+            <!-- <md-icon md-font-icon="zmdi zmdi-close"></md-icon> -->
+            搜索
         </md-button>
     </md-data-table-toolbar>
 

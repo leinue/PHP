@@ -28,8 +28,8 @@
         <form flex="" name="vm.filter.form">
             <input type="text" ng-model="query.keywords" id="health-search-input" ng-keyup="startSearchHealth($event)" ng-change="backToAllList()" placeholder="搜索">
         </form>
-        <md-button class="md-icon-button" ng-click="vm.removeFilter()">
-            <md-icon md-font-icon="zmdi zmdi-close"></md-icon>
+        <md-button class="md-icon-button md-raised" ng-click="triggerHealthSearch()">
+            搜索
         </md-button>
     </md-data-table-toolbar>
 

@@ -25,8 +25,9 @@
         <form flex="" name="vm.filter.form">
             <input type="text" ng-model="query.orderKeywords" id="order-search" ng-keyup="startSearchOrder($event)" ng-change="backToAllOrderList()" placeholder="搜索">
         </form>
-        <md-button class="md-icon-button" ng-click="vm.removeFilter()">
-            <md-icon md-font-icon="zmdi zmdi-close"></md-icon>
+        <md-button class="md-icon-button md-raised" ng-click="triggerOrderSearch()">
+            <!-- <md-icon md-font-icon="zmdi zmdi-close"></md-icon> -->
+            搜索
         </md-button>
     </md-data-table-toolbar>
 

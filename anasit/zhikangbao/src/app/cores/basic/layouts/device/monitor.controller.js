@@ -185,7 +185,13 @@
             var keyCode = $event.keyCode;
 
             if($event && keyCode == 13) {
-                if($scope.query.keywords == '') {
+                $scope.triggerMonitorSearch();
+            }
+            
+        }
+
+        $scope.triggerMonitorSearch = function() {
+            if($scope.query.keywords == '') {
                     alert('搜索内容不能为空');
                     return false;
                 }
@@ -202,8 +208,6 @@
                     }
 
                 });
-            }
-            
         }
 
         $scope.loadNextMonitorPage = function(page) {

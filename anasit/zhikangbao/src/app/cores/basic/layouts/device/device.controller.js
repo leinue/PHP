@@ -143,15 +143,8 @@
             });
         }
 
-        $scope.startSearchDevice = function($event) {
-
-            $scope.query.keywords = $('#device-search-input').val();
-
-            var keyCode = $event.keyCode;
-
-            if($event && keyCode == 13) {
-                
-                if($scope.query.keywords == '') {
+        $scope.triggerDeviceSeaech = function() {
+            if($scope.query.keywords == '') {
                     alert('搜索内容不能为空');
                     return false;
                 }
@@ -168,7 +161,16 @@
                     }
 
                 });
+        }
 
+        $scope.startSearchDevice = function($event) {
+
+            $scope.query.keywords = $('#device-search-input').val();
+
+            var keyCode = $event.keyCode;
+
+            if($event && keyCode == 13) {
+                $scope.triggerDeviceSeaech();
             }
             
         }

@@ -515,6 +515,8 @@
             $('.modal-backdrop').css('z-index','1040');
         });
 
+        $('#new-device').modal({backdrop: 'static', keyboard: false});
+
         $scope.editThisItem = function(id) {
             $scope.orgTitle = '编辑组织信息';
             $scope.edit = true;
@@ -636,7 +638,13 @@
             var keyCode = $event.keyCode;
 
             if($event && keyCode == 13) {
-                if($scope.query.keywords == '') {
+                $scope.triggerCommunitySearch();
+            }
+
+        }
+
+        $scope.triggerCommunitySearch = function() {
+            if($scope.query.keywords == '') {
                     alert('搜索内容不能为空');
                     return false;
                 }
@@ -659,8 +667,6 @@
                     }
 
                 });
-            }
-
         }
 
         $scope.gerAllCommunityList = function() {

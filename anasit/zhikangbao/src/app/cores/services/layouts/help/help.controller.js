@@ -97,7 +97,12 @@
             console.log($scope.query.keywords);
             var keywords = $scope.query.keywords;
             if($event.keyCode == 13 && $event) {
-                if(keywords == '') {
+                $scope.triggerHelpSearch(keywords);   
+            }
+        }
+
+        $scope.triggerHelpSearch = function(keywords) {
+            if(keywords == '') {
                     $scope.getHelpList();
                 }else {
                     HelpService.search(keywords).then(function(data) {
@@ -120,7 +125,6 @@
                         
                     }); 
                 }
-            }
         }
 
         $scope.backToAllHelpList = function() {

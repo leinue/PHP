@@ -24,8 +24,9 @@
         <form flex="" name="vm.filter.form">
             <input type="text" ng-model="query.keywords" id="sos-search-input" ng-keyup="startSearchSos($event)" ng-change="backToAllSosList()" ng-model-options="vm.filter.options" placeholder="search">
         </form>
-        <md-button class="md-icon-button" ng-click="vm.removeFilter()">
-            <md-icon md-font-icon="zmdi zmdi-close"></md-icon>
+        <md-button class="md-icon-button md-raised" ng-click="triggerCallSearch()">
+            <!-- <md-icon md-font-icon="zmdi zmdi-close"></md-icon> -->
+            搜索
         </md-button>
     </md-data-table-toolbar>
 

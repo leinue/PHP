@@ -136,10 +136,7 @@
         	$scope.member_relation_id = $scope.member_name_id;
         }
 
-        $scope.startSearchSos = function($event) {
-            $scope.query.keywords = $('#sos-search-input').val();
-            var keywords = $scope.query.keywords;
-            if($event.keyCode == 13 && $event) {
+        $scope.triggerCallSearch = function(keywords) {
                 if(keywords == '') {
                     $scope.getHelpList();
                 }else {
@@ -161,6 +158,13 @@
                         
                     }); 
                 }
+        }
+
+        $scope.startSearchSos = function($event) {
+            $scope.query.keywords = $('#sos-search-input').val();
+            var keywords = $scope.query.keywords;
+            if($event.keyCode == 13 && $event) {
+                $scope.triggerCallSearch();
             }
         }
 

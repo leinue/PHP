@@ -26,8 +26,9 @@
         <form flex="" name="vm.filter.form">
             <input type="text" ng-model="query.keywords" id="org-search-input" ng-keyup="startSearchCommunity($event)" ng-change="gerAllCommunityList()" placeholder="搜索">
         </form>
-        <md-button class="md-icon-button" ng-click="vm.removeFilter()">
-            <md-icon md-font-icon="zmdi zmdi-close"></md-icon>
+        <md-button class="md-icon-button md-raised" ng-click="triggerCommunitySearch()">
+            <!-- <md-icon md-font-icon="zmdi zmdi-close"></md-icon> -->
+            搜索
         </md-button>
     </md-data-table-toolbar>
 
@@ -78,7 +79,7 @@
     </md-data-table-container>
 
     <!-- Modal -->
-    <div class="modal fade" id="new-org" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="new-org" data-backdrop="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">

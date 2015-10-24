@@ -57,7 +57,7 @@
 
         $scope.changeMyPassword = function() {
 
-            if($scope.new_password == null || $scope.old_password == null || $scope.confirm_password == null) {
+            if($scope.new_password == '' || $scope.old_password == '' || $scope.confirm_password == '') {
                 alert('请完整填写信息');
                 return false;
             }

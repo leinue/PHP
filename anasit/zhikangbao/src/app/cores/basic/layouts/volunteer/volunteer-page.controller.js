@@ -522,6 +522,8 @@
             $('#volunteer-info').modal('show');
             $scope.volunteerUpdateInfo = user;
             $('.modal-backdrop').css('z-index','0');
+            $scope.changeCity();
+            $scope.changeDistrict();
         };
 
         $('#volunteer-info').on('hidden.bs.modal', function (e) {
@@ -607,6 +609,10 @@
         $scope.loadNextVolunteerPage = function(page) {
             $scope.currentVolunteerPage = page;
             $scope.getVolunteerInfo();
+        };
+
+        $scope.triggerVolunteerSearch = function() {
+
         };
     }
 })();

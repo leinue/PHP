@@ -173,11 +173,8 @@
             $location.path('/services/' + user_id);
         }
 
-        $scope.startSearch = function($event) {
-            var keyCode = $event.keyCode;
-
-            if($event && keyCode == 13) {
-                OldInfoService.search(vm.query.filter).then(function(data) {
+        $scope.triggerSearch = function() {
+            OldInfoService.search(vm.query.filter).then(function(data) {
                     console.log(data);
                     var status = data.status;
                     var realData = data.Schema;
@@ -195,6 +192,13 @@
                         // vm.users.total_count = realData.properties.count;
                     }
                 });
+        }
+
+        $scope.startSearch = function($event) {
+            var keyCode = $event.keyCode;
+
+            if($event && keyCode == 13) {
+                $scope.triggerSearch();
             }
 
         }

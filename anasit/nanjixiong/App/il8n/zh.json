@@ -1,0 +1,55 @@
+{
+    "404": {
+        "TITLE": "404",
+        "HOME": "主页",
+        "MESSAGE": "您查找的页面不存在:(",
+        "DESCRIPTION": "抱歉，您查找的页面不存在。"
+    },
+    "500": {
+        "TITLE": "500",
+        "MESSAGE": "出了点问题。",
+        "DESCRIPTION": "对不起，出了点问题",
+        "HOME": "主页"
+    },
+    "GENERAL": {
+        "CANCEL": "取消",
+        "OK": "确定"
+    },
+    "ADMIN": {
+        "TOOLBAR": {
+            "SETTINGS": "设置",
+            "PROFILE": "资料",
+            "LOGOUT": "注销",
+            "SIDEBAR_TOGGLE": "反复的菜单"
+        },
+        "NOTIFICATIONS": {
+            "ACCOUNT_SETTINGS": "账户环境中",
+            "CHAT_SETTINGS": "聊天的环境中",
+            "USER_STATS": "用户统计",
+            "SERVER_STATS": "服务的统计数字",
+            "SHOW_LOCATION": "露我的位置",
+            "SHOW_AVATAR": "看我的化身",
+            "SEND_NOTIFICATIONS": "把我送通知",
+            "ALLOW_BACKUPS": "请允许云备份",
+            "SHOW_USERNAME": "给我的用户名",
+            "SHOW_PROFILE": "让我的公众形象",
+            "STORAGE_SPACE": "存储空间(120/160Gb)",
+            "BANDWIDTH_USAGAE": "带宽的使用情况（10/100Gb)",
+            "MEMORY_USAGAE": "记忆使用情况（第1/8英国)"
+        }
+    },
+    "LANGUAGES": {
+        "CHINESE": "中文",
+        "ENGLISH": "英文",
+        "FRENCH": "法语",
+        "PORTUGUESE": "葡萄牙语"
+    },
+    "TABLES": {
+        "NEXT": "下一页",
+        "PREV": "上一页",
+        "OF": "的"
+    },
+    "MESSAGES": {
+        "LANGUAGE_CHANGED": "改变语言"
+    }
+}

@@ -1,0 +1,78 @@
+<md-card style="padding:0;margin:0">
+    <md-card-content>
+        <div class="content-padded">
+            <h2 class="md-title">咨询服务管理</h2>
+        </div>
+        <md-divider></md-divider>
+        <div class="button-toolbar" layout="row" layout-align="start center">
+        </div>
+    </md-card-content>
+</md-card>
+
+<div ng-controller="TablesAdvancedController as vm">
+    <md-data-table-toolbar ng-hide="vm.selected.length || vm.filter.show">
+        <h2 class="md-title">咨询服务列表</h2>
+        <div flex></div>
+        <md-button class="md-icon-button" ng-click="vm.filter.show = true">
+            <!-- <i class="material-icons md-dark">filter_list</i> -->
+            <md-icon md-font-icon="zmdi zmdi-filter-list"></md-icon>
+        </md-button>
+    </md-data-table-toolbar>
+
+    <md-data-table-toolbar ng-show="vm.filter.show && !vm.selected.length || 1" class="md-data-table-toolbar">
+        <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
+        <form flex="" name="vm.filter.form">
+            <input type="text" ng-model="query.keywords" id="help-search-input" ng-keyup="startSearchHelp($event)" ng-change="backToAllHelpList()" placeholder="搜索">
+        </form>
+        <md-button class="md-icon-button md-raised" ng-click="triggerHelpSearch()">
+            <!-- <md-icon md-font-icon="zmdi zmdi-close"></md-icon> -->
+            搜索
+        </md-button>
+    </md-data-table-toolbar>
+
+    <!-- <md-data-table-toolbar class="alternate" ng-show="vm.selected.length" layout-align="space-between">
+      <div>选择了 {{vm.selected.length}} 个用户</div>
+    </md-data-table-toolbar> -->
+
+    <md-data-table-container>
+        <table md-data-table class="md-primary md-data-table">
+            <thead md-order="vm.query.order" md-trigger="vm.getUsers">
+                <tr>
+                    <th name="老人姓名"></th>
+                    <!-- <th name="联系方式"></th> -->
+                    <th name="求助标题"></th>
+                    <th name="求助内容"></th>
+                    <th name="回访电话"></th>
+                    <th name="求助时间"></th>
+                    <th name="是否受理"></th>
+                    <th name="操作员"></th>
+                    <th name="操作"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr md-auto-select ng-repeat="user in helpList">
+                    <td>{{user.realname | nullToVisual}}</td>
+                    <!-- <td>{{user.mobile}}</td> -->
+                    <td>{{user.help_title}}</td>
+                    <td>{{user.help_content}}</td>
+                    <td>{{user.mobile}}</td>
+                    <td>{{user.create_time*1000 | date:'yyyy-MM-dd'}}</td>
+                    <td>{{user.isdeal | isDeal}}</td>
+                    <td>{{user.operator}}</td>
+                    <td>
+                        <md-button ng-click="confirmDeal(user.id)" ng-show="user.isdeal == 0" class="md-warn">确认受理</md-button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </md-data-table-container>
+
+    <div layout layout-sm="column" style="padding-left:70%" flex>
+        <md-input-container flex>
+            <label>选择页数</label>
+            <md-select class="md-select-form" ng-change="loadNextHelpPage(help_currentPage)" ng-model="help_currentPage" placeholder="选择页数" required>
+                <md-option ng-value="pageB" ng-repeat="pageB in help_total_pages">{{pageB}}</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+</div>

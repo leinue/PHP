@@ -1,0 +1,147 @@
+<md-card style="padding:0;margin:0">
+    <md-card-content>
+        <div class="content-padded">
+            <h2 class="md-title">设备管理</h2>
+        </div>
+        <md-divider></md-divider>
+        <div class="button-toolbar" layout="row" layout-align="start center">
+            <md-button ng-click="addNewDevice()" class="md-raised md-primary">新增</md-button>
+            <!-- <md-button class="md-raised md-warn">删除</md-button> -->
+        </div>
+    </md-card-content>
+</md-card>
+
+<div ng-controller="TablesAdvancedController as vm">
+    <md-data-table-toolbar ng-hide="vm.selected.length || vm.filter.show">
+        <h2 class="md-title">设备列表</h2>
+        <div flex></div>
+        <md-button class="md-icon-button" ng-click="vm.filter.show = true">
+            <!-- <i class="material-icons md-dark">filter_list</i> -->
+            <md-icon md-font-icon="zmdi zmdi-filter-list"></md-icon>
+        </md-button>
+    </md-data-table-toolbar>
+
+    <md-data-table-toolbar ng-show="vm.filter.show && !vm.selected.length  || 1" class="md-data-table-toolbar">
+        <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
+        <form flex="" name="vm.filter.form">
+            <input type="text" ng-model="query.keywords" id="device-search-input" ng-change="getAllDevice()" ng-keyup="startSearchDevice($event)" placeholder="搜索">
+        </form>
+        <md-button class="md-icon-button md-raised" ng-click="triggerDeviceSeaech()">
+            <!-- <md-icon md-font-icon="zmdi zmdi-close"></md-icon> -->
+            搜索
+        </md-button>
+    </md-data-table-toolbar>
+
+    <md-data-table-toolbar class="alternate" ng-show="vm.selected.length" layout-align="space-between">
+      <div>选择了 {{vm.selected.length}} 个用户</div>
+    </md-data-table-toolbar>
+
+    <md-data-table-container>
+        <table md-data-table class="md-primary md-data-table">
+            <thead md-order="vm.query.order" md-trigger="vm.getUsers">
+                <tr>
+                    <th name="编号"></th>
+                    <th name="用户"></th>
+                    <th name="注册码"></th>
+                    <th name="IMEI"></th>
+                    <th name="添加时间"></th>
+                    <th name="操作"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr md-auto-select ng-repeat="device in devices">
+                    <td>{{::device.device_id | nullToVisual}}</td>
+                    <td>{{::device.user_id | nullToVisual}}</td>
+                    <td>{{::device.device_sn | nullToVisual}}</td>
+                    <td>{{::device.device_imei | nullToVisual}}</td>
+                    <td>{{::device.create_time*1000 | date:'yyyy-MM-dd'}}</td>
+                    <td>
+                        <md-button ng-click="viewThisDeviceItem(device)" class="md-primary">详情/编辑</md-button>
+                        <md-button ng-click="deleteThisItem(device.device_id)" class="md-warn">删除</md-button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </md-data-table-container>
+
+    <!-- Modal -->
+    <div class="modal fade" id="new-device" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">新增设备信息</h4>
+          </div>
+          <div class="modal-body" style="font-size: 1.3em;">
+            <div layout="column" flex>
+                <md-input-container flex>
+                    <label translate>用户ID</label>
+                    <input ng-model="insertDeviceInfo.user_id" type="text" required>
+                </md-input-container>
+                <md-input-container>
+                    <label translate>设备SN号</label>
+                    <input ng-model="insertDeviceInfo.device_sn" type="text">
+                </md-input-container>
+                <md-input-container>
+                    <label translate>设备IMEI号</label>
+                    <input ng-model="insertDeviceInfo.device_imei" type="text">
+                </md-input-container>
+                <md-input-container>
+                    <label translate>描述</label>
+                    <textarea ng-model="insertDeviceInfo.description"></textarea>
+                </md-input-container>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            <button type="button" class="btn btn-default" ng-click="saveNewDevice()" data-dismiss="modal">保存</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="view-device" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">新增设备信息</h4>
+          </div>
+          <div class="modal-body" style="font-size: 1.3em;">
+            <div layout="column" flex>
+                <md-input-container flex>
+                    <label translate>用户ID</label>
+                    <input ng-model="insertDeviceInfo.user_id" type="text" required>
+                </md-input-container>
+                <md-input-container>
+                    <label translate>设备SN号</label>
+                    <input ng-model="insertDeviceInfo.device_sn" type="text">
+                </md-input-container>
+                <md-input-container>
+                    <label translate>设备IMEI号</label>
+                    <input ng-model="insertDeviceInfo.device_imei" type="text">
+                </md-input-container>
+                <md-input-container>
+                    <label translate>描述</label>
+                    <textarea ng-model="insertDeviceInfo.description"></textarea>
+                </md-input-container>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            <button type="button" class="btn btn-default" ng-click="confirmEditDevice()" data-dismiss="modal">保存</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div layout layout-sm="column" style="padding-left:70%" flex>
+        <md-input-container flex>
+            <label>选择页数</label>
+            <md-select class="md-select-form" ng-change="loadNextDevicePage(device_currentPage)" ng-model="device_currentPage" placeholder="选择页数" required>
+                <md-option ng-value="pageB" ng-repeat="pageB in device_total_pages">{{pageB}}</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+</div>

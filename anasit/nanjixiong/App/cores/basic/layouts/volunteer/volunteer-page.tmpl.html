@@ -1,0 +1,158 @@
+<md-card style="padding:0;margin:0">
+    <md-card-content>
+        <div class="content-padded">
+            <h2 class="md-title">志愿者管理</h2>
+        </div>
+        <md-divider></md-divider>
+        <div class="button-toolbar" layout="row" layout-align="start center">
+            <md-button ng-click="addNew()" class="md-raised md-primary">新增</md-button>
+            <!-- <md-button class="md-raised md-warn">删除</md-button> -->
+        </div>
+    </md-card-content>
+</md-card>
+
+<div ng-controller="TablesAdvancedController as vm">
+    <md-data-table-toolbar ng-hide="vm.selected.length || vm.filter.show">
+        <h2 class="md-title">志愿者列表</h2>
+        <div flex></div>
+        <md-button class="md-icon-button" ng-click="vm.filter.show = true">
+            <!-- <i class="material-icons md-dark">filter_list</i> -->
+            <md-icon md-font-icon="zmdi zmdi-filter-list"></md-icon>
+        </md-button>
+    </md-data-table-toolbar>
+
+    <md-data-table-toolbar class="md-data-table-toolbar">
+        <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
+        <form flex="" name="vm.filter.form">
+            <input type="text" ng-model="volunteerSearchFilter.keywords" ng-change="backToAllVolunteerList()" ng-keyup="enterVolunteerSearch($event)" placeholder="搜索">
+        </form>
+        <md-button class="md-icon-button md-raised" ng-click="triggerVolunteerSearch()">
+            <!-- <md-icon md-font-icon="zmdi zmdi-close"></md-icon> -->
+            搜索
+        </md-button>
+    </md-data-table-toolbar>
+
+    <md-data-table-toolbar class="alternate" ng-show="vm.selected.length" layout-align="space-between">
+      <div>选择了 {{vm.selected.length}} 个用户</div>
+    </md-data-table-toolbar>
+
+    <md-data-table-container>
+        <table md-data-table class="md-primary md-data-table">
+            <thead md-order="vm.query.order" md-trigger="vm.getUsers">
+                <tr>
+                    <!-- <th name="编号"></th> -->
+                    <th name="姓名"></th>
+                    <th name="性别"></th>
+                    <th name="年龄"></th>
+                    <th name="身份证号"></th>
+                    <th name="技能备注"></th>
+                    <th name="操作"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr md-auto-select ng-repeat="user in AllVolunteerInfo">
+                    <!-- <td>{{::user.vid}}</td> -->
+                    <td>{{::user.realname}}</td>
+                    <td>{{::user.sex}}</td>
+                    <td>{{::user.age}}</td>
+                    <td>{{::user.idcard}}</td>
+                    <td>{{::user.remarks}}</td>
+                    <td>
+                        <md-button ng-click="viewThisVolunteer(user)" class="md-primary">编辑/详细</md-button>
+                        <md-button ng-click="deleteThisVolunteer(user.vid)" class="md-warn">删除</md-button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </md-data-table-container>
+
+    <div layout layout-sm="column" style="padding-left:70%" flex>
+        <md-input-container flex>
+            <label>选择页数</label>
+            <md-select class="md-select-form" ng-change="loadNextVolunteerPage(currentVolunteerPage)" ng-model="currentVolunteerPage" placeholder="选择页数" required>
+                <md-option ng-value="pageB" ng-repeat="pageB in v_total_pages">{{pageB}}</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+</div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="volunteer-info" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">志愿者详细信息</h4>
+          </div>
+          <div class="modal-body" style="font-size: 1.3em;">
+            <div layout="column" flex>
+                <md-card-content>
+                    <div class="content-padded">
+                        <h2 class="md-title">编辑志愿者信息</h2>
+                    </div>
+                    <md-input-container>
+                        <label>姓名(最好是全名)</label>
+                        <input type="text" ng-model="volunteerUpdateInfo.realname" required>
+                        <div ng-messages for="volunteerUpdateInfo.realname.$error" ng-if="volunteerUpdateInfo.realname.$dirty">
+                            <div ng-message when="required">该项为必填项目</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>性别</label>
+                        <md-select class="md-select-form" ng-model="volunteerUpdateInfo.sex" placeholder="性别" required>
+                            <md-option ng-value="sex" ng-repeat="sex in ['男', '女']">{{sex}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>年龄</label>
+                        <input type="tel" ng-model="volunteerUpdateInfo.age" required>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>设备号</label>
+                        <input type="tel" ng-model="volunteerUpdateInfo.device_number" required>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>省</label>
+                        <md-select class="md-select-form" ng-model="volunteerUpdateInfo.province" placeholder="省" ng-change="changeCity()" required>
+                            <md-option ng-value="province.name" ng-repeat="province in provinceList">{{province.name}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>市</label>
+                        <md-select class="md-select-form" ng-model="volunteerUpdateInfo.city" placeholder="市" required ng-change="changeDistrict()">
+                            <md-option ng-value="city.name" ng-repeat="city in cityList">{{city.name}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>区</label>
+                        <md-select class="md-select-form" ng-model="volunteerUpdateInfo.district" placeholder="区" required>
+                            <md-option ng-value="district" ng-repeat="district in districtList">{{district}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>街道</label>
+                        <textarea ng-model="volunteerUpdateInfo.street" required></textarea>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>联系电话</label>
+                        <input type="tel" ng-model="volunteerUpdateInfo.mobile" required>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>身份证号</label>
+                        <input type="tel" ng-model="volunteerUpdateInfo.idcard" required>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>备注</label>
+                        <textarea ng-model="volunteerUpdateInfo.remarks" required></textarea>
+                    </md-input-container>
+                </md-card-content>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            <button type="button" class="btn btn-default" ng-click="confirmUpdateVolunteerInfo()">保存</button>
+          </div>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,41 @@
+<!-- <md-content class="padding-10"> -->
+
+    <md-card style="padding:0;margin:0">
+        <md-card-content>
+            <div class="content-padded">
+                <h2 class="md-title">老人信息管理</h2>
+            </div>
+            <md-divider></md-divider>
+            <div class="button-toolbar" layout="row" layout-align="start center">
+                <md-button ng-click="addNew()" class="md-raised md-primary">新增</md-button>
+                <md-button class="md-raised md-primary" ng-click="openUploadDialog()">导入excel文件</md-button>
+                <md-button ng-click="donwloadCsvTemplate()" class="md-raised md-primary">下载excel模板</md-button>
+                <md-button ng-click="downloadCsvFile()" class="md-raised md-primary">导出excel文件</md-button>
+            </div>
+        </md-card-content>
+    </md-card>
+
+    <md-card sytle="padding:0;margin:0!important">
+        <md-card-content style="padding:0;margin:0" ng-include="'app/cores/basic/layouts/oldinfo/table-advanced.tmpl.html'"></md-card-content>
+    </md-card>
+<!-- </md-content> -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="upload-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">上传excel文件</h4>
+          </div>
+          <div class="modal-body" style="font-size: 1.3em;">
+            <div layout="column" flex>
+                <iframe src="http://api.zkkj168.com/a/" frameborder="0" height="100%" width="100%"></iframe>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+          </div>
+        </div>
+      </div>
+    </div>

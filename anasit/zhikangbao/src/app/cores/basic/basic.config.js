@@ -138,13 +138,11 @@
             controllerAs: 'vm'
         });
 
-        triMenuProvider.addMenu({
-            name: '总部后台系统',
-            icon: 'fa fa-heartbeat',
-            type: 'dropdown',
-            priority: 2.1,
-            children: [
-            {
+        console.log('======================');
+        console.log(localStorage.roles);
+        console.log('======================');
+
+        var menuList = [{
                 name: '档案管理系统',
                 state: 'triangular.admin-default.basic-page',
                 type: 'dropdown',
@@ -212,22 +210,54 @@
                 type: 'link'
             },
             {
-                name: '系统管理员设置',
+                name: '系统权限管理',
                 state: 'triangular.admin-default.master-admin',
                 type: 'link'
-            }]
+        }];
+
+        if (localStorage.roles == '["custom_ser"]') {
+             menuList = [{
+                    name: '档案管理系统',
+                    state: 'triangular.admin-default.basic-page',
+                    type: 'dropdown',
+                    children: [{
+                        name: '老人档案管理',
+                        state: 'triangular.admin-default.basic-page',
+                        type: 'link'
+                    },{
+                        name: '健康档案管理',
+                        state: 'triangular.admin-default.basic-archives',
+                        type: 'link'
+                    }]
+                },
+                {
+                    name: '实时定位系统',
+                    state: 'triangular.admin-default.basic-pos',
+                    type: 'dropdown',
+                    children: [{
+                        name: '实时定位',
+                        state: 'triangular.admin-default.services-pos',
+                        type: 'link'
+                    },{
+                        name: '老人机设备管理',
+                        state: 'triangular.admin-default.device-mgr',
+                        type: 'link'
+                    }]
+                },
+                {
+                    name: '志愿者管理',
+                    state: 'triangular.admin-default.basic-volunteer',
+                    type: 'link'
+                }];
+        }
+
+        triMenuProvider.addMenu({
+            name: '总部后台系统',
+            icon: 'fa fa-heartbeat',
+            type: 'dropdown',
+            priority: 2.1,
+            children: menuList
         });
 
-        // triMenuProvider.addMenu({
-        //     name: 'ffffff',
-        //     icon: 'zmdi zmdi-check',
-        //     type: 'dropdown',
-        //     priority: 5.1,
-        //     children: [{
-        //         name: 'ffffffff',
-        //         state: 'triangular.admin-default.basic-page',
-        //         type: 'link'
-        //     }]
-        // )};
     }
 })();

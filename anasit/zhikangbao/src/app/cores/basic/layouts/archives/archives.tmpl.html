@@ -41,10 +41,11 @@
         <table md-data-table ng-show="isArchive == false" class="md-primary md-data-table"  md-progress="vm.deferred">
             <thead md-order="oldArchiveInfoItemList.user_id" md-trigger="">
                 <tr>
-                    <th name="编号"></th>
+                    <!-- <th name="编号"></th> -->
                     <th name="姓名"></th>
                     <th name="身份证号"></th>
                     <th name="老人家庭住址"></th>
+                    <th name="老人特征"></th>
                     <th name="添加时间"></th>
                     <th name="操作"></th>
                     <!-- <th order-by="id" name="ID"></th> -->
@@ -52,10 +53,11 @@
             </thead>
             <tbody>
                 <tr md-auto-select ng-repeat="user in oldArchiveInfoItemList">
-                    <td>{{user.user_id | nullToVisual}}</td>
+                    <!-- <td>{{user.user_id | nullToVisual}}</td> -->
                     <td>{{user.realname | nullToVisual}}</td>
                     <td>{{user.idcard | nullToVisual}}</td>
                     <td>{{user.address | nullToVisual}}</td>
+                    <td>{{user.feature | nullToVisual}}</td>
                     <td>{{user.create_time*1000 | date:'yyyy-MM-dd'}}</td>
                     <td>
                         <md-button ng-click="viewThisArchive(user.user_id,user.username)" class="md-primary">档案管理</md-button>
@@ -64,7 +66,7 @@
             </tbody>
         </table>
 
-        <table md-data-table ng-show="isArchive == true" class="md-primary md-data-table" md-row-select="vm.selected" md-progress="vm.deferred">
+        <table md-data-table ng-show="isArchive == true" class="md-primary md-data-table">
             <thead md-order="healthInfoList.user_id" md-trigger="">
                 <tr>
                     <th name="编号"></th>
@@ -73,10 +75,10 @@
                     <th name="血压"></th>
                     <th name="血糖"></th>
                     <th name="脉率"></th>
-                    <th name="血红蛋白"></th>
+<!--                     <th name="血红蛋白"></th>
                     <th name="体温"></th>
                     <th name="血氧饱和度"></th>
-                    <th name="备注"></th>
+ -->                    <th name="备注"></th>
                     <th name="操作"></th>
                 </tr>
             </thead>
@@ -88,12 +90,12 @@
                     <td>{{user.blood_pressure | nullToVisual}}</td>
                     <td>{{user.blood_sugar | nullToVisual}}</td>
                     <td>{{user.pulse_rate | nullToVisual}}</td>
-                    <td>{{user.blood_hb | nullToVisual}}</td>
+<!--                     <td>{{user.blood_hb | nullToVisual}}</td>
                     <td>{{user.temper | nullToVisual}}</td>
                     <td>{{user.blood_spo | nullToVisual}}</td>
-                    <td>{{user.description | nullToVisual}}</td>
+ -->                    <td>{{user.description | nullToVisual}}</td>
                     <td>
-                    <md-button ng-click="editThisArchive(user.id)" class="md-primary">编辑</md-button>
+                    <md-button ng-click="editThisArchive(user.id)" class="md-primary">详细/编辑</md-button>
                         <md-button ng-click="removeThis(user.id)" class="md-primary">删除</md-button>
                     </td>
                 </tr>
@@ -102,9 +104,9 @@
     </md-data-table-container>
     
     <div layout layout-sm="column" style="padding-left:70%" flex>
-        <!-- <md-input-container style="margin-top: 13px;" flex>
-            <md-button class="md-raised">上一页</md-button>
-        </md-input-container> -->
+        <md-input-container flex>
+            <label>总条数: {{oldInfoArchiveCount}}</label>
+        </md-input-container>
         <md-input-container flex>
             <label>选择页数</label>
             <md-select class="md-select-form" ng-change="loadNextPageArchive(currentPage)" ng-model="currentPage" placeholder="选择页数" required>
@@ -128,39 +130,91 @@
             <h4 class="modal-title" id="myModalLabel">{{healthArichiveTitle}}</h4>
           </div>
           <div class="modal-body" style="font-size: 1.3em;">
-            <div layout="column" flex>
-                <md-input-container>
-                    <label translate>测量时间</label>
-                    <input ng-model="insertHealthArchiveInfo.last_time" type="text">
-                </md-input-container>
-                <md-input-container flex>
-                    <label translate>血压</label>
-                    <input ng-model="insertHealthArchiveInfo.blood_pressure" type="text" required>
-                </md-input-container>
-                <md-input-container>
-                    <label translate>血糖</label>
-                    <input ng-model="insertHealthArchiveInfo.blood_sugar" type="text">
-                </md-input-container>
-                <md-input-container>
-                    <label translate>脉率</label>
-                    <input ng-model="insertHealthArchiveInfo.pulse_rate" type="text">
-                </md-input-container>
-                <md-input-container>
-                    <label translate>血红蛋白</label>
-                    <input ng-model="insertHealthArchiveInfo.blood_hb" type="text">
-                </md-input-container>
-                <md-input-container>
-                    <label translate>体温</label>
-                    <input ng-model="insertHealthArchiveInfo.temper" type="text">
-                </md-input-container>
-                <md-input-container>
-                    <label translate>血氧饱和度</label>
-                    <input ng-model="insertHealthArchiveInfo.blood_spo" type="text">
-                </md-input-container>
-                <md-input-container>
-                    <label translate>其它描述</label>
-                    <textarea ng-model="insertHealthArchiveInfo.description"></textarea>
-                </md-input-container>
+            <div class="row">
+                <div class="col-md-3">
+                    <md-input-container>
+                        <label translate>测量时间</label>
+                        <input ng-model="insertHealthArchiveInfo.last_time" type="text">
+                    </md-input-container>
+                </div>
+                <div class="col-md-3">
+                    <md-input-container flex>
+                        <label translate>血压</label>
+                        <input ng-model="insertHealthArchiveInfo.blood_pressure" type="text" required>
+                    </md-input-container>
+                </div>
+                <div class="col-md-3">
+                    <md-input-container>
+                        <label translate>血糖</label>
+                        <input ng-model="insertHealthArchiveInfo.blood_sugar" type="text">
+                    </md-input-container>
+                </div>
+                <div class="col-md-3">
+                    <md-input-container>
+                        <label translate>脉率</label>
+                        <input ng-model="insertHealthArchiveInfo.pulse_rate" type="text">
+                    </md-input-container>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <md-input-container>
+                        <label translate>血红蛋白</label>
+                        <input ng-model="insertHealthArchiveInfo.blood_hb" type="text">
+                    </md-input-container>
+                </div>
+                <div class="col-md-3">
+                    <md-input-container>
+                        <label translate>体温</label>
+                        <input ng-model="insertHealthArchiveInfo.temper" type="text">
+                    </md-input-container>
+                </div>
+                <div class="col-md-3">
+                    <md-input-container>
+                        <label translate>血氧饱和度</label>
+                        <input ng-model="insertHealthArchiveInfo.blood_spo" type="text">
+                    </md-input-container>
+                </div>
+                <div class="col-md-3">
+                    <md-input-container>
+                        <label translate>其它描述</label>
+                        <textarea ng-model="insertHealthArchiveInfo.description"></textarea>
+                    </md-input-container>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <md-input-container>
+                        <label translate>入院时间</label>
+                        <textarea ng-model="insertHealthArchiveInfo.enter_time"></textarea>
+                    </md-input-container>
+                </div>
+                <div class="col-md-4">
+                    <md-input-container>
+                        <label translate>住院时间(多少天)</label>
+                        <textarea ng-model="insertHealthArchiveInfo.live_time"></textarea>
+                    </md-input-container>
+                </div>
+                <div class="col-md-4">
+                    <md-input-container>
+                        <label translate>医院名称</label>
+                        <textarea ng-model="insertHealthArchiveInfo.hospital_name"></textarea>
+                    </md-input-container>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <md-input-container>
+                        <label translate>健康状态</label>
+                        <textarea ng-model="insertHealthArchiveInfo.conditions"></textarea>
+                    </md-input-container>
+                </div>
+                <div class="col-md-6">
+                    <md-input-container>
+                        <label translate>疾病类型</label>
+                        <textarea ng-model="insertHealthArchiveInfo.type"></textarea>
+                    </md-input-container>
+                </div>
             </div>
           </div>
           <div class="modal-footer">

@@ -1,7 +1,7 @@
 <md-card style="padding:0;margin:0">
     <md-card-content>
         <div class="content-padded">
-            <h2 class="md-title">系统管理员设置</h2>
+            <h2 class="md-title">系统权限管理</h2>
         </div>
         <md-divider></md-divider>
         <div class="button-toolbar" layout="row" layout-align="start center">
@@ -36,7 +36,7 @@
     </md-data-table-toolbar>
 
     <md-data-table-container>
-        <table md-data-table class="md-primary md-data-table" md-row-select="vm.selected" md-progress="vm.deferred">
+        <table md-data-table class="md-primary md-data-table">
             <thead md-order="vm.query.order" md-trigger="vm.getUsers">
                 <tr>
                     <th name="编号"></th>
@@ -47,11 +47,12 @@
             </thead>
             <tbody>
                 <tr md-auto-select ng-repeat="user in userWithoutRightsList">
-                    <td>{{::user.id}}</td>
+                    <td>{{::user.uid}}</td>
                     <td>{{::user.nickname}}</td>
-                    <td>{{::user.id | userGroupFilter}}</td>
+                    <td>{{::user.role_id | userGroupFilter}}</td>
                     <td>
-                        <md-button ng-show="user.id == null" ng-click="setUserAdmin(user.id)" class="md-primary">设为管理员</md-button>
+                        <!-- <md-button ng-show="user.id == null" ng-click="setUserAdmin(user.id)" class="md-primary">设为管理员</md-button> -->
+                        <md-button ng-show="user.role_id == null" ng-click="openOperatingForm(user.uid,user.role_id)">操作</md-button>
                     </td>
                 </tr>
             </tbody>
@@ -89,6 +90,32 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
             <button type="button" class="btn btn-default" ng-click="saveNewDevice()" data-dismiss="modal">保存</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="right-mgr" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">权限分配</h4>
+          </div>
+          <div class="modal-body" style="font-size: 1.3em;">
+            <div layout="column" flex>
+                <md-input-container flex>
+                    <label>权限列表</label>
+                    <md-select class="md-select-form" ng-model="role_id_selected" ng-change="changeRoleId(role_id_selected)" placeholder="权限列表" required>
+                        <md-option ng-value="role.id" ng-repeat="role in roleIdList">{{role.name}}</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            <button type="button" class="btn btn-default" ng-click="confirmRights()" data-dismiss="modal">保存</button>
           </div>
         </div>
       </div>

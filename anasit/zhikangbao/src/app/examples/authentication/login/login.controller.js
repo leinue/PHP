@@ -78,6 +78,8 @@
 
                     localStorage.roles = JSON.stringify(roleList);
 
+                    console.log(localStorage.roles);
+
                     $state.go('triangular.admin-default.basic-page');
                 }
 

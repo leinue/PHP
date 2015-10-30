@@ -606,12 +606,54 @@
             });
         };
 
+        $scope.volunteerSearchFilter = {
+            keywords : ''
+        }
+
         $scope.loadNextVolunteerPage = function(page) {
             $scope.currentVolunteerPage = page;
             $scope.getVolunteerInfo();
         };
 
+        $scope.backToAllVolunteerList = function() {
+            if($scope.volunteerSearchFilter.keywords == '') {
+                $scope.getVolunteerInfo();
+            }
+        }
+
+        $scope.enterVolunteerSearch = function($event) {
+            if($event && $event.keyCode == 13) {
+                $scope.triggerVolunteerSearch();
+            }
+        }
+
         $scope.triggerVolunteerSearch = function() {
+
+            if($scope.volunteerSearchFilter.keywords == '') {
+                $scope.enterVolunteerSearch();
+            }
+
+            VolunteerService.search($scope.volunteerSearchFilter.keywords).then(function(data) {
+
+                var status = data.status;
+                var realData = data.Schema;
+
+                if(status != '200') {
+
+                    var alert = $mdDialog.alert({
+                        title: '网络传输失败',
+                        content: realData.properties.message,
+                        ok: '确定'
+                    });
+
+                    $mdDialog.show(alert);
+
+                }else {
+                    $scope.AllVolunteerInfo = realData.properties;
+                    // vm.users.total_count = realData.properties.count;
+                }
+
+            });
 
         };
     }

@@ -37,9 +37,55 @@
 
         $scope.getUserNoRights();
 
-        $scope.setUserAdmin = function (id) {
+        $scope.currentUserId = '';
+        $scope.role_id_selected = '';
+        $scope.roleIdList = {};
 
-            UserMgrService.setAdmin(id).then(function(data) {
+        $scope.changeRoleId = function(val) {
+            console.log(val);
+            $scope.role_id_selected = val;
+        }
+
+        $scope.openOperatingForm = function(user_id,role_id) {
+            $('#right-mgr').modal('show');
+            $('.modal-backdrop').css('z-index','0');
+            $scope.currentUserId = user_id;
+            $scope.role_id_selected = role_id;
+            UserMgrService.getRoles().then(function(data) {
+
+                var status = data.status;
+                var realData = data.Schema;
+
+                if(status != '200') {
+                    alert('获取权限列表失败');
+                    return false;
+                }
+
+                console.log(realData.properties);
+                $scope.roleIdList = realData.properties;
+
+            });
+        };
+
+        $('#right-mgr').on('hidden.bs.modal', function (e) {
+            $('.modal-backdrop').css('z-index','1040');
+            $scope.currentUserId == '';
+            $scope.role_id_selected == '';
+        });
+
+        $scope.confirmRights = function() {
+
+            if($scope.currentUserId == '' || $scope.role_id_selected == '') {
+                return false;
+            }
+
+            $scope.setUserAdmin($scope.currentUserId,$scope.role_id_selected);
+
+        };
+
+        $scope.setUserAdmin = function (id,role_id) {
+
+            UserMgrService.setAdmin(id,role_id).then(function(data) {
 
                 var status = data.status;
                 var realData = data.Schema;
@@ -47,7 +93,7 @@
                 if(status != '200') {
 
                     var alert = $mdDialog.alert({
-                        title: '设置管理员失败',
+                        title: '设置权限失败',
                         cotnent: realData.properties.message,
                         ok: '确定'
                     });
@@ -55,7 +101,7 @@
                 }else {
 
                     var alert = $mdDialog.alert({
-                        title: '设置管理员成功',
+                        title: '设置权限成功',
                         content: realData.properties.message,
                         ok: '确定'
                     });

@@ -10,7 +10,8 @@
             //'seed-module',
             // uncomment above to activate the example seed module
             'app.examples',
-            'app.cores'
+            'app.cores',
+            'angularFileUpload'
         ])
         // create a constant for languages so they can be added to both triangular & translate
         .constant('APP_LANGUAGES', [{
@@ -78,7 +79,11 @@
         })
         .filter('userGroupFilter', function() {
           return function(i) {
-            return i == null ? '普通用户' : '管理员';
+            if (i == '2') {
+              return '管理员';
+            }else if (i == '5') {
+              return '客服';
+            }
           }
         })
         .run(function($rootScope, $location, $http, $state, LoginService, CheckStatus, $mdDialog){
@@ -329,6 +334,18 @@
 
             search: function(keywords) {
               return Restangular.one('/healths/search/' + keywords).get();
+            },
+
+            searchByOrg: function(org) {
+              return Restangular.one('/profile/old/org_get/' + org).get();
+            },
+
+            todayOld: function() {
+              return Restangular.one('/old/today_add').get();
+            },
+
+            oldMount: function() {
+              return Restangular.one('/old/oldMount').get();
             }
 
           };
@@ -481,8 +498,12 @@
                   return Restangular.one('/user/unactive').get();
                 },
 
-                setAdmin: function(id) {
-                  return Restangular.one('/user/active/' + id).get();
+                setAdmin: function(id,role_id) {
+                  return Restangular.one('/user/active/' + id + '/' + role_id).get();
+                },
+
+                getRoles: function() {
+                  return Restangular.one('user/get_roles').get();
                 }
 
             };
@@ -643,7 +664,22 @@
             },
 
             search: function(keywords) {
-              return Restangular.one('/work/get/' + keywords).get();
+              return Restangular.one('/volunteer/search/' + keywords).get();
+            }
+
+          };
+
+        }])
+        .factory('CsvImporterService', ['Restangular', '$http', 'API_CONFIG', function (Restangular, $http, API_CONFIG) {
+
+          return {
+        
+            import: function(name) {
+              return Restangular.one('/csv/import/' + name).get();
+            },
+
+            download: function() {
+              return Restangular.one('/csv/download').get();
             }
 
           };

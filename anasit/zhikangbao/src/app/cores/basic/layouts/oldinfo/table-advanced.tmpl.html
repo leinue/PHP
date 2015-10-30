@@ -1,12 +1,26 @@
 <div ng-controller="TablesAdvancedController as vm">
     <md-data-table-toolbar ng-hide="vm.selected.length || vm.filter.show">
         <h2 class="md-title">老人信息列表</h2>
-        <div flex></div>
         <md-button class="md-icon-button" ng-click="vm.filter.show = true">
             <!-- <i class="material-icons md-dark">filter_list</i> -->
             <md-icon md-font-icon="zmdi zmdi-filter-list"></md-icon>
         </md-button>
     </md-data-table-toolbar>
+
+    <div layout layout-sm="column" flex>
+        <md-input-container flex>
+            <label>组织类型</label>
+            <md-select class="md-select-form" ng-model="currentOrgCate" ng-change="getOrgList()" placeholder="组织类型">
+                <md-option ng-value="org.id" ng-repeat="org in orgCateList">{{org.name}}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container flex>
+            <label>机构/社区/组织</label>
+            <md-select class="md-select-form" ng-model="currentOrg" placeholder="机构/社区/组织列表" ng-change="searchOldByOrgInfo()">
+                <md-option ng-value="org.id" ng-repeat="org in orgList">{{org.full_name}}</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
 
     <md-data-table-toolbar ng-show="vm.filter.show && !vm.selected.length || 1" class="md-data-table-toolbar">
         <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
@@ -28,7 +42,7 @@
         <table md-data-table class="md-primary md-data-table" md-progress="vm.deferred">
             <thead md-order="oldInfoItemList.user_id" md-trigger="">
                 <tr>
-                    <th order-by="user.user_id" name="编号"></th>
+                    <!-- <th order-by="user.user_id" name="编号"></th> -->
                     <th name="姓名"></th>
                     <th name="性别"></th>
                     <th name="身份证号"></th>
@@ -42,7 +56,7 @@
             </thead>
             <tbody>
                 <tr md-auto-select ng-repeat="user in oldInfoItemList">
-                    <td>{{user.user_id | nullToVisual}}</td>
+                    <!-- <td>{{user.user_id | nullToVisual}}</td> -->
                     <td>{{user.realname | nullToVisual}}</td>
                     <td>{{user.sex | nullToVisual}}</td>
                     <td>{{user.idcard | nullToVisual}}</td>
@@ -172,6 +186,9 @@
     </div>
 
     <div layout layout-sm="column" style="padding-left:70%" flex>
+        <md-input-container flex>
+            <label>总条数: {{oldInfoCount}}</label>
+        </md-input-container>
         <md-input-container flex>
             <label>选择页数</label>
             <md-select class="md-select-form" ng-change="loadNextPage(currentPageAB)" ng-model="currentPageAB" placeholder="选择页数" required>

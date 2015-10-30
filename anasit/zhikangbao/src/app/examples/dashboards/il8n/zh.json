@@ -52,9 +52,9 @@
             "TWEETS": "消息",
             "LIKES": "喜欢",
             "REACH": "到达量",
-            "PAGEVIEWS": "Pageviews&访问",
-            "REFERRALS": "流量统计",
-            "SOCIAL": "社交统计",
+            "PAGEVIEWS": "一个月新增老人统计情况",
+            "REFERRALS": "登录统计",
+            "SOCIAL": "总推送消息数量",
             "LOCATION": "地点",
             "DATE": "11/03/15-11/4/15"
         },

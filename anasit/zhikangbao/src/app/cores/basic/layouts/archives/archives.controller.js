@@ -36,15 +36,7 @@
         	$state.go('triangular.admin-default.new-archive');
         }
 
-        $scope.insertHealthArchiveInfo = {
-            blood_pressure: '',
-            blood_sugar: '',
-            pulse_rate: '',
-            blood_hb: '',
-            temper: '',
-            blood_spo: '',
-            last_time: ''
-        };
+        $scope.insertHealthArchiveInfo = {};
 
         $scope.isArchive = false;
 
@@ -57,11 +49,10 @@
         $scope.getOldInfo = function() {
             $scope.query.page = $scope.currentPage;
             OldInfoService.index($scope.query.page,$scope.query.limit).then(function(data) {
-                console.log('dddd');
                 var status = data.status;
                 var realData = data.Schema;
                 $scope.oldArchiveInfoItemList = realData.properties.detail;
-                console.log($scope.oldArchiveInfoItemList);
+                $scope.oldInfoArchiveCount = realData.properties.count;
                 $scope.users.total_count = Math.ceil(realData.properties.count/$scope.query.limit);
                 $scope.total_pages = [];
                 for (var i = 1; i < $scope.users.total_count + 1; i++) {

@@ -1,0 +1,217 @@
+<div ng-controller="TablesAdvancedController as vm">
+    <md-data-table-toolbar ng-hide="vm.selected.length || vm.filter.show">
+        <h2 class="md-title">老人信息列表</h2>
+        <md-button class="md-icon-button" ng-click="vm.filter.show = true">
+            <!-- <i class="material-icons md-dark">filter_list</i> -->
+            <md-icon md-font-icon="zmdi zmdi-filter-list"></md-icon>
+        </md-button>
+    </md-data-table-toolbar>
+
+    <div layout layout-sm="column" flex>
+        <md-input-container flex>
+            <label>组织类型</label>
+            <md-select class="md-select-form" ng-model="currentOrgCate" ng-change="getOrgList()" placeholder="组织类型">
+                <md-option ng-value="org.id" ng-repeat="org in orgCateList">{{org.name}}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container flex>
+            <label>机构/社区/组织</label>
+            <md-select class="md-select-form" ng-model="currentOrg" placeholder="机构/社区/组织列表" ng-change="searchOldByOrgInfo()">
+                <md-option ng-value="org.id" ng-repeat="org in orgList">{{org.full_name}}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container flex>
+            <label>残疾类型</label>
+            <md-select class="md-select-form" ng-model="currentFeature" placeholder="残疾类型" ng-change="changeFeatureContent()">
+                <md-option ng-value="feature" ng-repeat="feature in ['精神残疾','肢体残疾']">{{feature}}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container flex>
+            <label>残疾内容</label>
+            <md-select class="md-select-form" ng-model="currentFeatureContent" placeholder="残疾内容" ng-change="searchOldByOrgInfo()">
+                <md-option ng-value="featureContent" ng-repeat="featureContent in featureContentList">{{featureContent}}</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+
+    <md-data-table-toolbar ng-show="vm.filter.show && !vm.selected.length || 1" class="md-data-table-toolbar">
+        <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
+        <form flex="" name="vm.filter.form">
+            <input type="text" ng-model="vm.query.filter" ng-model-options="vm.filter.options" placeholder="搜索" ng-keyup="startSearch($event)" ng-change="getAllOldList()">
+        </form>
+        <md-button class="md-icon-button md-raised" ng-click="triggerSearch()">
+            <!-- <md-icon md-font-icon="zmdi zmdi-close"></md-icon> -->
+            搜索
+        </md-button>
+    </md-data-table-toolbar>
+
+    <md-data-table-toolbar class="alternate" ng-show="vm.selected.length" layout-align="space-between">
+      <div>选择了 {{vm.selected.length}} 个用户</div>
+    </md-data-table-toolbar>
+
+    <md-data-table-container>
+    <!-- md-row-select="vm.selected" -->
+        <table md-data-table class="md-primary md-data-table" md-progress="vm.deferred">
+            <thead md-order="oldInfoItemList.user_id" md-trigger="">
+                <tr>
+                    <!-- <th order-by="user.user_id" name="编号"></th> -->
+                    <th name="姓名"></th>
+                    <th name="性别"></th>
+                    <th name="身份证号"></th>
+                    <th name="老人家庭住址"></th>
+                    <th name="经济来源"></th>
+                    <th name="老人特征"></th>
+                    <!-- <th name="亲属电话"></th> -->
+                    <!-- <th name="添加时间"></th> -->
+                    <th name="操作"></th>
+                    <!-- <th order-by="id" name="ID"></th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr md-auto-select ng-repeat="user in oldInfoItemList">
+                    <!-- <td>{{user.user_id | nullToVisual}}</td> -->
+                    <td>{{user.realname | nullToVisual}}</td>
+                    <td>{{user.sex | nullToVisual}}</td>
+                    <td>{{user.idcard | nullToVisual}}</td>
+                    <td>{{user.address | nullToVisual}}</td>
+                    <td>{{user.finance | nullToVisual}}</td>
+                    <td>{{user.feature | nullToVisual}}</td>
+                    <!-- <td>{{user.create_time | date:'yyyy-MM-dd'}}</td> -->
+                    <td>
+                        <md-menu>
+                            <md-button class="md-icon-button" aria-label="open menu" ng-click="$mdOpenMenu()">
+                                <md-icon md-font-icon="zmdi zmdi-more-vert"></md-icon>
+                            </md-button>
+                            <md-menu-content width="3">
+                                <md-menu-item>
+                                    <md-button ng-click="addNewMember(user.user_id)" class="md-primary">新增家庭成员</md-button>
+                                </md-menu-item>
+                                <md-menu-item>
+                                    <md-button ng-click="viewMyMember(user.user_id)" class="md-primary">查看家庭成员</md-button>
+                                </md-menu-item>
+                                <md-menu-divider></md-menu-divider>
+                                <md-menu-item>
+                                    <md-button ng-click="viewThis(user.user_id)" class="md-primary">详情</md-button>
+                                </md-menu-item>
+                                <md-menu-item>
+                                    <md-button ng-click="editThis(user.user_id)" class="md-primary">编辑</md-button>
+                                </md-menu-item>
+                                <md-menu-item>
+                                    <md-button ng-click="deleteThis(user.user_id)" class="md-warn">删除</md-button>
+                                </md-menu-item>
+                            </md-menu-content>
+                        </md-menu>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </md-data-table-container>
+
+    <!-- Modal -->
+    <div class="modal fade" id="viewDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">查看详细资料</h4>
+          </div>
+          <div class="modal-body" style="font-size: 1.3em;">
+            <div layout="column" flex>
+                <div layout layout-sm="column" flex>
+                    <md-input-container flex>
+                        <label translate>老人姓名(最好是全名)</label>
+                        <input disabled ng-model="inserOldInfo.realname" type="text" required>
+                    </md-input-container>
+                    <md-input-container flex>
+                        <label translate>血型</label>
+                        <input disabled ng-model="inserOldInfo.blood_type" type="text">
+                    </md-input-container>
+                    <md-input-container flex>
+                        <label translate>民族</label>
+                        <input disabled ng-model="inserOldInfo.nation" type="text">
+                    </md-input-container>
+                    <md-input-container flex>
+                        <label translate>性别</label>
+                        <input disabled ng-model="inserOldInfo.sex" type="text">
+                    </md-input-container>
+                    <md-input-container flex>
+                        <label translate>设备ID</label>
+                        <input disabled ng-model="inserOldInfo.device_id" type="text">
+                    </md-input-container>
+                </div>
+                <div layout layout-sm="column" flex>
+                    <md-input-container flex>
+                        <label translate>身份证号</label>
+                        <input disabled ng-model="inserOldInfo.idcard" type="text" required>
+                    </md-input-container>
+                    <md-input-container flex>
+                        <label translate>家庭住址</label>
+                        <input disabled ng-model="inserOldInfo.address" type="text">
+                    </md-input-container>
+                    <md-input-container flex>
+                        <label translate>机构名</label>
+                        <input disabled ng-model="inserOldInfo.org_id" type="text">
+                    </md-input-container>
+                    <md-input-container flex>
+                        <label translate>经济来源</label>
+                        <input disabled ng-model="inserOldInfo.finance" type="text">
+                    </md-input-container>
+                </div>
+                <div layout layout-sm="column" flex>
+                    <md-input-container flex>
+                        <label>联系方式</label>
+                        <input disabled ng-model="inserOldInfo.mobile" type="text">
+                    </md-input-container>
+                    <md-input-container flex>
+                        <label translate>身份特征</label>
+                        <input disabled ng-model="inserOldInfo.feature" type="text" required>
+                    </md-input-container>
+                    <md-input-container flex>
+                        <label translate>亲属姓名</label>
+                        <input disabled ng-model="inserOldInfo.relation_realname" type="text">
+                    </md-input-container>
+                    <md-input-container flex>
+                        <label translate>亲属电话</label>
+                        <input disabled ng-model="inserOldInfo.relation_mobile" type="text">
+                    </md-input-container>
+                    <md-input-container flex>
+                        <label translate>亲属关系</label>
+                        <input disabled ng-model="inserOldInfo.relation" type="text">
+                    </md-input-container>
+                </div>
+                <div layout layout-sm="column" flex>
+                    <md-input-container flex>
+                        <label translate>创建时间</label>
+                        <input disabled ng-model="inserOldInfo.create_time" type="text" required>
+                    </md-input-container>
+                    <md-input-container flex>
+                        <label translate>更新时间</label>
+                        <input disabled ng-model="inserOldInfo.update_time" type="text">
+                    </md-input-container>
+                    <md-input-container flex>
+                        <label translate>其它描述</label>
+                        <textarea disabled ng-model="inserOldInfo.description"></textarea>
+                    </md-input-container>
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div layout layout-sm="column" style="padding-left:70%" flex>
+        <md-input-container flex>
+            <label>总条数: {{oldInfoCount}}</label>
+        </md-input-container>
+        <md-input-container flex>
+            <label>选择页数</label>
+            <md-select class="md-select-form" ng-change="loadNextPage(currentPageAB)" ng-model="currentPageAB" placeholder="选择页数" required>
+                <md-option ng-value="pageB" ng-repeat="pageB in total_pages">{{pageB}}</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+
+</div>

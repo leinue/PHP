@@ -1,0 +1,19 @@
+{
+    "name": "oxygenna/material-design",
+    "authors": [
+        {
+            "name": "John Langan",
+            "email": "john.langan@oxygenna.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "oxygenna/oxygenna-ant-theme-build": "1.0.*"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:oxygenna/oxygenna-ant-theme-build.git"
+        }
+    ]
+}

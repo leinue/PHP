@@ -1,0 +1,4 @@
+<project>
+    <property file="build.properties"/>
+    <import file="vendor/oxygenna/oxygenna-ant-theme-build/build.xml"/>
+</project>

@@ -1,0 +1,31 @@
+{
+    "MENU": {
+        "ELEMENTS": {
+            "ELEMENTS": "元素",
+            "BUTTONS": "按钮",
+            "CARDS": "卡片",
+            "ICONS": "图标",
+            "CHECKBOXES": "多选框",
+            "SWITCHES": "多选",
+            "RADIOS": "单选",
+            "DIALOGS": "对话框",
+            "GRIDS": "网格系统",
+            "FAB-SPEED": "FAB-SPEED",
+            "FAB-TOOLBAR": "FAB-TOOLBAR",
+            "TABS": "监视",
+            "SLIDERS": "滑块条",
+            "SELECTS": "选项",
+            "TABLES": "表格",
+            "PROGRESS": "进度条",
+            "SIDEBARS": "侧边栏",
+            "TOOLBARS": "工具条",
+            "TEXTANGULAR": "付文本编辑器",
+            "TOOLTIPS": "帮助信息",
+            "WHITEFRAMES": "Whiteframes",
+            "TOASTS": "提示信息",
+            "LISTS": "清单",
+            "CHIPS": "表单",
+            "MENUS": "菜单"
+        }
+    }
+}

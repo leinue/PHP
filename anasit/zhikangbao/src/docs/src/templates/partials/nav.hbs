@@ -1,0 +1,28 @@
+<ul class="nav navbar-nav">
+    {{#each topmenu}}
+        {{#if children}}
+            <li class="dropdown{{#compare ../../section "==" slug }} active{{/compare}}">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{name}}</a>
+                <ul class="dropdown-menu">
+                    {{#each children}}
+                        {{#if divider}}
+                            <li role="presentation" class="divider"></li>
+                        {{else}}
+                            <li {{#compare ../../../../basename "==" slug }}class="active"{{/compare}}>
+                                <a href="{{slug}}.html">
+                                    {{name}}
+                                </a>
+                            </li>
+                        {{/if}}
+                    {{/each}}
+                </ul>
+            </li>
+        {{else }}
+            <li {{#compare ../../basename "==" slug }}class="active"{{/compare}}>
+                <a href="{{slug}}.html">
+                    {{name}}
+                </a>
+            </li>
+        {{/if}}
+    {{/each}}
+</ul>

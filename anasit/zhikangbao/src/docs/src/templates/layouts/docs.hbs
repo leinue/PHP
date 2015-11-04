@@ -1,0 +1,31 @@
+---
+    layout: default.hbs
+---
+<div class="bs-header" id="content">
+    <div class="container">
+        <h1>{{title}}</h1>
+        <p>{{subtitle}}</p>
+    </div>
+</div>
+<div id="online-docs-warning" class="alert alert-info text-center">
+    <div class="container">
+        <strong>Online Docs Available</strong>
+        Looks like you are looking at the offline docs.  You can find possibly more up to date docs <a target="_blank" href="{{links.onlinedocs}}">online here</a>
+    </div>
+</div>
+<div class="container bs-docs-container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bs-sidebar hidden-print affix-top" role="complementary">
+                {{sidecontents filename}}
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="bs-docs-section">
+                {{#markdown}}
+                    {{> body}}
+                {{/markdown}}
+            </div>
+        </div>
+    </div>
+</div>

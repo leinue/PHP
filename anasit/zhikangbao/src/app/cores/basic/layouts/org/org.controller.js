@@ -453,15 +453,19 @@
 
         $scope.insertOrgList.code = -1;
 
+        var jsonCode = '';
+
         $scope.divideOrgCate = function() {
             if(currentState.indexOf('department') != -1) {
                 //机构管理
                 $scope.insertOrgList.code = 2;
+                jsonCode = JSON.stringify($scope.insertOrgList.code);
             }
 
             if(currentState.indexOf('community') != -1) {
                 //社区管理
                 $scope.insertOrgList.code = 1;
+                jsonCode = JSON.stringify($scope.insertOrgList.code);
             }
 
             if(currentState.indexOf('shop') != -1) {
@@ -469,6 +473,10 @@
                 $scope.insertOrgList.code = 3;
                 $scope.insertOrgList.code1 = 4;
                 $scope.insertOrgList.code2 = 5;
+
+                var tmpArr = [$scope.insertOrgList.code, $scope.insertOrgList.code1, $scope.insertOrgList.code2];
+
+                jsonCode = JSON.stringify(tmpArr);
             }
         }
 
@@ -493,7 +501,7 @@
         });
 
         $scope.getAllOrgInfo = function() {
-            OrgService.index().then(function(data) {
+            OrgService.index(jsonCode).then(function(data) {
                 console.log(data);
                 var realData = data.Schema;
                 $scope.orgList = realData.properties;

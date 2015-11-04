@@ -1,0 +1,81 @@
+<md-card style="padding:0;margin:0;">
+    <md-card-content>
+        <div class="content-padded">
+            <h2 class="md-title">视频关爱系统</h2>
+        </div>
+        <md-divider></md-divider>
+        <md-button class="md-raised md-primary" ng-click="selectVideoArea()">{{selectTitle}}</md-button>
+        <div ng-show="selectArea" layout layout-sm="column" flex>
+            <md-input-container flex>
+                <label>组织类型</label>
+                <md-select class="md-select-form" ng-model="currentOrgCate" ng-change="getOrgList()" placeholder="组织类型">
+                    <md-option ng-value="org.id" ng-repeat="org in orgCateList">{{org.name}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container flex>
+                <label>机构/社区/组织</label>
+                <md-select class="md-select-form" ng-model="currentOrg" ng-change="getMonitorList()" placeholder="机构/社区/组织列表">
+                    <md-option ng-value="org.id" ng-repeat="org in orgList">{{org.full_name}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container flex>
+                <label>监控器列表</label>
+                <md-select class="md-select-form" ng-model="currentMonitor" ng-change="getVideo()" placeholder="监控器列表">
+                    <md-option ng-value="monitor" ng-repeat="monitor in MonitorList">{{monitor.monitor_name}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container flex>
+                <label>流格式</label>
+                <md-select class="md-select-form" ng-model="currentCodec" ng-change="getVideo()" placeholder="流格式">
+                    <md-option ng-value="type" ng-repeat="type in ['h264','MPEG-4','mpeg4']">{{type}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container flex>
+                <label>流类型</label>
+                <md-select class="md-select-form" ng-model="currentSubtype" ng-change="getVideo()" placeholder="流格式">
+                    <md-option ng-value="type" ng-repeat="type in ['main','sub']">{{type}}</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+    </md-card-content>
+    <md-ontent id="monitor-area">
+
+<!--[if IE]>
+          <object type='application/x-vlc-plugin' id='basicVideo' events='True'
+         classid='clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921' codebase="http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab" width="100%" height="410">
+          <param name='mrl' value='rtsp://admin:zkmoni777@192.168.1.55:1554/h264/ch1/main/av_stream' />
+           <param name='volume' value='50' />
+           <param name='autoplay' value='true' />
+          <param name='loop' value='false' />
+          <param name='fullscreen' value='false' />
+          <param name='controls' value='false' />
+    </object>
+    <![endif]-->
+    <!--[if !IE]><!-->
+	    <object type='application/x-vlc-plugin' id='basicVideo' events='True' width="100%" height="410" pluginspage="http://www.videolan.org" codebase="http://downloads.videolan.org/pub/videolan/vlc-webplugins/2.0.6/npapi-vlc-2.0.6.tar.xz">
+	        <param name='mrl' value='rtsp://admin:zkmoni777@192.168.1.55:1554/h264/ch1/main/av_stream' />
+	            <param name='volume' value='50' />
+	            <param name='autoplay' value='true' />
+	        <param name='loop' value='false' />
+            <param name='fullscreen' value='false' />
+        <param name='controls' value='false' />
+    </object>
+    <!--<![endif]-->    
+
+    </md-content>
+</md-card>
+
+<script>
+
+    $(function(){
+        var footerHeight = $('#footer').height();
+        var headerHeight = $('.md-toolbar-tools').height();
+        var docHeight = $('html').height();
+
+        var bodyHeight = docHeight - (headerHeight * 2) - 10;
+
+        $('#basicVideo').attr('height', bodyHeight);
+        $('#basicVideo').hide();
+    });
+
+</script>

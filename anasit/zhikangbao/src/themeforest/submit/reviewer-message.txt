@@ -1,0 +1,76 @@
+Update after hard rejection
+
+Please pass this to reviewer kailoon who has history of this theme
+
+*** Previous Reviewers comments ***
+
+1. MENU - http://envato.d.pr/18yaO/vUddFRX5 - While its fine to have this common structure, the menu could do with some work and it could be helped with a better font selection and/or placement.
+
+2. REV SLIDER - http://envato.d.pr/14Dvr/54aPrasi - The caption could be improved as it doesn’t draw attention. In addition, the typography and visual hierarchy can be improved. You can read more about visual hierarchy here:  http://webdesign.tutsplus.com/articles/understanding-visual-hierarchy-in-web-design--webdesign-84
+
+3. SERVICES SECTION - http://envato.d.pr/E0PR/4XuKhfUl - We can see that you’ve change the icons and font here. Again, its fine to have a common structure/layout like this which is from the builder. However, the visual flow and personality need to be stronger. Currently, it looks plain and not inviting as it could be.
+
+4. CTA SECTION - http://envato.d.pr/1lwPF/1AUDxNW0 - The action button is important for a website, so deserves greater emphasis, and attention to it’s design. The same goes for the tagline.
+
+5. OUR WORK SECTION - http://envato.d.pr/1dmv4/YwftTyrJ - Its fine to have the common strucutre like this (almost all other themes have one), but the title of this section and the description need to draw attention. The visual flow can be improved.
+
+6. STAFF SECTION - http://envato.d.pr/1g6I8/3lpax1Ci - This is a good use of font and great example for better visual flow/identity/personality! :-)
+
+7. COUNTERS SECTION - http://envato.d.pr/1jVkn/510yvKNz - This section looks plain. The information needs better presentation. Please consider use of a better font combination in order to improve its presence.
+
+8. TESTIMONIALS SECTION - http://envato.d.pr/1fvmN/2T0RIpyU - It’s fine to use this common layout/structure from the builder. However, currently it doesn’t provide a strong concept or identity. The styling looks minimum and bootstrap-like. It looks crowded with the text and there isn’t enough detail in these elements to establish a distinctive and strong visual flow.
+
+9. OUR PARTNERS SECTION - http://envato.d.pr/1c7rx/4gXQYYFK - While this is a good concept, it doesn’t work well with other elements on this page or, other elements you have in the builder.
+
+10. RECENT POSTS SECTION - http://envato.d.pr/1juVg/3rIh6naW - The design of this section looks unfinished. The visual flow can be improved with better visual hierarchy or types. Please refer to the article mentioned above. As for the design, the three boxes look repetitive and plain.
+
+11. BLOG LIST PAGE - http://envato.d.pr/16WQE/2EnT8QP8 - The blog page is a core feature and it also sets the tone of a theme. The provided blog page is plain and needs more of  an identity. The spacing is inconsistent and the visual hierarchy needs improvement. This also applies to the widgets. Its fine to use absolute minimal design here, but the details matter especially with such design. Every pixel counts, the image size ratio, the title font size, weight, line-height, the spacing between paragraphs, medias, sidebars and the post meta placements/design.
+
+12. SINGLE POST - http://envato.d.pr/1g7zA/44pp5Qkm - needs better spacing, the layout is generic and plain, it’s over-crowded and it’s like a bootstrap layout with no concept
+
+13. BLOCK QUOTE - http://envato.d.pr/134MS/48JwFU1F - typography should be better
+
+14. COMMENT FORM - http://envato.d.pr/TaQI/5q7AcgxR - dated look and bootstrap-like
+
+*** Our Changes ***
+
+We have been over all the above points and changed the following to resolve the issues you have with the theme.
+
+1. MENU
+  - Added top border effect on hover
+  - Changed font of menu
+  - Removed logo image
+  - Added nicer text logo
+  - Added line to top of dropdown menu
+  - Changed font size of menu items and made bolder
+
+3. SERVICES SECTION
+  - Changed heading fonts to Raleway and made them bolder
+  - Removed link from service title to make service name stand out more
+  - Added tag option to services shortcode to allow h1-h6 titles
+  - Services now use h2 titles to improve visual hierarchy of the section
+  - Added extra more business like copy to the main paragraph below the title
+  - Wider thinner blue divider line
+
+4. CTA SECTION
+  - Changed CTA copy
+  - Added Icon to button
+  - Changed text on button
+  - Increased font size of CTA text
+  - Increased font size of icon on large buttons
+
+5. OUR WORK SECTION
+  - Improved heading typography
+  - Added nicer copy for subtitle
+  - Moved items to be padded instead of full width
+  - Changed scroll animation to show items falling into page
+  - Changed hover animations
+  - Added blur on hover effect
+
+8. TESTIMONIALS SECTION
+  - Complete change created a 2 column layout with quotes and quotees
+  - Added several extra options to testimonials shortcode to change (animation type, and style)
+
+
+EXTRA CHANGES
+  - All pages now have a common look / feel (changed headers and layouts)

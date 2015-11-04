@@ -261,5 +261,25 @@
             $scope.getOldInfo();
         }
 
+        $scope.data = {
+            date: ''
+        };
+
+        $scope.$watch('insertHealthArchiveInfo.last_time', function(newV,oldV) {
+            $scope.writeBackDate(newV);
+        });
+
+        $scope.writeBackDate = function(val) {
+            $scope.insertHealthArchiveInfo.last_time = $filter('date')(val,'yyyy-MM-dd');
+        }
+
+        $scope.$watch('insertHealthArchiveInfo.enter_time', function(newV,oldV) {
+            $scope.writeBackEnterTime(newV);
+        });
+
+        $scope.writeBackEnterTime = function(val) {
+            $scope.insertHealthArchiveInfo.enter_time = $filter('date')(val,'yyyy-MM-dd');
+        }
+
     }
 })();

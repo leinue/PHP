@@ -6,7 +6,7 @@
         .controller('DashboardAnalyticsController', DashboardAnalyticsController);
 
     /* @ngInject */
-    function DashboardAnalyticsController($scope, $timeout, $mdToast, $rootScope, $state, $element, dragulaService, OldInfoService) {
+    function DashboardAnalyticsController($scope, $timeout, $mdToast, $rootScope, $state, $element, dragulaService, OldInfoService, DashboardService) {
         // $timeout(function() {
         //     $rootScope.$broadcast('newMailNotification');
         //     $mdToast.show({
@@ -34,6 +34,8 @@
 
         $scope.today_old = 0;
         $scope.old_mount = 0;
+        $scope.toady_org_mount = 0;
+        $scope.org_mount = 0;
 
         OldInfoService.todayOld().then(function(data) {
             $scope.today_old = data.Schema.properties;
@@ -43,6 +45,26 @@
             $scope.old_mount = data.Schema.properties;
         });
 
+        DashboardService.orgMount().then(function(data) {
+            $scope.org_mount = data.Schema.properties;
+        });
+
+        DashboardService.todayOrgMount().then(function(data) {
+            $scope.toady_org_mount = data.Schema.properties;
+        });
+
+        $scope.helpPieChart = {
+            labels: ['今日受理消息', '总消息数'],
+            data: [0, 0]
+        };
+
+        DashboardService.helpMount().then(function(data) {
+            $scope.helpPieChart.data[1] = data.Schema.properties;
+        });
+
+        DashboardService.helpDealMount().then(function(data) {
+            $scope.helpPieChart.data[0] = data.Schema.properties;
+        });
 
     }
 })();

@@ -1,0 +1,129 @@
+{
+    "MENU": {
+        "AUTH": {
+            "AUTH": "帐户信息",
+            "LOGIN": "登录",
+            "SIGN_UP": "注册",
+            "FORGOT": "忘记密码",
+            "LOCK": "离开",
+            "PROFILE": "资料"
+        }
+    },
+    "HEADER": {
+        "HEADING": "智康宝"
+    },
+    "LOGIN": {
+        "TITLE": "登录",
+        "EMAIL": {
+            "LABEL": "手机号或用户名",
+            "PLEASE_ENTER": "请输入新的手机号。",
+            "PLEASE_VALID": "请输入的一个有效的手机号。"
+        },
+        "PASSWORD": {
+            "LABEL": "密码",
+            "PLEASE_ENTER": "请输入你的密码"
+        },
+        "REMEMBER": "记住我",
+        "FORGOT": "忘记密码?",
+        "BUTTON": "登录",
+        "SIGNUP_LINK": "没有账户? 现在去注册",
+        "SOCIAL": {
+            "OR": "或者登录于"
+        },
+        "MESSAGES": {
+            "ACCESS_DENIED": "用户名和密码不正确"
+        }
+    },
+    "SIGNUP": {
+        "TITLE": "注册",
+        "NAME": {
+            "LABEL": "用户名",
+            "PLEASE_ENTER": "请输入你的用户名"
+        },
+        "EMAIL": {
+            "LABEL": "手机号",
+            "PLEASE_ENTER": "请输入您的手机号",
+            "PLEASE_VALID": "请输入的一个有效的手机号"
+        },
+        "PASSWORD": {
+            "LABEL": "密码",
+            "PLEASE_ENTER": "请输入密码",
+            "MIN_LENGTH": "你的密码必须超过8个字符",
+            "SAME_PASSWORD": "您必须输入相同的密码"
+        },
+        "PASSWORD_CONFIRM": {
+            "LABEL": "再输入一次密码"
+        },
+        "BUTTON": "注册",
+        "HAVE_LOGIN": "已经有一个帐户了吗？去登录",
+        "MESSAGES": {
+            "CONFIRM_SENT": "确认发送给",
+            "LOGIN_NOW": "注册成功,现在去登录",
+            "NO_SIGNUP": "注册失败"
+        }
+    },
+    "LOCK": {
+        "TITLE": "欢迎回来",
+        "LOGGED_OUT": "请输入您的密码进行验证",
+        "PASSWORD": {
+            "LABEL": "密码",
+            "PLEASE_ENTER": "请输入你的密码"
+        },
+        "LOGIN": "登录",
+        "LOGOUT": "记住我",
+        "MESSAGES": {
+            "ACCESS_DENIED": "用户名和密码不正确"
+        }
+    },
+    "FORGOT": {
+        "TITLE": "忘了你的密码?",
+        "ENTER_EMAIL": "请输入你的手机号",
+        "EMAIL": {
+            "LABEL": "手机号",
+            "PLEASE_ENTER": "请输入你的手机号。",
+            "PLEASE_VALID": "请输入的一个有效的手机号。"
+        },
+        "RESET": "重新设置",
+        "LOGIN": "记得吗? 登录在这里",
+        "MESSAGES": {
+            "RESET_SENT": "您的新密码已经邮寄到您的邮箱",
+            "LOGIN_NOW": "登录",
+            "NO_RESET": "不可能重置的用户密码"
+        }
+    },
+    "PROFILE": {
+        "TITLE": "简介",
+        "NAME": {
+            "LABEL": "的名字",
+            "PLEASE_ENTER": "请输入你的名字"
+        },
+        "EMAIL": {
+            "LABEL": "手机号",
+            "PLEASE_ENTER": "请输入你的手机号",
+            "PLEASE_VALID": "请输入的一个有效的手机号"
+        },
+        "LOCATION": {
+            "LABEL": "地点"
+        },
+        "WEBSITE": {
+            "LABEL": "网站"
+        },
+        "BIO": {
+            "LABEL": "生物"
+        },
+        "TWITTER": {
+            "LABEL": "twitter"
+        },
+        "PASSWORD": {
+            "LABEL": "新密码",
+            "CURRENT": "旧密码",
+            "PLEASE_ENTER": "请输入密码",
+            "MIN_LENGTH": "你的密码必须超过6个字符长",
+            "SAME_PASSWORD": "你得输入密码"
+        },
+        "PASSWORD_CONFIRM": {
+            "LABEL": "确认新密码"
+        },
+        "BUTTON": "更新环境"
+    }
+}

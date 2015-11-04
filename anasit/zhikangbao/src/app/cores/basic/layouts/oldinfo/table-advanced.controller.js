@@ -291,7 +291,47 @@
         $scope.getOrgCateList();
 
         $scope.searchOldByOrgInfo = function() {
-            OldInfoService.searchByOrg($scope.currentOrg).then(function(data) {
+            OldInfoService.searchByOrg($scope.currentOrg,'null').then(function(data) {
+                var status = data.status;
+                var realData = data.Schema;
+
+                if(status != '200') {
+                    var alert = $mdDialog.alert({
+                        title: '搜索失败',
+                        content: realData.properties.message,
+                        ok: '确定'
+                    });
+                    $mdDialog.show(alert);
+                }else {
+                    $scope.oldInfoItemList = realData.properties;
+                }
+            });
+        }
+
+        $scope.currentFeature = '';
+        $scope.featureContentList = {};
+
+        $scope.changeFeatureContent = function() {
+            var list = {
+                '精神残疾': [
+                    '一级智障',
+                    '二级智障',
+                    '三级智障',
+                    '四级智障'
+                ],
+                '肢体残疾': [
+                    '一级残疾',
+                    '二级残疾',
+                    '三级残疾',
+                    '四级残疾'
+                ]
+            };
+
+            $scope.featureContentList = list[$scope.currentFeature];
+        }
+
+        $scope.searchOldByOldFeature = function() {
+            OldInfoService.searchByOrg($scope.currentOrg, $scope.currentFeatureContent).then(function(data) {
                 var status = data.status;
                 var realData = data.Schema;
 
@@ -306,8 +346,7 @@
                     $scope.oldInfoItemList = realData.properties;
                 }
             });
-        }
-
+        };
 
     }
 })();

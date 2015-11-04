@@ -1,0 +1,51 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+    ],
+    "hash": "952b19d74a3d6264b0423aecdf5d6e90",
+    "packages": [
+        {
+            "name": "oxygenna/oxygenna-ant-theme-build",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@bitbucket.org:oxygenna/oxygenna-ant-theme-build.git",
+                "reference": "1e5fb7864ada8abf2562b2a2dd047b91ab420ee9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "license": [
+                "ThemeForest"
+            ],
+            "authors": [
+                {
+                    "name": "John Langan",
+                    "email": "john.langan@oxygenna.com"
+                }
+            ],
+            "description": "Oxygenna's Theme Builder",
+            "time": "2015-06-12 08:32:21"
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "dev",
+    "stability-flags": [
+
+    ],
+    "platform": [
+
+    ],
+    "platform-dev": [
+
+    ]
+}

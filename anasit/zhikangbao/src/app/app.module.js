@@ -11,7 +11,8 @@
             // uncomment above to activate the example seed module
             'app.examples',
             'app.cores',
-            'angularFileUpload'
+            'angularFileUpload',
+            'ui.bootstrap', 'ui.bootstrap.datetimepicker'
         ])
         // create a constant for languages so they can be added to both triangular & translate
         .constant('APP_LANGUAGES', [{
@@ -121,6 +122,13 @@
                       $mdDialog.show(alert);
                       $state.go('authentication.login');
                     }
+
+                    if(localStorage.fromLoginPage == 'true') {
+                        localStorage.fromLoginPage = 'false';
+                        window.location.reload();
+                        
+                    }
+
                  });
               }
 
@@ -278,9 +286,13 @@
         .factory('OrgService', ['Restangular', function(Restangular){
 
             return {
-
-                index: function() {
-                    return Restangular.one('/profile/org/index').get();
+                //select *,a.name from organization inner join organization_cate as a on a.id in (3,4,5);
+                index: function(code) {
+                    if(code != null ) {
+                      return Restangular.one('/profile/org/index/' + code).get();
+                    }else {
+                      return Restangular.one('/profile/org/index').get();
+                    }
                 },
 
                 update: function(data) {
@@ -336,8 +348,12 @@
               return Restangular.one('/healths/search/' + keywords).get();
             },
 
-            searchByOrg: function(org) {
-              return Restangular.one('/profile/old/org_get/' + org).get();
+            searchByOrg: function(org, features) {
+              if (features == null) {
+                return Restangular.one('/profile/old/org_get/' + org).get();
+              }else {
+                return Restangular.one('/profile/old/org_get/' + org + '/' + features).get();
+              }
             },
 
             todayOld: function() {
@@ -680,6 +696,29 @@
 
             download: function() {
               return Restangular.one('/csv/download').get();
+            }
+
+          };
+
+        }])
+        .factory('DashboardService', ['Restangular', '$http', 'API_CONFIG', function (Restangular, $http, API_CONFIG) {
+
+          return {
+            
+            orgMount: function() {
+              return Restangular.one('/org/mount').get();
+            },
+
+            todayOrgMount: function() {
+              return Restangular.one('/org/today_mount').get();
+            },
+
+            helpMount: function() {
+              return Restangular.one('/help/mount').get();
+            },
+
+            helpDealMount: function() {
+              return Restangular.one('/help/deal_mount').get();
             }
 
           };

@@ -133,8 +133,18 @@
             <div class="row">
                 <div class="col-md-3">
                     <md-input-container>
-                        <label translate>测量时间</label>
-                        <input ng-model="insertHealthArchiveInfo.last_time" type="text">
+                        <label translate style="margin-top: -60px;">测量时间</label>
+                        <!-- <input ng-model="insertHealthArchiveInfo.last_time" type="text"> -->
+                        <div class="dropdown" style="margin-top: 31px;">
+                            <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="">    
+                                  <input type="text" ng-change="writeBackDate()" data-ng-model="insertHealthArchiveInfo.last_time">
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <datetimepicker data-ng-model="insertHealthArchiveInfo.last_time"
+                                                data-datetimepicker-config="{ dropdownSelector: '#dropdown2' ,minView: 'day'}">
+                                </datetimepicker>
+                            </ul>
+                        </div>
                     </md-input-container>
                 </div>
                 <div class="col-md-3">
@@ -185,8 +195,17 @@
             <div class="row">
                 <div class="col-md-4">
                     <md-input-container>
-                        <label translate>入院时间</label>
-                        <textarea ng-model="insertHealthArchiveInfo.enter_time"></textarea>
+                        <label translate style="margin-top: -60px;">入院时间</label>
+                        <div class="dropdown" style="margin-top: 31px;">
+                            <a class="dropdown-toggle" id="dropdown3" role="button" data-toggle="dropdown" data-target="#" href="">    
+                                  <input type="text" ng-change="writeBackEnterTime()" data-ng-model="insertHealthArchiveInfo.enter_time">
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <datetimepicker data-ng-model="insertHealthArchiveInfo.enter_time"
+                                                data-datetimepicker-config="{ dropdownSelector: '#dropdown3' ,minView: 'day'}">
+                                </datetimepicker>
+                            </ul>
+                        </div>
                     </md-input-container>
                 </div>
                 <div class="col-md-4">

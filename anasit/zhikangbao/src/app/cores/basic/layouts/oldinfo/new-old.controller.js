@@ -86,6 +86,40 @@
             }
             
         };
+
+        $scope.currentFeature = '';
+        $scope.currentFeatureContent = '';
+        $scope.featureContentList = {};
+
+        $scope.changeFeatureContent = function() {
+            var list = {
+                '精神残疾': [
+                    '一级智障',
+                    '二级智障',
+                    '三级智障',
+                    '四级智障'
+                ],
+                '肢体残疾': [
+                    '一级残疾',
+                    '二级残疾',
+                    '三级残疾',
+                    '四级残疾'
+                ]
+            };
+
+            $scope.featureContentList = list[$scope.currentFeature];
+        }
+
+        $scope.changeFeatureFileds = function(v) {
+
+            if(typeof $scope.inserOldInfo.feature != 'undefined') {
+                $scope.inserOldInfo.feature += ' ' + $scope.currentFeatureContent;
+            }else {
+                $scope.inserOldInfo.feature = $scope.currentFeatureContent;
+            }
+            
+        }
+
     }
 
 })();

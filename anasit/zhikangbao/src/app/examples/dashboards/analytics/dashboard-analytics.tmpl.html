@@ -23,8 +23,8 @@
                 <md-icon class="font-size-5 opacity-50 margin-left-10" md-font-icon="fa fa-facebook"></md-icon>
             </div>
             <div layout="column" layout-align="center end">
-                <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0" countupto="943" decimals="0"></p>
-                <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0" translate>总推送消息数</p>
+                <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0" countupto="toady_org_mount" decimals="0"></p>
+                <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0" translate>今日新增机构数</p>
             </div>
         </tri-widget>
         <tri-widget palette-background="teal:500" content-layout="row" content-layout-align="space-between center" content-padding>
@@ -32,8 +32,8 @@
                 <md-icon class="font-size-5 opacity-50 margin-left-10" md-font-icon="fa fa-eye"></md-icon>
             </div>
             <div layout="column" layout-align="center end">
-                <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0" countupto="944" decimals="0"></p>
-                <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0" translate>今日推送消息数</p>
+                <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0" countupto="org_mount" decimals="0"></p>
+                <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0" translate>总机构数</p>
             </div>
         </tri-widget>
     </div>
@@ -42,11 +42,11 @@
         <tri-widget chartjs-line-widget title="DASHBOARDS.ANALYTICS.PAGEVIEWS" subtitle="DASHBOARDS.ANALYTICS.DATE" content-padding>
             <canvas class="chart-line" chart-data="lineChart.data" chart-labels="lineChart.labels" chart-legend="true" chart-series="lineChart.series" chart-options="lineChart.options"></canvas>
         </tri-widget>
-        <tri-widget chartjs-pie-widget title="DASHBOARDS.ANALYTICS.SOCIAL" subtitle="DASHBOARDS.ANALYTICS.DATE" content-padding>
-            <canvas class="chart-doughnut" chart-data="pieChart.data" chart-legend="true" chart-labels="pieChart.labels"></canvas>
-        </tri-widget>
     </div>
     <div layout="row" layout-sm="column" layout-margin>
+        <tri-widget chartjs-pie-widget title="消息受理统计" subtitle="DASHBOARDS.ANALYTICS.DATE" content-padding>
+            <canvas class="chart-doughnut" chart-data="helpPieChart.data" chart-legend="true" chart-labels="helpPieChart.labels"></canvas>
+        </tri-widget>
         <tri-widget flex load-data-widget="{ referrals: 'app/examples/dashboards/data/referrals.json' }" title="DASHBOARDS.ANALYTICS.REFERRALS" subtitle="DASHBOARDS.ANALYTICS.DATE" content-padding>
             <table class="table">
                 <thead>
@@ -61,7 +61,7 @@
                 </tbody>
             </table>
         </tri-widget>
-        <tri-widget flex load-data-widget="{ social: 'app/examples/dashboards/data/social.json' }" title="DASHBOARDS.ANALYTICS.SOCIAL" subtitle="DASHBOARDS.ANALYTICS.DATE" content-padding>
+        <!-- <tri-widget flex load-data-widget="{ social: 'app/examples/dashboards/data/social.json' }" title="待定" subtitle="DASHBOARDS.ANALYTICS.DATE" content-padding>
             <table class="table">
                 <thead>
                     <tr>
@@ -74,9 +74,9 @@
                     </tr>
                 </tbody>
             </table>
-        </tri-widget>
+        </tri-widget> -->
     </div>
-    <div layout="row" layout-md="column" layout-sm="column" layout-margin>
+    <!-- <div layout="row" layout-md="column" layout-sm="column" layout-margin>
         <tri-widget google-geochart-widget flex title="DASHBOARDS.ANALYTICS.LOCATION" subtitle="DASHBOARDS.ANALYTICS.DATE" title-position="top" content-padding>
             <div class="google-chart" google-chart chart="geoChartData"></div>
         </tri-widget>
@@ -94,5 +94,5 @@
                 </tbody>
             </table>
         </tri-widget>
-    </div>
+    </div> -->
 </div>

@@ -40,7 +40,7 @@
         <table md-data-table class="md-primary md-data-table">
             <thead md-order="vm.query.order" md-trigger="vm.getUsers">
                 <tr>
-                    <th name="编号"></th>
+                    <!-- <th name="编号"></th> -->
                     <th name="机构名"></th>
                     <th name="所属分类"></th>
                     <th name="是否开启"></th>
@@ -50,8 +50,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr md-auto-select ng-show="insertOrgList.code == item.code || inserOrgList.code == -1 || insertOrgList.code1 == item.code || insertOrgList.code2 == item.code" ng-repeat="item in orgList">
-                    <td>{{item.id}}</td>
+                <tr md-auto-select ng-repeat="item in orgList">
+                <!--ng-show="insertOrgList.code == item.code || inserOrgList.code == -1 || insertOrgList.code1 == item.code || insertOrgList.code2 == item.code"-->
+                    <!-- <td>{{item.id}}</td> -->
                     <td>{{item.full_name}}</td>
                     <td>{{item.name}}</td>
                     <td>{{item.enabled | orgIsEnabled}}</td>

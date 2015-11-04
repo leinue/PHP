@@ -1,0 +1,79 @@
+theme:
+    name: triangular
+    slogan: Material Design AngularJS Admin Template
+links:
+    item: http://themeforest.net/item/triangular-material-design-admin-template-angularjs/11711437
+    contact: http://www.oxygenna.com/contact
+    tfportfolio: http://themeforest.net/user/oxygenna/portfolio
+    onlinedocs: "http://help.oxygenna.com/angular/triangular"
+    changelog: changelog.html
+    support: &support http://oxygenna.ticksy.com
+    youtube:
+    doclibrary: http://www.oxygenna.com/documentation-library
+topmenu:
+    -
+        name: Getting Started
+        slug: getting-started
+        children:
+            -
+                name: Introduction
+                slug: introduction
+            -
+                name: Download
+                slug: download
+            -
+                name: Source folder
+                slug: source
+            -
+                name: Demo folder
+                slug: demo
+            -
+                name: Extras folder
+                slug: extras
+    -
+        name: Customisation
+        slug: customisation
+        children:
+            -
+                name: Modules
+                slug: modules
+            -
+                name: Colors & Themes
+                slug: themes
+            -
+                name: Typography
+                slug: typography
+            -
+                name: Logo & Name
+                slug: logo
+    -
+        name: Triangular
+        slug: triangular
+        children:
+            -
+                name: CSS
+                slug: css
+            -
+                name: Elements
+                slug: elements
+            -
+                name: Translating
+                slug: translating
+            -
+                name: Directives
+                slug: directives
+            -
+                name: Migration 1.0 -> 2.0
+                slug: migration
+    -
+        name: Rest Server
+        slug: rest-server
+    -
+        name: Tutorials
+        slug: videos
+    -
+        name: Changelog
+        slug: changelog
+    -
+        name: Support
+        slug: support

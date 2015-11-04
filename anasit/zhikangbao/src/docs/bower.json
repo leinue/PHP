@@ -1,0 +1,11 @@
+{
+  "name": "ngadmin-docs",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "bootstrap-sass-official": "~3.2",
+    "fontawesome": "~4.1.0",
+    "highlightjs": "~8.5.0"
+  },
+  "devDependencies": {}
+}

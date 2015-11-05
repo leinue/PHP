@@ -719,6 +719,18 @@
 
             helpDealMount: function() {
               return Restangular.one('/help/deal_mount').get();
+            },
+
+            oldMonthMount: function() {
+              return Restangular.one('/old/month_mount').get();
+            },
+
+            loginMount: function() {
+              return Restangular.one('').get();
+            },
+
+            todayLoginMount: function() {
+              return Restangular.one('').get();
             }
 
           };

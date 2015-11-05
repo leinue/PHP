@@ -66,5 +66,45 @@
             $scope.helpPieChart.data[0] = data.Schema.properties;
         });
 
+        $scope.oldMonthLineChart = {
+            labels: [],
+            series: ['老人数据'],
+            options: {
+                datasetFill: false,
+                responsive: true
+            },
+            data: []
+        };
+
+        DashboardService.oldMonthMount().then(function(data){
+            var tmp = data.Schema.properties;
+            var tmpList = [];
+            for (var key in tmp) {
+                var curr = tmp[key];
+                tmpList.push(curr);
+
+                var tmpKey = key;
+                if(tmpKey > 30) {
+                    tmpKey -= 30;
+                }
+                $scope.oldMonthLineChart.labels.push(tmpKey);
+            };
+            $scope.oldMonthLineChart.data.push(tmpList);
+            console.log($scope.oldMonthLineChart.data);
+        });
+
+        $scope.onlinePieChart = {
+            labels: ['历史在线用户', '当前在线用户'],
+            data: [0, 0]
+        };
+
+        DashboardService.loginMount().then(function(data) {
+            $scope.onlinePieChart.data[1] = data.Schema.properties;
+        });
+
+        DashboardService.todayLoginMount().then(function(data) {
+            $scope.onlinePieChart.data[0] = data.Schema.properties;
+        });
+
     }
 })();

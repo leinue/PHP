@@ -68,7 +68,6 @@
                     $scope.lineChart.data.push(row);
                 }
 
-                console.log($scope.lineChart);
             }
 
             // Simulate async data update

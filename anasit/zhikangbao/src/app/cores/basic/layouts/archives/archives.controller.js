@@ -281,5 +281,13 @@
             $scope.insertHealthArchiveInfo.enter_time = $filter('date')(val,'yyyy-MM-dd');
         }
 
+        $scope.$watch('insertHealthArchiveInfo.sick_time', function(newV,oldV) {
+            $scope.writeBackSickTime(newV);
+        });
+
+        $scope.writeBackSickTime = function(val) {
+            $scope.insertHealthArchiveInfo.sick_time = $filter('date')(val,'yyyy-MM-dd');
+        }
+
     }
 })();

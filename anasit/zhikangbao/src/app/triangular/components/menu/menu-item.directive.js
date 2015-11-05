@@ -83,6 +83,9 @@
         }
 
         function openLink() {
+            if(triMenuItem.item.active) {
+                window.location.reload();
+            }
             var params = angular.isUndefined(triMenuItem.item.params) ? {} : triMenuItem.item.params;
             $state.go(triMenuItem.item.state, params);
             triMenuItem.item.active = true;

@@ -40,26 +40,15 @@
     <div class="mirror-container"></div>
     <div layout="row" layout-sm="column" layout-margin>
         <tri-widget chartjs-line-widget title="DASHBOARDS.ANALYTICS.PAGEVIEWS" subtitle="DASHBOARDS.ANALYTICS.DATE" content-padding>
-            <canvas class="chart-line" chart-data="lineChart.data" chart-labels="lineChart.labels" chart-legend="true" chart-series="lineChart.series" chart-options="lineChart.options"></canvas>
+            <canvas class="chart-line" chart-data="oldMonthLineChart.data" chart-labels="oldMonthLineChart.labels" chart-legend="true" chart-series="oldMonthLineChart.series" chart-options="oldMonthLineChart.options"></canvas>
         </tri-widget>
     </div>
     <div layout="row" layout-sm="column" layout-margin>
         <tri-widget chartjs-pie-widget title="消息受理统计" subtitle="DASHBOARDS.ANALYTICS.DATE" content-padding>
             <canvas class="chart-doughnut" chart-data="helpPieChart.data" chart-legend="true" chart-labels="helpPieChart.labels"></canvas>
         </tri-widget>
-        <tri-widget flex load-data-widget="{ referrals: 'app/examples/dashboards/data/referrals.json' }" title="DASHBOARDS.ANALYTICS.REFERRALS" subtitle="DASHBOARDS.ANALYTICS.DATE" content-padding>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th ng-repeat="header in ::referrals.header | limitTo:3">{{::header}}</th>
-                    </tr>
-                </thead>
-                <tbody class="md-caption">
-                    <tr ng-repeat="referral in ::referrals.data | limitTo:5">
-                        <td ng-repeat="data in ::referral | limitTo:3">{{::data}}</td>
-                    </tr>
-                </tbody>
-            </table>
+        <tri-widget chartjs-pie-widget title="在线用户统计" subtitle="DASHBOARDS.ANALYTICS.DATE" content-padding>
+            <canvas class="chart-doughnut" chart-data="onlinePieChart.data" chart-legend="true" chart-labels="onlinePieChart.labels"></canvas>
         </tri-widget>
         <!-- <tri-widget flex load-data-widget="{ social: 'app/examples/dashboards/data/social.json' }" title="待定" subtitle="DASHBOARDS.ANALYTICS.DATE" content-padding>
             <table class="table">

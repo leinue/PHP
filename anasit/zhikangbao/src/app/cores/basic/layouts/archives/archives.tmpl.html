@@ -222,16 +222,31 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <md-input-container>
                         <label translate>健康状态</label>
                         <textarea ng-model="insertHealthArchiveInfo.conditions"></textarea>
                     </md-input-container>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <md-input-container>
                         <label translate>疾病类型</label>
                         <textarea ng-model="insertHealthArchiveInfo.type"></textarea>
+                    </md-input-container>
+                </div>
+                <div class="col-md-4">
+                    <md-input-container>
+                        <label translate style="margin-top: -60px;">病发时间</label>
+                        <div class="dropdown" style="margin-top: 31px;">
+                            <a class="dropdown-toggle" id="dropdown4" role="button" data-toggle="dropdown" data-target="#" href="">    
+                                  <input type="text" ng-change="writeBackSickTime()" data-ng-model="insertHealthArchiveInfo.sick_time">
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <datetimepicker data-ng-model="insertHealthArchiveInfo.sick_time"
+                                                data-datetimepicker-config="{ dropdownSelector: '#dropdown4' ,minView: 'day'}">
+                                </datetimepicker>
+                            </ul>
+                        </div>
                     </md-input-container>
                 </div>
             </div>

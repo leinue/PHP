@@ -11,7 +11,6 @@
             // uncomment above to activate the example seed module
             'app.examples',
             'app.cores',
-            'angularFileUpload',
             'ui.bootstrap', 'ui.bootstrap.datetimepicker'
         ])
         // create a constant for languages so they can be added to both triangular & translate

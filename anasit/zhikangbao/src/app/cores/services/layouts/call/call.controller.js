@@ -6,7 +6,7 @@
         .controller('BasicServicesCallController', BasicServicesCallController);
 
     /* @ngInject */
-    function BasicServicesCallController($mdDialog, $state, $scope, YulpService) {
+    function BasicServicesCallController($mdDialog, $state, $scope, YulpService, RefreshService) {
         var vm = this;
 
 		$scope.helpList = {};
@@ -61,6 +61,11 @@
         }
 
         $scope.getHelpList();
+
+        $scope.refreshMyCallList = function() {
+            RefreshService.refresh();
+            $scope.getHelpList();
+        }
 
         $scope.viewThisYulp = function(id) {
 

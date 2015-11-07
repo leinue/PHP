@@ -6,7 +6,7 @@
         .controller('BasicVolunteerController', BasicVolunteerController);
 
     /* @ngInject */
-    function BasicVolunteerController($scope, $state, VolunteerService, $mdDialog) {
+    function BasicVolunteerController($scope, $state, VolunteerService, $mdDialog, RefreshService) {
         var vm = this;
 
         $scope.provinceList = [
@@ -486,6 +486,11 @@
         };
 
         $scope.getVolunteerInfo();
+
+        $scope.refreshMyVolunteerList = function() {
+            RefreshService.refresh();
+            $scope.getVolunteerInfo();
+        }
 
         $scope.deleteThisVolunteer = function(vid) {
             var alert = $mdDialog.confirm({

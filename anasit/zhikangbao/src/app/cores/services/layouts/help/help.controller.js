@@ -6,7 +6,7 @@
         .controller('BasicServicesHelpController', BasicServicesHelpController);
 
     /* @ngInject */
-    function BasicServicesHelpController($mdDialog, $state, $scope, HelpService, $stateParams) {
+    function BasicServicesHelpController($mdDialog, $state, $scope, HelpService, $stateParams, RefreshService) {
         var vm = this;
 
         $scope.helpList = {};
@@ -51,6 +51,11 @@
         };
 
         $scope.getHelpList();
+
+        $scope.refreshMyConsultHelpList = function() {
+            RefreshService.refresh();
+            $scope.getHelpList();
+        }
 
         $scope.confirmDeal = function(id) {
 

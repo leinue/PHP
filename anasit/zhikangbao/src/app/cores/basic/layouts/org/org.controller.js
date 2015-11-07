@@ -6,7 +6,7 @@
         .controller('BasicOrgController', BasicOrgController);
 
     /* @ngInject */
-    function BasicOrgController($scope, $state, $mdDialog, OrgInfoService, OrgService, $stateParams) {
+    function BasicOrgController($scope, $state, $mdDialog, OrgInfoService, OrgService, $stateParams, RefreshService) {
         var vm = this;
 
         $scope.provinceList = [
@@ -509,6 +509,11 @@
         }
 
         $scope.getAllOrgInfo();
+
+        $scope.refreshMyOrgList = function() {
+            RefreshService.refresh();
+            $scope.getAllOrgInfo();
+        }
 
         $scope.addNewOrg = function() {
             $scope.edit = false;

@@ -6,7 +6,7 @@
         .controller('BasicArchivesController', BasicArchivesController);
 
     /* @ngInject */
-    function BasicArchivesController($scope, $state, OldInfoService, $mdDialog, HealthService, $filter) {
+    function BasicArchivesController($scope, $state, OldInfoService, $mdDialog, HealthService, $filter, RefreshService) {
         var vm = this;
         vm.selected = '';
 
@@ -288,6 +288,16 @@
         $scope.writeBackSickTime = function(val) {
             $scope.insertHealthArchiveInfo.sick_time = $filter('date')(val,'yyyy-MM-dd');
         }
+
+        $scope.refreshMyArchiveList = function() {
+            if(!$scope.isArchive) {
+                RefreshService.refresh();
+                $scope.getOldInfo();
+            }else {
+                RefreshService.refresh();
+                $scope.viewThisArchive($scope.currentUid,$scope.currentUserName);              
+            }
+        };
 
     }
 })();

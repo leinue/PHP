@@ -6,7 +6,7 @@
         .controller('BasicDeviceController', BasicDeviceController);
 
     /* @ngInject */
-    function BasicDeviceController($scope, $state, DeviceService, $mdDialog) {
+    function BasicDeviceController($scope, $state, DeviceService, $mdDialog, RefreshService) {
         var vm = this;
 
         $scope.device_currentPage = 1;
@@ -22,6 +22,11 @@
                     $scope.device_total_pages.push(i);
                 };
             })
+        }
+
+        $scope.refreshMyDeviceList = function() {
+            RefreshService.refresh();
+            $scope.getDevice();
         }
 
         //////////////////////////

@@ -6,7 +6,7 @@
         .controller('TablesAdvancedController', Controller);
 
     /* @ngInject */
-    function Controller($scope, $timeout, $q, OldInfoService, $mdDialog, $state, $location, $sce, $stateParams, OrgService, OrgInfoService) {
+    function Controller($scope, $timeout, $q, OldInfoService, $mdDialog, $state, $location, $sce, $stateParams, OrgService, OrgInfoService, RefreshService) {
         var vm = this;
 
         $scope.query = {
@@ -164,6 +164,11 @@
         }
 
         $scope.getOldInfoBasic();
+
+        $scope.refreshMyOldInfoList = function() {
+            RefreshService.refresh();
+            $scope.getOldInfoBasic();
+        }
 
         $scope.addNewMember = function(id) {
             // $state.go('triangular.admin-default.new-family');

@@ -6,7 +6,7 @@
         .controller('BasicAdminController', BasicAdminController);
 
     /* @ngInject */
-    function BasicAdminController($scope, $state, $mdDialog, UserMgrService) {
+    function BasicAdminController($scope, $state, $mdDialog, UserMgrService, RefreshService) {
         var vm = this;
 
         $scope.userWithoutRightsList = {};
@@ -36,6 +36,11 @@
         };
 
         $scope.getUserNoRights();
+
+        $scope.refreshMyAdminList = function() {
+            RefreshService.refresh();
+            $scope.getUserNoRights();
+        }
 
         $scope.currentUserId = '';
         $scope.role_id_selected = '';

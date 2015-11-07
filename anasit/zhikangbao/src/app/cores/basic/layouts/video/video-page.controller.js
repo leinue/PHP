@@ -19,7 +19,7 @@
         $scope.currentOrgCate = '';
 
         $scope.currentCodec = 'h264';
-        $scope.currentSubtype = 'main'
+        $scope.currentSubtype = 'main';
 
         $scope.videoValue = 'rtsp://admin:zkmoni777@192.168.1.55:1554/h264/ch1/main/av_stream';
 

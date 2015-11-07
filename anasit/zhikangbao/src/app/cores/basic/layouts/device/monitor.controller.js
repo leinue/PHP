@@ -6,7 +6,7 @@
         .controller('BasicMonitorController', BasicMonitorController);
 
     /* @ngInject */
-    function BasicMonitorController($scope, $state, MonitorService, $mdDialog, OrgService) {
+    function BasicMonitorController($scope, $state, MonitorService, $mdDialog, OrgService, RefreshService) {
         var vm = this;
 
         $scope.isEdit = false;
@@ -28,6 +28,11 @@
                     $scope.monitor_total_pages.push(i);
                 };
             })
+        }
+
+        $scope.refreshMyMonitorList = function() {
+            RefreshService.refresh();
+            $scope.getDevice();
         }
 
         $scope.insertDeviceInfo = {};

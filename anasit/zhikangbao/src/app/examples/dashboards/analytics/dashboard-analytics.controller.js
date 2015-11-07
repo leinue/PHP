@@ -99,11 +99,11 @@
         };
 
         DashboardService.loginMount().then(function(data) {
-            $scope.onlinePieChart.data[1] = data.Schema.properties;
+            $scope.onlinePieChart.data[0] = data.Schema.properties;
         });
 
         DashboardService.todayLoginMount().then(function(data) {
-            $scope.onlinePieChart.data[0] = data.Schema.properties;
+            $scope.onlinePieChart.data[1] = data.Schema.properties;
         });
 
     }

@@ -6,7 +6,7 @@
         .controller('BasicServicesController', BasicServicesController);
 
     /* @ngInject */
-    function BasicServicesController($scope, $state, FamilyMemberService, $mdDialog, $stateParams) {
+    function BasicServicesController($scope, $state, FamilyMemberService, $mdDialog, $stateParams, RefreshService) {
         var vm = this;
 
         $scope.addNew = function() {
@@ -44,6 +44,11 @@
         }
 
         $scope.getAllMembers();
+
+        $scope.refreshMyFamilyList = function() {
+            RefreshService.refresh();
+            $scope.getAllMembers();
+        }
 
         $scope.editData = {
             user_relation_id: '',

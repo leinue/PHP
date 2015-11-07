@@ -87,7 +87,7 @@
             }
           }
         })
-        .run(function($rootScope, $location, $http, $state, LoginService, CheckStatus, $mdDialog){
+        .run(function($rootScope, $location, $http, $state, LoginService, CheckStatus, $mdDialog, DashboardService){
 
             // User.getThisInfo();
 
@@ -120,6 +120,7 @@
                           ok: '确定'
                       });
                       $mdDialog.show(alert);
+                      DashboardService.reduceOnline();
                       $state.go('authentication.login');
                     }
 
@@ -726,14 +727,35 @@
             },
 
             loginMount: function() {
-              return Restangular.one('').get();
+              return Restangular.one('/auth/login_mount').get();
             },
 
             todayLoginMount: function() {
-              return Restangular.one('').get();
+              return Restangular.one('/auth/online_mount').get();
+            },
+
+            reduceOnline: function() {
+              return Restangular.one('auth/reduce_online').get();
             }
 
           };
+
+        }])
+        .factory('RefreshService', ['$mdToast', function ($mdToast) {
+          
+          return  {
+
+            refresh: function() {
+              // $mdToast.show(
+              //   $mdToast.simple()
+              //       .content('刷新数据...')
+              //       .position('bottom right')
+              //       .highlightAction(true)
+              //       .hideDelay(2000)
+              // );
+            }
+
+          }
 
         }]);
 

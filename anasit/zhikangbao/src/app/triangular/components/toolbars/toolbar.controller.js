@@ -28,7 +28,7 @@
 
         $scope.logout = function() {
             LoginService.logout();
-            LoginService.logout();
+            // LoginService.logout();
         };
 
         $scope.currentMsg = {

@@ -1,9 +1,9 @@
 <div ng-controller="TablesAdvancedController as vm">
     <md-data-table-toolbar ng-hide="vm.selected.length || vm.filter.show">
         <h2 class="md-title">老人信息列表</h2>
-        <md-button class="md-icon-button" ng-click="vm.filter.show = true">
+        <md-button class="md-icon-button" style="width:120px" ng-click="refreshMyOldInfoList()">
             <!-- <i class="material-icons md-dark">filter_list</i> -->
-            <md-icon md-font-icon="zmdi zmdi-filter-list"></md-icon>
+            <md-icon md-font-icon="zmdi zmdi-filter-list"> 刷新数据</md-icon>
         </md-button>
     </md-data-table-toolbar>
 

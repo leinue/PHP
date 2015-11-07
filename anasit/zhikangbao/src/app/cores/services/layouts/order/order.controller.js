@@ -6,7 +6,7 @@
         .controller('BasicServicesOrderController', BasicServicesOrderController);
 
     /* @ngInject */
-    function BasicServicesOrderController($mdDialog, $state, $scope, OrderService) {
+    function BasicServicesOrderController($mdDialog, $state, $scope, OrderService, RefreshService) {
         var vm = this;
 
         $scope.order_curentPage = 1;
@@ -44,6 +44,11 @@
         };
 
         $scope.getAllOrder();
+
+        $scope.refreshMyWorkList = function() {
+            RefreshService.refresh();
+            $scope.getAllOrder();
+        }
 
         $scope.newOrder = function() {
             $state.go('triangular.admin-default.service-new-work-order');

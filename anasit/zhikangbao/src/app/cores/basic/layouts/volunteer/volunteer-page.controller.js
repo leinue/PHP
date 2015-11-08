@@ -489,6 +489,9 @@
 
         $scope.refreshMyVolunteerList = function() {
             RefreshService.refresh();
+            $scope.searchProvince = '';
+            $scope.searchCity = '';
+            $scope.searchDistrict = '';
             $scope.getVolunteerInfo();
         }
 

@@ -167,6 +167,12 @@
 
         $scope.refreshMyOldInfoList = function() {
             RefreshService.refresh();
+            $scope.currentFeature = '';
+            $scope.searchProvince = '';
+            $scope.searchCity = '';
+            $scope.searchDistrict = '';
+            $scope.currentOrgCate = '';
+            $scope.currentOrg = '';
             $scope.getOldInfoBasic();
         }
 
@@ -356,34 +362,34 @@
 
         //省市区搜索功能实现
 
-        $scope.searchProvinceList = CityService.loadProvince();
-        $scope.searchCityList = {};
-        $scope.searchDistrictList = {};
+        $scope.searchOldProvinceList = CityService.loadProvince();
+        $scope.searchOldCityList = {};
+        $scope.searchOldDistrictList = {};
 
-        $scope.searchProvince = '';
-        $scope.searchCity = '';
-        $scope.searchDistrict = '';
+        $scope.searchOldProvince = '';
+        $scope.searchOldCity = '';
+        $scope.searchOldDistrict = '';
 
-        $scope.triggerCitySearch = function(val) {
+        $scope.triggerCitySearchOld = function(val) {
             vm.query.filter = val;
             $scope.triggerSearch();
         }
 
-        $scope.getSearchCity = function(val) {
-            $scope.searchProvince = val;
-            $scope.searchCityList = CityService.loadCity(val);
-            $scope.triggerCitySearch(val);
+        $scope.getSearchOldCity = function(val) {
+            $scope.searchOldProvince = val;
+            $scope.searchOldCityList = CityService.loadCity(val);
+            $scope.triggerCitySearchOld(val);
         }
 
-        $scope.getSearchDistrict = function(val) {
-            $scope.searchCity = val;
-            $scope.searchDistrictList = CityService.loadDistrict($scope.searchCityList, $scope.searchCity);
-            $scope.triggerCitySearch(val);
+        $scope.getSearchDistrictOld = function(val) {
+            $scope.searchOldCity = val;
+            $scope.searchOldDistrictList = CityService.loadDistrict($scope.searchCityList, $scope.searchCity);
+            $scope.triggerCitySearchOld(val);
         }
 
-        $scope.filterDistrict = function(val) {
-            $scope.searchDistrict = val;
-            $scope.triggerCitySearch(val);
+        $scope.filterDistrictOld = function(val) {
+            $scope.searchOldDistrict = val;
+            $scope.triggerCitySearchOld(val);
         }
 
     }

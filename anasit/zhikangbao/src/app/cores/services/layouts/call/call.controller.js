@@ -163,6 +163,7 @@
                         $mdDialog.show(alert);
                     }else {
                         $scope.helpList = realData.properties;
+                        $scope.yulpInfoCount = $scope.helpList.length;
                     }
                     
                 }); 

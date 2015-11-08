@@ -6,7 +6,7 @@
         .controller('BasicMonitorController', BasicMonitorController);
 
     /* @ngInject */
-    function BasicMonitorController($scope, $state, MonitorService, $mdDialog, OrgService, RefreshService) {
+    function BasicMonitorController($scope, $state, MonitorService, $mdDialog, OrgService, RefreshService, CityService, OrgInfoService) {
         var vm = this;
 
         $scope.isEdit = false;
@@ -32,6 +32,8 @@
 
         $scope.refreshMyMonitorList = function() {
             RefreshService.refresh();
+            $scope.currentOrgCate = '';
+            $scope.currentOrg = '';
             $scope.getDevice();
         }
 
@@ -211,6 +213,7 @@
                     alert('网络请求失败');
                 }else {
                     $scope.devices = realData.properties;
+                    $scope.monitorInfoCount = $scope.devices.length;
                 }
 
             });
@@ -219,6 +222,61 @@
         $scope.loadNextMonitorPage = function(page) {
             $scope.monitor_currentPage = page;
             $scope.getDevice();
+        }
+
+        //组织类型搜索功能实现
+
+        $scope.currentOrgCate = '';
+        $scope.currentOrg = '';
+
+        $scope.getOrgList = function() {
+
+            $scope.orgList = {};
+            $scope.MonitorList = {};
+
+            var id = $scope.currentOrgCate;
+            OrgInfoService.getByOrgCate(id).then(function(data) {
+
+                var status = data.status;
+                var realData = data.Schema;
+
+                if(status != '200') {
+                    var alert = $mdDialog.alert({
+                        title: '网络传输失败',
+                        content: realData.properties.message,
+                        ok: '确定'
+                    });
+                    $mdDialog.show(alert);
+                }else {
+                    $scope.orgList = realData.properties;
+                }
+
+            });
+        }
+
+        $scope.getOrgCateList = function() {
+            OrgInfoService.index().then(function(data) {
+                var status = data.status;
+                var realData = data.Schema;
+
+                if(status != '200') {
+                    var alert = $mdDialog.alert({
+                        title: '网络传输失败',
+                        content: realData.properties.message,
+                        ok: '确定'
+                    });
+                    $mdDialog.show(alert);
+                }else {
+                    $scope.orgCateList = realData.properties;
+                }
+            });
+        }
+
+        $scope.getOrgCateList();
+
+        $scope.triggerOrgSearch = function(val) {
+            $scope.query.keywords = val;
+            $scope.triggerMonitorSearch();
         }
 
     }

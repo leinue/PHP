@@ -24,6 +24,51 @@
         </md-button>
     </md-data-table-toolbar>
 
+    <div layout layout-sm="column" flex>
+        <md-input-container flex>
+            <label>省</label>
+            <md-select class="md-select-form" ng-model="searchProvince" ng-change="getSearchCity(searchProvince)" placeholder="省">
+                <md-option ng-value="province.name" ng-repeat="province in searchProvinceList">{{province.name}}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container flex>
+            <label>市</label>
+            <md-select class="md-select-form" ng-model="searchCity" placeholder="市" ng-change="getSearchDistrict(searchCity)">
+                <md-option ng-value="city.name" ng-repeat="city in searchCityList">{{city.name}}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container flex>
+            <label>区</label>
+            <md-select class="md-select-form" ng-model="searchDistrict" placeholder="区" ng-change="filterDistrict(searchDistrict)">
+                <md-option ng-value="district" ng-repeat="district in searchDistrictList">{{district}}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container flex>
+            <label>组织类型</label>
+            <md-select class="md-select-form" ng-model="currentOrgCate" ng-change="getOrgList()" placeholder="组织类型">
+                <md-option ng-value="org.id" ng-repeat="org in orgCateList">{{org.name}}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container flex>
+            <label>机构/社区/组织</label>
+            <md-select class="md-select-form" ng-model="currentOrg" placeholder="机构/社区/组织列表" ng-change="searchOldByOrgInfo()">
+                <md-option ng-value="org.id" ng-repeat="org in orgList">{{org.full_name}}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container flex>
+            <label>残疾类型</label>
+            <md-select class="md-select-form" ng-model="currentFeature" placeholder="残疾类型" ng-change="changeFeatureContent()">
+                <md-option ng-value="feature" ng-repeat="feature in ['精神残疾','肢体残疾']">{{feature}}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container flex>
+            <label>残疾内容</label>
+            <md-select class="md-select-form" ng-model="currentFeatureContent" placeholder="残疾内容" ng-change="searchOldByOldFeature()">
+                <md-option ng-value="featureContent" ng-repeat="featureContent in featureContentList">{{featureContent}}</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+
     <md-data-table-toolbar ng-show="vm.filter.show && !vm.selected.length || 1" class="md-data-table-toolbar">
         <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
         <form flex="" name="vm.filter.form">

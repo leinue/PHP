@@ -75,6 +75,7 @@
                         $mdDialog.show(alert);
                     }else {
                         $scope.orderList = realData.properties;
+                        $scope.orderInfoCount = $scope.orderList.length;
                     }
                     
                 }); 

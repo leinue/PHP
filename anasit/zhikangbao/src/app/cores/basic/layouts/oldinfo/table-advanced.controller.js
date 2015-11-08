@@ -6,7 +6,7 @@
         .controller('TablesAdvancedController', Controller);
 
     /* @ngInject */
-    function Controller($scope, $timeout, $q, OldInfoService, $mdDialog, $state, $location, $sce, $stateParams, OrgService, OrgInfoService, RefreshService) {
+    function Controller($scope, $timeout, $q, OldInfoService, $mdDialog, $state, $location, $sce, $stateParams, OrgService, OrgInfoService, RefreshService, CityService) {
         var vm = this;
 
         $scope.query = {
@@ -194,6 +194,7 @@
 
                 }else {
                     $scope.oldInfoItemList = realData.properties;
+                    $scope.oldInfoCount = $scope.oldInfoItemList.length;
                     // vm.users.total_count = realData.properties.count;
                 }
             });
@@ -352,6 +353,38 @@
                 }
             });
         };
+
+        //省市区搜索功能实现
+
+        $scope.searchProvinceList = CityService.loadProvince();
+        $scope.searchCityList = {};
+        $scope.searchDistrictList = {};
+
+        $scope.searchProvince = '';
+        $scope.searchCity = '';
+        $scope.searchDistrict = '';
+
+        $scope.triggerCitySearch = function(val) {
+            vm.query.filter = val;
+            $scope.triggerSearch();
+        }
+
+        $scope.getSearchCity = function(val) {
+            $scope.searchProvince = val;
+            $scope.searchCityList = CityService.loadCity(val);
+            $scope.triggerCitySearch(val);
+        }
+
+        $scope.getSearchDistrict = function(val) {
+            $scope.searchCity = val;
+            $scope.searchDistrictList = CityService.loadDistrict($scope.searchCityList, $scope.searchCity);
+            $scope.triggerCitySearch(val);
+        }
+
+        $scope.filterDistrict = function(val) {
+            $scope.searchDistrict = val;
+            $scope.triggerCitySearch(val);
+        }
 
     }
 })();

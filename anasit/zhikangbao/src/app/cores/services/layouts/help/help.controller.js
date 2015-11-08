@@ -125,6 +125,7 @@
                             $mdDialog.show(alert);
                         }else {
                             $scope.helpList = realData.properties;
+                            $scope.helpInfoCount = $scope.helpList.length;
                         }
                         
                     }); 

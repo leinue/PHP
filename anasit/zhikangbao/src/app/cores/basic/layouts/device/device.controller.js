@@ -164,6 +164,7 @@
                         alert('网络请求失败');
                     }else {
                         $scope.devices = realData.properties;
+                        $scope.deviceInfoCount = $scope.devices.length;
                     }
 
                 });

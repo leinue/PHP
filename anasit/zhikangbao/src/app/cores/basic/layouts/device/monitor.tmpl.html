@@ -22,6 +22,20 @@
     </md-data-table-toolbar>
 
     <md-data-table-toolbar ng-show="vm.filter.show && !vm.selected.length  || 1" class="md-data-table-toolbar">
+        <div layout layout-sm="column" flex>
+            <md-input-container flex>
+                <label>组织类型</label>
+                <md-select class="md-select-form" ng-model="currentOrgCate" ng-change="getOrgList()" placeholder="组织类型">
+                    <md-option ng-value="orgCate.id" ng-repeat="orgCate in orgCateList">{{orgCate.name}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container flex>
+                <label>组织名称</label>
+                <md-select class="md-select-form" ng-model="currentOrg" placeholder="组织名称" ng-change="triggerOrgSearch(currentOrg)">
+                    <md-option ng-value="org.full_name" ng-repeat="org in orgList">{{org.full_name}}</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
         <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
         <form flex="" name="vm.filter.form">
             <input type="text" ng-model="query.keywords" id="device-search-input" ng-change="getAllMonitor()" ng-keyup="startSearchMonitor($event)" placeholder="search">

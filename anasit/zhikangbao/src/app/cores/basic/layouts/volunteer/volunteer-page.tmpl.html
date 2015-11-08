@@ -22,6 +22,28 @@
     </md-data-table-toolbar>
 
     <md-data-table-toolbar class="md-data-table-toolbar">
+
+        <div layout layout-sm="column" flex>
+            <md-input-container flex>
+                <label>省</label>
+                <md-select class="md-select-form" ng-model="searchProvince" ng-change="getSearchCity(searchProvince)" placeholder="省">
+                    <md-option ng-value="province.name" ng-repeat="province in searchProvinceList">{{province.name}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container flex>
+                <label>市</label>
+                <md-select class="md-select-form" ng-model="searchCity" placeholder="市" ng-change="getSearchDistrict(searchCity)">
+                    <md-option ng-value="city.name" ng-repeat="city in searchCityList">{{city.name}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container flex>
+                <label>区</label>
+                <md-select class="md-select-form" ng-model="searchDistrict" placeholder="区" ng-change="filterDistrict(searchDistrict)">
+                    <md-option ng-value="district" ng-repeat="district in searchDistrictList">{{district}}</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+
         <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
         <form flex="" name="vm.filter.form">
             <input type="text" ng-model="volunteerSearchFilter.keywords" ng-change="backToAllVolunteerList()" ng-keyup="enterVolunteerSearch($event)" placeholder="搜索">

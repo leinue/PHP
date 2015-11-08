@@ -6,7 +6,7 @@
         .controller('BasicOrgController', BasicOrgController);
 
     /* @ngInject */
-    function BasicOrgController($scope, $state, $mdDialog, OrgInfoService, OrgService, $stateParams, RefreshService) {
+    function BasicOrgController($scope, $state, $mdDialog, OrgInfoService, OrgService, $stateParams, RefreshService, CityService) {
         var vm = this;
 
         $scope.provinceList = [
@@ -512,6 +512,9 @@
 
         $scope.refreshMyOrgList = function() {
             RefreshService.refresh();
+            $scope.searchProvince = '';
+            $scope.searchCity = '';
+            $scope.searchDistrict = '';
             $scope.getAllOrgInfo();
         }
 
@@ -531,6 +534,7 @@
         $('#new-device').modal({backdrop: 'static', keyboard: false});
 
         $scope.editThisItem = function(id) {
+            console.log(id);
             $scope.orgTitle = '编辑组织信息';
             $scope.edit = true;
             $('#new-org').modal('show');
@@ -658,11 +662,11 @@
 
         $scope.triggerCommunitySearch = function() {
             if($scope.query.keywords == '') {
-                    $scope.getAllOrgInfo();
-                    return false;
+                  $scope.getAllOrgInfo();
+                  return false;
             }
 
-            OrgService.search($scope.query.keywords).then(function(data) {
+            OrgService.search($scope.query.keywords,jsonCode).then(function(data) {
                 var status = data.status;
                 var realData = data.Schema;
 
@@ -676,7 +680,13 @@
                 }else {
                     $scope.orgList = realData.properties;
                     $scope.divideOrgCate();
-                    // $scope.orgList.code = $scope.insertOrgList.code;                        
+                    // // $scope.orgList.code = $scope.insertOrgList.code;
+                    // for (var i = 0; i < $scope.orgList.length; i++) {
+                    //     if($scope.orgList[i].code != $scope.insertOrgList.code) {
+                    //           console.log($scope.orgList[i]);
+                    //           $scope.orgList.splice(i,1);
+                    //     }
+                    // };
                 }
 
             });
@@ -703,6 +713,38 @@
 
         $scope.changeCity = function() {
             $scope.readCityByProvince($scope.insertOrgList.province);
+        }
+
+        //省市区搜索功能实现
+
+        $scope.searchProvinceList = CityService.loadProvince();
+        $scope.searchCityList = {};
+        $scope.searchDistrictList = {};
+
+        $scope.searchProvince = '';
+        $scope.searchCity = '';
+        $scope.searchDistrict = '';
+
+        $scope.triggerCitySearch = function(val) {
+            $scope.query.keywords = val;
+            $scope.triggerCommunitySearch();
+        }
+
+        $scope.getSearchCity = function(val) {
+            $scope.searchProvince = val;
+            $scope.searchCityList = CityService.loadCity(val);
+            $scope.triggerCitySearch(val);
+        }
+
+        $scope.getSearchDistrict = function(val) {
+            $scope.searchCity = val;
+            $scope.searchDistrictList = CityService.loadDistrict($scope.searchCityList, $scope.searchCity);
+            $scope.triggerCitySearch(val);
+        }
+
+        $scope.filterDistrict = function(val) {
+            $scope.searchDistrict = val;
+            $scope.triggerCitySearch(val);
         }
 
     }

@@ -1196,6 +1196,52 @@
 
           };
 
+        }])
+        .factory('PrivilegeService', [function () {
+
+          return {
+
+            setRights: function(data) {
+              return Restangular.all('user/active').post(data);
+            },
+
+            updatUserRoles: function(data) {
+              return Restangular.all('user/edit_user_role').post(data);
+            },
+
+            getuserRols: function(user_role_id) {
+              return Restangular.one('user/one_user_role/' + user_role_id).get();
+            }
+
+          };
+
+        }])
+        .factory('UserRoleService', [function () {
+
+          return {
+            
+            getAll: function() {
+              return Restangular.one('/user_role/all').get();
+            },
+
+            add: function(data) {
+              return Restangular.all('/user_role/add').post(data);
+            },
+
+            update: function(data) {
+              return Restangular.all('user_role/edit').post(data);
+            },
+
+            remove: function(id) {
+              return Restangular.one('user_role/delete/' + id).get();
+            },
+
+            view: function(id) {
+              return Restangular.one('user_role/one/' + id).get();
+            }
+
+          };
+
         }]);
 
         // .factory('DeviceHistoryService',['Restangular', function(Restangular) {

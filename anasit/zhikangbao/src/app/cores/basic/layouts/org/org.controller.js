@@ -666,7 +666,7 @@
                   return false;
             }
 
-            OrgService.search($scope.query.keywords,jsonCode).then(function(data) {
+            OrgService.search($scope.query.keywords,$scope.insertOrgList.code).then(function(data) {
                 var status = data.status;
                 var realData = data.Schema;
 

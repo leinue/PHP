@@ -19,7 +19,7 @@
         $scope.currentOrgCate = '';
 
         $scope.currentCodec = 'h264';
-        $scope.currentSubtype = 'main';
+        $scope.currentSubtype = 'sub';
 
         $scope.videoValue = 'rtsp://admin:zkmoni777@192.168.1.55:1554/h264/ch1/main/av_stream';
 
@@ -138,6 +138,33 @@
 "        <param name=\'controls\' value=\'false\' />"+
 "    </object>"+
 "<!--<![endif]-->";
+
+/*
+
+<!--[if IE]>
+          <object type='application/x-vlc-plugin' id='basicVideo' events='True'
+         classid='clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921' codebase="http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab" width="100%" height="410">
+          <param name='mrl' value='rtsp://admin:zkmoni777@192.168.1.55:1554/h264/ch1/main/av_stream' />
+           <param name='volume' value='50' />
+           <param name='autoplay' value='true' />
+          <param name='loop' value='false' />
+          <param name='fullscreen' value='false' />
+          <param name='controls' value='false' />
+    </object>
+    <![endif]-->
+    <!--[if !IE]><!-->
+        <object type='application/x-vlc-plugin' id='basicVideo' events='True' width="100%" height="410" pluginspage="http://www.videolan.org" codebase="http://downloads.videolan.org/pub/videolan/vlc-webplugins/2.0.6/npapi-vlc-2.0.6.tar.xz">
+            <param name='mrl' value='rtsp://admin:zkmoni777@192.168.1.55:1554/h264/ch1/main/av_stream' />
+                <param name='volume' value='50' />
+                <param name='autoplay' value='true' />
+            <param name='loop' value='false' />
+            <param name='fullscreen' value='false' />
+        <param name='controls' value='false' />
+    </object>
+    <!--<![endif]-->    
+
+    
+*/
 
 	
 	$('#monitor-area').html(videoHTML);

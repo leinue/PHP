@@ -136,6 +136,12 @@
             templateUrl: 'app/cores/basic/layouts/admin/admin.tmpl.html',
             controller: 'BasicAdminController',
             controllerAs: 'vm'
+        })
+        .state('triangular.admin-default.user-role', {
+            url: '/master/role',
+            templateUrl: 'app/cores/basic/layouts/admin/role.tmpl.html',
+            controller: 'BasicRoleController',
+            controllerAs: 'vm'
         });
 
         console.log('======================');
@@ -212,7 +218,16 @@
             {
                 name: '系统权限管理',
                 state: 'triangular.admin-default.master-admin',
-                type: 'link'
+                type: 'dropdown',
+                children: [{
+                    name:'角色及权限管理',
+                    state: 'triangular.admin-default.user-role',
+                    type: 'link'
+                }, {
+                    name: '用户权限分配',
+                    state: 'triangular.admin-default.master-admin',
+                    type: 'link'
+                }]
         }];
 
         if (localStorage.roles == '["custom_ser"]') {
@@ -254,10 +269,10 @@
         triMenuProvider.addMenu({
             name: '总部后台系统',
             icon: 'fa fa-heartbeat',
+            state: 'triangular.admin-default.hq-menu',
             type: 'dropdown',
             priority: 2.1,
             children: menuList
         });
-
     }
 })();

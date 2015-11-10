@@ -86,7 +86,7 @@
             }
           }
         })
-        .run(function($rootScope, $location, $http, $state, LoginService, CheckStatus, $mdDialog, DashboardService){
+        .run(function($rootScope, $location, $http, $state, LoginService, CheckStatus, $mdDialog, DashboardService, triMenu){
 
             // User.getThisInfo();
 
@@ -172,6 +172,8 @@
               //     $location.path(curr);
               //   }
               // }
+
+              // triMenu.removeMenu('triangular.admin-default.hq-menu');
 
             });
 
@@ -1197,7 +1199,7 @@
           };
 
         }])
-        .factory('PrivilegeService', [function () {
+        .factory('PrivilegeService', ['Restangular', '$http', 'API_CONFIG', function(Restangular, $http, API_CONFIG) {
 
           return {
 
@@ -1205,18 +1207,18 @@
               return Restangular.all('user/active').post(data);
             },
 
-            updatUserRoles: function(data) {
+            updateUserRoles: function(data) {
               return Restangular.all('user/edit_user_role').post(data);
             },
 
-            getuserRols: function(user_role_id) {
+            getUserRoles: function(user_role_id) {
               return Restangular.one('user/one_user_role/' + user_role_id).get();
             }
 
           };
 
         }])
-        .factory('UserRoleService', [function () {
+        .factory('UserRoleService', ['Restangular', '$http', 'API_CONFIG', function(Restangular, $http, API_CONFIG) {
 
           return {
             
@@ -1229,15 +1231,19 @@
             },
 
             update: function(data) {
-              return Restangular.all('user_role/edit').post(data);
+              return Restangular.all('/user_role/edit').post(data);
             },
 
             remove: function(id) {
-              return Restangular.one('user_role/delete/' + id).get();
+              return Restangular.one('/user_role/delete/' + id).get();
             },
 
             view: function(id) {
-              return Restangular.one('user_role/one/' + id).get();
+              return Restangular.one('/user_role/one/' + id).get();
+            },
+
+            modifyAuthority: function(data) {
+              return Restangular.all('/user_role/authority/modify').post(data);
             }
 
           };

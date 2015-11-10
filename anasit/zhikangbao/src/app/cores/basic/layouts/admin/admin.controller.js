@@ -6,7 +6,7 @@
         .controller('BasicAdminController', BasicAdminController);
 
     /* @ngInject */
-    function BasicAdminController($scope, $state, $mdDialog, UserMgrService, RefreshService) {
+    function BasicAdminController($scope, $state, $mdDialog, UserMgrService, RefreshService, PrivilegeService, UserRoleService) {
         var vm = this;
 
         $scope.userWithoutRightsList = {};

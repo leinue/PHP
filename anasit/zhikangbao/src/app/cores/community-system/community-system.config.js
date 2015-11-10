@@ -36,6 +36,7 @@
             name: '社区后台系统',
             icon: 'fa fa-hospital-o',
             type: 'dropdown',
+            state: 'triangular.admin-default.community-lvl-menu',
             priority: 2.1,
             children: [
             {

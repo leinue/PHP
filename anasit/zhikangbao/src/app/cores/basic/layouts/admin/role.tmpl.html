@@ -1,0 +1,230 @@
+<md-card style="padding:0;margin:0">
+    <md-card-content>
+        <div class="content-padded">
+            <h2 class="md-title">系统角色管理</h2>
+        </div>
+        <md-divider></md-divider>
+        <div class="button-toolbar" layout="row" layout-align="start center">
+            <md-button class="md-raised md-primary" ng-click="newRole()">新增数据</md-button>
+            <md-button ng-click="refreshNyRolesList()" class="md-raised md-primary">刷新数据</md-button>
+        </div>
+    </md-card-content>
+</md-card>
+
+<div ng-controller="TablesAdvancedController as vm">
+    <md-data-table-toolbar ng-hide="vm.selected.length || vm.filter.show">
+        <h2 class="md-title">角色列表</h2>
+        <div flex></div>
+        <md-button class="md-icon-button" ng-click="vm.filter.show = true">
+            <!-- <i class="material-icons md-dark">filter_list</i> -->
+            <md-icon md-font-icon="zmdi zmdi-filter-list"></md-icon>
+        </md-button>
+    </md-data-table-toolbar>
+
+    <md-data-table-toolbar ng-show="vm.filter.show && !vm.selected.length" class="md-data-table-toolbar">
+<!--         <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
+        <form flex="" name="vm.filter.form">
+            <input type="text" ng-model="vm.query.filter" ng-model-options="vm.filter.options" placeholder="search">
+        </form>
+        <md-button class="md-icon-button" ng-click="vm.removeFilter()">
+            <md-icon md-font-icon="zmdi zmdi-close"></md-icon>
+        </md-button>
+ -->    </md-data-table-toolbar>
+
+    <md-data-table-toolbar class="alternate" ng-show="vm.selected.length" layout-align="space-between">
+      <div>选择了 {{vm.selected.length}} 个用户</div>
+    </md-data-table-toolbar>
+
+    <md-data-table-container>
+        <table md-data-table class="md-primary md-data-table">
+            <thead md-order="vm.query.order" md-trigger="vm.getUsers">
+                <tr>
+                    <th name="权限代号"></th>
+                    <th name="权限名称"></th>
+                    <th name="描述"></th>
+                    <th name="操作"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr md-auto-select ng-repeat="role in roles">
+                    <td>{{::role.code}}</td>
+                    <td>{{::role.name}}</td>
+                    <td>{{::role.description | nullToVisual}}</td>
+                    <td>
+                        <md-button ng-show="user.role_id == null" ng-click="viewThisRole(role)" class="md-primary">查看/编辑</md-button>
+                        <md-button class="md-primary" ng-click="viewThisRights(role.id)">权限管理</md-button>
+                        <md-button class="md-warn" ng-click="removeThisRole(role.id)">删除</md-button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </md-data-table-container>
+
+    <!-- Modal -->
+    <div class="modal fade" id="new-role" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">{{rolePageTitle}}</h4>
+          </div>
+          <div class="modal-body" style="font-size: 1.3em;">
+            <div layout="column" flex>
+                <md-input-container flex>
+                    <label translate>权限代号</label>
+                    <input ng-model="roleList.code" type="text" required>
+                </md-input-container>
+                <md-input-container>
+                    <label translate>权限名称</label>
+                    <input ng-model="roleList.name" type="text">
+                </md-input-container>
+                <!-- <md-input-container>
+                    <label translate>是否可用</label>
+                    <md-select class="md-select-form" ng-model="roleList.enabled">
+                        <md-option ng-value="enable" ng-repeat="enable in ['0', '1']">{{enable}}</md-option>
+                    </md-select>
+                    <input ng-model="roleList.enabled" type="text">
+                </md-input-container> -->
+                <md-input-container>
+                    <label translate>权限描述</label>
+                    <textarea ng-model="roleList.description"></textarea>
+                </md-input-container>
+                <md-input-container ng-show="rolePageTitle!='新增角色'">
+                    <label>创建时间</label>
+                    <input ng-model="roleList.create_time" type="text" disabled>
+                </md-input-container>
+                <md-input-container ng-show="rolePageTitle!='新增角色'">
+                    <label>修改时间</label>
+                    <input ng-model="roleList.update_time" type="text" disabled>
+                </md-input-container>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            <button type="button" class="btn btn-default" ng-click="saveMyRole()" data-dismiss="modal">保存</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="menu-mgr" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">编辑查看此用户组权限</h4>
+          </div>
+          <div class="modal-body" style="font-size: 1.3em;">
+            <div layout="column" flex>
+                <md-switch class="md-primary" ng-model="switches.dashboard.menu.display" aria-label="Default Switch" ng-change="toggleNextLvlMenu(switches.dashboard)">
+                    仪表盘
+                </md-switch>
+                <md-switch ng-model="switches.dashboard.analytics.display" aria-label="Default Switch" ng-change="togglePrevLvlMenu(switches.dashboard)">
+                    仪表盘 - 分析
+                </md-switch>
+                <md-switch ng-model="switches.dashboard.server.display" aria-label="Primary Switch" ng-change="togglePrevLvlMenu(switches.dashboard)">
+                    仪表盘 - 服务器
+                </md-switch>
+            </div>
+            <div layout="column" flex>
+                <md-switch class="md-primary" ng-model="switches.hq.menu.display" aria-label="Default Switch" ng-change="toggleNextLvlMenu(switches.hq)">
+                    总部后台系统
+                </md-switch>
+                <md-switch ng-model="switches.hq.archive.display" aria-label="Default Switch" ng-change="togglePrevLvlMenu(switches.hq)">
+                    总部后台系统 - 老人档案管理
+                </md-switch>
+                <md-switch ng-model="switches.hq.health.display" aria-label="Primary Switch" ng-change="togglePrevLvlMenu(switches.hq)">
+                    总部后台系统 - 健康档案管理
+                </md-switch>
+            </div>
+            <div class="column" flex>
+                <md-switch ng-model="switches.hq.department.display" aria-label="Primary Switch" ng-change="togglePrevLvlMenu(switches.hq)">
+                    总部后台系统 - 机构管理
+                </md-switch>
+                <md-switch ng-model="switches.hq.org.display" aria-label="Disabled Switch" ng-change="togglePrevLvlMenu(switches.hq)">
+                    总部后台系统 - 社区管理
+                </md-switch>
+                <md-switch ng-model="switches.hq.service.display" aria-label="Master Switch" ng-change="vm.toggleAll(switches, switches.master)" ng-change="togglePrevLvlMenu(switches.hq)">
+                    总部后台系统 - 服务商家管理
+                </md-switch>
+            </div>
+            <div class="column" flex>
+                <md-switch ng-model="switches.hq.video.display" aria-label="Primary Switch" ng-change="togglePrevLvlMenu(switches.hq)">
+                    总部后台系统 - 视频关爱
+                </md-switch>
+                <md-switch ng-model="switches.hq.monitor.display" aria-label="Disabled Switch" ng-change="togglePrevLvlMenu(switches.hq)">
+                    总部后台系统 - 监控器设备管理
+                </md-switch>
+            </div>
+            <div class="column" flex>
+                <md-switch ng-model="switches.hq.pos.display" aria-label="Primary Switch">
+                    总部后台系统 - 实时定位
+                </md-switch>
+                <md-switch ng-model="switches.hq.device.display" aria-label="Disabled Switch">
+                    总部后台系统 - 老人机设备管理
+                </md-switch>
+            </div>
+            <div class="column" flex>
+                <md-switch ng-model="switches.hq.rights.display" aria-label="Primary Switch" ng-change="togglePrevLvlMenu(switches.hq)">
+                    总部后台系统 - 角色及权限管理
+                </md-switch>
+                <md-switch ng-model="switches.hq.deliver.display" aria-label="Disabled Switch" ng-change="togglePrevLvlMenu(switches.hq)">
+                    总部后台系统 - 用户权限分配
+                </md-switch>
+                <md-switch ng-model="switches.hq.volunteer.display" aria-label="Disabled Switch" ng-change="togglePrevLvlMenu(switches.hq)">
+                    总部后台系统 - 志愿者管理
+                </md-switch>
+            </div>
+            <div class="column" flex>
+                <md-switch class="md-primary" ng-model="switches.service.menu.display" aria-label="Primary Switch" ng-change="toggleNextLvlMenu(switches.service)">
+                    客服后台系统
+                </md-switch>
+                <md-switch ng-model="switches.service.help.display" aria-label="Primary Switch" ng-change="togglePrevLvlMenu(switches.service)">
+                    客服后台系统 - 咨询服务受理
+                </md-switch>
+                <md-switch ng-model="switches.service.call.display" aria-label="Disabled Switch" ng-change="togglePrevLvlMenu(switches.service)">
+                    客服后台系统 - 求助服务受理
+                </md-switch>
+            </div>
+            <div class="column" flex>
+                <md-switch ng-model="switches.service.sos.display" aria-label="Primary Switch" ng-change="togglePrevLvlMenu(switches.service)">
+                    客服后台系统 - 求救呼叫处理
+                </md-switch>
+                <md-switch ng-model="switches.service.msg.display" aria-label="Disabled Switch" ng-change="togglePrevLvlMenu(switches.service)">
+                    客服后台系统 - 消息群发系统
+                </md-switch>
+            </div>
+            <div class="column" flex>
+                <md-switch class="md-primary" ng-model="switches.department.menu.display" aria-label="Primary Switch" ng-change="toggleNextLvlMenu(switches.department)">
+                    机构后台系统
+                </md-switch>
+                <md-switch ng-model="switches.department.info.display" aria-label="Primary Switch" ng-change="togglePrevLvlMenu(switches.department)">
+                    机构后台系统 - 机构基础信息管理
+                </md-switch>
+                <md-switch ng-model="switches.department.old.display" aria-label="Disabled Switch" ng-change="togglePrevLvlMenu(switches.department)">
+                    机构后台系统 - 老人档案管理
+                </md-switch>
+            </div>
+            <div class="column" flex>
+                <md-switch class="md-primary" ng-model="switches.org.menu.display" aria-label="Primary Switch" ng-change="toggleNextLvlMenu(switches.org)">
+                    社区后台系统
+                </md-switch>
+                <md-switch ng-model="switches.org.info.display" aria-label="Primary Switch" ng-change="togglePrevLvlMenu(switches.org)">
+                    社区后台系统 - 社区基础信息查看
+                </md-switch>
+                <md-switch ng-model="switches.org.old.display" aria-label="Disabled Switch" ng-change="togglePrevLvlMenu(switches.org)">
+                    社区后台系统 - 老人档案管理
+                </md-switch>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            <button type="button" class="btn btn-default" ng-click="confirmEditThisRights()" data-dismiss="modal">保存</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <md-data-table-pagination md-limit="vm.query.limit" md-page="vm.query.page" md-total="{{vm.users.total_count}}" md-trigger="vm.getUsers"></md-data-table-pagination> -->
+</div>

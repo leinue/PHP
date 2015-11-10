@@ -82,6 +82,7 @@
         triMenuProvider.addMenu({
             name: 'MENU.DASHBOARDS.DASHBOARDS',
             icon: 'zmdi zmdi-home',
+            state: 'triangular.admin-default.dashboard-menu',
             type: 'dropdown',
             priority: 2.1,
             children: [{

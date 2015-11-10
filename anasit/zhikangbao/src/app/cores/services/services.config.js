@@ -76,24 +76,9 @@
             name: '客服后台系统',
             icon: 'fa fa-user-md',
             type: 'dropdown',
+            state: 'triangular.admin-default.services-menu',
             priority: 2.1,
-            children: [
-            // {
-            //     name: '家庭成员',
-            //     state: 'triangular.admin-default.services-page',
-            //     type: 'link'
-            // },
-            // {
-            //     name: '健康档案',
-            //     state: 'triangular.admin-default.health-archives',
-            //     type: 'link'
-            // },
-            // {
-            //     name: '位置监控',
-            //     state: 'triangular.admin-default.services-pos',
-            //     type: 'link'
-            // },
-            {
+            children: [{
                 name: '咨询服务受理',
                 state: 'triangular.admin-default.services-help',
                 type: 'link'

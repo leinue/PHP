@@ -15,7 +15,7 @@
             //'app.examples.introduction',
             // 'app.examples.layouts',
             //'app.examples.maps',
-            //'app.examples.menu',
+            // 'app.examples.menu',
             //'app.examples.todo',
             //'app.examples.ui'
         ]);

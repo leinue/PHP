@@ -34,6 +34,7 @@
             name: '机构后台系统',
             icon: 'fa fa-plus-square',
             type: 'dropdown',
+            state: 'triangular.admin-default.org-lvl-menu',
             priority: 2.1,
             children: [
             {
@@ -41,11 +42,6 @@
                 state: 'triangular.admin-default.org-department-mgr',
                 type: 'link'
             },
-            // {
-            //     name: '机构管理员指派',
-            //     state: 'triangular.admin-default.org-assign-admin',
-            //     type: 'link'
-            // },
             {
                 name: '老人档案管理',
                 state: 'triangular.admin-default.org-system-org',

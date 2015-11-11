@@ -6,7 +6,7 @@
         .controller('LoginController', LoginController);
 
     /* @ngInject */
-    function LoginController($state, triSettings, LoginService, CheckStatus, $mdToast, $filter) {
+    function LoginController($state, triSettings, LoginService, CheckStatus, $mdToast, $filter, triMenu) {
         var vm = this;
         vm.loginClick = loginClick;
         vm.socialLogins = [{
@@ -69,20 +69,19 @@
                     localStorage.userpw = vm.user.password;
                     localStorage.rememberMe = vm.user.rememberMe;
 
-                    var roleList = [];
+                    localStorage.rightsList = info.roles.states;
 
-                    for (var i = 0; i < info.roles.length; i++) {
-                        var role = info.roles[i];
-                        roleList.push(role.code);
-                    };
+                    console.log(info);
 
-                    localStorage.roles = JSON.stringify(roleList);
-
-                    console.log(localStorage.roles);
+                    localStorage.roles = info.roles.code;
 
                     localStorage.fromLoginPage = "true";
 
-                    $state.go('triangular.admin-default.basic-page');
+                    if(localStorage.roles == 'super' || localStorage.roles == 'admin') {
+                        $state.go('triangular.admin-default.dashboard-analytics');
+                    }else {
+                        $state.go('triangular.admin-default.profile');
+                    }
                     
                 }
 

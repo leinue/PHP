@@ -47,12 +47,12 @@
             </thead>
             <tbody>
                 <tr md-auto-select ng-repeat="user in userWithoutRightsList">
-                    <td>{{::user.user_id}}</td>
+                    <td>{{::user.uid}}</td>
                     <td>{{::user.nickname}}</td>
                     <td>{{::user.role_id | userGroupFilter}}</td>
                     <td>
                         <!-- <md-button ng-show="user.id == null" ng-click="setUserAdmin(user.id)" class="md-primary">设为管理员</md-button> -->
-                        <md-button ng-click="openOperatingForm(user.uid,user.role_id)">操作</md-button>
+                        <md-button ng-hide="(user.role_id == 1 && (thisRoleCode != 'super' || thisRoleCode != 'admin' )) || thisId == user.uid" ng-click="openOperatingForm(user.uid,user.role_id)">操作</md-button>
                     </td>
                 </tr>
             </tbody>

@@ -263,7 +263,7 @@
         	org: {
         		menu: {
         			display: true,
-        			state: 'riangular.admin-default.community-lvl-menu'
+        			state: 'triangular.admin-default.community-lvl-menu'
         		},
         		info: {
         			display: true,
@@ -280,16 +280,154 @@
 
         $scope.viewThisRights = function(id) {
         	$scope.currentRoleId = id;
-        	$('#menu-mgr').modal('show');
-            $('.modal-backdrop').css('z-index','0');
             $scope.RightsList = {};
-            // PrivilegeService.
+            UserRoleService.getAuthority($scope.currentRoleId).then(function(data) {
+            	var status = data.status;
+            	var realData = data.Schema;
+
+            	if(status != '200') {
+            		$mdDialog.show($mdDialog.alert({
+        				title: '获得权限信息失败',
+        				content: realData.properties.message,
+        				ok: '确定'
+        			}));
+            	}else {
+            		if(realData.properties.states == 'null' || realData.properties.states == '' || realData.properties.states == null) {
+            			$scope.switches = {
+				        	dashboard: {
+				        		menu: {
+				        			display: true,
+				        			state: 'triangular.admin-default.dashboard-menu'
+				        		},
+				        		analytics: {
+				        			display: true,
+				        			state: 'triangular.admin-default.dashboard-analytics'
+				        		},
+				        		server: {
+				        			display: true,
+				        			state: 'triangular.admin-default.dashboard-server'
+				        		}
+				        	},
+				        	hq: {
+				        		menu: {
+				        			display: true,
+				        			state: 'triangular.admin-default.hq-menu'
+				        		},
+				        		archive: {
+				        			display: true,
+				        			state: 'triangular.admin-default.basic-page'
+				        		},
+				        		health: {
+				        			display: true,
+				        			state: 'triangular.admin-default.basic-archives'
+				        		},
+				        		department: {
+				        			display: true,
+				        			state: 'triangular.admin-default.department-mgr'
+				        		},
+				        		org: {
+				        			display: true,
+				        			state: 'triangular.admin-default.community-mgr'
+				        		},
+				        		service: {
+				        			display: true,
+				        			state: 'triangular.admin-default.shop-mgr'
+				        		},
+				        		video: {
+				        			display: true,
+				        			state: 'triangular.admin-default.basic-video'
+				        		},
+				        		monitor: {
+				        			display: true,
+				        			state: 'triangular.admin-default.monitor-mgr'
+				        		},
+				        		pos: {
+				        			display: true,
+				        			state: 'triangular.admin-default.services-pos'
+				        		},
+				        		device: {
+				        			display: true,
+				        			state: 'triangular.admin-default.device-mgr'
+				        		},
+				        		rights: {
+				        			display: true,
+				        			state: 'triangular.admin-default.user-role'
+				        		},
+				        		deliver: {
+				        			display: true,
+				        			state: 'triangular.admin-default.master-admin'
+				        		},
+				        		volunteer: {
+				        			display: true,
+				        			state: 'triangular.admin-default.basic-volunteer'
+				        		}
+				        	},
+				        	service: {
+				        		menu: {
+				        			display: true,
+				        			state: 'triangular.admin-default.services-menu'
+				        		},
+				        		help: {
+				        			display: true,
+				        			state: 'triangular.admin-default.services-help'
+				        		},
+				        		call: {
+				        			display: true,
+				        			state: 'triangular.admin-default.services-work'
+				        		},
+				        		sos: {
+				        			display: true,
+				        			state: 'triangular.admin-default.services-yulp'
+				        		},
+				        		msg: {
+				        			display: true,
+				        			state: 'triangular.admin-default.services-message'
+				        		}
+				        	},
+				        	department: {
+				        		menu: {
+				        			display: true,
+				        			state: 'triangular.admin-default.org-lvl-menu'
+				        		},
+				        		info: {
+				        			display: true,
+				        			state: 'triangular.admin-default.org-department-mgr'
+				        		},
+				        		old: {
+				        			display: true,
+				        			state: 'triangular.admin-default.org-system-org'
+				        		}
+				        	},
+				        	org: {
+				        		menu: {
+				        			display: true,
+				        			state: 'triangular.admin-default.community-lvl-menu'
+				        		},
+				        		info: {
+				        			display: true,
+				        			state: 'triangular.admin-default.community-info'
+				        		},
+				        		old: {
+				        			display: true,
+				        			state: 'triangular.admin-default.community-archive'
+				        		}
+				        	}
+				        }
+            		}else {
+            			$scope.switches = realData.properties.states;
+            			console.log($scope.switches);
+            		}
+            		$('#menu-mgr').modal('show');
+            		$('.modal-backdrop').css('z-index','0');
+            	}
+
+            });
         };
 
         $scope.confirmEditThisRights = function() {
         	UserRoleService.modifyAuthority({
         		role_id: $scope.currentRoleId,
-        		states: $scope.switchesJSON
+        		states: $scope.switches
         	}).then(function(data) {
         		var status = data.status;
         		var realData = data.Schema;
@@ -342,7 +480,7 @@
         }
 
         $scope.generatorJSON = function() {
-        	$scope.switchesJSON = JSON.stringify($scope.switches);
+        	// $scope.switchesJSON = JSON.stringify($scope.switches);
         }
 
     }

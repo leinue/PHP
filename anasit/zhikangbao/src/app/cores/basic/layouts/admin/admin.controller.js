@@ -11,6 +11,9 @@
 
         $scope.userWithoutRightsList = {};
 
+        $scope.thisId = localStorage.id;
+        $scope.thisRoleCode = localStorage.roles;
+
         $scope.getUserNoRights = function() {
 
             UserMgrService.index().then(function(data) {
@@ -37,7 +40,7 @@
 
         $scope.getUserNoRights();
 
-        $scope.refreshMyAdminList = function() {
+        $scope.refreshNyAdminList = function() {
             RefreshService.refresh();
             $scope.getUserNoRights();
         }
@@ -84,13 +87,16 @@
                 return false;
             }
 
-            $scope.setUserAdmin($scope.currentUserId,$scope.role_id_selected);
+            $scope.setUserAdmin({
+                role_id: $scope.role_id_selected,
+                user_id: $scope.currentUserId
+            });
 
         };
 
-        $scope.setUserAdmin = function (id,role_id) {
+        $scope.setUserAdmin = function (obj) {
 
-            UserMgrService.setAdmin(id,role_id).then(function(data) {
+            UserMgrService.setAdmin(obj).then(function(data) {
 
                 var status = data.status;
                 var realData = data.Schema;

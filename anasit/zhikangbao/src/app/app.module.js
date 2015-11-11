@@ -96,15 +96,43 @@
             window.runtimePosInterval = '';
             window.singleRuntimePosInterval = '';
 
-            console.log(localStorage.roles);
+            if(typeof localStorage.rightsList != 'undefined') {
+              var rightsList = JSON.parse(localStorage.rightsList);
+            }
+
+            $rootScope.menuDisplayed = [];
+
+            if(localStorage.roles != 'super') {
+              //控制左侧菜单栏隐藏与显示
+              for (var key in rightsList) {
+                  var curr = rightsList[key];
+                  for (var menuName in curr) {
+                      var currMenu = curr[menuName];
+                      if(!currMenu.display) {
+                          triMenu.removeMenu(currMenu.state);
+                      }else {
+                          $rootScope.menuDisplayed.push(currMenu.state);
+                      }
+                  };
+              };
+            }
+
+            function inState(search, array){
+                for(var i in array){
+                    if(array[i]==search){
+                        return true;
+                    }
+                }
+                return false;
+            }
 
             $rootScope.$on('$locationChangeStart',function(evt,next,curr){
               
               var userIsLoginIn = localStorage.id;
 
               if(next.indexOf('login') === -1 && next.indexOf('signup') === -1){
-                
                 //进入登录页面,登录页面不需要判断是否登录
+
                 if(typeof localStorage.username_ == 'undefined' || localStorage.username_ == '') {
                   //本地未存储用户数据时不用判断是否登录,直接认定为未登录
                   $state.go('authentication.login');
@@ -128,52 +156,33 @@
                         window.location.reload();
                     }
 
+                    var currentState = $state.current.name;
+
+                    //定义公共页面
+                    var extraState = ['triangular.admin-default.profile', 'authentication.login', 'authentication.signup'];
+
+                    console.log('==================================');
+                    console.log(localStorage.roles);
+                    console.log(inState(currentState, extraState));
+                    console.log(inState(currentState, $rootScope.menuDisplayed));
+                    console.log('==================================');
+
+                    if(localStorage.roles != 'super') {
+                      if(!inState(currentState, extraState)) {
+                        if(!inState(currentState, $rootScope.menuDisplayed)) {
+                          var alert = $mdDialog.alert({
+                              title: '认证失败',
+                              content:'您没有权限访问此页面',
+                              ok: '确定'
+                          });
+                          $mdDialog.show(alert);
+                          $state.go('triangular.admin-default.profile');
+                        }
+                      }
+                    }
+
                  });
               }
-
-              // if(!User.isLoggedIn() ||){
-              //   $location.path('/login');
-              // }
-
-              // var currentGroup=localStorage.group;
-
-              // console.log("currentGroup="+currentGroup);
-
-              // if(next.indexOf('hq')!=-1){
-              //   //总部后台
-              //   console.log('进入总部后台...即将验证权限');
-              //   if(currentGroup.indexOf('root')!=-1 || currentGroup.indexOf('admin')!=-1){
-              //     console.log('access approved');
-              //   }else{
-              //     alert('无权访问');
-              //     $location.path(curr);
-              //   }
-              // }
-
-              // if(next.indexOf('finance')!=-1){
-              //   //财务后台
-              //   console.log('进入财务后台...即将验证权限');
-              //   if(currentGroup.indexOf('root')!=-1 || currentGroup.indexOf('admin')!=-1 || currentGroup.indexOf('finance')!=-1){
-              //     console.log('access approved');
-              //   }else{
-              //     alert('无权访问');
-              //     $location.path(curr);
-              //   }
-
-              // }
-
-              // if(next.indexOf('supply')!=-1){
-              //   //供应商后台
-              //   console.log('进入供应商后台...即将验证权限');
-              //   if(currentGroup.indexOf('supply')!=-1 || currentGroup.indexOf('root')!=-1 || currentGroup.indexOf('admin')!=-1){
-              //     console.log('access approved');
-              //   }else{
-              //     alert('无权访问');
-              //     $location.path(curr);
-              //   }
-              // }
-
-              // triMenu.removeMenu('triangular.admin-default.hq-menu');
 
             });
 
@@ -184,16 +193,8 @@
             //允许跨源
             $httpProvider.defaults.withCredentials = true;
 
-            $httpProvider.defaults.useXDomain=true;
+            $httpProvider.defaults.useXDomain = true;
             delete $httpProvider.defaults.headers.common['X-Requested-With'];
-
-            // $mdToast.show(
-            //   $mdToast.simple()
-            //   .action($filter('translate')('message'))
-            //   .position('bottom right')
-            //   .highlightAction(true)
-            //   .hideDelay(0)
-            // );
 
         })
         //配置restangular
@@ -515,12 +516,12 @@
                   return Restangular.one('/user/unactive').get();
                 },
 
-                setAdmin: function(id,role_id) {
-                  return Restangular.one('/user/active/' + id + '/' + role_id).get();
+                setAdmin: function(data) {
+                  return Restangular.all('/user/active').post(data);
                 },
 
                 getRoles: function() {
-                  return Restangular.one('user/get_roles').get();
+                  return Restangular.one('/user/get_roles').get();
                 }
 
             };
@@ -1244,34 +1245,14 @@
 
             modifyAuthority: function(data) {
               return Restangular.all('/user_role/authority/modify').post(data);
+            },
+
+            getAuthority: function(role_id) {
+              return Restangular.one('/user_role/one/' + role_id).get();
             }
 
           };
 
         }]);
-
-        // .factory('DeviceHistoryService',['Restangular', function(Restangular) {
-
-        //   return {
-
-        //     index: function() {
-        //       return Restangular.one('/profile/device_history/index').get();
-        //     },
-
-        //     update:function(data) {
-        //       return Restangular.all('/profile/device_history/update').post(data);
-        //     },
-
-        //     insert: function(data) {
-        //       return Restangular.all('/profile/device_history/insert').post(data);
-        //     },
-
-        //     remove: function(uid) {
-        //       return Restangular.one('/profile/device_history/delete' + uid).get();
-        //     }
-
-        //   };
-
-        // }]);
 
 })();

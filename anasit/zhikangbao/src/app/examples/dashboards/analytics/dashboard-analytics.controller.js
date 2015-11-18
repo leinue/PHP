@@ -32,29 +32,58 @@
             mirrorContainer: mirrorContainer
         });
 
-        $scope.today_old = 0;
-        $scope.old_mount = 0;
-        $scope.toady_org_mount = 0;
-        $scope.org_mount = 0;
+        localStorage.today_old = typeof localStorage.today_old == 'undefined' ? 0 : localStorage.today_old;
+        localStorage.old_mount = typeof localStorage.old_mount == 'undefined' ? 0 : localStorage.old_mount;
+        localStorage.org_mount = typeof localStorage.org_mount == 'undefined' ? 0 : localStorage.org_mount;
+        localStorage.toady_org_mount = typeof localStorage.toady_org_mount == 'undefined' ? 0 : localStorage.toady_org_mount;
 
-        OldInfoService.todayOld().then(function(data) {
-            $scope.today_old = data.Schema.properties;
-        });
+        $scope.today_old = localStorage.today_old;
+        $scope.old_mount = localStorage.old_mount;
+        $scope.toady_org_mount = localStorage.toady_org_mount;
+        $scope.org_mount = localStorage.org_mount;
 
-        OldInfoService.oldMount().then(function(data) {
-            $scope.old_mount = data.Schema.properties;
-        });
+        $scope.getRectData = function() {
+            OldInfoService.todayOld().then(function(data) {
+                $scope.today_old = data.Schema.properties;
+                localStorage.today_old = $scope.today_old;
+            });
 
-        DashboardService.orgMount().then(function(data) {
-            $scope.org_mount = data.Schema.properties;
-        });
+            OldInfoService.oldMount().then(function(data) {
+                $scope.old_mount = data.Schema.properties;
+                localStorage.old_mount = $scope.old_mount;
+            });
 
-        DashboardService.todayOrgMount().then(function(data) {
-            $scope.toady_org_mount = data.Schema.properties;
-        });
+            DashboardService.orgMount().then(function(data) {
+                $scope.org_mount = data.Schema.properties;
+                localStorage.org_mount = $scope.org_mount;
+            });
+
+            DashboardService.todayOrgMount().then(function(data) {
+                $scope.toady_org_mount = data.Schema.properties;
+                localStorage.toady_org_mount = $scope.toady_org_mount;
+            });
+        }
+
+        var onDashBorardFreshInterval = 0;
+
+        $scope.getRectData();
+
+        // if(window.onDashBorardFresh !== -1) {
+        //     onDashBorardFreshInterval = setInterval(function() {
+        //         console.log('decting');
+        //         if(window.onDashBorardFresh == true) {
+        //             console.log('dected');
+        //             setTimeout(function() {
+        //                 $scope.getRectData();
+        //             },2500);
+        //             clearInterval(onDashBorardFreshInterval);
+        //             window.onDashBorardFresh = -1;
+        //         }
+        //     },1000);
+        // }
 
         $scope.helpPieChart = {
-            labels: ['今日受理消息', '总消息数'],
+            labels: ['已处理消息数', '总消息数'],
             data: [0, 0]
         };
 

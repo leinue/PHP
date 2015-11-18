@@ -5,7 +5,7 @@
                 <md-icon class="font-size-5 opacity-50 margin-left-10" md-font-icon="fa fa-comments"></md-icon>
             </div>
             <div layout="column" layout-align="center end">
-                <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 text-ellipsis" countupto="today_old" decimals="0"></p>
+                <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 text-ellipsis" countupto="today_old" decimals="0" id="today_old"></p>
                 <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0" translate>今日新增老人数</p>
             </div>
         </tri-widget>
@@ -14,7 +14,7 @@
                 <md-icon class="font-size-5 opacity-50 margin-left-10" md-font-icon="fa fa-twitter"></md-icon>
             </div>
             <div layout="column" layout-align="center end">
-                <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 text-ellipsis" countupto="old_mount" decimals="0"></p>
+                <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 text-ellipsis" countupto="old_mount" decimals="0" id="old_mount"></p>
                 <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0" translate>总老人数</p>
             </div>
         </tri-widget>
@@ -23,7 +23,7 @@
                 <md-icon class="font-size-5 opacity-50 margin-left-10" md-font-icon="fa fa-facebook"></md-icon>
             </div>
             <div layout="column" layout-align="center end">
-                <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0" countupto="toady_org_mount" decimals="0"></p>
+                <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0" countupto="toady_org_mount" decimals="0" id="org_mount"></p>
                 <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0" translate>今日新增机构数</p>
             </div>
         </tri-widget>
@@ -32,7 +32,7 @@
                 <md-icon class="font-size-5 opacity-50 margin-left-10" md-font-icon="fa fa-eye"></md-icon>
             </div>
             <div layout="column" layout-align="center end">
-                <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0" countupto="org_mount" decimals="0"></p>
+                <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0" countupto="org_mount" decimals="0" id="toady_org_mount"></p>
                 <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0" translate>总机构数</p>
             </div>
         </tri-widget>
@@ -85,3 +85,16 @@
         </tri-widget>
     </div> -->
 </div>
+
+<script type="text/javascript">
+
+    window.onDashBorardFresh = false;
+    
+    window.onload = function() {
+        $('#today_old').html(localStorage.today_old);
+        $('#old_mount').html(localStorage.old_mount);
+        $('#org_mount').html(localStorage.org_mount);
+        $('#toady_org_mount').html(localStorage.toady_org_mount);
+    }
+
+</script>

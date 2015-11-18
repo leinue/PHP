@@ -75,7 +75,7 @@
 								        <md-input-container flex>
 											<label>机构</label>
 								            <md-select class="md-select-form" ng-model="inserOldInfo.org_id" placeholder="机构" required>
-								                <md-option ng-value="department.id" ng-repeat="department in ordList">{{department.full_name}}</md-option>
+								                <md-option ng-show="department.code == 1" ng-value="department.id" ng-repeat="department in ordList">{{department.full_name}}</md-option>
 								            </md-select>
 								        </md-input-container>
                                     </div>

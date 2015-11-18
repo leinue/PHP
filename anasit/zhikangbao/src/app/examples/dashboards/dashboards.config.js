@@ -89,11 +89,11 @@
                 name: 'MENU.DASHBOARDS.ANALYTICS',
                 state: 'triangular.admin-default.dashboard-analytics',
                 type: 'link'
-            },{
+            }/*,{
                 name: 'MENU.DASHBOARDS.SERVER',
                 state: 'triangular.admin-default.dashboard-server',
                 type: 'link'
-            }/*,{
+            },{
                 name: 'MENU.DASHBOARDS.SOCIAL',
                 state: 'triangular.admin-default.dashboard-social',
                 type: 'link'

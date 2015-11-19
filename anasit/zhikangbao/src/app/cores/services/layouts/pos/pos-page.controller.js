@@ -71,20 +71,27 @@
 
         		var currentMarker;
 
+            var myFlag = false;
+
         		for (var i = 0; i < markerStack.length; i++) {
         			var curr = markerStack[i];
         			if(curr.imei == keywords || curr.idcard == keywords || curr.mobile == keywords) {
         				var currentMarker = curr;
+                console.log(currentMarker);
+                myFlag = true;
         				break;
-        			}else {
-        				var alert = $mdDialog.confirm({
-			                title: '搜索失败',
-			                content:'无此信息',
-			                ok: '确定'
-			            });
-			            $mdDialog.show(alert);
         			}
         		};
+
+            if(!myFlag) {
+              var alert = $mdDialog.confirm({
+                title: '搜索失败',
+                content:'无此信息',
+                ok: '确定'
+              });
+              $mdDialog.show(alert);
+              return false;
+            }
 
         		currentMarker.emit('click',{target:currentMarker});
 

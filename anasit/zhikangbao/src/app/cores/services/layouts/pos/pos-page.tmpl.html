@@ -151,12 +151,15 @@
         ServicesPosVM.posStatus.title = "位置信息追踪";
     }
 
+    var lineArr = [];
+
     function hideAllpolyLine() {
         for (var i = 0; i < historyPolyLine.length; i++) {
             var curr = historyPolyLine[i];
             curr.setMap(null);
         };
         historyPolyLine = [];
+        lineArr = [];
     }
 
     function clearMap() {
@@ -181,9 +184,7 @@
         window.runtimePosInterval = '';
         window.singleRuntimePosInterval = '';
 
-        hideAllpolyLine();
-
-        var lineArr = [];
+        hideAllpolyLine();        
 
         var realData = [];
 
@@ -193,29 +194,39 @@
             dataType: "json",
             url: "http://api.zkkj168.com:81/device/device_history/" + id,  //这里是网址
             success:function(data){
+
+                $('#history-pos-console ul').html('');
+
                 realData = data.Schema.properties;
 
                 console.log(realData);
 
-                for (var i = 0; i < realData.length; i++) {
-                    var curr = realData[i];
+                if(realData.length === 0) {
+                    alert('该用户暂无数据');
+                    return false;
+                }
 
-                    var tmp = [];
-                    tmp[0] = curr.lng;
-                    tmp[1] = curr.lat;
-                    lineArr.push(tmp);
+                if(typeof realData != 'undefined' || realData != null) {
+                    for (var i = 0; i < realData.length; i++) {
+                        var curr = realData[i];
 
-                    var _time = curr.last_time;
-                    _time = new Date(parseInt(_time) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
+                        var tmp = [];
+                        tmp[0] = curr.lng;
+                        tmp[1] = curr.lat;
+                        lineArr.push(new AMap.LngLat(tmp[0],tmp[1]));
 
-                    console.log(curr.location, _time);
+                        var _time = curr.last_time;
+                        _time = new Date(parseInt(_time) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
 
-                    $('#history-pos-console ul').append('<li>' + curr.location + ' : ' + _time + '</li>');
-                };
+                        console.log(curr.location, _time);
+
+                        $('#history-pos-console ul').append('<li>' + curr.location + ' : ' + _time + '</li>');
+                    };
+                }else {
+
+                }
 
                 $('#history-pos-console').slideDown();
-
-                console.log(lineArr);
 
                 var polyline = new AMap.Polyline({
                     map: map,
@@ -226,15 +237,13 @@
                     strokeStyle: "solid"  //线样式
                 });
 
-                console.log(polyline);
+                map.setFitView();
 
                 historyPolyLine.push(polyline);
 
-                map.setFitView();
-
                 historyPerson = new AMap.Marker({
                     map: map,
-                    position: [111.47, 27.25],
+                    position: [lineArr[0].lng,lineArr[0].lat],
                     icon: "https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman2-48.png",
                     offset: new AMap.Pixel(-26, -13),
                     autoRotation: true

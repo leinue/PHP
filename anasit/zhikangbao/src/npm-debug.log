@@ -1,0 +1,335 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'H:\\nodejs\\\\node.exe',
+1 verbose cli   'H:\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'angular-ui-bootstrap' ]
+2 info using npm@2.11.2
+3 info using node@v0.12.6
+4 verbose install initial load of F:\wamp\www2\angular\zkb_svn\trunk\app\package.json
+5 warn package.json triangular@0.0.0 No description
+6 warn package.json triangular@0.0.0 No repository field.
+7 warn package.json triangular@0.0.0 No README data
+8 warn package.json triangular@0.0.0 No license field.
+9 verbose readDependencies loading dependencies from F:\wamp\www2\angular\zkb_svn\trunk\app\package.json
+10 silly cache add args [ 'angular-ui-bootstrap', null ]
+11 verbose cache add spec angular-ui-bootstrap
+12 silly cache add parsed spec { raw: 'angular-ui-bootstrap',
+12 silly cache add   scope: null,
+12 silly cache add   name: 'angular-ui-bootstrap',
+12 silly cache add   rawSpec: '',
+12 silly cache add   spec: '*',
+12 silly cache add   type: 'range' }
+13 silly addNamed angular-ui-bootstrap@*
+14 verbose addNamed "*" is a valid semver range for angular-ui-bootstrap
+15 silly addNameRange { name: 'angular-ui-bootstrap', range: '*', hasData: false }
+16 silly mapToRegistry name angular-ui-bootstrap
+17 silly mapToRegistry using default registry
+18 silly mapToRegistry registry http://registry.cnpmjs.org/
+19 silly mapToRegistry uri http://registry.cnpmjs.org/angular-ui-bootstrap
+20 verbose addNameRange registry:http://registry.cnpmjs.org/angular-ui-bootstrap not in flight; fetching
+21 verbose request uri http://registry.cnpmjs.org/angular-ui-bootstrap
+22 verbose request no auth needed
+23 info attempt registry request try #1 at 11:22:36
+24 verbose request id a145a7ef1337d6ca
+25 http request GET http://registry.cnpmjs.org/angular-ui-bootstrap
+26 http 200 http://registry.cnpmjs.org/angular-ui-bootstrap
+27 silly get cb [ 200,
+27 silly get   { server: 'nginx/1.4.6 (Ubuntu)',
+27 silly get     date: 'Sat, 17 Oct 2015 03:22:38 GMT',
+27 silly get     'content-type': 'application/json; charset=utf-8',
+27 silly get     'transfer-encoding': 'chunked',
+27 silly get     connection: 'keep-alive',
+27 silly get     'x-readtime': '14',
+27 silly get     'content-encoding': 'gzip' } ]
+28 verbose get saving angular-ui-bootstrap to C:\Users\lenovo\AppData\Roaming\npm-cache\registry.cnpmjs.org\angular-ui-bootstrap\.cache.json
+29 silly addNameRange number 2 { name: 'angular-ui-bootstrap', range: '*', hasData: true }
+30 silly addNameRange versions [ 'angular-ui-bootstrap',
+30 silly addNameRange   [ '0.14.2',
+30 silly addNameRange     '0.14.1',
+30 silly addNameRange     '0.14.0',
+30 silly addNameRange     '0.13.4',
+30 silly addNameRange     '0.13.3',
+30 silly addNameRange     '0.13.2',
+30 silly addNameRange     '0.13.1',
+30 silly addNameRange     '0.13.0',
+30 silly addNameRange     '0.12.1' ] ]
+31 silly addNamed angular-ui-bootstrap@0.14.2
+32 verbose addNamed "0.14.2" is a plain semver version for angular-ui-bootstrap
+33 silly mapToRegistry name angular-ui-bootstrap
+34 silly mapToRegistry using default registry
+35 silly mapToRegistry registry http://registry.cnpmjs.org/
+36 silly mapToRegistry uri http://registry.cnpmjs.org/angular-ui-bootstrap
+37 verbose addRemoteTarball http://registry.cnpmjs.org/angular-ui-bootstrap/download/angular-ui-bootstrap-0.14.2.tgz not in flight; adding
+38 verbose addRemoteTarball [ 'http://registry.cnpmjs.org/angular-ui-bootstrap/download/angular-ui-bootstrap-0.14.2.tgz',
+38 verbose addRemoteTarball   'ce4b07f0e66e8400320b19b566ed29c8e42e5fdc' ]
+39 info retry fetch attempt 1 at 11:22:38
+40 info attempt registry request try #1 at 11:22:38
+41 http fetch GET http://registry.cnpmjs.org/angular-ui-bootstrap/download/angular-ui-bootstrap-0.14.2.tgz
+42 http fetch 200 http://registry.cnpmjs.org/angular-ui-bootstrap/download/angular-ui-bootstrap-0.14.2.tgz
+43 silly fetchAndShaCheck shasum ce4b07f0e66e8400320b19b566ed29c8e42e5fdc
+44 verbose addTmpTarball C:\Users\lenovo\AppData\Local\Temp\npm-12056-3604b1ad\registry.cnpmjs.org\angular-ui-bootstrap\download\angular-ui-bootstrap-0.14.2.tgz not in flight; adding
+45 verbose addTmpTarball already have metadata; skipping unpack for angular-ui-bootstrap@0.14.2
+46 silly cache afterAdd angular-ui-bootstrap@0.14.2
+47 verbose afterAdd C:\Users\lenovo\AppData\Roaming\npm-cache\angular-ui-bootstrap\0.14.2\package\package.json not in flight; writing
+48 verbose afterAdd C:\Users\lenovo\AppData\Roaming\npm-cache\angular-ui-bootstrap\0.14.2\package\package.json written
+49 silly install resolved [ { name: 'angular-ui-bootstrap',
+49 silly install resolved     version: '0.14.2',
+49 silly install resolved     description: 'Bootstrap widgets for Angular',
+49 silly install resolved     main: 'index.js',
+49 silly install resolved     homepage: 'http://angular-ui.github.io/bootstrap/',
+49 silly install resolved     repository:
+49 silly install resolved      { type: 'git',
+49 silly install resolved        url: 'https://github.com/angular-ui/bootstrap.git' },
+49 silly install resolved     keywords:
+49 silly install resolved      [ 'angular',
+49 silly install resolved        'bootstrap',
+49 silly install resolved        'angular-ui',
+49 silly install resolved        'components',
+49 silly install resolved        'client-side' ],
+49 silly install resolved     author: { name: 'https://github.com/angular-ui/bootstrap/graphs/contributors' },
+49 silly install resolved     peerDependencies: { angular: '^1.3.x || >= 1.4.0-beta.0 || >= 1.5.0-beta.0' },
+49 silly install resolved     license: 'MIT',
+49 silly install resolved     gitHead: '21055348e8fb0f210224e70aab81e70d3f358ba6',
+49 silly install resolved     bugs: { url: 'https://github.com/angular-ui/bootstrap/issues' },
+49 silly install resolved     _id: 'angular-ui-bootstrap@0.14.2',
+49 silly install resolved     scripts: {},
+49 silly install resolved     _shasum: 'ce4b07f0e66e8400320b19b566ed29c8e42e5fdc',
+49 silly install resolved     _from: 'angular-ui-bootstrap@*',
+49 silly install resolved     _npmVersion: '2.1.11',
+49 silly install resolved     _nodeVersion: '0.10.33',
+49 silly install resolved     _npmUser: { name: 'wesleycho', email: 'wesley.cho@gmail.com' },
+49 silly install resolved     dist:
+49 silly install resolved      { shasum: 'ce4b07f0e66e8400320b19b566ed29c8e42e5fdc',
+49 silly install resolved        size: 152475,
+49 silly install resolved        noattachment: false,
+49 silly install resolved        tarball: 'http://registry.cnpmjs.org/angular-ui-bootstrap/download/angular-ui-bootstrap-0.14.2.tgz' },
+49 silly install resolved     maintainers: [ [Object], [Object], [Object] ],
+49 silly install resolved     directories: {},
+49 silly install resolved     publish_time: 1444797267872,
+49 silly install resolved     _cnpm_publish_time: 1444797267872,
+49 silly install resolved     _resolved: 'http://registry.cnpmjs.org/angular-ui-bootstrap/download/angular-ui-bootstrap-0.14.2.tgz' } ]
+50 info install angular-ui-bootstrap@0.14.2 into F:\wamp\www2\angular\zkb_svn\trunk\app
+51 info installOne angular-ui-bootstrap@0.14.2
+52 verbose installOne of angular-ui-bootstrap to F:\wamp\www2\angular\zkb_svn\trunk\app not in flight; installing
+53 verbose lock using C:\Users\lenovo\AppData\Roaming\npm-cache\_locks\angular-ui-bootstrap-a837918c7bcf0559.lock for F:\wamp\www2\angular\zkb_svn\trunk\app\node_modules\angular-ui-bootstrap
+54 silly install write writing angular-ui-bootstrap 0.14.2 to F:\wamp\www2\angular\zkb_svn\trunk\app\node_modules\angular-ui-bootstrap
+55 verbose unbuild node_modules\angular-ui-bootstrap
+56 silly gentlyRm F:\wamp\www2\angular\zkb_svn\trunk\app\node_modules\angular-ui-bootstrap is being purged from base F:\wamp\www2\angular\zkb_svn\trunk\app
+57 verbose gentlyRm don't care about contents; nuking F:\wamp\www2\angular\zkb_svn\trunk\app\node_modules\angular-ui-bootstrap
+58 verbose tar unpack C:\Users\lenovo\AppData\Roaming\npm-cache\angular-ui-bootstrap\0.14.2\package.tgz
+59 verbose tar unpacking to F:\wamp\www2\angular\zkb_svn\trunk\app\node_modules\angular-ui-bootstrap
+60 silly gentlyRm F:\wamp\www2\angular\zkb_svn\trunk\app\node_modules\angular-ui-bootstrap is being purged
+61 verbose gentlyRm don't care about contents; nuking F:\wamp\www2\angular\zkb_svn\trunk\app\node_modules\angular-ui-bootstrap
+62 silly gunzTarPerm modes [ '777', '666' ]
+63 silly gunzTarPerm extractEntry package.json
+64 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+65 silly gunzTarPerm extractEntry .npmignore
+66 silly gunzTarPerm modified mode [ '.npmignore', 420, 438 ]
+67 silly gunzTarPerm extractEntry README.md
+68 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+69 silly gunzTarPerm extractEntry index.js
+70 silly gunzTarPerm modified mode [ 'index.js', 420, 438 ]
+71 silly gunzTarPerm extractEntry ui-bootstrap-tpls.js
+72 silly gunzTarPerm modified mode [ 'ui-bootstrap-tpls.js', 420, 438 ]
+73 silly gunzTarPerm extractEntry ui-bootstrap-tpls.min.js
+74 silly gunzTarPerm modified mode [ 'ui-bootstrap-tpls.min.js', 420, 438 ]
+75 silly gunzTarPerm extractEntry ui-bootstrap.js
+76 silly gunzTarPerm modified mode [ 'ui-bootstrap.js', 420, 438 ]
+77 silly gunzTarPerm extractEntry ui-bootstrap.min.js
+78 silly gunzTarPerm modified mode [ 'ui-bootstrap.min.js', 420, 438 ]
+79 silly gunzTarPerm extractEntry ui-bootstrap-csp.css
+80 silly gunzTarPerm modified mode [ 'ui-bootstrap-csp.css', 420, 438 ]
+81 verbose write writing to F:\wamp\www2\angular\zkb_svn\trunk\app\node_modules\angular-ui-bootstrap\package.json
+82 info preinstall angular-ui-bootstrap@0.14.2
+83 verbose readDependencies loading dependencies from F:\wamp\www2\angular\zkb_svn\trunk\app\node_modules\angular-ui-bootstrap\package.json
+84 silly prepareForInstallMany adding angular@^1.3.x || >= 1.4.0-beta.0 || >= 1.5.0-beta.0 from angular-ui-bootstrap peerDependencies
+85 warn peerDependencies The peer dependency angular@^1.3.x || >= 1.4.0-beta.0 || >= 1.5.0-beta.0 included from angular-ui-bootstrap will no
+86 warn peerDependencies longer be automatically installed to fulfill the peerDependency
+87 warn peerDependencies in npm 3+. Your application will need to depend on it explicitly.
+88 verbose readDependencies loading dependencies from F:\wamp\www2\angular\zkb_svn\trunk\app\node_modules\angular-ui-bootstrap\package.json
+89 silly install resolved []
+90 verbose about to build F:\wamp\www2\angular\zkb_svn\trunk\app\node_modules\angular-ui-bootstrap
+91 info build F:\wamp\www2\angular\zkb_svn\trunk\app\node_modules\angular-ui-bootstrap
+92 info linkStuff angular-ui-bootstrap@0.14.2
+93 silly linkStuff angular-ui-bootstrap@0.14.2 has F:\wamp\www2\angular\zkb_svn\trunk\app\node_modules as its parent node_modules
+94 verbose linkBins angular-ui-bootstrap@0.14.2
+95 verbose linkMans angular-ui-bootstrap@0.14.2
+96 verbose rebuildBundles angular-ui-bootstrap@0.14.2
+97 info install angular-ui-bootstrap@0.14.2
+98 info postinstall angular-ui-bootstrap@0.14.2
+99 verbose readDependencies loading dependencies from F:\wamp\www2\angular\zkb_svn\trunk\app\package.json
+100 verbose targetResolver reading package data from F:\wamp\www2\angular\zkb_svn\trunk\app\node_modules\angular-ui-bootstrap\package.json
+101 silly cache add args [ 'angular@^1.3.x || >= 1.4.0-beta.0 || >= 1.5.0-beta.0', null ]
+102 verbose cache add spec angular@^1.3.x || >= 1.4.0-beta.0 || >= 1.5.0-beta.0
+103 silly cache add parsed spec { raw: 'angular@^1.3.x || >= 1.4.0-beta.0 || >= 1.5.0-beta.0',
+103 silly cache add   scope: null,
+103 silly cache add   name: 'angular',
+103 silly cache add   rawSpec: '^1.3.x || >= 1.4.0-beta.0 || >= 1.5.0-beta.0',
+103 silly cache add   spec: '>=1.3.0 <2.0.0||>=1.4.0-beta.0||>=1.5.0-beta.0',
+103 silly cache add   type: 'range' }
+104 silly addNamed angular@>=1.3.0 <2.0.0||>=1.4.0-beta.0||>=1.5.0-beta.0
+105 verbose addNamed ">=1.3.0 <2.0.0||>=1.4.0-beta.0||>=1.5.0-beta.0" is a valid semver range for angular
+106 silly addNameRange { name: 'angular',
+106 silly addNameRange   range: '>=1.3.0 <2.0.0||>=1.4.0-beta.0||>=1.5.0-beta.0',
+106 silly addNameRange   hasData: false }
+107 silly mapToRegistry name angular
+108 silly mapToRegistry using default registry
+109 silly mapToRegistry registry http://registry.cnpmjs.org/
+110 silly mapToRegistry uri http://registry.cnpmjs.org/angular
+111 verbose addNameRange registry:http://registry.cnpmjs.org/angular not in flight; fetching
+112 verbose request uri http://registry.cnpmjs.org/angular
+113 verbose request no auth needed
+114 info attempt registry request try #1 at 11:22:42
+115 http request GET http://registry.cnpmjs.org/angular
+116 http 200 http://registry.cnpmjs.org/angular
+117 silly get cb [ 200,
+117 silly get   { server: 'nginx/1.4.6 (Ubuntu)',
+117 silly get     date: 'Sat, 17 Oct 2015 03:22:42 GMT',
+117 silly get     'content-type': 'application/json; charset=utf-8',
+117 silly get     'transfer-encoding': 'chunked',
+117 silly get     connection: 'keep-alive',
+117 silly get     'x-readtime': '53',
+117 silly get     'content-encoding': 'gzip' } ]
+118 verbose get saving angular to C:\Users\lenovo\AppData\Roaming\npm-cache\registry.cnpmjs.org\angular\.cache.json
+119 silly addNameRange number 2 { name: 'angular',
+119 silly addNameRange   range: '>=1.3.0 <2.0.0||>=1.4.0-beta.0||>=1.5.0-beta.0',
+119 silly addNameRange   hasData: true }
+120 silly addNameRange versions [ 'angular',
+120 silly addNameRange   [ '1.4.7',
+120 silly addNameRange     '1.3.20',
+120 silly addNameRange     '1.2.29',
+120 silly addNameRange     '1.5.0-beta.0',
+120 silly addNameRange     '1.4.6',
+120 silly addNameRange     '1.3.19',
+120 silly addNameRange     '1.4.5',
+120 silly addNameRange     '1.3.18',
+120 silly addNameRange     '1.4.4',
+120 silly addNameRange     '1.4.3',
+120 silly addNameRange     '1.3.17',
+120 silly addNameRange     '1.4.2',
+120 silly addNameRange     '1.4.1',
+120 silly addNameRange     '1.3.16',
+120 silly addNameRange     '1.4.0',
+120 silly addNameRange     '1.4.0-rc.2',
+120 silly addNameRange     '1.4.0-rc.1',
+120 silly addNameRange     '1.4.0-rc.0',
+120 silly addNameRange     '1.3.15',
+120 silly addNameRange     '1.4.0-beta.6',
+120 silly addNameRange     '1.4.0-beta.5',
+120 silly addNameRange     '1.3.14',
+120 silly addNameRange     '1.4.0-beta.4',
+120 silly addNameRange     '1.3.13',
+120 silly addNameRange     '1.3.12',
+120 silly addNameRange     '1.4.0-beta.3',
+120 silly addNameRange     '1.3.11',
+120 silly addNameRange     '1.4.0-beta.2',
+120 silly addNameRange     '1.4.0-beta.1',
+120 silly addNameRange     '1.3.10',
+120 silly addNameRange     '1.3.9',
+120 silly addNameRange     '1.4.0-beta.0',
+120 silly addNameRange     '1.3.8',
+120 silly addNameRange     '1.2.28',
+120 silly addNameRange     '1.3.7',
+120 silly addNameRange     '1.3.6',
+120 silly addNameRange     '1.3.5',
+120 silly addNameRange     '1.3.4',
+120 silly addNameRange     '1.2.27',
+120 silly addNameRange     '1.3.4-build.3588',
+120 silly addNameRange     '1.3.3',
+120 silly addNameRange     '1.3.2',
+120 silly addNameRange     '1.3.1',
+120 silly addNameRange     '1.3.0',
+120 silly addNameRange     '1.3.0-rc.5',
+120 silly addNameRange     '1.2.23',
+120 silly addNameRange     '1.2.22',
+120 silly addNameRange     '1.2.21',
+120 silly addNameRange     '1.2.20',
+120 silly addNameRange     '1.2.19',
+120 silly addNameRange     '1.2.18',
+120 silly addNameRange     '1.2.17',
+120 silly addNameRange     '1.2.16',
+120 silly addNameRange     '1.2.15',
+120 silly addNameRange     '1.2.14',
+120 silly addNameRange     '1.2.13',
+120 silly addNameRange     '1.2.12',
+120 silly addNameRange     '1.2.11',
+120 silly addNameRange     '1.2.10',
+120 silly addNameRange     '1.2.9',
+120 silly addNameRange     '1.2.8',
+120 silly addNameRange     '1.2.7',
+120 silly addNameRange     '1.2.6',
+120 silly addNameRange     '1.2.5',
+120 silly addNameRange     '1.2.4',
+120 silly addNameRange     '1.2.3',
+120 silly addNameRange     '1.2.2',
+120 silly addNameRange     '1.2.1',
+120 silly addNameRange     '1.2.0',
+120 silly addNameRange     '1.1.5',
+120 silly addNameRange     '1.1.4',
+120 silly addNameRange     '1.1.3',
+120 silly addNameRange     '1.1.2',
+120 silly addNameRange     '1.1.1',
+120 silly addNameRange     '1.1.0',
+120 silly addNameRange     '1.0.8',
+120 silly addNameRange     '1.0.7',
+120 silly addNameRange     '1.0.6',
+120 silly addNameRange     '1.0.5',
+120 silly addNameRange     '1.0.4',
+120 silly addNameRange     '1.0.3',
+120 silly addNameRange     '1.0.2',
+120 silly addNameRange     '1.0.1',
+120 silly addNameRange     '1.0.0',
+120 silly addNameRange     '0.0.4',
+120 silly addNameRange     '0.0.3',
+120 silly addNameRange     '0.0.2',
+120 silly addNameRange     '0.0.1-2',
+120 silly addNameRange     '0.0.1-1',
+120 silly addNameRange     '0.0.1' ] ]
+121 silly addNamed angular@1.4.7
+122 verbose addNamed "1.4.7" is a plain semver version for angular
+123 silly mapToRegistry name angular
+124 silly mapToRegistry using default registry
+125 silly mapToRegistry registry http://registry.cnpmjs.org/
+126 silly mapToRegistry uri http://registry.cnpmjs.org/angular
+127 verbose addRemoteTarball http://registry.cnpmjs.org/angular/download/angular-1.4.7.tgz not in flight; adding
+128 verbose addRemoteTarball [ 'http://registry.cnpmjs.org/angular/download/angular-1.4.7.tgz',
+128 verbose addRemoteTarball   'f8990e71c9cd180a842b07e09e0801fe84e83878' ]
+129 info retry fetch attempt 1 at 11:22:42
+130 info attempt registry request try #1 at 11:22:42
+131 http fetch GET http://registry.cnpmjs.org/angular/download/angular-1.4.7.tgz
+132 http fetch 200 http://registry.cnpmjs.org/angular/download/angular-1.4.7.tgz
+133 info retry will retry, error on last attempt: Error: read ECONNRESET
+134 info retry will retry, error on last attempt: Error: read ECONNRESET
+135 silly fetchAndShaCheck shasum f8990e71c9cd180a842b07e09e0801fe84e83878
+136 verbose unlock done using C:\Users\lenovo\AppData\Roaming\npm-cache\_locks\angular-ui-bootstrap-a837918c7bcf0559.lock for F:\wamp\www2\angular\zkb_svn\trunk\app\node_modules\angular-ui-bootstrap
+137 verbose stack Error: shasum check failed for C:\Users\lenovo\AppData\Local\Temp\npm-12056-3604b1ad\registry.cnpmjs.org\angular\download\angular-1.4.7.tgz
+137 verbose stack Expected: f8990e71c9cd180a842b07e09e0801fe84e83878
+137 verbose stack Actual:   4160421888be02a9ac1695a0707d4215b7f6fd4c
+137 verbose stack From:     http://registry.cnpmjs.org/angular/download/angular-1.4.7.tgz
+137 verbose stack     at H:\nodejs\node_modules\npm\node_modules\sha\index.js:38:8
+137 verbose stack     at ReadStream.<anonymous> (H:\nodejs\node_modules\npm\node_modules\sha\index.js:85:7)
+137 verbose stack     at ReadStream.emit (events.js:129:20)
+137 verbose stack     at _stream_readable.js:908:16
+137 verbose stack     at process._tickCallback (node.js:355:11)
+138 verbose cwd F:\wamp\www2\angular\zkb_svn\trunk\app
+139 error Windows_NT 6.3.9600
+140 error argv "H:\\nodejs\\\\node.exe" "H:\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "angular-ui-bootstrap"
+141 error node v0.12.6
+142 error npm  v2.11.2
+143 error shasum check failed for C:\Users\lenovo\AppData\Local\Temp\npm-12056-3604b1ad\registry.cnpmjs.org\angular\download\angular-1.4.7.tgz
+143 error Expected: f8990e71c9cd180a842b07e09e0801fe84e83878
+143 error Actual:   4160421888be02a9ac1695a0707d4215b7f6fd4c
+143 error From:     http://registry.cnpmjs.org/angular/download/angular-1.4.7.tgz
+144 error If you need help, you may report this error at:
+144 error     <https://github.com/npm/npm/issues>
+145 verbose exit [ 1, true ]
+146 verbose unbuild node_modules\angular-ui-bootstrap
+147 info preuninstall angular-ui-bootstrap@0.14.2
+148 info uninstall angular-ui-bootstrap@0.14.2
+149 verbose unbuild rmStuff angular-ui-bootstrap@0.14.2 from F:\wamp\www2\angular\zkb_svn\trunk\app\node_modules
+150 info postuninstall angular-ui-bootstrap@0.14.2
+151 silly gentlyRm F:\wamp\www2\angular\zkb_svn\trunk\app\node_modules\angular-ui-bootstrap is being purged from base F:\wamp\www2\angular\zkb_svn\trunk\app
+152 verbose gentlyRm don't care about contents; nuking F:\wamp\www2\angular\zkb_svn\trunk\app\node_modules\angular-ui-bootstrap
+153 silly vacuum-fs purging F:\wamp\www2\angular\zkb_svn\trunk\app\node_modules\angular-ui-bootstrap
+154 silly vacuum-fs removing F:\wamp\www2\angular\zkb_svn\trunk\app\node_modules
+155 silly vacuum-fs finished vacuuming up to F:\wamp\www2\angular\zkb_svn\trunk\app

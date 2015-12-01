@@ -1,0 +1,273 @@
+<md-card style="padding:0;margin:0">
+    <md-card-content>
+        <div class="content-padded">
+            <h2 class="md-title">
+                {{vm.posStatus.title}}
+                <md-button ng-click="vm.posStatus.backToWhole()" id="returnRoWholeBtn" class="md-raised md-primary">返回</md-button>
+                <md-button class="md-fab md-primary md-fab-top-right" ng-click="vm.posStatus.openConsole()" title="打开历史记录面板" aria-label="top right toast">
+                    <md-icon md-font-icon="zmdi zmdi-comment-dots"></md-icon>
+                </md-button>
+            </h2>
+        </div>
+        <md-divider></md-divider>
+        <div layout layout-sm="column" flex>
+            <md-input-container flex>
+                <label>组织类型</label>
+                <md-select class="md-select-form" ng-model="currentOrgCate" ng-change="getOrgList()" placeholder="组织类型">
+                    <md-option ng-value="org.id" ng-repeat="org in orgCateList">{{org.name}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container flex>
+                <label>机构/社区/组织</label>
+                <md-select class="md-select-form" ng-model="currentOrg" ng-change="getOldManTrip()" placeholder="机构/社区/组织列表">
+                    <md-option ng-value="org.id" ng-repeat="org in orgList">{{org.full_name}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container flex>
+                <label>根据设备序列号或手机号回车搜索</label>
+                <input ng-keyup="vm.startSearch($event)" ng-model="vm.search.content" type="text">
+            </md-input-container>
+        </div>
+        
+        <style type="text/css">
+    
+            #amap-container {
+                width: 100%;
+                height: 400px;
+            }
+
+            #returnRoWholeBtn {
+                display: none;
+            }
+
+        </style>
+
+        <div id="amap-container"></div>
+
+<!--         <button ng-click="startAnimation()">start</button>
+        <button ng-click="stopAnimation()">stop</button>
+ -->    
+    </md-card-content>
+</md-card>
+
+<style>
+
+    #history-pos-console {
+        background: rgba(0,0,0,0.8);
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        padding: 15px;
+        color: rgb(255,255,255);
+        border-radius: 4px;
+        display: none;
+    }
+
+    #history-pos-console ul {
+        list-style: none;
+    }
+
+    #pos-time {
+        background: rgba(0,0,0,0.8);
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        padding: 15px;
+        color: rgb(255,255,255);
+        border-radius: 4px;
+        display: none;
+    }
+
+    .amap-layers div:first-child {
+        width: 100%;
+    }
+
+</style>
+
+<div id="history-pos-console">
+    <ul>
+    </ul>
+</div>
+
+<div id="pos-time"></div>
+
+<script type="text/javascript">
+
+    $('#history-pos-console').click(function() {
+        $(this).slideUp();
+    });
+
+    window.historyPolyLine = [];
+    window.historyPerson = [];
+
+    window.singleRuntimePosInterval = '';
+    
+    var followUp = function(mobile) {
+        if(mobile == null) {
+            alert('参数错误');
+            return false;
+        }
+
+        var currentMarkerA = '';
+
+        for (var i = markerStack.length - 1; i >= 0; i--) {
+            if(markerStack[i].Rd.position === currentMarker.target.Rd.position){
+                currentMarkerA = markerStack[i];
+                continue;
+            }
+            markerStack[i].setMap(null);
+        };
+
+        hideAllpolyLine();
+
+        $.ajax({  
+            type: "get",
+            contentType: "application/x-www-form-urlencoded",
+            dataType: "json",
+            url: "http://api.zkkj168.com:81/device/device_info/" + currentMarkerA.uid,  //这里是网址
+            success:function(data){
+                realData = data.Schema.properties;
+                $('#history-pos-console ul').html('目前位置 : ' + realData.location);
+                $('#history-pos-console').slideDown();
+
+                currentMarkerA.setPosition([realData.lng,realData.lat]);
+                var singleRuntime = 10;
+                if(window.singleRuntimePosInterval == '') {
+                    window.singleRuntimePosInterval = setInterval(function() {
+                        $('#pos-time').slideDown();
+                        $('#pos-time').html(singleRuntime + ' 秒后刷新位置');
+                        singleRuntime --;
+                        followUp(mobile);
+                    },10000);
+                }
+
+            },
+            timeout:30000, 
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert(errorThrown);
+            }
+        });
+
+        infoWindow.close();
+        $('#returnRoWholeBtn').show();
+        ServicesPosVM.posStatus.title = "位置信息追踪";
+    }
+
+    var lineArr = [];
+
+    function hideAllpolyLine() {
+        for (var i = 0; i < historyPolyLine.length; i++) {
+            var curr = historyPolyLine[i];
+            curr.setMap(null);
+        };
+        historyPolyLine = [];
+        lineArr = [];
+    }
+
+    function clearMap() {
+        for (var i = markerStack.length - 1; i >= 0; i--) {
+            markerStack[i].setMap();
+        };
+        hideAllpolyLine();
+        markerStack = [];
+        TotalLnglats = [];
+        infoWindow.close();
+        if(typeof historyPerson.cg != 'undefined') {
+            historyPerson.stopMove();
+            historyPerson.setMap(null);
+        }
+    }
+
+    var followHistory = function(id) {
+
+        window.clearInterval(window.runtimePosInterval);
+        window.clearInterval(window.singleRuntimePosInterval);
+
+        window.runtimePosInterval = '';
+        window.singleRuntimePosInterval = '';
+
+        hideAllpolyLine();        
+
+        var realData = [];
+
+        $.ajax({  
+            type: "get",
+            contentType: "application/x-www-form-urlencoded",
+            dataType: "json",
+            url: "http://api.zkkj168.com:81/device/device_history/" + id,  //这里是网址
+            success:function(data){
+
+                $('#history-pos-console ul').html('');
+
+                realData = data.Schema.properties;
+
+                console.log(realData);
+
+                if(realData.length === 0) {
+                    alert('该用户暂无数据');
+                    return false;
+                }
+
+                window.open('http://api.zkkj168.com/map/index.php?id=' + id,'_blank','height=500px,width=900px,menubar=no,titlebar=no,scrollbar=no,toolbar=no,status=no,location=no,resizable=no');
+
+                if(typeof realData != 'undefined' || realData != null) {
+                    for (var i = 0; i < realData.length; i++) {
+                        var curr = realData[i];
+
+                        var tmp = [];
+                        tmp[0] = curr.lng;
+                        tmp[1] = curr.lat;
+                        lineArr.push(new AMap.LngLat(tmp[0],tmp[1]));
+
+                        var _time = curr.last_time;
+                        _time = new Date(parseInt(_time) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
+
+                        console.log(curr.location, _time);
+
+                        $('#history-pos-console ul').append('<li>' + curr.location + ' : ' + _time + '</li>');
+                    };
+                }else {
+
+                }
+
+                $('#history-pos-console').slideDown();
+
+                historyPerson = new AMap.Marker({
+                    map: map,
+                    position: [lineArr[0].lng, lineArr[0].lat],
+                    icon: "http://img.anasit.com/uploads/2015/11/matureman2_48.png",
+                    offset: new AMap.Pixel(-26, -13),
+                    autoRotation: true
+                });
+
+                map.setCenter([lineArr[0].lng, lineArr[0].lat]);
+                map.setZoom(10);
+
+                var polyline = new AMap.Polyline({
+                    map: map,
+                    path: lineArr,
+                    strokeColor: "#00A",  //线颜色
+                    strokeOpacity: 1,     //线透明度
+                    strokeWeight: 3,      //线宽
+                    strokeStyle: "solid"  //线样式
+                });
+
+                map.setFitView();
+
+                historyPolyLine.push(polyline);
+
+                // historyPerson.moveAlong(lineArr, 500);//开始动画
+
+            },
+            timeout:30000, 
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert(errorThrown);
+            }
+        });
+
+        $('#returnRoWholeBtn').show();
+        ServicesPosVM.posStatus.title = "历史位置信息";
+
+    }
+
+</script>

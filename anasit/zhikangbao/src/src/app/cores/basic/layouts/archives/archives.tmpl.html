@@ -1,0 +1,306 @@
+<!-- <md-card style="padding:0;margin:0">
+    <md-card-content>
+        <div class="content-padded">
+            <h2 class="md-title">档案管理</h2>
+        </div>
+        <md-divider></md-divider>
+        <div class="button-toolbar" layout="row" layout-align="start center">
+            <md-button ng-click="addNew()" class="md-raised md-primary">新增</md-button>
+            <md-button class="md-raised md-warn">删除</md-button>
+        </div>
+    </md-card-content>
+</md-card> -->
+
+<div ng-controller="TablesAdvancedController as vm">
+    <md-data-table-toolbar ng-hide="vm.selected.length || vm.filter.show">
+        <h2 class="md-title">档案列表</h2>
+        <md-button ng-click="refreshMyArchiveList()" class="md-raised md-primary">刷新数据</md-button>
+        <md-button ng-show="isArchive == true" ng-click="showNewArchiveDialog()" class="md-raised md-primary">新增</md-button>
+        <md-button ng-show="isArchive == true" ng-click="returnToOldList()" class="md-raised md-primary">返回</md-button>
+        <div flex></div>
+        <md-button class="md-icon-button" ng-click="vm.filter.show = true">
+            <!-- <i class="material-icons md-dark">filter_list</i> -->
+            <md-icon md-font-icon="zmdi zmdi-filter-list"></md-icon>
+        </md-button>
+    </md-data-table-toolbar>
+
+    <!-- <div layout layout-sm="column" flex>
+        <md-input-container flex>
+            <label>省</label>
+            <md-select class="md-select-form" ng-model="searchProvince" ng-change="getSearchCity(searchProvince)" placeholder="省">
+                <md-option ng-value="province.name" ng-repeat="province in searchProvinceList">{{province.name}}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container flex>
+            <label>市</label>
+            <md-select class="md-select-form" ng-model="searchCity" placeholder="市" ng-change="getSearchDistrict(searchCity)">
+                <md-option ng-value="city.name" ng-repeat="city in searchCityList">{{city.name}}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container flex>
+            <label>区</label>
+            <md-select class="md-select-form" ng-model="searchDistrict" placeholder="区" ng-change="filterDistrict(searchDistrict)">
+                <md-option ng-value="district" ng-repeat="district in searchDistrictList">{{district}}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container flex>
+            <label>组织类型</label>
+            <md-select class="md-select-form" ng-model="currentOrgCate" ng-change="getOrgList()" placeholder="组织类型">
+                <md-option ng-value="org.id" ng-repeat="org in orgCateList">{{org.name}}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container flex>
+            <label>机构/社区/组织</label>
+            <md-select class="md-select-form" ng-model="currentOrg" placeholder="机构/社区/组织列表" ng-change="searchOldByOrgInfo()">
+                <md-option ng-value="org.id" ng-repeat="org in orgList">{{org.full_name}}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container flex>
+            <label>残疾类型</label>
+            <md-select class="md-select-form" ng-model="currentFeature" placeholder="残疾类型" ng-change="changeFeatureContent()">
+                <md-option ng-value="feature" ng-repeat="feature in ['精神残疾','肢体残疾']">{{feature}}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container flex>
+            <label>残疾内容</label>
+            <md-select class="md-select-form" ng-model="currentFeatureContent" placeholder="残疾内容" ng-change="searchOldByOldFeature()">
+                <md-option ng-value="featureContent" ng-repeat="featureContent in featureContentList">{{featureContent}}</md-option>
+            </md-select>
+        </md-input-container>
+    </div> -->
+
+    <md-data-table-toolbar ng-show="vm.filter.show && !vm.selected.length || 1" class="md-data-table-toolbar">
+        <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
+        <form flex="" name="vm.filter.form">
+            <input type="text" ng-model="query.keywords" id="health-search-input" ng-keyup="startSearchHealth($event)" ng-change="backToAllList()" placeholder="搜索">
+        </form>
+        <md-button class="md-icon-button md-raised" ng-click="triggerHealthSearch()">
+            搜索
+        </md-button>
+    </md-data-table-toolbar>
+
+    <md-data-table-toolbar class="alternate" ng-show="vm.selected.length" layout-align="space-between">
+      <div>选择了 {{vm.selected.length}} 个用户</div>
+    </md-data-table-toolbar>
+
+    <md-data-table-container>
+        <table md-data-table ng-show="isArchive == false" class="md-primary md-data-table"  md-progress="vm.deferred">
+            <thead md-order="oldArchiveInfoItemList.user_id" md-trigger="">
+                <tr>
+                    <!-- <th name="编号"></th> -->
+                    <th name="姓名"></th>
+                    <th name="身份证号"></th>
+                    <th name="老人家庭住址"></th>
+                    <th name="老人特征"></th>
+                    <th name="添加时间"></th>
+                    <th name="操作"></th>
+                    <!-- <th order-by="id" name="ID"></th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr md-auto-select ng-repeat="user in oldArchiveInfoItemList">
+                    <!-- <td>{{user.user_id | nullToVisual}}</td> -->
+                    <td>{{user.realname | nullToVisual}}</td>
+                    <td>{{user.idcard | nullToVisual}}</td>
+                    <td>{{user.address | nullToVisual}}</td>
+                    <td>{{user.feature | nullToVisual}}</td>
+                    <td>{{user.create_time*1000 | date:'yyyy-MM-dd'}}</td>
+                    <td>
+                        <md-button ng-click="viewThisArchive(user.user_id,user.username)" class="md-primary">档案管理</md-button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table md-data-table ng-show="isArchive == true" class="md-primary md-data-table">
+            <thead md-order="healthInfoList.user_id" md-trigger="">
+                <tr>
+                    <th name="编号"></th>
+                    <th name="登记时间"></th>
+                    <th name="姓名"></th>
+                    <th name="血压"></th>
+                    <th name="血糖"></th>
+                    <th name="脉率"></th>
+<!--                     <th name="血红蛋白"></th>
+                    <th name="体温"></th>
+                    <th name="血氧饱和度"></th>
+ -->                    <th name="备注"></th>
+                    <th name="操作"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr md-auto-select ng-repeat="user in healthInfoList">
+                    <td>{{user.id | nullToVisual}}</td>
+                    <td>{{user.last_time*1000 | date:'yyyy-MM-dd'}}</td>
+                    <td>{{user.nickname | nullToVisual}}</td>
+                    <td>{{user.blood_pressure | nullToVisual}}</td>
+                    <td>{{user.blood_sugar | nullToVisual}}</td>
+                    <td>{{user.pulse_rate | nullToVisual}}</td>
+<!--                     <td>{{user.blood_hb | nullToVisual}}</td>
+                    <td>{{user.temper | nullToVisual}}</td>
+                    <td>{{user.blood_spo | nullToVisual}}</td>
+ -->                    <td>{{user.description | nullToVisual}}</td>
+                    <td>
+                    <md-button ng-click="editThisArchive(user.id)" class="md-primary">详细/编辑</md-button>
+                        <md-button ng-click="removeThis(user.id)" class="md-primary">删除</md-button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </md-data-table-container>
+    
+    <div layout layout-sm="column" style="padding-left:70%" flex>
+        <md-input-container flex>
+            <label>总条数: {{oldInfoArchiveCount}}</label>
+        </md-input-container>
+        <md-input-container flex>
+            <label>选择页数</label>
+            <md-select class="md-select-form" ng-change="loadNextPageArchive(currentPage)" ng-model="currentPage" placeholder="选择页数" required>
+                <md-option ng-value="pageA" ng-repeat="pageA in total_pages">{{pageA}}</md-option>
+            </md-select>
+        </md-input-container>
+        <!-- <md-input-container style="margin-top: 13px;" flex>
+            <md-button class="md-raised">下一页</md-button>
+        </md-input-container> -->
+    </div>
+
+    <!-- <md-data-table-pagination md-limit="query.limit" md-page="query.page" md-total="{{users.total_count}}" md-trigger="loadNextPage()"></md-data-table-pagination> -->
+</div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="new-health-archive" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">{{healthArichiveTitle}}</h4>
+          </div>
+          <div class="modal-body" style="font-size: 1.3em;">
+            <div class="row">
+                <div class="col-md-3">
+                    <md-input-container>
+                        <label translate style="margin-top: -60px;">测量时间</label>
+                        <!-- <input ng-model="insertHealthArchiveInfo.last_time" type="text"> -->
+                        <div class="dropdown" style="margin-top: 31px;">
+                            <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="">    
+                                  <input type="text" ng-change="writeBackDate()" data-ng-model="insertHealthArchiveInfo.last_time">
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <datetimepicker data-ng-model="insertHealthArchiveInfo.last_time"
+                                                data-datetimepicker-config="{ dropdownSelector: '#dropdown2' ,minView: 'day'}">
+                                </datetimepicker>
+                            </ul>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div class="col-md-3">
+                    <md-input-container flex>
+                        <label translate>血压</label>
+                        <input ng-model="insertHealthArchiveInfo.blood_pressure" type="text" required>
+                    </md-input-container>
+                </div>
+                <div class="col-md-3">
+                    <md-input-container>
+                        <label translate>血糖</label>
+                        <input ng-model="insertHealthArchiveInfo.blood_sugar" type="text">
+                    </md-input-container>
+                </div>
+                <div class="col-md-3">
+                    <md-input-container>
+                        <label translate>脉率</label>
+                        <input ng-model="insertHealthArchiveInfo.pulse_rate" type="text">
+                    </md-input-container>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <md-input-container>
+                        <label translate>血红蛋白</label>
+                        <input ng-model="insertHealthArchiveInfo.blood_hb" type="text">
+                    </md-input-container>
+                </div>
+                <div class="col-md-3">
+                    <md-input-container>
+                        <label translate>体温</label>
+                        <input ng-model="insertHealthArchiveInfo.temper" type="text">
+                    </md-input-container>
+                </div>
+                <div class="col-md-3">
+                    <md-input-container>
+                        <label translate>血氧饱和度</label>
+                        <input ng-model="insertHealthArchiveInfo.blood_spo" type="text">
+                    </md-input-container>
+                </div>
+                <div class="col-md-3">
+                    <md-input-container>
+                        <label translate>其它描述</label>
+                        <textarea ng-model="insertHealthArchiveInfo.description"></textarea>
+                    </md-input-container>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <md-input-container>
+                        <label translate style="margin-top: -60px;">入院时间</label>
+                        <div class="dropdown" style="margin-top: 31px;">
+                            <a class="dropdown-toggle" id="dropdown3" role="button" data-toggle="dropdown" data-target="#" href="">    
+                                  <input type="text" ng-change="writeBackEnterTime()" data-ng-model="insertHealthArchiveInfo.enter_time">
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <datetimepicker data-ng-model="insertHealthArchiveInfo.enter_time"
+                                                data-datetimepicker-config="{ dropdownSelector: '#dropdown3' ,minView: 'day'}">
+                                </datetimepicker>
+                            </ul>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div class="col-md-4">
+                    <md-input-container>
+                        <label translate>住院时间(多少天)</label>
+                        <textarea ng-model="insertHealthArchiveInfo.live_time"></textarea>
+                    </md-input-container>
+                </div>
+                <div class="col-md-4">
+                    <md-input-container>
+                        <label translate>医院名称</label>
+                        <textarea ng-model="insertHealthArchiveInfo.hospital_name"></textarea>
+                    </md-input-container>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <md-input-container>
+                        <label translate>健康状态</label>
+                        <textarea ng-model="insertHealthArchiveInfo.conditions"></textarea>
+                    </md-input-container>
+                </div>
+                <div class="col-md-4">
+                    <md-input-container>
+                        <label translate>疾病类型</label>
+                        <textarea ng-model="insertHealthArchiveInfo.type"></textarea>
+                    </md-input-container>
+                </div>
+                <div class="col-md-4">
+                    <md-input-container>
+                        <label translate style="margin-top: -60px;">病发时间</label>
+                        <div class="dropdown" style="margin-top: 31px;">
+                            <a class="dropdown-toggle" id="dropdown4" role="button" data-toggle="dropdown" data-target="#" href="">    
+                                  <input type="text" ng-change="writeBackSickTime()" data-ng-model="insertHealthArchiveInfo.sick_time">
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <datetimepicker data-ng-model="insertHealthArchiveInfo.sick_time"
+                                                data-datetimepicker-config="{ dropdownSelector: '#dropdown4' ,minView: 'day'}">
+                                </datetimepicker>
+                            </ul>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            <button type="button" class="btn btn-default" ng-click="saveNewHealthArchive()" data-dismiss="modal">保存</button>
+          </div>
+        </div>
+      </div>
+    </div>

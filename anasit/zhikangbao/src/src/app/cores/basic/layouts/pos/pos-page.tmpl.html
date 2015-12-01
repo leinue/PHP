@@ -1,0 +1,42 @@
+
+    <md-card style="padding:0;margin:0">
+        <md-card-content>
+            <div class="content-padded">
+                <h2 class="md-title">位置信息监控</h2>
+            </div>
+            <md-divider></md-divider>
+            <div layout layout-sm="column" flex>
+                <md-input-container flex>
+                    <label>组织类型</label>
+                    <md-select class="md-select-form" ng-model="currentOrgCate" ng-change="getOrgList()" placeholder="组织类型">
+                        <md-option ng-value="org.id" ng-repeat="org in orgCateList">{{org.name}}</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>机构/社区/组织</label>
+                    <md-select class="md-select-form" ng-model="currentOrg" ng-change="getMonitorList()" placeholder="机构/社区/组织列表">
+                        <md-option ng-value="org.id" ng-repeat="org in orgList">{{org.full_name}}</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>搜索</label>
+                    <input type="text">
+                </md-input-container>
+            </div>
+            
+            <style type="text/css">
+        
+                #amap-container {
+                    width: 100%;
+                    height: 400px;
+                }
+
+            </style>
+
+            <div id="amap-container"></div>
+
+            <button ng-click="startAnimation()">start</button>
+            <button ng-click="stopAnimation()">stop</button>
+        
+        </md-card-content>
+    </md-card>

@@ -1,0 +1,156 @@
+<md-card style="padding:0;margin:0">
+    <md-card-content>
+        <div class="content-padded">
+            <h2 class="md-title">求助服务工单管理</h2>
+        </div>
+        <md-divider></md-divider>
+        <div class="button-toolbar" layout="row" layout-align="start center">
+            <md-button class="md-raised md-primary" ng-click="newOrder()">新增工单</md-button>
+            <md-button class="md-raised md-primary" ng-click="refreshMyWorkList()">刷新数据</md-button>
+        </div>
+    </md-card-content>
+</md-card>
+
+<div ng-controller="TablesAdvancedController as vm">
+    <md-data-table-toolbar ng-hide="vm.selected.length || vm.filter.show">
+        <h2 class="md-title">服务工单列表</h2>
+        <div flex></div>
+        <md-button class="md-icon-button" ng-click="vm.filter.show = true">
+            <!-- <i class="material-icons md-dark">filter_list</i> -->
+            <md-icon md-font-icon="zmdi zmdi-filter-list"></md-icon>
+        </md-button>
+    </md-data-table-toolbar>
+
+    <md-data-table-toolbar ng-show="vm.filter.show && !vm.selected.length || 1" class="md-data-table-toolbar">
+        <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
+        <form flex="" name="vm.filter.form">
+            <input type="text" ng-model="query.orderKeywords" id="order-search" ng-keyup="startSearchOrder($event)" ng-change="backToAllOrderList()" placeholder="搜索">
+        </form>
+        <md-button class="md-icon-button md-raised" ng-click="triggerOrderSearch()">
+            <!-- <md-icon md-font-icon="zmdi zmdi-close"></md-icon> -->
+            搜索
+        </md-button>
+    </md-data-table-toolbar>
+
+    <!-- <md-data-table-toolbar class="alternate" ng-show="vm.selected.length" layout-align="space-between">
+      <div>选择了 {{vm.selected.length}} 个用户</div>
+    </md-data-table-toolbar> -->
+
+    <md-data-table-container>
+        <table md-data-table class="md-primary md-data-table" md-row-select="" md-progress="vm.deferred">
+            <thead md-order="vm.query.order" md-trigger="vm.getUsers">
+                <tr>
+                    <th name="老人姓名"></th>
+                    <th name="性别"></th>
+                    <th name="年龄"></th>
+                    <!-- <th name="详细住址"></th> -->
+                    <th name="电话号码"></th>
+                    <th name="服务类别"></th>
+                    <th name="受理时间"></th>
+                    <!-- <th name="具体内容"></th> -->
+                    <th name="状态"></th>
+                    <th name="处理人"</th>
+                    <th name="操作"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr md-auto-select ng-repeat="user in orderList">
+                    <td>{{user.old_realname | nullToVisual}}</td>
+                    <td>{{user.old_sex}}</td>
+                    <td>{{user.old_age}}</td>
+                    <!-- <td>{{user.address}}</td> -->
+                    <td>{{user.old_mobile}}</td>
+                    <td>{{user.service_type | nullToVisual}}</td>
+                    <td>{{user.time*1000 | date:'yyyy-MM-dd'}}</td>
+                    <!-- <td>{{user.content}}</td> -->
+                    <td>{{user.isdeal | orderStatus}}</td>
+                    <td>{{user.operator| nullToVisual}}</td>
+                    <td>
+                        <md-button ng-click="viewThisOrder(user)" class="md-warn">详情</md-button>
+                        <md-button ng-hide="user.isdeal == 1" ng-click="confirmDealThis(user.id)" class="md-warn">确认受理</md-button>
+                    </td>
+                 </tr>
+            </tbody>
+        </table>
+    </md-data-table-container>
+
+    <div layout layout-sm="column" style="padding-left:70%" flex>
+        <md-input-container flex>
+            <label>总条数: {{orderInfoCount}}</label>
+        </md-input-container>
+        <md-input-container flex>
+            <label>选择页数</label>
+            <md-select class="md-select-form" ng-change="loadNextOrderPage(order_currentPage)" ng-model="order_currentPage" placeholder="选择页数" required>
+                <md-option ng-value="pageB" ng-repeat="pageB in order_total_pages">{{pageB}}</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+</div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="detail-order" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">老人亲人详细信息</h4>
+          </div>
+          <div class="modal-body" style="font-size: 1.3em;">
+
+            <div class="row">
+              <div class="col-md-3">
+                    <md-input-container flex>
+                        <label>老人姓名</label>
+                        <input readonly ng-model="viewUser.old_realname" />
+                    </md-input-container>
+              </div>
+              <div class="col-md-3">
+                    <md-input-container flex>
+                        <label>性别</label>
+                        <input readonly ng-model="viewUser.old_sex" />
+                    </md-input-container>
+              </div>
+              <div class="col-md-3">
+                    <md-input-container flex>
+                        <label>年龄</label>
+                        <input readonly ng-model="viewUser.old_age" />
+                    </md-input-container>
+              </div>
+              <div class="col-md-3">
+                    <md-input-container flex>
+                        <label>手机号</label>
+                        <input readonly ng-model="viewUser.old_mobile" />
+                    </md-input-container>
+              </div>
+            </div>
+            <md-input-container>
+                <label>家庭住址</label>
+                <input readonly ng-model="viewUser.address" />
+            </md-input-container>
+            <div class="row">
+              <div class="col-md-6">
+                    <md-input-container flex>
+                        <label>服务类型</label>
+                        <input readonly ng-model="viewUser.service_type" />
+                    </md-input-container>
+              </div>
+              <div class="col-md-6">
+                    <md-input-container flex>
+                        <label>操作人</label>
+                        <input readonly ng-model="viewUser.operator" />
+                    </md-input-container>
+              </div>
+            </div>
+            <div layout="column" flex>
+                <md-input-container>
+                    <label>具体内容</label>
+                    <textarea readonly ng-model="viewUser.content"></textarea>
+                </md-input-container>
+            </div>            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+          </div>
+        </div>
+      </div>
+    </div>

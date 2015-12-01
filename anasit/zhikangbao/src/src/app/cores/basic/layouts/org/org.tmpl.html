@@ -1,0 +1,173 @@
+<md-card style="padding:0;margin:0">
+    <md-card-content>
+        <div class="content-padded">
+            <h2 class="md-title">组织管理</h2>
+        </div>
+        <md-divider></md-divider>
+        <div class="button-toolbar" layout="row" layout-align="start center">
+            <md-button ng-click="addNewOrg()" class="md-raised md-primary">新增</md-button>
+            <md-button ng-click="refreshMyOrgList()" class="md-raised md-primary">刷新数据</md-button>
+        </div>
+    </md-card-content>
+</md-card>
+
+<div ng-controller="TablesAdvancedController as vm">
+    <md-data-table-toolbar ng-hide="vm.selected.length || vm.filter.show">
+        <h2 class="md-title">组织列表</h2>
+        <div flex></div>
+        <md-button class="md-icon-button" ng-click="vm.filter.show = true">
+            <!-- <i class="material-icons md-dark">filter_list</i> -->
+            <md-icon md-font-icon="zmdi zmdi-filter-list"></md-icon>
+        </md-button>
+    </md-data-table-toolbar>
+
+    <md-data-table-toolbar ng-show="vm.filter.show && !vm.selected.length  || 1" class="md-data-table-toolbar">
+        <!-- <div layout layout-sm="column" flex>
+            <md-input-container flex>
+                <label>省</label>
+                <md-select class="md-select-form" ng-model="searchProvince" ng-change="getSearchCity(searchProvince)" placeholder="省">
+                    <md-option ng-value="province.name" ng-repeat="province in searchProvinceList">{{province.name}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container flex>
+                <label>市</label>
+                <md-select class="md-select-form" ng-model="searchCity" placeholder="市" ng-change="getSearchDistrict(searchCity)">
+                    <md-option ng-value="city.name" ng-repeat="city in searchCityList">{{city.name}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container flex>
+                <label>区</label>
+                <md-select class="md-select-form" ng-model="searchDistrict" placeholder="区" ng-change="filterDistrict(searchDistrict)">
+                    <md-option ng-value="district" ng-repeat="district in searchDistrictList">{{district}}</md-option>
+                </md-select>
+            </md-input-container>
+        </div> -->
+        <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
+        <form flex="" name="vm.filter.form">
+            <input type="text" ng-model="query.keywords" id="org-search-input" ng-keyup="startSearchCommunity($event)" ng-change="gerAllCommunityList()" placeholder="搜索">
+        </form>
+        <md-button class="md-icon-button md-raised" ng-click="triggerCommunitySearch()">
+            <!-- <md-icon md-font-icon="zmdi zmdi-close"></md-icon> -->
+            搜索
+        </md-button>
+    </md-data-table-toolbar>
+
+    <md-data-table-toolbar class="alternate" ng-show="vm.selected.length" layout-align="space-between">
+      <div>选择了 {{vm.selected.length}} 个用户</div>
+    </md-data-table-toolbar>
+
+    <md-data-table-container>
+        <table md-data-table class="md-primary md-data-table">
+            <thead md-order="vm.query.order" md-trigger="vm.getUsers">
+                <tr>
+                    <!-- <th name="编号"></th> -->
+                    <th name="机构名"></th>
+                    <th name="所属分类"></th>
+                    <th name="是否开启"></th>
+                    <th name="营业执照"></th>
+                    <th name="添加时间"></th>
+                    <th name="操作"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr md-auto-select ng-repeat="item in orgList track by $index">
+                <!--ng-show="insertOrgList.code == item.code || inserOrgList.code == -1 || insertOrgList.code1 == item.code || insertOrgList.code2 == item.code"-->
+                    <!-- <td>{{item.id}}</td> -->
+                    <td>{{item.full_name}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.enabled | orgIsEnabled}}</td>
+                    <td>{{item.org_code}}</td>
+                    <td>{{item.create_time*1000 | date:'yyyy-MM-dd'}}</td>
+                    <td>
+                        <!-- <md-button ng-click="viewThisOrg(item.id)" class="md-primary"></md-button> -->
+                        <md-menu>
+                            <md-button class="md-icon-button" aria-label="open menu" ng-click="$mdOpenMenu()">
+                                <md-icon md-font-icon="zmdi zmdi-more-vert"></md-icon>
+                            </md-button>
+                            <md-menu-content width="3">
+                                <md-menu-item>
+                                    <md-button ng-click="editThisItem(item.id)" class="md-primary">详情/编辑</md-button>
+                                </md-menu-item>
+                                <md-menu-item>
+                                    <md-button ng-click="deleteThisItem(item.id)" class="md-warn">删除</md-button>
+                                </md-menu-item>
+                            </md-menu-content>
+                        </md-menu>                        
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </md-data-table-container>
+
+    <!-- Modal -->
+    <div class="modal fade" id="new-org" data-backdrop="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">{{orgTitle}}</h4>
+          </div>
+          <div class="modal-body" style="font-size: 1.3em;">
+            <div layout="column" flex>
+            <md-input-container flex>
+                    <label>所属分类</label>
+                    <md-select class="md-select-form" ng-change="divideOrgCate()" ng-model="insertOrgList.code" placeholder="机构">
+                        <md-option ng-value="department.id" ng-repeat="department in orgCateList">{{department.name}}</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container flex>
+                    <label translate>全称</label>
+                    <input ng-model="insertOrgList.full_name" type="text">
+                </md-input-container flex>
+                <md-input-container flex>
+                    <label translate>简称</label>
+                    <input ng-model="insertOrgList.short_name" type="text">
+                </md-input-container>
+                <md-input-container flex>
+                    <label translate>是否开启</label>
+                    <md-select class="md-select-form" ng-model="insertOrgList.enabled" placeholder="是否开启">
+                        <md-option ng-value="enable.id" ng-repeat="enable in orgEnabled">{{enable.name}}</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+            <div layout="column" flex>
+                <md-input-container flex>
+                    <label translate>营业执照</label>
+                    <input ng-model="insertOrgList.org_code" type="text" required>
+                </md-input-container>
+                <md-input-container flex>
+                    <label translate>省</label>
+                    <!-- <input ng-model="insertOrgList.province" type="text"> -->
+                    <md-select class="md-select-form" ng-change="changeCity()" ng-model="insertOrgList.province" placeholder="省">
+                        <md-option ng-value="province.name" ng-repeat="province in provinceList">{{province.name}}</md-option>
+                    </md-select>
+                </md-input-container flex>
+                <md-input-container flex>
+                    <label translate>市</label>
+                    <!-- <input ng-model="insertOrgList.city" type="text"> -->
+                    <md-select class="md-select-form" ng-model="insertOrgList.city" placeholder="市">
+                        <md-option ng-value="city.name" ng-repeat="city in cityList">{{city.name}}</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container flex>
+                    <label translate>地址</label>
+                    <input ng-model="insertOrgList.address" type="text">
+                </md-input-container>
+            </div>
+            <div layout="column" flex>
+                <md-input-container flex>
+                    <label translate>其它介绍</label>
+                    <textarea ng-model="insertOrgList.description"></textarea>
+                </md-input-container>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            <button type="button" class="btn btn-default" ng-click="saveNewOrg()">保存</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <md-data-table-pagination md-limit="vm.query.limit" md-page="vm.query.page" md-total="{{}}" md-trigger=""></md-data-table-pagination>
+</div>

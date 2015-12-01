@@ -1,0 +1,100 @@
+<div class="dashboard-container overlay-10 padded-content-page" layout="column">
+    <div class="drag-container" layout="row" layout-sm="column" layout-margin dragula='"drag-analytics-container"'>
+        <tri-widget palette-background="deep-orange:500" content-layout="row" content-layout-align="space-between center" content-padding>
+            <div>
+                <md-icon class="font-size-5 opacity-50 margin-left-10" md-font-icon="fa fa-comments"></md-icon>
+            </div>
+            <div layout="column" layout-align="center end">
+                <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 text-ellipsis" countupto="today_old" decimals="0" id="today_old"></p>
+                <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0" translate>今日新增老人数</p>
+            </div>
+        </tri-widget>
+        <tri-widget palette-background="cyan:500" content-layout="row" content-layout-align="space-between center" content-padding>
+            <div>
+                <md-icon class="font-size-5 opacity-50 margin-left-10" md-font-icon="fa fa-twitter"></md-icon>
+            </div>
+            <div layout="column" layout-align="center end">
+                <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 text-ellipsis" countupto="old_mount" decimals="0" id="old_mount"></p>
+                <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0" translate>总老人数</p>
+            </div>
+        </tri-widget>
+        <tri-widget palette-background="indigo:500" content-layout="row" content-layout-align="space-between center" content-padding>
+            <div>
+                <md-icon class="font-size-5 opacity-50 margin-left-10" md-font-icon="fa fa-facebook"></md-icon>
+            </div>
+            <div layout="column" layout-align="center end">
+                <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0" countupto="toady_org_mount" decimals="0" id="org_mount"></p>
+                <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0" translate>今日新增机构数</p>
+            </div>
+        </tri-widget>
+        <tri-widget palette-background="teal:500" content-layout="row" content-layout-align="space-between center" content-padding>
+            <div>
+                <md-icon class="font-size-5 opacity-50 margin-left-10" md-font-icon="fa fa-eye"></md-icon>
+            </div>
+            <div layout="column" layout-align="center end">
+                <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0" countupto="org_mount" decimals="0" id="toady_org_mount"></p>
+                <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0" translate>总机构数</p>
+            </div>
+        </tri-widget>
+    </div>
+    <div class="mirror-container"></div>
+    <div layout="row" layout-sm="column" layout-margin>
+        <tri-widget chartjs-line-widget title="DASHBOARDS.ANALYTICS.PAGEVIEWS" subtitle="DASHBOARDS.ANALYTICS.DATE" content-padding>
+            <canvas class="chart-line" chart-data="oldMonthLineChart.data" chart-labels="oldMonthLineChart.labels" chart-legend="true" chart-series="oldMonthLineChart.series" chart-options="oldMonthLineChart.options"></canvas>
+        </tri-widget>
+    </div>
+    <div layout="row" layout-sm="column" layout-margin>
+        <tri-widget chartjs-pie-widget title="消息受理统计" subtitle="DASHBOARDS.ANALYTICS.DATE" content-padding>
+            <canvas class="chart-doughnut" chart-data="helpPieChart.data" chart-legend="true" chart-labels="helpPieChart.labels"></canvas>
+        </tri-widget>
+        <tri-widget chartjs-pie-widget title="在线用户统计" subtitle="DASHBOARDS.ANALYTICS.DATE" content-padding>
+            <canvas class="chart-doughnut" chart-data="onlinePieChart.data" chart-legend="true" chart-labels="onlinePieChart.labels"></canvas>
+        </tri-widget>
+        <!-- <tri-widget flex load-data-widget="{ social: 'app/examples/dashboards/data/social.json' }" title="待定" subtitle="DASHBOARDS.ANALYTICS.DATE" content-padding>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th ng-repeat="header in ::social.header | limitTo:3">{{::header}}</th>
+                    </tr>
+                </thead>
+                <tbody class="md-caption">
+                    <tr ng-repeat="socialData in ::social.data | limitTo:5">
+                        <td ng-repeat="data in ::socialData | limitTo:3">{{::data}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </tri-widget> -->
+    </div>
+    <!-- <div layout="row" layout-md="column" layout-sm="column" layout-margin>
+        <tri-widget google-geochart-widget flex title="DASHBOARDS.ANALYTICS.LOCATION" subtitle="DASHBOARDS.ANALYTICS.DATE" title-position="top" content-padding>
+            <div class="google-chart" google-chart chart="geoChartData"></div>
+        </tri-widget>
+        <tri-widget flex load-data-widget="{ social: 'app/examples/dashboards/data/location.json' }" title="DASHBOARDS.ANALYTICS.SOCIAL" subtitle="DASHBOARDS.ANALYTICS.DATE" content-padding>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th ng-repeat="header in ::social.header | limitTo:3">{{::header}}</th>
+                    </tr>
+                </thead>
+                <tbody class="md-caption">
+                    <tr ng-repeat="socialData in ::social.data | limitTo:5">
+                        <td ng-repeat="data in ::socialData | limitTo:3">{{::data}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </tri-widget>
+    </div> -->
+</div>
+
+<script type="text/javascript">
+
+    window.onDashBorardFresh = false;
+    
+    window.onload = function() {
+        $('#today_old').html(localStorage.today_old);
+        $('#old_mount').html(localStorage.old_mount);
+        $('#org_mount').html(localStorage.org_mount);
+        $('#toady_org_mount').html(localStorage.toady_org_mount);
+    }
+
+</script>

@@ -1,0 +1,145 @@
+<md-card style="padding:0;margin:0">
+    <md-card-content>
+        <div class="content-padded">
+            <h2 class="md-title">求救呼叫信息管理</h2>
+        </div>
+        <md-divider></md-divider>
+        <div class="button-toolbar" layout="row" layout-align="start center">
+            <md-button class="md-raised md-primary" ng-click="refreshMyCallList()">刷新数据</md-button>
+        </div>
+    </md-card-content>
+</md-card>
+
+<div ng-controller="TablesAdvancedController as vm">
+    <md-data-table-toolbar ng-hide="vm.selected.length || vm.filter.show">
+        <h2 class="md-title">求救呼叫信息列表</h2>
+        <div flex></div>
+        <md-button class="md-icon-button" ng-click="vm.filter.show = true">
+            <!-- <i class="material-icons md-dark">filter_list</i> -->
+            <md-icon md-font-icon="zmdi zmdi-filter-list"></md-icon>
+        </md-button>
+    </md-data-table-toolbar>
+
+    <md-data-table-toolbar ng-show="vm.filter.show && !vm.selected.length  || 1" class="md-data-table-toolbar">
+        <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
+        <form flex="" name="vm.filter.form">
+            <input type="text" ng-model="query.keywords" id="sos-search-input" ng-keyup="startSearchSos($event)" ng-change="backToAllSosList()" ng-model-options="vm.filter.options" placeholder="search">
+        </form>
+        <md-button class="md-icon-button md-raised" ng-click="triggerCallSearch()">
+            <!-- <md-icon md-font-icon="zmdi zmdi-close"></md-icon> -->
+            搜索
+        </md-button>
+    </md-data-table-toolbar>
+
+    <md-data-table-toolbar class="alternate" ng-show="vm.selected.length" layout-align="space-between">
+      <div>选择了 {{vm.selected.length}} 个用户</div>
+    </md-data-table-toolbar>
+
+    <md-data-table-container>
+        <table md-data-table class="md-primary md-data-table" md-row-select="" md-progress="vm.deferred">
+            <thead md-order="vm.query.order" md-trigger="vm.getUsers">
+                <tr>
+                    <th name="老人姓名"></th>
+                    <th name="求救标题"></th>
+                    <th name="求救号码"></th>
+                    <th name="求救地址"></th>
+                    <th name="求救时间"></th>
+                    <th name="操作"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr md-auto-select ng-repeat="user in helpList">
+                    <td>{{user.sos_name}}</td>
+                    <td>{{user.sos_title}}</td>
+                    <td>{{user.sos_mobile}}</td>
+                    <td>{{user.sos_address}}</td>
+                    <td>{{user.sos_time*1000 | date:'yyyy-MM-dd'}}</td>
+                    <td>
+                        <md-button ng-click="viewThisYulp(user.sos_id)" class="md-warn">详细</md-button>
+                    <md-button ng-click="viewThisFamily(user.sos_id)" class="md-warn">亲人信息</md-button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </md-data-table-container>
+
+    <div layout layout-sm="column" style="padding-left:70%" flex>
+        <md-input-container flex>
+            <label>总条数: {{yulpInfoCount}}</label>
+        </md-input-container>
+        <md-input-container flex>
+            <label>选择页数</label>
+            <md-select class="md-select-form" ng-change="loadNextCallPage(call_currentPage)" ng-model="call_currentPage" placeholder="选择页数" required>
+                <md-option ng-value="pageB" ng-repeat="pageB in call_total_pages">{{pageB}}</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+</div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="old-info" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">老人详细信息</h4>
+          </div>
+          <div class="modal-body" style="font-size: 1.3em;">
+            <div layout="column" flex>
+                <md-input-container>
+                    <label translate>真实姓名</label>
+                    <input ng-model="detailList.sos_name" readonly type="text">
+                </md-input-container>
+                <md-input-container>
+                    <label translate>手机号</label>
+                    <input ng-model="detailList.old.mobile" readonly type="text">
+                </md-input-container>
+                <md-input-container>
+                    <label translate>组织</label>
+                    <input ng-model="detailList.organization.full_name" readonly type="text">
+                </md-input-container>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="old-family-member" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">老人亲人详细信息</h4>
+          </div>
+          <div class="modal-body" style="font-size: 1.3em;">
+            <div layout="column" flex>
+                <md-input-container>
+                    <label>亲属姓名</label>
+                    <md-select class="md-select-form" ng-model="member_name_id" ng-change="changeCurrentMember()" placeholder="亲属姓名" required>
+                        <md-option ng-value="member.id" ng-repeat="member in familyList">{{member.realname}}</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container>
+                    <label translate>手机号</label>
+                    <md-select class="md-select-form" ng-model="member_mobile_id" placeholder="手机号" required>
+                        <md-option ng-value="member.id" ng-repeat="member in familyList">{{member.mobile}}</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container>
+                    <label translate>关系</label>
+                    <md-select class="md-select-form" ng-model="member_relation_id" placeholder="关系" required>
+                        <md-option ng-value="member.id" ng-repeat="member in familyList">{{member.relation}}</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+          </div>
+        </div>
+      </div>
+    </div>

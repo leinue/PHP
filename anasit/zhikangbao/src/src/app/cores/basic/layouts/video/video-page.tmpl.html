@@ -1,0 +1,68 @@
+<md-card style="padding:0;margin:0;">
+    <md-card-content>
+        <div class="content-padded">
+            <h2 class="md-title">视频关爱系统</h2>
+        </div>
+        <md-divider></md-divider>
+        <md-button class="md-raised md-primary" ng-click="selectVideoArea()">{{selectTitle}}</md-button>
+        <div layout layout-sm="column" flex>
+            <md-input-container flex ng-show="!multiScreen">
+                <label>萤石云列表</label>
+                <md-select class="md-select-form" ng-model="currentYS7" ng-change="getYS7Video()" placeholder="萤石云列表">
+                    <md-option ng-value="ys.rtmpUrl" ng-repeat="ys in YS7List">{{ys.title}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-button class="md-raised md-primary" ng-click="toggleMultiScreen()">{{multiScreenTitle}}</md-button>
+        </div>
+        <div ng-show="selectArea" layout layout-sm="column" flex>
+            <md-input-container flex>
+                <label>组织类型</label>
+                <md-select class="md-select-form" ng-model="currentOrgCate" ng-change="getOrgList()" placeholder="组织类型">
+                    <md-option ng-value="org.id" ng-repeat="org in orgCateList">{{org.name}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container flex>
+                <label>机构/社区/组织</label>
+                <md-select class="md-select-form" ng-model="currentOrg" ng-change="getMonitorList()" placeholder="机构/社区/组织列表">
+                    <md-option ng-value="org.id" ng-repeat="org in orgList">{{org.full_name}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container flex>
+                <label>监控器列表</label>
+                <md-select class="md-select-form" ng-model="currentMonitor" ng-change="getVideo()" placeholder="监控器列表">
+                    <md-option ng-value="monitor" ng-repeat="monitor in MonitorList">{{monitor.monitor_name}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container flex>
+                <label>流格式</label>
+                <md-select class="md-select-form" ng-model="currentCodec" ng-change="getVideo()" placeholder="流格式">
+                    <md-option ng-value="type" ng-repeat="type in ['h264','MPEG-4','mpeg4']">{{type}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container flex>
+                <label>流类型</label>
+                <md-select class="md-select-form" ng-model="currentSubtype" ng-change="getVideo()" placeholder="流格式">
+                    <md-option ng-value="type" ng-repeat="type in ['main','sub']">{{type}}</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+    </md-card-content>
+    <md-ontent id="monitor-area">
+
+    </md-content>
+</md-card>
+
+<script>
+
+    $(function(){
+        var footerHeight = $('#footer').height();
+        var headerHeight = $('.md-toolbar-tools').height();
+        var docHeight = $('html').height();
+
+        var bodyHeight = docHeight - (headerHeight * 2) - 10;
+
+        $('#basicVideo').attr('height', bodyHeight);
+        $('#basicVideo').hide();
+    });
+
+</script>

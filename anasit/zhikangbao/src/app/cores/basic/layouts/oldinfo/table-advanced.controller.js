@@ -6,7 +6,7 @@
         .controller('TablesAdvancedController', Controller);
 
     /* @ngInject */
-    function Controller($scope, $timeout, $q, OldInfoService, $mdDialog, $state, $location, $sce, $stateParams, OrgService, OrgInfoService, RefreshService, CityService) {
+    function Controller($scope, $timeout, $q, OldInfoService, $mdDialog, $state, $location, $sce, $stateParams, OrgService, OrgInfoService, RefreshService, CityService, DeviceService) {
         var vm = this;
 
         $scope.query = {
@@ -109,7 +109,7 @@
 
         };
 
-        $('#viewDetail').on('hidden.bs.modal', function (e) {
+        $('#viewDetail,#bind-old-to-device').on('hidden.bs.modal', function (e) {
             $('.modal-backdrop').css('z-index','1040');
         });
         
@@ -390,7 +390,99 @@
         $scope.filterDistrictOld = function(val) {
             $scope.searchOldDistrict = val;
             $scope.triggerCitySearchOld(val);
-        }
+        };
+
+        $scope.oldBindDeviceIdcard = 0;
+
+        $scope.bindThisOld = function(idcard) {
+            $('#bind-old-to-device').modal('show');
+            $('.modal-backdrop').css('z-index','0');
+            $scope.oldBindDeviceIdcard = idcard;
+            $scope.getDeviceUnbinded();
+        };
+
+        $scope.device_current_page_old = 1;
+
+        $scope.getDeviceUnbinded = function() {
+            $scope.device_total_pages_old = [];
+            DeviceService.indexUnbundled($scope.device_currentPage_old,10).then(function(response) {
+                $scope.devices_old = response.Schema.properties.detail; 
+                $scope.deviceInfoCount_old = response.Schema.properties.count;   
+                var count = Math.ceil(response.Schema.properties.count/10);
+                for (var i = 1; i <= count; i++) {
+                    $scope.device_total_pages_old.push(i);
+                };
+            });
+        };
+
+        $scope.unbindThisOld = function(did, idcard) {
+            DeviceService.unbindDevice(did, idcard).then(function(data) {
+
+                var status = data.status;
+                var realData = data.Schema;
+
+                if(status != '200') {
+                    var alert = $mdDialog.alert({
+                        title: '解绑失败',
+                        content: realData.properties.message,
+                        ok: '确定'
+                    });
+                    $mdDialog.show(alert);
+                }else {
+                    var alert = $mdDialog.alert({
+                        title: '解绑成功',
+                        content: realData.properties.message,
+                        ok: '确定'
+                    });
+                    $mdDialog.show(alert);
+                    $scope.loadDifferentDevice($scope.isDeviceBinded);
+                }
+
+            }, function(error) {
+                var alert = $mdDialog.alert({
+                    title: '出错了,请联系管理员,错误代码:' + error.status,
+                    content: error.statusText,
+                    ok: '确定'
+                });
+                $mdDialog.show(alert);
+            });
+        };
+
+        $scope.confirmToBindThisDevice = function(did) {
+            DeviceService.bindDevice(did, $scope.oldBindDeviceIdcard).then(function(data) {
+
+                var status = data.status;
+                var realData = data.Schema;
+
+                if(status != '200') {
+                    var alert = $mdDialog.alert({
+                        title: '绑定失败',
+                        content: realData.properties.message,
+                        ok: '确定'
+                    });
+                    $mdDialog.show(alert);
+                }else {
+                    var alert = $mdDialog.alert({
+                        title: '绑定成功',
+                        content: realData.properties.message,
+                        ok: '确定'
+                    });
+                    $mdDialog.show(alert);
+                    $scope.loadDifferentDevice($scope.isDeviceBinded);
+                }
+
+            }, function(error) {
+                var alert = $mdDialog.alert({
+                    title: '出错了,请联系管理员,错误代码:' + error.status,
+                    content: error.statusText,
+                    ok: '确定'
+                });
+                $mdDialog.show(alert);
+            });
+
+            $scope.deviceToBindId = 0;
+            $scope.oldToBindId = 0;
+        };
 
     }
 })();

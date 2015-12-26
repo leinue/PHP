@@ -87,16 +87,25 @@
             $scope.isArchive = false;
         }
 
-        $scope.showNewArchiveDialog = function() {
+        $scope.showNewArchiveDialog = function(failed) {
+            failed = failed == null ? false : failed;
             $('#new-health-archive').modal('show');
             $('.modal-backdrop').css('z-index','0');
             $scope.edit = false;
             $scope.healthArichiveTitle = '新增老人健康档案';
-            $scope.insertHealthArchiveInfo = {};
+            if(!failed) {
+                $scope.insertHealthArchiveInfo = {};
+            }
         }
+
+        $scope.isSaveAfterDismissed = true;
 
         $('#new-health-archive').on('hidden.bs.modal', function (e) {
             $('.modal-backdrop').css('z-index','1040');
+            $scope.isSaveAfterDismissed = $('#isSaveAfterDismissed')[0].checked;
+            if($scope.isSaveAfterDismissed) {
+                $scope.saveNewHealthArchive();
+            }
         });
 
         $scope.saveNewHealthArchive = function() {
@@ -104,7 +113,6 @@
             if($scope.edit) {
                 //编辑老人信息档案
                 // $scope.insertHealthArchiveInfo.user_id = $scope.currentUid;
-                console.log($scope.insertHealthArchiveInfo);
                 HealthService.update($scope.insertHealthArchiveInfo).then(function(data){
                     var status = data.status;
                     var realData = data.Schema;
@@ -114,6 +122,7 @@
                             content: realData.properties.message,
                             ok: '确定'
                         });
+                        $scope.showNewArchiveDialog(true);
                     }else {
                         var alert = $mdDialog.alert({
                             title: '编辑成功',
@@ -123,6 +132,18 @@
                         $scope.viewThisArchive($scope.currentUid,$scope.currentUserName);
                     }
                     $mdDialog.show(alert);
+                },function(error) {
+                    var alert = $mdDialog.confirm({
+                        title: '出错了,请联系管理员:' + error.status + '-' + error.statusText,
+                        content:'要再打开窗口编辑吗?',
+                        ok: '确定',
+                        cancel: '取消'
+                    });
+                    $mdDialog.show(alert).then(function(confirm) {
+                        if(confirm) {
+                            $scope.showNewArchiveDialog(true);
+                        }
+                    });
                 });
             }else{
                 //新增老人信息档案
@@ -136,6 +157,7 @@
                             content: realData.properties.message,
                             ok: '确定'
                         });
+                        $scope.showNewArchiveDialog(true);
                     }else {
                         var alert = $mdDialog.alert({
                             title: '新增成功',
@@ -145,6 +167,18 @@
                         $scope.viewThisArchive($scope.currentUid,$scope.currentUserName);
                     }
                     $mdDialog.show(alert);
+                },function(error) {
+                    var alert = $mdDialog.confirm({
+                        title: '出错了,请联系管理员:' + error.status + '-' + error.statusText,
+                        content:'要再打开窗口编辑吗?',
+                        ok: '确定',
+                        cancel: '取消'
+                    });
+                    $mdDialog.show(alert).then(function(confirm) {
+                        if(confirm) {
+                            $scope.showNewArchiveDialog(true);
+                        }
+                    });
                 });
             }
 

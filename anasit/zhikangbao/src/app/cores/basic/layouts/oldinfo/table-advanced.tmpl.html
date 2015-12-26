@@ -107,6 +107,15 @@
                                 <md-menu-item>
                                     <md-button ng-click="viewMyMember(user.user_id)" class="md-primary">查看家庭成员</md-button>
                                 </md-menu-item>
+                                <md-menu-item>
+                                    <md-button ng-click="bindThisOld(user.idcard)" class="md-primary">绑定老人机</md-button>
+                                </md-menu-item>
+                                <md-menu-item>
+                                    <md-button ng-click="bindThisOld(user.idcard)" class="md-primary">修改老人机</md-button>
+                                </md-menu-item>
+                                <md-menu-item>
+                                    <md-button ng-click="unbindThisOld(user.device_id,user.idcard)" class="md-primary">解绑老人机</md-button>
+                                </md-menu-item>
                                 <md-menu-divider></md-menu-divider>
                                 <md-menu-item>
                                     <md-button ng-click="viewThis(user.user_id)" class="md-primary">详情</md-button>
@@ -215,6 +224,74 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <!-- Modal -->
+    <div class="modal fade" id="bind-old-to-device" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">绑定设备到老人</h4>
+          </div>
+          <div class="modal-body" style="font-size: 1.3em;">
+            <md-data-table-toolbar ng-show="vm.filter.show && !vm.selected.length  || 1" class="md-data-table-toolbar">
+                <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
+                <form flex="" name="vm.filter.form">
+                    <input type="text" ng-model="query.keywords" id="device-search-input" ng-change="getAllDevice()" ng-keyup="startSearchDevice($event)" placeholder="搜索">
+                </form>
+                <md-button class="md-icon-button md-raised" ng-click="triggerDeviceSeaech()">
+                    <!-- <md-icon md-font-icon="zmdi zmdi-close"></md-icon> -->
+                    搜索
+                </md-button>
+            </md-data-table-toolbar>
+
+            <md-data-table-toolbar class="alternate" ng-show="vm.selected.length" layout-align="space-between">
+              <div>选择了 {{vm.selected.length}} 个用户</div>
+            </md-data-table-toolbar>
+
+            <md-data-table-container>
+                <table md-data-table class="md-primary md-data-table">
+                    <thead md-order="vm.query.order" md-trigger="vm.getUsers">
+                        <tr>
+                            <th name="编号"></th>
+                            <th name="注册码"></th>
+                            <th name="IMEI"></th>
+                            <th name="添加时间"></th>
+                            <th name="操作"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr md-auto-select ng-repeat="device in devices_old">
+                            <td>{{::device.device_id | nullToVisual}}</td>
+                            <td>{{::device.device_sn | nullToVisual}}</td>
+                            <td>{{::device.device_imei | nullToVisual}}</td>
+                            <td>{{::device.create_time*1000 | date:'yyyy-MM-dd'}}</td>
+                            <td>
+                                <md-button ng-click="confirmToBindThisDevice(device.device_id)" class="md-warn">确认选择</md-button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </md-data-table-container>
+
+            <div layout layout-sm="column" style="padding-left:70%" flex>
+                <md-input-container flex>
+                    <label>总条数: {{deviceInfoCount_old}}</label>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>选择页数</label>
+                    <md-select class="md-select-form" ng-change="loadNextDevicePage(device_currentPage_old)" ng-model="device_currentPage_old" placeholder="选择页数" required>
+                        <md-option ng-value="pageB" ng-repeat="pageB in device_total_pages_old track by $index">{{pageB}}</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+
+          </div>
+          <div class="modal-footer">
           </div>
         </div>
       </div>

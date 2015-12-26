@@ -498,14 +498,28 @@
             }else{
                 $scope.orgCateList = realData.properties;
             }
-        });
+        },function(error) {
+                    var alert = $mdDialog.alert({
+                        title: '出错了,请联系管理员,错误代码:' + error.status,
+                        content: error.statusText,
+                        ok: '确定'
+                    });
+                    $mdDialog.show(alert);
+                });
 
         $scope.getAllOrgInfo = function() {
             OrgService.index(jsonCode).then(function(data) {
                 console.log(data);
                 var realData = data.Schema;
                 $scope.orgList = realData.properties;
-            });
+            },function(error) {
+                    var alert = $mdDialog.alert({
+                        title: '出错了,请联系管理员,错误代码:' + error.status,
+                        content: error.statusText,
+                        ok: '确定'
+                    });
+                    $mdDialog.show(alert);
+                });
         }
 
         $scope.getAllOrgInfo();
@@ -579,6 +593,13 @@
                         $('#new-org').modal('hide');
                     }
                     $mdDialog.show(alert);
+                },function(error) {
+                    var alert = $mdDialog.alert({
+                        title: '出错了,请联系管理员,错误代码:' + error.status,
+                        content: error.statusText,
+                        ok: '确定'
+                    });
+                    $mdDialog.show(alert);
                 });
             }else{
                 //新增组织信息
@@ -639,7 +660,14 @@
                             $scope.getAllOrgInfo();
                         }
                         $mdDialog.show(alert);
-                    });
+                    },function(error) {
+                          var alert = $mdDialog.alert({
+                              title: '出错了,请联系管理员,错误代码:' + error.status,
+                              content: error.statusText,
+                              ok: '确定'
+                          });
+                          $mdDialog.show(alert);
+                      });
                 }
             });
         };
@@ -689,7 +717,14 @@
                     // };
                 }
 
-            });
+            },function(error) {
+                    var alert = $mdDialog.alert({
+                        title: '出错了,请联系管理员,错误代码:' + error.status,
+                        content: error.statusText,
+                        ok: '确定'
+                    });
+                    $mdDialog.show(alert);
+                });
         }
 
         $scope.gerAllCommunityList = function() {

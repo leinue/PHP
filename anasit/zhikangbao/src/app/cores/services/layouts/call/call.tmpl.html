@@ -41,6 +41,8 @@
                 <tr>
                     <th name="老人姓名"></th>
                     <th name="求救标题"></th>
+                    <th name="设备名称"></th>
+                    <th name="设备IMEI"></th>
                     <th name="求救号码"></th>
                     <th name="求救地址"></th>
                     <th name="求救时间"></th>
@@ -49,14 +51,27 @@
             </thead>
             <tbody>
                 <tr md-auto-select ng-repeat="user in helpList">
-                    <td>{{user.sos_name}}</td>
-                    <td>{{user.sos_title}}</td>
-                    <td>{{user.sos_mobile}}</td>
-                    <td>{{user.sos_address}}</td>
-                    <td>{{user.sos_time*1000 | date:'yyyy-MM-dd'}}</td>
+                    <td>{{user.sos_name | nullToVisual}}</td>
+                    <td>{{user.sos_title | nullToVisual}}</td>
+                    <td>{{user.sos_device_name | nullToVisual}}</td>
+                    <td>{{user.sos_device_imei | nullToVisual}}</td>
+                    <td>{{user.sos_mobile | nullToVisual}}</td>
+                    <td>{{user.sos_address | nullToVisual}}</td>
+                    <td>{{user.sos_time | nullToVisual}}</td>
                     <td>
-                        <md-button ng-click="viewThisYulp(user.sos_id)" class="md-warn">详细</md-button>
-                    <md-button ng-click="viewThisFamily(user.sos_id)" class="md-warn">亲人信息</md-button>
+                        <md-menu>
+                            <md-button class="md-icon-button" aria-label="open menu" ng-click="$mdOpenMenu()">
+                                <md-icon md-font-icon="zmdi zmdi-more-vert"></md-icon>
+                            </md-button>
+                            <md-menu-content width="3">
+                                <md-menu-item>
+                                    <md-button ng-click="viewThisYulp(user.sos_id)" class="md-warn">详细</md-button>
+                                </md-menu-item>
+                                <md-menu-item>
+                                    <md-button ng-click="viewThisFamily(user.sos_id)" class="md-warn">亲人信息</md-button>
+                                </md-menu-item>
+                            </md-menu-content>
+                        </md-menu>                        
                     </td>
                 </tr>
             </tbody>

@@ -27,7 +27,7 @@
                                	 	<div layout layout-sm="column" flex>
 	                                    <md-input-container flex>
 	                                        <label translate>老人姓名(最好是全名)</label>
-	                                        <input ng-model="inserOldInfo.realname" type="text" required>
+	                                        <input name="username" ng-model="inserOldInfo.realname" type="text" required>
 	                                        <div ng-messages="accountForm.username.$error">
 	                                            <div ng-message when="required">
 	                                                <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
@@ -36,8 +36,8 @@
 	                                    </md-input-container>
 	                                    <md-input-container flex>
 	                                        <label translate>血型</label>
-	                                        <input ng-model="inserOldInfo.blood_type" type="text">
-	                                        <div ng-messages="accountForm.username.$error">
+	                                        <input name="bloodtype" ng-model="inserOldInfo.blood_type" type="text">
+	                                        <div ng-messages="accountForm.bloodtype.$error">
 	                                            <div ng-message when="required">
 	                                                <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
 	                                            </div>
@@ -45,8 +45,8 @@
 	                                    </md-input-container>
 	                                    <md-input-container flex>
 	                                        <label translate>民族</label>
-	                                        <input ng-model="inserOldInfo.nation" type="text" required>
-	                                        <div ng-messages="accountForm.username.$error">
+	                                        <input name="region" ng-model="inserOldInfo.nation" type="text" required>
+	                                        <div ng-messages="accountForm.region.$error">
 	                                            <div ng-message when="required">
 	                                                <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
 	                                            </div>
@@ -56,45 +56,58 @@
                                     <div layout layout-sm="column" flex>
 	                                    <md-input-container flex>
 	                                        <label>年龄</label>
-	                                        <input ng-model="inserOldInfo.age" type="tel">
-	                                        <div ng-messages="accountForm.email.$error">
+	                                        <input name="age" ng-model="inserOldInfo.age" type="number">
+	                                        <div ng-messages="accountForm.age.$error">
 	                                            <div ng-message when="required">
-	                                                <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
+	                                                <span translate>该项必填</span>
 	                                            </div>
-	                                            <div ng-message when="email">
-	                                                <span translate>FORMS.WIZARD.PLEASE-VALID</span>
+	                                            <div ng-message when="number">
+	                                                <span translate>请填写数字</span>
 	                                            </div>
 	                                        </div>
 	                                    </md-input-container>
 	                                    <md-input-container flex>
 											<label>性别</label>
-								            <md-select class="md-select-form" ng-model="inserOldInfo.sex" placeholder="性别" required>
+								            <md-select name="sex" class="md-select-form" ng-model="inserOldInfo.sex" placeholder="性别" required>
 								                <md-option ng-value="sex" ng-repeat="sex in ['男', '女']">{{sex}}</md-option>
 								            </md-select>
+                                            <div ng-messages="accountForm.sex.$error">
+                                                <div ng-message when="required">
+                                                    <span translate>该项必填</span>
+                                                </div>
+                                            </div>
 								        </md-input-container>
 								        <md-input-container flex>
 											<label>机构</label>
-								            <md-select class="md-select-form" ng-model="inserOldInfo.org_id" placeholder="机构" required>
+								            <md-select name="org" class="md-select-form" ng-model="inserOldInfo.org_id" placeholder="机构" required>
 								                <md-option ng-show="department.code == 1" ng-value="department.id" ng-repeat="department in ordList">{{department.full_name}}</md-option>
 								            </md-select>
+                                            <div ng-messages="accountForm.orgs.$error">
+                                                <div ng-message when="required">
+                                                    <span translate>该项必填</span>
+                                                </div>
+                                            </div>
 								        </md-input-container>
                                     </div>
                                     <div layout layout-sm="column" flex>
                                         <md-input-container flex>
                                             <label translate>身份证号</label>
-                                            <input ng-model="inserOldInfo.idcard" type="tel" required>
-                                            <div ng-messages="accountForm.password.$error">
-                                                <div ng-message when="required">
-                                                    <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
+                                            <input name="idcard" ng-model="inserOldInfo.idcard" type="tel" required ng-pattern="/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/">
+                                            <div ng-messages="accountForm.idcard.$error">
+                                                <div ng-message when="pattern">
+                                                    <span translate>请输入合法身份证号</span>
                                                 </div>
                                             </div>
                                         </md-input-container>
                                         <md-input-container flex>
                                             <label translate>联系电话</label>
-                                            <input type="tel" ng-model="inserOldInfo.mobile">
-                                            <div ng-messages="accountForm.passwordConfirm.$error">
+                                            <input name="tel_l" type="number" ng-model="inserOldInfo.mobile">
+                                            <div ng-messages="accountForm.tel_l.$error">
                                                 <div ng-message when="required">
                                                     <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
+                                                </div>
+                                                <div ng-message when="number">
+                                                    <span translate>请输入合法联系电话</span>
                                                 </div>
                                             </div>
                                         </md-input-container>
@@ -102,8 +115,8 @@
                                     <div layout layout-sm="column" flex>
 	                                    <md-input-container flex>
 	                                        <label translate>家庭住址(请填写详细住址)</label>
-	                                        <input ng-model="inserOldInfo.address" type="text" required>
-	                                        <div ng-messages="accountForm.username.$error">
+	                                        <input name="address" ng-model="inserOldInfo.address" type="text" required>
+	                                        <div ng-messages="accountForm.address.$error">
 	                                            <div ng-message when="required">
 	                                                <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
 	                                            </div>
@@ -111,8 +124,8 @@
 	                                    </md-input-container>
 	                                    <md-input-container flex>
 	                                        <label translate>经济来源</label>
-	                                        <input ng-model="inserOldInfo.finance" type="text">
-	                                        <div ng-messages="accountForm.username.$error">
+	                                        <input name="address" ng-model="inserOldInfo.finance" type="text">
+	                                        <div ng-messages="accountForm.address.$error">
 	                                            <div ng-message when="required">
 	                                                <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
 	                                            </div>
@@ -134,8 +147,8 @@
                                         </md-input-container>
                                         <md-input-container flex>
                                             <label translate>身份特征</label>
-                                            <input ng-model="inserOldInfo.feature" type="text">
-                                            <div ng-messages="accountForm.username.$error">
+                                            <input name="feature" ng-model="inserOldInfo.feature" type="text">
+                                            <div ng-messages="accountForm.feature.$error">
                                                 <div ng-message when="required">
                                                     <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
                                                 </div>
@@ -159,8 +172,8 @@
                                     <div layout layout-sm="column" flex>
                                         <md-input-container flex>
                                             <label translate>亲属姓名</label>
-                                            <input ng-model="inserOldInfo.relation_realname" required>
-                                            <div ng-messages="addressForm.firstName.$error">
+                                            <input name="relation_name" ng-model="inserOldInfo.relation_realname">
+                                            <div ng-messages="addressForm.relation_name.$error">
                                                 <div ng-message when="required">
                                                     <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
                                                 </div>
@@ -168,8 +181,8 @@
                                         </md-input-container>
                                         <md-input-container flex>
                                             <label translate>家庭关系</label>
-                                            <input ng-model="inserOldInfo.relation" required>
-                                            <div ng-messages="addressForm.lastName.$error">
+                                            <input name="relation" ng-model="inserOldInfo.relation">
+                                            <div ng-messages="addressForm.relation.$error">
                                                 <div ng-message when="required">
                                                     <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
                                                 </div>
@@ -179,8 +192,8 @@
                                     <div layout layout-sm="column" flex>
                                         <md-input-container flex>
                                             <label translate>家属联系电话</label>
-                                            <input ng-model="inserOldInfo.relation_mobile" name="address1" required>
-                                            <div ng-messages="addressForm.address1.$error">
+                                            <input name="relation_phone" ng-model="inserOldInfo.relation_mobile">
+                                            <div ng-messages="addressForm.relation_phone.$error">
                                                 <div ng-message when="required">
                                                     <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
                                                 </div>
@@ -188,10 +201,12 @@
                                         </md-input-container>
                                         <md-input-container flex>
                                             <label translate>家属身份证号</label>
-                                            <input ng-model="inserOldInfo.relation_idcard" name="address1" required>
-                                            <div ng-messages="addressForm.address1.$error">
-                                                <div ng-message when="required">
-                                                    <span translate>FORMS.WIZARD.PLEASE-ENTER</span>
+                                            <input ng-model="inserOldInfo.relation_idcard" name="relation_idcard" ng-pattern="/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/">
+                                            <div ng-messages="addressForm.relation_idcard.$error">
+                                                <div ng-message>
+                                                    <div ng-message when="pattern">
+                                                        <span translate>请输入合法身份证号</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </md-input-container>

@@ -6,7 +6,7 @@
         .directive('chartjsPieWidget', chartjsPieWidget);
 
     /* @ngInject */
-    function chartjsPieWidget($timeout) {
+    function chartjsPieWidget($timeout, $state) {
         // Usage:
         //
         // Creates:
@@ -37,11 +37,8 @@
                         }, 1500);
                     }
                 },{
-                    icon: 'zmdi zmdi-share',
-                    title: 'DASHBOARDS.WIDGETS.MENU.SHARE'
-                },{
                     icon: 'zmdi zmdi-print',
-                    title: 'DASHBOARDS.WIDGETS.MENU.PRINT'
+                    title: '打印'
                 }]
             });
 

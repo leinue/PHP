@@ -131,7 +131,7 @@
             <tbody>
                 <tr md-auto-select ng-repeat="user in healthInfoList">
                     <td>{{user.id | nullToVisual}}</td>
-                    <td>{{user.last_time*1000 | date:'yyyy-MM-dd'}}</td>
+                    <td>{{user.last_time | date:'yyyy-MM-dd'}}</td>
                     <td>{{user.nickname | nullToVisual}}</td>
                     <td>{{user.blood_pressure | nullToVisual}}</td>
                     <td>{{user.blood_sugar | nullToVisual}}</td>
@@ -155,7 +155,7 @@
         </md-input-container>
         <md-input-container flex>
             <label>选择页数</label>
-            <md-select class="md-select-form" ng-change="loadNextPageArchive(currentPage)" ng-model="currentPage" placeholder="选择页数" required>
+            <md-select class="md-select-form" ng-change="loadNextPageArchive(currentPage)" ng-model="currentPage" placeholder="选择页数" requiredd>
                 <md-option ng-value="pageA" ng-repeat="pageA in total_pages">{{pageA}}</md-option>
             </md-select>
         </md-input-container>
@@ -168,7 +168,7 @@
 </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="new-health-archive" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="new-health-archive" data-backdrop="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -176,130 +176,203 @@
             <h4 class="modal-title" id="myModalLabel">{{healthArichiveTitle}}</h4>
           </div>
           <div class="modal-body" style="font-size: 1.3em;">
-            <div class="row">
-                <div class="col-md-3">
-                    <md-input-container>
-                        <label translate style="margin-top: -60px;">测量时间</label>
-                        <!-- <input ng-model="insertHealthArchiveInfo.last_time" type="text"> -->
-                        <div class="dropdown" style="margin-top: 31px;">
-                            <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="">    
-                                  <input type="text" ng-change="writeBackDate()" data-ng-model="insertHealthArchiveInfo.last_time">
-                            </a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                <datetimepicker data-ng-model="insertHealthArchiveInfo.last_time"
-                                                data-datetimepicker-config="{ dropdownSelector: '#dropdown2' ,minView: 'day'}">
-                                </datetimepicker>
-                            </ul>
-                        </div>
-                    </md-input-container>
+            <form name="newArchiveForm" tri-wizard-form>
+                <div class="row">
+                    <div class="col-md-3">
+                        <md-input-container>
+                            <label translate style="margin-top: -60px;">测量时间</label>
+                            <!-- <input ng-model="insertHealthArchiveInfo.last_time" type="text"> -->
+                            <div class="dropdown" style="margin-top: 31px;">
+                                <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="">    
+                                      <input name="last_time" type="text" ng-change="writeBackDate()" data-ng-model="insertHealthArchiveInfo.last_time" requiredd>
+                                </a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                    <datetimepicker data-ng-model="insertHealthArchiveInfo.last_time"
+                                                    data-datetimepicker-config="{ dropdownSelector: '#dropdown2' ,minView: 'day'}">
+                                    </datetimepicker>
+                                </ul>
+                            </div>
+                            <div ng-messages="newArchiveForm.last_time.$error">
+                                <div ng-message when="requiredd">
+                                    <span translate>此项为必填</span>
+                                </div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div class="col-md-3">
+                        <md-input-container flex>
+                            <label translate>血压</label>
+                            <input name="pressure" ng-model="insertHealthArchiveInfo.blood_pressure" type="text" requiredd>
+                            <div ng-messages="newArchiveForm.pressure.$error">
+                                <div ng-message when="requiredd">
+                                    <span translate>此项为必填</span>
+                                </div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div class="col-md-3">
+                        <md-input-container>
+                            <label translate>血糖</label>
+                            <input name="blood_sugar" ng-model="insertHealthArchiveInfo.blood_sugar" type="text" requiredd>
+                            <div ng-messages="newArchiveForm.blood_sugar.$error">
+                                <div ng-message when="requiredd">
+                                    <span translate>此项为必填</span>
+                                </div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div class="col-md-3">
+                        <md-input-container>
+                            <label translate>脉率</label>
+                            <input name="pulse_rate" ng-model="insertHealthArchiveInfo.pulse_rate" type="text" requiredd>
+                            <div ng-messages="newArchiveForm.pulse_rate.$error">
+                                <div ng-message when="requiredd">
+                                    <span translate>此项为必填</span>
+                                </div>
+                            </div>
+                        </md-input-container>
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <md-input-container flex>
-                        <label translate>血压</label>
-                        <input ng-model="insertHealthArchiveInfo.blood_pressure" type="text" required>
-                    </md-input-container>
+                <div class="row">
+                    <div class="col-md-3">
+                        <md-input-container>
+                            <label translate>血红蛋白</label>
+                            <input name="blood_hb" ng-model="insertHealthArchiveInfo.blood_hb" type="text" requiredd>
+                            <div ng-messages="newArchiveForm.blood_hb.$error">
+                                <div ng-message when="requiredd">
+                                    <span translate>此项为必填</span>
+                                </div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div class="col-md-3">
+                        <md-input-container>
+                            <label translate>体温</label>
+                            <input name="temper" ng-model="insertHealthArchiveInfo.temper" type="text" requiredd>
+                            <div ng-messages="newArchiveForm.temper.$error">
+                                <div ng-message when="requiredd">
+                                    <span translate>此项为必填</span>
+                                </div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div class="col-md-3">
+                        <md-input-container>
+                            <label translate>血氧饱和度</label>
+                            <input name="blood_spo" ng-model="insertHealthArchiveInfo.blood_spo" type="text" requiredd>
+                            <div ng-messages="newArchiveForm.blood_spo.$error">
+                                <div ng-message when="requiredd">
+                                    <span translate>此项为必填</span>
+                                </div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div class="col-md-3">
+                        <md-input-container>
+                            <label translate>其它描述</label>
+                            <textarea name="description" ng-model="insertHealthArchiveInfo.description" requiredd></textarea>
+                            <div ng-messages="newArchiveForm.description.$error">
+                                <div ng-message when="requiredd">
+                                    <span translate>此项为必填</span>
+                                </div>
+                            </div>
+                        </md-input-container>
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <md-input-container>
-                        <label translate>血糖</label>
-                        <input ng-model="insertHealthArchiveInfo.blood_sugar" type="text">
-                    </md-input-container>
+                <div class="row">
+                    <div class="col-md-4">
+                        <md-input-container>
+                            <label translate style="margin-top: -60px;">入院时间</label>
+                            <div class="dropdown" style="margin-top: 31px;">
+                                <a class="dropdown-toggle" id="dropdown3" role="button" data-toggle="dropdown" data-target="#" href="">    
+                                      <input type="text" name="enter_time" ng-change="writeBackEnterTime()" data-ng-model="insertHealthArchiveInfo.enter_time" requiredd>
+                                </a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                    <datetimepicker data-ng-model="insertHealthArchiveInfo.enter_time"
+                                                    data-datetimepicker-config="{ dropdownSelector: '#dropdown3' ,minView: 'day'}">
+                                    </datetimepicker>
+                                </ul>
+                            </div>
+                            <div ng-messages="newArchiveForm.enter_time.$error">
+                                <div ng-message when="requiredd">
+                                    <span translate>此项为必填</span>
+                                </div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div class="col-md-4">
+                        <md-input-container>
+                            <label translate>住院时间(多少天)</label>
+                            <textarea name="live_time" ng-model="insertHealthArchiveInfo.live_time" requiredd></textarea>
+                            <div ng-messages="newArchiveForm.live_time.$error">
+                                <div ng-message when="requiredd">
+                                    <span translate>此项为必填</span>
+                                </div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div class="col-md-4">
+                        <md-input-container>
+                            <label translate>医院名称</label>
+                            <textarea name="hospital_name" ng-model="insertHealthArchiveInfo.hospital_name" requiredd></textarea>
+                            <div ng-messages="newArchiveForm.hospital_name.$error">
+                                <div ng-message when="requiredd">
+                                    <span translate>此项为必填</span>
+                                </div>
+                            </div>
+                        </md-input-container>
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <md-input-container>
-                        <label translate>脉率</label>
-                        <input ng-model="insertHealthArchiveInfo.pulse_rate" type="text">
-                    </md-input-container>
+                <div class="row">
+                    <div class="col-md-4">
+                        <md-input-container>
+                            <label translate>健康状态</label>
+                            <textarea name="conditions" ng-model="insertHealthArchiveInfo.conditions" requiredd></textarea>
+                            <div ng-messages="newArchiveForm.conditions.$error">
+                                <div ng-message when="requiredd">
+                                    <span translate>此项为必填</span>
+                                </div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div class="col-md-4">
+                        <md-input-container>
+                            <label translate>疾病类型</label>
+                            <textarea name="type" ng-model="insertHealthArchiveInfo.type" requiredd></textarea>
+                            <div ng-messages="newArchiveForm.type.$error">
+                                <div ng-message when="requiredd">
+                                    <span translate>此项为必填</span>
+                                </div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div class="col-md-4">
+                        <md-input-container>
+                            <label translate style="margin-top: -60px;">病发时间</label>
+                            <div class="dropdown" style="margin-top: 31px;">
+                                <a class="dropdown-toggle" id="dropdown4" role="button" data-toggle="dropdown" data-target="#" href="">    
+                                      <input type="text" name="sick_time" ng-change="writeBackSickTime()" data-ng-model="insertHealthArchiveInfo.sick_time" requiredd>
+                                </a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                    <datetimepicker data-ng-model="insertHealthArchiveInfo.sick_time"
+                                                    data-datetimepicker-config="{ dropdownSelector: '#dropdown4' ,minView: 'day'}">
+                                    </datetimepicker>
+                                </ul>
+                            </div>
+                            <div ng-messages="newArchiveForm.sick_time.$error">
+                                <div ng-message when="requiredd">
+                                    <span translate>此项为必填</span>
+                                </div>
+                            </div>
+                        </md-input-container>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <md-input-container>
-                        <label translate>血红蛋白</label>
-                        <input ng-model="insertHealthArchiveInfo.blood_hb" type="text">
-                    </md-input-container>
-                </div>
-                <div class="col-md-3">
-                    <md-input-container>
-                        <label translate>体温</label>
-                        <input ng-model="insertHealthArchiveInfo.temper" type="text">
-                    </md-input-container>
-                </div>
-                <div class="col-md-3">
-                    <md-input-container>
-                        <label translate>血氧饱和度</label>
-                        <input ng-model="insertHealthArchiveInfo.blood_spo" type="text">
-                    </md-input-container>
-                </div>
-                <div class="col-md-3">
-                    <md-input-container>
-                        <label translate>其它描述</label>
-                        <textarea ng-model="insertHealthArchiveInfo.description"></textarea>
-                    </md-input-container>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <md-input-container>
-                        <label translate style="margin-top: -60px;">入院时间</label>
-                        <div class="dropdown" style="margin-top: 31px;">
-                            <a class="dropdown-toggle" id="dropdown3" role="button" data-toggle="dropdown" data-target="#" href="">    
-                                  <input type="text" ng-change="writeBackEnterTime()" data-ng-model="insertHealthArchiveInfo.enter_time">
-                            </a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                <datetimepicker data-ng-model="insertHealthArchiveInfo.enter_time"
-                                                data-datetimepicker-config="{ dropdownSelector: '#dropdown3' ,minView: 'day'}">
-                                </datetimepicker>
-                            </ul>
-                        </div>
-                    </md-input-container>
-                </div>
-                <div class="col-md-4">
-                    <md-input-container>
-                        <label translate>住院时间(多少天)</label>
-                        <textarea ng-model="insertHealthArchiveInfo.live_time"></textarea>
-                    </md-input-container>
-                </div>
-                <div class="col-md-4">
-                    <md-input-container>
-                        <label translate>医院名称</label>
-                        <textarea ng-model="insertHealthArchiveInfo.hospital_name"></textarea>
-                    </md-input-container>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <md-input-container>
-                        <label translate>健康状态</label>
-                        <textarea ng-model="insertHealthArchiveInfo.conditions"></textarea>
-                    </md-input-container>
-                </div>
-                <div class="col-md-4">
-                    <md-input-container>
-                        <label translate>疾病类型</label>
-                        <textarea ng-model="insertHealthArchiveInfo.type"></textarea>
-                    </md-input-container>
-                </div>
-                <div class="col-md-4">
-                    <md-input-container>
-                        <label translate style="margin-top: -60px;">病发时间</label>
-                        <div class="dropdown" style="margin-top: 31px;">
-                            <a class="dropdown-toggle" id="dropdown4" role="button" data-toggle="dropdown" data-target="#" href="">    
-                                  <input type="text" ng-change="writeBackSickTime()" data-ng-model="insertHealthArchiveInfo.sick_time">
-                            </a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                <datetimepicker data-ng-model="insertHealthArchiveInfo.sick_time"
-                                                data-datetimepicker-config="{ dropdownSelector: '#dropdown4' ,minView: 'day'}">
-                                </datetimepicker>
-                            </ul>
-                        </div>
-                    </md-input-container>
-                </div>
-            </div>
+            </form>
+            <!-- <button type="button" class="btn btn-default" ng-show="newArchiveForm.$valid" ng-click="saveNewHealthArchive()">保存</button> -->
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-            <button type="button" class="btn btn-default" ng-click="saveNewHealthArchive()" data-dismiss="modal">保存</button>
+            <input type="checkbox" id="isSaveAfterDismissed" checked> 关闭后保存            
           </div>
         </div>
       </div>

@@ -6,7 +6,7 @@
         .controller('BasicVideoController', BasicVideoController);
 
     /* @ngInject */
-    function BasicVideoController($scope, OrgService, OrgInfoService, $mdDialog, MonitorService) {
+    function BasicVideoController($scope, OrgService, OrgInfoService, $mdDialog, MonitorService, HkVisionService) {
         var vm = this;
         vm.testData = ['triangular', 'is', 'great'];
 
@@ -21,7 +21,7 @@
         $scope.currentCodec = 'h264';
         $scope.currentSubtype = 'sub';
 
-        $scope.videoValue = 'rtsp://admin:zkmoni777@192.168.1.55:1554/h264/ch1/main/av_stream';
+        $scope.videoValue = undefined;
 
         // OrgService.index().then(function(data) {
         // 	var status = data.status;
@@ -115,29 +115,31 @@
         	if(port == '') {
         		port = '1554';
         	}
-        	$scope.videoValue = 'rtsp://'+name+':'+pw+'@'+ip+':'+port+'/'+$scope.currentCodec+'/ch1/'+$scope.currentSubtype+'/av_stream';
+        	// $scope.videoValue = 'rtsp://'+name+':'+pw+'@'+ip+':'+port+'/'+$scope.currentCodec+'/ch1/'+$scope.currentSubtype+'/av_stream';
+            $scope.videoValue = ip;
         	console.log($scope.videoValue);
-        	var videoHTML = "<!--[if IE]>"+
-"   <object type=\'application/x-vlc-plugin\' id=\'basicVideo\' events=\'True\'"+
-"       classid=\'clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921\' codebase=\"http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab\" width=\"100%\" height=\"410\">"+
-"          <param name=\'mrl\' value=\""+$scope.videoValue+"\" />"+
-"          <param name=\'volume\' value=\'50\' />"+
-"          <param name=\'autoplay\' value=\'true\' />"+
-"          <param name=\'loop\' value=\'false\' />"+
-"          <param name=\'fullscreen\' value=\'false\' />"+
-"          <param name=\'controls\' value=\'false\' />"+
-"    </object>"+
-"<![endif]-->"+
-"<!--[if !IE]><!-->"+
-"    <object type=\'application/x-vlc-plugin\' id=\'basicVideo\' events=\'True\' width=\"100%\" height=\"410\" pluginspage=\"http://www.videolan.org\" codebase=\"http://downloads.videolan.org/pub/videolan/vlc-webplugins/2.0.6/npapi-vlc-2.0.6.tar.xz\">"+
-"        <param name=\'mrl\' value=\""+$scope.videoValue+"\" />"+
-"        <param name=\'volume\' value=\'50\' />"+
-"        <param name=\'autoplay\' value=\'true\' />"+
-"        <param name=\'loop\' value=\'false\' />"+
-"        <param name=\'fullscreen\' value=\'false\' />"+
-"        <param name=\'controls\' value=\'false\' />"+
-"    </object>"+
-"<!--<![endif]-->";
+            var videoHTML = "<iframe id='basicVideo' seamless height='820' width='100%' src='http://api.zkkj168.com/video/index.php?url=" + $scope.videoValue + "'></iframe>";
+//         	var videoHTML = "<!--[if IE]>"+
+// "   <object type=\'application/x-vlc-plugin\' id=\'basicVideo\' events=\'True\'"+
+// "       classid=\'clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921\' codebase=\"http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab\" width=\"100%\" height=\"410\">"+
+// "          <param name=\'mrl\' value=\""+$scope.videoValue+"\" />"+
+// "          <param name=\'volume\' value=\'50\' />"+
+// "          <param name=\'autoplay\' value=\'true\' />"+
+// "          <param name=\'loop\' value=\'false\' />"+
+// "          <param name=\'fullscreen\' value=\'false\' />"+
+// "          <param name=\'controls\' value=\'false\' />"+
+// "    </object>"+
+// "<![endif]-->"+
+// "<!--[if !IE]><!-->"+
+// "    <object type=\'application/x-vlc-plugin\' id=\'basicVideo\' events=\'True\' width=\"100%\" height=\"410\" pluginspage=\"http://www.videolan.org\" codebase=\"http://downloads.videolan.org/pub/videolan/vlc-webplugins/2.0.6/npapi-vlc-2.0.6.tar.xz\">"+
+// "        <param name=\'mrl\' value=\""+$scope.videoValue+"\" />"+
+// "        <param name=\'volume\' value=\'50\' />"+
+// "        <param name=\'autoplay\' value=\'true\' />"+
+// "        <param name=\'loop\' value=\'false\' />"+
+// "        <param name=\'fullscreen\' value=\'false\' />"+
+// "        <param name=\'controls\' value=\'false\' />"+
+// "    </object>"+
+// "<!--<![endif]-->";
 
 /*
 
@@ -165,9 +167,7 @@
 
     
 */
-
-	
-	$('#monitor-area').html(videoHTML);
+	        $('#monitor-area').html(videoHTML);
             $scope.selectVideoArea();
         };
 
@@ -185,6 +185,112 @@
                 $scope.selectTitle = '完成选择';
             }
 
+        };
+
+        $scope.YS7List = {};
+
+        $scope.getYS7List = function() {
+            MonitorService.getYS7List().then(function(data) {
+                $scope.YS7List = data.result.data;
+            });
+        };
+
+        $scope.getYS7List();
+
+        $scope.refreshYS7List = function() {
+            $scope.getYS7List();
+            $scope.currentYS7 = '';
+        };
+
+        $scope.currentYS7 = '';
+        $scope.getYS7Video = function() {
+            console.log($scope.currentYS7);
+            if($scope.currentYS7 != '') {
+                var videoHTML = "<iframe id='basicVideo' seamless height='820' width='100%' src='http://api.zkkj168.com/video/index.php?url=" + $scope.currentYS7 + "'></iframe>";
+                $('#monitor-area').html(videoHTML);
+            }else {
+                if($scope.YS7List.length > 0) {
+                    $scope.currentYS7 = $scope.YS7List[0].rtmpUrl;
+                    var videoHTML = "<iframe id='basicVideo' seamless height='820' width='100%' src='http://api.zkkj168.com/video/index.php?url=" + $scope.currentYS7 + "'></iframe>";
+                    $('#monitor-area').html(videoHTML);
+                }
+            }
+            
+        };
+
+        $scope.multiScreen = false;
+        $scope.multiScreenTitle = '切换到多画面模式';
+
+        $scope.toggleMultiScreen = function() {
+            if($scope.multiScreen) {
+                $scope.multiScreenTitle = '切换到多画面模式';
+                $scope.multiScreen = false;
+                $scope.exitMultiScreen();
+            }else {
+                $scope.multiScreenTitle = '切换到单画面模式';
+                $scope.multiScreen = true;
+                $scope.toMultiScreen();
+            }
+        };
+
+        $scope.toMultiScreen = function() {
+            var html = '';
+            var videoCount = $scope.YS7List.length;
+
+            var column = 2;
+            var lineCount = Math.ceil(videoCount/column);
+
+            var videoHTML = '';
+
+            for (var i = 1; i <= lineCount; i++) {
+
+                var firstIndex = 2 * i - 2;
+
+                var secondIndex = firstIndex + 1;
+
+                var first = '';
+                var second = '';
+
+                if (typeof $scope.YS7List[firstIndex] != 'undefined') {
+                    first = $scope.YS7List[firstIndex].rtmpUrl;
+                }
+
+                if (typeof $scope.YS7List[secondIndex] != 'undefined') {
+                    second = $scope.YS7List[secondIndex].rtmpUrl;
+                }
+
+                var flex = '<div ng-show="multiScreen" layout layout-sm="column" flex>';
+                var tmp = '';
+                if(first != '') {
+                    tmp = "<md-input-container flex><iframe id='basicVideo' seamless height='410' width='100%' src='http://api.zkkj168.com/video/index.php?url=" + first + "'></iframe></md-input-container>";
+                }
+                if(second != '') {
+                    tmp += "<md-input-container flex><iframe id='basicVideo' seamless height='410' width='100%' src='http://api.zkkj168.com/video/index.php?url=" + second + "'></iframe></md-input-container>";  
+                }
+                tmp = flex + tmp + '';
+                videoHTML += tmp;
+            };
+            html = html + videoHTML + '</div>';
+            console.log(html);
+            $('#monitor-area').html(html);
+        };
+
+        $scope.exitMultiScreen = function() {
+            $scope.getYS7Video();
+        };
+
+        $scope.openThisVideoInNewWindow = function() {
+            if($scope.currentYS7 == '') {
+                alert('您尚未选择任何视频');
+            }else {
+                window.open('http://api.zkkj168.com/video/index.php?url=' + $scope.currentYS7,'_blank','height=500px,width=900px,menubar=no,titlebar=no,scrollbar=no,toolbar=no,status=no,location=no,resizable=no');                
+            }
+        };
+
+        $scope.ocx = function() {
+            var ocx = $(window.frames['ocx-video'].document);
+            console.log('sdfghj');
+            console.log(ocx.find('name'));
         };
 
     }

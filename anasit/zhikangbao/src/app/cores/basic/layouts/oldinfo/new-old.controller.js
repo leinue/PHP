@@ -26,6 +26,13 @@
                 var realData = data.Schema;
                 var pro = realData.properties;
                 $scope.inserOldInfo = pro;
+            },function(error) {
+                var alert = $mdDialog.alert({
+                    title: '出错了,请联系管理员,错误代码:' + error.status,
+                    content: error.statusText,
+                    ok: '确定'
+                });
+                $mdDialog.show(alert);
             });
         }
 
@@ -35,6 +42,13 @@
             var status = data.status;
             var realData = data.Schema.properties;
             $scope.ordList = realData;
+        },function(error) {
+            var alert = $mdDialog.alert({
+                title: '出错了,请联系管理员,错误代码:' + error.status,
+                content: error.statusText,
+                ok: '确定'
+            });
+            $mdDialog.show(alert);
         });
 
         $scope.returnToOldmanList = function() {
@@ -51,6 +65,7 @@
         };
 
         $scope.submitInfo = function() {
+            var isError = false;
             if(!$scope.edit){
                 OldInfoService.insert($scope.inserOldInfo).then(function(data) {
                     var status = data.status;
@@ -62,11 +77,21 @@
                             ok: '确定'
                         });
                     $mdDialog.show(alert);
+                },function(error) {
+                    var alert = $mdDialog.alert({
+                        title: '出错了,请联系管理员,错误代码:' + error.status,
+                        content: error.statusText,
+                        ok: '确定'
+                    });
+                    $mdDialog.show(alert);
+                    isError = true;
                 });
                 // if(status == '200' || status == '201') {
                 //     $scope.returnToOldmanList();
                 // }
-                $scope.inserOldInfo = {};
+                if(!isError) {
+                    $scope.inserOldInfo = {};                    
+                }
             }else {
                 console.log($scope.inserOldInfo);
                 OldInfoService.update($scope.inserOldInfo).then(function(data) {
@@ -82,6 +107,13 @@
                     if(status == '200' || status == '201') {
                         $scope.returnToOldmanList();
                     }
+                },function(error) {
+                    var alert = $mdDialog.alert({
+                        title: '出错了,请联系管理员,错误代码:' + error.status,
+                        content: error.statusText,
+                        ok: '确定'
+                    });
+                    $mdDialog.show(alert);
                 });
             }
             

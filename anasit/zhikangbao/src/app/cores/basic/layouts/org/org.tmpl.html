@@ -107,60 +107,107 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="myModalLabel">{{orgTitle}}</h4>
           </div>
+          <form name="newOrgForm" tri-wizard-form>
           <div class="modal-body" style="font-size: 1.3em;">
             <div layout="column" flex>
             <md-input-container flex>
                     <label>所属分类</label>
-                    <md-select class="md-select-form" ng-change="divideOrgCate()" ng-model="insertOrgList.code" placeholder="机构">
+                    <md-select name="org" class="md-select-form" ng-change="divideOrgCate()" ng-model="insertOrgList.code" placeholder="机构" required>
                         <md-option ng-value="department.id" ng-repeat="department in orgCateList">{{department.name}}</md-option>
                     </md-select>
+                    <div ng-messages="newOrgForm.org.$error">
+                        <div ng-message when="required">
+                            <span translate>此项为必填</span>
+                        </div>
+                    </div>
                 </md-input-container>
                 <md-input-container flex>
                     <label translate>全称</label>
-                    <input ng-model="insertOrgList.full_name" type="text">
+                    <input name="full_name" ng-model="insertOrgList.full_name" type="text" required>
+                    <div ng-messages="newOrgForm.full_name.$error">
+                        <div ng-message when="required">
+                            <span translate>此项为必填</span>
+                        </div>
+                    </div>
                 </md-input-container flex>
                 <md-input-container flex>
                     <label translate>简称</label>
-                    <input ng-model="insertOrgList.short_name" type="text">
+                    <input name="short_name" ng-model="insertOrgList.short_name" type="text" required>
+                    <div ng-messages="newOrgForm.short_name.$error">
+                        <div ng-message when="required">
+                            <span translate>此项为必填</span>
+                        </div>
+                    </div>
                 </md-input-container>
                 <md-input-container flex>
                     <label translate>是否开启</label>
-                    <md-select class="md-select-form" ng-model="insertOrgList.enabled" placeholder="是否开启">
+                    <md-select name="enable" class="md-select-form" ng-model="insertOrgList.enabled" placeholder="是否开启" required>
                         <md-option ng-value="enable.id" ng-repeat="enable in orgEnabled">{{enable.name}}</md-option>
                     </md-select>
+                    <div ng-messages="newOrgForm.enable.$error">
+                        <div ng-message when="required">
+                            <span translate>此项为必填</span>
+                        </div>
+                    </div>
                 </md-input-container>
             </div>
             <div layout="column" flex>
                 <md-input-container flex>
                     <label translate>营业执照</label>
-                    <input ng-model="insertOrgList.org_code" type="text" required>
+                    <input name="org_code" ng-model="insertOrgList.org_code" type="text" required>
+                    <div ng-messages="newOrgForm.org_code.$error">
+                        <div ng-message when="required">
+                            <span translate>此项为必填</span>
+                        </div>
+                    </div>
                 </md-input-container>
                 <md-input-container flex>
                     <label translate>省</label>
                     <!-- <input ng-model="insertOrgList.province" type="text"> -->
-                    <md-select class="md-select-form" ng-change="changeCity()" ng-model="insertOrgList.province" placeholder="省">
+                    <md-select name="province" class="md-select-form" ng-change="changeCity()" ng-model="insertOrgList.province" placeholder="省" required>
                         <md-option ng-value="province.name" ng-repeat="province in provinceList">{{province.name}}</md-option>
                     </md-select>
+                    <div ng-messages="newOrgForm.province.$error">
+                        <div ng-message when="required">
+                            <span translate>此项为必填</span>
+                        </div>
+                    </div>
                 </md-input-container flex>
                 <md-input-container flex>
                     <label translate>市</label>
                     <!-- <input ng-model="insertOrgList.city" type="text"> -->
-                    <md-select class="md-select-form" ng-model="insertOrgList.city" placeholder="市">
+                    <md-select name="city" class="md-select-form" ng-model="insertOrgList.city" placeholder="市" required>
                         <md-option ng-value="city.name" ng-repeat="city in cityList">{{city.name}}</md-option>
                     </md-select>
+                    <div ng-messages="newOrgForm.city.$error">
+                        <div ng-message when="required">
+                            <span translate>此项为必填</span>
+                        </div>
+                    </div>
                 </md-input-container>
                 <md-input-container flex>
                     <label translate>地址</label>
-                    <input ng-model="insertOrgList.address" type="text">
+                    <input name="address" ng-model="insertOrgList.address" type="text" required>
+                    <div ng-messages="newOrgForm.address.$error">
+                        <div ng-message when="required">
+                            <span translate>此项为必填</span>
+                        </div>
+                    </div>
                 </md-input-container>
             </div>
             <div layout="column" flex>
                 <md-input-container flex>
                     <label translate>其它介绍</label>
-                    <textarea ng-model="insertOrgList.description"></textarea>
+                    <textarea name="description" ng-model="insertOrgList.description"></textarea>
+                    <div ng-messages="newOrgForm.description.$error">
+                        <div ng-message when="required">
+                            <span translate>此项为必填</span>
+                        </div>
+                    </div>
                 </md-input-container>
             </div>
           </div>
+          </form>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
             <button type="button" class="btn btn-default" ng-click="saveNewOrg()">保存</button>

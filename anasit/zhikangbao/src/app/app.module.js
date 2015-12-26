@@ -410,6 +410,12 @@
               return Restangular.one('/profile/device/index/' + page + '/' + limit).get();
             },
 
+            indexUnbundled: function(page, limit) {
+              page = page || 1;
+              limit = limit || 10;
+              return Restangular.one('/device/unbind/' + page + '/' + limit).get();
+            },
+
             update: function(data) {
               return Restangular.all('/profile/device/update').post(data);
             },
@@ -440,6 +446,14 @@
 
             getSingleOldByKeyWords: function(key) {
               return Restangular.one('/device/search_pos/' + key).get();
+            },
+
+            bindDevice: function(did, idcard) {
+              return Restangular.one('/device/bind_old/' + did + '/' + idcard).get();
+            },
+
+            unbindDevice: function(did, idcard) {
+              return Restangular.one('/device/unbind_old/' + did + '/' + idcard).get();
             }
 
           };
@@ -462,7 +476,7 @@
             },
 
             remove: function(id) {
-              return Restangular.one('/healths/old/remove/' + id).get();
+              return Restangular.one('/healths/remove/' + id).get();
             },
 
             one: function(id) {
@@ -557,6 +571,10 @@
 
               search: function(keywords) {
                 return Restangular.one('/monitor/search/' + keywords).get();
+              },
+
+              getYS7List: function() {
+                return Restangular.one('/get_video.php').get();
               }
 
             };
@@ -1218,6 +1236,23 @@
 
           };
 
+        }])
+        .factory('HkVisionService', ['Restangular', '$http', 'API_CONFIG', function(Restangular, $http, API_CONFIG) {
+          return {
+            
+            getChild: function($cuid) {
+              return Restangular.one('/hkv/one').get();
+            },
+
+            getDevices: function($cuid) {
+              return Restangular.one('/hkv/one/device').get();
+            },
+
+            getRegion: function($cuid) {
+              return Restangular.one('/hkv/one/region').get();
+            }
+
+          };
         }])
         .factory('UserRoleService', ['Restangular', '$http', 'API_CONFIG', function(Restangular, $http, API_CONFIG) {
 

@@ -86,6 +86,9 @@
             if(triMenuItem.item.active) {
                 window.location.reload();
             }
+            if(triMenuItem.item.state == 'triangular.admin-default.basic-video-ie') {
+                window.open("http://v.zkkj168.com:81","_blank");
+            }
             var params = angular.isUndefined(triMenuItem.item.params) ? {} : triMenuItem.item.params;
             $state.go(triMenuItem.item.state, params);
             triMenuItem.item.active = true;

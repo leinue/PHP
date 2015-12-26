@@ -191,6 +191,11 @@
                     state: 'triangular.admin-default.basic-video',
                     type: 'link'
                 },{
+                    name: '监控系统(兼容IE)',
+                    state: 'triangular.admin-default.basic-video-ie',
+                    type: 'link'
+                }
+                ,{
                     name: '监控器设备管理',
                     state: 'triangular.admin-default.monitor-mgr',
                     type: 'link'

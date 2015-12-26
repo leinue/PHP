@@ -50,7 +50,14 @@
                     };
         		}
 
-        	});
+        	},function(error) {
+                var alert = $mdDialog.alert({
+                    title: '出错了,请联系管理员,错误代码:' + error.status,
+                    content: error.statusText,
+                    ok: '确定'
+                });
+                $mdDialog.show(alert);
+            });
 
         };
 
@@ -89,7 +96,14 @@
         			$('#old-info').modal('show');
         			$('.modal-backdrop').css('z-index','0');
         		}
-        	});
+        	},function(error) {
+                var alert = $mdDialog.alert({
+                    title: '出错了,请联系管理员,错误代码:' + error.status,
+                    content: error.statusText,
+                    ok: '确定'
+                });
+                $mdDialog.show(alert);
+            });
 
         }
 
@@ -129,7 +143,14 @@
         			$('.modal-backdrop').css('z-index','0');
         		}
 
-        	});
+        	},function(error) {
+                var alert = $mdDialog.alert({
+                    title: '出错了,请联系管理员,错误代码:' + error.status,
+                    content: error.statusText,
+                    ok: '确定'
+                });
+                $mdDialog.show(alert);
+            });
 
         }
 
@@ -166,6 +187,13 @@
                         $scope.yulpInfoCount = $scope.helpList.length;
                     }
                     
+                },function(error) {
+                    var alert = $mdDialog.alert({
+                        title: '出错了,请联系管理员,错误代码:' + error.status,
+                        content: error.statusText,
+                        ok: '确定'
+                    });
+                    $mdDialog.show(alert);
                 }); 
             }
         }

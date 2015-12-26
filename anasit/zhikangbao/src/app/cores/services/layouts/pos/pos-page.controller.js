@@ -135,10 +135,11 @@
 
 		        var name = currentMan.realname;
 		        var imei = currentMan.device_imei;
-		        var time = $filter('date')(currentMan.last_time*1000,'yyyy-MM-dd hh:mm:ss');
+		        // var time = $filter('date')(currentMan.last_time*1000,'yyyy-MM-dd hh:mm:ss');
+            var time = currentMan.last_time;
 		        var mobile = currentMan.mobile;
 
-		        marker.content='<strong>姓名:</strong>'+name+'<br><strong>IMEI:</strong>'+imei+'<br><strong>定位时间:</strong>'+time+'<br><a href="javascript:followUp('+i+')">实时跟踪</a>&nbsp;&nbsp;<a href="javascript:followHistory('+currentMan.user_id+')">历史记录</a>';
+		        marker.content='<strong>姓名:</strong>'+name+'<br><strong>IMEI:</strong>'+imei+'<br><strong>定位时间:</strong>' + time + '<br><strong>定位类别:</strong>' + 'GPS/LBS' + '<br><a href="javascript:followUp('+i+')">实时跟踪</a>&nbsp;&nbsp;<a href="javascript:followHistory('+currentMan.user_id+')">历史记录</a>&nbsp;&nbsp;<a href="javascript:geoFence('+currentMan.user_id+')">电子栅栏</a>';
 		        marker.on('click',markerClick);
 
 		        marker.mobile = mobile;

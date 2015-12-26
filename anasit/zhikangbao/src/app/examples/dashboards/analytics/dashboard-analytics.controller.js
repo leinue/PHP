@@ -6,7 +6,7 @@
         .controller('DashboardAnalyticsController', DashboardAnalyticsController);
 
     /* @ngInject */
-    function DashboardAnalyticsController($scope, $timeout, $mdToast, $rootScope, $state, $element, dragulaService, OldInfoService, DashboardService) {
+    function DashboardAnalyticsController($scope, $timeout, $mdToast, $rootScope, $state, $element, dragulaService, OldInfoService, DashboardService, $location) {
         // $timeout(function() {
         //     $rootScope.$broadcast('newMailNotification');
         //     $mdToast.show({
@@ -135,5 +135,45 @@
             $scope.onlinePieChart.data[1] = data.Schema.properties;
         });
 
+        $scope.toOldPage = function() {
+            $state.go('triangular.admin-default.basic-page');
+        };
+
+        $scope.toNewOldPage = function() {
+            $state.go('triangular.admin-default.new-oldman');
+        };
+
+        $scope.toNewOrgPage = function() {
+            $location.url('/org-mgr/1');
+        };
+
+        $scope.toOrgPage = function() {
+            $location.url('/org-mgr/1');
+        };
+
+        $scope.devicePieChart = {
+            labels: ['在线', '离线'],
+            data: [0, 0]
+        };
+
+        $.ajax({  
+          type: "get",
+          contentType: "application/x-www-form-urlencoded",
+          dataType: "json",
+          url: "http://d.zkkj168.com:3334/count/online",  //这里是网址
+          success:function(data){
+            $scope.devicePieChart.data[0] = data;
+            $.ajax({  
+              type: "get",
+              contentType: "application/x-www-form-urlencoded",
+              dataType: "json",
+              url: "http://d.zkkj168.com:3334/count/offline",  //这里是网址
+              success:function(data){
+                $scope.devicePieChart.data[1] = data;         
+              }
+            });
+          }
+        });
+        
     }
 })();

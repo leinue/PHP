@@ -70,7 +70,31 @@
             templateUrl: 'app/cores/services/layouts/order/new-order.tmpl.html',
             controller: 'BasicServicesNewOrderController_',
             controllerAs: 'vm'
+        })
+        .state('triangular.admin-default.services-distribute', {
+            url: '/services/order/distribute',
+            templateUrl: 'app/cores/services/layouts/order/distribute/distribute.tmpl.html',
+            controller: 'BasicServicesOrderDistributeController',
+            controllerAs: 'vm'
+        })
+        .state('triangular.admin-default.services-register', {
+            url: '/services/order/register',
+            templateUrl: 'app/cores/services/layouts/order/sign/register.tmpl.html',
+            controller: 'BasicServicesOrderRegisterController',
+            controllerAs: 'vm'
         });
+
+        // {
+        //     name: '工单管理',
+        //     state: 'triangular.admin-default.services-work',
+        //     type: 'link'
+        // },
+
+        // ,{
+        //     name: '签到管理',
+        //     state: 'triangular.admin-default.services-register',
+        //     type: 'link'
+        // }
 
         triMenuProvider.addMenu({
             name: '客服后台系统',
@@ -86,7 +110,16 @@
             {
                 name: '求助服务受理',
                 state: 'triangular.admin-default.services-work',
-                type: 'link'
+                type: 'dropdown',
+                children: [{
+                    name: '工单管理',
+                    state: 'triangular.admin-default.services-work',
+                    type: 'link'
+                },{
+                    name: '派单管理',
+                    state: 'triangular.admin-default.services-distribute',
+                    type: 'link'
+                }]
             },
             {
                 name: '求救呼叫处理',

@@ -4,7 +4,18 @@
             <h2 class="md-title">视频关爱系统</h2>
         </div>
         <md-divider></md-divider>
-        <md-button class="md-raised md-primary" ng-click="selectVideoArea()">{{selectTitle}}</md-button>
+        <md-button class="md-raised md-primary" ng-click="refreshYS7List()">刷新萤石云列表</md-button>
+        <!-- <md-button class="md-raised md-primary" ng-click="selectVideoArea()">{{selectTitle}}</md-button> -->
+        <md-button class="md-raised md-primary" ng-show="!multiScreen" ng-click="openThisVideoInNewWindow()">新窗口播放当前视频</md-button>
+        <md-button class="md-raised md-primary" ng-click="toggleMultiScreen()">{{multiScreenTitle}}</md-button>
+        <div layout layout-sm="column" flex>
+            <md-input-container flex ng-show="!multiScreen">
+                <label>萤石云列表</label>
+                <md-select class="md-select-form" ng-model="currentYS7" ng-change="getYS7Video()" placeholder="萤石云列表">
+                    <md-option ng-value="ys.rtmpUrl" ng-repeat="ys in YS7List">{{ys.title}}</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
         <div ng-show="selectArea" layout layout-sm="column" flex>
             <md-input-container flex>
                 <label>组织类型</label>
@@ -39,6 +50,8 @@
         </div>
     </md-card-content>
     <md-ontent id="monitor-area">
+
+        <iframe id="ocx-video" frameborder="0" seamless src="http://api.zkkj168.com/hkvision" width="100%" height="800"></iframe>
 
     </md-content>
 </md-card>

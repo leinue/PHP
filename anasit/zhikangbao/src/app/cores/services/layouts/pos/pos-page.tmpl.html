@@ -109,14 +109,16 @@
         }
 
         var currentMarkerA = '';
-
+        console.log(markerStack);
         for (var i = markerStack.length - 1; i >= 0; i--) {
-            if(markerStack[i].Rd.position === currentMarker.target.Rd.position){
+            if(markerStack[i].Vd.position === currentMarker.target.Vd.position){
                 currentMarkerA = markerStack[i];
                 continue;
             }
             markerStack[i].setMap(null);
         };
+
+        hideAllpolyLine();
 
         $.ajax({  
             type: "get",
@@ -206,6 +208,8 @@
                     return false;
                 }
 
+                window.open('http://api.zkkj168.com/map/index.php?id=' + id,'_blank','height=500px,width=900px,menubar=no,titlebar=no,scrollbar=no,toolbar=no,status=no,location=no,resizable=no');
+
                 if(typeof realData != 'undefined' || realData != null) {
                     for (var i = 0; i < realData.length; i++) {
                         var curr = realData[i];
@@ -228,6 +232,17 @@
 
                 $('#history-pos-console').slideDown();
 
+                historyPerson = new AMap.Marker({
+                    map: map,
+                    position: [lineArr[0].lng, lineArr[0].lat],
+                    icon: "http://img.anasit.com/uploads/2015/11/matureman2_48.png",
+                    offset: new AMap.Pixel(-26, -13),
+                    autoRotation: true
+                });
+
+                map.setCenter([lineArr[0].lng, lineArr[0].lat]);
+                map.setZoom(10);
+
                 var polyline = new AMap.Polyline({
                     map: map,
                     path: lineArr,
@@ -241,15 +256,7 @@
 
                 historyPolyLine.push(polyline);
 
-                historyPerson = new AMap.Marker({
-                    map: map,
-                    position: [lineArr[0].lng,lineArr[0].lat],
-                    icon: "https://cdn0.iconfinder.com/data/icons/user-pictures/100/matureman2-48.png",
-                    offset: new AMap.Pixel(-26, -13),
-                    autoRotation: true
-                });
-
-                historyPerson.moveAlong(lineArr, 500);//开始动画
+                // historyPerson.moveAlong(lineArr, 500);//开始动画
 
             },
             timeout:30000, 
@@ -262,5 +269,9 @@
         ServicesPosVM.posStatus.title = "历史位置信息";
 
     }
+
+    var geoFence = function(id) {
+        window.open('http://api.zkkj168.com/fences/index.php?id=' + id,'_blank','fullscreen,menubar=no,titlebar=no,scrollbar=no,toolbar=no,status=no,location=no,resizable=no');
+    };
 
 </script>
